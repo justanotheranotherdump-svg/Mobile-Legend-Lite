@@ -232,12 +232,13 @@ button .icon {
 #skill-aim-help { position:absolute; bottom:155px; left:50%; transform:translateX(-50%); max-width:65%; padding:9px 15px; border:1px solid #82e9e3; border-radius:4px; background:#0a263cdd; color:#c6ffff; font-size:11px; text-align:center; pointer-events:none; }
 @media(max-height:600px),(max-width:850px) { .keyboard-only .hero-panel { left:12px; bottom:36px; width:190px; } #cancel-skill { top:65px; right:15px; width:120px; height:55px; font-size:11px; } #skill-aim-help { bottom:132px; font-size:9px; } }
 
-/* Live, non-modal side panels: the visible battle/HUD remains interactive. */
+/* Centered, non-modal panels: exposed battlefield/HUD remains interactive. */
 .keyboard-only #shop-dialog[open], .keyboard-only #settings-dialog[open] {
-  position:fixed; z-index:20; top:68px; left:14px; right:auto; bottom:auto;
+  position:fixed; z-index:20; top:50%; left:50%; right:auto; bottom:auto;
+  transform:translate(-50%,-50%);
   margin:0; width:min(900px,70vw); height:min(650px,80vh); max-height:80vh;
 }
 .keyboard-only #cancel-skill, .keyboard-only #skill-aim-help { z-index:30; }
 @media(max-height:600px) {
- .keyboard-only #shop-dialog[open], .keyboard-only #settings-dialog[open] { top:52px; height:calc(100vh - 62px); max-height:calc(100vh - 62px); }
+ .keyboard-only #shop-dialog[open], .keyboard-only #settings-dialog[open] { height:calc(100vh - 62px); max-height:calc(100vh - 62px); }
 }

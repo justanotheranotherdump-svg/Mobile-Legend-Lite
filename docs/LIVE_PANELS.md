@@ -1,5 +1,8 @@
 # Live Shop and Settings panels
 
+**Layout follow-up:** [CENTERED_PANELS.md](CENTERED_PANELS.md) supersedes the
+left-side placement below. Both panels are now centered; gameplay remains non-modal.
+
 Date: 2026-10-18. User-requested correction to the previous combat-control milestone.
 This supersedes **menu input gating and menu-triggered gesture cancellation** in
 older rules/reports. It does not change the Layla kit, economy, balance or model.

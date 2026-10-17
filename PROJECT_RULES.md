@@ -181,3 +181,8 @@ panel-combat checks and rebuild standalone HTML/source ZIP; stop for approval.
 
 Follow-up authorization: commit and push this verified non-blocking-panel fix to
 `arena/55ce0f80-mobile-legend-lite` so the GitHub branch serves the updated game.
+
+## Centered live panels — 2026-10-18
+The user requests Shop and Settings centered in the viewport, horizontally and
+vertically. Supersede the former left-side placement only; preserve non-modal
+WASD/combat, held-input lifecycle, panel contents, sizing and approved model.

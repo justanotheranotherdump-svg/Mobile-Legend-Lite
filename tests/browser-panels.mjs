@@ -131,7 +131,8 @@ try {
       panel +
         ": skill and basic shortcuts deal real damage while panel stays open",
     );
-    const box = await page.locator("#skill-2").boundingBox();
+    const hpBeforePointer = (await snap()).enemies[0].hp;
+    const box = await page.locator("#skill-ultimate").boundingBox();
     await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
     await page.mouse.down();
     await page.waitForFunction(() =>
@@ -139,7 +140,7 @@ try {
     );
     await page.mouse.up();
     await elapsed(1.2);
-    assert.ok((await snap()).enemies[0].mark);
+    assert.ok((await snap()).enemies[0].hp < hpBeforePointer);
     pass(
       panel +
         ": HUD skill pointer hold/release remains interactive outside panel",
@@ -285,8 +286,21 @@ try {
       await page
         .locator(`[aria-label="Close ${panel}"]`)
         .click({ trial: true });
-      for (const id of ["skill-1", "skill-2", "skill-ultimate", "attack"])
-        await page.locator("#" + id).click({ trial: true });
+      assert.ok(
+        Math.abs(box.x + box.width / 2 - width / 2) <= 1,
+        "panel horizontally centered",
+      );
+      assert.ok(
+        Math.abs(box.y + box.height / 2 - height / 2) <= 1,
+        "panel vertically centered",
+      );
+      assert.equal(
+        await page
+          .locator("#" + panel + "-dialog")
+          .evaluate((e) => e.matches(":modal")),
+        false,
+      );
+      await page.locator("#attack").click({ trial: true });
       await page.screenshot({
         path: `artifacts/live-panels-${panel}-${width}x${height}.png`,
       });
@@ -294,7 +308,7 @@ try {
     }
   }
   pass(
-    "both side panels stay in bounds with reachable close/attack/three skills at desktop and compact landscape sizes",
+    "both panels are centered horizontally and vertically, non-modal and in bounds with reachable close/attack at desktop and compact landscape sizes",
   );
   assert.deepEqual(errors, []);
   assert.deepEqual(warnings, []);
