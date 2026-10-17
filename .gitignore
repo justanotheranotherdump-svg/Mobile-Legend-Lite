@@ -6,3 +6,6 @@ artifacts/
 # Regenerable downloads (kept in the workspace, not in source control)
 deliverables/*
 !deliverables/README.md
+
+# User-provided visual references must not be committed or shipped.
+docs/references/

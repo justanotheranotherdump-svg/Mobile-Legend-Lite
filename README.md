@@ -69,7 +69,7 @@ The editable HTML template is **`dev.html`**. Vite builds this template (not the
 
 No single-file plugin, external fonts, CDN, fetched JSON, runtime model files, decoder, service worker, or network API is required. A Vite >500 kB chunk warning is expected because intentionally bundling Three.js is required; it is not a failed build. Future GLB bytes/textures/audio must be embedded and decoded in memory. A future asset pipeline must fail validation if it introduces external dependencies; this milestone does not claim to implement future GLB loading.
 
-Source ZIP includes the playable standalone root `index.html` AND the editable `dev.html`/source. It excludes node_modules, .git, caches, duplicate build outputs and test screenshots. `npm run package:source` rebuilds first to prevent stale HTML in the ZIP. It includes the original reference images for planning only. Neither screenshot art nor reference logos are embedded in the game.
+Source ZIP includes the playable standalone root `index.html` AND the editable `dev.html`/source. It excludes node_modules, .git, caches, duplicate build outputs and test screenshots. `npm run package:source` rebuilds first to prevent stale HTML in the ZIP. Reference screenshots and reference-analysis files are excluded at the user's request. No screenshot art or reference logos are embedded in the game.
 
 ## Source map
 
@@ -84,7 +84,7 @@ Source ZIP includes the playable standalone root `index.html` AND the editable `
 | `src/data/` | JSON arena and training-unit configuration |
 | `tests/` | Unit and offline browser checks |
 | `scripts/` | Standalone packaging, structural validation, source archive |
-| `docs/` | Phase 1 acceptance report and unchanged visual references |
+| `docs/` | Phase 1 acceptance report and browser-test evidence |
 
 Future runtime models: `public/assets/models/`; textures: `public/assets/textures/`; editable Blender source: `assets/source_blender/`. Empty directories may not appear in Git; create them when genuine assets arrive. No models or Blender sources are claimed in Phase 1.
 

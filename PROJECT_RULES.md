@@ -62,7 +62,7 @@ Asset paths:
 
 ## Reference images
 
-The ten user-provided images are preserved in docs/references/ as image-1.png through image-10.png. See docs/references/README.md for analysis, constraints, and integrity hashes. They are visual/planning references only, not licensed runtime assets. Different images depict different map variants; they do not establish exact dimensions, hidden mechanics, or a final authoritative layout.
+The user requested removal of the uploaded reference images and reference-analysis files from this branch and source downloads. Do not re-add docs/references/ or package those files. Images in the conversation remain visual guidance only, not licensed runtime assets. They do not establish exact dimensions, hidden mechanics, or a final authoritative layout.
 
 ## Known capability and validation limitations
 

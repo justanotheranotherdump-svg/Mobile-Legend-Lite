@@ -8,7 +8,7 @@ New application: `dev.html` (editable template), `index.html` (generated standal
 
 Tooling: `package.json`, `package-lock.json`, `vite.config.js`, `.gitignore`, `scripts/{package-html,check-offline,package-source}.mjs`, `tests/simulation.test.js`, `tests/browser.mjs`, `THIRD_PARTY_NOTICES.md`.
 
-Documentation: updated root README and approval/status entries in PROJECT_RULES; this report; browser evidence `docs/phase-1-browser-results.json`; download instructions `deliverables/README.md`. Reference images and their analysis are unchanged.
+Documentation: updated root README and approval/status entries in PROJECT_RULES; this report; browser evidence `docs/phase-1-browser-results.json`; download instructions `deliverables/README.md`. Reference images and analysis were subsequently removed from the branch and source ZIP at the user's request; gameplay is unchanged.
 
 Generated downloads: `deliverables/MOBA-Lab-Phase-1.html` and `deliverables/MOBA-Lab-Phase-1-source.zip`. Duplicate generated downloads are ignored in Git; root `index.html` is now deliberately tracked so GitHub source ZIPs are directly playable.
 
@@ -40,7 +40,6 @@ Environment: Node 22.22.3, npm 10.9.8, Vite 7.3.7, Three.js 0.186.1. Browser: Li
 | Visual inspection | Captured and inspected initial 1440×900 rendered screenshot | PASS: genuine depth, meshes, shadows, HUD visible |
 | Development preview | Browser smoke test of Vite on port 5173; preview Host header accepted | PASS: initialized with no errors; HTTP 200 for *.e2b.app host |
 | Source delivery | Source ZIP generated and `unzip -t` integrity checked; JS syntax checks | PASS |
-| Reference preservation | Byte comparison of all ten reference uploads | PASS: unchanged |
 | Windows double-click | Actual Windows Chrome/Edge, no networking | NOT TESTED HERE; user action required |
 | Windows GPU/performance | Native driver/device-specific behavior | NOT TESTED HERE |
 
