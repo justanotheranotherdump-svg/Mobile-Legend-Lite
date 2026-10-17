@@ -1,10 +1,15 @@
-# Regenerable downloads
+# Regenerable downloads — Layla reconstruction
 
-`npm run build` generates `MOBA-Lab-Phase-3.html`, a single self-contained game.
+`npm run build` generates `MOBA-Lab-Phase-3.html`, the single self-contained game,
+now with intentionally reconstructed Layla and the unchanged approved embedded GLB.
+The Phase-3 filename remains compatible with the existing packaging/tests.
 `npm run package:source` generates `MOBA-Lab-Phase-3-source.zip`.
 
-The root ../index.html is also the same standalone game and is intentionally
-tracked in Git so downloaded GitHub ZIPs play without building. Edit ../dev.html
-and ../src/, not the generated index. Duplicate downloads are ignored by Git; they are
-reproducible from the preserved source and lockfile. Windows offline file://
-acceptance still requires manual testing. See ../README.md and ../docs/SETTINGS_INPUT_FIX.md.
+Root `../index.html` is the identical standalone game, deliberately tracked so a
+source ZIP can play without building. Edit `../dev.html` / `../src/`, not generated
+index. Downloads/dist/dependencies/screenshots remain ignored by Git.
+
+Read `../docs/COMBAT_CONTROLS.md` and `../docs/LAYLA_INTEGRATION.md` for recovery result, configuration, mechanics,
+GLB validation, tests and limitations. Windows native offline acceptance remains
+manual; automated file:// checks run Linux Chromium. No server/sibling assets/CDN
+are needed to play the HTML. Stop after this milestone for approval.

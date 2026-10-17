@@ -15,6 +15,7 @@ export function overlapsBox(x, z, radius, box) {
 }
 
 export function moveEntity(entity, direction, dt, arena, circles = []) {
+  if (entity.stunned || entity.hp <= 0) return;
   const distance = entity.speed * dt;
   // Small bounded steps prevent crossing thin obstacles at low render rates.
   const steps = Math.max(1, Math.ceil(distance / (entity.radius * 0.4)));

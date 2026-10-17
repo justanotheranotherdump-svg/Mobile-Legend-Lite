@@ -11,7 +11,8 @@
     "test:browser": "node tests/browser.mjs",
     "validate:offline": "node scripts/check-offline.mjs",
     "package:source": "npm run build && node scripts/package-source.mjs",
-    "validate:heroes": "node scripts/validate-heroes.mjs"
+    "validate:heroes": "node scripts/validate-heroes.mjs",
+    "test:browser:layla": "node tests/browser-layla.mjs"
   },
   "dependencies": {
     "three": "0.186.1"

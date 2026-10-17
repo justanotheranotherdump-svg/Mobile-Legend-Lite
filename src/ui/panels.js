@@ -23,8 +23,15 @@ export class PlaceholderPanels {
     this.keySettings = this.settings.keySettings;
     for (const id of ["show-joystick", "reduce-motion"])
       e[id] = e["settings-dialog"].querySelector(`#${id}`);
+    if (!joystick) {
+      const label = e["show-joystick"].closest("label");
+      label.previousElementSibling?.remove();
+      label.remove();
+      e["settings-dialog"].querySelector(".controls-help dt").textContent =
+        "W A S D";
+    }
     e["show-joystick"].addEventListener("change", () =>
-      joystick.setEnabled(e["show-joystick"].checked),
+      joystick?.setEnabled(e["show-joystick"].checked),
     );
     e["reduce-motion"].checked = matchMedia(
       "(prefers-reduced-motion: reduce)",

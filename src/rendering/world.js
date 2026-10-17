@@ -1,6 +1,8 @@
 import * as THREE from 'three';
+import { CombatVfx } from './combat-vfx.js';
+import { AimSight } from './aim-sight.js';
 
-// A presentation adapter. All meshes below are TEMPORARY test geometry.
+// Presentation adapter: approved injected hero GLB, temporary arena/dummy geometry.
 // Hero visuals are injected; model replacement never changes simulation entities.
 export class WorldView {
   constructor(canvas, arena, enemies, heroVisual) {
@@ -166,12 +168,19 @@ export class WorldView {
     return object?.userData.enemyId ?? null;
   }
 
+  groundAtPointer(pointer){
+    this.raycaster.setFromCamera(pointer,this.camera);const hit=this.raycaster.ray.intersectPlane(this.ground,new THREE.Vector3());return hit?{x:hit.x,z:hit.z}:null;
+  }
+  groundAtClient(x,y){const rect=this.canvas.getBoundingClientRect();return this.groundAtPointer({x:(x-rect.left)/rect.width*2-1,y:1-(y-rect.top)/rect.height*2});}
+
   project(x, y, z) {
     const point = new THREE.Vector3(x, y, z).project(this.camera);
     return { x: (point.x + 1) * this.width / 2, y: (1 - point.y) * this.height / 2, visible: Math.abs(point.x) < 0.98 && Math.abs(point.y) < 0.96 && Math.abs(point.z) < 1 };
   }
 
-  resetFeedback() { this.lastHitSerial = 0; this.beamUntil = -1; }
+  connectCombat(state) { if(state.combatHero) {this.combatVfx=new CombatVfx(this.scene,state);this.aimSight=new AimSight(this.scene);} }
+
+  resetFeedback() { this.lastHitSerial = 0; this.lastCastSerial=0; this.beamUntil = -1; this.lastVisualTime=undefined; this.combatVfx?.clear(); }
 
   render(state, pointer) {
     const { player, enemies } = state;
@@ -195,12 +204,19 @@ export class WorldView {
         this.hero.rotation.y = Math.atan2(this.pointerGround.x - player.x, this.pointerGround.z - player.z);
       }
     }
-    this.aimMarker.visible = Boolean(this.aim);
+    if(state.combatHero){
+      this.aim=state.aiming?{...state.aiming.point}:null;
+      this.aimSight.update(state);
+      const direction=state.currentFacing();
+      this.hero.rotation.y=Math.atan2(direction.x,direction.z);
+      if(state.lastCast.serial!==(this.lastCastSerial||0)){this.lastCastSerial=state.lastCast.serial;this.heroVisual.play("cast",true);}
+    }
+    this.aimMarker.visible = !state.combatHero && Boolean(this.aim);
     if (state.lastAttack.serial !== this.lastHitSerial) {
       this.lastHitSerial = state.lastAttack.serial;
-      if (state.lastAttack.reason === 'hit') { this.beamUntil = state.time + 0.14; this.beamTargetId = state.lastAttack.targetId; this.heroVisual.play('basicAttack', true); }
+      if (state.lastAttack.reason === 'hit' || state.lastAttack.reason === 'fired') { this.beamUntil = state.time + 0.14; this.beamTargetId = state.lastAttack.targetId; this.heroVisual.play('basicAttack', true); }
     }
-    this.beam.visible = state.time < this.beamUntil;
+    this.beam.visible = !state.combatHero && state.time < this.beamUntil;
     if (this.beam.visible) {
       const positions = this.beam.geometry.attributes.position;
       positions.setXYZ(0, player.x, 1.05, player.z);
@@ -210,8 +226,10 @@ export class WorldView {
       this.beam.geometry.computeBoundingSphere();
     }
     this.heroVisual.update(Math.max(0, Math.min(state.time - (this.lastVisualTime ?? state.time), 0.1)),
-      Math.hypot(player.x - (this.lastPlayerX ?? player.x), player.z - (this.lastPlayerZ ?? player.z)) > 0.0001 ? 'move' : 'idle');
+      player.hp<=0 ? 'dead' : Math.hypot(player.x - (this.lastPlayerX ?? player.x), player.z - (this.lastPlayerZ ?? player.z)) > 0.0001 ? 'move' : 'idle');
     this.lastVisualTime = state.time; this.lastPlayerX = player.x; this.lastPlayerZ = player.z;
+    this.hero.visible=player.hp>0; // No fabricated death animation.
+    this.combatVfx?.update();
     this.renderer.render(this.scene, this.camera);
   }
 }

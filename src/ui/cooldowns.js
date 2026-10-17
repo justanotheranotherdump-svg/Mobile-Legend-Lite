@@ -20,10 +20,13 @@ export class CooldownDisplay {
     details.childNodes[2].textContent = ` ${player.range}m range `;
     details.childNodes[4].textContent = ` ${player.attackCooldown}s cooldown`;
   }
-  update(player) {
+  update(player, firingFor = 0) {
+    const details = document.querySelector(".attack-panel small");
+    if (details) details.childNodes[2].textContent = ` ${player.range}m range `;
     const state = attackFeedback(player),
       e = this.e;
-    e["attack-status"].textContent = state.text;
+    e["attack-status"].textContent =
+      firingFor > 0 ? `Firing · ${firingFor.toFixed(1)}s` : state.text;
     e["attack-countdown"].textContent = state.countdown;
     e.attack.dataset.state = state.countdown ? "cooldown" : "ready";
     e.attack.style.setProperty("--cooldown", `${state.fraction * 360}deg`);

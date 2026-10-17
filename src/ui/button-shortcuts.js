@@ -3,10 +3,25 @@ import { BUTTON_ACTIONS, keyLabel } from "../input/key-bindings.js";
 import { requestSkillButton } from "./skill-controls.js";
 // One dispatcher for all HUD button shortcuts: never duplicate gameplay rules.
 export class ButtonShortcuts {
-  constructor(root, bindings) {
+  constructor(root, bindings, skillGestures = null) {
     this.root = root;
     this.bindings = bindings;
     window.addEventListener("keydown", (event) => {
+      const action = bindings.actionFor(event.code);
+      if (
+        skillGestures &&
+        action?.id.startsWith("skill-") &&
+        !blocksGameplayInput(event.target) &&
+        !event.repeat &&
+        !event.ctrlKey &&
+        !event.altKey &&
+        !event.metaKey &&
+        !event.shiftKey
+      ) {
+        event.preventDefault();
+        skillGestures.keyDown(action.id, event.code);
+        return;
+      }
       if (
         blocksGameplayInput(event.target) ||
         event.repeat ||
@@ -19,7 +34,6 @@ export class ButtonShortcuts {
         )
       )
         return;
-      const action = bindings.actionFor(event.code);
       if (!action) return;
       event.preventDefault();
       requestSkillButton(root.querySelector(`#${action.id}`));
@@ -52,7 +66,7 @@ export class ButtonShortcuts {
                 : label,
         );
       else button.removeAttribute("aria-keyshortcuts");
-      button.title = `${action.label} · ${label}${action.reserved ? " · Reserved, not implemented" : ""}${action.id === "attack" ? " · Mouse LMB also available" : ""}`;
+      button.title = `${button.dataset.abilityName || action.label} · ${label}${action.reserved && button.dataset.controlKind !== "functional" ? " · Reserved, not implemented" : ""}${action.id === "attack" ? " · Mouse LMB also available" : ""}`;
       let badge = button.querySelector(".slot-key");
       if (!badge && code) {
         badge = document.createElement("span");
@@ -72,7 +86,7 @@ export class ButtonShortcuts {
     }
     const help = this.root.querySelector("[data-key-help]");
     if (help)
-      help.textContent = `Attack: ${bindings.labelFor("attack")} (+ mouse) · Skill I: ${bindings.labelFor("skill-1")} · Skill II: ${bindings.labelFor("skill-2")} · Ultimate: ${bindings.labelFor("skill-ultimate")}. Skill and utility gameplay is still reserved.`;
+      help.textContent = `Attack: ${bindings.labelFor("attack")} (+ mouse) · Skill I: ${bindings.labelFor("skill-1")} · Skill II: ${bindings.labelFor("skill-2")} · Ultimate: ${bindings.labelFor("skill-ultimate")}. ${this.root.querySelector(".hero-skill") ? "Tap a skill to auto-target by priority. Hold to aim, release to cast; Esc/right-click cancels. WASD resumes after firing. Utilities remain reserved." : "Skill and utility gameplay is still reserved."}`;
     const title = this.root.querySelector(".movement-hint");
     if (title)
       title.title =

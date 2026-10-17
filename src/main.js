@@ -3,6 +3,7 @@ import { createHeroVisual } from './rendering/heroes/hero-visual.js';
 import './ui/style.css';
 import arena from './data/arena.json';
 import training from './data/training.json';
+import { HeroCombatSimulation } from './simulation/hero-combat.js';
 import { TrainingSimulation } from './simulation/game.js';
 import { FixedClock } from './core/clock.js';
 import { Controls } from './input/controls.js';
@@ -18,11 +19,17 @@ function reportError(message) {
 async function boot() {
   try {
     const registry = loadHeroRegistry();
-    const simulation = new TrainingSimulation(arena, training, registry);
+    // Explicit historical fixture mode; normal standalone boot is reconstructed Layla.
+    const fixture = new URLSearchParams(location.search).get("hero") === "training";
+    const config = structuredClone(training);
+    if (!fixture) config.player.heroId = "layla";
+    const simulation = new (fixture ? TrainingSimulation : HeroCombatSimulation)(arena, config, registry);
     const heroVisual = await createHeroVisual(simulation.hero, registry.modelBytes(simulation.hero.id));
     const clock = new FixedClock();
     const view = new WorldView(document.querySelector('#world'), arena, simulation.enemies, heroVisual);
-    const controls = new Controls(view.canvas, pointer => simulation.attack(view.pickTarget(pointer)));
+    view.connectCombat(simulation);
+    if(!fixture)view.canvas.setAttribute("aria-label","3D training arena. WASD moves; click an enemy or press Space to attack. Tap 1/2/3 to auto-target; hold to aim, release to cast, Escape to cancel.");
+    const controls = new Controls(view.canvas, pointer => {if(!controls.skillGestureActive)simulation.attack(view.pickTarget(pointer));});
     const hud = new Hud(simulation, () => {
       simulation.reset();
       clock.reset();
@@ -32,7 +39,7 @@ async function boot() {
     }, mode => {
       controls.clear();
       simulation.setTargetMode(mode);
-    }, controls);
+    }, controls, view);
     let paused = document.hidden;
     function pause() { paused = true; clock.reset(); controls.clear(); hud.paused(true); }
     function resume() { paused = document.hidden; clock.reset(); hud.paused(paused); }
@@ -58,7 +65,7 @@ async function boot() {
       window.foundationDiagnostics = Object.freeze({
         snapshot: () => ({ ...simulation.snapshot(), aim: view.aim && { ...view.aim }, paused, width: view.width, height: view.height }),
         project: (x, y, z) => view.project(x, y, z),
-        hero: () => ({ id: simulation.hero.id, definition: structuredClone(simulation.hero), modelStatus: heroVisual.status, registeredIds: registry.ids() }),
+        hero: () => ({ id: simulation.hero.id, definition: structuredClone(simulation.hero), modelStatus: heroVisual.status, modelFacing:view.hero.rotation.y, sightVisible:Boolean(view.aimSight?.group.visible), visual:heroVisual.diagnostics(), effects:view.combatVfx?.diagnostics(), registeredIds: registry.ids() }),
       });
     }
   } catch (cause) { console.error(cause); reportError(`Could not initialize the 3D arena: ${cause.message}. Check hero data; graphics also require WebGL2-enabled Chrome/Edge.`); }

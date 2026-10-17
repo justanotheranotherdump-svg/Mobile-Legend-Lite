@@ -1,0 +1,27 @@
+{
+  "checks": [
+    "downloaded HTML initializes actual WebGL2 using file:// with network disabled",
+    "inline CSS is applied: dark background, positioned HUD, full-viewport canvas (unstyled-page regression)",
+    "eager bundled hero registry drives exact existing stats/HUD and honest placeholder/empty clips",
+    "three distinct configured dummies expose current/max HP in world labels",
+    "out-of-range automatic and pinned direct attacks reject damage/cooldown and NEVER chase",
+    "real keyboard movement and diagonal normalization (measured against simulation time)",
+    "camera follows player and mouse ray maps to the correct ground position after movement",
+    "HUD mode nearest selects dummy-a and visibly highlights it without moving",
+    "HUD mode current-hp selects dummy-b and visibly highlights it without moving",
+    "HUD mode hp-percent selects dummy-c and visibly highlights it without moving",
+    "HUD mode manual selects dummy-a and visibly highlights it without moving",
+    "direct enemy click pins over auto mode; ground attacks use pin and preserve cooldown/no-chase rules",
+    "mode changes and Clear lock restore automatic policy without bypassing cooldown",
+    "a pinned target dying releases override immediately; dead clicks never select or damage an enemy",
+    "Manual Target mode pins chosen enemy and falls back to nearest living in-range enemy on death",
+    "ground-click auto attacks reselect by lowest current HP after death; HUD attack button uses same rules",
+    "Reset restores all HP/max HP, player/target state, mode, pins, cooldown and hit count",
+    "real keyboard movement hits a solid obstacle and slides without penetrating"
+  ],
+  "errors": [],
+  "warnings": [],
+  "requests": [],
+  "failure": "TimeoutError: page.waitForFunction: Timeout 30000ms exceeded.",
+  "note": "Initial concurrently running software-WebGL suites: historical fixture timed out waiting for simulation time in its 8-second boundary-movement check. No app errors/warnings/requests. Final suites run serially with the same assertions; final result recorded separately."
+}

@@ -131,3 +131,39 @@ The user requested removal of routine gameplay messages (including attack cooldo
 The user reported movement freezing when clicking Attack (but not Space), and gameplay movement continuing with Shop/Settings open. Preserve held WASD/joystick while using battlefield buttons; do not treat every button focus as an editor. Explicitly gate keyboard, joystick and canvas attacks while either modal is open, independent of focused event target. Clear inputs/capture on open/close; ignore held-key repeats so closing does not revive stale movement. Keep ordinary keyboard accessibility and shared combat validation. **Regen default is V (`KeyV`)**, still reserved without healing gameplay; preserve B/F and three default top-row 1/2/3 skills and rebind/default restoration.
 
 Adopt an original translucent landscape Settings design inspired by the supplied references: category sidebar, Basic/Controls/Interface pages, centered header, section dividers, on/off controls and close/footer. Add working target-priority choices under Controls, sharing the existing simulation and HUD selector (no duplicate targeting rules). Preserve session-only key customization/hiding and optional joystick/reduced HUD motion. Sound/Network remain visibly unavailable; do not invent graphics-quality/frame-rate/resolution/audio/network/skill-cast options or mechanics. References remain excluded. Rebuild and verify the exact one-file offline artifact, before/after regressions, compact layouts, focus/input capture and downloads; document honest Windows/touch limitations, then stop for review. See docs/SETTINGS_INPUT_FIX.md.
+
+## Authorized Layla reconstruction milestone — 2026-10-18
+Recovery search completed before editing: remote session's full 12-commit history,
+all 247 reachable historical blobs, refs/tags/PRs/releases and saved asset ZIPs
+contain no working Layla kit. The user explicitly authorized intentional reconstruction
+if unrecoverable. New mana/skill/buff values are editable initial reconstruction
+values, not recovered/canonical balance. Preserve existing arena HP/movement/basic
+attack defaults and the training regression fixture. Integrate ONLY Layla; no new
+heroes, maps, AI, economy or unrelated utilities. Three skill buttons become
+functional only for the capable Layla simulation; training/other utilities remain
+honestly reserved. Preserve settings, targeting, modal input gating and offline build.
+Copy approved GLB byte-unchanged; SHA256
+963a4902955cb8ad345c74eb63b76e602ade5247c2bd94544ce3000cba6edd51.
+Actual clips are rigid-part Walk and Shoot, not skeletal animation. Rest pose for
+idle; Shoot reused for casts; no death/dedicated skill clips. Combat owns damage,
+projectiles/statuses/mana/cooldowns; renderer only consumes authoritative state/events.
+Deliver test/build/GLB/offline reports, changed files, HTML/source ZIP and limitations;
+stop for approval. Linux automation cannot certify native Windows/touch behavior.
+
+## Approved combat-control / keyboard-only correction — 2026-10-18
+The user tested the reconstruction and approved these superseding control rules:
+stop actual player movement throughout Shoot/cast animation, then resume held WASD;
+basics absolutely lock onto the chosen eligible in-range enemy, home and pass
+through obstacles. Tap skills auto-target by Settings priority, with no mouse aim
+required; hold pointer or the bound skill key to preview an aim sight, release to
+cast, allow cancel without spending mana/CD. Targeted skill shots home; free-aim
+shots stay directed. All offensive aim/projectiles pass through objects; player
+movement still collides. Face movement normally, aiming/firing only when active,
+not idle mouse hover. Remove default HUD target-priority card and joystick, move
+hero status to the old bottom-left joystick location; priority remains in Settings.
+Keep the historical training fixture explicit for older regressions, never conceal
+these intentional new semantics. Preserve approved GLB bytes, actual Walk/Shoot,
+three skills/default/rebind keys, stats/mana/CDs/effects, offline bundling and scope.
+No new actors/maps/AI/economy. Cancel gestures on menus/reset/blur/capture loss;
+Escape/right-click and a visible cancel area support cancellation. Ship new checks,
+HTML/source ZIP and honest limitations; stop for review.

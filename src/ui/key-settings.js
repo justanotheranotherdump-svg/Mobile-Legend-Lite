@@ -10,12 +10,13 @@ export class KeySettings {
     const list = root.querySelector("#key-binding-list"),
       status = root.querySelector("#key-binding-status");
     for (const action of BUTTON_ACTIONS) {
+      const reserved = action.reserved && document.getElementById(action.id)?.dataset.controlKind !== "functional";
       const row = document.createElement("label");
       row.className = "binding-row";
       const label = document.createElement("span");
-      label.textContent = `${action.label}${action.reserved ? " · reserved" : ""}`;
+      label.textContent = `${action.label}${reserved ? " · reserved" : ""}`;
       const select = document.createElement("select");
-      select.dataset.controlKind = action.reserved
+      select.dataset.controlKind = reserved
         ? "interface-only"
         : "functional";
       select.id = `bind-${action.id}`;

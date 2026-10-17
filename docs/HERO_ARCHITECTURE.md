@@ -1,3 +1,5 @@
+> Historical Phase 2 report. The authorized Layla reconstruction now extends this foundation; see [LAYLA_INTEGRATION.md](LAYLA_INTEGRATION.md). Original baseline claims below describe that earlier milestone.
+
 # Phase 2 — Modular hero architecture
 
 This milestone refactors the working Phase 1.1 sandbox. It does **not** implement Layla's kit, mana, healing, respawn, more heroes, or a hero-selection screen. Those mechanics did not exist in the baseline; they were not fabricated during migration.

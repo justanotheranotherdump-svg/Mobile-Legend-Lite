@@ -68,7 +68,8 @@ export class TrainingSimulation {
     this.refreshTarget();
     const clicked = this.enemies.find(enemy => enemy.id === clickedId);
     let reason = null;
-    if (clickedId !== null && !this.prioritizeTarget(clickedId)) reason = clicked?.hp <= 0 ? 'dead' : 'invalid-target';
+    if (this.player.hp <= 0) reason = 'dead-player';
+    if (!reason && clickedId !== null && !this.prioritizeTarget(clickedId)) reason = clicked?.hp <= 0 ? 'dead' : 'invalid-target';
     const target = this.selectedTarget;
     if (!reason && !target) reason = this.enemies.some(isEligibleEnemy) ? 'range' : 'no-enemies';
     if (!reason && !inAttackRange(this.player, target)) reason = 'range';

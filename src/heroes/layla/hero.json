@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 2,
+  "id": "layla",
+  "name": "Layla",
+  "role": "marksman",
+  "baseStats": {
+    "maxHp": 100,
+    "movementSpeed": 5.5,
+    "collisionRadius": 0.45,
+    "maxMana": 100,
+    "manaRegen": 4
+  },
+  "basicAttack": {
+    "effectId": "direct-damage",
+    "damage": 25,
+    "range": 6,
+    "cooldown": 0.65,
+    "projectileSpeed": 18,
+    "castTime": 0.25
+  },
+  "abilityIds": [
+    "malefic-gun",
+    "malefic-bomb",
+    "void-projectile",
+    "destruction-rush"
+  ],
+  "visual": "visual.json",
+  "actionLockDuration": 1.05
+}

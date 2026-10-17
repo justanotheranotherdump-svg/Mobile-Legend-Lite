@@ -84,7 +84,7 @@ try {
   const ready = async () => { await page.waitForFunction(() => window.foundationDiagnostics.snapshot().player.cooldown === 0); };
   const samePosition = (a, b) => assert.deepEqual([a.player.x, a.player.z], [b.player.x, b.player.z]);
 
-  await page.goto(pathToFileURL(resolve('deliverables/MOBA-Lab-Phase-3.html')).href + '#diagnostics');
+  await page.goto(pathToFileURL(resolve('deliverables/MOBA-Lab-Phase-3.html')).href + '?hero=training#diagnostics');
   await page.waitForFunction(() => window.foundationDiagnostics && window.foundationDiagnostics.snapshot().time > 0.05);
   assert.ok(await page.locator('#error').isHidden());
   const gpu = await page.evaluate(() => {
@@ -103,7 +103,7 @@ try {
   assert.deepEqual(layout.canvas, { width: 1440, height: 900 });
   pass('inline CSS is applied: dark background, positioned HUD, full-viewport canvas (unstyled-page regression)');
   const hero = await page.evaluate(() => window.foundationDiagnostics.hero());
-  assert.deepEqual(hero.registeredIds, ['training']);
+  assert.deepEqual(hero.registeredIds, ['layla', 'training']); // full roster, historical training fixture selected explicitly
   assert.equal(hero.id, 'training');
   assert.equal(hero.modelStatus, 'placeholder');
   assert.equal(hero.definition.name, 'Test hero');
@@ -345,7 +345,7 @@ try {
   assert.ok(archivedIndex.equals(await readFile('index.html')), 'ZIP must include the current playable root index');
   await writeFile(join(isolated, 'index.html'), archivedIndex);
   for (const [entry, label] of [[resolve('index.html'), 'repository root index.html'], [join(isolated, 'index.html'), 'source-ZIP index.html isolated without sibling files (spaces/Unicode path)']]) {
-    await page.goto(pathToFileURL(entry).href + '#diagnostics');
+    await page.goto(pathToFileURL(entry).href + '?hero=training#diagnostics');
     await page.waitForFunction(() => window.foundationDiagnostics?.snapshot().time > 0.05);
     assert.ok(await page.locator('#error').isHidden());
     assert.equal(await page.locator('.topbar').evaluate(element => getComputedStyle(element).position), 'absolute');
@@ -378,7 +378,7 @@ try {
     const devErrors = [];
     devPage.on('pageerror', error => devErrors.push(String(error)));
     devPage.on('console', message => { if (message.type() === 'error') devErrors.push(message.text()); });
-    await devPage.goto(process.env.DEV_TEST_URL + '/#diagnostics');
+    await devPage.goto(process.env.DEV_TEST_URL + '/?hero=training#diagnostics');
     await devPage.bringToFront();
     await devPage.waitForFunction(() => window.foundationDiagnostics?.snapshot().time > 0.05);
     assert.ok(await devPage.locator('script[src^="/src/main.js"]').count(), 'Dev root must serve editable template, not stale standalone bundle');
@@ -391,7 +391,7 @@ try {
     delete invalidDefinition.abilities; delete invalidDefinition.animations; delete invalidDefinition.presentation;
     invalidDefinition.baseStats.maxHp = -1;
     await invalidPage.route('**/src/heroes/training/hero.json*', route => route.fulfill({ contentType: 'application/javascript', body: `export default ${JSON.stringify(invalidDefinition)}` }));
-    await invalidPage.goto(process.env.DEV_TEST_URL + '/');
+    await invalidPage.goto(process.env.DEV_TEST_URL + '/?hero=training');
     await invalidPage.locator('#error').waitFor({ state: 'visible' });
     assert.match(await invalidPage.locator('#error').innerText(), /training\/hero.json.baseStats.maxHp/);
     developmentPreview = { passed: true, errors: devErrors, invalidHeroDataBanner: 'passed' };

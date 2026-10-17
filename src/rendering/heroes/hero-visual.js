@@ -1,4 +1,4 @@
-import { Group, AnimationMixer, AnimationClip, LoadingManager, LoopOnce, LoopRepeat } from 'three';
+import { Group, AnimationMixer, AnimationClip, LoadingManager, Vector3, LoopOnce, LoopRepeat } from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { createTrainingPlaceholder } from '../../heroes/training/placeholder.js';
 import { inspectEmbeddedGlb } from '../../heroes/model-contract.js';
@@ -46,7 +46,9 @@ export async function createHeroVisual(hero, bytes, { loader = createEmbeddedLoa
   anchor.add(model);
   function play(state, once = false) {
     const clip = hero.animations.clips[state];
-    if (!mixer || !clip || (!once && clip === current)) return;
+    if (!mixer) return;
+    if (!clip) { mixer.stopAllAction(); current=null; oneShot=false; return; }
+    if (!once && clip === current) return;
     mixer.stopAllAction();
     const action = mixer.clipAction(clips.get(clip));
     action.setLoop(once ? LoopOnce : LoopRepeat, once ? 1 : Infinity);
@@ -57,9 +59,11 @@ export async function createHeroVisual(hero, bytes, { loader = createEmbeddedLoa
   return {
     root,
     status,
+    diagnostics: () => ({status, clips:[...clips.keys()], current, oneShot, skeletal:model.getObjectsByProperty("isBone",true).length>0}),
+    muzzlePosition() { root.updateMatrixWorld(true); const muzzle=model.getObjectByName("MuzzleFlash"); return muzzle ? muzzle.getWorldPosition(new Vector3()) : null; },
     play,
     update(dt, state) {
-      if (!oneShot) play(state);
+      if (state === "dead" || !oneShot) play(state);
       mixer?.update(dt);
     },
     reset() { mixer?.stopAllAction(); current = null; oneShot = false; },

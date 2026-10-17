@@ -1,0 +1,76 @@
+[
+  {
+    "id": "malefic-gun",
+    "name": "Malefic Gun",
+    "slot": "passive",
+    "effectId": "distance-scaling",
+    "range": 0,
+    "damage": 0,
+    "manaCost": 0,
+    "cooldown": 0,
+    "castTime": 0,
+    "parameters": {
+      "referenceDistance": 6,
+      "maxMultiplier": 1.15,
+      "excludedKinds": [
+        "turret",
+        "tower"
+      ]
+    }
+  },
+  {
+    "id": "malefic-bomb",
+    "name": "Malefic Bomb",
+    "slot": "skill-1",
+    "effectId": "line-projectile",
+    "range": 9,
+    "damage": 35,
+    "manaCost": 20,
+    "cooldown": 5,
+    "castTime": 0.25,
+    "parameters": {
+      "speed": 14,
+      "radius": 0.16,
+      "buffDuration": 3,
+      "speedMultiplier": 1.2,
+      "attackRangeBonus": 2,
+      "skill2RangeBonus": 2,
+      "collidesWithWalls": false
+    }
+  },
+  {
+    "id": "void-projectile",
+    "name": "Void Projectile",
+    "slot": "skill-2",
+    "effectId": "orb-mark",
+    "range": 7,
+    "damage": 30,
+    "manaCost": 25,
+    "cooldown": 7,
+    "castTime": 0.25,
+    "parameters": {
+      "speed": 10,
+      "radius": 0.22,
+      "blastRadius": 2,
+      "markDuration": 4,
+      "bonusDamage": 15,
+      "stunDuration": 0.6,
+      "stunRadius": 2,
+      "collidesWithWalls": false
+    }
+  },
+  {
+    "id": "destruction-rush",
+    "name": "Destruction Rush",
+    "slot": "skill-ultimate",
+    "effectId": "line-blast",
+    "range": 12,
+    "damage": 70,
+    "manaCost": 40,
+    "cooldown": 14,
+    "castTime": 0.25,
+    "parameters": {
+      "width": 1.4
+    }
+  }
+]

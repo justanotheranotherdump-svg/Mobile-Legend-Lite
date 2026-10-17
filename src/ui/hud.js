@@ -1,3 +1,4 @@
+import { HeroSkillHud } from "./hero-skills.js";
 import { KeyBindings } from "../input/key-bindings.js";
 import { ButtonShortcuts } from "./button-shortcuts.js";
 import { mountLayout } from "./layout.js";
@@ -9,8 +10,14 @@ import { CombatNotifications } from "./combat-notifications.js";
 import { Joystick } from "../input/joystick.js";
 import { distanceTo, inAttackRange } from "../simulation/targeting.js";
 export class Hud {
-  constructor(simulation, onReset, onModeChange, controls) {
+  constructor(simulation, onReset, onModeChange, controls, view) {
     mountLayout(document.querySelector("#hud-root"));
+    const root = document.querySelector("#hud-root");
+    root.classList.toggle("keyboard-only", Boolean(simulation.combatHero));
+    if (simulation.combatHero) {
+      root.querySelector(".target-panel").remove();
+      root.querySelector(".movement-dock").remove();
+    }
     this.elements = Object.fromEntries(
       [...document.querySelectorAll("[id]")].map((element) => [
         element.id,
@@ -26,7 +33,10 @@ export class Hud {
     this.bindings = new KeyBindings();
     this.targeting = new TargetingControls(e, simulation, onModeChange);
     this.cooldowns = new CooldownDisplay(e, simulation.player);
-    this.joystick = new Joystick(e.joystick, controls);
+    this.joystick = simulation.combatHero
+      ? null
+      : new Joystick(e.joystick, controls);
+    this.skills = new HeroSkillHud(simulation, controls, view);
     this.panels = new PlaceholderPanels(
       e,
       this.joystick,
@@ -39,7 +49,9 @@ export class Hud {
     this.shortcuts = new ButtonShortcuts(
       document.querySelector("#hud-root"),
       this.bindings,
+      this.skills.gestures,
     );
+    this.bindings.subscribe(() => this.skills.gestures?.cancel());
     this.notifications = new CombatNotifications(
       e["combat-announcements"],
       simulation.events,
@@ -49,7 +61,7 @@ export class Hud {
       e.reset.blur();
     });
     e.attack.addEventListener("click", () => {
-      simulation.attack();
+      if (!controls.skillGestureActive) simulation.attack();
       e.attack.blur();
     });
     e["toggle-map-range"].setAttribute("aria-pressed", "true");
@@ -91,47 +103,61 @@ export class Hud {
     const { player, enemies, hits, selectedTarget: target } = state;
     const e = this.elements;
     this.targeting.update(state.targetMode);
-    e["clear-target"].disabled = !state.manualTargetId;
-    e["selection-source"].textContent = state.manualTargetId
-      ? "Manual override pinned"
-      : state.targetMode === "manual"
-        ? "Nearest fallback · click to pin"
-        : "Automatic selection";
-    e["target-name"].textContent = target ? target.name : "No target in range";
-    e["target-status"].textContent = target
-      ? state.manualTargetId
-        ? "LOCKED"
-        : "AUTO"
-      : "NONE";
-    e["target-details"].textContent = target
-      ? inAttackRange(player, target)
-        ? "In attack range · highlighted in gold"
-        : "Pinned target out of range · no chasing"
-      : "Approach a living training target";
+    if (e["target-mode"]) {
+      e["clear-target"].disabled = !state.manualTargetId;
+      e["selection-source"].textContent = state.manualTargetId
+        ? "Manual override pinned"
+        : state.targetMode === "manual"
+          ? "Nearest fallback · click to pin"
+          : "Automatic selection";
+      e["target-name"].textContent = target
+        ? target.name
+        : "No target in range";
+      e["target-status"].textContent = target
+        ? state.manualTargetId
+          ? "LOCKED"
+          : "AUTO"
+        : "NONE";
+      e["target-details"].textContent = target
+        ? inAttackRange(player, target)
+          ? "In attack range · highlighted in gold"
+          : "Pinned target out of range · no chasing"
+        : "Approach a living training target";
+    }
     e["player-health"].textContent = `${player.hp} / ${player.maxHp}`;
     const playerMeter = document.querySelector('[aria-label="Player health"]');
     playerMeter.setAttribute("aria-valuemax", player.maxHp);
     playerMeter.setAttribute("aria-valuenow", player.hp);
     playerMeter.firstElementChild.style.width = `${(player.hp / player.maxHp) * 100}%`;
-    e["dummy-health"].textContent = target
-      ? `${target.hp} / ${target.maxHp}`
-      : "— / —";
-    e["dummy-meter"].setAttribute("aria-valuemax", target?.maxHp ?? 1);
-    e["dummy-meter"].setAttribute("aria-valuenow", target?.hp ?? 0);
-    e["dummy-bar"].style.width =
-      `${target ? (target.hp / target.maxHp) * 100 : 0}%`;
-    e.distance.textContent = target
-      ? `${distanceTo(player, target).toFixed(1)} m`
-      : "—";
-    e.hits.textContent = hits;
-    this.cooldowns.update(player);
-    this.minimap.update(state, view.aim);
+    if (e["target-mode"]) {
+      e["dummy-health"].textContent = target
+        ? `${Math.ceil(target.hp)} / ${target.maxHp}`
+        : "— / —";
+      e["dummy-meter"].setAttribute("aria-valuemax", target?.maxHp ?? 1);
+      e["dummy-meter"].setAttribute("aria-valuenow", target?.hp ?? 0);
+      e["dummy-bar"].style.width =
+        `${target ? (target.hp / target.maxHp) * 100 : 0}%`;
+      e.distance.textContent = target
+        ? `${distanceTo(player, target).toFixed(1)} m`
+        : "—";
+      e.hits.textContent = hits;
+    }
+    this.cooldowns.update(
+      player,
+      state.combatHero ? Math.max(0, state.lockUntil - state.time) : 0,
+    );
+    this.skills.update();
+    const face = state.combatHero ? state.currentFacing() : null;
+    this.minimap.update(
+      state,
+      face ? { x: player.x + face.x, z: player.z + face.z } : view.aim,
+    );
     this.notifications.update(state.time);
     e["match-timer"].textContent =
       `${String(Math.floor(state.time / 60)).padStart(2, "0")}:${String(Math.floor(state.time % 60)).padStart(2, "0")}`;
     for (const enemy of enemies) {
       const { label, bar, hp } = this.labels.get(enemy.id);
-      hp.textContent = `${enemy.hp} / ${enemy.maxHp}`;
+      hp.textContent = `${Math.ceil(enemy.hp)} / ${enemy.maxHp}`;
       bar.style.width = `${(enemy.hp / enemy.maxHp) * 100}%`;
       label.classList.toggle("selected", state.selectedTargetId === enemy.id);
       this.placeLabel(

@@ -1,3 +1,4 @@
+import { validateCombatAbility } from '../simulation/ability-contract.js';
 import { validateEffect } from '../simulation/effects.js';
 import { decodeEmbeddedAsset, inspectEmbeddedGlb } from './model-contract.js';
 
@@ -26,16 +27,19 @@ export function validateHeroPack(pack) {
   object(pack, 'hero pack');
   const path = pack.path ?? 'hero pack';
   const h = pack.hero, v = pack.visual, a = pack.animations, abilities = pack.abilities;
-  exactKeys(h, ['schemaVersion', 'id', 'name', 'role', 'baseStats', 'basicAttack', 'abilityIds', 'visual'], `${path}/hero.json`);
-  if (h.schemaVersion !== 1) fail(`${path}/hero.json.schemaVersion`, 'unsupported schema version');
+  exactKeys(h, h?.schemaVersion===2 ? ['schemaVersion','id','name','role','baseStats','basicAttack','abilityIds','visual','actionLockDuration'] : ['schemaVersion', 'id', 'name', 'role', 'baseStats', 'basicAttack', 'abilityIds', 'visual'], `${path}/hero.json`);
+  if (![1, 2].includes(h.schemaVersion)) fail(`${path}/hero.json.schemaVersion`, 'unsupported schema version');
+  if(h.schemaVersion===2)numeric(h.actionLockDuration,`${path}/hero.json.actionLockDuration`,.01,5);
   text(h.id, `${path}/hero.json.id`, true);
   text(h.name, `${path}/hero.json.name`); text(h.role, `${path}/hero.json.role`);
   if (h.visual !== 'visual.json') fail(`${path}/hero.json.visual`, 'expected hero-local visual.json');
-  exactKeys(h.baseStats, ['maxHp', 'movementSpeed', 'collisionRadius'], `${path}/hero.json.baseStats`);
+  exactKeys(h.baseStats, h.schemaVersion === 2 ? ['maxHp', 'movementSpeed', 'collisionRadius', 'maxMana', 'manaRegen'] : ['maxHp', 'movementSpeed', 'collisionRadius'], `${path}/hero.json.baseStats`);
+  if(h.schemaVersion===2){numeric(h.baseStats.maxMana,`${path}/hero.json.baseStats.maxMana`,1,1000000);numeric(h.baseStats.manaRegen,`${path}/hero.json.baseStats.manaRegen`,0,10000);}
   numeric(h.baseStats.maxHp, `${path}/hero.json.baseStats.maxHp`, 1, 10000000);
   numeric(h.baseStats.movementSpeed, `${path}/hero.json.baseStats.movementSpeed`, 0.01, 100);
   numeric(h.baseStats.collisionRadius, `${path}/hero.json.baseStats.collisionRadius`, 0.05, 10);
-  exactKeys(h.basicAttack, ['effectId', 'damage', 'range', 'cooldown'], `${path}/hero.json.basicAttack`);
+  exactKeys(h.basicAttack, h.schemaVersion===2 ? ['effectId','damage','range','cooldown','projectileSpeed','castTime'] : ['effectId', 'damage', 'range', 'cooldown'], `${path}/hero.json.basicAttack`);
+  if(h.schemaVersion===2){numeric(h.basicAttack.projectileSpeed,`${path}/hero.json.basicAttack.projectileSpeed`,.1,100);numeric(h.basicAttack.castTime,`${path}/hero.json.basicAttack.castTime`,0,5);}
   validateEffect(h.basicAttack.effectId, h.basicAttack, `${path}/hero.json.basicAttack`);
   numeric(h.basicAttack.range, `${path}/hero.json.basicAttack.range`, 0, 1000);
   numeric(h.basicAttack.cooldown, `${path}/hero.json.basicAttack.cooldown`, 0.01, 3600);
@@ -43,6 +47,7 @@ export function validateHeroPack(pack) {
   const ids = new Set(), slots = new Set();
   for (const ability of abilities) {
     const p = `${path}/abilities.json[${ids.size}]`;
+    if(h.schemaVersion===2){validateCombatAbility(ability,p);if(ids.has(ability.id)||slots.has(ability.slot))fail(p,'duplicate ability ID or slot');ids.add(ability.id);slots.add(ability.slot);continue;}
     exactKeys(ability, ['id', 'slot', 'name', 'effectId', 'targeting', 'range', 'damage', 'manaCost', 'cooldown'], p);
     text(ability.id, `${p}.id`, true); text(ability.name, `${p}.name`);
     if (!['passive', 'Q', 'E', 'R', 'F', 'B'].includes(ability.slot)) fail(`${p}.slot`, 'unsupported ability slot');
@@ -57,6 +62,7 @@ export function validateHeroPack(pack) {
     numeric(ability.manaCost, `${p}.manaCost`, 0, 1000000);
     numeric(ability.cooldown, `${p}.cooldown`, 0, 3600);
   }
+  if (h.schemaVersion===2 && (["passive","skill-1","skill-2","skill-ultimate"].some(slot=>!slots.has(slot)) || abilities.some(a=>a.effectId!==({passive:"distance-scaling","skill-1":"line-projectile","skill-2":"orb-mark","skill-ultimate":"line-blast"})[a.slot]))) fail(`${path}/abilities.json`, "schema 2 requires four supported combat slots/effects");
   if (h.abilityIds.some(id => !ids.has(id)) || new Set(h.abilityIds).size !== h.abilityIds.length || ids.size !== h.abilityIds.length) fail(`${path}/hero.json.abilityIds`, 'must reference each defined ability exactly once');
   exactKeys(v, ['kind', 'placeholder', 'model', 'scale', 'rotationY', 'offset'], `${path}/visual.json`);
   if (!['placeholder', 'glb'].includes(v.kind)) fail(`${path}/visual.json.kind`, 'expected placeholder or glb');
@@ -129,5 +135,6 @@ export function createHeroState(hero, spawn) {
   numeric(spawn.z, 'player spawn.z', -100000, 100000);
   return { x: spawn.x, z: spawn.z, radius: hero.baseStats.collisionRadius, speed: hero.baseStats.movementSpeed,
     maxHp: hero.baseStats.maxHp, range: hero.basicAttack.range, attackCooldown: hero.basicAttack.cooldown,
+    ...(hero.schemaVersion===2 ? {maxMana:hero.baseStats.maxMana,mana:hero.baseStats.maxMana,manaRegen:hero.baseStats.manaRegen}:{}),
     damage: hero.basicAttack.damage, hp: hero.baseStats.maxHp, cooldown: 0 };
 }

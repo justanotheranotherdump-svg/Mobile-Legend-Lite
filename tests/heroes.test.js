@@ -11,7 +11,8 @@ import { readHeroFiles } from '../scripts/lib/hero-files.mjs';
 import { heroRegistry } from './helpers/heroes.js';
 import { replayFoundation } from './helpers/replay.js';
 import { glbDocument, animatedTestGlb } from './helpers/glb.js';
-const files = await readHeroFiles();
+const allFiles = await readHeroFiles();
+const files = {json:Object.fromEntries(Object.entries(allFiles.json).filter(([p])=>p.startsWith("./training/"))),assets:{}};
 const original = discoverHeroPacks(files.json, files.assets)[0];
 const pack = () => structuredClone(original);
 const training = JSON.parse(readFileSync(new URL('../src/data/training.json', import.meta.url)));
@@ -36,7 +37,7 @@ test('migrated hero produces the identical player fields/values; world data owns
   const state = createHeroState(heroRegistry.get('training'), training.player);
   assert.deepEqual(state, { ...baseline.player, hp: 100, cooldown: 0 });
   assert.deepEqual(Object.keys(training.player).sort(), ['heroId', 'x', 'z']);
-  assert.deepEqual(heroRegistry.ids(), ['training'], 'no additional playable heroes');
+  assert.deepEqual(heroRegistry.ids(), ['training'], 'historical registry fixture stays training-only; full roster covered by layla.test.js');
   assert.deepEqual(heroRegistry.get('training').abilities, []);
   assert.deepEqual(heroRegistry.get('training').animations.clips, {});
 });
@@ -86,7 +87,7 @@ test('orphan data, folder/ID mismatch and unexpected fields are rejected', () =>
 for (const [label, mutate, expected] of [
   ['missing identity', p => { delete p.hero.id; }, /hero.json.id.*required/],
   ['invalid ID', p => { p.hero.id = '../escape'; }, /identifier/],
-  ['schema version', p => { p.hero.schemaVersion = 2; }, /schema version/],
+  ['schema version', p => { p.hero.schemaVersion = 999; }, /schema version/],
   ['zero max HP', p => { p.hero.baseStats.maxHp = 0; }, /baseStats.maxHp/],
   ['infinite speed', p => { p.hero.baseStats.movementSpeed = Infinity; }, /movementSpeed/],
   ['negative radius', p => { p.hero.baseStats.collisionRadius = -1; }, /collisionRadius/],

@@ -10,14 +10,15 @@ export class TargetingControls {
     const e = elements;
     this.elements = elements;
     this.onModeChange = onModeChange;
+    this.simulation = simulation;
     this.priorityInputs = [];
     for (const [value, label] of Object.entries(TARGET_MODES))
-      e["target-mode"].add(new Option(label, value));
-    e["target-mode"].addEventListener("change", () => {
+      e["target-mode"]?.add(new Option(label, value));
+    e["target-mode"]?.addEventListener("change", () => {
       onModeChange(e["target-mode"].value);
       e["target-mode"].blur();
     });
-    e["clear-target"].addEventListener("click", () => {
+    e["clear-target"]?.addEventListener("click", () => {
       simulation.clearManualTarget();
       e["clear-target"].blur();
     });
@@ -40,6 +41,19 @@ export class TargetingControls {
     }
   }
   mountSettings(root) {
+    if (!this.elements["clear-target"]) {
+      const clear = document.createElement("button");
+      clear.type = "button";
+      clear.id = "clear-target";
+      clear.dataset.controlKind = "functional";
+      clear.textContent = "Clear manual target lock";
+      clear.addEventListener("click", () => {
+        this.simulation.clearManualTarget();
+        clear.blur();
+      });
+      root.parentElement.append(clear);
+      this.elements["clear-target"] = clear;
+    }
     for (const [value, label] of Object.entries(TARGET_MODES)) {
       const option = document.createElement("label");
       option.className = "priority-option";
@@ -59,7 +73,8 @@ export class TargetingControls {
     }
   }
   update(mode) {
-    this.elements["target-mode"].value = mode;
+    if (this.elements["target-mode"]) this.elements["target-mode"].value = mode;
+    this.elements["clear-target"].disabled = !this.simulation.manualTargetId;
     for (const input of this.priorityInputs)
       input.checked = input.value === mode;
   }
