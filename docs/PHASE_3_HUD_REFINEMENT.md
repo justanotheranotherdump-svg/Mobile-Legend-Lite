@@ -1,5 +1,7 @@
 # Phase 3 — combat-button and three-skill HUD refinement
 
+> Historical refinement report. Defaults remain 1/2/3, but the later [key settings addition](KEY_CONTROL_SETTINGS.md) allows custom bindings (including numpad) and hiding key hints. Counts below describe this earlier delivery.
+
 Date: 2026-10-17. Baseline: `eb658a5`. This is the user's requested HUD correction, not a new gameplay/roster/model milestone.
 
 ## Requested changes delivered

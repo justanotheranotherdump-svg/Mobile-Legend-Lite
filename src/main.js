@@ -22,7 +22,7 @@ async function boot() {
     const heroVisual = await createHeroVisual(simulation.hero, registry.modelBytes(simulation.hero.id));
     const clock = new FixedClock();
     const view = new WorldView(document.querySelector('#world'), arena, simulation.enemies, heroVisual);
-    const controls = new Controls(view.canvas, pointer => simulation.attack(view.pickTarget(pointer)), () => simulation.attack());
+    const controls = new Controls(view.canvas, pointer => simulation.attack(view.pickTarget(pointer)));
     const hud = new Hud(simulation, () => {
       simulation.reset();
       clock.reset();

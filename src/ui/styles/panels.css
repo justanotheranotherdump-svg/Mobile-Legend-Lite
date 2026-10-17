@@ -131,3 +131,69 @@
     margin-bottom: 12px;
   }
 }
+.key-hints-hidden #hud-root .slot-key {
+  display: none;
+}
+#key-controls {
+  border-block: 1px solid #7698a144;
+  margin: 4px 0 18px;
+  padding: 12px 0;
+}
+#key-controls summary {
+  cursor: pointer;
+  color: #e6ce9d;
+  font-size: 13px;
+  padding: 6px 0;
+}
+.hud-dialog .key-settings-note {
+  font-size: 10px;
+  margin: 12px 0;
+}
+.binding-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 7px 0;
+  font-size: 11px;
+  color: #c6d9df;
+}
+.binding-row select {
+  width: 112px;
+  flex-shrink: 0;
+  font-size: 12px;
+}
+#restore-key-defaults {
+  padding: 8px 12px;
+  margin: 12px 0 8px;
+  border-radius: 4px;
+  font-size: 11px;
+}
+#key-binding-status {
+  font-size: 10px;
+  min-height: 30px;
+  margin: 6px 0 0;
+}
+#key-binding-status.binding-error {
+  color: #ffc2a4;
+}
+.tool-button.has-shortcut,
+.shop-button.has-shortcut,
+#clear-target.has-shortcut {
+  position: relative;
+}
+#hud-root .shortcut-extra {
+  top: -5px;
+  left: -5px;
+  bottom: auto;
+  right: auto;
+  width: 17px;
+  min-width: 17px;
+  height: 17px;
+  line-height: 16px;
+  font-size: 7px;
+  letter-spacing: 0;
+  padding: 0 2px;
+  z-index: 3;
+  pointer-events: none;
+}

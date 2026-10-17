@@ -1,5 +1,5 @@
-// The top number row, NOT Numpad1/2/3. These are interface bindings only:
-// current hero has no abilities, so its three buttons remain disabled.
+// Default three-slot artwork/layout data. Live, customizable keyboard routing
+// belongs to ButtonShortcuts; these defaults do not enable any abilities.
 export const SKILL_SLOTS = Object.freeze([
   Object.freeze({
     id: "skill-1",
@@ -30,24 +30,4 @@ export function requestSkillButton(button) {
   if (!button || button.disabled) return false;
   button.click(); // Any future verified skill action must share the clickable path.
   return true;
-}
-export class SkillControls {
-  constructor(root) {
-    window.addEventListener("keydown", (event) => {
-      const slot = skillSlotForCode(event.code);
-      if (
-        !slot ||
-        event.repeat ||
-        event.ctrlKey ||
-        event.altKey ||
-        event.metaKey ||
-        event.target.closest(
-          "button,input,textarea,select,dialog,[contenteditable]",
-        )
-      )
-        return;
-      event.preventDefault();
-      requestSkillButton(root.querySelector(`#${slot.id}`));
-    });
-  }
 }

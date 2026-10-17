@@ -1,4 +1,5 @@
-import { SkillControls } from "./skill-controls.js";
+import { KeyBindings } from "../input/key-bindings.js";
+import { ButtonShortcuts } from "./button-shortcuts.js";
 import { mountLayout } from "./layout.js";
 import { Minimap } from "./minimap.js";
 import { TargetingControls } from "./targeting-controls.js";
@@ -34,12 +35,19 @@ export class Hud {
     document.querySelector(".hero-title").firstChild.textContent =
       `${simulation.hero.name} `;
     this.minimap = new Minimap(e.minimap, simulation.arena, simulation.enemies);
-    this.skills = new SkillControls(document.querySelector("#hud-root"));
+    this.bindings = new KeyBindings();
     this.targeting = new TargetingControls(e, simulation, onModeChange);
     this.cooldowns = new CooldownDisplay(e, simulation.player);
     this.joystick = new Joystick(e.joystick, controls);
-    this.panels = new PlaceholderPanels(e, this.joystick, () =>
-      controls.clear(),
+    this.panels = new PlaceholderPanels(
+      e,
+      this.joystick,
+      () => controls.clear(),
+      this.bindings,
+    );
+    this.shortcuts = new ButtonShortcuts(
+      document.querySelector("#hud-root"),
+      this.bindings,
     );
     this.notifications = new CombatNotifications(
       e["combat-announcements"],
@@ -135,6 +143,8 @@ export class Hud {
       lastAttack.reason === "hit"
         ? `Hit ${hitTarget?.name ?? "enemy"} · ${player.damage} damage`
         : messages[lastAttack.reason];
+    if (lastAttack.reason === "ready")
+      e.message.textContent = `WASD / joystick to move · Click ground${this.bindings.codeFor("attack") ? ` or ${this.bindings.labelFor("attack")}` : " or Attack"} to attack.`;
     e.message.classList.toggle(
       "warn",
       ["range", "cooldown", "invalid-target"].includes(lastAttack.reason),

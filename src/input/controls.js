@@ -1,22 +1,12 @@
 import { movementAxes } from "./joystick.js";
 export class Controls {
-  constructor(canvas, onAttack, onSmartAttack = () => {}) {
+  constructor(canvas, onAttack) {
     this.keys = new Set();
     this.virtualAxes = [0, 0];
     this.resetListeners = new Set();
     this.pointer = { x: 0, y: 0, active: false };
     this.canvas = canvas;
     window.addEventListener("keydown", (event) => {
-      if (
-        event.code === "Space" &&
-        !event.repeat &&
-        !event.target.closest(
-          "button,input,textarea,select,dialog,[contenteditable]",
-        )
-      ) {
-        event.preventDefault();
-        onSmartAttack();
-      }
       if (
         ["KeyW", "KeyA", "KeyS", "KeyD"].includes(event.code) &&
         (!event.target.closest(
