@@ -277,24 +277,29 @@ try {
   pass(
     "right-click cancels a held skill without basic attack or resource spend",
   );
+  await reset();
   await hold("1");
   await page.locator("#settings").click();
+  assert.ok((await snap()).aiming);
+  // Opening the panel moves the real pointer; explicitly aim back at A before release.
+  await ground(0, 0);
   await page.keyboard.up("1");
-  await page.keyboard.press("2");
+  await elapsed(1.2);
+  assert.equal((await snap()).enemies[0].hp, 159.75);
+  const beforeMenuMove = (await snap()).player.x;
   await page.keyboard.down("d");
   await elapsed(0.15);
   await page.keyboard.up("d");
-  s = await snap();
-  assert.equal(s.player.mana, 100);
-  assert.equal(s.player.x, -5);
-  assert.equal(s.aiming, null);
+  assert.ok((await snap()).player.x > beforeMenuMove + 0.2);
   await page.keyboard.press("Escape");
   await page.locator("#shop").click();
   await page.keyboard.press("3");
-  assert.equal((await snap()).lastCast.serial, 0);
+  await elapsed(1.2);
+  assert.ok((await snap()).lastCast.serial >= 2);
   await page.keyboard.press("Escape");
+  await reset();
   pass(
-    "opening Settings/Shop cancels held aim and blocks fresh skills/movement without stale release casts",
+    "non-modal Settings/Shop preserve held aim and allow WASD and real skill casts while open",
   );
   await page.locator("#settings").click();
   await page.locator("#settings-tab-controls").click();

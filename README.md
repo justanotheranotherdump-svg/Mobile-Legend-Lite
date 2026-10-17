@@ -1,6 +1,6 @@
 # MOBA Lab — Layla reconstruction
 
-A 3D offline training sandbox with **Layla only**, using the unchanged approved rigid-part GLB. A full recovery search found no previous kit; the user authorized this **intentional reconstruction**, not recovery. New mana/skill/buff values are editable initial values, not recovered or official balance. Existing arena HP/movement/basic damage/range/cooldown values remain. See [current combat-control correction](docs/COMBAT_CONTROLS.md) and [initial integration/configuration](docs/LAYLA_INTEGRATION.md) and read [PROJECT_RULES.md](PROJECT_RULES.md) before future work.
+A 3D offline training sandbox with **Layla only**, using the unchanged approved rigid-part GLB. A full recovery search found no previous kit; the user authorized this **intentional reconstruction**, not recovery. New mana/skill/buff values are editable initial values, not recovered or official balance. Existing arena HP/movement/basic damage/range/cooldown values remain. See [live Shop/Settings panels](docs/LIVE_PANELS.md), [combat-control correction](docs/COMBAT_CONTROLS.md) and [initial integration/configuration](docs/LAYLA_INTEGRATION.md) and read [PROJECT_RULES.md](PROJECT_RULES.md) before future work.
 
 ## Play offline on Windows
 
@@ -23,12 +23,12 @@ No server, Node.js, npm, sibling assets, or internet is needed to play. Requires
 - **Clear lock** (Settings → Controls): release the pin without changing modes or resetting cooldown.
 - **Minimap buttons**: toggle the live map and its attack-range overlay (not the world range ring).
 - **Shop**: open the landscape empty-slot equipment panel. Category selection and All equipment / Simple view change only the interface; purchases do not exist.
-- **Settings**: original landscape panel with Basic / Controls / Interface tabs. Basic offers reduced HUD motion; Controls contains target priority, Clear lock and **Customize key controls**; Interface offers **Show button key hints**. Choose single-key shortcuts for attack, skills, utilities, target priorities, reset/clear lock, panels and map controls. Unbind keys or restore defaults; duplicate assignments are rejected. WASD/mouse stay fixed. Escape closes panels and restores battlefield focus. **Preferences are session-only: reopening Settings preserves them; reloading/reopening the HTML restores defaults.**
+- **Settings**: original landscape panel with Basic / Controls / Interface tabs. Basic offers reduced HUD motion; Controls contains target priority, Clear lock and **Customize key controls**; Interface offers **Show button key hints**. Choose single-key shortcuts for attack, skills, utilities, target priorities, reset/clear lock, panels and map controls. Unbind keys or restore defaults; duplicate assignments are rejected. WASD/mouse stay fixed. Both panels are non-modal: WASD, attacks and skills stay active on the exposed battlefield/HUD. Opening/closing preserves held movement and skill aim. Escape cancels aiming first, then closes the panel; X or the trigger also closes it. **Preferences are session-only: reopening Settings preserves them; reloading/reopening the HTML restores defaults.**
 - **Reset arena**: restore player, all dummy starting HP/max HP, positions, mode, selection, pin, cooldown, mana, projectiles, marks, stuns, buffs and hit count.
 
 One click/Space requests one attack; this is **smart target selection, not continuous auto-firing**. Leaving the browser window pauses simulation and clears held input. **Exactly three skill slots:** top-row **1 = Skill I, 2 = Skill II, 3 = Ultimate** (physical `Digit1/2/3`, not numpad or F keys). These are the defaults; Settings can rebind them, including to Q/E/R or numpad keys. **These three buttons are functional for Layla:** 1 Malefic Bomb, 2 Void Projectile, 3 Destruction Rush. **Tap a button/key to auto-target by Settings priority and that skill’s range. Hold for 180ms to preview a sight, move the pointer, then release to cast. Escape, right-click or release over the visible CANCEL area cancels without cost/CD.** An enemy under the released sight is locked; otherwise the skill is freely aimed. Auto/locked S1 and S2 home; the ultimate follows its locked enemy until firing. No eligible tap target means no cast/spend. F battle spell, B recall, **V Regen**, equipment and quick-buy also remain reserved.
 
-Accepted attacks/casts intentionally freeze actual movement for the complete Shoot animation, not because of button focus. Held WASD remains recorded and resumes afterwards; rejected requests do not add a lock. **Shop and Settings block gameplay movement/attacks regardless of focus**; closing clears old held inputs, so press a movement key again to resume. The settings priority choices control the shared simulation rules; they do not add auto-chasing.
+Accepted attacks/casts intentionally freeze actual movement for the complete Shoot animation, not because of button focus. Held WASD remains recorded and resumes afterwards; rejected requests do not add a lock. **Shop and Settings do not block WASD, basic attacks or skills.** Focused key-binding/select editors keep their combat keys; text entry suspends movement too. Panel transitions do not clear held keys or cancel aim. The settings priority choices control the shared simulation rules; they do not add auto-chasing.
 
 Routine attack/movement hint banners are removed. World target HP, range/cooldown indicators and genuine training-elimination announcements remain. The shop contains **only empty slots**: no item art, names, prices, stats or purchasing logic.
 
@@ -64,7 +64,7 @@ The latest refinement uses an original faceted attack-guard illustration with sm
 ## Honest interface status
 
 - **Functional:** live map/HP/target feedback, simulation/session timer, WASD, Settings priority/clear pin, tap/hold/release/cancel skills, click/Space/basic attack, actual cooldown/mana feedback, Layla passive/three skills/buffs/marks/stuns, reset, and real training-target elimination announcements.
-- **Interface-only:** shop categories/view layout, settings/help shell, modal open/close, reduced HUD motion. The default layout is keyboard-only; no joystick setting remains.
+- **Interface-only:** shop categories/view layout, settings/help shell, non-modal panel open/close, reduced HUD motion. The default layout is keyboard-only; no joystick setting remains.
 - **Reserved:** team kill counters and gold show **—**, not fabricated numbers; Recall/Regen/battle spell, six equipment slots/quick buy, minion/tower priorities and empty catalog/build slots and disabled Purchase/Prioritize buttons have no gameplay functionality.
 
 Dummy deaths announce **Target eliminated**, not competitive hero kills; no fake team score changes. Player/ally kill/death announcement classifications are prepared and unit-tested, but cannot occur with the existing non-retaliating dummies and absent allies. No demo notifications fire at startup. The timer is elapsed training simulation time, not a newly invented competitive match system.
@@ -78,13 +78,14 @@ Used Node **22.22.3**, npm **10.9.8**, Vite **7.3.7**, Three.js **0.186.1**. Mod
 ```bash
 npm ci
 npm run dev -- --port 5173
-npm test                   # 163 unit tests, including all 112 foundation tests
+npm test                   # 170 unit tests, including all 112 foundation tests
 npm run validate:heroes    # Schema/reference/embedded-model validation
 npm run build              # Build and validate the standalone game
 npm run validate:offline
 npm run package:source     # Rebuild then archive (zip CLI required)
 npm run test:browser        # 50 historical-fixture offline checks; requires source ZIP
 npm run test:browser:layla  # current tap/hold/homing/keyboard-only offline checks
+npm run test:browser:panels # live movement/combat with Shop and Settings open
 npm run preview -- --port 4173
 ```
 
@@ -123,7 +124,7 @@ Root `index.html` is the intentional generated-artifact exception: rebuild and c
 
 Add `#diagnostics` to a game URL only for the read-only state snapshot/projection API used by tests; it cannot mutate gameplay. No persistent match/progression save system is included.
 
-Latest changes, per-test evidence and limitations: [docs/COMBAT_CONTROLS.md](docs/COMBAT_CONTROLS.md). The [Settings/input report](docs/SETTINGS_INPUT_FIX.md) records the preserved earlier milestone. The [empty-shop report](docs/EMPTY_SHOP_LAYOUT.md) records the retained empty-slot shop. The [key-settings report](docs/KEY_CONTROL_SETTINGS.md) documents the preserved session-only key editor. The [initial Phase 3 report](docs/PHASE_3_HUD_REPORT.md) retains its original Windows checklist/history. The [hero architecture guide](docs/HERO_ARCHITECTURE.md) explains schema, discovery, model replacement and adding a future approved hero. Earlier reports remain historical evidence. Stop here for approval before additional gameplay.
+Latest changes, per-test evidence and limitations: [docs/LIVE_PANELS.md](docs/LIVE_PANELS.md). Combat-control details: [docs/COMBAT_CONTROLS.md](docs/COMBAT_CONTROLS.md). The [Settings/input report](docs/SETTINGS_INPUT_FIX.md) records the preserved earlier milestone. The [empty-shop report](docs/EMPTY_SHOP_LAYOUT.md) records the retained empty-slot shop. The [key-settings report](docs/KEY_CONTROL_SETTINGS.md) documents the preserved session-only key editor. The [initial Phase 3 report](docs/PHASE_3_HUD_REPORT.md) retains its original Windows checklist/history. The [hero architecture guide](docs/HERO_ARCHITECTURE.md) explains schema, discovery, model replacement and adding a future approved hero. Earlier reports remain historical evidence. Stop here for approval before additional gameplay.
 
 
 ## Layla module and historical fixture

@@ -50,6 +50,7 @@ export class Hud {
       document.querySelector("#hud-root"),
       this.bindings,
       this.skills.gestures,
+      controls,
     );
     this.bindings.subscribe(() => this.skills.gestures?.cancel());
     this.notifications = new CombatNotifications(

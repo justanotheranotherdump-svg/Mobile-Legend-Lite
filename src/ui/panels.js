@@ -4,7 +4,10 @@ import { icon } from "./components/icons.js";
 export class PlaceholderPanels {
   constructor(elements, joystick, controls, bindings) {
     const e = elements;
-    const clearInput = () => controls.clear();
+    const clearInput = () =>
+      controls.allowMenuGameplay
+        ? controls.cancelCombatInput()
+        : controls.clear();
     const syncMenu = () =>
       controls.setMenuBlocked(Boolean(document.querySelector("dialog[open]")));
     e["equipment-slots"].innerHTML =
@@ -20,6 +23,12 @@ export class PlaceholderPanels {
       bindings,
       clearInput,
     );
+    if (controls.allowMenuGameplay) {
+      e["settings-dialog"].querySelector(
+        ".controls-help + .settings-help",
+      ).textContent =
+        "Shop and Settings are non-blocking panels: WASD, attacks and skills stay active. Editing fields keep their keys. Escape closes the panel; skill aiming gets Escape first.";
+    }
     this.keySettings = this.settings.keySettings;
     for (const id of ["show-joystick", "reduce-motion"])
       e[id] = e["settings-dialog"].querySelector(`#${id}`);
@@ -49,13 +58,23 @@ export class PlaceholderPanels {
       trigger.setAttribute("aria-controls", dialog.id);
       trigger.setAttribute("aria-expanded", "false");
       trigger.addEventListener("click", () => {
-        clearInput();
-        dialog.showModal();
+        if (controls.allowMenuGameplay) {
+          if (dialog.open) {
+            close();
+            return;
+          }
+          for (const other of [e["shop-dialog"], e["settings-dialog"]])
+            if (other !== dialog) other.close();
+          dialog.show();
+        } else {
+          clearInput();
+          dialog.showModal();
+        }
         syncMenu();
         trigger.setAttribute("aria-expanded", "true");
       });
       const close = () => {
-        clearInput();
+        if (!controls.allowMenuGameplay) clearInput();
         dialog.close();
         syncMenu();
         trigger.setAttribute("aria-expanded", "false");
@@ -71,6 +90,17 @@ export class PlaceholderPanels {
         trigger.setAttribute("aria-expanded", "false");
         syncMenu();
       });
+      if (controls.allowMenuGameplay)
+        window.addEventListener("keydown", (event) => {
+          if (
+            event.code === "Escape" &&
+            dialog.open &&
+            !event.defaultPrevented
+          ) {
+            event.preventDefault();
+            close();
+          }
+        });
       dialog.addEventListener("pointerdown", (event) => {
         if (event.target === dialog) {
           const r = dialog.getBoundingClientRect();

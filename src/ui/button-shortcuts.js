@@ -3,15 +3,18 @@ import { BUTTON_ACTIONS, keyLabel } from "../input/key-bindings.js";
 import { requestSkillButton } from "./skill-controls.js";
 // One dispatcher for all HUD button shortcuts: never duplicate gameplay rules.
 export class ButtonShortcuts {
-  constructor(root, bindings, skillGestures = null) {
+  constructor(root, bindings, skillGestures = null, controls = null) {
     this.root = root;
     this.bindings = bindings;
     window.addEventListener("keydown", (event) => {
+      if (event.defaultPrevented) return;
+      const blocked = (target) =>
+        controls?.combatInputBlocked(target) ?? blocksGameplayInput(target);
       const action = bindings.actionFor(event.code);
       if (
         skillGestures &&
         action?.id.startsWith("skill-") &&
-        !blocksGameplayInput(event.target) &&
+        !blocked(event.target) &&
         !event.repeat &&
         !event.ctrlKey &&
         !event.altKey &&
@@ -23,15 +26,16 @@ export class ButtonShortcuts {
         return;
       }
       if (
-        blocksGameplayInput(event.target) ||
+        blocked(event.target) ||
         event.repeat ||
         event.ctrlKey ||
         event.altKey ||
         event.metaKey ||
         event.shiftKey ||
-        event.target?.closest?.(
-          "button,input,textarea,select,dialog,[contenteditable]",
-        )
+        (!controls?.allowMenuGameplay &&
+          event.target?.closest?.(
+            "button,input,textarea,select,dialog,[contenteditable]",
+          ))
       )
         return;
       if (!action) return;

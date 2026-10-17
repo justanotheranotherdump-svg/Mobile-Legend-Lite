@@ -1,5 +1,7 @@
 # Keyboard-only HUD and locked/tap/hold combat controls
 
+**Panel behavior update:** [LIVE_PANELS.md](LIVE_PANELS.md) supersedes the former menu gating/cancellation. Normal Shop/Settings now preserve gameplay and aim. The validation counts below record this earlier combat-control milestone.
+
 Date: 2026-10-18. User-requested correction after testing the reconstructed Layla.
 This intentionally supersedes the initial movement-during-shooting, mouse-hover
 facing, directional-tap and wall-stopped-shot behavior. It does not recover/rebalance
@@ -30,11 +32,13 @@ an original kit, change the approved model, or add any actors/maps/AI/items.
   margin) locks that aimed enemy, overriding auto priority without modifying a pin.
   Otherwise it is a freely aimed ground shot, not an invisible auto-retarget.
 - **Escape, right-click, click CANCEL, or drag into CANCEL and release** cancels
-  aiming without mana/cooldown. Menus, blur, visibility changes, reset, pointer
+  aiming without mana/cooldown. Blur, visibility changes, reset, pointer
   cancellation/capture loss, or changing bindings clear the gesture. Stale releases
   do not cast. Pointer capture permits dragging off the original skill button.
-- Rebound keys (including numpad), session hint controls, native Enter/Space button
-  activation and direct assistive button clicks remain supported. Default keys stay
+- Rebound keys (including numpad), session hint controls, native Enter button activation
+  and direct assistive button clicks remain supported. In the live-panel game the
+  assigned combat key takes precedence over native button activation: default Space
+  attacks, while Enter activates the focused button (unbound Space can also do so). Default keys stay
   top-row 1/2/3. Repeat keydown is ignored. Utilities remain reserved; Regen stays V.
 
 ## Shooting animation / facing
@@ -82,7 +86,7 @@ Approved GLB SHA256 remains
 - `simulation/hero-combat.js`: authoritative action lock, acquisition, aim lifecycle,
   validated target-bound casts and homing collision/damage.
 - `input/skill-gestures.js`: shared pointer/rebound-key tap/hold/release/cancel state,
-  capture/blur/menu lifecycle; no damage/resource ownership.
+  capture/blur/editor-focus lifecycle; no damage/resource ownership.
 - `rendering/aim-sight.js`: read-only original procedural geometry, not copied art.
 - HUD/Settings: no joystick or duplicate priority card in the normal game; Clear lock
   moved into Settings. No hidden gameplay target card is retained.

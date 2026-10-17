@@ -28,6 +28,8 @@ export class SkillGestures {
       b.addEventListener("pointerdown", (e) => {
         if (e.button !== 0) return;
         e.preventDefault();
+        // A deliberate HUD pointer press leaves the editor; typing stays protected.
+        if (this.controls.allowMenuGameplay) b.focus({ preventScroll: true });
         if (
           this.press(a.slot, {
             kind: "pointer",
@@ -100,7 +102,11 @@ export class SkillGestures {
   }
   press(slot, extra) {
     this.cancel();
-    if (this.controls.blocked || blocksGameplayInput(document.activeElement))
+    if (
+      this.controls.blocked ||
+      (this.controls.combatInputBlocked?.(document.activeElement) ??
+        blocksGameplayInput(document.activeElement))
+    )
       return false;
     const reason = this.simulation.castAvailability(
       this.simulation.ability(slot),

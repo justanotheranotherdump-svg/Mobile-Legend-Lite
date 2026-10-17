@@ -29,7 +29,7 @@ async function boot() {
     const view = new WorldView(document.querySelector('#world'), arena, simulation.enemies, heroVisual);
     view.connectCombat(simulation);
     if(!fixture)view.canvas.setAttribute("aria-label","3D training arena. WASD moves; click an enemy or press Space to attack. Tap 1/2/3 to auto-target; hold to aim, release to cast, Escape to cancel.");
-    const controls = new Controls(view.canvas, pointer => {if(!controls.skillGestureActive)simulation.attack(view.pickTarget(pointer));});
+    const controls = new Controls(view.canvas, pointer => {if(!controls.skillGestureActive)simulation.attack(view.pickTarget(pointer));}, {allowMenuGameplay:!fixture});
     const hud = new Hud(simulation, () => {
       simulation.reset();
       clock.reset();
@@ -37,7 +37,7 @@ async function boot() {
       view.resetFeedback();
       heroVisual.reset();
     }, mode => {
-      controls.clear();
+      if(!controls.allowMenuGameplay)controls.clear();
       simulation.setTargetMode(mode);
     }, controls, view);
     let paused = document.hidden;

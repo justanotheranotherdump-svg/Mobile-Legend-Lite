@@ -26,7 +26,7 @@ class Events {
     for (const fn of this.listeners.get(type) || []) fn(event);
   }
 }
-function harness(fn) {
+function harness(fn, options = { allowMenuGameplay: false }) {
   const oldWindow = globalThis.window,
     oldDocument = globalThis.document;
   const window = new Events(),
@@ -50,7 +50,7 @@ function harness(fn) {
       window,
       document,
       canvas,
-      controls: new Controls(canvas, () => attacks++),
+      controls: new Controls(canvas, () => attacks++, options), // explicit historical fixture policy
       setModal: (value) => (modal = value),
       attacks: () => attacks,
     });
@@ -129,3 +129,88 @@ test("late/repeated modal-close notifications do not erase fresh post-close move
     controls.setMenuBlocked(false);
     assert.deepEqual(controls.axes, [0, 1]);
   }));
+
+// Current default: live panels, separate keyboard movement and editor safety.
+test("live panels preserve held WASD on open/close and accept fresh movement while focused inside", () =>
+  harness(({ window, document, controls, setModal }) => {
+    window.fire("keydown", { code: "KeyD" });
+    setModal(true);
+    controls.setMenuBlocked(true);
+    document.fire("focusin");
+    assert.deepEqual(controls.axes, [1, 0]);
+    window.fire("keydown", { code: "KeyW" });
+    assert.deepEqual(controls.axes, [1, 1]);
+    controls.setMenuBlocked(false);
+    setModal(false);
+    assert.deepEqual(controls.axes, [1, 1]);
+    window.fire("keyup", { code: "KeyD" });
+    window.fire("keyup", { code: "KeyW" });
+    assert.deepEqual(controls.axes, [0, 0]);
+  }, {}));
+test("live panels keep canvas attacks enabled even when panel-open flag is set", () =>
+  harness(({ canvas, controls, setModal, attacks }) => {
+    setModal(true);
+    controls.setMenuBlocked(true);
+    assert.equal(controls.blocked, false);
+    canvas.fire("pointerdown", { button: 0, clientX: 50, clientY: 50 });
+    assert.equal(attacks(), 1);
+  }, {}));
+test("opening/closing a live panel does not reset ongoing combat/aim input", () =>
+  harness(({ controls }) => {
+    let resets = 0;
+    controls.registerReset(() => resets++);
+    controls.pointer.active = true;
+    controls.setMenuBlocked(true);
+    controls.setMenuBlocked(false);
+    assert.equal(resets, 0);
+    assert.equal(controls.pointer.active, true);
+  }, {}));
+test("text entry suspends movement and combat, while selects keep WASD but own combat keys", () =>
+  harness(({ controls, window, document }) => {
+    window.fire("keydown", { code: "KeyD" });
+    document.activeElement = target(true);
+    document.fire("focusin", { target: document.activeElement });
+    assert.deepEqual(controls.axes, [0, 0]);
+    assert.equal(controls.blocked, true);
+    window.fire("keydown", { code: "KeyW", target: document.activeElement });
+    assert.equal(controls.keys.size, 0);
+    document.activeElement = {
+      closest: (s) => (s.startsWith("input,textarea,select") ? {} : null),
+    };
+    document.fire("focusin", { target: document.activeElement });
+    window.fire("keydown", { code: "KeyD", target: document.activeElement });
+    assert.deepEqual(controls.axes, [1, 0]);
+    assert.equal(controls.blocked, true);
+  }, {}));
+test("blur/visibility/reset still clear held movement in live panels; repeats cannot revive it", () =>
+  harness(({ controls, window, document }) => {
+    controls.setMenuBlocked(true);
+    for (const clear of [
+      () => window.fire("blur"),
+      () => document.fire("visibilitychange"),
+      () => controls.clear(),
+    ]) {
+      window.fire("keydown", { code: "KeyD" });
+      clear();
+      window.fire("keydown", { code: "KeyD", repeat: true });
+      assert.deepEqual(controls.axes, [0, 0]);
+    }
+  }, {}));
+test("movement ignores browser modifier shortcuts rather than stealing Ctrl/Alt/Meta WASD", () =>
+  harness(({ window, controls }) => {
+    for (const modifier of ["ctrlKey", "altKey", "metaKey"])
+      window.fire("keydown", { code: "KeyW", [modifier]: true });
+    assert.deepEqual(controls.axes, [0, 0]);
+  }, {}));
+
+test("explicit canvas pointer attack leaves an editor in live-panel mode on the first click", () =>
+  harness(({ canvas, controls, document, attacks }) => {
+    document.activeElement = target(true);
+    assert.equal(controls.blocked, true);
+    canvas.focus = () => {
+      document.activeElement = target();
+    };
+    canvas.fire("pointerdown", { button: 0, clientX: 50, clientY: 50 });
+    assert.equal(attacks(), 1);
+    assert.equal(controls.blocked, false);
+  }, {}));

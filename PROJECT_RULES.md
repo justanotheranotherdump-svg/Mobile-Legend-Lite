@@ -167,3 +167,17 @@ three skills/default/rebind keys, stats/mana/CDs/effects, offline bundling and s
 No new actors/maps/AI/economy. Cancel gestures on menus/reset/blur/capture loss;
 Escape/right-click and a visible cancel area support cancellation. Ship new checks,
 HTML/source ZIP and honest limitations; stop for review.
+
+## Approved non-blocking Shop/Settings panels — 2026-10-18
+The user clarified the superseding requirement: WASD, basic attacks and skills all
+remain usable with Shop or Settings open. Use non-modal tab-like panels in the
+normal game: no inert battlefield/backdrop/focus trap; preserve held keys and
+ongoing actions on open/close. Visible battlefield/HUD stays clickable. Protect
+text entry and key-binding/select editing from combat shortcuts. Keep Escape/X
+close, skill cancel, normal combat validation, full Shoot movement lock, collision,
+blur/visibility/reset clearing, no fake shop/economy and unchanged approved model.
+The older explicit training fixture keeps its historical modal policy. Add default
+panel-combat checks and rebuild standalone HTML/source ZIP; stop for approval.
+
+Follow-up authorization: commit and push this verified non-blocking-panel fix to
+`arena/55ce0f80-mobile-legend-lite` so the GitHub branch serves the updated game.
