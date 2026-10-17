@@ -4,10 +4,13 @@ export class Controls {
     this.pointer = { x: 0, y: 0, active: false };
     this.canvas = canvas;
     window.addEventListener('keydown', event => {
-      if (['KeyW', 'KeyA', 'KeyS', 'KeyD'].includes(event.code) && !['INPUT', 'TEXTAREA', 'BUTTON'].includes(event.target.tagName)) {
+      if (['KeyW', 'KeyA', 'KeyS', 'KeyD'].includes(event.code) && !['INPUT', 'TEXTAREA', 'BUTTON', 'SELECT'].includes(event.target.tagName)) {
         event.preventDefault();
         this.keys.add(event.code);
       }
+    });
+    document.addEventListener('focusin', event => {
+      if (['INPUT', 'TEXTAREA', 'BUTTON', 'SELECT'].includes(event.target.tagName)) this.keys.clear();
     });
     window.addEventListener('keyup', event => this.keys.delete(event.code));
     window.addEventListener('blur', () => this.clear());

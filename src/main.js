@@ -16,13 +16,16 @@ function reportError(message) {
 try {
   const simulation = new TrainingSimulation(arena, training);
   const clock = new FixedClock();
-  const view = new WorldView(document.querySelector('#world'), arena);
+  const view = new WorldView(document.querySelector('#world'), arena, simulation.enemies);
   const controls = new Controls(view.canvas, pointer => simulation.attack(view.pickTarget(pointer)));
-  const hud = new Hud(() => {
+  const hud = new Hud(simulation, () => {
     simulation.reset();
     clock.reset();
     controls.clear();
     view.resetFeedback();
+  }, mode => {
+    controls.clear();
+    simulation.setTargetMode(mode);
   });
   let paused = document.hidden;
   function pause() { paused = true; clock.reset(); controls.clear(); hud.paused(true); }

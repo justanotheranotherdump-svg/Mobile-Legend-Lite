@@ -4,32 +4,35 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#101b24" />
-  <title>MOBA Lab · Playable foundation</title>
+  <title>MOBA Lab · Smart targeting</title>
 </head>
 <body>
   <div id="app">
-    <canvas id="world" tabindex="0" aria-label="3D training arena. Use WASD to move and left-click the training dummy to attack."></canvas>
+    <canvas id="world" tabindex="0" aria-label="3D training arena. Use WASD to move and left-click ground for smart attacks or a dummy to prioritize it."></canvas>
     <header class="topbar">
       <div class="brand"><span class="brand-symbol" aria-hidden="true">◈</span><div>MOBA <strong>LAB</strong><small>PLAYABLE FOUNDATION</small></div></div>
-      <div class="phase"><span class="status-dot"></span> PHASE 01 <span class="separator">/</span> TRAINING ARENA</div>
+      <div class="phase"><span class="status-dot"></span> PHASE 01.1 <span class="separator">/</span> TRAINING ARENA</div>
       <button id="reset" type="button"><span aria-hidden="true">↺</span> Reset arena</button>
     </header>
-    <section class="arena-label" aria-label="Arena description"><span class="eyebrow">SANDBOX / 001</span><h1>Training grounds</h1><p>Move. Aim. Test the fundamentals.</p></section>
-    <div id="dummy-label" class="world-label" aria-hidden="true"><span>TRAINING DUMMY</span><div class="small-track"><i id="world-dummy-bar"></i></div><small id="world-dummy-hp">200 / 200</small></div>
+    <section class="arena-label" aria-label="Arena description"><span class="eyebrow">SANDBOX / 001</span><h1>Training grounds</h1><p>Move. Aim. Choose your priority.</p></section>
+    <div id="enemy-labels" aria-hidden="true"></div>
     <div id="player-label" class="world-label player-label" aria-hidden="true"><span>YOU</span><div class="small-track"><i></i></div></div>
     <aside class="target-panel" aria-label="Target status">
-      <div class="panel-heading"><span class="eyebrow">TARGET / 01</span><span id="target-status" class="tag">ACTIVE</span></div>
-      <h2>Training dummy</h2><p>Stationary · does not attack</p>
+      <div class="panel-heading"><span class="eyebrow">SMART TARGETING</span><span id="target-status" class="tag">ACTIVE</span></div>
+      <label class="mode-label" for="target-mode">Targeting mode</label>
+      <select id="target-mode" aria-label="Targeting mode"></select>
+      <div class="lock-row"><span id="selection-source">Automatic selection</span><button id="clear-target" type="button">Clear lock</button></div>
+      <h2 id="target-name">No target in range</h2><p id="target-details">Stationary enemies · no retaliation</p>
       <div class="stat-line"><span>HEALTH</span><strong id="dummy-health">200 <em>/ 200</em></strong></div>
       <div id="dummy-meter" class="health-track enemy" role="progressbar" aria-label="Dummy health" aria-valuemin="0" aria-valuemax="200" aria-valuenow="200"><i id="dummy-bar"></i></div>
       <dl><div><dt>Distance</dt><dd id="distance">—</dd></div><div><dt>Hits landed</dt><dd id="hits">0</dd></div></dl>
-      <p class="target-tip">Click the red dummy to attack.<br>Move closer if it is out of range.</p>
+      <p class="target-tip">Click any ground to attack the chosen target. Click a dummy to pin it. WASD is the only movement control.</p>
     </aside>
-    <div id="message" class="message" role="status" aria-live="polite">Approach the dummy. Left-click to attack.</div>
+    <div id="message" class="message" role="status" aria-live="polite">Approach the dummies. Ground click = smart attack.</div>
     <footer class="bottom-hud">
       <section class="hero-panel" aria-label="Player status"><div class="hero-icon" aria-hidden="true">◇</div><div class="hero-info"><span class="eyebrow">PLAYER / PLACEHOLDER</span><div class="hero-title">Test hero <strong id="player-health">100 / 100</strong></div><div class="health-track" role="progressbar" aria-label="Player health" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><i></i></div></div></section>
-      <section class="attack-panel" aria-label="Attack status"><div class="attack-key">LMB</div><div><span class="eyebrow">BASIC ATTACK</span><strong id="attack-status">Ready</strong><small>25 damage <span>·</span> 6m range <span>·</span> 0.65s cooldown</small></div><div class="cooldown-track"><i id="cooldown-bar"></i></div></section>
-      <section class="controls-panel" aria-label="Controls"><div><span class="key">W</span><span class="key">A</span><span class="key">S</span><span class="key">D</span><span>Move</span></div><div><span class="mouse-icon" aria-hidden="true"></span><span>Mouse aim</span><b>·</b><span>Click dummy to attack</span></div></section>
+      <section class="attack-panel" aria-label="Attack status"><button id="attack" class="attack-key" type="button" aria-label="Basic attack selected target">LMB</button><div><span class="eyebrow">BASIC ATTACK</span><strong id="attack-status">Ready</strong><small>25 damage <span>·</span> 6m range <span>·</span> 0.65s cooldown</small></div><div class="cooldown-track"><i id="cooldown-bar"></i></div></section>
+      <section class="controls-panel" aria-label="Controls"><div><span class="key">W</span><span class="key">A</span><span class="key">S</span><span class="key">D</span><span>Move</span></div><div><span class="mouse-icon" aria-hidden="true"></span><span>Mouse aim</span><b>·</b><span>Click ground or dummy</span></div></section>
     </footer>
     <div class="build-note">3D PROTOTYPE <span>·</span> TEMPORARY GEOMETRY <span>·</span> NO ABILITIES</div>
     <div id="error" role="alert" hidden></div>

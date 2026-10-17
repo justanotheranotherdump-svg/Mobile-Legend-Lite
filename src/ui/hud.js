@@ -1,16 +1,38 @@
+import { TARGET_MODES, distanceTo, inAttackRange } from '../simulation/targeting.js';
 const messages = {
-  'ready': 'Approach the dummy. Left-click to attack.',
-  'no-target': 'Click directly on the training dummy to select it.',
-  'range': 'Out of range — move within the 6m attack ring.',
-  'cooldown': 'Attack cooling down. Wait for Ready, then click again.',
-  'dead': 'Dummy defeated. Reset the arena to train again.',
-  'hit': 'Hit confirmed · 25 damage',
+  ready: 'Approach the dummies. Ground click = smart attack.',
+  range: 'No enemy in attack range — move with WASD. No automatic chasing.',
+  cooldown: 'Attack cooling down. Wait for Ready, then click again.',
+  dead: 'That dummy is defeated. A living target will be chosen if one is in range.',
+  'invalid-target': 'That target is not eligible. Choose a living enemy.',
+  'no-enemies': 'All training dummies defeated. Reset the arena to train again.',
+  hit: 'Hit confirmed',
 };
 
 export class Hud {
-  constructor(onReset) {
+  constructor(simulation, onReset, onModeChange) {
     this.elements = Object.fromEntries([...document.querySelectorAll('[id]')].map(element => [element.id, element]));
-    this.elements.reset.addEventListener('click', () => { onReset(); this.elements.reset.blur(); });
+    const e = this.elements;
+    for (const [value, label] of Object.entries(TARGET_MODES)) e['target-mode'].add(new Option(label, value));
+    e['target-mode'].addEventListener('change', () => { onModeChange(e['target-mode'].value); e['target-mode'].blur(); });
+    e.reset.addEventListener('click', () => { onReset(); e.reset.blur(); });
+    e.attack.addEventListener('click', () => { simulation.attack(); e.attack.blur(); });
+    e['clear-target'].addEventListener('click', () => { simulation.clearManualTarget(); e['clear-target'].blur(); });
+    this.labels = new Map(simulation.enemies.map(enemy => {
+      const label = document.createElement('div');
+      label.className = 'world-label dummy-label';
+      label.dataset.enemyId = enemy.id;
+      const name = document.createElement('span');
+      name.textContent = enemy.name;
+      const track = document.createElement('div');
+      track.className = 'small-track';
+      const bar = document.createElement('i');
+      const hp = document.createElement('small');
+      track.append(bar);
+      label.append(name, track, hp);
+      e['enemy-labels'].append(label);
+      return [enemy.id, { label, bar, hp }];
+    }));
   }
   placeLabel(element, point) {
     element.style.display = point.visible ? '' : 'none';
@@ -18,22 +40,33 @@ export class Hud {
     element.style.top = `${point.y}px`;
   }
   update(state, view) {
-    const { player, dummy, hits, lastAttack } = state;
+    const { player, enemies, hits, lastAttack, selectedTarget: target } = state;
     const e = this.elements;
+    e['target-mode'].value = state.targetMode;
+    e['clear-target'].disabled = !state.manualTargetId;
+    e['selection-source'].textContent = state.manualTargetId ? 'Manual override pinned' : state.targetMode === 'manual' ? 'Nearest fallback · click to pin' : 'Automatic selection';
+    e['target-name'].textContent = target ? target.name : 'No target in range';
+    e['target-status'].textContent = target ? state.manualTargetId ? 'LOCKED' : 'AUTO' : 'NONE';
+    e['target-details'].textContent = target ? inAttackRange(player, target) ? 'In attack range · highlighted in gold' : 'Pinned target out of range · no chasing' : 'Use WASD to approach a living dummy';
     e['player-health'].textContent = `${player.hp} / ${player.maxHp}`;
-    e['dummy-health'].innerHTML = `${dummy.hp} <em>/ ${dummy.maxHp}</em>`;
-    e['dummy-meter'].setAttribute('aria-valuenow', dummy.hp);
-    e['dummy-bar'].style.width = `${dummy.hp / dummy.maxHp * 100}%`;
-    e['world-dummy-bar'].style.width = `${dummy.hp / dummy.maxHp * 100}%`;
-    e['world-dummy-hp'].textContent = `${dummy.hp} / ${dummy.maxHp}`;
-    e['target-status'].textContent = dummy.hp > 0 ? 'ACTIVE' : 'DEFEATED';
-    e.distance.textContent = `${Math.hypot(player.x - dummy.x, player.z - dummy.z).toFixed(1)} m`;
+    e['dummy-health'].textContent = target ? `${target.hp} / ${target.maxHp}` : '— / —';
+    e['dummy-meter'].setAttribute('aria-valuemax', target?.maxHp ?? 1);
+    e['dummy-meter'].setAttribute('aria-valuenow', target?.hp ?? 0);
+    e['dummy-bar'].style.width = `${target ? target.hp / target.maxHp * 100 : 0}%`;
+    e.distance.textContent = target ? `${distanceTo(player, target).toFixed(1)} m` : '—';
     e.hits.textContent = hits;
     e['attack-status'].textContent = player.cooldown > 0.005 ? `${player.cooldown.toFixed(2)}s cooldown` : 'Ready';
     e['cooldown-bar'].style.width = `${(1 - player.cooldown / player.attackCooldown) * 100}%`;
-    e.message.textContent = dummy.hp <= 0 ? messages.dead : messages[lastAttack.reason];
-    e.message.classList.toggle('warn', ['range', 'cooldown', 'no-target'].includes(lastAttack.reason) && dummy.hp > 0);
-    this.placeLabel(e['dummy-label'], view.project(dummy.x, dummy.hp > 0 ? 2.4 : 0.9, dummy.z));
+    const hitTarget = enemies.find(enemy => enemy.id === lastAttack.targetId);
+    e.message.textContent = lastAttack.reason === 'hit' ? `Hit ${hitTarget?.name ?? 'enemy'} · ${player.damage} damage` : messages[lastAttack.reason];
+    e.message.classList.toggle('warn', ['range', 'cooldown', 'invalid-target'].includes(lastAttack.reason));
+    for (const enemy of enemies) {
+      const { label, bar, hp } = this.labels.get(enemy.id);
+      hp.textContent = `${enemy.hp} / ${enemy.maxHp}`;
+      bar.style.width = `${enemy.hp / enemy.maxHp * 100}%`;
+      label.classList.toggle('selected', state.selectedTargetId === enemy.id);
+      this.placeLabel(label, view.project(enemy.x, enemy.hp > 0 ? 2.4 : 0.9, enemy.z));
+    }
     this.placeLabel(e['player-label'], view.project(player.x, 2.05, player.z));
   }
   paused(value) { this.elements.pause.hidden = !value; }

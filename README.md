@@ -1,97 +1,97 @@
-# MOBA Lab — Phase 1
+# MOBA Lab — Phase 1.1: Smart Targeting
 
-A genuinely 3D, single-player training sandbox using Three.js and Vite. **Phase 1 only; ready for user acceptance testing.** Read [PROJECT_RULES.md](PROJECT_RULES.md) before future work. No Phase 2 approval has been given.
+A genuinely 3D training sandbox using Three.js and Vite. Phase 1 was approved; **Phase 1.1 targeting is ready for user review. No Phase 2 features are implemented.** Read [PROJECT_RULES.md](PROJECT_RULES.md) before future work.
 
-## Play without development tools
+## Play offline on Windows
 
-**If you download this branch as a ZIP, extract it and double-click the root `index.html`.** It is now the full self-contained game, not the Vite source template. You can copy that one file to any folder and play offline.
+Extract this branch's source ZIP and double-click the root **`index.html`**. That file is the complete game, not a development template. Alternatively download **`deliverables/MOBA-Lab-Phase-1.1.html`**, which has identical contents. Either HTML can be copied alone to an empty folder.
 
-Alternatively, use the separately delivered `MOBA-Lab-Phase-1.html` (same contents). On Windows:
+1. Disconnect networking.
+2. Double-click the HTML. If needed, choose **Open with → Chrome or Edge**.
+3. Confirm it opens as `file:///…/index.html` (or the named standalone file).
+4. Click the arena if necessary to focus movement controls.
 
-1. Save the HTML file to a local folder. If downloaded in an archive, extract it first.
-2. Disconnect from the internet (or disable network adapters).
-3. Double-click the HTML. If Windows opens an editor, use **Open with → Google Chrome or Microsoft Edge**.
-4. It should open as `file:///…/index.html` (or `file:///…/MOBA-Lab-Phase-1.html`). No server, installation, sibling assets, or internet is needed by the game.
-5. Click inside the arena if necessary to focus keyboard input.
+No server, Node.js, npm, sibling assets, or internet is needed to play. Requires a modern browser with **WebGL2**/graphics acceleration. Linux Chromium 153 offline file:// tests passed; Windows-specific verification remains manual. See [docs/PHASE_1_1.md](docs/PHASE_1_1.md).
 
-Requires a modern browser with **WebGL2** and graphics acceleration. The exact standalone artifact passed automated offline file:// tests in **Linux Chromium 153**, not Windows. Windows Chrome/Edge acceptance remains manual; see [docs/PHASE_1.md](docs/PHASE_1.md).
+## Controls
 
-## Controls and scope
+- **WASD**: camera-relative movement; diagonal speed is normalized. Movement is never automated by targeting.
+- **Mouse**: ground aiming/crosshair.
+- **Left-click ground** or the **LMB Basic Attack HUD button**: attack the selected target, subject to range and cooldown.
+- **Left-click a living dummy**: pin that enemy as a manual override and attempt one attack. Further ground/HUD attacks keep that pin.
+- **Targeting mode** dropdown: change selection policy and release any pin.
+- **Clear lock**: release the pin without changing modes or resetting cooldown.
+- **Reset arena**: restore player, all dummy starting HP/max HP, positions, mode, selection, pin, cooldown and hit count.
 
-- **WASD**: camera-relative movement. Diagonal speed is normalized.
-- **Mouse**: ground aiming with a crosshair; the faint dashed circle is the 6m attack range.
-- **Left-click the dummy**: one basic attack per click, if within range and off cooldown. There is no auto-move or held-button auto-attack.
-- **Reset arena**: restore both units, positions, HP, hit count, feedback, and cooldown.
-- Switching focus pauses simulation and clears held input.
+One click requests one attack; this is **smart target selection, not continuous auto-firing**. Switching focus pauses simulation and clears held input. Q/E/R/F/B remain unimplemented.
 
-Start by pressing **D** to approach the dummy on the right. Attacks deal **25 damage**, have **0.65s cooldown**, and defeat the **200 HP** dummy in eight hits. The dummy does not fight back; the player's 100 HP stays full in this milestone. Dead dummy geometry is visibly flattened until reset.
+## Targeting rules
 
-Included: elevated orthographic following camera, real 3D temporary geometry, arena/obstacle/dummy collision, ground aiming, targeting, range/cooldown validation, HP feedback, reset and minimal HUD.
+| Mode | Policy for eligible in-range enemies |
+| --- | --- |
+| Nearest Enemy | Lowest ground-plane center distance |
+| Lowest Current HP | Smallest absolute current HP, then distance |
+| Lowest HP Percentage | Smallest current HP / max HP, then distance |
+| Manual Target | Click an enemy to pin it; without a valid pin, nearest in-range fallback |
 
-Not included: skills, battle spells, recall, AI teams, minions, full map, jungle, shop, equipment, progression, menus, final artwork, GLBs, rigging or animation assets. Q/E/R/F/B are intentionally not implemented.
+All ties finally use stable ID ordering. Only living, targetable enemies with valid coordinates/HP qualify. Automatic selection considers only units within the inclusive **6m center-to-center range**. With none available, it shows no target and rejects attacks without consuming cooldown or moving the player.
+
+A valid manual pin overrides every mode, even if it is out of range. Such attacks are rejected; it never chases or silently switches away from the pin. Death, removal or invalidation releases the pin and immediately applies the current mode's fallback. Changing modes or clearing the lock also releases it. Clicking a dead dummy never attacks some other enemy accidentally.
+
+The selected enemy has a **gold ground ring and gold HP-label outline**. Every dummy shows its current and maximum HP. The side card indicates automatic versus manually locked selection.
+
+### Training setup
+
+Press **D** from spawn to approach the cluster (stop before colliding with A). At approximately **player (-1.5, 1.5)** all three are in range and each automatic mode picks a different enemy:
+
+| Dummy | Position X/Z | Starting HP / max HP | Ratio | Mode winner at test position |
+| --- | --- | --- | --- | --- |
+| A · Sentinel | 0 / 0 | 200 / 200 | 100% | Nearest |
+| B · Wounded | 3 / 1 | 90 / 120 | 75% | Lowest Current HP |
+| C · Bulwark | 2 / -3 | 120 / 400 | 30% | Lowest HP Percentage |
+
+Reset restores these **starting** HP values, not full health for B and C, so modes remain distinguishable. Attacks deal **25 damage** with **0.65s cooldown**. Dummies remain stationary and do not attack; player health stays at 100. All character geometry is temporary. No GLBs, rigs, or animation assets are claimed.
 
 ## Develop and validate
 
-Node.js **22.22.3** and npm **10.9.8** were used. Vite 7.3.7 supports Node 20.19+ / 22.12+; modern Node 22 is recommended. Version-pinned dependencies and lockfile are preserved.
+Used Node **22.22.3**, npm **10.9.8**, Vite **7.3.7**, Three.js **0.186.1**. Modern Node 22 (22.12+) is recommended.
 
 ```bash
 npm ci
 npm run dev -- --port 5173
-```
-
-Open the development URL shown by Vite (or Arena's live preview). Vite serves `dev.html` at `/` and `/index.html` for live source development; do not edit the generated root `index.html` by hand. Server binds to `0.0.0.0` and accepts `*.e2b.app` preview hosts. No browser-facing backend or localhost API is used.
-
-```bash
-npm test                 # 11 pure simulation/clock tests
-npm run build            # Vite build, inline packaging, offline structure checks
-npm run validate:offline # Recheck generated deliverable
-npm run package:source   # Rebuild HTML + source ZIP (zip CLI required in Arena)
-npm run test:browser     # 15 offline checks: game, root index, source-ZIP index
+npm test                   # 34 unit tests including all 11 foundation regressions
+npm run build              # Build and validate the standalone game
+npm run validate:offline
+npm run package:source     # Rebuild then archive (zip CLI required)
+npm run test:browser        # 23 offline browser checks; requires source ZIP above
 npm run preview -- --port 4173
 ```
 
-The ZIP regression test requires the `unzip` CLI (available in Arena); install it as a developer prerequisite on other systems. This is NOT required to play the HTML. The browser test uses development-only `playwright-core` and npm-packaged Linux Chromium with software WebGL. On the minimal Arena Linux environment it extracts bundled NSS libraries into a temporary folder. On another platform set **BROWSER_PATH** to an installed compatible Chromium/Chrome executable instead; e.g. Windows PowerShell:
+The development server binds to `0.0.0.0`, accepts Arena `*.e2b.app` hosts, and serves editable **`dev.html`** at `/` and `/index.html`. Edit `dev.html`/`src/`, not the generated root index. There are no browser-facing localhost API calls.
 
-```powershell
-$env:BROWSER_PATH = 'C:\Program Files\Google\Chrome\Application\chrome.exe'
-npm run test:browser
-```
+Browser tests use development-only `playwright-core`, npm-packaged Linux Chromium, software WebGL, and the `unzip` CLI. On the minimal Linux environment, bundled NSS libraries are extracted into temporary storage. These tools are **not needed to play**. On other platforms, set `BROWSER_PATH` to an installed Chromium/Chrome executable and provide unzip as a developer prerequisite. Optional `DEV_TEST_URL=http://127.0.0.1:5173 npm run test:browser` also checks that Vite serves live source. Test prerequisites unavailable means **not tested**, not passed.
 
-If automated browser prerequisites are unavailable, report that explicitly and perform manual acceptance tests; do not treat them as passed. The browser test's focus test dispatches synthetic blur/focus events; real OS task switching remains a manual check.
+## Files and packaging
 
-## Standalone packaging
+- `src/simulation/targeting.js`: pure eligibility, mode scoring, in-range filtering, deterministic tie-breaking.
+- `src/simulation/game.js`: mesh-independent state, movement integration, manual pin lifecycle, validated attacks/reset.
+- `src/data/training.json`: default mode, player configuration, dummy IDs/positions/HP.
+- `src/input/`: keyboard/pointer and safe UI-focus handling.
+- `src/rendering/world.js`: replaceable temporary visuals, camera, ray picking, selected ring and hit feedback.
+- `src/ui/`: functional selector/clear-lock/attack/reset controls and state-driven HP displays.
+- `tests/`: simulation, targeting and actual offline browser regressions.
+- `scripts/`: inline HTML packaging, structural validation, source archive.
 
-The editable HTML template is **`dev.html`**. Vite builds this template (not the already-bundled root index), then bundles Three.js, JSON configuration and application modules into one JS entry. `scripts/package-html.mjs` embeds that entry and its CSS into HTML, includes the Three.js MIT notice, removes generated external assets, and writes:
+Vite builds `dev.html`; packaging embeds its JS, CSS, Three.js and JSON, including the Three.js MIT notice. The output is identical in:
 
-- `index.html` — committed standalone entry so GitHub branch ZIP downloads play immediately.
-- `dist/index.html` — production output (only file in dist).
-- `deliverables/MOBA-Lab-Phase-1.html` — identical downloadable file (~544 KiB).
+- **`index.html`** — deliberately committed so GitHub source ZIPs play directly.
+- `dist/index.html` — the only file in dist.
+- `deliverables/MOBA-Lab-Phase-1.1.html` — named download (~550 KiB).
 
-No single-file plugin, external fonts, CDN, fetched JSON, runtime model files, decoder, service worker, or network API is required. A Vite >500 kB chunk warning is expected because intentionally bundling Three.js is required; it is not a failed build. Future GLB bytes/textures/audio must be embedded and decoded in memory. A future asset pipeline must fail validation if it introduces external dependencies; this milestone does not claim to implement future GLB loading.
+No CDN, external font, model, texture, fetched JSON, service worker, decoder, or remote API is required. The >500 kB Vite chunk warning is expected because Three.js must be embedded. Future GLBs/audio/textures must also be embedded with validated in-memory loaders; they are not implemented here.
 
-Source ZIP includes the playable standalone root `index.html` AND the editable `dev.html`/source. It excludes node_modules, .git, caches, duplicate build outputs and test screenshots. `npm run package:source` rebuilds first to prevent stale HTML in the ZIP. Reference screenshots and reference-analysis files are excluded at the user's request. No screenshot art or reference logos are embedded in the game.
+Root `index.html` is the intentional generated-artifact exception: rebuild and commit it with runtime changes. Duplicate downloads/dist, dependencies, caches and screenshots stay ignored. The source ZIP contains root index, editable source, lockfile, tests, and docs—but **no reference screenshots/notes**. Future asset conventions remain `public/assets/models/`, `public/assets/textures/`, `assets/source_blender/`; empty directories may be absent from Git until genuine assets exist.
 
-## Source map
+Add `#diagnostics` to a game URL only for the read-only state snapshot/projection API used by tests; it cannot mutate gameplay. No persistent match/progression save system is included.
 
-| Path | Responsibility |
-| --- | --- |
-| `dev.html` / `index.html` | Editable Vite template / generated offline game (do not hand-edit) |
-| `src/simulation/` | Mesh-independent movement, circle/box collision, combat, dummy lifecycle, reset |
-| `src/core/clock.js` | Fixed timestep and capped catch-up |
-| `src/input/controls.js` | Keyboard, pointer, focus handling |
-| `src/rendering/world.js` | Three.js scene, camera, raycasting, temporary visual adapters |
-| `src/ui/` | State-driven HUD, reset input, responsive layout |
-| `src/data/` | JSON arena and training-unit configuration |
-| `tests/` | Unit and offline browser checks |
-| `scripts/` | Standalone packaging, structural validation, source archive |
-| `docs/` | Phase 1 acceptance report and browser-test evidence |
-
-Future runtime models: `public/assets/models/`; textures: `public/assets/textures/`; editable Blender source: `assets/source_blender/`. Empty directories may not appear in Git; create them when genuine assets arrive. No models or Blender sources are claimed in Phase 1.
-
-Add `#diagnostics` to the HTML URL only when debugging to expose a read-only state snapshot and world-to-screen projection helper. It cannot change gameplay state. Normal play does not require it.
-
-## Preservation
-
-Source, lockfile, tests and docs live on the Arena session branch. **Exception to the usual generated-artifact policy:** root `index.html` is deliberately tracked (~545 KiB) to make GitHub source ZIP downloads playable without build tools. Rebuild and commit it whenever runtime source changes; the offline validator enforces equality with the downloadable build. Generated `dist`, duplicate downloads, node_modules and test artifacts remain ignored by Git. Obtain the HTML and source ZIP from the delivered downloads; source is the authoritative preserved project. No commit/push is required for Arena to preserve source edits.
-
-Phase 1 results, known limitations, and the Windows acceptance checklist: [docs/PHASE_1.md](docs/PHASE_1.md).
+Detailed per-test evidence and Windows checklist: [docs/PHASE_1_1.md](docs/PHASE_1_1.md). Earlier Phase 1 reports remain historical evidence, not the current three-dummy specification. Stop here for approval before further milestones.

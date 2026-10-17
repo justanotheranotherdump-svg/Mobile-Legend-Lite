@@ -66,47 +66,48 @@ test('collision permits sliding along an obstacle and handles rounded corners', 
 
 test('living dummy blocks movement; dead dummy does not', () => {
   const sim = new TrainingSimulation(empty, config);
-  sim.player.x = sim.dummy.x - 2;
-  sim.player.z = sim.dummy.z;
-  for (let i = 0; i < 60; i++) moveEntity(sim.player, { x: 1, z: 0 }, 1 / 60, empty, [sim.dummy]);
-  assert.ok(Math.hypot(sim.player.x - sim.dummy.x, sim.player.z - sim.dummy.z) >= sim.player.radius + sim.dummy.radius - 1e-8);
-  sim.dummy.hp = 0;
+  sim.player.x = sim.enemies[0].x - 2;
+  sim.player.z = sim.enemies[0].z;
+  for (let i = 0; i < 60; i++) moveEntity(sim.player, { x: 1, z: 0 }, 1 / 60, empty, [sim.enemies[0]]);
+  assert.ok(Math.hypot(sim.player.x - sim.enemies[0].x, sim.player.z - sim.enemies[0].z) >= sim.player.radius + sim.enemies[0].radius - 1e-8);
+  sim.enemies[0].hp = 0;
   const before = sim.player.x;
-  moveEntity(sim.player, { x: 1, z: 0 }, 0.2, empty, [sim.dummy]);
+  moveEntity(sim.player, { x: 1, z: 0 }, 0.2, empty, [sim.enemies[0]]);
   assert.ok(sim.player.x > before + 1);
 });
 
-test('attack rejects missing target and out-of-range dummy without consuming cooldown', () => {
+test('attack rejects invalid target and out-of-range dummy without consuming cooldown', () => {
   const sim = new TrainingSimulation(arena, config);
-  assert.equal(sim.attack(null), 'no-target');
-  assert.equal(sim.attack('dummy'), 'range');
-  assert.equal(sim.dummy.hp, 200);
+  assert.equal(sim.attack('missing-id'), 'invalid-target');
+  assert.equal(sim.attack(), 'range');
+  assert.equal(sim.attack('dummy-a'), 'range');
+  assert.equal(sim.enemies[0].hp, 200);
   assert.equal(sim.player.cooldown, 0);
 });
 
 test('attack accepts exact range, rejects beyond it, and enforces cooldown', () => {
   const sim = new TrainingSimulation(arena, config);
-  sim.player.x = sim.dummy.x - sim.player.range - 0.001;
-  sim.player.z = sim.dummy.z;
-  assert.equal(sim.attack('dummy'), 'range');
+  sim.player.x = sim.enemies[0].x - sim.player.range - 0.001;
+  sim.player.z = sim.enemies[0].z;
+  assert.equal(sim.attack('dummy-a'), 'range');
   sim.player.x += 0.001;
-  assert.equal(sim.attack('dummy'), 'hit');
-  assert.equal(sim.dummy.hp, 175);
-  assert.equal(sim.attack('dummy'), 'cooldown');
+  assert.equal(sim.attack('dummy-a'), 'hit');
+  assert.equal(sim.enemies[0].hp, 175);
+  assert.equal(sim.attack('dummy-a'), 'cooldown');
   assert.equal(sim.hits, 1);
   for (let i = 0; i < 39; i++) sim.update(1 / 60);
-  assert.equal(sim.attack('dummy'), 'hit');
-  assert.equal(sim.dummy.hp, 150);
+  assert.equal(sim.attack('dummy-a'), 'hit');
+  assert.equal(sim.enemies[0].hp, 150);
 });
 
 test('dummy death clamps health, rejects attacks, and reset restores all match state', () => {
   const sim = new TrainingSimulation(arena, config);
-  sim.player.x = sim.dummy.x - 2;
-  sim.player.z = sim.dummy.z;
-  for (let i = 0; i < 8; i++) { assert.equal(sim.attack('dummy'), 'hit'); sim.update(0.65); }
-  assert.equal(sim.dummy.hp, 0);
+  sim.player.x = sim.enemies[0].x - 2;
+  sim.player.z = sim.enemies[0].z;
+  for (let i = 0; i < 8; i++) { assert.equal(sim.attack('dummy-a'), 'hit'); sim.update(0.65); }
+  assert.equal(sim.enemies[0].hp, 0);
   assert.equal(sim.hits, 8);
-  assert.equal(sim.attack('dummy'), 'dead');
+  assert.equal(sim.attack('dummy-a'), 'dead');
   sim.reset();
   assert.deepEqual(sim.snapshot(), new TrainingSimulation(arena, config).snapshot());
   const snapshot = sim.snapshot();

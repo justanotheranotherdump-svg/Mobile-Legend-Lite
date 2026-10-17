@@ -3,7 +3,7 @@ import * as THREE from 'three';
 // A presentation adapter. All meshes below are TEMPORARY test geometry.
 // Future GLB assets replace makeHero/makeDummy, never the simulation entities.
 export class WorldView {
-  constructor(canvas, arena) {
+  constructor(canvas, arena, enemies) {
     this.canvas = canvas;
     this.renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
@@ -34,7 +34,13 @@ export class WorldView {
     this.scene.add(sunlight);
     this.makeArena(arena);
     this.hero = this.makeHero();
-    this.dummy = this.makeDummy();
+    this.dummies = new Map(enemies.map(enemy => {
+      const model = this.makeDummy();
+      model.userData.enemyId = enemy.id;
+      return [enemy.id, model];
+    }));
+    this.selectionRing = this.circle(1.12, '#ffde87', 1);
+    this.scene.add(this.selectionRing);
     this.rangeRing = this.circle(6, '#7cb8a3', 0.24, true);
     this.scene.add(this.rangeRing);
     this.aimMarker = new THREE.Group();
@@ -165,7 +171,11 @@ export class WorldView {
   pickTarget(pointer) {
     this.scene.updateMatrixWorld(true);
     this.raycaster.setFromCamera(pointer, this.camera);
-    return this.raycaster.intersectObject(this.dummy, true).length ? 'dummy' : null;
+    const hit = this.raycaster.intersectObjects([...this.dummies.values()], true).find(hit => hit.object.isMesh);
+    if (!hit) return null;
+    let object = hit.object;
+    while (object && !object.userData.enemyId) object = object.parent;
+    return object?.userData.enemyId ?? null;
   }
 
   project(x, y, z) {
@@ -176,10 +186,16 @@ export class WorldView {
   resetFeedback() { this.lastHitSerial = 0; this.beamUntil = -1; }
 
   render(state, pointer) {
-    const { player, dummy } = state;
+    const { player, enemies } = state;
     this.hero.position.set(player.x, 0, player.z);
-    this.dummy.position.set(dummy.x, 0, dummy.z);
-    this.dummy.scale.y = dummy.hp > 0 ? 1 : 0.2;
+    for (const enemy of enemies) {
+      const model = this.dummies.get(enemy.id);
+      model.position.set(enemy.x, 0, enemy.z);
+      model.scale.y = enemy.hp > 0 ? 1 : 0.2;
+    }
+    this.selectionRing.visible = Boolean(state.selectedTarget);
+    if (state.selectedTarget) this.selectionRing.position.set(state.selectedTarget.x, 0.025, state.selectedTarget.z);
+    this.rangeRing.scale.setScalar(player.range / 6);
     this.rangeRing.position.set(player.x, 0, player.z);
     this.updateCamera(player);
     this.aim = null;
@@ -194,13 +210,14 @@ export class WorldView {
     this.aimMarker.visible = Boolean(this.aim);
     if (state.lastAttack.serial !== this.lastHitSerial) {
       this.lastHitSerial = state.lastAttack.serial;
-      if (state.lastAttack.reason === 'hit') this.beamUntil = state.time + 0.14;
+      if (state.lastAttack.reason === 'hit') { this.beamUntil = state.time + 0.14; this.beamTargetId = state.lastAttack.targetId; }
     }
     this.beam.visible = state.time < this.beamUntil;
     if (this.beam.visible) {
       const positions = this.beam.geometry.attributes.position;
       positions.setXYZ(0, player.x, 1.05, player.z);
-      positions.setXYZ(1, dummy.x, 1.4, dummy.z);
+      const hitTarget = enemies.find(enemy => enemy.id === this.beamTargetId);
+      positions.setXYZ(1, hitTarget.x, 1.4, hitTarget.z);
       positions.needsUpdate = true;
       this.beam.geometry.computeBoundingSphere();
     }

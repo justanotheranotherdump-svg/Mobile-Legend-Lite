@@ -54,14 +54,34 @@ try {
     await elapsed(0.05);
   };
   const project = (x, y, z) => page.evaluate(([x, y, z]) => window.foundationDiagnostics.project(x, y, z), [x, y, z]);
-  const clickDummy = async (height = 1.45) => {
-    const state = await snap();
-    const point = await project(state.dummy.x, height, state.dummy.z);
+  const enemyById = (state, id) => state.enemies.find(enemy => enemy.id === id);
+  const clickDummy = async id => {
+    const enemy = enemyById(await snap(), id);
+    const point = await project(enemy.x, enemy.hp > 0 ? 1.45 : 0.12, enemy.z);
     assert.ok(point.visible, 'dummy must be visible for pointer test');
     await page.mouse.click(point.x, point.y);
   };
+  const groundClick = async () => {
+    const { player } = await snap();
+    const point = await project(player.x - 1.5, 0, player.z + 1.5);
+    await page.mouse.click(point.x, point.y);
+  };
+  const approach = async () => {
+    await page.keyboard.down('d');
+    await page.waitForFunction(() => window.foundationDiagnostics.snapshot().player.x > -1.5);
+    await page.keyboard.up('d');
+    const state = await snap();
+    assert.ok(state.enemies.every(enemy => Math.hypot(state.player.x - enemy.x, state.player.z - enemy.z) < 6));
+  };
+  const setMode = async mode => {
+    await page.locator('#target-mode').selectOption(mode);
+    await page.waitForFunction(mode => window.foundationDiagnostics.snapshot().targetMode === mode, mode);
+    await elapsed(0.04);
+  };
+  const ready = async () => { await page.waitForFunction(() => window.foundationDiagnostics.snapshot().player.cooldown === 0); };
+  const samePosition = (a, b) => assert.deepEqual([a.player.x, a.player.z], [b.player.x, b.player.z]);
 
-  await page.goto(pathToFileURL(resolve('deliverables/MOBA-Lab-Phase-1.html')).href + '#diagnostics');
+  await page.goto(pathToFileURL(resolve('deliverables/MOBA-Lab-Phase-1.1.html')).href + '#diagnostics');
   await page.waitForFunction(() => window.foundationDiagnostics && window.foundationDiagnostics.snapshot().time > 0.05);
   assert.ok(await page.locator('#error').isHidden());
   const gpu = await page.evaluate(() => {
@@ -81,11 +101,32 @@ try {
   pass('inline CSS is applied: dark background, positioned HUD, full-viewport canvas (unstyled-page regression)');
   await page.screenshot({ path: 'artifacts/arena-initial.png' });
 
-  await clickDummy();
+  let state = await snap();
+  assert.deepEqual(state.enemies.map(enemy => [enemy.hp, enemy.maxHp]), [[200, 200], [90, 120], [120, 400]]);
+  assert.equal(await page.locator('.dummy-label').count(), 3);
+  for (const enemy of state.enemies) {
+    assert.equal(await page.locator(`[data-enemy-id="${enemy.id}"] small`).textContent(), `${enemy.hp} / ${enemy.maxHp}`);
+  }
+  pass('three distinct configured dummies expose current/max HP in world labels');
+  const spawn = state;
+  await groundClick();
+  await elapsed(0.15);
+  state = await snap();
+  assert.equal(state.lastAttack.reason, 'range');
+  assert.equal(state.selectedTargetId, null);
+  assert.equal(state.player.cooldown, 0);
+  samePosition(state, spawn);
+  assert.match(await page.locator('#message').innerText(), /No enemy in attack range/);
+  await clickDummy('dummy-a');
   await elapsed(0.05);
-  assert.equal((await snap()).lastAttack.reason, 'range');
-  assert.equal((await snap()).dummy.hp, 200);
-  pass('ray-picked dummy rejects an out-of-range attack without damage');
+  state = await snap();
+  assert.equal(state.manualTargetId, 'dummy-a');
+  assert.equal(state.lastAttack.reason, 'range');
+  assert.equal(enemyById(state, 'dummy-a').hp, 200);
+  await groundClick();
+  await elapsed(0.1);
+  samePosition(await snap(), spawn);
+  pass('out-of-range automatic and pinned direct attacks reject damage/cooldown and NEVER chase');
 
   async function measure(keys) {
     await reset();
@@ -104,13 +145,8 @@ try {
   pass('real keyboard movement and diagonal normalization (measured against simulation time)');
 
   await reset();
-  await page.keyboard.down('d');
-  await page.waitForFunction(() => {
-    const { player, dummy } = window.foundationDiagnostics.snapshot();
-    return Math.hypot(player.x - dummy.x, player.z - dummy.z) < 5.1;
-  });
-  await page.keyboard.up('d');
-  let state = await snap();
+  await approach();
+  state = await snap();
   const heroScreen = await project(state.player.x, 0, state.player.z);
   assert.ok(Math.abs(heroScreen.x - 720) < 1 && Math.abs(heroScreen.y - 450) < 1);
   const groundPoint = await project(state.player.x + 1.2, 0, state.player.z + 0.7);
@@ -120,38 +156,110 @@ try {
   assert.ok(Math.hypot(aim.x - (state.player.x + 1.2), aim.z - (state.player.z + 0.7)) < 0.06);
   pass('camera follows player and mouse ray maps to the correct ground position after movement');
 
-  await clickDummy();
+  const inRange = await snap();
+  for (const [mode, expected] of [['nearest', 'dummy-a'], ['current-hp', 'dummy-b'], ['hp-percent', 'dummy-c'], ['manual', 'dummy-a']]) {
+    await setMode(mode);
+    state = await snap();
+    assert.equal(state.selectedTargetId, expected);
+    assert.equal(state.manualTargetId, null);
+    assert.equal(await page.locator('.dummy-label.selected').count(), 1);
+    assert.equal(await page.locator('.dummy-label.selected').getAttribute('data-enemy-id'), expected);
+    samePosition(state, inRange);
+    pass(`HUD mode ${mode} selects ${expected} and visibly highlights it without moving`);
+  }
+  await setMode('hp-percent');
+  await page.screenshot({ path: 'artifacts/targeting-in-range.png' });
+  await clickDummy('dummy-a');
   await elapsed(0.02);
   state = await snap();
-  assert.equal(state.dummy.hp, 175);
-  assert.equal(state.hits, 1);
-  await clickDummy();
+  assert.equal(state.manualTargetId, 'dummy-a');
+  assert.equal(state.selectedTargetId, 'dummy-a');
+  assert.equal(state.lastAttack.targetId, 'dummy-a');
+  assert.equal(enemyById(state, 'dummy-a').hp, 175);
+  await groundClick();
   await elapsed(0.02);
   state = await snap();
   assert.equal(state.lastAttack.reason, 'cooldown');
-  assert.equal(state.dummy.hp, 175);
-  pass('in-range left click deals 25 damage; rapid second click is rejected by cooldown');
-  for (let i = 0; i < 7; i++) { await elapsed(0.67); await clickDummy(); }
-  await elapsed(0.05);
+  assert.equal(enemyById(state, 'dummy-a').hp, 175);
+  await ready();
+  await groundClick();
+  await elapsed(0.02);
+  assert.equal(enemyById(await snap(), 'dummy-a').hp, 150);
+  samePosition(await snap(), inRange);
+  pass('direct enemy click pins over auto mode; ground attacks use pin and preserve cooldown/no-chase rules');
+
+  await setMode('hp-percent');
+  assert.equal((await snap()).selectedTargetId, 'dummy-c');
+  await clickDummy('dummy-a'); // cooldown rejects damage but selection still works
+  await elapsed(0.02);
+  assert.equal((await snap()).manualTargetId, 'dummy-a');
+  await page.locator('#clear-target').click();
+  await elapsed(0.04);
+  assert.equal((await snap()).manualTargetId, null);
+  assert.equal((await snap()).selectedTargetId, 'dummy-c');
+  pass('mode changes and Clear lock restore automatic policy without bypassing cooldown');
+
+  await setMode('nearest');
+  await ready();
+  await clickDummy('dummy-b');
+  await elapsed(0.03);
+  assert.equal((await snap()).manualTargetId, 'dummy-b');
+  for (let i = 0; i < 3; i++) { await ready(); await groundClick(); await elapsed(0.03); }
   state = await snap();
-  assert.equal(state.dummy.hp, 0);
-  assert.equal(state.hits, 8);
-  assert.equal(await page.locator('#target-status').innerText(), 'DEFEATED');
-  await clickDummy(0.12);
-  await elapsed(0.05);
-  assert.equal((await snap()).lastAttack.reason, 'dead');
-  assert.equal((await snap()).dummy.hp, 0);
-  pass('eight real pointer attacks defeat dummy; dead target rejects further damage');
+  assert.equal(enemyById(state, 'dummy-b').hp, 0);
+  assert.equal(state.manualTargetId, null);
+  assert.equal(state.selectedTargetId, 'dummy-a');
+  const hpAfterDeath = state.enemies.map(enemy => enemy.hp);
+  await clickDummy('dummy-b');
+  await elapsed(0.03);
+  state = await snap();
+  assert.equal(state.lastAttack.reason, 'dead');
+  assert.deepEqual(state.enemies.map(enemy => enemy.hp), hpAfterDeath);
+  assert.equal(state.selectedTargetId, 'dummy-a');
+  pass('a pinned target dying releases override immediately; dead clicks never select or damage an enemy');
+
+  await setMode('manual');
+  await ready();
+  await clickDummy('dummy-c');
+  await elapsed(0.03);
+  assert.equal((await snap()).manualTargetId, 'dummy-c');
+  for (let i = 0; i < 4; i++) { await ready(); await groundClick(); await elapsed(0.03); }
+  state = await snap();
+  assert.equal(enemyById(state, 'dummy-c').hp, 0);
+  assert.equal(state.selectedTargetId, 'dummy-a');
+  samePosition(state, inRange);
+  pass('Manual Target mode pins chosen enemy and falls back to nearest living in-range enemy on death');
+
+  await reset();
+  await approach();
+  await setMode('current-hp');
+  const autoPosition = await snap();
+  for (let i = 0; i < 4; i++) { await ready(); await groundClick(); await elapsed(0.03); }
+  state = await snap();
+  assert.equal(enemyById(state, 'dummy-b').hp, 0);
+  assert.equal(state.selectedTargetId, 'dummy-c');
+  assert.equal(state.manualTargetId, null);
+  samePosition(state, autoPosition);
+  await ready();
+  await page.locator('#attack').click();
+  await elapsed(0.03);
+  state = await snap();
+  assert.equal(state.lastAttack.targetId, 'dummy-c');
+  assert.equal(enemyById(state, 'dummy-c').hp, 95);
+  pass('ground-click auto attacks reselect by lowest current HP after death; HUD attack button uses same rules');
 
   await reset();
   state = await snap();
   assert.equal(state.player.hp, 100);
   assert.equal(state.player.cooldown, 0);
-  assert.equal(state.dummy.hp, 200);
+  assert.deepEqual(state.enemies.map(enemy => [enemy.hp, enemy.maxHp]), [[200, 200], [90, 120], [120, 400]]);
+  assert.equal(state.targetMode, 'nearest');
+  assert.equal(state.manualTargetId, null);
+  assert.equal(state.selectedTargetId, null);
   assert.equal(state.hits, 0);
   assert.equal(state.player.x, -5);
   assert.equal(state.player.z, 5);
-  pass('Reset button restores positions, HP, cooldown, dummy life, and hit count');
+  pass('Reset restores all HP/max HP, player/target state, mode, pins, cooldown and hit count');
 
   await page.keyboard.down('w');
   await page.keyboard.down('d');
@@ -219,7 +327,7 @@ try {
   // Isolate the ZIP's index.html in a folder with spaces/Unicode and no siblings.
   const isolated = join(await mkdtemp(join(tmpdir(), 'moba-source-')), 'Windows download — offline');
   await mkdir(isolated);
-  const archivedIndex = execFileSync('unzip', ['-p', 'deliverables/MOBA-Lab-Phase-1-source.zip', 'index.html'], { maxBuffer: 4 * 1024 * 1024 });
+  const archivedIndex = execFileSync('unzip', ['-p', 'deliverables/MOBA-Lab-Phase-1.1-source.zip', 'index.html'], { maxBuffer: 4 * 1024 * 1024 });
   assert.ok(archivedIndex.equals(await readFile('index.html')), 'ZIP must include the current playable root index');
   await writeFile(join(isolated, 'index.html'), archivedIndex);
   for (const [entry, label] of [[resolve('index.html'), 'repository root index.html'], [join(isolated, 'index.html'), 'source-ZIP index.html isolated without sibling files (spaces/Unicode path)']]) {
@@ -229,15 +337,14 @@ try {
     assert.equal(await page.locator('.topbar').evaluate(element => getComputedStyle(element).position), 'absolute');
     await page.keyboard.down('d');
     await page.waitForFunction(() => {
-      const { player, dummy } = window.foundationDiagnostics.snapshot();
-      return Math.hypot(player.x - dummy.x, player.z - dummy.z) < 5.1;
+      return window.foundationDiagnostics.snapshot().player.x > -1.5;
     });
     await page.keyboard.up('d');
-    await clickDummy();
+    await clickDummy('dummy-a');
     await elapsed(0.05);
-    assert.equal((await snap()).dummy.hp, 175);
+    assert.equal(enemyById(await snap(), 'dummy-a').hp, 175);
     await reset();
-    assert.equal((await snap()).dummy.hp, 200);
+    assert.equal(enemyById(await snap(), 'dummy-a').hp, 200);
     pass(`${label}: styled offline 3D, keyboard movement, attack and reset`);
   }
   await page.screenshot({ path: 'artifacts/source-zip-offline.png' });
@@ -254,7 +361,7 @@ try {
     devPage.on('console', message => { if (message.type() === 'error') devErrors.push(message.text()); });
     await devPage.goto(process.env.DEV_TEST_URL + '/#diagnostics');
     await devPage.waitForFunction(() => window.foundationDiagnostics?.snapshot().time > 0.05);
-    assert.ok(await devPage.locator('script[src="/src/main.js"]').count(), 'Dev root must serve editable template, not stale standalone bundle');
+    assert.ok(await devPage.locator('script[src^="/src/main.js"]').count(), 'Dev root must serve editable template, not stale standalone bundle');
     assert.ok(await devPage.locator('#error').isHidden());
     assert.deepEqual(devErrors, []);
     developmentPreview = { passed: true, errors: devErrors };

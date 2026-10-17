@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFile, readdir } from 'node:fs/promises';
-const html = await readFile('deliverables/MOBA-Lab-Phase-1.html', 'utf8');
+const html = await readFile('deliverables/MOBA-Lab-Phase-1.1.html', 'utf8');
 // Inspect markup outside script/style bodies; library code may legitimately contain
 // unused URL loaders. The browser test checks whether any request actually occurs.
 const markup = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '').replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '');

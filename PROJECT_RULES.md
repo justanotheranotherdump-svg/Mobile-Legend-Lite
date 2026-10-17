@@ -5,7 +5,7 @@ Updated: 2026-10-17. These user-approved requirements govern future project work
 ## Workflow and approval
 
 - Build one precisely scoped milestone at a time; obtain the user's approval before starting each milestone.
-- Phase 1 (playable 3D foundation) was explicitly approved on 2026-10-17. No Phase 2 or later milestone has been approved. Stop after Phase 1 for user testing and approval.
+- Phase 1 foundation is approved/complete per the user. Phase 1.1 (smart targeting only) was explicitly approved on 2026-10-17. No Phase 2 or later milestone is approved. Stop after Phase 1.1 for user testing and approval.
 - Start with a playable 3D foundation, not menus, mockups, or a screenshot pretending to be gameplay.
 - Keep gameplay modular, preserve working features, and avoid premature polish or future-milestone implementation.
 - After implementation, run available build and validation commands, fix introduced errors, provide exact run instructions, report acceptance tests honestly, list unfinished features/known issues, and recommend but do not implement the next milestone.
@@ -84,3 +84,10 @@ Phase 1 foundation is implemented with temporary geometry only. `npm ci`, produc
 ## Phase 1 offline entry correction
 
 The user reported opening the repository root index.html via Windows file:// and seeing unstyled text. That root was the Vite development template, while only the separately generated deliverable was offline-ready. Fix this delivery ambiguity without expanding scope: use dev.html for Vite development/build input and intentionally commit the generated standalone game as root index.html. GitHub branch ZIPs and the source ZIP must include that playable root file. Future runtime edits must rebuild it; validate byte equality with dist/index.html and the standalone download. Duplicate build output remains ignored. Test styling, root file launch, and the source-ZIP index in isolation with no sibling assets. Windows retesting is still required.
+
+
+## Phase 1.1 — approved smart targeting scope
+
+Four modes: nearest, lowest current HP, lowest HP percentage, manual. Auto candidates must be valid living enemies within basic attack range; ties use distance then stable ID. Direct living-enemy clicks pin a manual override; ground clicks/HUD Basic Attack use the current selection. Death/invalidation, mode changes, or Clear lock release a pin. Manual mode without a pin falls back to nearest in-range. Valid out-of-range pins remain selected but cannot be attacked. Targeting never issues movement/chasing: WASD remains the only movement input. Three dummies have distinct starting HP/max HP and distances; reset restores the configured starting values (including injured dummies), all target/player state, and cooldowns. Show selected indicator, every dummy's current/max HP, and a functional HUD selector. No abilities or Phase 2 work.
+
+Phase 1.1 unit and offline Linux Chromium regressions passed; see docs/PHASE_1_1.md and associated evidence. Root index.html remains the committed offline game, built from dev.html. Current download names are MOBA-Lab-Phase-1.1.html and MOBA-Lab-Phase-1.1-source.zip. Reference assets stay excluded. Wait for user approval after delivering this milestone.
