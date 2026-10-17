@@ -766,12 +766,6 @@ select {
     margin-top: 22px;
     letter-spacing: 0.8px;
   }
-  .message {
-    top: 64px;
-    font-size: 9px;
-    max-width: 330px;
-    padding: 5px 10px;
-  }
   .build-note {
     font-size: 6px;
     letter-spacing: 0.6px;
@@ -809,9 +803,6 @@ select {
   }
   .action-dock {
     transform: scale(0.66);
-  }
-  .message {
-    max-width: 300px;
   }
   .equipment-row {
     margin-bottom: 10px;
@@ -859,9 +850,6 @@ select {
   .reserved-caption {
     font-size: 5px;
     letter-spacing: 0;
-  }
-  .message {
-    max-width: 240px;
   }
   .combat-announcements {
     top: 94px;

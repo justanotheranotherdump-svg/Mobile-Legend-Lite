@@ -1,3 +1,5 @@
+> Subsequent UI correction: [empty landscape shop / routine-banner removal](EMPTY_SHOP_LAYOUT.md). This report records the preceding key-settings milestone; its attack-hint banner is now intentionally removed. The key editor and bindings remain.
+
 # Settings: button key visibility and custom shortcuts
 
 2026-10-17. Baseline commit `1c78d9b`. This is a scoped UI/control addition, not a new gameplay milestone.

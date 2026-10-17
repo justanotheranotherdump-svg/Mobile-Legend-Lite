@@ -1,6 +1,7 @@
 @import "./styles/layout.css";
 @import "./styles/controls.css";
 @import "./styles/panels.css";
+@import "./styles/shop.css";
 @import "./styles/combat-cluster.css";
 :root {
   font-family: "Segoe UI", Arial, sans-serif;
@@ -163,25 +164,6 @@ button .icon {
 }
 .dummy-label.selected .small-track i {
   background: #ffde87;
-}
-.message {
-  position: absolute;
-  top: 81px;
-  left: 50%;
-  transform: translateX(-50%);
-  max-width: 440px;
-  width: max-content;
-  font-size: 11px;
-  text-align: center;
-  color: #cde2e2;
-  text-shadow: 0 2px 4px #000;
-  padding: 6px 12px;
-  background: #071723a6;
-  border-radius: 20px;
-  pointer-events: none;
-}
-.message.warn {
-  color: #f4d1a0;
 }
 .build-note {
   position: absolute;

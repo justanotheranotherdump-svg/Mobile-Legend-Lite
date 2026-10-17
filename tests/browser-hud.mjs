@@ -1,3 +1,4 @@
+import { runEmptyShopChecks } from "./browser-shop.mjs";
 import assert from "node:assert/strict";
 export async function runHudChecks({
   page,
@@ -11,7 +12,7 @@ export async function runHudChecks({
 }) {
   await reset();
   assert.equal(await page.locator("#arena-map .map-target").count(), 3);
-  assert.ok((await page.locator(".icon").count()) > 35);
+  assert.ok((await page.locator(".icon").count()) > 25);
   assert.equal(await page.locator("#hud-root img").count(), 0);
   const mapBefore = await page.locator("#map-player").getAttribute("transform");
   await page.keyboard.down("w");
@@ -221,7 +222,7 @@ export async function runHudChecks({
   await page.locator("#shop").focus();
   await page.keyboard.press("Enter");
   assert.ok(await page.locator("#shop-dialog").isVisible());
-  assert.equal(await page.locator(".shop-card").count(), 6);
+  assert.equal(await page.locator(".shop-slot-catalog").count(), 16);
   assert.match(
     await page.locator("#shop-dialog").innerText(),
     /not implemented/,
@@ -502,4 +503,5 @@ export async function runHudChecks({
   pass(
     "HUD regions do not overlap, controls stay hit-testable, dialogs work and center remains clear at five landscape sizes",
   );
+  await runEmptyShopChecks({ page, pass, snap, elapsed, reset });
 }

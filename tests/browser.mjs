@@ -129,7 +129,7 @@ try {
   assert.equal(state.selectedTargetId, null);
   assert.equal(state.player.cooldown, 0);
   samePosition(state, spawn);
-  assert.match(await page.locator('#message').innerText(), /No enemy in attack range/);
+  assert.equal(await page.locator('#message').count(), 0, 'Routine attack/status banner removed; simulation rejection still checked above');
   await clickDummy('dummy-a');
   await elapsed(0.05);
   state = await snap();

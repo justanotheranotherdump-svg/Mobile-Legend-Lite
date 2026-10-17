@@ -8,18 +8,6 @@ import { PlaceholderPanels } from "./panels.js";
 import { CombatNotifications } from "./combat-notifications.js";
 import { Joystick } from "../input/joystick.js";
 import { distanceTo, inAttackRange } from "../simulation/targeting.js";
-const messages = {
-  ready: "WASD / joystick to move · Click ground or Space to attack.",
-  range:
-    "No enemy in attack range — move with WASD or joystick. No automatic chasing.",
-  cooldown: "Attack cooling down. Wait for Ready, then click again.",
-  dead: "That dummy is defeated. A living target will be chosen if one is in range.",
-  "invalid-target": "That target is not eligible. Choose a living enemy.",
-  "no-enemies":
-    "All training dummies defeated. Reset the arena to train again.",
-  hit: "Hit confirmed",
-};
-
 export class Hud {
   constructor(simulation, onReset, onModeChange, controls) {
     mountLayout(document.querySelector("#hud-root"));
@@ -97,7 +85,7 @@ export class Hud {
     element.style.top = `${point.y}px`;
   }
   update(state, view) {
-    const { player, enemies, hits, lastAttack, selectedTarget: target } = state;
+    const { player, enemies, hits, selectedTarget: target } = state;
     const e = this.elements;
     e["target-mode"].value = state.targetMode;
     e["clear-target"].disabled = !state.manualTargetId;
@@ -138,17 +126,6 @@ export class Hud {
     this.notifications.update(state.time);
     e["match-timer"].textContent =
       `${String(Math.floor(state.time / 60)).padStart(2, "0")}:${String(Math.floor(state.time % 60)).padStart(2, "0")}`;
-    const hitTarget = enemies.find((enemy) => enemy.id === lastAttack.targetId);
-    e.message.textContent =
-      lastAttack.reason === "hit"
-        ? `Hit ${hitTarget?.name ?? "enemy"} · ${player.damage} damage`
-        : messages[lastAttack.reason];
-    if (lastAttack.reason === "ready")
-      e.message.textContent = `WASD / joystick to move · Click ground${this.bindings.codeFor("attack") ? ` or ${this.bindings.labelFor("attack")}` : " or Attack"} to attack.`;
-    e.message.classList.toggle(
-      "warn",
-      ["range", "cooldown", "invalid-target"].includes(lastAttack.reason),
-    );
     for (const enemy of enemies) {
       const { label, bar, hp } = this.labels.get(enemy.id);
       hp.textContent = `${enemy.hp} / ${enemy.maxHp}`;

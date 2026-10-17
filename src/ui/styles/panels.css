@@ -32,43 +32,6 @@
   color: #afc5ce;
   margin: 0 0 20px;
 }
-.shop-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
-.shop-card {
-  padding: 18px 8px;
-  text-align: center;
-  background: #0b2130;
-  border: 1px solid #71939a44;
-  border-radius: 6px;
-}
-.shop-card > .icon {
-  height: 40px;
-  width: 40px;
-  color: #7ba6ad;
-  margin-bottom: 12px;
-}
-.shop-card strong {
-  display: block;
-  font-size: 12px;
-  font-weight: 500;
-  color: #d7d6c2;
-}
-.shop-card span {
-  font-size: 7px;
-  letter-spacing: 1.5px;
-  color: #c5ae82;
-  display: block;
-  margin-top: 7px;
-}
-.dialog-note {
-  padding-top: 20px;
-  font-size: 11px;
-  text-align: center;
-  color: #a2b5bb;
-}
 .setting-row {
   display: flex;
   align-items: center;
@@ -123,9 +86,6 @@
   }
   .controls-help {
     margin-bottom: 12px;
-  }
-  .shop-card {
-    padding: 12px 8px;
   }
   .hud-dialog p {
     margin-bottom: 12px;
