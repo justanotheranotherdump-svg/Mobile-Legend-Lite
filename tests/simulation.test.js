@@ -1,3 +1,4 @@
+import { heroRegistry } from './helpers/heroes.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -65,7 +66,7 @@ test('collision permits sliding along an obstacle and handles rounded corners', 
 });
 
 test('living dummy blocks movement; dead dummy does not', () => {
-  const sim = new TrainingSimulation(empty, config);
+  const sim = new TrainingSimulation(empty, config, heroRegistry);
   sim.player.x = sim.enemies[0].x - 2;
   sim.player.z = sim.enemies[0].z;
   for (let i = 0; i < 60; i++) moveEntity(sim.player, { x: 1, z: 0 }, 1 / 60, empty, [sim.enemies[0]]);
@@ -77,7 +78,7 @@ test('living dummy blocks movement; dead dummy does not', () => {
 });
 
 test('attack rejects invalid target and out-of-range dummy without consuming cooldown', () => {
-  const sim = new TrainingSimulation(arena, config);
+  const sim = new TrainingSimulation(arena, config, heroRegistry);
   assert.equal(sim.attack('missing-id'), 'invalid-target');
   assert.equal(sim.attack(), 'range');
   assert.equal(sim.attack('dummy-a'), 'range');
@@ -86,7 +87,7 @@ test('attack rejects invalid target and out-of-range dummy without consuming coo
 });
 
 test('attack accepts exact range, rejects beyond it, and enforces cooldown', () => {
-  const sim = new TrainingSimulation(arena, config);
+  const sim = new TrainingSimulation(arena, config, heroRegistry);
   sim.player.x = sim.enemies[0].x - sim.player.range - 0.001;
   sim.player.z = sim.enemies[0].z;
   assert.equal(sim.attack('dummy-a'), 'range');
@@ -101,7 +102,7 @@ test('attack accepts exact range, rejects beyond it, and enforces cooldown', () 
 });
 
 test('dummy death clamps health, rejects attacks, and reset restores all match state', () => {
-  const sim = new TrainingSimulation(arena, config);
+  const sim = new TrainingSimulation(arena, config, heroRegistry);
   sim.player.x = sim.enemies[0].x - 2;
   sim.player.z = sim.enemies[0].z;
   for (let i = 0; i < 8; i++) { assert.equal(sim.attack('dummy-a'), 'hit'); sim.update(0.65); }
@@ -109,7 +110,7 @@ test('dummy death clamps health, rejects attacks, and reset restores all match s
   assert.equal(sim.hits, 8);
   assert.equal(sim.attack('dummy-a'), 'dead');
   sim.reset();
-  assert.deepEqual(sim.snapshot(), new TrainingSimulation(arena, config).snapshot());
+  assert.deepEqual(sim.snapshot(), new TrainingSimulation(arena, config, heroRegistry).snapshot());
   const snapshot = sim.snapshot();
   snapshot.player.hp = 0;
   assert.equal(sim.player.hp, 100, 'diagnostics cannot mutate gameplay');

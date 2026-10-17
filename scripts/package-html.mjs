@@ -30,6 +30,6 @@ await writeFile('dist/index.html', html);
 await rm('dist/dev.html');
 await rm('dist/assets', { recursive: true, force: true });
 await mkdir('deliverables', { recursive: true });
-await writeFile('deliverables/MOBA-Lab-Phase-1.1.html', html);
+await writeFile('deliverables/MOBA-Lab-Phase-2.html', html);
 console.log(`Standalone HTML generated: ${(Buffer.byteLength(html) / 1024).toFixed(0)} KiB`);
 await import('./check-offline.mjs');

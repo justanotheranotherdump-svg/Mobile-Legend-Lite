@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   base: './',
+  assetsInclude: ['**/*.glb'],
   // The repository index.html is the committed offline game. During development,
   // serve the editable template instead so HMR never uses a stale built bundle.
   plugins: [{

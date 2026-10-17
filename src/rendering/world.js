@@ -1,9 +1,9 @@
 import * as THREE from 'three';
 
 // A presentation adapter. All meshes below are TEMPORARY test geometry.
-// Future GLB assets replace makeHero/makeDummy, never the simulation entities.
+// Hero visuals are injected; model replacement never changes simulation entities.
 export class WorldView {
-  constructor(canvas, arena, enemies) {
+  constructor(canvas, arena, enemies, heroVisual) {
     this.canvas = canvas;
     this.renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
@@ -33,7 +33,9 @@ export class WorldView {
     sunlight.shadow.bias = -0.0002;
     this.scene.add(sunlight);
     this.makeArena(arena);
-    this.hero = this.makeHero();
+    this.heroVisual = heroVisual;
+    this.hero = heroVisual.root;
+    this.scene.add(this.hero);
     this.dummies = new Map(enemies.map(enemy => {
       const model = this.makeDummy();
       model.userData.enemyId = enemy.id;
@@ -116,20 +118,6 @@ export class WorldView {
     this.scene.add(originSmall);
   }
 
-  makeHero() {
-    const group = new THREE.Group();
-    const body = this.mesh(new THREE.CapsuleGeometry(0.34, 0.65, 4, 10), this.material('#74c9bc', { metalness: 0.12 }), 0, 0.91, 0);
-    group.add(body);
-    group.add(this.mesh(new THREE.CylinderGeometry(0.46, 0.51, 0.15, 16), this.material('#233e46'), 0, 0.1, 0));
-    const facing = this.mesh(new THREE.ConeGeometry(0.14, 0.38, 3), this.material('#d0f4d9'), 0, 0.65, 0.52);
-    facing.rotation.x = Math.PI / 2;
-    group.add(facing);
-    const ring = this.circle(0.56, '#8debd1', 0.95);
-    group.add(ring);
-    this.scene.add(group);
-    return group;
-  }
-
   makeDummy() {
     const group = new THREE.Group();
     group.add(this.mesh(new THREE.CylinderGeometry(0.65, 0.72, 0.18, 16), this.material('#745e51'), 0, 0.1, 0));
@@ -210,7 +198,7 @@ export class WorldView {
     this.aimMarker.visible = Boolean(this.aim);
     if (state.lastAttack.serial !== this.lastHitSerial) {
       this.lastHitSerial = state.lastAttack.serial;
-      if (state.lastAttack.reason === 'hit') { this.beamUntil = state.time + 0.14; this.beamTargetId = state.lastAttack.targetId; }
+      if (state.lastAttack.reason === 'hit') { this.beamUntil = state.time + 0.14; this.beamTargetId = state.lastAttack.targetId; this.heroVisual.play('basicAttack', true); }
     }
     this.beam.visible = state.time < this.beamUntil;
     if (this.beam.visible) {
@@ -221,6 +209,9 @@ export class WorldView {
       positions.needsUpdate = true;
       this.beam.geometry.computeBoundingSphere();
     }
+    this.heroVisual.update(Math.max(0, Math.min(state.time - (this.lastVisualTime ?? state.time), 0.1)),
+      Math.hypot(player.x - (this.lastPlayerX ?? player.x), player.z - (this.lastPlayerZ ?? player.z)) > 0.0001 ? 'move' : 'idle');
+    this.lastVisualTime = state.time; this.lastPlayerX = player.x; this.lastPlayerZ = player.z;
     this.renderer.render(this.scene, this.camera);
   }
 }

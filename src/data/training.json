@@ -1,9 +1,45 @@
 {
-  "targeting": { "defaultMode": "nearest" },
-  "player": { "x": -5, "z": 5, "radius": 0.45, "speed": 5.5, "maxHp": 100, "range": 6, "attackCooldown": 0.65, "damage": 25 },
+  "targeting": {
+    "defaultMode": "nearest"
+  },
+  "player": {
+    "heroId": "training",
+    "x": -5,
+    "z": 5
+  },
   "dummies": [
-    { "id": "dummy-a", "name": "A · Sentinel", "team": "enemy", "targetable": true, "x": 0, "z": 0, "radius": 0.65, "hp": 200, "maxHp": 200 },
-    { "id": "dummy-b", "name": "B · Wounded", "team": "enemy", "targetable": true, "x": 3, "z": 1, "radius": 0.65, "hp": 90, "maxHp": 120 },
-    { "id": "dummy-c", "name": "C · Bulwark", "team": "enemy", "targetable": true, "x": 2, "z": -3, "radius": 0.65, "hp": 120, "maxHp": 400 }
+    {
+      "id": "dummy-a",
+      "name": "A \u00b7 Sentinel",
+      "team": "enemy",
+      "targetable": true,
+      "x": 0,
+      "z": 0,
+      "radius": 0.65,
+      "hp": 200,
+      "maxHp": 200
+    },
+    {
+      "id": "dummy-b",
+      "name": "B \u00b7 Wounded",
+      "team": "enemy",
+      "targetable": true,
+      "x": 3,
+      "z": 1,
+      "radius": 0.65,
+      "hp": 90,
+      "maxHp": 120
+    },
+    {
+      "id": "dummy-c",
+      "name": "C \u00b7 Bulwark",
+      "team": "enemy",
+      "targetable": true,
+      "x": 2,
+      "z": -3,
+      "radius": 0.65,
+      "hp": 120,
+      "maxHp": 400
+    }
   ]
 }

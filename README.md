@@ -1,17 +1,17 @@
-# MOBA Lab — Phase 1.1: Smart Targeting
+# MOBA Lab — Phase 2: Modular Hero Architecture
 
-A genuinely 3D training sandbox using Three.js and Vite. Phase 1 was approved; **Phase 1.1 targeting is ready for user review. No Phase 2 features are implemented.** Read [PROJECT_RULES.md](PROJECT_RULES.md) before future work.
+A genuinely 3D training sandbox using Three.js and Vite. **Phase 2 is the approved architecture-only refactor:** gameplay remains the working Phase 1.1 foundation/targeting. No new heroes, abilities or modes were added. Read [PROJECT_RULES.md](PROJECT_RULES.md) before future work.
 
 ## Play offline on Windows
 
-Extract this branch's source ZIP and double-click the root **`index.html`**. That file is the complete game, not a development template. Alternatively download **`deliverables/MOBA-Lab-Phase-1.1.html`**, which has identical contents. Either HTML can be copied alone to an empty folder.
+Extract this branch's source ZIP and double-click the root **`index.html`**. That file is the complete game, not a development template. Alternatively download **`deliverables/MOBA-Lab-Phase-2.html`**, which has identical contents. Either HTML can be copied alone to an empty folder.
 
 1. Disconnect networking.
 2. Double-click the HTML. If needed, choose **Open with → Chrome or Edge**.
 3. Confirm it opens as `file:///…/index.html` (or the named standalone file).
 4. Click the arena if necessary to focus movement controls.
 
-No server, Node.js, npm, sibling assets, or internet is needed to play. Requires a modern browser with **WebGL2**/graphics acceleration. Linux Chromium 153 offline file:// tests passed; Windows-specific verification remains manual. See [docs/PHASE_1_1.md](docs/PHASE_1_1.md).
+No server, Node.js, npm, sibling assets, or internet is needed to play. Requires a modern browser with **WebGL2**/graphics acceleration. Linux Chromium 153 offline file:// tests passed; Windows-specific verification remains manual. See [docs/PHASE_2_ARCHITECTURE_REPORT.md](docs/PHASE_2_ARCHITECTURE_REPORT.md).
 
 ## Controls
 
@@ -59,11 +59,12 @@ Used Node **22.22.3**, npm **10.9.8**, Vite **7.3.7**, Three.js **0.186.1**. Mod
 ```bash
 npm ci
 npm run dev -- --port 5173
-npm test                   # 34 unit tests including all 11 foundation regressions
+npm test                   # 72 unit tests, retaining all 34 baseline regressions
+npm run validate:heroes    # Schema/reference/embedded-model validation
 npm run build              # Build and validate the standalone game
 npm run validate:offline
 npm run package:source     # Rebuild then archive (zip CLI required)
-npm run test:browser        # 23 offline browser checks; requires source ZIP above
+npm run test:browser        # 24 offline browser checks; requires source ZIP above
 npm run preview -- --port 4173
 ```
 
@@ -73,9 +74,13 @@ Browser tests use development-only `playwright-core`, npm-packaged Linux Chromiu
 
 ## Files and packaging
 
+- `src/heroes/training/`: exact existing hero stats, empty abilities/clip mappings and unchanged placeholder.
+- `src/heroes/registry.js` / `catalog.js`: validated immutable registry and eager Vite auto-discovery.
+- `src/rendering/heroes/hero-visual.js`: presentation-only adapter, embedded-GLB parsing, verified clip playback/fallback.
+- `src/simulation/effects.js`: allowlisted shared damage implementation; no executable JSON.
 - `src/simulation/targeting.js`: pure eligibility, mode scoring, in-range filtering, deterministic tie-breaking.
 - `src/simulation/game.js`: mesh-independent state, movement integration, manual pin lifecycle, validated attacks/reset.
-- `src/data/training.json`: default mode, player configuration, dummy IDs/positions/HP.
+- `src/data/training.json`: scenario hero ID/spawn, default mode, dummy IDs/positions/HP. Hero stats are no longer duplicated here.
 - `src/input/`: keyboard/pointer and safe UI-focus handling.
 - `src/rendering/world.js`: replaceable temporary visuals, camera, ray picking, selected ring and hit feedback.
 - `src/ui/`: functional selector/clear-lock/attack/reset controls and state-driven HP displays.
@@ -86,12 +91,12 @@ Vite builds `dev.html`; packaging embeds its JS, CSS, Three.js and JSON, includi
 
 - **`index.html`** — deliberately committed so GitHub source ZIPs play directly.
 - `dist/index.html` — the only file in dist.
-- `deliverables/MOBA-Lab-Phase-1.1.html` — named download (~550 KiB).
+- `deliverables/MOBA-Lab-Phase-2.html` — named download (~668 KiB).
 
-No CDN, external font, model, texture, fetched JSON, service worker, decoder, or remote API is required. The >500 kB Vite chunk warning is expected because Three.js must be embedded. Future GLBs/audio/textures must also be embedded with validated in-memory loaders; they are not implemented here.
+No CDN, external font, external model/texture/data file, fetched JSON, service worker, decoder, or remote API is required. The >500 kB Vite chunk warning is expected because Three.js must be embedded. Hero GLBs are prepared for eager inline bundling and in-memory parsing; external GLB resources/decoders are rejected. No genuine character GLBs exist yet. Future audio/other asset types require their own approved embedding workflow.
 
-Root `index.html` is the intentional generated-artifact exception: rebuild and commit it with runtime changes. Duplicate downloads/dist, dependencies, caches and screenshots stay ignored. The source ZIP contains root index, editable source, lockfile, tests, and docs—but **no reference screenshots/notes**. Future asset conventions remain `public/assets/models/`, `public/assets/textures/`, `assets/source_blender/`; empty directories may be absent from Git until genuine assets exist.
+Root `index.html` is the intentional generated-artifact exception: rebuild and commit it with runtime changes. Duplicate downloads/dist, dependencies, caches and screenshots stay ignored. The source ZIP contains root index, editable source, lockfile, tests, and docs—but **no reference screenshots/notes**. Per this architecture milestone, hero runtime models belong to `src/heroes/<id>/assets/*.glb`, alongside hero-owned JSON and animation mappings. Legacy public model/texture paths remain reserved for other world assets; editable Blender sources remain `assets/source_blender/`. Empty directories may be absent until genuine assets exist.
 
 Add `#diagnostics` to a game URL only for the read-only state snapshot/projection API used by tests; it cannot mutate gameplay. No persistent match/progression save system is included.
 
-Detailed per-test evidence and Windows checklist: [docs/PHASE_1_1.md](docs/PHASE_1_1.md). Earlier Phase 1 reports remain historical evidence, not the current three-dummy specification. Stop here for approval before further milestones.
+Detailed per-test evidence and Windows checklist: [docs/PHASE_2_ARCHITECTURE_REPORT.md](docs/PHASE_2_ARCHITECTURE_REPORT.md). The [hero architecture guide](docs/HERO_ARCHITECTURE.md) explains schema, discovery, model replacement and adding a future approved hero. Earlier reports remain historical evidence. Stop here for approval before additional gameplay.

@@ -1,3 +1,4 @@
+import { heroRegistry } from './helpers/heroes.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -6,7 +7,7 @@ import { TARGET_MODES, isEligibleEnemy, selectAutomaticTarget } from '../src/sim
 const config = JSON.parse(readFileSync(new URL('../src/data/training.json', import.meta.url)));
 const arena = { halfSize: 100, obstacles: [] };
 function setup() {
-  const sim = new TrainingSimulation(arena, config);
+  const sim = new TrainingSimulation(arena, config, heroRegistry);
   Object.assign(sim.player, { x: -1.5, z: 1.5 });
   sim.refreshTarget();
   return sim;
@@ -164,7 +165,7 @@ test('reset restores configured HP/max HP, all player and target state, and defa
   sim.attack('dummy-b');
   sim.player.hp = 50;
   sim.reset();
-  assert.deepEqual(sim.snapshot(), new TrainingSimulation(arena, config).snapshot());
+  assert.deepEqual(sim.snapshot(), new TrainingSimulation(arena, config, heroRegistry).snapshot());
   assert.deepEqual(sim.enemies.map(enemy => [enemy.hp, enemy.maxHp]), [[200, 200], [90, 120], [120, 400]]);
 });
 
@@ -172,7 +173,7 @@ test('default mode is configurable; unsupported modes fail without corrupting se
   const custom = structuredClone(config);
   custom.targeting.defaultMode = 'hp-percent';
   custom.player.x = -1.5; custom.player.z = 1.5;
-  const sim = new TrainingSimulation(arena, custom);
+  const sim = new TrainingSimulation(arena, custom, heroRegistry);
   assert.equal(sim.selectedTargetId, 'dummy-c');
   assert.throws(() => sim.setTargetMode('not-a-mode'), /Unknown targeting mode/);
   assert.equal(sim.targetMode, 'hp-percent');

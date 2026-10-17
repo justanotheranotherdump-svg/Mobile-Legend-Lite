@@ -1,16 +1,19 @@
+import { createHeroState } from '../heroes/registry.js';
+import { executeEffect } from './effects.js';
 import { cameraRelativeDirection, moveEntity } from './movement.js';
 import { inAttackRange, isEligibleEnemy, selectAutomaticTarget, validateTargetMode } from './targeting.js';
 
 export class TrainingSimulation {
-  constructor(arena, config) {
+  constructor(arena, config, heroRegistry) {
     this.arena = arena;
     this.config = config;
+    this.hero = heroRegistry.get(config.player.heroId);
     this.reset();
   }
 
   reset() {
     this.time = 0;
-    this.player = { ...this.config.player, hp: this.config.player.maxHp, cooldown: 0 };
+    this.player = createHeroState(this.hero, this.config.player);
     this.enemies = this.config.dummies.map(dummy => ({ ...dummy }));
     this.targetMode = this.config.targeting.defaultMode;
     validateTargetMode(this.targetMode);
@@ -68,7 +71,7 @@ export class TrainingSimulation {
     if (!reason && !inAttackRange(this.player, target)) reason = 'range';
     if (!reason && this.player.cooldown > 1e-8) reason = 'cooldown';
     if (!reason) {
-      target.hp = Math.max(0, target.hp - this.player.damage);
+      executeEffect(this.hero.basicAttack.effectId, { source: this.player, target }, { damage: this.player.damage });
       this.player.cooldown = this.player.attackCooldown;
       this.hits++;
       reason = 'hit';

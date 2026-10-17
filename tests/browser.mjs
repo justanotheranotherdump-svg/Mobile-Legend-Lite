@@ -81,7 +81,7 @@ try {
   const ready = async () => { await page.waitForFunction(() => window.foundationDiagnostics.snapshot().player.cooldown === 0); };
   const samePosition = (a, b) => assert.deepEqual([a.player.x, a.player.z], [b.player.x, b.player.z]);
 
-  await page.goto(pathToFileURL(resolve('deliverables/MOBA-Lab-Phase-1.1.html')).href + '#diagnostics');
+  await page.goto(pathToFileURL(resolve('deliverables/MOBA-Lab-Phase-2.html')).href + '#diagnostics');
   await page.waitForFunction(() => window.foundationDiagnostics && window.foundationDiagnostics.snapshot().time > 0.05);
   assert.ok(await page.locator('#error').isHidden());
   const gpu = await page.evaluate(() => {
@@ -99,6 +99,17 @@ try {
   assert.equal(layout.header, 'absolute');
   assert.deepEqual(layout.canvas, { width: 1440, height: 900 });
   pass('inline CSS is applied: dark background, positioned HUD, full-viewport canvas (unstyled-page regression)');
+  const hero = await page.evaluate(() => window.foundationDiagnostics.hero());
+  assert.deepEqual(hero.registeredIds, ['training']);
+  assert.equal(hero.id, 'training');
+  assert.equal(hero.modelStatus, 'placeholder');
+  assert.equal(hero.definition.name, 'Test hero');
+  assert.deepEqual(hero.definition.abilities, []);
+  assert.deepEqual(hero.definition.animations.clips, {});
+  assert.deepEqual(hero.definition.baseStats, { maxHp: 100, movementSpeed: 5.5, collisionRadius: 0.45 });
+  assert.match(await page.locator('.hero-title').innerText(), /Test hero/);
+  assert.match(await page.locator('.attack-panel small').innerText(), /25 damage/);
+  pass('eager bundled hero registry drives exact existing stats/HUD and honest placeholder/empty clips');
   await page.screenshot({ path: 'artifacts/arena-initial.png' });
 
   let state = await snap();
@@ -327,7 +338,7 @@ try {
   // Isolate the ZIP's index.html in a folder with spaces/Unicode and no siblings.
   const isolated = join(await mkdtemp(join(tmpdir(), 'moba-source-')), 'Windows download — offline');
   await mkdir(isolated);
-  const archivedIndex = execFileSync('unzip', ['-p', 'deliverables/MOBA-Lab-Phase-1.1-source.zip', 'index.html'], { maxBuffer: 4 * 1024 * 1024 });
+  const archivedIndex = execFileSync('unzip', ['-p', 'deliverables/MOBA-Lab-Phase-2-source.zip', 'index.html'], { maxBuffer: 4 * 1024 * 1024 });
   assert.ok(archivedIndex.equals(await readFile('index.html')), 'ZIP must include the current playable root index');
   await writeFile(join(isolated, 'index.html'), archivedIndex);
   for (const [entry, label] of [[resolve('index.html'), 'repository root index.html'], [join(isolated, 'index.html'), 'source-ZIP index.html isolated without sibling files (spaces/Unicode path)']]) {
@@ -364,7 +375,17 @@ try {
     assert.ok(await devPage.locator('script[src^="/src/main.js"]').count(), 'Dev root must serve editable template, not stale standalone bundle');
     assert.ok(await devPage.locator('#error').isHidden());
     assert.deepEqual(devErrors, []);
-    developmentPreview = { passed: true, errors: devErrors };
+    const invalidPage = await devContext.newPage();
+    const invalidDefinition = structuredClone(hero.definition);
+    // Serve only schema fields, then inject a bad value. Page routing is test-only;
+    // no workspace configuration or gameplay is changed for this negative test.
+    delete invalidDefinition.abilities; delete invalidDefinition.animations; delete invalidDefinition.presentation;
+    invalidDefinition.baseStats.maxHp = -1;
+    await invalidPage.route('**/src/heroes/training/hero.json*', route => route.fulfill({ contentType: 'application/javascript', body: `export default ${JSON.stringify(invalidDefinition)}` }));
+    await invalidPage.goto(process.env.DEV_TEST_URL + '/');
+    await invalidPage.locator('#error').waitFor({ state: 'visible' });
+    assert.match(await invalidPage.locator('#error').innerText(), /training\/hero.json.baseStats.maxHp/);
+    developmentPreview = { passed: true, errors: devErrors, invalidHeroDataBanner: 'passed' };
     console.log('PASS: separate Vite preview smoke check — root serves source template and WebGL initializes');
     // Leave both contexts to browser.close() below. Closing an individual
     // context can terminate the single-process Chromium container build.
