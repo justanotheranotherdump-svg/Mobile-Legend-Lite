@@ -8,6 +8,12 @@ const paths = {
   coin: '<path d="m12 2 9 5v10l-9 5-9-5V7Z M15 8h-4a2 2 0 0 0 0 4h2a2 2 0 0 1 0 4H9 M12 6v12"/>',
   sword:
     '<path d="m7 16 2-6L20 2l-2 11-6 4 M5 13l7 7 M8 17l-5 5 M3 19l2 3 M10 14l8-9"/>',
+  strike:
+    '<g stroke="none"><path d="m12 1 6 6-4 5v8l-4 3V12L6 7Z" fill="currentColor"/><path d="m2 6 7 5v6L2 11Z M22 6l-7 5v6l7-6Z" fill="#78c9ed"/><path d="m12 1 2 8-2 3-2-3Z" fill="#e7fcff"/><path d="m10 14 4-2v2l-4 2Z" fill="#286b9d"/></g>',
+  "minion-crest":
+    '<g stroke="none"><path d="m4 9 4-6 4 2 4-2 4 6v8l-8 6-8-6Z" fill="#b7c6c9"/><path d="m5 10 7-4 7 4-2 9-5 3-5-3Z" fill="#4c7086"/><path d="m5 11 7 2 7-2-2 5-5 2-5-2Z" fill="#132b42"/><path d="m7 12 3 1v2l-3-1Z M17 12l-3 1v2l3-1Z" fill="#bfe8ec"/><path d="m12 6 2 3-2 2-2-2Z" fill="#e4c590"/></g>',
+  "tower-crest":
+    '<g stroke="none"><path d="M4 2h4v4h2V2h4v4h2V2h4v8l-3 2v7l3 2v2H4v-2l3-2v-7l-3-2Z" fill="#b7c6c9"/><path d="M8 10h8v10H8Z" fill="#50778a"/><path d="m12 8 3 3-3 3-3-3Z" fill="#e4c590"/><path d="M11 16h2v5h-2Z" fill="#152d43"/><path d="M6 8h12v2H6Z" fill="#d5e9e6"/></g>',
   arc: '<path d="M3 18C4 7 10 3 21 3 17 8 13 14 3 18Z M3 18l13-9 M9 21l3-4"/>',
   spark: '<path d="m14 2-9 12h6l-1 8 9-13h-6Z M3 4l2 2 M20 18l2 2"/>',
   shield:

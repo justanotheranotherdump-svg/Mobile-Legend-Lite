@@ -219,3 +219,48 @@ test("notification queue dismisses, bounds backlog, prioritizes prominent events
   assert.equal(queue.update(4), null);
   assert.deepEqual(queue.items, []);
 });
+
+test("default skill HUD has exactly first/second/ultimate slots on top-row Digit1/2/3", async () => {
+  const { SKILL_SLOTS } = await import("../src/ui/skill-controls.js");
+  assert.deepEqual(
+    SKILL_SLOTS.map((s) => [s.id, s.code]),
+    [
+      ["skill-1", "Digit1"],
+      ["skill-2", "Digit2"],
+      ["skill-ultimate", "Digit3"],
+    ],
+  );
+  assert.ok(Object.isFrozen(SKILL_SLOTS));
+  assert.ok(SKILL_SLOTS.every(Object.isFrozen));
+});
+test("skill shortcuts explicitly exclude numpad, F keys and old Q/E/R", async () => {
+  const { skillSlotForCode } = await import("../src/ui/skill-controls.js");
+  assert.equal(skillSlotForCode("Digit3").label, "Ultimate");
+  for (const code of [
+    "Numpad1",
+    "Numpad2",
+    "Numpad3",
+    "KeyQ",
+    "KeyE",
+    "KeyR",
+    "F1",
+    "Digit4",
+  ])
+    assert.equal(skillSlotForCode(code), null);
+});
+test("reserved skill requests never cast; a future enabled binding shares native button activation", async () => {
+  const { requestSkillButton } = await import("../src/ui/skill-controls.js");
+  let count = 0;
+  const button = {
+    disabled: true,
+    click() {
+      count++;
+    },
+  };
+  assert.equal(requestSkillButton(button), false);
+  assert.equal(count, 0);
+  assert.equal(requestSkillButton(null), false);
+  button.disabled = false;
+  assert.equal(requestSkillButton(button), true);
+  assert.equal(count, 1);
+});

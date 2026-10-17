@@ -28,8 +28,9 @@ export class TargetingControls {
       button.dataset.category = category.id;
       button.title = `${category.label} reserved — no ${category.id} units implemented`;
       button.setAttribute("aria-label", button.title);
-      button.innerHTML = icon(category.id);
+      button.innerHTML = icon(`${category.id}-crest`);
       const label = document.createElement("span");
+      label.className = "category-label";
       label.textContent = category.id.toUpperCase();
       button.append(label);
       e["target-categories"].append(button);

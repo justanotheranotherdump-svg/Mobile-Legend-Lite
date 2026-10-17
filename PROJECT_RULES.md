@@ -40,7 +40,7 @@ Preferred stack: Three.js, Vite, JavaScript ES modules, JSON hero/ability/item d
 
 Keep movement, collision, combat, targeting, NPC AI, map/navigation, hero stats, skills, equipment, match state, UI, persistence, and rendering separated. Meshes and animation must not own gameplay rules. NPCs and players should use shared action validation. Keyboard and clickable skills must invoke the same gameplay actions.
 
-Controls: WASD movement plus an optional virtual joystick authorized in Phase 3; mouse ground aiming/target selection; left mouse basic attack or target confirmation; Q/E active skills; R ultimate; F battle spell; B recall. Respect world collisions and correctly map mouse coordinates onto the 3D ground. Use an elevated/isometric camera. Final combat UI includes functional clickable skills.
+Controls: WASD movement plus an optional virtual joystick authorized in Phase 3; mouse ground aiming/target selection; left mouse basic attack or target confirmation; top-row 1 first skill, 2 second skill, 3 ultimate (Digit1/2/3, not numpad or F keys; current slots remain reserved); F battle spell; B recall. Respect world collisions and correctly map mouse coordinates onto the 3D ground. Use an elevated/isometric camera. Final combat UI includes functional clickable skills.
 
 ## Genuine 3D assets required
 
@@ -109,3 +109,8 @@ Approved: original landscape MOBA-style HUD inspired by conversation screenshots
 Publish genuine lethal-transition/reset combat events without changing formulas or state snapshots. Training dummy eliminations are labeled as such, not fabricated hero kills/team scores. Prepare player/ally kill/death announcement rendering without injecting events when those actors/systems do not exist. Use brief queued notices, truthful cooldown/HP feedback and separate maintainable UI modules. No proprietary icons or reference uploads in Git/ZIP; local original SVG geometry only. Do not generate character models or animations. Preserve the Phase 2 hero files/registry.
 
 Phase 3 download names: MOBA-Lab-Phase-3.html and MOBA-Lab-Phase-3-source.zip; rebuild committed root index.html. Test the actual offline file and isolated source-ZIP index, input/focus/capture, reset, smart targeting and multiple landscape sizes. Report Windows/native touch and absent-feature limitations honestly. See docs/PHASE_3_HUD_REPORT.md. Stop for user approval before subsequent gameplay/model milestones.
+
+
+## Phase 3 HUD refinement — current approved correction
+
+The user approved a narrow HUD tweak: original MOBA-style attack/minion/tower button art/arrangement; **exactly three skill buttons total** (first, second, ultimate); top-row **1/2/3**, near the F-key row, not Numpad1/2/3 or F1/F2/F3. This supersedes prior Q/E/R bindings and the initial four-slot HUD specification. Reduce Recall/Regen/battle-spell size slightly. Keep all gameplay, movement, smart targeting, attack validation, cooldowns/reset and hero configuration unchanged. Skill shortcut routing must share clickable button activation when genuinely available, but current skills/categories/utilities remain explicitly reserved and cannot cast or create nonexistent systems. Use original bundled vector artwork; do not copy the supplied reference assets. Stop after testing/rebuilding the current Phase 3 HTML/source ZIP for review.

@@ -1,3 +1,4 @@
+import { SkillControls } from "./skill-controls.js";
 import { mountLayout } from "./layout.js";
 import { Minimap } from "./minimap.js";
 import { TargetingControls } from "./targeting-controls.js";
@@ -33,6 +34,7 @@ export class Hud {
     document.querySelector(".hero-title").firstChild.textContent =
       `${simulation.hero.name} `;
     this.minimap = new Minimap(e.minimap, simulation.arena, simulation.enemies);
+    this.skills = new SkillControls(document.querySelector("#hud-root"));
     this.targeting = new TargetingControls(e, simulation, onModeChange);
     this.cooldowns = new CooldownDisplay(e, simulation.player);
     this.joystick = new Joystick(e.joystick, controls);

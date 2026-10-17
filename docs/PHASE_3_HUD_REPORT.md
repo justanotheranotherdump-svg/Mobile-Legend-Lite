@@ -1,5 +1,7 @@
 # Phase 3 — MOBA HUD, controls and combat notifications
 
+> Historical initial delivery. The later approved [HUD refinement](PHASE_3_HUD_REFINEMENT.md) supersedes the four-slot/Q-E-R interface below with **three total skill slots on top-row 1/2/3** and revised combat-button artwork. Test counts below describe that original delivery.
+
 Date: 2026-10-17. Baseline commit: `0128b3f` (completed Phase 2). Scope: UI/control milestone only; approval required before any subsequent milestone.
 
 ## Delivered interface

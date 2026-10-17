@@ -234,10 +234,9 @@ export async function runHudChecks({
   assert.ok(await page.locator("#shop-dialog").isHidden());
   assert.equal((await snap()).lastAttack.serial, beforeShop.lastAttack.serial);
   for (const selector of [
-    "#skill-q",
-    "#skill-e",
-    "#skill-third",
-    "#skill-r",
+    "#skill-1",
+    "#skill-2",
+    "#skill-ultimate",
     "#recall",
     "#regen",
     "#battle-spell",
@@ -254,6 +253,71 @@ export async function runHudChecks({
   assert.match(await page.locator(".gold").innerText(), /—/);
   pass(
     "shop is a keyboard-accessible inert placeholder; skills/spells/equipment/minion/tower controls are honestly disabled",
+  );
+
+  assert.equal(await page.locator(".skill-slots button").count(), 3);
+  assert.deepEqual(
+    await page.locator(".skill-slots .slot-key").allTextContents(),
+    ["1", "2", "3"],
+  );
+  assert.deepEqual(
+    await page
+      .locator(".skill-slots button")
+      .evaluateAll((nodes) => nodes.map((n) => n.dataset.keyCode)),
+    ["Digit1", "Digit2", "Digit3"],
+  );
+  await reset();
+  await page.locator("#world").focus();
+  const beforeSkillKeys = await snap();
+  await page.evaluate(() => {
+    window.__skillKeyTrace = [];
+    window.addEventListener("keydown", (event) =>
+      window.__skillKeyTrace.push([event.code, event.defaultPrevented]),
+    );
+  });
+  for (const key of [
+    "1",
+    "2",
+    "3",
+    "Numpad1",
+    "Numpad2",
+    "Numpad3",
+    "q",
+    "e",
+    "r",
+  ])
+    await page.keyboard.press(key);
+  await page.locator("#world").evaluate((canvas) => {
+    for (const modifier of ["ctrlKey", "altKey", "metaKey"])
+      canvas.dispatchEvent(
+        new KeyboardEvent("keydown", {
+          code: "Digit1",
+          [modifier]: true,
+          bubbles: true,
+          cancelable: true,
+        }),
+      );
+  });
+  const keyTrace = await page.evaluate(() => window.__skillKeyTrace);
+  assert.deepEqual(keyTrace.slice(0, 3), [
+    ["Digit1", true],
+    ["Digit2", true],
+    ["Digit3", true],
+  ]);
+  assert.ok(keyTrace.slice(3).every(([, handled]) => !handled));
+  assert.equal(
+    (await snap()).lastAttack.serial,
+    beforeSkillKeys.lastAttack.serial,
+  );
+  assert.equal((await snap()).hits, beforeSkillKeys.hits);
+  assert.deepEqual(
+    (await snap()).enemies.map((e) => e.hp),
+    beforeSkillKeys.enemies.map((e) => e.hp),
+  );
+  assert.ok(await page.locator("#priority-minion").isDisabled());
+  assert.ok(await page.locator("#priority-tower").isDisabled());
+  pass(
+    "exactly three reserved skills map only top-row 1/2/3 to first/second/ultimate; no numpad or old Q/E/R binding and no fabricated casts",
   );
 
   await reset();
@@ -374,6 +438,40 @@ export async function runHudChecks({
         `${id} not covered ${width}x${height}`,
       );
     }
+    assert.ok(
+      !overlap(
+        await page.locator("#attack .slot-key").boundingBox(),
+        await page.locator(".cooldown-track").boundingBox(),
+      ),
+      "attack key hint stays clear of cooldown rail",
+    );
+    const clusterIds = [
+      "skill-1",
+      "skill-2",
+      "skill-ultimate",
+      "priority-minion",
+      "priority-tower",
+      "attack",
+    ];
+    const clusterBoxes = await Promise.all(
+      clusterIds.map((id) => page.locator(`#${id}`).boundingBox()),
+    );
+    for (let i = 0; i < clusterBoxes.length; i++) {
+      const a = clusterBoxes[i];
+      assert.ok(
+        a.x >= 0 &&
+          a.y >= 0 &&
+          a.x + a.width <= width &&
+          a.y + a.height <= height,
+      );
+      for (let j = i + 1; j < clusterBoxes.length; j++)
+        assert.ok(
+          !overlap(a, clusterBoxes[j]),
+          `${clusterIds[i]} overlaps ${clusterIds[j]} at ${width}x${height}`,
+        );
+    }
+    const utilityBox = await page.locator("#recall").boundingBox();
+    assert.ok(utilityBox.width <= (width > 850 && height > 600 ? 50 : 38));
     const selectors = [
       "#minimap-panel",
       ".target-panel",

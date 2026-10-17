@@ -11,7 +11,7 @@ Extract this branch's source ZIP and double-click the root **`index.html`**. Tha
 3. Confirm it opens as `file:///…/index.html` (or the named standalone file).
 4. Click the arena if necessary to focus movement controls.
 
-No server, Node.js, npm, sibling assets, or internet is needed to play. Requires a modern browser with **WebGL2**/graphics acceleration. Linux Chromium 153 offline file:// tests passed; Windows-specific verification remains manual. See [docs/PHASE_3_HUD_REPORT.md](docs/PHASE_3_HUD_REPORT.md).
+No server, Node.js, npm, sibling assets, or internet is needed to play. Requires a modern browser with **WebGL2**/graphics acceleration. Linux Chromium 153 offline file:// tests passed; Windows-specific verification remains manual. See [the latest HUD refinement report](docs/PHASE_3_HUD_REFINEMENT.md).
 
 ## Controls
 
@@ -26,7 +26,7 @@ No server, Node.js, npm, sibling assets, or internet is needed to play. Requires
 - **Settings**: optional joystick, reduced HUD motion, and controls help. Escape closes panels and restores battlefield focus. Preferences are session-only.
 - **Reset arena**: restore player, all dummy starting HP/max HP, positions, mode, selection, pin, cooldown and hit count.
 
-One click/Space requests one attack; this is **smart target selection, not continuous auto-firing**. Switching focus pauses simulation and clears held input. Q/E/third-slot/R skills, F battle spell, B recall, Regen, equipment and quick-buy remain reserved/disabled. Slot labels are not working skill bindings.
+One click/Space requests one attack; this is **smart target selection, not continuous auto-firing**. Switching focus pauses simulation and clears held input. **Exactly three skill slots:** top-row **1 = Skill I, 2 = Skill II, 3 = Ultimate** (physical `Digit1/2/3`, not numpad or F keys). Their shortcut routing is prepared, but the existing hero has no abilities, so the slots remain reserved/disabled and never cast. Old Q/E/R bindings are not used. F battle spell, B recall, Regen, equipment and quick-buy also remain reserved.
 
 ## Targeting rules
 
@@ -55,11 +55,13 @@ Press **D** from spawn to approach the cluster (stop before colliding with A). A
 
 Reset restores these **starting** HP values, not full health for B and C, so modes remain distinguishable. Attacks deal **25 damage** with **0.65s cooldown**. Dummies remain stationary and do not attack; player health stays at 100. All character geometry is temporary. No GLBs, rigs, or animation assets are claimed.
 
+The latest refinement uses an original faceted attack-guard illustration with smaller minion/tower satellites, a three-skill arc, and reduced-size Recall/Regen/battle-spell buttons. All artwork is inline vector/CSS, not copied reference assets.
+
 ## Honest interface status
 
 - **Functional:** live map/HP/target feedback, simulation/session timer, WASD/joystick, target-mode selector, clear pin, click/Space/basic attack, actual cooldown feedback, reset, and real training-target elimination announcements.
 - **Interface-only:** shop preview, settings/help shell, modal open/close, reduced HUD motion. Joystick visibility controls the real input adapter.
-- **Reserved:** team kill counters and gold show **—**, not fabricated numbers; four skill/ultimate slots, Recall/Regen/battle spell, six equipment slots/quick buy, minion/tower priorities and shop cards have no gameplay functionality.
+- **Reserved:** team kill counters and gold show **—**, not fabricated numbers; three skill slots (1, 2, 3/Ultimate), Recall/Regen/battle spell, six equipment slots/quick buy, minion/tower priorities and shop cards have no gameplay functionality.
 
 Dummy deaths announce **Target eliminated**, not competitive hero kills; no fake team score changes. Player/ally kill/death announcement classifications are prepared and unit-tested, but cannot occur with the existing non-retaliating dummies and absent allies. No demo notifications fire at startup. The timer is elapsed training simulation time, not a newly invented competitive match system.
 
@@ -72,12 +74,12 @@ Used Node **22.22.3**, npm **10.9.8**, Vite **7.3.7**, Three.js **0.186.1**. Mod
 ```bash
 npm ci
 npm run dev -- --port 5173
-npm test                   # 89 unit tests, retaining all 72 Phase 2 tests
+npm test                   # 92 unit tests, retaining all 89 initial Phase 3 tests
 npm run validate:heroes    # Schema/reference/embedded-model validation
 npm run build              # Build and validate the standalone game
 npm run validate:offline
 npm run package:source     # Rebuild then archive (zip CLI required)
-npm run test:browser        # 35 offline browser checks; requires source ZIP above
+npm run test:browser        # 36 offline browser checks; requires source ZIP above
 npm run preview -- --port 4173
 ```
 
@@ -105,7 +107,7 @@ Vite builds `dev.html`; packaging embeds its JS, CSS, Three.js and JSON, includi
 
 - **`index.html`** — deliberately committed so GitHub source ZIPs play directly.
 - `dist/index.html` — the only file in dist.
-- `deliverables/MOBA-Lab-Phase-3.html` — named download (~696 KiB).
+- `deliverables/MOBA-Lab-Phase-3.html` — named download (~700 KiB).
 
 No CDN, external font, external model/texture/data file, fetched JSON, service worker, decoder, or remote API is required. The >500 kB Vite chunk warning is expected because Three.js must be embedded. Hero GLBs are prepared for eager inline bundling and in-memory parsing; external GLB resources/decoders are rejected. No genuine character GLBs exist yet. Future audio/other asset types require their own approved embedding workflow.
 
@@ -113,4 +115,4 @@ Root `index.html` is the intentional generated-artifact exception: rebuild and c
 
 Add `#diagnostics` to a game URL only for the read-only state snapshot/projection API used by tests; it cannot mutate gameplay. No persistent match/progression save system is included.
 
-Detailed per-test evidence and Windows checklist: [docs/PHASE_3_HUD_REPORT.md](docs/PHASE_3_HUD_REPORT.md). The [hero architecture guide](docs/HERO_ARCHITECTURE.md) explains schema, discovery, model replacement and adding a future approved hero. Earlier reports remain historical evidence. Stop here for approval before additional gameplay.
+Latest changes, per-test evidence and limitations: [docs/PHASE_3_HUD_REFINEMENT.md](docs/PHASE_3_HUD_REFINEMENT.md). The [initial Phase 3 report](docs/PHASE_3_HUD_REPORT.md) retains its original Windows checklist/history. The [hero architecture guide](docs/HERO_ARCHITECTURE.md) explains schema, discovery, model replacement and adding a future approved hero. Earlier reports remain historical evidence. Stop here for approval before additional gameplay.
