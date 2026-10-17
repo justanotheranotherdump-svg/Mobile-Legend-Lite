@@ -26,4 +26,3 @@ export function createTrainingPlaceholder() {
   group.add(ring);
   return group;
 }
-
