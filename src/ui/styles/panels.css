@@ -1,0 +1,133 @@
+.hud-dialog {
+  color: #dfebee;
+  background: radial-gradient(ellipse at 0 0, #294d5d, #102332 65%);
+  border: 1px solid #c7ad7977;
+  border-radius: 9px;
+  width: min(530px, 90vw);
+  padding: 26px;
+  box-shadow: 0 20px 70px #0009;
+  max-height: 88vh;
+  overflow: auto;
+}
+.hud-dialog::backdrop {
+  background: #03131e99;
+  backdrop-filter: blur(3px);
+}
+.dialog-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+.dialog-heading h2 {
+  font-size: 25px;
+  font-weight: 400;
+  color: #f2dfb3;
+  margin: 7px 0 12px;
+  letter-spacing: 0.5px;
+}
+.hud-dialog p {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #afc5ce;
+  margin: 0 0 20px;
+}
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.shop-card {
+  padding: 18px 8px;
+  text-align: center;
+  background: #0b2130;
+  border: 1px solid #71939a44;
+  border-radius: 6px;
+}
+.shop-card > .icon {
+  height: 40px;
+  width: 40px;
+  color: #7ba6ad;
+  margin-bottom: 12px;
+}
+.shop-card strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: #d7d6c2;
+}
+.shop-card span {
+  font-size: 7px;
+  letter-spacing: 1.5px;
+  color: #c5ae82;
+  display: block;
+  margin-top: 7px;
+}
+.dialog-note {
+  padding-top: 20px;
+  font-size: 11px;
+  text-align: center;
+  color: #a2b5bb;
+}
+.setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-block-start: 1px solid #7698a144;
+  padding: 16px 0;
+  font-size: 13px;
+}
+.setting-row small {
+  display: block;
+  font-size: 10px;
+  color: #b0c7cc;
+  margin-top: 6px;
+}
+.setting-row input {
+  accent-color: #6bdbc9;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.controls-help {
+  font-size: 11px;
+  margin: 12px 0 24px;
+}
+.controls-help div {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  line-height: 2;
+}
+.controls-help dt {
+  color: #d5c59a;
+}
+.controls-help dd {
+  color: #aac4cc;
+  margin: 0;
+}
+.hud-dialog :focus-visible {
+  outline: 2px solid #83ecda;
+  outline-offset: 4px;
+}
+@media (max-height: 600px) {
+  .hud-dialog {
+    padding: 18px;
+  }
+  .dialog-heading h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  .setting-row {
+    padding: 10px 0;
+  }
+  .controls-help {
+    margin-bottom: 12px;
+  }
+  .shop-card {
+    padding: 12px 8px;
+  }
+  .hud-dialog p {
+    margin-bottom: 12px;
+  }
+}

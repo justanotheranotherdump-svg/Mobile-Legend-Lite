@@ -5,7 +5,7 @@ Updated: 2026-10-17. These user-approved requirements govern future project work
 ## Workflow and approval
 
 - Build one precisely scoped milestone at a time; obtain the user's approval before starting each milestone.
-- Phase 1/1.1 foundation and targeting are the preserved baseline. The user clarified that Phase 2 is the modular hero architecture refactor only, approved on 2026-10-17. Do not implement any additional heroes, abilities or gameplay milestones; stop for review after this refactor.
+- Phase 1/1.1 foundation and targeting are the preserved baseline. Phase 2 modular hero architecture is complete. Phase 3 HUD, controls, targeting interface and combat announcements are explicitly approved on 2026-10-17. Preserve mechanics and architecture; no additional heroes, skills, shop gameplay or model/animation work is approved. Stop after this UI milestone for review.
 - Start with a playable 3D foundation, not menus, mockups, or a screenshot pretending to be gameplay.
 - Keep gameplay modular, preserve working features, and avoid premature polish or future-milestone implementation.
 - After implementation, run available build and validation commands, fix introduced errors, provide exact run instructions, report acceptance tests honestly, list unfinished features/known issues, and recommend but do not implement the next milestone.
@@ -40,7 +40,7 @@ Preferred stack: Three.js, Vite, JavaScript ES modules, JSON hero/ability/item d
 
 Keep movement, collision, combat, targeting, NPC AI, map/navigation, hero stats, skills, equipment, match state, UI, persistence, and rendering separated. Meshes and animation must not own gameplay rules. NPCs and players should use shared action validation. Keyboard and clickable skills must invoke the same gameplay actions.
 
-Controls: WASD movement; mouse ground aiming/target selection; left mouse basic attack or target confirmation; Q/E active skills; R ultimate; F battle spell; B recall. Respect world collisions and correctly map mouse coordinates onto the 3D ground. Use an elevated/isometric camera. Final combat UI includes functional clickable skills.
+Controls: WASD movement plus an optional virtual joystick authorized in Phase 3; mouse ground aiming/target selection; left mouse basic attack or target confirmation; Q/E active skills; R ultimate; F battle spell; B recall. Respect world collisions and correctly map mouse coordinates onto the 3D ground. Use an elevated/isometric camera. Final combat UI includes functional clickable skills.
 
 ## Genuine 3D assets required
 
@@ -100,3 +100,12 @@ Phase 1.1 unit and offline Linux Chromium regressions passed; see docs/PHASE_1_1
 Refactor the actual Phase 1.1 baseline without inventing missing skills/stats. Only the existing Test Hero is registered as training; Layla and the other future archetypes are not implemented. Hero-local hero.json/abilities.json/animations.json/visual.json and placeholder.js live under src/heroes/training/. Ability and clip lists are honestly empty because none existed. Hero stats/attack values migrate exactly; scenario data retains only hero ID/spawn plus targeting/dummies. Use validated auto-discovery, immutable definitions/fresh state, code-owned allowlisted effects, and independent visual adapters. Future GLBs belong to each hero's assets/ folder, are bundled eagerly inline, parsed from memory, and may only reference embedded resources/verified clips. Retain functional placeholders on runtime asset parse failure; fail malformed data clearly. No fake assets or phantom playable roster entries.
 
 Before/after unit and offline regressions plus a 39-snapshot exact simulation replay protect compatibility. See docs/HERO_ARCHITECTURE.md and docs/PHASE_2_ARCHITECTURE_REPORT.md. Downloads now use MOBA-Lab-Phase-2.html and MOBA-Lab-Phase-2-source.zip. Windows-specific file:// testing remains manual. Wait for approval before any new gameplay or roster expansion.
+
+
+## Phase 3 — MOBA HUD/control milestone (current approval)
+
+Approved: original landscape MOBA-style HUD inspired by conversation screenshots, live arena/player/target minimap, team-score/gold reserved space, simulation timer, basic placeholder shop/settings panels, optional movement joystick alongside unchanged WASD, current targeting modes and basic attack, three active-skill slots plus an ultimate slot, utilities/equipment/quick buy placeholders and disabled minion/tower categories. Classify every control as functional, interface-only or reserved; never fabricate purchases, skills, resources, teams or units. Joystick/keyboard share the existing camera-relative simulation movement and collisions; targeting still never moves/chases. This supersedes only the older WASD-exclusive input restriction, not any targeting/damage rules. Space is a discrete smart-attack shortcut using the same validation, not auto-fire.
+
+Publish genuine lethal-transition/reset combat events without changing formulas or state snapshots. Training dummy eliminations are labeled as such, not fabricated hero kills/team scores. Prepare player/ally kill/death announcement rendering without injecting events when those actors/systems do not exist. Use brief queued notices, truthful cooldown/HP feedback and separate maintainable UI modules. No proprietary icons or reference uploads in Git/ZIP; local original SVG geometry only. Do not generate character models or animations. Preserve the Phase 2 hero files/registry.
+
+Phase 3 download names: MOBA-Lab-Phase-3.html and MOBA-Lab-Phase-3-source.zip; rebuild committed root index.html. Test the actual offline file and isolated source-ZIP index, input/focus/capture, reset, smart targeting and multiple landscape sizes. Report Windows/native touch and absent-feature limitations honestly. See docs/PHASE_3_HUD_REPORT.md. Stop for user approval before subsequent gameplay/model milestones.

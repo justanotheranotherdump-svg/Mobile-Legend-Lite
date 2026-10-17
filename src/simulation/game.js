@@ -1,3 +1,4 @@
+import { CombatEvents } from './combat-events.js';
 import { createHeroState } from '../heroes/registry.js';
 import { executeEffect } from './effects.js';
 import { cameraRelativeDirection, moveEntity } from './movement.js';
@@ -8,6 +9,7 @@ export class TrainingSimulation {
     this.arena = arena;
     this.config = config;
     this.hero = heroRegistry.get(config.player.heroId);
+    this.events = new CombatEvents();
     this.reset();
   }
 
@@ -22,6 +24,7 @@ export class TrainingSimulation {
     this.hits = 0;
     this.lastAttack = { reason: 'ready', serial: 0, targetId: null };
     this.refreshTarget();
+    this.events.emit({ type: 'reset' });
   }
 
   get selectedTarget() { return this.enemies.find(enemy => enemy.id === this.selectedTargetId) ?? null; }
@@ -70,14 +73,20 @@ export class TrainingSimulation {
     if (!reason && !target) reason = this.enemies.some(isEligibleEnemy) ? 'range' : 'no-enemies';
     if (!reason && !inAttackRange(this.player, target)) reason = 'range';
     if (!reason && this.player.cooldown > 1e-8) reason = 'cooldown';
+    let defeated = false;
     if (!reason) {
+      const hpBefore = target.hp;
       executeEffect(this.hero.basicAttack.effectId, { source: this.player, target }, { damage: this.player.damage });
       this.player.cooldown = this.player.attackCooldown;
       this.hits++;
+      defeated = hpBefore > 0 && target.hp === 0;
       reason = 'hit';
     }
     this.lastAttack = { reason, serial: this.lastAttack.serial + 1, targetId: reason === 'hit' ? target.id : clickedId ?? target?.id ?? null };
     this.refreshTarget(); // Death immediately releases invalid pins and reselects.
+    if (defeated) this.events.emit({ type: 'death', time: this.time,
+      actor: { id: 'player', name: this.hero.name, team: 'player', kind: 'player' },
+      victim: { id: target.id, name: target.name, team: target.team, kind: 'training-dummy', hp: target.hp } });
     return reason;
   }
 

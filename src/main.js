@@ -22,7 +22,7 @@ async function boot() {
     const heroVisual = await createHeroVisual(simulation.hero, registry.modelBytes(simulation.hero.id));
     const clock = new FixedClock();
     const view = new WorldView(document.querySelector('#world'), arena, simulation.enemies, heroVisual);
-    const controls = new Controls(view.canvas, pointer => simulation.attack(view.pickTarget(pointer)));
+    const controls = new Controls(view.canvas, pointer => simulation.attack(view.pickTarget(pointer)), () => simulation.attack());
     const hud = new Hud(simulation, () => {
       simulation.reset();
       clock.reset();
@@ -32,7 +32,7 @@ async function boot() {
     }, mode => {
       controls.clear();
       simulation.setTargetMode(mode);
-    });
+    }, controls);
     let paused = document.hidden;
     function pause() { paused = true; clock.reset(); controls.clear(); hud.paused(true); }
     function resume() { paused = document.hidden; clock.reset(); hud.paused(paused); }

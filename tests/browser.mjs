@@ -1,3 +1,4 @@
+import { runHudChecks } from './browser-hud.mjs';
 // Tests the exact downloadable artifact using file://, offline, with ordinary
 // browser file-origin security (no --disable-web-security / file access bypass).
 import assert from 'node:assert/strict';
@@ -81,7 +82,7 @@ try {
   const ready = async () => { await page.waitForFunction(() => window.foundationDiagnostics.snapshot().player.cooldown === 0); };
   const samePosition = (a, b) => assert.deepEqual([a.player.x, a.player.z], [b.player.x, b.player.z]);
 
-  await page.goto(pathToFileURL(resolve('deliverables/MOBA-Lab-Phase-2.html')).href + '#diagnostics');
+  await page.goto(pathToFileURL(resolve('deliverables/MOBA-Lab-Phase-3.html')).href + '#diagnostics');
   await page.waitForFunction(() => window.foundationDiagnostics && window.foundationDiagnostics.snapshot().time > 0.05);
   assert.ok(await page.locator('#error').isHidden());
   const gpu = await page.evaluate(() => {
@@ -338,7 +339,7 @@ try {
   // Isolate the ZIP's index.html in a folder with spaces/Unicode and no siblings.
   const isolated = join(await mkdtemp(join(tmpdir(), 'moba-source-')), 'Windows download — offline');
   await mkdir(isolated);
-  const archivedIndex = execFileSync('unzip', ['-p', 'deliverables/MOBA-Lab-Phase-2-source.zip', 'index.html'], { maxBuffer: 4 * 1024 * 1024 });
+  const archivedIndex = execFileSync('unzip', ['-p', 'deliverables/MOBA-Lab-Phase-3-source.zip', 'index.html'], { maxBuffer: 4 * 1024 * 1024 });
   assert.ok(archivedIndex.equals(await readFile('index.html')), 'ZIP must include the current playable root index');
   await writeFile(join(isolated, 'index.html'), archivedIndex);
   for (const [entry, label] of [[resolve('index.html'), 'repository root index.html'], [join(isolated, 'index.html'), 'source-ZIP index.html isolated without sibling files (spaces/Unicode path)']]) {
@@ -359,6 +360,7 @@ try {
     pass(`${label}: styled offline 3D, keyboard movement, attack and reset`);
   }
   await page.screenshot({ path: 'artifacts/source-zip-offline.png' });
+  await runHudChecks({ page, pass, snap, elapsed, reset, approach, ready, setMode });
   assert.deepEqual(requests, [], 'file artifact must not request any subresources');
   assert.deepEqual(errors, [], 'no browser console errors or page exceptions');
   assert.deepEqual(warnings, [], 'no browser warnings');
@@ -366,11 +368,14 @@ try {
   let developmentPreview = null;
   if (process.env.DEV_TEST_URL) {
     const devContext = await browser.newContext({ viewport: { width: 1280, height: 800 } });
+    devContext.setDefaultTimeout(60000);
     const devPage = await devContext.newPage();
+    await devPage.bringToFront();
     const devErrors = [];
     devPage.on('pageerror', error => devErrors.push(String(error)));
     devPage.on('console', message => { if (message.type() === 'error') devErrors.push(message.text()); });
     await devPage.goto(process.env.DEV_TEST_URL + '/#diagnostics');
+    await devPage.bringToFront();
     await devPage.waitForFunction(() => window.foundationDiagnostics?.snapshot().time > 0.05);
     assert.ok(await devPage.locator('script[src^="/src/main.js"]').count(), 'Dev root must serve editable template, not stale standalone bundle');
     assert.ok(await devPage.locator('#error').isHidden());

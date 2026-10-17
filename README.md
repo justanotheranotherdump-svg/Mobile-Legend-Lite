@@ -1,29 +1,32 @@
-# MOBA Lab — Phase 2: Modular Hero Architecture
+# MOBA Lab — Phase 3: MOBA HUD & Controls
 
-A genuinely 3D training sandbox using Three.js and Vite. **Phase 2 is the approved architecture-only refactor:** gameplay remains the working Phase 1.1 foundation/targeting. No new heroes, abilities or modes were added. Read [PROJECT_RULES.md](PROJECT_RULES.md) before future work.
+A genuinely 3D training sandbox using Three.js and Vite. **Phase 3 is the approved HUD/control milestone:** a live minimap, optional movement joystick, compact MOBA action HUD, interface-only shop/settings panels and real combat notifications. Phase 2 hero architecture and existing damage/targeting/movement rules are preserved. No new heroes, skills, items, spells, gold economy or modes were implemented. Read [PROJECT_RULES.md](PROJECT_RULES.md) before future work.
 
 ## Play offline on Windows
 
-Extract this branch's source ZIP and double-click the root **`index.html`**. That file is the complete game, not a development template. Alternatively download **`deliverables/MOBA-Lab-Phase-2.html`**, which has identical contents. Either HTML can be copied alone to an empty folder.
+Extract this branch's source ZIP and double-click the root **`index.html`**. That file is the complete game, not a development template. Alternatively download **`deliverables/MOBA-Lab-Phase-3.html`**, which has identical contents. Either HTML can be copied alone to an empty folder.
 
 1. Disconnect networking.
 2. Double-click the HTML. If needed, choose **Open with → Chrome or Edge**.
 3. Confirm it opens as `file:///…/index.html` (or the named standalone file).
 4. Click the arena if necessary to focus movement controls.
 
-No server, Node.js, npm, sibling assets, or internet is needed to play. Requires a modern browser with **WebGL2**/graphics acceleration. Linux Chromium 153 offline file:// tests passed; Windows-specific verification remains manual. See [docs/PHASE_2_ARCHITECTURE_REPORT.md](docs/PHASE_2_ARCHITECTURE_REPORT.md).
+No server, Node.js, npm, sibling assets, or internet is needed to play. Requires a modern browser with **WebGL2**/graphics acceleration. Linux Chromium 153 offline file:// tests passed; Windows-specific verification remains manual. See [docs/PHASE_3_HUD_REPORT.md](docs/PHASE_3_HUD_REPORT.md).
 
 ## Controls
 
-- **WASD**: camera-relative movement; diagonal speed is normalized. Movement is never automated by targeting.
+- **WASD / optional on-screen joystick**: same camera-relative movement/collisions; diagonal speed is normalized. Nonzero keyboard input takes priority rather than adding joystick speed. Targeting never moves or chases.
 - **Mouse**: ground aiming/crosshair.
-- **Left-click ground** or the **LMB Basic Attack HUD button**: attack the selected target, subject to range and cooldown.
+- **Left-click ground** or the **large Basic Attack HUD button** or **Space**: attack the selected target, subject to range and cooldown.
 - **Left-click a living dummy**: pin that enemy as a manual override and attempt one attack. Further ground/HUD attacks keep that pin.
 - **Targeting mode** dropdown: change selection policy and release any pin.
 - **Clear lock**: release the pin without changing modes or resetting cooldown.
+- **Minimap buttons**: toggle the live map and its attack-range overlay (not the world range ring).
+- **Shop**: open the clearly labeled preview-only equipment panel; purchases do not exist.
+- **Settings**: optional joystick, reduced HUD motion, and controls help. Escape closes panels and restores battlefield focus. Preferences are session-only.
 - **Reset arena**: restore player, all dummy starting HP/max HP, positions, mode, selection, pin, cooldown and hit count.
 
-One click requests one attack; this is **smart target selection, not continuous auto-firing**. Switching focus pauses simulation and clears held input. Q/E/R/F/B remain unimplemented.
+One click/Space requests one attack; this is **smart target selection, not continuous auto-firing**. Switching focus pauses simulation and clears held input. Q/E/third-slot/R skills, F battle spell, B recall, Regen, equipment and quick-buy remain reserved/disabled. Slot labels are not working skill bindings.
 
 ## Targeting rules
 
@@ -52,6 +55,16 @@ Press **D** from spawn to approach the cluster (stop before colliding with A). A
 
 Reset restores these **starting** HP values, not full health for B and C, so modes remain distinguishable. Attacks deal **25 damage** with **0.65s cooldown**. Dummies remain stationary and do not attack; player health stays at 100. All character geometry is temporary. No GLBs, rigs, or animation assets are claimed.
 
+## Honest interface status
+
+- **Functional:** live map/HP/target feedback, simulation/session timer, WASD/joystick, target-mode selector, clear pin, click/Space/basic attack, actual cooldown feedback, reset, and real training-target elimination announcements.
+- **Interface-only:** shop preview, settings/help shell, modal open/close, reduced HUD motion. Joystick visibility controls the real input adapter.
+- **Reserved:** team kill counters and gold show **—**, not fabricated numbers; four skill/ultimate slots, Recall/Regen/battle spell, six equipment slots/quick buy, minion/tower priorities and shop cards have no gameplay functionality.
+
+Dummy deaths announce **Target eliminated**, not competitive hero kills; no fake team score changes. Player/ally kill/death announcement classifications are prepared and unit-tested, but cannot occur with the existing non-retaliating dummies and absent allies. No demo notifications fire at startup. The timer is elapsed training simulation time, not a newly invented competitive match system.
+
+Validated landscape sizes: 800×600, 854×480, 1024×600, 1440×900, 1920×1080. Portrait/very small windows, physical touch devices and native Windows verification are not certified here.
+
 ## Develop and validate
 
 Used Node **22.22.3**, npm **10.9.8**, Vite **7.3.7**, Three.js **0.186.1**. Modern Node 22 (22.12+) is recommended.
@@ -59,12 +72,12 @@ Used Node **22.22.3**, npm **10.9.8**, Vite **7.3.7**, Three.js **0.186.1**. Mod
 ```bash
 npm ci
 npm run dev -- --port 5173
-npm test                   # 72 unit tests, retaining all 34 baseline regressions
+npm test                   # 89 unit tests, retaining all 72 Phase 2 tests
 npm run validate:heroes    # Schema/reference/embedded-model validation
 npm run build              # Build and validate the standalone game
 npm run validate:offline
 npm run package:source     # Rebuild then archive (zip CLI required)
-npm run test:browser        # 24 offline browser checks; requires source ZIP above
+npm run test:browser        # 35 offline browser checks; requires source ZIP above
 npm run preview -- --port 4173
 ```
 
@@ -81,17 +94,18 @@ Browser tests use development-only `playwright-core`, npm-packaged Linux Chromiu
 - `src/simulation/targeting.js`: pure eligibility, mode scoring, in-range filtering, deterministic tie-breaking.
 - `src/simulation/game.js`: mesh-independent state, movement integration, manual pin lifecycle, validated attacks/reset.
 - `src/data/training.json`: scenario hero ID/spawn, default mode, dummy IDs/positions/HP. Hero stats are no longer duplicated here.
-- `src/input/`: keyboard/pointer and safe UI-focus handling.
+- `src/input/`: keyboard/pointer/Space, optional bounded joystick, capture and safe UI-focus handling.
 - `src/rendering/world.js`: replaceable temporary visuals, camera, ray picking, selected ring and hit feedback.
-- `src/ui/`: functional selector/clear-lock/attack/reset controls and state-driven HP displays.
+- `src/simulation/combat-events.js`: presentation-neutral death/reset transport; no score or damage rules.
+- `src/ui/`: separate layout/styles, original vector/button components, live minimap, targeting, cooldown display, shop/settings/equipment placeholders and queued combat announcements.
 - `tests/`: simulation, targeting and actual offline browser regressions.
 - `scripts/`: inline HTML packaging, structural validation, source archive.
 
-Vite builds `dev.html`; packaging embeds its JS, CSS, Three.js and JSON, including the Three.js MIT notice. The output is identical in:
+Vite builds `dev.html`; packaging embeds its JS, CSS, Three.js and JSON, including the Three.js MIT notice and original inline-vector HUD icons. The output is identical in:
 
 - **`index.html`** — deliberately committed so GitHub source ZIPs play directly.
 - `dist/index.html` — the only file in dist.
-- `deliverables/MOBA-Lab-Phase-2.html` — named download (~668 KiB).
+- `deliverables/MOBA-Lab-Phase-3.html` — named download (~696 KiB).
 
 No CDN, external font, external model/texture/data file, fetched JSON, service worker, decoder, or remote API is required. The >500 kB Vite chunk warning is expected because Three.js must be embedded. Hero GLBs are prepared for eager inline bundling and in-memory parsing; external GLB resources/decoders are rejected. No genuine character GLBs exist yet. Future audio/other asset types require their own approved embedding workflow.
 
@@ -99,4 +113,4 @@ Root `index.html` is the intentional generated-artifact exception: rebuild and c
 
 Add `#diagnostics` to a game URL only for the read-only state snapshot/projection API used by tests; it cannot mutate gameplay. No persistent match/progression save system is included.
 
-Detailed per-test evidence and Windows checklist: [docs/PHASE_2_ARCHITECTURE_REPORT.md](docs/PHASE_2_ARCHITECTURE_REPORT.md). The [hero architecture guide](docs/HERO_ARCHITECTURE.md) explains schema, discovery, model replacement and adding a future approved hero. Earlier reports remain historical evidence. Stop here for approval before additional gameplay.
+Detailed per-test evidence and Windows checklist: [docs/PHASE_3_HUD_REPORT.md](docs/PHASE_3_HUD_REPORT.md). The [hero architecture guide](docs/HERO_ARCHITECTURE.md) explains schema, discovery, model replacement and adding a future approved hero. Earlier reports remain historical evidence. Stop here for approval before additional gameplay.
