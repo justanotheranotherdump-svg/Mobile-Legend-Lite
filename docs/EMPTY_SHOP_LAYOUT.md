@@ -1,3 +1,5 @@
+> Subsequent approved correction: [landscape Settings and attack/menu input fixes](SETTINGS_INPUT_FIX.md). The empty-slot shop below is preserved.
+
 # Empty landscape shop / routine-banner removal
 
 Date: 2026-10-17 · Approved UI-only correction following the key-settings milestone.

@@ -8,6 +8,9 @@ export const TARGET_CATEGORIES = Object.freeze([
 export class TargetingControls {
   constructor(elements, simulation, onModeChange) {
     const e = elements;
+    this.elements = elements;
+    this.onModeChange = onModeChange;
+    this.priorityInputs = [];
     for (const [value, label] of Object.entries(TARGET_MODES))
       e["target-mode"].add(new Option(label, value));
     e["target-mode"].addEventListener("change", () => {
@@ -35,5 +38,29 @@ export class TargetingControls {
       button.append(label);
       e["target-categories"].append(button);
     }
+  }
+  mountSettings(root) {
+    for (const [value, label] of Object.entries(TARGET_MODES)) {
+      const option = document.createElement("label");
+      option.className = "priority-option";
+      const input = document.createElement("input");
+      input.type = "radio";
+      input.name = "target-priority";
+      input.value = value;
+      input.dataset.controlKind = "functional";
+      input.addEventListener("change", () => {
+        if (input.checked) this.onModeChange(value);
+      });
+      const text = document.createElement("span");
+      text.textContent = label;
+      option.append(input, text);
+      root.append(option);
+      this.priorityInputs.push(input);
+    }
+  }
+  update(mode) {
+    this.elements["target-mode"].value = mode;
+    for (const input of this.priorityInputs)
+      input.checked = input.value === mode;
   }
 }

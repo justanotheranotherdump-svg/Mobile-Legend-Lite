@@ -1,3 +1,5 @@
+> Latest settings/input correction: [landscape Settings, attack focus and menu gating](SETTINGS_INPUT_FIX.md). Regen now defaults to V; supported preferences move into Basic / Controls / Interface pages. The original session-only customization behavior is preserved.
+
 > Subsequent UI correction: [empty landscape shop / routine-banner removal](EMPTY_SHOP_LAYOUT.md). This report records the preceding key-settings milestone; its attack-hint banner is now intentionally removed. The key editor and bindings remain.
 
 # Settings: button key visibility and custom shortcuts

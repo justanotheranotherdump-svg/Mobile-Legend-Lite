@@ -194,7 +194,9 @@ export async function runHudChecks({
 
   await reset();
   await page.locator("#settings").click();
+  await page.locator("#settings-tab-controls").click();
   await page.locator("#show-joystick").uncheck();
+  await page.locator("#settings-tab-basic").click();
   await page.locator("#reduce-motion").check();
   assert.ok(await page.locator("#joystick").isHidden());
   assert.ok(
@@ -209,7 +211,9 @@ export async function runHudChecks({
   await page.keyboard.up("w");
   assert.ok((await snap()).player.x < -5);
   await page.locator("#settings").click();
+  await page.locator("#settings-tab-controls").click();
   await page.locator("#show-joystick").check();
+  await page.locator("#settings-tab-basic").click();
   await page.locator("#reduce-motion").uncheck();
   await page.locator('[aria-label="Close settings"]').click();
   assert.ok(await page.locator("#joystick").isVisible());

@@ -1,3 +1,4 @@
+import { blocksGameplayInput } from "../input/input-policy.js";
 import { BUTTON_ACTIONS, keyLabel } from "../input/key-bindings.js";
 import { requestSkillButton } from "./skill-controls.js";
 // One dispatcher for all HUD button shortcuts: never duplicate gameplay rules.
@@ -7,12 +8,13 @@ export class ButtonShortcuts {
     this.bindings = bindings;
     window.addEventListener("keydown", (event) => {
       if (
+        blocksGameplayInput(event.target) ||
         event.repeat ||
         event.ctrlKey ||
         event.altKey ||
         event.metaKey ||
         event.shiftKey ||
-        event.target.closest(
+        event.target?.closest?.(
           "button,input,textarea,select,dialog,[contenteditable]",
         )
       )

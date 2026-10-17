@@ -15,6 +15,7 @@ test("default key bindings preserve attack/three top-row skills and original uti
   );
   assert.equal(b.codeFor("recall"), "KeyB");
   assert.equal(b.codeFor("battle-spell"), "KeyF");
+  assert.equal(b.codeFor("regen"), "KeyV");
   assert.equal(b.actionFor("Numpad1"), null);
   assert.equal(b.showHints, true);
   assert.ok(Object.isFrozen(DEFAULT_BINDINGS));

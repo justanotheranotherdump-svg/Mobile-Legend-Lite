@@ -6,7 +6,7 @@ export const BUTTON_ACTIONS = Object.freeze(
     ["skill-2", "Skill II", "Digit2", true],
     ["skill-ultimate", "Ultimate", "Digit3", true],
     ["recall", "Recall", "KeyB", true],
-    ["regen", "Regen", "", true],
+    ["regen", "Regen", "KeyV", true],
     ["battle-spell", "Battle spell", "KeyF", true],
     ["priority-minion", "Minion priority", "", true],
     ["priority-tower", "Tower priority", "", true],

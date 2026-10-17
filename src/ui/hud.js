@@ -30,8 +30,11 @@ export class Hud {
     this.panels = new PlaceholderPanels(
       e,
       this.joystick,
-      () => controls.clear(),
+      controls,
       this.bindings,
+    );
+    this.targeting.mountSettings(
+      e["settings-dialog"].querySelector("[data-priority-options]"),
     );
     this.shortcuts = new ButtonShortcuts(
       document.querySelector("#hud-root"),
@@ -87,7 +90,7 @@ export class Hud {
   update(state, view) {
     const { player, enemies, hits, selectedTarget: target } = state;
     const e = this.elements;
-    e["target-mode"].value = state.targetMode;
+    this.targeting.update(state.targetMode);
     e["clear-target"].disabled = !state.manualTargetId;
     e["selection-source"].textContent = state.manualTargetId
       ? "Manual override pinned"

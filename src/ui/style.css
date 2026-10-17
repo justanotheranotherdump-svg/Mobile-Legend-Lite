@@ -2,6 +2,7 @@
 @import "./styles/controls.css";
 @import "./styles/panels.css";
 @import "./styles/shop.css";
+@import "./styles/settings.css";
 @import "./styles/combat-cluster.css";
 :root {
   font-family: "Segoe UI", Arial, sans-serif;

@@ -1,3 +1,4 @@
+import { runSettingsInputChecks } from './browser-settings-input.mjs';
 import { runKeySettingsChecks } from './browser-key-settings.mjs';
 import { runHudChecks } from './browser-hud.mjs';
 // Tests the exact downloadable artifact using file://, offline, with ordinary
@@ -363,6 +364,7 @@ try {
   await page.screenshot({ path: 'artifacts/source-zip-offline.png' });
   await runHudChecks({ page, pass, snap, elapsed, reset, approach, ready, setMode });
   await runKeySettingsChecks({ page, pass, snap, elapsed, reset, approach, ready });
+  await runSettingsInputChecks({ page, pass, snap, elapsed, reset });
   assert.deepEqual(requests, [], 'file artifact must not request any subresources');
   assert.deepEqual(errors, [], 'no browser console errors or page exceptions');
   assert.deepEqual(warnings, [], 'no browser warnings');

@@ -8,19 +8,21 @@ export async function runKeySettingsChecks({
   approach,
   ready,
 }) {
-  const open = async () => {
+  const open = async (tab = "controls") => {
     await page.locator("#settings").click();
+    await page.locator(`#settings-tab-${tab}`).click();
   };
   const close = async () => {
     await page.keyboard.press("Escape");
     await page.locator("#settings-dialog").waitFor({ state: "hidden" });
   };
   const expand = async () => {
-    if (!(await page.locator("#key-controls").getAttribute("open")))
+    if ((await page.locator("#key-controls").getAttribute("open")) === null)
       await page.locator("#key-controls summary").click();
   };
   await reset();
   await open();
+  await page.locator("#settings-tab-interface").click();
   await page.locator("#show-key-hints").uncheck();
   await close();
   assert.ok(await page.locator("#attack .slot-key").isHidden());
@@ -47,6 +49,7 @@ export async function runKeySettingsChecks({
   await page.locator("#bind-regen").selectOption("KeyG");
   await page.locator("#bind-priority-minion").selectOption("KeyT");
   assert.ok(await page.locator("#attack .slot-key").isHidden());
+  await page.locator("#settings-tab-interface").click();
   await page.locator("#show-key-hints").check();
   await close();
   assert.equal(await page.locator("#attack .slot-key").innerText(), "J / LMB");
@@ -164,6 +167,8 @@ export async function runKeySettingsChecks({
   ]) {
     await page.setViewportSize({ width, height });
     await open();
+    // The new Controls page has targeting/joystick sections above the key editor.
+    await page.locator("#bind-attack").scrollIntoViewIfNeeded();
     await page.locator("#bind-attack").selectOption("KeyJ");
     const rect = await page.locator("#bind-attack").boundingBox();
     assert.ok(

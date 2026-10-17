@@ -7,4 +7,4 @@ The root ../index.html is also the same standalone game and is intentionally
 tracked in Git so downloaded GitHub ZIPs play without building. Edit ../dev.html
 and ../src/, not the generated index. Duplicate downloads are ignored by Git; they are
 reproducible from the preserved source and lockfile. Windows offline file://
-acceptance still requires manual testing. See ../README.md and ../docs/EMPTY_SHOP_LAYOUT.md.
+acceptance still requires manual testing. See ../README.md and ../docs/SETTINGS_INPUT_FIX.md.

@@ -1,7 +1,9 @@
+import { blocksGameplayInput } from "./input-policy.js";
 import { movementAxes } from "./joystick.js";
 export class Controls {
   constructor(canvas, onAttack) {
     this.keys = new Set();
+    this.menuBlocked = false;
     this.virtualAxes = [0, 0];
     this.resetListeners = new Set();
     this.pointer = { x: 0, y: 0, active: false };
@@ -9,22 +11,16 @@ export class Controls {
     window.addEventListener("keydown", (event) => {
       if (
         ["KeyW", "KeyA", "KeyS", "KeyD"].includes(event.code) &&
-        (!event.target.closest(
-          "input,textarea,button,select,dialog,[contenteditable]",
-        ) ||
-          event.target.id === "joystick")
+        !event.repeat &&
+        !this.blocked &&
+        !blocksGameplayInput(event.target)
       ) {
         event.preventDefault();
         this.keys.add(event.code);
       }
     });
     document.addEventListener("focusin", (event) => {
-      if (
-        event.target.closest(
-          "input,textarea,button,select,dialog,[contenteditable]",
-        )
-      )
-        this.keys.clear();
+      if (blocksGameplayInput(event.target)) this.clear();
     });
     window.addEventListener("keyup", (event) => this.keys.delete(event.code));
     window.addEventListener("blur", () => this.clear());
@@ -34,7 +30,7 @@ export class Controls {
       this.pointer.active = false;
     });
     canvas.addEventListener("pointerdown", (event) => {
-      if (event.button !== 0) return;
+      if (event.button !== 0 || this.blocked) return;
       canvas.focus({ preventScroll: true });
       this.setPointer(event);
       onAttack(this.pointer);
@@ -58,7 +54,17 @@ export class Controls {
     this.virtualAxes = [0, 0];
     for (const listener of this.resetListeners) listener();
   }
+  setMenuBlocked(blocked) {
+    const next = Boolean(blocked);
+    if (next === this.menuBlocked) return;
+    this.menuBlocked = next;
+    this.clear();
+  }
+  get blocked() {
+    return this.menuBlocked || blocksGameplayInput(document.activeElement);
+  }
   get axes() {
+    if (this.blocked) return [0, 0];
     return movementAxes(
       [
         Number(this.keys.has("KeyD")) - Number(this.keys.has("KeyA")),

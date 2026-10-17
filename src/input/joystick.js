@@ -22,7 +22,8 @@ export class Joystick {
     this.knob = element.querySelector(".stick-knob");
     controls.registerReset(() => this.reset());
     element.addEventListener("pointerdown", (event) => {
-      if (event.button !== 0 || this.pointerId !== null) return;
+      if (event.button !== 0 || this.pointerId !== null || controls.blocked)
+        return;
       event.preventDefault();
       this.pointerId = event.pointerId;
       element.setPointerCapture(event.pointerId);
@@ -38,6 +39,10 @@ export class Joystick {
     window.addEventListener("resize", () => this.reset());
   }
   move(event) {
+    if (this.controls.blocked) {
+      this.reset();
+      return;
+    }
     const rect = this.element.getBoundingClientRect(),
       radius = rect.width * 0.32;
     const axes = joystickAxes(
