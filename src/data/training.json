@@ -1,0 +1,4 @@
+{
+  "player": { "x": -5, "z": 5, "radius": 0.45, "speed": 5.5, "maxHp": 100, "range": 6, "attackCooldown": 0.65, "damage": 25 },
+  "dummy": { "x": 3, "z": -3, "radius": 0.65, "maxHp": 200 }
+}

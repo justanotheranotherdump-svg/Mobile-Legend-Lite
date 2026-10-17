@@ -1,0 +1,8 @@
+node_modules/
+dist/
+artifacts/
+*.log
+.DS_Store
+# Regenerable downloads (kept in the workspace, not in source control)
+deliverables/*
+!deliverables/README.md
