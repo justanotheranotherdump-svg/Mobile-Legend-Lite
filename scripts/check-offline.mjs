@@ -11,4 +11,7 @@ const css = [...html.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi)].map(match 
 assert.ok(!/@import\s|url\(\s*["']?(?!data:|#)/i.test(css), 'External CSS dependency');
 assert.deepEqual(await readdir('dist'), ['index.html'], 'dist must contain just one HTML file');
 assert.equal(html, await readFile('dist/index.html', 'utf8'));
-console.log('PASS: one HTML, inline JS/CSS, no external markup/CSS dependencies; download matches dist.');
+assert.ok(html === await readFile('index.html', 'utf8'), 'Root index.html must match the standalone download; run npm run build before committing');
+assert.ok(html.includes('name="moba-build" content="standalone-offline"'), 'Standalone build marker missing');
+assert.ok(css.length > 1000 && /<script type="module">/.test(html), 'Missing inline application/CSS');
+console.log('PASS: one HTML, inline JS/CSS, no external markup/CSS dependencies; root index, dist and download match.');

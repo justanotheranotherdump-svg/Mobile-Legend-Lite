@@ -7,7 +7,7 @@ async function asset(path) {
   if (!fullPath.startsWith(root + sep)) throw new Error(`Unsafe output path: ${path}`);
   return readFile(fullPath, 'utf8');
 }
-let html = await readFile('dist/index.html', 'utf8');
+let html = await readFile('dist/dev.html', 'utf8');
 const scripts = [...html.matchAll(/<script\b[^>]*\bsrc="([^"]+)"[^>]*><\/script>/g)];
 if (scripts.length !== 1) throw new Error('Expected exactly one bundled entry script');
 for (const match of scripts) {
@@ -20,9 +20,14 @@ for (const match of styles) {
   const css = (await asset(match[1])).replace(/<\/style/gi, '<\\/style');
   html = html.replace(match[0], () => `<style>${css}</style>`);
 }
+html = html.replace('</head>', '<meta name="moba-build" content="standalone-offline" />\n</head>');
 const notices = await readFile('THIRD_PARTY_NOTICES.md', 'utf8');
 html = html.replace('</head>', () => `<!--\n${notices}\n-->\n</head>`);
+// Intentionally version the root standalone entry: GitHub ZIP downloads must
+// be playable by double-clicking index.html, without asking players to build.
+await writeFile('index.html', html);
 await writeFile('dist/index.html', html);
+await rm('dist/dev.html');
 await rm('dist/assets', { recursive: true, force: true });
 await mkdir('deliverables', { recursive: true });
 await writeFile('deliverables/MOBA-Lab-Phase-1.html', html);

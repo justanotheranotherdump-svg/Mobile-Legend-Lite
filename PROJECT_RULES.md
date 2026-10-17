@@ -79,3 +79,8 @@ Keep source, lockfiles, tests, documentation, and appropriate assets in this rep
 ## Phase 1 implementation status (2026-10-17)
 
 Phase 1 foundation is implemented with temporary geometry only. `npm ci`, production/offline packaging, 11 simulation tests and 12 offline Linux Chromium file:// browser checks passed. See docs/PHASE_1.md and docs/phase-1-browser-results.json. Windows double-click acceptance is still pending; no final character GLBs or animations exist. Earlier capability findings above describe the initial inspection; a development-only npm-packaged Chromium workflow now enables Linux browser testing. Do not start Phase 2 without the user's testing and explicit approval.
+
+
+## Phase 1 offline entry correction
+
+The user reported opening the repository root index.html via Windows file:// and seeing unstyled text. That root was the Vite development template, while only the separately generated deliverable was offline-ready. Fix this delivery ambiguity without expanding scope: use dev.html for Vite development/build input and intentionally commit the generated standalone game as root index.html. GitHub branch ZIPs and the source ZIP must include that playable root file. Future runtime edits must rebuild it; validate byte equality with dist/index.html and the standalone download. Duplicate build output remains ignored. Test styling, root file launch, and the source-ZIP index in isolation with no sibling assets. Windows retesting is still required.

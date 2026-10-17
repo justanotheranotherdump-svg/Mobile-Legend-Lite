@@ -4,12 +4,14 @@ A genuinely 3D, single-player training sandbox using Three.js and Vite. **Phase 
 
 ## Play without development tools
 
-Download `deliverables/MOBA-Lab-Phase-1.html`. On Windows:
+**If you download this branch as a ZIP, extract it and double-click the root `index.html`.** It is now the full self-contained game, not the Vite source template. You can copy that one file to any folder and play offline.
+
+Alternatively, use the separately delivered `MOBA-Lab-Phase-1.html` (same contents). On Windows:
 
 1. Save the HTML file to a local folder. If downloaded in an archive, extract it first.
 2. Disconnect from the internet (or disable network adapters).
 3. Double-click the HTML. If Windows opens an editor, use **Open with → Google Chrome or Microsoft Edge**.
-4. It should open as `file:///…/MOBA-Lab-Phase-1.html`. No server, installation, sibling assets, or internet is needed by the game.
+4. It should open as `file:///…/index.html` (or `file:///…/MOBA-Lab-Phase-1.html`). No server, installation, sibling assets, or internet is needed by the game.
 5. Click inside the arena if necessary to focus keyboard input.
 
 Requires a modern browser with **WebGL2** and graphics acceleration. The exact standalone artifact passed automated offline file:// tests in **Linux Chromium 153**, not Windows. Windows Chrome/Edge acceptance remains manual; see [docs/PHASE_1.md](docs/PHASE_1.md).
@@ -37,18 +39,18 @@ npm ci
 npm run dev -- --port 5173
 ```
 
-Open the development URL shown by Vite (or Arena's live preview). Server binds to `0.0.0.0` and accepts `*.e2b.app` preview hosts. No browser-facing backend or localhost API is used.
+Open the development URL shown by Vite (or Arena's live preview). Vite serves `dev.html` at `/` and `/index.html` for live source development; do not edit the generated root `index.html` by hand. Server binds to `0.0.0.0` and accepts `*.e2b.app` preview hosts. No browser-facing backend or localhost API is used.
 
 ```bash
 npm test                 # 11 pure simulation/clock tests
 npm run build            # Vite build, inline packaging, offline structure checks
 npm run validate:offline # Recheck generated deliverable
-npm run test:browser     # Exact HTML, file://, offline Chromium interactions
+npm run package:source   # Rebuild HTML + source ZIP (zip CLI required in Arena)
+npm run test:browser     # 15 offline checks: game, root index, source-ZIP index
 npm run preview -- --port 4173
-npm run package:source   # Source ZIP, requires the zip CLI (available in Arena)
 ```
 
-The browser test uses development-only `playwright-core` and npm-packaged Linux Chromium with software WebGL. On the minimal Arena Linux environment it extracts bundled NSS libraries into a temporary folder. On another platform set **BROWSER_PATH** to an installed compatible Chromium/Chrome executable instead; e.g. Windows PowerShell:
+The ZIP regression test requires the `unzip` CLI (available in Arena); install it as a developer prerequisite on other systems. This is NOT required to play the HTML. The browser test uses development-only `playwright-core` and npm-packaged Linux Chromium with software WebGL. On the minimal Arena Linux environment it extracts bundled NSS libraries into a temporary folder. On another platform set **BROWSER_PATH** to an installed compatible Chromium/Chrome executable instead; e.g. Windows PowerShell:
 
 ```powershell
 $env:BROWSER_PATH = 'C:\Program Files\Google\Chrome\Application\chrome.exe'
@@ -59,19 +61,21 @@ If automated browser prerequisites are unavailable, report that explicitly and p
 
 ## Standalone packaging
 
-Vite bundles Three.js, JSON configuration and application modules into one JS entry. `scripts/package-html.mjs` embeds that entry and its CSS into HTML, includes the Three.js MIT notice, removes generated external assets, and writes:
+The editable HTML template is **`dev.html`**. Vite builds this template (not the already-bundled root index), then bundles Three.js, JSON configuration and application modules into one JS entry. `scripts/package-html.mjs` embeds that entry and its CSS into HTML, includes the Three.js MIT notice, removes generated external assets, and writes:
 
+- `index.html` — committed standalone entry so GitHub branch ZIP downloads play immediately.
 - `dist/index.html` — production output (only file in dist).
 - `deliverables/MOBA-Lab-Phase-1.html` — identical downloadable file (~544 KiB).
 
 No single-file plugin, external fonts, CDN, fetched JSON, runtime model files, decoder, service worker, or network API is required. A Vite >500 kB chunk warning is expected because intentionally bundling Three.js is required; it is not a failed build. Future GLB bytes/textures/audio must be embedded and decoded in memory. A future asset pipeline must fail validation if it introduces external dependencies; this milestone does not claim to implement future GLB loading.
 
-Source ZIP excludes node_modules, .git, caches, generated HTML and test screenshots; download HTML separately. It includes the original reference images for planning only. Neither screenshot art nor reference logos are embedded in the game.
+Source ZIP includes the playable standalone root `index.html` AND the editable `dev.html`/source. It excludes node_modules, .git, caches, duplicate build outputs and test screenshots. `npm run package:source` rebuilds first to prevent stale HTML in the ZIP. It includes the original reference images for planning only. Neither screenshot art nor reference logos are embedded in the game.
 
 ## Source map
 
 | Path | Responsibility |
 | --- | --- |
+| `dev.html` / `index.html` | Editable Vite template / generated offline game (do not hand-edit) |
 | `src/simulation/` | Mesh-independent movement, circle/box collision, combat, dummy lifecycle, reset |
 | `src/core/clock.js` | Fixed timestep and capped catch-up |
 | `src/input/controls.js` | Keyboard, pointer, focus handling |
@@ -88,6 +92,6 @@ Add `#diagnostics` to the HTML URL only when debugging to expose a read-only sta
 
 ## Preservation
 
-Source, lockfile, tests and docs live on the Arena session branch. Generated `dist`, downloads, node_modules and test artifacts are ignored by Git and can be regenerated. Obtain the HTML and source ZIP from the delivered downloads; source is the authoritative preserved project. No commit/push is required for Arena to preserve source edits.
+Source, lockfile, tests and docs live on the Arena session branch. **Exception to the usual generated-artifact policy:** root `index.html` is deliberately tracked (~545 KiB) to make GitHub source ZIP downloads playable without build tools. Rebuild and commit it whenever runtime source changes; the offline validator enforces equality with the downloadable build. Generated `dist`, duplicate downloads, node_modules and test artifacts remain ignored by Git. Obtain the HTML and source ZIP from the delivered downloads; source is the authoritative preserved project. No commit/push is required for Arena to preserve source edits.
 
 Phase 1 results, known limitations, and the Windows acceptance checklist: [docs/PHASE_1.md](docs/PHASE_1.md).

@@ -70,6 +70,15 @@ try {
   });
   assert.match(gpu, /WebGL 2/);
   pass('downloaded HTML initializes actual WebGL2 using file:// with network disabled');
+  const layout = await page.evaluate(() => ({
+    background: getComputedStyle(document.documentElement).backgroundColor,
+    header: getComputedStyle(document.querySelector('.topbar')).position,
+    canvas: { width: document.querySelector('canvas').clientWidth, height: document.querySelector('canvas').clientHeight },
+  }));
+  assert.equal(layout.background, 'rgb(16, 27, 36)');
+  assert.equal(layout.header, 'absolute');
+  assert.deepEqual(layout.canvas, { width: 1440, height: 900 });
+  pass('inline CSS is applied: dark background, positioned HUD, full-viewport canvas (unstyled-page regression)');
   await page.screenshot({ path: 'artifacts/arena-initial.png' });
 
   await clickDummy();
@@ -206,11 +215,54 @@ try {
   pass('resize at 1000×700, 800×600, 1440×900 preserves canvas, camera, ground picking, and reset control');
   await reset();
   await page.screenshot({ path: 'artifacts/arena-final.png' });
+  // Reproduce the user's download path, not just the separately named build.
+  // Isolate the ZIP's index.html in a folder with spaces/Unicode and no siblings.
+  const isolated = join(await mkdtemp(join(tmpdir(), 'moba-source-')), 'Windows download — offline');
+  await mkdir(isolated);
+  const archivedIndex = execFileSync('unzip', ['-p', 'deliverables/MOBA-Lab-Phase-1-source.zip', 'index.html'], { maxBuffer: 4 * 1024 * 1024 });
+  assert.ok(archivedIndex.equals(await readFile('index.html')), 'ZIP must include the current playable root index');
+  await writeFile(join(isolated, 'index.html'), archivedIndex);
+  for (const [entry, label] of [[resolve('index.html'), 'repository root index.html'], [join(isolated, 'index.html'), 'source-ZIP index.html isolated without sibling files (spaces/Unicode path)']]) {
+    await page.goto(pathToFileURL(entry).href + '#diagnostics');
+    await page.waitForFunction(() => window.foundationDiagnostics?.snapshot().time > 0.05);
+    assert.ok(await page.locator('#error').isHidden());
+    assert.equal(await page.locator('.topbar').evaluate(element => getComputedStyle(element).position), 'absolute');
+    await page.keyboard.down('d');
+    await page.waitForFunction(() => {
+      const { player, dummy } = window.foundationDiagnostics.snapshot();
+      return Math.hypot(player.x - dummy.x, player.z - dummy.z) < 5.1;
+    });
+    await page.keyboard.up('d');
+    await clickDummy();
+    await elapsed(0.05);
+    assert.equal((await snap()).dummy.hp, 175);
+    await reset();
+    assert.equal((await snap()).dummy.hp, 200);
+    pass(`${label}: styled offline 3D, keyboard movement, attack and reset`);
+  }
+  await page.screenshot({ path: 'artifacts/source-zip-offline.png' });
   assert.deepEqual(requests, [], 'file artifact must not request any subresources');
   assert.deepEqual(errors, [], 'no browser console errors or page exceptions');
   assert.deepEqual(warnings, [], 'no browser warnings');
   pass('no runtime errors/warnings and ZERO subresource requests during full offline interaction');
-  await writeFile('artifacts/browser-results.json', JSON.stringify({ platform: process.platform, browser: await browser.version(), gpu, offline: true, fileProtocol: true, checks, errors, warnings, requests }, null, 2));
+  let developmentPreview = null;
+  if (process.env.DEV_TEST_URL) {
+    const devContext = await browser.newContext({ viewport: { width: 1280, height: 800 } });
+    const devPage = await devContext.newPage();
+    const devErrors = [];
+    devPage.on('pageerror', error => devErrors.push(String(error)));
+    devPage.on('console', message => { if (message.type() === 'error') devErrors.push(message.text()); });
+    await devPage.goto(process.env.DEV_TEST_URL + '/#diagnostics');
+    await devPage.waitForFunction(() => window.foundationDiagnostics?.snapshot().time > 0.05);
+    assert.ok(await devPage.locator('script[src="/src/main.js"]').count(), 'Dev root must serve editable template, not stale standalone bundle');
+    assert.ok(await devPage.locator('#error').isHidden());
+    assert.deepEqual(devErrors, []);
+    developmentPreview = { passed: true, errors: devErrors };
+    console.log('PASS: separate Vite preview smoke check — root serves source template and WebGL initializes');
+    // Leave both contexts to browser.close() below. Closing an individual
+    // context can terminate the single-process Chromium container build.
+  }
+  await writeFile('artifacts/browser-results.json', JSON.stringify({ platform: process.platform, browser: await browser.version(), gpu, offline: true, fileProtocol: true, developmentPreview, checks, errors, warnings, requests }, null, 2));
   console.log(`\n${checks.length} browser checks passed. Windows double-click testing remains manual.`);
 } catch (error) {
   await writeFile('artifacts/browser-failure.json', JSON.stringify({ checks, errors, warnings, requests, failure: String(error) }, null, 2));
