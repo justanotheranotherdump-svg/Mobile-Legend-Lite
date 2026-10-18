@@ -1,0 +1,122 @@
+/* Shared real audio controls. Scope avoids changing legacy combat controls. */
+.audio-preferences {
+  color: #e1edf6;
+  max-width: 680px;
+  margin: auto;
+  font-size: 13px;
+}
+.audio-status-row {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 48px;
+  margin-bottom: 12px;
+  color: #aee9e6;
+  font-size: 12px;
+}
+.audio-status-row p {
+  line-height: 1.6;
+  margin: 0;
+}
+.audio-enable,
+.audio-reset {
+  padding: 9px 15px;
+  border: 1px solid #a4c3d0;
+  background: #1a3b57;
+  color: #e4f6ff;
+  border-radius: 3px;
+  min-height: 40px;
+  font-size: 12px;
+}
+.audio-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px 0;
+  border-bottom: 1px solid #9dc6d326;
+  font-size: 14px;
+  min-height: 60px;
+}
+.audio-option > span {
+  display: grid;
+  gap: 5px;
+}
+.audio-option small {
+  font-size: 11px;
+  color: #aac3d1;
+  line-height: 1.5;
+  max-width: 420px;
+}
+.audio-option input[type="checkbox"] {
+  appearance: auto;
+  accent-color: #78dedc;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.audio-volume {
+  display: grid;
+  grid-template-columns: minmax(95px, 1fr) minmax(100px, 1.6fr) 45px;
+  gap: 15px;
+  align-items: center;
+  margin: 23px 0;
+  font-size: 13px;
+}
+.audio-volume input {
+  width: 100%;
+  accent-color: #83ddd9;
+  height: 24px;
+  cursor: pointer;
+}
+.audio-volume output {
+  text-align: right;
+  color: #ecd498;
+  font-variant-numeric: tabular-nums;
+}
+.audio-save-note {
+  font-size: 10px;
+  color: #9ab7c8;
+  line-height: 1.7;
+  margin-top: 18px;
+}
+.audio-reset {
+  margin-top: 8px;
+}
+#game-audio-controls {
+  margin: 20px 0 10px;
+}
+#game-audio-controls .audio-option {
+  font-size: 12px;
+}
+#game-audio-controls .audio-volume {
+  font-size: 11px;
+  gap: 10px;
+}
+@media (max-height: 560px) {
+  .audio-option {
+    padding: 9px 0;
+    min-height: 48px;
+    font-size: 12px;
+  }
+  .audio-option small {
+    font-size: 10px;
+  }
+  .audio-volume {
+    margin: 14px 0;
+    font-size: 11px;
+  }
+  .audio-status-row {
+    font-size: 11px;
+    margin-bottom: 5px;
+  }
+  .audio-save-note {
+    margin-top: 11px;
+  }
+  .audio-reset {
+    min-height: 36px;
+    padding: 7px 13px;
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "sha256": "963a4902955cb8ad345c74eb63b76e602ade5247c2bd94544ce3000cba6edd51",
+  "bytes": 64808,
+  "validator": "gltf-validator@2.0.0-dev.3.10",
+  "issues": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 0,
+    "numHints": 0,
+    "messages": [],
+    "truncated": false
+  },
+  "info": {
+    "version": "2.0",
+    "generator": "THREE.GLTFExporter r186",
+    "extensionsUsed": [
+      "KHR_materials_unlit"
+    ],
+    "resources": [
+      {
+        "pointer": "/buffers/0",
+        "mimeType": "application/gltf-buffer",
+        "storage": "glb",
+        "byteLength": 53192
+      }
+    ],
+    "animationCount": 2,
+    "materialCount": 2,
+    "hasMorphTargets": false,
+    "hasSkins": false,
+    "hasTextures": false,
+    "hasDefaultScene": true,
+    "drawCallCount": 8,
+    "totalVertexCount": 1188,
+    "totalTriangleCount": 396,
+    "maxUVs": 0,
+    "maxInfluences": 0,
+    "maxAttributes": 3
+  }
+}

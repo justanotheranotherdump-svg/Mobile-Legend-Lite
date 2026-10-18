@@ -1,0 +1,198 @@
+{
+  "id": "crystal-causeway",
+  "name": "Crystal Causeway",
+  "halfSize": 36,
+  "laneHalfWidth": 7,
+  "spawn": {
+    "player": {
+      "x": -33,
+      "z": 0
+    },
+    "enemy": {
+      "x": 33,
+      "z": 0
+    }
+  },
+  "obstacles": [
+    {
+      "x": 0,
+      "z": 18,
+      "width": 72,
+      "depth": 22,
+      "height": 2
+    },
+    {
+      "x": 0,
+      "z": -18,
+      "width": 72,
+      "depth": 22,
+      "height": 2
+    }
+  ],
+  "countdown": 3,
+  "spawnProtection": 4,
+  "spawnHealPerSecond": 180,
+  "respawnBase": 8,
+  "respawnPerLevel": 0.6,
+  "heroReward": {
+    "xp": 250,
+    "gold": 180
+  },
+  "rewardRadius": 12,
+  "assistWindow": 8,
+  "wave": {
+    "firstAt": 0,
+    "interval": 18,
+    "size": 3,
+    "hp": 650,
+    "physicalDefense": 12,
+    "magicDefense": 12,
+    "damage": 60,
+    "speed": 2.8,
+    "range": 1.8,
+    "cooldown": 1.2,
+    "gold": 30,
+    "xp": 80,
+    "spawn": {
+      "player": {
+        "x": -28,
+        "z": 0
+      },
+      "enemy": {
+        "x": 28,
+        "z": 0
+      }
+    },
+    "path": {
+      "player": [
+        "enemy-0",
+        "enemy-1",
+        "enemy-2"
+      ],
+      "enemy": [
+        "player-0",
+        "player-1",
+        "player-2"
+      ]
+    }
+  },
+  "bot": {
+    "detectRange": 13,
+    "attackRange": 5,
+    "abilityRange": 7,
+    "abilityBase": 180,
+    "abilityScaling": 0.6,
+    "abilityMana": 45,
+    "abilityCooldown": 7
+  },
+  "objectives": [
+    {
+      "id": "player-0",
+      "name": "Blue Outer Tower",
+      "kind": "tower",
+      "team": "player",
+      "order": 0,
+      "requires": null,
+      "x": -12,
+      "z": 0,
+      "maxHp": 3600,
+      "physicalDefense": 55,
+      "magicDefense": 40,
+      "damage": 220,
+      "range": 8,
+      "cooldown": 1.1,
+      "gold": 100,
+      "xp": 120
+    },
+    {
+      "id": "player-1",
+      "name": "Blue Inner Tower",
+      "kind": "tower",
+      "team": "player",
+      "order": 1,
+      "requires": "player-0",
+      "x": -22,
+      "z": 0,
+      "maxHp": 4200,
+      "physicalDefense": 55,
+      "magicDefense": 40,
+      "damage": 220,
+      "range": 8,
+      "cooldown": 1.1,
+      "gold": 100,
+      "xp": 120
+    },
+    {
+      "id": "player-2",
+      "name": "Blue Core",
+      "kind": "core",
+      "team": "player",
+      "order": 2,
+      "requires": "player-1",
+      "x": -30,
+      "z": 0,
+      "maxHp": 6500,
+      "physicalDefense": 65,
+      "magicDefense": 40,
+      "damage": 260,
+      "range": 8,
+      "cooldown": 1.1,
+      "gold": 0,
+      "xp": 0
+    },
+    {
+      "id": "enemy-0",
+      "name": "Red Outer Tower",
+      "kind": "tower",
+      "team": "enemy",
+      "order": 0,
+      "requires": null,
+      "x": 12,
+      "z": 0,
+      "maxHp": 3600,
+      "physicalDefense": 55,
+      "magicDefense": 40,
+      "damage": 220,
+      "range": 8,
+      "cooldown": 1.1,
+      "gold": 100,
+      "xp": 120
+    },
+    {
+      "id": "enemy-1",
+      "name": "Red Inner Tower",
+      "kind": "tower",
+      "team": "enemy",
+      "order": 1,
+      "requires": "enemy-0",
+      "x": 22,
+      "z": 0,
+      "maxHp": 4200,
+      "physicalDefense": 55,
+      "magicDefense": 40,
+      "damage": 220,
+      "range": 8,
+      "cooldown": 1.1,
+      "gold": 100,
+      "xp": 120
+    },
+    {
+      "id": "enemy-2",
+      "name": "Red Core",
+      "kind": "core",
+      "team": "enemy",
+      "order": 2,
+      "requires": "enemy-1",
+      "x": 30,
+      "z": 0,
+      "maxHp": 6500,
+      "physicalDefense": 65,
+      "magicDefense": 40,
+      "damage": 260,
+      "range": 8,
+      "cooldown": 1.1,
+      "gold": 0,
+      "xp": 0
+    }
+  ]
+}

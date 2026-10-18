@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 3,
+  "id": "layla",
+  "name": "Layla",
+  "role": "marksman",
+  "baseStats": {
+    "maxHp": 2250,
+    "hpRegen": 5.4,
+    "maxMana": 500,
+    "manaRegen": 4,
+    "physicalAttack": 133,
+    "physicalDefense": 15,
+    "magicDefense": 15,
+    "magicPower": 0,
+    "attackSpeed": 1.06,
+    "attackSpeedRatio": 1,
+    "criticalDamage": 2,
+    "movementSpeed": 240,
+    "attackRange": 4.3,
+    "collisionRadius": 0.45
+  },
+  "basicAttack": {
+    "effectId": "direct-damage",
+    "damage": 0,
+    "range": 6,
+    "cooldown": 0.9433962264150942,
+    "projectileSpeed": 18,
+    "castTime": 0.25,
+    "damageModel": {
+      "type": "physical",
+      "physicalScaling": 1,
+      "magicScaling": 0
+    }
+  },
+  "abilityIds": [
+    "malefic-gun",
+    "malefic-bomb",
+    "void-projectile",
+    "destruction-rush"
+  ],
+  "visual": "visual.json",
+  "actionLockDuration": 1.05,
+  "growthStats": {
+    "maxHp": 152,
+    "hpRegen": 0.2,
+    "maxMana": 100,
+    "manaRegen": 0.2,
+    "physicalAttack": 8.5,
+    "physicalDefense": 4,
+    "magicDefense": 2.5,
+    "magicPower": 0,
+    "attackSpeed": 0.02,
+    "attackSpeedRatio": 0,
+    "criticalDamage": 0,
+    "movementSpeed": 0,
+    "attackRange": 0
+  },
+  "runtimeScale": {
+    "movement": 0.022916666666666665,
+    "range": 1.3953488372093024,
+    "maximumAttackRate": 2.5
+  },
+  "progression": {
+    "minLevel": 1,
+    "maxLevel": 15,
+    "xpThresholds": [
+      0,
+      200,
+      500,
+      900,
+      1400,
+      2000,
+      2700,
+      3500,
+      4400,
+      5400,
+      6500,
+      7700,
+      9000,
+      10400,
+      11900
+    ]
+  }
+}
