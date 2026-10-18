@@ -1,5 +1,6 @@
 import * as THREE from "three";
 const colors = {
+  flameshot: "#ff9c53",
   "line-projectile": "#ffd877",
   "basic-projectile": "#b9f8ff",
   "orb-mark": "#c391ff",

@@ -335,3 +335,34 @@ Batch 1 review handoff: 448 units and 173 browser checks executed. Exact timing,
 artifact/asset hashes, baseline checkpoint, scoped changes and manual limits in
 `docs/BATCH_1.md` / `docs/batch1-verification.json`. Stop for approval before shop
 redesign/battle spells. No further commit or push for the Batch 1 implementation.
+
+## Explicit combined Batch 2 → Batch 3 authorization — 2026-10-18
+User supplied both boundaries; clarification tool explicitly selected BOTH IN ORDER
+without an intermediate approval stop. Implement shop/recipes/quick buy first,
+then twelve actual battle spells/card selector/account unlocks. Baseline checkpoint
+`b60f96cf240485186e5e6d7f7bd5dcfcf10cf8b0` captures completed Batch1; no push.
+448 baseline units + 16 standalone Batch1 browser checks passed before edits.
+Use current prices/stats/effects. Missing recipes must be editable and labeled
+prototype reconstructions, not official. All catalog entries, including eight
+supported legacy prototypes, must be visible. Preserve six slots/max-copy and
+one-pair rules; automatic component consumption, no arbitrary slot replacement.
+No full recommended builds. Spell numerical values/unlocks/cooldowns authoritative
+from user's reference; original bundled art, actual shared gameplay, no visual-only
+claims. No fabricated jungle/blessing/traps; explicit inactive extension points.
+Keep account unlock XP separate from hero XP and wallet; configure any prototype
+account earning rule, validate saved selection, no normal unlock-all UI. Preserve
+Batch1 preview/10s loading, Layla bytes/kit, AI/respawns and offline packaging.
+Checkpoint before milestones, deliver tests/limits/source/HTML then stop; no push.
+
+Combined Batch2→3 review handoff: 555 unit tests and 184 browser checks executed.
+Prototype recipes, exact spell rules/account XP, supported lane modes and inactive
+jungle/blessing/trap/Practice cases are documented in `docs/SHOP_AND_BATTLE_SPELLS.md`
+and `docs/b23-verification.json`. No additional milestone/commit/push; stop for review.
+
+## Subsequent combined-milestone branch-update authorization — 2026-10-18
+After the completed Batch2/3 review delivery, the user explicitly requested updating
+`arena/55ce0f80-mobile-legend-lite`. Commit and push the reviewed current tree to
+that same branch; no additional feature batch. This supersedes the preceding
+review-only/no-push handoff. The sandbox checkpoint lineage and published earlier
+milestone lineage diverge; reconcile ancestry without force-pushing or replacing
+the reviewed working version. All published tracked files exist in this workspace.

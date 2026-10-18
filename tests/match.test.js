@@ -525,11 +525,14 @@ for (const item of equipment.items)
     assert.equal(s.player.criticalChance, 0);
     assert.equal(s.player.lifesteal, 0);
   });
-test("six-slot atomic transactions: no free gold, invalid sale, full/insufficient/unknown reject; replacement refunds old item once", () => {
+test("six-slot atomic transactions: no free gold, invalid sale, full/insufficient/unknown reject; manual replacement is rejected; explicit sale refunds once", () => {
   const blank = Array(6).fill(null);
   assert.equal(purchase(0, blank, "edge").error, "insufficient-gold");
   assert.equal(purchase(1000, blank, "bad").error, "unknown-item");
-  assert.equal(purchase(1000, blank, "edge", 8).error, "invalid-slot");
+  assert.equal(
+    purchase(1000, blank, "edge", 8).error,
+    "manual-replacement-removed",
+  );
   let gold = 5000,
     inventory = blank;
   for (const item of equipment.items.slice(0, 6)) {
@@ -540,7 +543,12 @@ test("six-slot atomic transactions: no free gold, invalid sale, full/insufficien
   assert.equal(purchase(gold, inventory, "boots").error, "equipment-full");
   assert.equal(sell(gold, inventory, 6).error, "invalid-slot");
   assert.equal(sell(gold, blank, 0).error, "empty-slot");
-  const replaced = purchase(gold, inventory, "boots", 0);
+  assert.equal(
+    purchase(gold, inventory, "boots", 0).error,
+    "manual-replacement-removed",
+  );
+  const sold = sell(gold, inventory, 0);
+  const replaced = purchase(sold.gold, sold.inventory, "boots");
   assert.equal(replaced.gold, gold + 180 - 250);
   assert.equal(replaced.inventory[0], "boots");
   assert.equal(inventory[0], "edge");

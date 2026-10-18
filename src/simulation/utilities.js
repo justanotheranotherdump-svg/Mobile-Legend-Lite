@@ -38,6 +38,7 @@ export function useUtility(s, id) {
     s.utilities.regenReadyAt = s.time + UTILITY_RULES.regenCooldown;
     s.utilities.regen = { until: s.time + UTILITY_RULES.regenDuration };
   }
+  s.spells?.cancelArrival("utility");
   s.emit("utility", { id, point: { x: s.player.x, z: s.player.z } });
   return "started";
 }
@@ -66,7 +67,8 @@ export function tickUtilities(s, dt) {
       p.hp +
         ((p.maxHp * UTILITY_RULES.regenHp) / UTILITY_RULES.regenDuration) *
           elapsed *
-          (p.antiHealUntil > s.time ? 0.6 : 1),
+          (p.antiHealUntil > s.time ? 0.6 : 1) *
+          (p.recoveryBoost || 1),
     );
     p.mana = Math.min(
       p.maxMana,

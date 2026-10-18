@@ -54,6 +54,20 @@ export class AimSight {
       r = state.abilityRange(a),
       p = state.player,
       d = state.direction(state.aiming.point) || state.facing;
+    this.outline.visible = true;
+    this.range.visible = true;
+    if (a.aimStyle === "none") {
+      this.group.visible = false;
+      return;
+    }
+    if (a.aimStyle === "area") {
+      this.outline.visible = false;
+      this.range.visible = false;
+      this.blast.visible = true;
+      this.blast.position.set(p.x, 0.08, p.z);
+      this.blast.scale.setScalar(a.parameters.radius);
+      return;
+    }
     const dist =
       a.effectId === "orb-mark"
         ? Math.min(

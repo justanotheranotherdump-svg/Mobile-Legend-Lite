@@ -1,3 +1,6 @@
+import { BattleAccountStore } from "./battle-account.js";
+import { openBattleScreen } from "./battle-screen.js";
+import { getSpell } from "../spells/catalog.js";
 import { LocalLoadingState } from "./loading-state.js";
 import SELECTION_BACKGROUND from "./assets/hero-selection-stage.png?inline";
 import { MatchFlow } from "./match-flow.js";
@@ -61,6 +64,8 @@ export function startMenuApplication(registry, startTraining) {
     sharedVisual = null,
     runtime = null,
     lastDisposed = null;
+  const battleAccounts = new Map();
+  let battleAccount = null;
   const shopState = { role: "All", query: "", scrollTop: 0 };
   let selectedHeroId = "layla";
   let entering = false,
@@ -82,7 +87,15 @@ export function startMenuApplication(registry, startTraining) {
     cleanup();
     cleanup = () => {};
     root.dataset.screen = nav.screen;
-    if (store.profile) progress.loadFor(store.profile);
+    if (store.profile) {
+      progress.loadFor(store.profile);
+      if (!battleAccounts.has(store.profile.username))
+        battleAccounts.set(
+          store.profile.username,
+          new BattleAccountStore(storage, store.profile.username),
+        );
+      battleAccount = battleAccounts.get(store.profile.username);
+    }
     root.querySelector("#lobby-backdrop").src =
       nav.screen === "selection" ? SELECTION_BACKGROUND : LOBBY_BACKGROUND;
     const visualScreen =
@@ -203,6 +216,33 @@ export function startMenuApplication(registry, startTraining) {
       cleanup = mountLobbySettings(content, preferences, audio, () =>
         go("lobby"),
       );
+    if (battleAccount && ["lobby", "room", "selection"].includes(nav.screen)) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.id = "setup-battle-spell";
+      button.className = "setup-battle-spell";
+      if (nav.screen === "lobby") button.classList.add("spell-lobby-entry");
+      const label = () =>
+        (button.textContent = `Spell: ${getSpell(battleAccount.value.selected).name} · Account Lv ${battleAccount.level}${flow.mode === "practice" && nav.screen !== "lobby" ? " · inactive in dummy Practice" : ""}`);
+      label();
+      const anchor = content.querySelector("#hero-confirm"),
+        heading = content.querySelector(".room-heading");
+      if (anchor) anchor.before(button);
+      else if (heading) heading.append(button);
+      else content.append(button);
+      button.onclick = () => {
+        const opened = Date.now();
+        if (nav.screen === "selection") flow.selectionPausedAt = opened;
+        openBattleScreen(battleAccount, () => {
+          if (flow.selectionPausedAt) {
+            flow.selectionEndsAt += Date.now() - opened;
+            flow.selectionPausedAt = null;
+          }
+          label();
+          button.focus();
+        });
+      };
+    }
     if (visualScreen) lobby.prepare().catch(fail);
   }
   function leaveRuntime(destination) {
@@ -220,6 +260,11 @@ export function startMenuApplication(registry, startTraining) {
     let config;
     try {
       config = flow.confirm(store.profile);
+      if (config) {
+        config.spellId = battleAccount.value.selected;
+        config.accountLevel = battleAccount.level;
+        flow.config.spellId = config.spellId;
+      }
       if (!config) return;
       createMatchConfig(config.mode, config.difficulty, config.teamSize);
     } catch (cause) {
@@ -232,6 +277,8 @@ export function startMenuApplication(registry, startTraining) {
     cleanup = () => {};
     root.dataset.screen = "loading";
     mountLoading(content, flow, store.profile);
+    const matchIdentity =
+      crypto.randomUUID?.() || `${Date.now()}-${Math.random()}`;
     const loading = new LocalLoadingState();
     const refreshLoading = () => {
       const elapsed = Math.min(loading.minimumMs, loading.elapsed);
@@ -274,6 +321,9 @@ export function startMenuApplication(registry, startTraining) {
         onReady: (context) => connectTrainingAudio(context, audio, preferences),
         onExit: leaveRuntime,
         onEnd: (result) => {
+          const awarded = battleAccount.award(matchIdentity);
+          result.accountXpEarned = awarded ? 100 : 0;
+          result.accountLevel = battleAccount.level;
           flow.result = result;
           leaveRuntime("results");
         },
@@ -403,6 +453,7 @@ export function startMenuApplication(registry, startTraining) {
           allyCount: flow.allyCount,
           enemyCount: flow.enemyCount,
         },
+        battleAccount: battleAccount?.snapshot(),
         lastDisposed,
         lobby: lobby.diagnostics(),
       }),

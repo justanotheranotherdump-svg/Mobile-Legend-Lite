@@ -1,3 +1,8 @@
+import {
+  healActor,
+  slowActor,
+  recoveryMultiplier,
+} from "../simulation/status.js";
 import { inventoryBonuses } from "./equipment.js";
 import {
   runtimeAttributes,
@@ -22,12 +27,7 @@ export class ItemEffects {
     this.tick(0);
   }
   heal(a, hp, mana = 0) {
-    if (a.hp <= 0) return;
-    a.hp = Math.min(
-      a.maxHp,
-      a.hp + hp * (a.antiHealUntil > this.s.time ? 0.6 : 1),
-    );
-    a.mana = Math.min(a.maxMana, a.mana + mana);
+    return healActor(this.s, a, hp, mana);
   }
   tick() {
     const s = this.s,
@@ -86,6 +86,8 @@ export class ItemEffects {
         (flat.physicalAttack || 0) +
         (t.warStacks || 0) *
           (["marksman", "mage", "support"].includes(s.hero.role) ? 6 : 12);
+    for (const [key, value] of Object.entries(s.spells?.modifiers() || {}))
+      flat[key] = (flat[key] || 0) + value;
     const signature = JSON.stringify([flat, percent, s.inventory]);
     if (signature !== this.signature) {
       this.signature = signature;
@@ -122,6 +124,7 @@ export class ItemEffects {
       p.attackRate = Math.min(5, p.attributes.attackSpeed);
       p.attackCooldown = 1 / p.attackRate;
     }
+    s.spells?.applyRuntime();
   }
   prepare(target) {
     const s = this.s;
@@ -177,12 +180,7 @@ export class ItemEffects {
     };
   }
   slow(target, ratio, duration) {
-    const now = this.s.time,
-      old = target.slow;
-    target.slow = {
-      ratio: old?.until > now ? Math.max(old.ratio, ratio) : ratio,
-      until: now + duration * (1 - (target.tenacity || 0)),
-    };
+    return slowActor(this.s, target, ratio, duration);
   }
   absorb(amount, type, source) {
     const s = this.s,
@@ -199,16 +197,11 @@ export class ItemEffects {
         amount:
           s.progression.level *
           (this.has("lifeline-rose") ? 120 : 60) *
-          (p.antiHealUntil > now ? 0.6 : 1),
+          recoveryMultiplier(s, p),
         until: now + 3,
       };
       t.lifelineReadyAt = now + 60;
       t.lifelineUntil = now + 3;
-    }
-    if (p.shield?.until > now) {
-      const block = Math.min(amount, p.shield.amount);
-      p.shield.amount -= block;
-      amount -= block;
     }
     t.anyCombatUntil = now + 5;
     if (source?.kind !== "minion") t.lastNonMinion = now;

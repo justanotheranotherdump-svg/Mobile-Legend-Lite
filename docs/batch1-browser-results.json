@@ -20,21 +20,21 @@
   "timings": [
     {
       "mode": "brawl",
-      "elapsedMs": 10021
+      "elapsedMs": 10023.599999999627
     },
     {
       "mode": "ai-training",
-      "elapsedMs": 10026.100000000093
+      "elapsedMs": 10019.099999999627
     },
     {
       "mode": "practice",
-      "elapsedMs": 10013.30000000028
+      "elapsedMs": 10021.200000000186
     }
   ],
   "errors": [],
   "warnings": [],
   "requests": [],
   "selectionBackgroundIsDedicated": true,
-  "bundleSha256": "8e06b6941bacc0a052b98f13f2d52b032338a4b6664f981b89b4fbbad55eb3e9",
+  "bundleSha256": "198aad05670f6906cc386ede85744e9a5a989456e8e06e8d31d234c32cdaa8be",
   "environment": "Linux Chromium software WebGL; offline file://; not native Windows or physical touch"
 }

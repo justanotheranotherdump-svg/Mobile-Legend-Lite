@@ -112,7 +112,7 @@ try {
   await p.locator("#shop").click();
   assert.equal(await p.locator("#shop-dialog").getAttribute("open"), "");
   await p.locator("[data-category=All]").click();
-  assert.equal(await p.locator("#armory-catalog [data-item]").count(), 37);
+  assert.equal(await p.locator("#armory-catalog [data-item]").count(), 45);
   await p.locator("#item-search").fill("javelin");
   assert.equal(await p.locator("[data-item=javelin]").count(), 1);
   await p.locator("[data-item=javelin]").click();
@@ -141,13 +141,13 @@ try {
   assert.equal(s.gold, 380);
   assert.equal(s.inventory[1], null);
   pass(
-    "Restored wide shop filters 37 Attack/Movement items, decodes original PNGs, equips +8% crit Javelin, and requires explicit Sell to free an equipped slot/refund once",
+    "Restored wide shop filters all 45 supported items, decodes original PNGs, equips +8% crit Javelin, and requires explicit Sell to free an equipped slot/refund once",
   );
   await p.locator("#item-search").fill("");
   await p.locator("[data-category=Movement]").click();
   assert.equal(await p.locator("#armory-catalog [data-item]").count(), 8);
   await p.locator("[data-item=basic-boots]").click();
-  await p.locator("#item-replace").selectOption("1");
+
   await p.locator("#item-purchase").click();
   s = await snap();
   assert.equal(s.gold, 130);

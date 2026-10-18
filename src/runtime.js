@@ -1,3 +1,4 @@
+import { SpellHud } from "./ui/spell-hud.js";
 import { UtilityHud } from "./ui/utility-hud.js";
 import { FixedClock } from "./core/clock.js";
 import { withinEvents } from "./core/events.js";
@@ -26,7 +27,8 @@ export async function createRuntime({
     disposed = false,
     paused = document.hidden,
     userPaused = false,
-    offReady;
+    offReady,
+    spellHud;
   const clock = new FixedClock();
   if (profile) simulation.playerName = profile.username;
   document.querySelector("#app").hidden = deferReveal;
@@ -49,6 +51,7 @@ export async function createRuntime({
     scope.abort();
     offReady?.();
     matchHud?.dispose();
+    spellHud?.dispose();
     view?.dispose();
     simulation.events.listeners.clear();
     document.querySelector("#hud-root").replaceChildren();
@@ -95,6 +98,7 @@ export async function createRuntime({
         view,
       );
       if (simulation.combatHero) hud.utilities = new UtilityHud(simulation);
+      if (simulation.spells) spellHud = new SpellHud(simulation);
       if (simulation.isMatch)
         matchHud = new MatchHud(simulation, {
           onPause: setPaused,
@@ -210,6 +214,7 @@ export async function createRuntime({
         view.render(simulation, controls.pointer);
         hud.update(simulation, view);
         hud.utilities?.update();
+        spellHud?.update();
         matchHud?.update();
         if (simulation.phase === "ended") {
           onEnd?.(structuredClone(simulation.result));

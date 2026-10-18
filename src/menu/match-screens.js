@@ -1,3 +1,4 @@
+import { getSpell } from "../spells/catalog.js";
 import { COMBAT_ART } from "../ui/combat-art.js";
 import { imageIcon } from "./art.js";
 import { rosterFor } from "./match-flow.js";
@@ -112,6 +113,7 @@ export function mountSelection(
   root.querySelector("#pick-layla").onclick = () => pick(true);
   root.querySelector("#hero-confirm").onclick = finish;
   const update = () => {
+    if (flow.selectionPausedAt) return;
     const seconds = Math.max(
       0,
       Math.ceil((flow.selectionEndsAt - Date.now()) / 1000),
@@ -132,10 +134,10 @@ export function mountLoading(root, flow, profile) {
   const roster = flow.confirmedRoster || flow.roster(profile),
     cards = (team, blue) =>
       `<div class="loading-team ${blue ? "blue-team" : "red-team"}">${team.map((a) => `<article class="loading-hero"><img src="${COMBAT_ART[a.kind === "STATIONARY" ? "bot" : "layla"]}" alt="${a.hero}"><div><strong>${a.hero}</strong><span>${safe(a.name)}</span><small>${a.kind === "PLAYER" ? "LOCAL PLAYER" : a.kind === "STATIONARY" ? "DUMMY PRACTICE" : "COMPUTER"}</small></div></article>`).join("")}</div>`;
-  root.innerHTML = `<section class="flow-screen loading-screen roster-loading"><p class="menu-kicker">${flow.mode.toUpperCase()} · PREPARING LOCALLY</p>${cards(roster.player, true)}<div class="loading-middle"><strong>VS</strong><p class="loading-tip">TIP · Stay behind allied minions when approaching a tower.</p></div>${cards(roster.enemy, false)}<div class="lineup-view-time"><span id="lineup-view-status" role="status"></span><progress id="lineup-view-progress" value="0" max="10000" aria-label="Minimum lineup viewing time"></progress></div><progress id="local-load-progress" value="0" max="7" aria-label="Completed local setup tasks"></progress><p id="local-load-stage" role="status">Validating actual picks and roster…</p><small>Progress represents local preparation, not internet speed or separate player downloads.</small></section>`;
+  root.innerHTML = `<section class="flow-screen loading-screen roster-loading"><p class="menu-kicker">${flow.mode.toUpperCase()} · PREPARING LOCALLY · ${flow.mode === "practice" ? "DUMMY PRACTICE · SPELLS INACTIVE" : getSpell(flow.config?.spellId || "execute").name}</p>${cards(roster.player, true)}<div class="loading-middle"><strong>VS</strong><p class="loading-tip">TIP · Stay behind allied minions when approaching a tower.</p></div>${cards(roster.enemy, false)}<div class="lineup-view-time"><span id="lineup-view-status" role="status"></span><progress id="lineup-view-progress" value="0" max="10000" aria-label="Minimum lineup viewing time"></progress></div><progress id="local-load-progress" value="0" max="7" aria-label="Completed local setup tasks"></progress><p id="local-load-stage" role="status">Validating actual picks and roster…</p><small>Progress represents local preparation, not internet speed or separate player downloads.</small></section>`;
 }
 export function mountResults(root, result, { onReplay, onRoom, onMenu }) {
-  root.innerHTML = `<section class="flow-screen results-screen"><p class="menu-kicker">LOCAL MATCH COMPLETE · NO ACCOUNT REWARDS</p><h1>${result.outcome}</h1><p>Core destruction decided this result.</p><dl>${Object.entries(
+  root.innerHTML = `<section class="flow-screen results-screen"><p class="menu-kicker">LOCAL MATCH COMPLETE · ${result.accountXpEarned ? `ACCOUNT XP +${result.accountXpEarned} · LV ${result.accountLevel}` : "NO ACCOUNT CURRENCY REWARDS"}</p><h1>${result.outcome}</h1><p>Core destruction decided this result.</p><dl>${Object.entries(
     {
       Duration: `${Math.floor(result.duration / 60)}:${String(Math.floor(result.duration % 60)).padStart(2, "0")}`,
       Eliminations: result.eliminations,

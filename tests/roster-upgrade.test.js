@@ -102,13 +102,18 @@ test("37 supplied Attack/Movement items with Javelin 8% crit and typed Rogue Met
   near(s.player.criticalChance, 0.08);
   assert.equal(equipment.items.find((i) => i.id === "rogue-meteor").cost, 900);
 });
-test("boots enforce one equipped pair; selected sale frees a slot, once, without accumulating stats", () => {
+test("boots upgrade consumes basic pair automatically; a second different completed pair is rejected; explicit sale refunds once", () => {
   const s = game(["basic-boots"]);
   near(s.player.attributes.movementSpeed, 260);
-  assert.equal(s.purchaseItem("swift-boots"), "one-boots-only");
+  const before = s.gold;
+  assert.equal(s.purchaseItem("swift-boots"), "ok");
+  assert.equal(s.gold, before - (720 - 250));
+  assert.deepEqual(s.inventory.filter(Boolean), ["swift-boots"]);
+  near(s.player.attributes.movementSpeed, 280);
+  assert.equal(s.purchaseItem("warrior-boots"), "one-boots-only");
   const gold = s.gold;
   assert.equal(s.sellItem(0), "ok");
-  assert.equal(s.gold, gold + 150);
+  assert.equal(s.gold, gold + 432);
   near(s.player.attributes.movementSpeed, 240);
   assert.equal(s.sellItem(0), "empty-slot");
 });
@@ -332,7 +337,7 @@ test("Sea Halberd applies timed recovery reduction and real bonus-HP comparison"
   near(hp - e.hp, 108);
 });
 test("Crossbow adaptive on-hit damage and strongest shared Impulse", () => {
-  const s = game(["swift-crossbow", "corrosion-scythe"]),
+  const s = game(["corrosion-scythe", "swift-crossbow"]),
     e = enemy(s);
   s.deal(s.player, e, 100);
   near(10000 - e.hp, 220);

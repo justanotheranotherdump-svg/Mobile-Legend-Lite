@@ -285,12 +285,17 @@ try {
   await page.locator('[data-category="All"]').click();
   await page.locator('[data-item="dagger"]').click();
   await page.locator("#item-purchase").click();
-  await page.locator("#item-purchase").click();
-  assert.match(await page.locator("#item-result").innerText(), /unique-item/);
+  assert.equal(await page.locator("#item-purchase").isDisabled(), true);
+  assert.match(
+    await page.locator("#purchase-validation").innerText(),
+    /unique-item/,
+  );
   await page.locator('[data-item="knife"]').click();
   await page.locator("#item-purchase").click();
   await page.locator('[data-item="basic-boots"]').click();
-  await page.locator("#item-replace").selectOption("0");
+  await page.locator('#match-inventory [data-equipped="0"]').click();
+  await page.locator("#item-sell").click();
+  await page.locator('[data-item="basic-boots"]').click();
   await page.locator("#item-purchase").click();
   await page.waitForFunction(
     () => window.foundationDiagnostics.snapshot().gold === 170,
@@ -301,7 +306,7 @@ try {
   assert.ok(s.player.attributes.attackSpeed > 1.1);
   await page.locator("#shop-dialog [data-close]").click();
   pass(
-    "Brawl uses level 3 / 800 gold and actual editable 1v1 roster; unique items reject repeat purchases, replacement credits 60% once and recomputes attack/movement speed",
+    "Brawl uses level 3 / 800 gold and actual editable 1v1 roster; unique items reject repeat purchases, explicit sale credits 60% once before automatic free-slot purchase and recomputes attack/movement speed",
   );
   // No mutation/fast-forward API: run actual live simulation until the enemy core/own core is destroyed.
   console.log(
@@ -324,11 +329,13 @@ try {
   const resultText = await page.locator(".results-screen").innerText();
   assert.match(resultText, /Victory|Defeat/i);
   assert.match(resultText, /Core destruction/);
+  assert.match(resultText,/ACCOUNT XP \+100.*LV 2/);
+  assert.equal((await menu()).battleAccount.level,2);
   assert.deepEqual((await menu()).progress, wallet);
   assert.equal((await menu()).lastDisposed.disposed, true);
   await page.screenshot({ path: "artifacts/match-results.png" });
   pass(
-    "actual unattended Brawl reaches sequential core destruction → real results with implemented duration / eliminations / deaths / assists / level / combat gold, no account rewards",
+    "actual unattended Brawl reaches sequential core destruction → real results with implemented duration / eliminations / deaths / assists / level / combat gold, no account currency/rank rewards; explicit account XP only",
   );
   await page.locator("#results-replay").click();
   await screen("selection");

@@ -1,3 +1,4 @@
+import { SpellVfx } from "./spell-vfx.js";
 import * as THREE from "three";
 import { CombatVfx } from "./combat-vfx.js";
 import { AimSight } from "./aim-sight.js";
@@ -367,6 +368,7 @@ export class WorldView {
   }
 
   connectCombat(state) {
+    if (state.spells) this.spellVfx = new SpellVfx(this.scene, state);
     if (state.combatHero) {
       this.combatVfx = new CombatVfx(this.scene, state);
       this.aimSight = new AimSight(this.scene);
@@ -375,6 +377,7 @@ export class WorldView {
 
   dispose() {
     window.removeEventListener("resize", this.onResize);
+    this.spellVfx?.dispose();
     this.combatVfx?.unsubscribe();
     this.combatVfx?.clear();
     this.scene.remove(this.hero); // Shared approved GLB is retained, not disposed.
@@ -405,6 +408,7 @@ export class WorldView {
   }
 
   render(state, pointer) {
+    this.spellVfx?.update();
     const { player, enemies } = state;
     this.hero.position.set(player.x, 0, player.z);
     for (const enemy of enemies) {

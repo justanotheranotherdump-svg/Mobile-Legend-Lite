@@ -1,3 +1,5 @@
+import { BattleSpells } from "../spells/system.js";
+import { absorbShields, healActor } from "../simulation/status.js";
 import { resolveMatchTarget, attackFeedback } from "./targeting.js";
 import { ItemEffects } from "./item-effects.js";
 import { cancelRecovery } from "../simulation/utilities.js";
@@ -21,6 +23,7 @@ import { resolveDamage } from "../simulation/stats/damage.js";
 import { moveEntity } from "../simulation/movement.js";
 import {
   lane,
+  equipment,
   difficulties,
   createMatchConfig,
   validateLane,
@@ -72,6 +75,8 @@ export class MatchSimulation extends HeroCombatSimulation {
         ? { allyCount: config.allyCount, enemyCount: config.enemyCount }
         : {}),
       seed: config.seed ?? checked.seed,
+      spellId: config.spellId || "execute",
+      accountLevel: config.accountLevel || 1,
     };
     this.scenario = scenario;
     this.playerName = profile.username;
@@ -85,6 +90,7 @@ export class MatchSimulation extends HeroCombatSimulation {
     const c = this.matchConfig,
       s = this.scenario;
     this.itemEffects = null;
+    this.spells = null;
     this.isMatch = true;
     this.paused = false;
     this.targetCategory = null;
@@ -94,6 +100,7 @@ export class MatchSimulation extends HeroCombatSimulation {
     this.result = null;
     this.gold = c.gold;
     this.inventory = Array(6).fill(null);
+    this.priorityItem = null;
     this.score = { player: 0, enemy: 0 };
     this.stats = {
       eliminations: 0,
@@ -142,17 +149,54 @@ export class MatchSimulation extends HeroCombatSimulation {
       )
         this.bots.push(this.makeBot(team, i));
     this.itemEffects = new ItemEffects(this);
+    this.spells = new BattleSpells(this, this.matchConfig);
     this.syncEnemies();
     this.refreshTarget();
+  }
+  ability(slot) {
+    return slot === "battle-spell" && this.spells
+      ? this.spells.ability()
+      : super.ability(slot);
+  }
+  beginAim(slot) {
+    if (slot !== "battle-spell") return super.beginAim(slot);
+    const why = this.spells?.availability();
+    if (why) {
+      this.lastCastResult = why;
+      return false;
+    }
+    const a = this.spells.ability();
+    this.aiming = {
+      slot,
+      point: {
+        x: this.player.x + this.facing.x * a.range,
+        z: this.player.z + this.facing.z * a.range,
+      },
+    };
+    this.aim = { ...this.aiming.point };
+    return true;
+  }
+  releaseAim() {
+    if (this.aiming?.slot !== "battle-spell") return super.releaseAim();
+    const point = this.aiming.point;
+    this.cancelAim();
+    return this.spells.cast(point);
+  }
+  cast(slot, point, targetId) {
+    if (slot === "battle-spell")
+      return this.spells?.cast(point, targetId) || "unavailable";
+    return super.cast(slot, point, targetId);
   }
   applyRangeAndSpeed() {
     super.applyRangeAndSpeed();
     this.itemEffects?.applyRuntime();
   }
   onBasicCommitted(target) {
+    this.spells?.cancelArrival("attacking");
     this.itemEffects?.basicCommitted(target);
   }
   onHeroCast(a) {
+    this.spells?.cancelArrival("casting");
     this.itemEffects?.cast(a);
   }
   passive(target) {
@@ -258,6 +302,7 @@ export class MatchSimulation extends HeroCombatSimulation {
   }
 
   castAvailability(a) {
+    if (a?.spell) return this.spells?.availability() || null;
     if (this.paused) return "paused";
     if (this.isMatch && this.phase !== "running") return this.phase;
     return super.castAvailability(a);
@@ -276,6 +321,15 @@ export class MatchSimulation extends HeroCombatSimulation {
         (meta.physicalScaling ?? (meta.basic ? 1 : 0)) * this.passive(target),
     });
     this.refreshTarget();
+  }
+  spellDefense(type, target, basic) {
+    const d = this.itemEffects?.defense(type, target) || {};
+    if (basic && type !== "true")
+      d.percentPenetration =
+        1 -
+        (1 - (d.percentPenetration || 0)) *
+          (1 - (this.spells?.penetration() || 0));
+    return d;
   }
   deal(source, target, raw, type = "physical", basic = true, meta = {}) {
     if (
@@ -314,13 +368,19 @@ export class MatchSimulation extends HeroCombatSimulation {
       source: source.attributes || { physicalAttack: 0, magicPower: 0 },
       target: target.attributes || target,
       defenseModifiers:
-        source === this.player ? this.itemEffects?.defense(type, target) : {},
+        source === this.player ? this.spellDefense(type, target, basic) : {},
       multiplier: crit ? source.attributes.criticalDamage || 2 : 1,
     }).amount;
+    amount = this.spells?.incoming(source, target, amount, basic) ?? amount;
     if (target === this.player) {
       amount = this.itemEffects.absorb(amount, type, source);
-      if (amount > 0) cancelRecovery(this, "damage");
+      if (amount > 0) {
+        cancelRecovery(this, "damage");
+        this.spells?.cancelArrival("damage");
+      }
     }
+    const landed = amount > 0;
+    if (!meta.ignoreShields) amount = absorbShields(this, target, amount);
     const actual = Math.min(target.hp, amount);
     if (
       actual > 0 &&
@@ -361,12 +421,16 @@ export class MatchSimulation extends HeroCombatSimulation {
       }
     if (source === this.player && !meta.itemProc)
       this.itemEffects?.dealt(target, raw, type, basic, crit, actual);
+    if (source === this.player && basic && landed) this.spells?.landedBasic();
+    this.spells?.reflected(source, target, actual, meta);
     if (target.hp === 0) this.onDeath(source, target);
     return actual;
   }
   onDeath(source, target) {
     if (target.deathHandled) return;
     target.deathHandled = true;
+    this.spells?.recordDeath(source, target);
+    this.spells?.onDeath(target);
     this.itemEffects?.minionDeath(target);
     target.targetable = false;
     delete target.mark;
@@ -449,6 +513,20 @@ export class MatchSimulation extends HeroCombatSimulation {
     }
   }
   award(source, target, reward, teamReward = false) {
+    if (
+      this.spells?.id === "retribution" &&
+      source === this.player &&
+      target.kind === "creep"
+    )
+      reward = {
+        ...reward,
+        gold: Math.floor(
+          reward.gold * (1 + this.spells.definition.parameters.creepReward),
+        ),
+        xp: Math.floor(
+          reward.xp * (1 + this.spells.definition.parameters.creepReward),
+        ),
+      };
     const recipients = this.actors.filter(
       (a) =>
         a.team === source.team &&
@@ -457,6 +535,14 @@ export class MatchSimulation extends HeroCombatSimulation {
         (teamReward || distance(a, target) <= this.scenario.rewardRadius),
     );
     for (const actor of recipients) {
+      if (
+        this.spells?.id === "retribution" &&
+        this.time < this.spells.definition.parameters.noShareSeconds &&
+        target.kind === "minion" &&
+        source !== actor &&
+        (source === this.player || actor === this.player)
+      )
+        continue;
       if (actor === this.player) {
         this.grantXp(reward.xp);
         this.emit("xp-gained", { amount: reward.xp, reason: target.id });
@@ -526,6 +612,13 @@ export class MatchSimulation extends HeroCombatSimulation {
     );
     if (result === "ok") this.emit("item-purchased", { id });
     return result;
+  }
+  prioritizeItem(id) {
+    if (this.paused || this.phase === "ended") return "cannot-prioritize";
+    if (id !== null && !equipment.items.some((i) => i.id === id))
+      return "unknown-item";
+    this.priorityItem = id;
+    return "ok";
   }
   sellItem(slot) {
     if (this.paused) return "paused";
@@ -681,12 +774,15 @@ export class MatchSimulation extends HeroCombatSimulation {
           a.hp +
             this.scenario.spawnHealPerSecond *
               dt *
-              (a.antiHealUntil > this.time ? 0.6 : 1),
+              (a.antiHealUntil > this.time ? 0.6 : 1) *
+              (a.recoveryBoost || 1),
         );
         a.mana = Math.min(a.maxMana, a.mana + 50 * dt);
       }
       if (a === this.player) continue;
-      a.stunned = Boolean(a.stunnedUntil > this.time);
+      a.stunned = Boolean(
+        a.stunnedUntil > this.time || a.suppressionUntil > this.time,
+      );
       advanceHeroBot(this, a, dt);
       if (a.stunned) continue;
       if (this.time >= a.nextThink) {
@@ -713,7 +809,9 @@ export class MatchSimulation extends HeroCombatSimulation {
   tickMinions(dt) {
     for (const a of this.minions) {
       if (a.hp <= 0) continue;
-      a.stunned = Boolean(a.stunnedUntil > this.time);
+      a.stunned = Boolean(
+        a.stunnedUntil > this.time || a.suppressionUntil > this.time,
+      );
       if (a.stunned) continue;
       const candidates = this.actors
         .filter((t) => validTarget(a, t) && distance(a, t) <= 7)
@@ -755,10 +853,12 @@ export class MatchSimulation extends HeroCombatSimulation {
       }
       return;
     }
+    this.spells?.updateAura();
     this.itemEffects?.tick(dt);
     this.updateObjectives();
     this.syncEnemies();
     super.update(dt, v, -h);
+    this.spells?.tick(dt);
     for (const wave of this.waveScheduler.due(this.time)) this.spawnWave(wave);
     this.tickHeroes(dt);
     this.tickMinions(dt);
@@ -770,6 +870,7 @@ export class MatchSimulation extends HeroCombatSimulation {
   get renderProjectiles() {
     return [
       ...this.projectiles,
+      ...(this.spells?.projectiles || []),
       ...[...this.botEngines.values()].flatMap((e) =>
         e.projectiles.map((p) => ({ ...p, id: `${e.player.id}:${p.id}` })),
       ),
@@ -784,6 +885,7 @@ export class MatchSimulation extends HeroCombatSimulation {
       matchConfig: this.matchConfig && { ...this.matchConfig },
       gold: this.gold,
       inventory: this.inventory && [...this.inventory],
+      priorityItem: this.priorityItem,
       score: this.score && { ...this.score },
       stats: this.stats && { ...this.stats },
       wave: this.waveNumber,
@@ -793,6 +895,7 @@ export class MatchSimulation extends HeroCombatSimulation {
         ?.filter((b) => b.team === "player")
         .map(({ progression, ...a }) => ({ ...a, level: progression.level })),
       result: this.result && structuredClone(this.result),
+      battleSpell: this.spells?.snapshot(),
       itemEffects: this.itemEffects && {
         active: [...this.itemEffects.active],
         timers: { ...this.itemEffects.t },

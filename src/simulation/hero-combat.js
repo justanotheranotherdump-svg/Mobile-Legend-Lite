@@ -1,3 +1,4 @@
+import { stunActor, healActor } from "./status.js";
 import {
   resetUtilities,
   cancelRecovery,
@@ -248,7 +249,10 @@ export class HeroCombatSimulation extends TrainingSimulation {
   }
   update(dt, h = 0, v = 0) {
     if (!Number.isFinite(dt) || dt < 0) throw Error("Invalid combat timestep");
-    this.player.stunned = Boolean(this.player.stunnedUntil > this.time);
+    this.player.stunned = Boolean(
+      this.player.stunnedUntil > this.time ||
+        this.player.suppressionUntil > this.time,
+    );
     if (!canActorAct(this.player) || this.isActionLocked()) {
       h = 0;
       v = 0;
@@ -278,7 +282,8 @@ export class HeroCombatSimulation extends TrainingSimulation {
         this.player.hp +
           this.player.hpRegen *
             dt *
-            (this.player.antiHealUntil > this.time ? 0.6 : 1),
+            (this.player.antiHealUntil > this.time ? 0.6 : 1) *
+            (this.player.recoveryBoost || 1),
       );
     if (this.player.hp > 0)
       this.player.mana = Math.min(
@@ -299,7 +304,10 @@ export class HeroCombatSimulation extends TrainingSimulation {
       if (e.marks)
         for (const [owner, mark] of Object.entries(e.marks))
           if (mark.until <= this.time) delete e.marks[owner];
-      e.stunned = Boolean(e.hp > 0 && e.stunnedUntil > this.time);
+      e.stunned = Boolean(
+        e.hp > 0 &&
+          (e.stunnedUntil > this.time || e.suppressionUntil > this.time),
+      );
     }
     if (this.buff && this.time >= this.buff.until) {
       this.buff = null;
@@ -464,11 +472,7 @@ export class HeroCombatSimulation extends TrainingSimulation {
         !["tower", "core"].includes(e.kind) &&
         Math.hypot(e.x - target.x, e.z - target.z) <= p.stunRadius + e.radius
       ) {
-        e.stunnedUntil = Math.max(
-          e.stunnedUntil || 0,
-          this.time + p.stunDuration * (1 - (e.tenacity || 0)),
-        );
-        e.stunned = true;
+        stunActor(this, e, p.stunDuration);
       }
     this.emit("mark-trigger", {
       point: { x: target.x, z: target.z },

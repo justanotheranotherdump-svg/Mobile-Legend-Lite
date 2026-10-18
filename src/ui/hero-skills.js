@@ -76,7 +76,19 @@ export class HeroSkillHud {
     }
     document.querySelector(".hero-icon").innerHTML =
       `<img class="portrait-png" src="${COMBAT_ART.layla}" alt="Layla">`;
-    this.gestures = new SkillGestures(simulation, controls, view, this.buttons);
+    const gestureButtons = [...this.buttons];
+    if (simulation.spells) {
+      const b = document.getElementById("battle-spell");
+      b.disabled = false;
+      b.dataset.controlKind = "functional";
+      gestureButtons.push({ b, a: simulation.spells.ability() });
+    }
+    this.gestures = new SkillGestures(
+      simulation,
+      controls,
+      view,
+      gestureButtons,
+    );
     document.querySelector(".build-note").textContent =
       "LAYLA · LOCAL PROTOTYPE BALANCE";
     const passive = simulation.ability("passive");

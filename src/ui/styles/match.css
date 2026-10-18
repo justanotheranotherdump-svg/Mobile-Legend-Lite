@@ -822,3 +822,197 @@
     width: 150px;
   }
 }
+#item-tree {
+  max-height: 210px;
+  overflow: auto;
+  padding: 8px;
+  border-bottom: 1px solid #9bc0d333;
+}
+.recipe-tree,
+.recipe-tree ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 14px;
+}
+.recipe-tree ul {
+  border-left: 1px solid #8fb0c0;
+  margin-left: 16px;
+}
+.recipe-tree li {
+  padding: 5px 0;
+}
+.recipe-tree button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px;
+  background: #0b233580;
+  border: 1px solid #749caa66;
+  max-width: 100%;
+}
+.recipe-tree img {
+  width: 32px;
+  height: 32px;
+}
+.recipe-tree span {
+  font-size: 10px;
+  text-align: left;
+}
+.recipe-tree small {
+  display: block;
+  font-size: 8px;
+}
+.recipe-tree .owned-component > button {
+  border-color: #7bd8ad;
+  background: #25544d88;
+}
+.unaffordable {
+  opacity: 0.5;
+}
+.owned-item > img {
+  outline: 2px solid #72dbaa;
+  border-radius: 50%;
+}
+.armory-builds small {
+  font-size: 9px;
+  color: #9ac4d5;
+}
+#item-prioritize {
+  padding: 7px;
+  background: #27617d;
+  border: 1px solid #6facbf;
+}
+#quick-buy-panel {
+  position: absolute;
+  right: 16px;
+  top: 170px;
+  width: 190px;
+  pointer-events: auto;
+  background: #142e40eb;
+  border: 1px solid #c5ab6d;
+  padding: 5px;
+}
+#quick-buy {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: calc(100% - 20px);
+  padding: 0;
+  background: transparent;
+  border: 0;
+  text-align: left;
+}
+#quick-buy img {
+  width: 38px;
+  height: 38px;
+}
+#quick-buy span {
+  font-size: 10px;
+  color: #f0daa5;
+}
+#quick-clear {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  padding: 0 4px;
+}
+#quick-buy-panel > small {
+  font-size: 8px;
+  display: block;
+  color: #b8d3df;
+}
+#quick-buy:disabled {
+  opacity: 0.5;
+}
+@media (max-height: 600px), (max-width: 900px) {
+  #item-tree {
+    max-height: 135px;
+  }
+  #quick-buy-panel {
+    top: 100px;
+    right: 12px;
+    width: 150px;
+  }
+  .recipe-tree img {
+    width: 24px;
+    height: 24px;
+  }
+  .recipe-tree span {
+    font-size: 8px;
+  }
+  #quick-buy img {
+    width: 28px;
+    height: 28px;
+  }
+  #quick-buy span {
+    font-size: 8px;
+  }
+}
+#battle-spell-status {
+  position: absolute;
+  bottom: 105px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: #f3d89c;
+  max-width: 340px;
+  text-align: center;
+  pointer-events: none;
+}
+#battle-spell-status label {
+  display: block;
+  pointer-events: auto;
+  font-size: 9px;
+}
+#battle-spell-status label[hidden] {
+  display: none;
+}
+#arrival-destination {
+  max-width: 200px;
+  background: #122c3f;
+  color: #dbe5eb;
+  font-size: 10px;
+  padding: 4px;
+}
+#battle-spell .utility-png {
+  width: 100%;
+  height: 100%;
+}
+@media (max-height: 600px), (max-width: 900px) {
+  #battle-spell-status {
+    bottom: 70px;
+    font-size: 8px;
+    max-width: 220px;
+  }
+  #arrival-destination {
+    max-width: 145px;
+    font-size: 8px;
+  }
+}
+/* Keep tree + item details on one readable right-pane scroll at short heights. */
+.live-armory .shop-builder {
+  display: block;
+  overflow: auto;
+}
+.live-armory #item-tree {
+  max-height: none;
+  overflow: visible;
+}
+.live-armory .armory-detail {
+  overflow: visible;
+}
+.live-armory #shop-category-title {
+  font-size: 13px;
+}
+.live-armory #armory-catalog button small {
+  font-size: 10px;
+}
+/* Active spell information sits above equipment, never over utility buttons. */
+#battle-spell-status {
+  bottom: 185px;
+}
+@media (max-height: 600px), (max-width: 900px) {
+  #battle-spell-status {
+    bottom: 140px;
+  }
+}

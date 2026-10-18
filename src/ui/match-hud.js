@@ -49,7 +49,7 @@ export class MatchHud {
     document.querySelector(".map-legend").innerHTML =
       "<i></i> BLUE <i></i> RED <span>CAUSEWAY</span>";
     document.querySelector(".reserved-caption").textContent =
-      "EQUIPMENT · RECALL / REGEN LIVE · SPELL RESERVED";
+      "EQUIPMENT · RECALL / REGEN · BATTLE SPELL";
     this.root.insertAdjacentHTML(
       "beforeend",
       '<p id="attack-feedback" role="status" hidden></p>',

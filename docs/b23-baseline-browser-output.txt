@@ -1,0 +1,16 @@
+PASS: Selection opens empty: no default model, description/debug panel or gameplay initialization
+PASS: Explicit Layla pick reveals the genuine shared GLB; hero name and confirm remain available
+PASS: Leave/re-enter selection resets pick/preview without losing Brawl room configuration
+PASS: Out-of-range attack gives visible feedback instead of silently doing nothing
+PASS: Brawl lineup is a true >=10-second loading state, animated viewing progress, actual picks, and no gameplay HUD leak
+PASS: Large mouse attack acquires a real nearby hero automatically without any manual click
+PASS: Selected enemy panel mirrors live name, level, exact HP and mana with no fabricated fields
+PASS: Enemy hero overhead name/level/HP/mana stays visible with a red team health bar
+PASS: Selected enemy panel remains in bounds without covering map, testing toggle or player HUD at all three landscape sizes
+PASS: Native Space uses the same smart attack without moving/chasing; cooldown/action locks remain authoritative
+PASS: Minion priority is an attack command with a safe live fallback, not a filter-only toggle
+PASS: Tower priority attacks an eligible structure or safely falls back when no structure is in range
+PASS: AI Training also enforces the same >=10-second readiness-plus-presentation gate
+PASS: Separate Practice waits >=10 seconds too and does not pretend minions/towers exist
+PASS: Preserved Layla learned skill/attack-follow-up path still casts with authoritative mana/cooldown
+PASS: Actual standalone offline game has no runtime errors/warnings or external asset requests

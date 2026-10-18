@@ -1,3 +1,4 @@
+import { purchaseQuote } from "./recipes.js";
 import { equipment } from "./config.js";
 import { calculateAttributes } from "../simulation/stats/attributes.js";
 import { number, integer } from "../simulation/stats/validation.js";
@@ -57,32 +58,10 @@ export function inventoryBonuses(inventory) {
 }
 // Compute transaction first; caller commits gold/inventory/attributes together.
 export function purchase(gold, inventory, id, replace = null) {
-  const item = equipment.items.find((i) => i.id === id);
-  if (!item) return { error: "unknown-item" };
-  if (
-    replace !== null &&
-    (!Number.isInteger(replace) || replace < 0 || replace >= 6)
-  )
-    return { error: "invalid-slot" };
-  const slot = replace ?? inventory.findIndex((v) => !v);
-  if (slot < 0) return { error: "equipment-full" };
-  const next = [...inventory];
-  const old = equipment.items.find((i) => i.id === next[slot]);
-  next[slot] = null;
-  if (next.filter((v) => v === id).length >= item.maxCopies)
-    return { error: "unique-item" };
-  if (
-    item.category === "Movement" &&
-    next.some(
-      (id) => equipment.items.find((i) => i.id === id)?.category === "Movement",
-    )
-  )
-    return { error: "one-boots-only" };
-  const refund = old ? Math.floor(old.cost * equipment.refundRatio) : 0;
-  if (gold + refund < item.cost) return { error: "insufficient-gold" };
-  next[slot] = id;
-  return { gold: gold + refund - item.cost, inventory: next };
+  if (replace !== null) return { error: "manual-replacement-removed" };
+  return purchaseQuote(gold, inventory, id);
 }
+
 export function sell(gold, inventory, slot) {
   if (!Number.isInteger(slot) || slot < 0 || slot >= 6)
     return { error: "invalid-slot" };

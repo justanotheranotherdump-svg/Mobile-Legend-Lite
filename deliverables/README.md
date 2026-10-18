@@ -1,3 +1,7 @@
+> **Subsequent branch-update authorization:** the user requested committing and pushing this reviewed work to `arena/55ce0f80-mobile-legend-lite`. This supersedes the historical review-only/no-push handoff below; it does not authorize another feature batch.
+
+> **Current combined Batch 2 → Batch 3 review:** equipment recipes/discounts/automatic slots/individual quick buy and twelve battle spells with separate account unlocks. See [../docs/SHOP_AND_BATTLE_SPELLS.md](../docs/SHOP_AND_BATTLE_SPELLS.md) for prototype recipe provenance, exact spell rules, mode limits and validation. No further milestone or push.
+
 > **Current Batch 1:** see [../docs/BATCH_1.md](../docs/BATCH_1.md). Same standalone HTML/source ZIP workflow; no shop redesign or new battle spells in this batch.
 
 > **Current review follow-up:** editable Computer rosters, timed hero selection/actual team loading, 37 Attack/Movement items in the restored wide shop, queued skills, Recall/Regen and flipped improved lane. See [../docs/ROSTER_EQUIPMENT_FOLLOWUP.md](../docs/ROSTER_EQUIPMENT_FOLLOWUP.md). This follow-up is uncommitted pending review.

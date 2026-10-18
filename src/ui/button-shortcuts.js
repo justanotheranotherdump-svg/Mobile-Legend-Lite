@@ -21,7 +21,10 @@ export class ButtonShortcuts {
         return;
       if (
         skillGestures &&
-        action?.id.startsWith("skill-") &&
+        (action?.id.startsWith("skill-") ||
+          (action?.id === "battle-spell" &&
+            root.querySelector("#battle-spell")?.dataset.controlKind ===
+              "functional")) &&
         !blocked(event.target) &&
         !event.repeat &&
         !event.ctrlKey &&
