@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-18",
+  "branch": "arena/55ce0f80-mobile-legend-lite",
+  "checkpoint": "d359178e9d6cf51a58d7d2a64fe53ad43266474a",
+  "scope": "Batch 1 only. No shop redesign/recipes/recommendations/priority or new battle spells.",
+  "reviewState": "Only pre-edit local checkpoint committed. New Batch 1 changes uncommitted; no push.",
+  "baseline": {
+    "unitPassed": 407,
+    "connectedBrowserPassed": 9
+  },
+  "units": {
+    "passed": 448,
+    "failed": 0,
+    "additional": 41
+  },
+  "browser": {
+    "passed": 173,
+    "suiteCount": 12,
+    "additionalBatch1Checks": 16,
+    "unexpectedErrors": 0,
+    "warnings": 0,
+    "runtimeAssetRequests": 0,
+    "expectedInjectedGraphicsErrorEntries": 4
+  },
+  "loadingMeasurements": [
+    {
+      "mode": "brawl",
+      "elapsedMs": 10021
+    },
+    {
+      "mode": "ai-training",
+      "elapsedMs": 10026.100000000093
+    },
+    {
+      "mode": "practice",
+      "elapsedMs": 10013.30000000028
+    }
+  ],
+  "testedHtmlSha256": "8e06b6941bacc0a052b98f13f2d52b032338a4b6664f981b89b4fbbad55eb3e9",
+  "observedNaturalBrowserResult": "LOCAL MATCH COMPLETE \u00b7 NO ACCOUNT REWARDS\n\nDEFEAT\n\nCore destruction decided this result.\n\nDuration\n4:32\nEliminations\n0\nDeaths\n0\nAssists\n0\nHero level\n6\nMatch gold earned\n0\nEnemy structures destroyed\n0\nPLAY AGAINReturn to Training LobbyMain Menu",
+  "approvedAssets": {
+    "src/heroes/layla/assets/layla.glb": "963a4902955cb8ad345c74eb63b76e602ade5247c2bd94544ce3000cba6edd51",
+    "src/assets/images/layla-creation.png": "bc2b258b61ddceb7aa9abe9a82c9ebe25d30b7ba91c6d3a58a57b4f15005fca1"
+  },
+  "manualLimits": [
+    "Linux Chromium software WebGL is not native Windows certification",
+    "Trusted emulated touch is not physical phone testing",
+    "NPC subjective tactical quality and dense-fight readability need human playtesting",
+    "Only Layla available; no distinct multi-hero switch/extra skins fabricated"
+  ],
+  "shopSourceUnchanged": true
+}

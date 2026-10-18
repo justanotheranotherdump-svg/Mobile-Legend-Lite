@@ -1,3 +1,4 @@
+import { resolveMatchTarget, attackFeedback } from "./targeting.js";
 import { ItemEffects } from "./item-effects.js";
 import { cancelRecovery } from "../simulation/utilities.js";
 import {
@@ -174,17 +175,16 @@ export class MatchSimulation extends HeroCombatSimulation {
   refreshTarget() {
     if (this.isMatch && !this.resetting) {
       this.syncEnemies();
-      if (this.targetCategory && !this.manualTargetId) {
-        const kinds =
-          this.targetCategory === "tower" ? ["tower", "core"] : ["minion"];
-        this.selectedTargetId =
-          selectAutomaticTarget(
-            this.player,
-            this.enemies.filter((e) => kinds.includes(e.kind)),
-            this.targetMode,
-          )?.id ?? null;
-        return this.selectedTarget;
-      }
+      const result = resolveMatchTarget(
+        this.player,
+        this.enemies,
+        this.targetMode,
+        this.targetCategory || "hero",
+        this.manualTargetId,
+      );
+      this.manualTargetId = result.manualTargetId;
+      this.selectedTargetId = result.target?.id ?? null;
+      return this.selectedTarget;
     }
     return super.refreshTarget();
   }
@@ -215,11 +215,48 @@ export class MatchSimulation extends HeroCombatSimulation {
       return this.paused ? "paused" : this.phase;
     return super.upgradeSkill(slot);
   }
-  attack(id = null) {
-    if (this.paused) return "paused";
-    if (this.isMatch && this.phase !== "running") return this.phase;
-    return super.attack(id);
+  attack(id = null, category = null) {
+    if (this.paused) {
+      this.emit("attack-feedback", {
+        message: attackFeedback("paused"),
+        reason: "paused",
+      });
+      return "paused";
+    }
+    if (this.phase !== "running") {
+      this.emit("attack-feedback", {
+        message: attackFeedback(this.phase),
+        reason: this.phase,
+      });
+      return this.phase;
+    }
+    if (![null, "minion", "tower"].includes(category))
+      throw Error("Unknown attack category");
+    this.targetCategory = category;
+    let reason;
+    if (this.paused) reason = "paused";
+    else if (this.phase !== "running") reason = this.phase;
+    else if (id !== null) {
+      const explicit = this.enemies.find((a) => a.id === id);
+      if (!validTarget(this.player, explicit)) reason = "invalid-target";
+      else if (distance(this.player, explicit) > this.player.range)
+        reason = "range";
+    }
+    if (reason) {
+      this.manualTargetId = null;
+      this.refreshTarget();
+      this.lastAttack = {
+        ...this.lastAttack,
+        serial: this.lastAttack.serial + 1,
+        reason,
+        targetId: id,
+      };
+    } else reason = super.attack(id);
+    const message = attackFeedback(reason);
+    if (message) this.emit("attack-feedback", { message, reason });
+    return reason;
   }
+
   castAvailability(a) {
     if (this.paused) return "paused";
     if (this.isMatch && this.phase !== "running") return this.phase;
@@ -356,14 +393,8 @@ export class MatchSimulation extends HeroCombatSimulation {
         : target;
     if (hero) {
       this.score[source.team]++;
-      target.respawnAt =
-        this.time +
-        respawnDelay(
-          this.scenario,
-          target === this.player
-            ? this.progression.level
-            : target.progression.level,
-        );
+      target.respawnAt = this.time + respawnDelay(this.scenario, this.time);
+      target.respawnDuration = target.respawnAt - this.time;
       if (target === this.player) {
         this.stats.deaths++;
         this.cancelAim();
@@ -748,6 +779,7 @@ export class MatchSimulation extends HeroCombatSimulation {
     return structuredClone({
       ...super.snapshot(),
       phase: this.phase,
+      targetCategory: this.targetCategory,
       countdown: this.countdown,
       matchConfig: this.matchConfig && { ...this.matchConfig },
       gold: this.gold,

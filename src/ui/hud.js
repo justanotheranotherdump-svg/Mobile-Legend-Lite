@@ -1,5 +1,11 @@
-import { ProgressionHud } from './progression.js';
-import { statText } from '../simulation/stats/attributes.js';
+import {
+  EnemyInfo,
+  isHeroActor,
+  heroNameplate,
+  syncHeroNameplate,
+} from "./enemy-info.js";
+import { ProgressionHud } from "./progression.js";
+import { statText } from "../simulation/stats/attributes.js";
 import { HeroSkillHud } from "./hero-skills.js";
 import { KeyBindings } from "../input/key-bindings.js";
 import { ButtonShortcuts } from "./button-shortcuts.js";
@@ -18,7 +24,8 @@ export class Hud {
     root.classList.toggle("keyboard-only", Boolean(simulation.combatHero));
     if (simulation.combatHero) {
       root.querySelector(".target-panel").remove();
-      if (!matchMedia("(pointer: coarse)").matches) root.querySelector(".movement-dock").remove();
+      if (!matchMedia("(pointer: coarse)").matches)
+        root.querySelector(".movement-dock").remove();
       else root.classList.add("touch-controls");
     }
     this.elements = Object.fromEntries(
@@ -34,11 +41,17 @@ export class Hud {
       `${simulation.hero.name} `;
     this.minimap = new Minimap(e.minimap, simulation.arena, simulation.enemies);
     this.bindings = new KeyBindings();
-    this.targeting = new TargetingControls(e, simulation, onModeChange);
+    this.targeting = new TargetingControls(
+      e,
+      simulation,
+      onModeChange,
+      controls,
+    );
     this.cooldowns = new CooldownDisplay(e, simulation.player);
-    this.joystick = simulation.combatHero && !root.classList.contains("touch-controls")
-      ? null
-      : new Joystick(e.joystick, controls);
+    this.joystick =
+      simulation.combatHero && !root.classList.contains("touch-controls")
+        ? null
+        : new Joystick(e.joystick, controls);
     this.skills = new HeroSkillHud(simulation, controls, view);
     this.progression = new ProgressionHud(simulation, controls);
     this.panels = new PlaceholderPanels(
@@ -82,9 +95,11 @@ export class Hud {
       e["toggle-map"].blur();
     });
     if (simulation.combatHero) {
-      e['player-label'].classList.add('player-overhead');
-      e['player-label'].innerHTML='<span class="overhead-name"></span><div class="overhead-row"><b class="overhead-level"></b><div class="overhead-bars"><i class="overhead-hp"></i><i class="overhead-mana"></i></div></div><small class="overhead-values"></small>';
+      e["player-label"].classList.add("player-overhead");
+      e["player-label"].innerHTML =
+        '<span class="overhead-name"></span><div class="overhead-row"><b class="overhead-level"></b><div class="overhead-bars"><i class="overhead-hp"></i><i class="overhead-mana"></i></div></div><small class="overhead-values"></small>';
     }
+    if (simulation.isMatch) this.enemyInfo = new EnemyInfo(root);
     this.labels = new Map(
       simulation.enemies.map((enemy) => {
         const label = document.createElement("div");
@@ -133,7 +148,8 @@ export class Hud {
           : "Pinned target out of range · no chasing"
         : "Approach a living training target";
     }
-    e["player-health"].textContent = `${statText(player.hp)} / ${statText(player.maxHp)}`;
+    e["player-health"].textContent =
+      `${statText(player.hp)} / ${statText(player.maxHp)}`;
     const playerMeter = document.querySelector('[aria-label="Player health"]');
     playerMeter.setAttribute("aria-valuemax", player.maxHp);
     playerMeter.setAttribute("aria-valuenow", player.hp);
@@ -165,36 +181,81 @@ export class Hud {
     this.notifications.update(state.time);
     e["match-timer"].textContent =
       `${String(Math.floor(state.time / 60)).padStart(2, "0")}:${String(Math.floor(state.time % 60)).padStart(2, "0")}`;
-    const displayActors=state.isMatch?state.actors.filter(a=>a!==player):enemies;
-    for(const [id,entry] of this.labels) if(!displayActors.some(a=>a.id===id)){entry.label.remove();this.labels.delete(id);}
+    const displayActors = state.isMatch
+      ? state.actors.filter((a) => a !== player)
+      : enemies;
+    for (const [id, entry] of this.labels)
+      if (!displayActors.some((a) => a.id === id)) {
+        entry.label.remove();
+        this.labels.delete(id);
+      }
     for (const enemy of displayActors) {
-      if(!this.labels.has(enemy.id)) {
-        const label=document.createElement('div');label.className='world-label dummy-label';label.dataset.enemyId=enemy.id;
-        const name=document.createElement('span');name.textContent=enemy.name;
-        const track=document.createElement('div');track.className='small-track';const bar=document.createElement('i');track.append(bar);
-        const hp=document.createElement('small');label.append(name,track,hp);e['enemy-labels'].append(label);this.labels.set(enemy.id,{label,bar,hp});
+      if (!this.labels.has(enemy.id)) {
+        const label = document.createElement("div");
+        label.className = "world-label dummy-label";
+        label.dataset.enemyId = enemy.id;
+        const name = document.createElement("span");
+        name.textContent = enemy.name;
+        const track = document.createElement("div");
+        track.className = "small-track";
+        const bar = document.createElement("i");
+        track.append(bar);
+        const hp = document.createElement("small");
+        label.append(name, track, hp);
+        e["enemy-labels"].append(label);
+        this.labels.set(enemy.id, { label, bar, hp });
       }
       const { label, bar, hp } = this.labels.get(enemy.id);
-      if(state.isMatch)label.classList.add('actor-label',`${enemy.kind}-label`);
-      label.classList.toggle('allied-label',enemy.team==='player');
-      label.classList.toggle('protected-objective',Boolean(enemy.protected));
+      if (state.isMatch)
+        label.classList.add("actor-label", `${enemy.kind}-label`);
+      if (state.isMatch && isHeroActor(enemy)) {
+        if (!label.classList.contains("hero-nameplate")) heroNameplate(label);
+        syncHeroNameplate(label, enemy);
+        label.classList.toggle("allied-label", enemy.team === "player");
+        label.classList.toggle("selected", state.selectedTargetId === enemy.id);
+        const point = view.project(enemy.x, 2.75, enemy.z);
+        if (enemy.hp <= 0) point.visible = false;
+        this.placeLabel(label, point);
+        continue;
+      }
+      label.classList.toggle("allied-label", enemy.team === "player");
+      label.classList.toggle("protected-objective", Boolean(enemy.protected));
       hp.textContent = `${Math.ceil(enemy.hp)} / ${enemy.maxHp}`;
       bar.style.width = `${(enemy.hp / enemy.maxHp) * 100}%`;
       label.classList.toggle("selected", state.selectedTargetId === enemy.id);
       this.placeLabel(
         label,
-        view.project(enemy.x, enemy.hp > 0 ? (enemy.kind === "core" ? 4.5 : enemy.kind === "tower" ? 4 : 2.4) : 0.9, enemy.z),
+        view.project(
+          enemy.x,
+          enemy.hp > 0
+            ? enemy.kind === "core"
+              ? 4.5
+              : enemy.kind === "tower"
+                ? 4
+                : 2.4
+            : 0.9,
+          enemy.z,
+        ),
       );
     }
+    this.enemyInfo?.update(state);
     if (state.combatHero) {
-      const label=e['player-label'];
-      label.querySelector('.overhead-name').textContent=state.playerName || state.hero.name;
-      label.querySelector('.overhead-level').textContent=state.progression.level;
-      label.querySelector('.overhead-hp').style.width=`${player.hp/player.maxHp*100}%`;
-      label.querySelector('.overhead-mana').style.width=`${player.mana/player.maxMana*100}%`;
-      label.querySelector('.overhead-values').textContent=`${Math.ceil(player.hp)}/${player.maxHp} HP · ${Math.floor(player.mana)}/${player.maxMana} MP`;
+      const label = e["player-label"];
+      label.querySelector(".overhead-name").textContent =
+        state.playerName || state.hero.name;
+      label.querySelector(".overhead-level").textContent =
+        state.progression.level;
+      label.querySelector(".overhead-hp").style.width =
+        `${(player.hp / player.maxHp) * 100}%`;
+      label.querySelector(".overhead-mana").style.width =
+        `${(player.mana / player.maxMana) * 100}%`;
+      label.querySelector(".overhead-values").textContent =
+        `${Math.ceil(player.hp)}/${player.maxHp} HP · ${Math.floor(player.mana)}/${player.maxMana} MP`;
     }
-    this.placeLabel(e["player-label"], view.project(player.x, state.combatHero ? 2.75 : 2.05, player.z));
+    this.placeLabel(
+      e["player-label"],
+      view.project(player.x, state.combatHero ? 2.75 : 2.05, player.z),
+    );
   }
   paused(value) {
     this.elements.pause.hidden = !value;

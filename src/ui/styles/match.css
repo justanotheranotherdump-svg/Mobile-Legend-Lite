@@ -652,3 +652,173 @@
   font-size: 8px;
   z-index: 2;
 }
+/* Batch 1 live enemy presentation; unchanged player/control anchors. */
+.actor-label.bot-label.hero-nameplate,
+.actor-label.bot-label.hero-nameplate.selected {
+  width: 110px;
+  pointer-events: none;
+  text-align: center;
+  background: none;
+  border: 0;
+  box-shadow: none;
+}
+.actor-label.bot-label.hero-nameplate .actor-name {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+  text-shadow: 0 1px 3px #000;
+  color: #ffe3df;
+}
+.actor-label.bot-label.hero-nameplate .actor-values {
+  display: block;
+  font-size: 6px;
+  white-space: nowrap;
+  color: #f2e7e2;
+  text-shadow: 0 1px 2px #000;
+}
+.actor-vitals {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+.actor-level {
+  font-size: 9px;
+  color: #ffe5a6;
+  border: 1px solid #b6b491;
+  background: #122f3d;
+  border-radius: 50%;
+  width: 17px;
+  height: 17px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.actor-bars {
+  flex: 1;
+}
+.actor-bars > div {
+  height: 5px;
+  margin: 2px 0;
+  background: #211b24;
+  overflow: hidden;
+}
+.actor-bars i {
+  display: block;
+  height: 100%;
+}
+.actor-hp {
+  background: #f1666c;
+}
+.actor-mana {
+  background: #55bdf0;
+}
+.allied-label .actor-hp {
+  background: #73dfe0;
+}
+.allied-label .actor-name {
+  color: #ccf7fa !important;
+}
+#selected-enemy-info {
+  position: absolute;
+  left: 18px;
+  top: 230px;
+  width: 190px;
+  padding: 9px;
+  background: linear-gradient(120deg, #321e2eee, #0f2732ed);
+  border: 1px solid #c77a83aa;
+  color: #e6eced;
+  pointer-events: none;
+}
+#selected-enemy-info header {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+  font-size: 12px;
+}
+#selected-enemy-info header b {
+  color: #e2c48a;
+  font-size: 10px;
+  white-space: nowrap;
+}
+.enemy-info-values {
+  font-size: 9px;
+  margin: 5px 0 3px;
+}
+.enemy-info-track {
+  height: 5px;
+  background: #16232d;
+  overflow: hidden;
+}
+.enemy-info-track i {
+  display: block;
+  height: 100%;
+  background: #ef6570;
+}
+.enemy-info-track.mana i {
+  background: #58baf0;
+}
+#attack-feedback {
+  position: absolute;
+  top: 115px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 45vw;
+  padding: 7px 12px;
+  background: #172d3de8;
+  border: 1px solid #bfa574;
+  color: #ffe3aa;
+  font-size: 12px;
+  text-align: center;
+}
+@media (max-height: 600px), (max-width: 900px) {
+  .actor-label.bot-label.hero-nameplate,
+  .actor-label.bot-label.hero-nameplate.selected {
+    width: 95px;
+  }
+  .actor-label.bot-label.hero-nameplate .actor-name {
+    font-size: 8px;
+  }
+  .actor-label.bot-label.hero-nameplate .actor-values {
+    font-size: 5px;
+  }
+  .actor-level {
+    width: 14px;
+    height: 14px;
+    font-size: 8px;
+  }
+  .actor-bars > div {
+    height: 4px;
+    margin: 1px 0;
+  }
+  #selected-enemy-info {
+    left: 12px;
+    top: 164px;
+    width: 168px;
+    padding: 7px;
+  }
+  #selected-enemy-info header {
+    font-size: 10px;
+  }
+  .enemy-info-values {
+    font-size: 8px;
+    margin-top: 3px;
+  }
+  #attack-feedback {
+    top: 88px;
+    font-size: 10px;
+    padding: 5px 9px;
+  }
+}
+.actor-label:not(.allied-label) .small-track i {
+  background: #f18b84;
+}
+/* Compact left column already contains map, testing toggle and player card. */
+@media (max-height: 600px), (max-width: 900px) {
+  #selected-enemy-info {
+    left: 150px;
+    top: 72px;
+    width: 150px;
+  }
+}

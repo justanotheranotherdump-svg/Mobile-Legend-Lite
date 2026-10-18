@@ -1,6 +1,6 @@
 {
   "environment": "Linux Chromium, software WebGL, actual standalone file://, offline:true; touch pointer emulation, not native Windows or physical device",
-  "bundleSha256": "185fd9fc4f0200b9ed396b7ba6fe1be0b69843faa26aa1af79d6406b9637e4fc",
+  "bundleSha256": "8e06b6941bacc0a052b98f13f2d52b032338a4b6664f981b89b4fbbad55eb3e9",
   "checks": [
     "Classic/Ranked disabled; four AI scenarios, Normal default, real Hard/custom roster configuration, guarded selection and all Back routes remain combat-isolated",
     "validated hero confirmation completes seven actual local setup stages, then one 5v5 simulation/countdown; saved name, actual level/HP/mana and six objectives rendered",
@@ -16,6 +16,6 @@
   "errors": [],
   "warnings": [],
   "requests": [],
-  "resultText": "LOCAL MATCH COMPLETE · NO ACCOUNT REWARDS\n\nDEFEAT\n\nCore destruction decided this result.\n\nDuration\n5:04\nEliminations\n0\nDeaths\n0\nAssists\n0\nHero level\n5\nMatch gold earned\n0\nEnemy structures destroyed\n0\nPLAY AGAINReturn to Training LobbyMain Menu",
+  "resultText": "LOCAL MATCH COMPLETE · NO ACCOUNT REWARDS\n\nDEFEAT\n\nCore destruction decided this result.\n\nDuration\n4:32\nEliminations\n0\nDeaths\n0\nAssists\n0\nHero level\n6\nMatch gold earned\n0\nEnemy structures destroyed\n0\nPLAY AGAINReturn to Training LobbyMain Menu",
   "initializations": 4
 }

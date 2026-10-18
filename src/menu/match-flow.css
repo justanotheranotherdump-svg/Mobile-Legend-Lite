@@ -1160,3 +1160,61 @@
     font-size: 7px;
   }
 }
+/* Batch 1: independent presentation art; no unselected character/description. */
+.selection-prompt {
+  position: absolute;
+  left: 29%;
+  right: 23%;
+  top: 48%;
+  text-align: center;
+  color: #b2d9e5;
+  font: italic 20px Georgia;
+  letter-spacing: 1px;
+  pointer-events: none;
+  text-shadow: 0 2px 6px #001321;
+}
+.team-selection > .selection-skills {
+  position: absolute;
+  bottom: 26px;
+  left: 24%;
+  display: flex;
+  gap: 12px;
+}
+.team-selection > .selection-skills[hidden] {
+  display: none;
+}
+.lineup-view-time {
+  width: 65%;
+  margin: 0 auto;
+  color: #d5e6ed;
+  font-size: 11px;
+}
+.lineup-view-time progress {
+  display: block;
+  width: 100%;
+  height: 5px;
+  margin-top: 6px;
+  accent-color: #e4c985;
+}
+.roster-loading .lineup-view-time {
+  flex-shrink: 0;
+}
+.roster-loading {
+  gap: 8px;
+}
+@media (max-height: 600px), (max-width: 900px) {
+  .selection-prompt {
+    font-size: 15px;
+  }
+  .team-selection > .selection-skills {
+    bottom: 15px;
+    left: 23%;
+    gap: 6px;
+  }
+  .lineup-view-time {
+    font-size: 8px;
+  }
+  .roster-loading {
+    gap: 5px;
+  }
+}

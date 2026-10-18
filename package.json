@@ -21,7 +21,8 @@
     "test:browser:match": "node tests/browser-match.mjs",
     "test:browser:recovery": "node tests/browser-recovery.mjs",
     "test:browser:roster": "node tests/browser-roster.mjs",
-    "test:browser:draft": "node tests/browser-draft.mjs"
+    "test:browser:draft": "node tests/browser-draft.mjs",
+    "test:browser:batch1": "node tests/browser-batch1.mjs"
   },
   "dependencies": {
     "three": "0.186.1"

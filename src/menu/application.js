@@ -1,3 +1,5 @@
+import { LocalLoadingState } from "./loading-state.js";
+import SELECTION_BACKGROUND from "./assets/hero-selection-stage.png?inline";
 import { MatchFlow } from "./match-flow.js";
 import {
   mountAiModes,
@@ -82,8 +84,10 @@ export function startMenuApplication(registry, startTraining) {
     root.dataset.screen = nav.screen;
     if (store.profile) progress.loadFor(store.profile);
     root.querySelector("#lobby-backdrop").src =
-      nav.screen === "selection" ? ROOM_BACKGROUND : LOBBY_BACKGROUND;
-    const visualScreen = ["lobby", "modes", "selection"].includes(nav.screen);
+      nav.screen === "selection" ? SELECTION_BACKGROUND : LOBBY_BACKGROUND;
+    const visualScreen =
+      ["lobby", "modes"].includes(nav.screen) ||
+      (nav.screen === "selection" && Boolean(flow.heroId));
     if (visualScreen && lobby.disposed) {
       const canvas = document.createElement("canvas");
       canvas.id = "lobby-preview";
@@ -158,6 +162,17 @@ export function startMenuApplication(registry, startTraining) {
         () => go("room"),
         enterMatch,
         store.profile,
+        () => {
+          if (nav.screen !== "selection" || !flow.heroId) return;
+          lobby.setActive(true);
+          lobby
+            .prepare()
+            .then(() => {
+              if (nav.screen === "selection" && flow.heroId)
+                lobby.setActive(true);
+            })
+            .catch(fail);
+        },
       );
     if (nav.screen === "results")
       mountResults(content, flow.result, {
@@ -217,21 +232,31 @@ export function startMenuApplication(registry, startTraining) {
     cleanup = () => {};
     root.dataset.screen = "loading";
     mountLoading(content, flow, store.profile);
-    const lineupPresentedAt = performance.now();
+    const loading = new LocalLoadingState();
+    const refreshLoading = () => {
+      const elapsed = Math.min(loading.minimumMs, loading.elapsed);
+      content
+        .querySelector("#lineup-view-progress")
+        ?.setAttribute("value", elapsed);
+      const status = content.querySelector("#lineup-view-status");
+      if (status)
+        status.textContent = loading.ready
+          ? `Team lineup · ${Math.ceil(Math.max(0, loading.minimumMs - loading.elapsed) / 1000)}s remaining`
+          : `Preparing local resources · ${Math.floor(loading.elapsed / 1000)}s`;
+    };
+    const loadingTicker = setInterval(refreshLoading, 100);
+    refreshLoading();
     const stage = async (value, message) => {
       content.querySelector("#local-load-progress").value = value;
       content.querySelector("#local-load-stage").textContent =
         `${value}/7 · ${message}`;
       await new Promise((resolve) => requestAnimationFrame(resolve));
+      loading.task(value);
+      refreshLoading();
       if (value === 7) {
         content.querySelector("#local-load-stage").textContent =
-          "7/7 · Local preparation complete · team lineup ready";
-        await new Promise((resolve) =>
-          setTimeout(
-            resolve,
-            Math.max(0, 1200 - (performance.now() - lineupPresentedAt)),
-          ),
-        );
+          "7/7 · Local resources ready · viewing team lineup";
+        await loading.finish();
       }
     };
     try {
@@ -244,6 +269,7 @@ export function startMenuApplication(registry, startTraining) {
         heroVisual: sharedVisual,
         profile: store.profile,
         config,
+        deferReveal: true,
         onProgress: stage,
         onReady: (context) => connectTrainingAudio(context, audio, preferences),
         onExit: leaveRuntime,
@@ -255,14 +281,19 @@ export function startMenuApplication(registry, startTraining) {
       if (config.mode === "practice") {
         runtime = await startTraining({ ...options, throwOnError: true });
       } else runtime = await startMatch(options);
+      clearInterval(loadingTicker);
+      loading.dispose();
       nav.go("training");
       root.dataset.screen = "training";
       root.hidden = true;
+      runtime.reveal();
       content.replaceChildren();
       gameInitializations++;
       entering = false;
       flow.preparing = false;
     } catch (cause) {
+      clearInterval(loadingTicker);
+      loading.dispose();
       runtime?.dispose();
       runtime = null;
       root.hidden = false;

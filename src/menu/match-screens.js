@@ -77,13 +77,25 @@ export function mountRoom(root, flow, profile, { onBack, onStart }) {
     onStart();
   };
 }
-export function mountSelection(root, flow, onBack, onConfirm, profile) {
+export function mountSelection(
+  root,
+  flow,
+  onBack,
+  onConfirm,
+  profile,
+  onPick = () => {},
+) {
   const roster = flow.roster(profile),
     team = roster.player;
-  root.innerHTML = `<section class="flow-screen selection-screen team-selection">${back("selection-back", "Leave room")}<div class="selection-clock"><small>SELECT YOUR HERO</small><span id="selection-time" aria-live="off">45</span><small>LOCAL · ${flow.difficulty.toUpperCase()}</small></div><aside class="selection-team">${team.map((a, i) => `<article class="selection-teammate" data-roster-kind="${a.kind}"><img src="${COMBAT_ART.layla}" alt="Layla"><div><strong>${safe(a.name)}</strong><span>${i ? "Layla · Computer ready" : "Choose your hero"}</span></div><small>${i ? "READY" : "PICKING"}</small></article>`).join("")}</aside><div class="selection-info"><h1>Layla</h1><h3>MARKSMAN · RANGED DAMAGE</h3><p>Time your movement between shots. Skill inputs during a basic attack can queue one follow-up.</p><div class="selection-skills">${["skill-1", "skill-2", "skill-ultimate"].map((id, i) => `<figure><img src="${COMBAT_ART[id]}" alt=""><figcaption>${["Malefic Bomb", "Void Projectile", "Destruction Rush"][i]}</figcaption></figure>`).join("")}</div></div><aside class="hero-pick-grid"><h2>Hero</h2><p>Owned · available</p><button type="button" id="pick-layla" aria-pressed="false"><img src="${COMBAT_ART.layla}" alt="Layla portrait"><strong>Layla</strong><small>MARKSMAN</small></button><p class="pick-note">Only implemented heroes appear. Computers use the same hero kit.</p><button type="button" id="hero-confirm" class="flow-primary" disabled>CONFIRM</button></aside></section>`;
+  root.innerHTML = `<section class="flow-screen selection-screen team-selection">${back("selection-back", "Leave room")}<div class="selection-clock"><small>SELECT YOUR HERO</small><span id="selection-time" aria-live="off">45</span><small>LOCAL · ${flow.difficulty.toUpperCase()}</small></div><aside class="selection-team">${team.map((a, i) => `<article class="selection-teammate" data-roster-kind="${a.kind}"><img src="${COMBAT_ART.layla}" alt="Layla"><div><strong>${safe(a.name)}</strong><span>${i ? "Layla · Computer ready" : "Choose your hero"}</span></div><small>${i ? "READY" : "PICKING"}</small></article>`).join("")}</aside><div id="selection-prompt" class="selection-prompt">Select a hero</div><div class="selection-skills" id="chosen-hero-skills" hidden>${["skill-1", "skill-2", "skill-ultimate"].map((id, i) => `<figure><img src="${COMBAT_ART[id]}" alt=""><figcaption>${["Malefic Bomb", "Void Projectile", "Destruction Rush"][i]}</figcaption></figure>`).join("")}</div><aside class="hero-pick-grid"><h2>Hero</h2><p>Owned · available</p><button type="button" id="pick-layla" aria-pressed="false"><img src="${COMBAT_ART.layla}" alt="Layla portrait"><strong>Layla</strong><small>MARKSMAN</small></button><button type="button" id="hero-confirm" class="flow-primary" disabled>CONFIRM</button></aside></section>`;
   let finished = false;
-  const pick = () => {
+  const pick = (explicit = true) => {
     flow.selectHero("layla");
+    if (explicit) {
+      root.querySelector("#selection-prompt").hidden = true;
+      root.querySelector("#chosen-hero-skills").hidden = false;
+      onPick("layla");
+    }
     root.querySelector("#pick-layla")?.setAttribute("aria-pressed", "true");
     root.querySelector("#hero-confirm").disabled = false;
     root.querySelector(".selection-teammate span").textContent =
@@ -97,7 +109,7 @@ export function mountSelection(root, flow, onBack, onConfirm, profile) {
     onConfirm();
   };
   root.querySelector("#selection-back").onclick = onBack;
-  root.querySelector("#pick-layla").onclick = pick;
+  root.querySelector("#pick-layla").onclick = () => pick(true);
   root.querySelector("#hero-confirm").onclick = finish;
   const update = () => {
     const seconds = Math.max(
@@ -108,7 +120,7 @@ export function mountSelection(root, flow, onBack, onConfirm, profile) {
     if (!el) return;
     el.textContent = seconds;
     if (seconds === 0 && !finished) {
-      if (!flow.heroId) pick();
+      if (!flow.heroId) pick(false);
       finish();
     }
   };
@@ -120,7 +132,7 @@ export function mountLoading(root, flow, profile) {
   const roster = flow.confirmedRoster || flow.roster(profile),
     cards = (team, blue) =>
       `<div class="loading-team ${blue ? "blue-team" : "red-team"}">${team.map((a) => `<article class="loading-hero"><img src="${COMBAT_ART[a.kind === "STATIONARY" ? "bot" : "layla"]}" alt="${a.hero}"><div><strong>${a.hero}</strong><span>${safe(a.name)}</span><small>${a.kind === "PLAYER" ? "LOCAL PLAYER" : a.kind === "STATIONARY" ? "DUMMY PRACTICE" : "COMPUTER"}</small></div></article>`).join("")}</div>`;
-  root.innerHTML = `<section class="flow-screen loading-screen roster-loading"><p class="menu-kicker">${flow.mode.toUpperCase()} · PREPARING LOCALLY</p>${cards(roster.player, true)}<div class="loading-middle"><strong>VS</strong><p class="loading-tip">TIP · Stay behind allied minions when approaching a tower.</p></div>${cards(roster.enemy, false)}<progress id="local-load-progress" value="0" max="7" aria-label="Completed local setup tasks"></progress><p id="local-load-stage" role="status">Validating actual picks and roster…</p><small>Progress represents local preparation, not internet speed or separate player downloads.</small></section>`;
+  root.innerHTML = `<section class="flow-screen loading-screen roster-loading"><p class="menu-kicker">${flow.mode.toUpperCase()} · PREPARING LOCALLY</p>${cards(roster.player, true)}<div class="loading-middle"><strong>VS</strong><p class="loading-tip">TIP · Stay behind allied minions when approaching a tower.</p></div>${cards(roster.enemy, false)}<div class="lineup-view-time"><span id="lineup-view-status" role="status"></span><progress id="lineup-view-progress" value="0" max="10000" aria-label="Minimum lineup viewing time"></progress></div><progress id="local-load-progress" value="0" max="7" aria-label="Completed local setup tasks"></progress><p id="local-load-stage" role="status">Validating actual picks and roster…</p><small>Progress represents local preparation, not internet speed or separate player downloads.</small></section>`;
 }
 export function mountResults(root, result, { onReplay, onRoom, onMenu }) {
   root.innerHTML = `<section class="flow-screen results-screen"><p class="menu-kicker">LOCAL MATCH COMPLETE · NO ACCOUNT REWARDS</p><h1>${result.outcome}</h1><p>Core destruction decided this result.</p><dl>${Object.entries(

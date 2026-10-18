@@ -1,3 +1,5 @@
+> **Current Batch 1:** see [../docs/BATCH_1.md](../docs/BATCH_1.md). Same standalone HTML/source ZIP workflow; no shop redesign or new battle spells in this batch.
+
 > **Current review follow-up:** editable Computer rosters, timed hero selection/actual team loading, 37 Attack/Movement items in the restored wide shop, queued skills, Recall/Regen and flipped improved lane. See [../docs/ROSTER_EQUIPMENT_FOLLOWUP.md](../docs/ROSTER_EQUIPMENT_FOLLOWUP.md). This follow-up is uncommitted pending review.
 
 # Regenerable offline downloads — AI Training / Brawl

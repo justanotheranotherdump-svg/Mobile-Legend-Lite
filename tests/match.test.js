@@ -429,6 +429,7 @@ for (const difficulty of ["easy", "normal", "hard"])
     s.tickHeroes(1);
     assert.ok(bot.hp > bot.maxHp * 0.1);
     bot.hp = bot.maxHp;
+    s.time = bot.aiState.commitUntil + 0.01;
     bot.nextThink = 0;
     s.tickHeroes(0);
     assert.notEqual(bot.intent.type, "retreat");
@@ -485,7 +486,7 @@ test("difficulty central reaction, aim spread and target/retreat policy genuinel
       1,
       () => 1,
     ).type,
-    "retreat",
+    "attack",
   );
   assert.equal(
     botDecision(

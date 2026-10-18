@@ -125,6 +125,7 @@ try {
     let s = await snap();
     assert.ok(Math.abs(s.enemies[0].hp - afterS1) < 1e-6);
     assert.equal(await page.locator("#" + panel + "-dialog").isVisible(), true);
+    await page.locator("#world").focus(); // Focus battlefield: focused shop buttons retain native Space.
     await page.keyboard.press("Space");
     await elapsed(1.2);
     s = await snap();

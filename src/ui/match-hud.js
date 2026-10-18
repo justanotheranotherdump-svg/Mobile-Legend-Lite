@@ -50,7 +50,17 @@ export class MatchHud {
       "<i></i> BLUE <i></i> RED <span>CAUSEWAY</span>";
     document.querySelector(".reserved-caption").textContent =
       "EQUIPMENT · RECALL / REGEN LIVE · SPELL RESERVED";
+    this.root.insertAdjacentHTML(
+      "beforeend",
+      '<p id="attack-feedback" role="status" hidden></p>',
+    );
     this.unsubscribe = simulation.events.subscribe((e) => {
+      if (e.type === "attack-feedback") {
+        const box = this.root.querySelector("#attack-feedback");
+        box.textContent = e.message;
+        box.hidden = false;
+        this.attackFeedbackUntil = simulation.time + 2;
+      }
       const messages = {
         "objective-destroyed": `${e.team === "enemy" ? "Enemy" : "Allied"} ${e.kind} destroyed`,
         "gold-gained": `+${e.amount} match gold`,
@@ -99,6 +109,8 @@ export class MatchHud {
     countdown.hidden = !countdown.textContent;
     if (s.time > this.feedUntil)
       this.root.querySelector("#match-feed").textContent = "";
+    if (s.time > this.attackFeedbackUntil)
+      this.root.querySelector("#attack-feedback").hidden = true;
     this.shop.sync();
   }
   dispose() {

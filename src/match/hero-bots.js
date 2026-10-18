@@ -29,7 +29,7 @@ export function makeHeroBot(match, team, index) {
   const a = e.player;
   Object.assign(a, {
     id: `${team}-bot-${index}`,
-    name: `${team === "player" ? "Ally" : "Enemy"} Computer ${index + 1}`,
+    name: `${team === "player" ? "Ally Computer" : "Computer"} ${index + 1}`,
     heroId: "layla",
     heroName: "Layla",
     kind: "bot",
@@ -64,6 +64,10 @@ export function advanceHeroBot(match, a, dt) {
   e.enemies = match.actors.filter((t) => validTarget(a, t));
   e.time = match.time - dt;
   e.update(dt);
+  a.canUseAbility = e.hero.abilities.some(
+    (skill) =>
+      skill.slot !== "passive" && !e.castAvailability(e.ability(skill.slot)),
+  );
   const f = e.currentFacing();
   a.facing = { ...f };
   a.actionLocked = e.isActionLocked();

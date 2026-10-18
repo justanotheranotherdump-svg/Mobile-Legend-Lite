@@ -1,6 +1,6 @@
 {
   "environment": "Linux Chromium software WebGL; offline file://; not native Windows/physical touch",
-  "bundleSha256": "185fd9fc4f0200b9ed396b7ba6fe1be0b69843faa26aa1af79d6406b9637e4fc",
+  "bundleSha256": "f07eae0b6781f99207e2ae8daf446fcfc62142d65d80094eb5741c5f62d76702",
   "checks": [
     "Brawl starts with empty Computer slots, prevents no-enemy Start, adds/removes allied/enemy Computers and preserves an asymmetric 2v2 roster",
     "Timed selection shows actual ally Computer Layla pick and ready state; only the implemented Layla is selectable, confirm requires a pick",

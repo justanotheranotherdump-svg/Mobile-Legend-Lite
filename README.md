@@ -1,3 +1,5 @@
+> **Current Batch 1 review:** empty-until-picked hero preview, dedicated selection art, 10-second loading, reliable category attacks, threat-aware AI, match-clock respawns and live enemy information. See [docs/BATCH_1.md](docs/BATCH_1.md). Current source was checkpointed locally before this batch; no push. Shop redesign and spells await separate approval.
+
 > **Current review follow-up:** editable Computer rosters, timed hero selection/actual team loading, 37 Attack/Movement items in the restored wide shop, queued skills, Recall/Regen and flipped improved lane. See [docs/ROSTER_EQUIPMENT_FOLLOWUP.md](docs/ROSTER_EQUIPMENT_FOLLOWUP.md). This follow-up is uncommitted pending review.
 
 # MOBA Lab — offline AI Training and Brawl

@@ -15,6 +15,7 @@ export async function createRuntime({
   onExit,
   onEnd,
   onProgress = async () => {},
+  deferReveal = false,
 }) {
   const scope = new AbortController();
   let view,
@@ -28,7 +29,7 @@ export async function createRuntime({
     offReady;
   const clock = new FixedClock();
   if (profile) simulation.playerName = profile.username;
-  document.querySelector("#app").hidden = false;
+  document.querySelector("#app").hidden = deferReveal;
   document.querySelector("#error").hidden = true;
   const syncPause = () => {
     simulation.paused = paused || userPaused;
@@ -226,8 +227,13 @@ export async function createRuntime({
     await onProgress(7, "Ready — local simulation starts with countdown");
     syncPause();
     raf = requestAnimationFrame(frame);
-    view.canvas.focus({ preventScroll: true });
+    if (!deferReveal) view.canvas.focus({ preventScroll: true });
     return {
+      reveal() {
+        document.querySelector("#app").hidden = false;
+        view.resize();
+        view.canvas.focus({ preventScroll: true });
+      },
       simulation,
       heroVisual,
       view,

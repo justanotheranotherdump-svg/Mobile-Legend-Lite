@@ -1,4 +1,4 @@
-import { createRuntime } from './runtime.js';
+import { createRuntime } from "./runtime.js";
 import { loadHeroRegistry } from "./heroes/catalog.js";
 import { createHeroVisual } from "./rendering/heroes/hero-visual.js";
 import arena from "./data/arena.json";
@@ -18,7 +18,12 @@ function reportError(message) {
 export async function startTraining({
   registry: sharedRegistry,
   heroVisual: sharedVisual,
-  onReady, profile, onExit, onProgress, throwOnError = false,
+  onReady,
+  profile,
+  onExit,
+  onProgress,
+  throwOnError = false,
+  deferReveal = false,
 } = {}) {
   try {
     const registry = sharedRegistry || loadHeroRegistry();
@@ -28,23 +33,50 @@ export async function startTraining({
     const config = structuredClone(training);
     if (!fixture) {
       config.player.heroId = "layla";
-      number(practice.dummyHpMultiplier, 'src/data/layla-practice.json.dummyHpMultiplier', .01, 100);
-      number(practice.dummyPhysicalDefense, 'src/data/layla-practice.json.dummyPhysicalDefense');
-      number(practice.dummyMagicDefense, 'src/data/layla-practice.json.dummyMagicDefense');
+      number(
+        practice.dummyHpMultiplier,
+        "src/data/layla-practice.json.dummyHpMultiplier",
+        0.01,
+        100,
+      );
+      number(
+        practice.dummyPhysicalDefense,
+        "src/data/layla-practice.json.dummyPhysicalDefense",
+      );
+      number(
+        practice.dummyMagicDefense,
+        "src/data/layla-practice.json.dummyMagicDefense",
+      );
       // Same targets/map/ratios; HP x10 for the new stat scale. No XP rewards.
-      config.dummies = config.dummies.map(d => ({ ...d, hp: d.hp * practice.dummyHpMultiplier, maxHp: d.maxHp * practice.dummyHpMultiplier, physicalDefense: practice.dummyPhysicalDefense, magicDefense: practice.dummyMagicDefense }));
+      config.dummies = config.dummies.map((d) => ({
+        ...d,
+        hp: d.hp * practice.dummyHpMultiplier,
+        maxHp: d.maxHp * practice.dummyHpMultiplier,
+        physicalDefense: practice.dummyPhysicalDefense,
+        magicDefense: practice.dummyMagicDefense,
+      }));
     }
     const simulation = new (
       fixture ? TrainingSimulation : HeroCombatSimulation
     )(arena, config, registry);
-    await onProgress?.(3,"Separate dummy sandbox and hero stats initialized");
+    await onProgress?.(3, "Separate dummy sandbox and hero stats initialized");
     const heroVisual =
       sharedVisual ||
       (await createHeroVisual(
         simulation.hero,
         registry.modelBytes(simulation.hero.id),
       ));
-    const runtime = await createRuntime({simulation,heroVisual,View:WorldView,profile,onReady,onExit,fixture,onProgress});
+    const runtime = await createRuntime({
+      simulation,
+      heroVisual,
+      View: WorldView,
+      profile,
+      onReady,
+      onExit,
+      fixture,
+      onProgress,
+      deferReveal,
+    });
     return runtime;
   } catch (cause) {
     if (throwOnError) throw cause;

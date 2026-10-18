@@ -10,9 +10,9 @@
   "errors": [],
   "expectedGraphicsErrors": [
     "THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context.",
-    "Error: THREE.WebGLRenderer: Error creating WebGL context.\n    at new qf (file:///home/user/Mobile-Legend-Lite/index.html:4263:24888)\n    at new sh (file:///home/user/Mobile-Legend-Lite/index.html:4263:132049)\n    at new ix (file:///home/user/Mobile-Legend-Lite/index.html:4263:4346890)\n    at tf (file:///home/user/Mobile-Legend-Lite/index.html:44:1226721)\n    at sx (file:///home/user/Mobile-Legend-Lite/index.html:4263:4352393)\n    at async x (file:///home/user/Mobile-Legend-Lite/index.html:4288:665241)",
+    "Error: THREE.WebGLRenderer: Error creating WebGL context.\n    at new $f (file:///home/user/Mobile-Legend-Lite/index.html:4263:24888)\n    at new ag (file:///home/user/Mobile-Legend-Lite/index.html:4263:132049)\n    at new dI (file:///home/user/Mobile-Legend-Lite/index.html:4263:4902089)\n    at nf (file:///home/user/Mobile-Legend-Lite/index.html:44:1228188)\n    at uI (file:///home/user/Mobile-Legend-Lite/index.html:4263:4907592)\n    at async I (file:///home/user/Mobile-Legend-Lite/index.html:4288:19122)",
     "THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context.",
-    "Error: THREE.WebGLRenderer: Error creating WebGL context.\n    at new qf (file:///home/user/Mobile-Legend-Lite/index.html:4263:24888)\n    at new sh (file:///home/user/Mobile-Legend-Lite/index.html:4263:132049)\n    at new ix (file:///home/user/Mobile-Legend-Lite/index.html:4263:4346890)\n    at tf (file:///home/user/Mobile-Legend-Lite/index.html:44:1226721)\n    at sx (file:///home/user/Mobile-Legend-Lite/index.html:4263:4352393)\n    at async x (file:///home/user/Mobile-Legend-Lite/index.html:4288:665241)"
+    "Error: THREE.WebGLRenderer: Error creating WebGL context.\n    at new $f (file:///home/user/Mobile-Legend-Lite/index.html:4263:24888)\n    at new ag (file:///home/user/Mobile-Legend-Lite/index.html:4263:132049)\n    at new dI (file:///home/user/Mobile-Legend-Lite/index.html:4263:4902089)\n    at nf (file:///home/user/Mobile-Legend-Lite/index.html:44:1228188)\n    at uI (file:///home/user/Mobile-Legend-Lite/index.html:4263:4907592)\n    at async I (file:///home/user/Mobile-Legend-Lite/index.html:4288:19122)"
   ],
   "requests": []
 }

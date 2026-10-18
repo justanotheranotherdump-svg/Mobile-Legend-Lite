@@ -32,8 +32,6 @@
   "countdown": 3,
   "spawnProtection": 4,
   "spawnHealPerSecond": 180,
-  "respawnBase": 8,
-  "respawnPerLevel": 0.6,
   "heroReward": {
     "xp": 250,
     "gold": 180
@@ -64,16 +62,8 @@
       }
     },
     "path": {
-      "player": [
-        "enemy-0",
-        "enemy-1",
-        "enemy-2"
-      ],
-      "enemy": [
-        "player-0",
-        "player-1",
-        "player-2"
-      ]
+      "player": ["enemy-0", "enemy-1", "enemy-2"],
+      "enemy": ["player-0", "player-1", "player-2"]
     }
   },
   "bot": {
@@ -83,7 +73,18 @@
     "abilityBase": 180,
     "abilityScaling": 0.6,
     "abilityMana": 45,
-    "abilityCooldown": 7
+    "abilityCooldown": 7,
+    "retreatLaneLimit": 4.5,
+    "retreat": {
+      "recoverHp": 0.55,
+      "criticalHp": 0.08,
+      "minCommitSeconds": 2.5,
+      "reengageGrace": 3,
+      "threatRange": 8,
+      "finishTargetHp": 0.18,
+      "safeRecoveryHp": 0.42,
+      "minEnemyPressure": 0.75
+    }
   },
   "objectives": [
     {
@@ -194,5 +195,10 @@
       "gold": 0,
       "xp": 0
     }
-  ]
+  ],
+  "respawn": {
+    "base": 5,
+    "perCompletedMinute": 2,
+    "cap": 45
+  }
 }

@@ -37,7 +37,7 @@ export function rosterFor(config, profile) {
         : Array.from(
             { length: config.enemyCount ?? config.teamSize },
             (_, i) => ({
-              name: `Enemy Computer ${i + 1}`,
+              name: `Computer ${i + 1}`,
               kind: "COMPUTER",
               hero: "Layla",
               heroId: picks.enemy[i],

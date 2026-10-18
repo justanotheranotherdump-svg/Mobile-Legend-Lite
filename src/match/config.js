@@ -44,12 +44,14 @@ export function validateLane(data = lane) {
     "countdown",
     "spawnProtection",
     "spawnHealPerSecond",
-    "respawnBase",
-    "respawnPerLevel",
     "rewardRadius",
     "assistWindow",
   ])
     number(data[key], `lane.${key}`, 0);
+  for (const key of ["base", "perCompletedMinute", "cap"])
+    number(data.respawn[key], `lane.respawn.${key}`, 0);
+  if (data.respawn.cap < data.respawn.base)
+    throw Error("Respawn cap below base");
   for (const key of ["gold", "xp"])
     integer(data.heroReward[key], `lane.heroReward.${key}`, 0);
   for (const key of [
@@ -145,6 +147,13 @@ export function validateLane(data = lane) {
         `lane.objectives.${o.id}.${k}`,
         ["maxHp", "cooldown"].includes(k) ? 0.01 : 0,
       );
+  for (const [key, value] of Object.entries(data.bot.retreat))
+    number(value, `lane.bot.retreat.${key}`, 0);
+  if (
+    data.bot.retreat.recoverHp <=
+    Math.max(...Object.values(difficulties).map((d) => d.retreatHp))
+  )
+    throw Error("Recovery threshold must exceed retreat thresholds");
   for (const [id, d] of Object.entries(difficulties)) {
     number(d.reaction, `difficulty.${id}.reaction`, 0.01, 5);
     number(d.aimSpread, `difficulty.${id}.aimSpread`, 0, 5);

@@ -311,3 +311,27 @@ push authorization was fulfilled; deliver this new work for review, no fresh pus
 Follow-up review handoff: 407 unit tests and 157 browser checks executed; details
 and artifact/asset hashes in `docs/ROSTER_EQUIPMENT_FOLLOWUP.md` and
 `docs/roster-verification.json`. No fresh commit/push for this follow-up.
+
+## Authorized Batch 1 — selection, controls, AI, respawns — 2026-10-18
+User explicitly authorizes a recoverable LOCAL checkpoint before editing. Actual
+current workspace (not historical hashes in old reports) captured in checkpoint
+`d359178e9d6cf51a58d7d2a64fe53ad43266474a` on the session branch; no push.
+Baseline after restoring locked npm dependencies: 407/407 units and 9 connected
+browser checks passed. Initial missing-dependency attempts are not passing tests.
+Implement ONLY: independent original selection background, remove description/
+debug clutter, hide preview until explicit pick/reset on re-entry; proper loading
+state >=10 seconds AND actual ready with no gameplay HUD leaking into lineup;
+hero/minion/structure attack commands with settings-aware priority/fallback,
+manual override, stale-target reacquisition and visible rejection feedback;
+incremental threat-aware hysteresis/committed retreat/recovery AI; shared match-
+time respawn 5 + 2 per completed minute capped45; readable hero nameplates and
+selected-enemy actual HP/mana/level panel. Preserve current Brawl, camera/movement,
+Layla byte assets/ability tuning/full animation locks, queued skill, utilities,
+working shop and offline packaging. No shop redesign/recipes/recommendations/
+prioritization, no new spells/heroes/skins, no copied reference pixels. Deliver
+HTML/source ZIP/changed-file list/tests/manual limits, then STOP for approval.
+
+Batch 1 review handoff: 448 units and 173 browser checks executed. Exact timing,
+artifact/asset hashes, baseline checkpoint, scoped changes and manual limits in
+`docs/BATCH_1.md` / `docs/batch1-verification.json`. Stop for approval before shop
+redesign/battle spells. No further commit or push for the Batch 1 implementation.
