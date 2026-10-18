@@ -172,9 +172,9 @@ try {
     .locator("[data-placeholder]")
     .evaluateAll((buttons) => buttons.forEach((b) => b.click()));
   assert.equal((await menu()).screen, "lobby");
-  assert.equal(await page.locator("[data-placeholder]").count(), 10);
+  assert.equal(await page.locator("[data-placeholder]").count(), 7);
   pass(
-    "all 10 remaining lobby placeholders are disabled/no-op; menu combat keys never initialize training",
+    "all 7 remaining lobby placeholders are disabled/no-op; menu combat keys never initialize training",
   );
   assert.equal(
     (await menu()).persistent,

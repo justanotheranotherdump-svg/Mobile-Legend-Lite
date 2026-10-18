@@ -1,8 +1,11 @@
 const routes = {
   create: ["lobby"],
-  lobby: ["modes", "shop", "settings"],
+  lobby: ["modes", "shop", "settings", "preparation", "profile", "owned"],
+  preparation: ["lobby"],
+  profile: ["lobby", "create"],
+  owned: ["lobby", "hero"],
   shop: ["lobby", "hero"],
-  hero: ["shop"],
+  hero: ["shop", "owned"],
   settings: ["lobby"],
   modes: ["lobby", "ai-modes", "room"],
   "ai-modes": ["modes","room"],

@@ -219,7 +219,7 @@ export class LaneView extends WorldView {
         0,
       );
       g.add(gem);
-      g.add(this.circle(actor.range, color, 0.13, true));
+      // Shared RangeVisuals reads each live structure range every frame.
     } else {
       const small = actor.kind === "minion";
       g.add(

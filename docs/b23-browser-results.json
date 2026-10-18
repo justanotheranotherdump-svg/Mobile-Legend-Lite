@@ -2,8 +2,8 @@
   "checks": [
     "Level1 card screen contains twelve actual definitions, exact locked level metadata, only Execute/Retribution unlocked and persistent one-spell selection",
     "Selected spell survives room, explicit hero pick, 10-second local loading and Brawl initialization",
-    "All Equipment lists all45, Simple omits components, real nested tree appears and three quick buys consume Dagger/Knife into Regular Spear with exact gold/stat accounting",
-    "Owned tree credit updates immediately, explicit sale reverses stats/recipe credit, quick priority clears and no manual slot/recommendation UI remains",
+    "All Equipment lists all45, Simple omits components, real nested tree appears and quick buy chooses the most useful affordable Regular Spear component with exact gold/stat accounting",
+    "Owned tree credit updates immediately, explicit sale reverses stats/recipe credit, quick priority clears and no manual slot replacement is required",
     "Native F uses the same actual Retribution activation: eligible lane minion hit, exact35s cooldown, no fabricated jungle entities",
     "Quit match grants no account XP; hero combat levels do not bypass persistent account locks",
     "Level25 fixture unlocks all twelve, native hold/release reuses aim sight and Flicker teleports safely with120s cooldown while preserving exactly3 hero skill controls",
@@ -15,6 +15,6 @@
   "errors": [],
   "warnings": [],
   "requests": [],
-  "bundleSha256": "8181d06e87f65312deddd9b9e6c2bbc03d235f325bb00bcf80967e3f80204c41",
+  "bundleSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8",
   "environment": "Linux Chromium software WebGL; offline file://; level25 unlock fixture isolated to this test"
 }

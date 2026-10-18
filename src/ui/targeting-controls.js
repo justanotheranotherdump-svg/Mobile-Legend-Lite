@@ -38,7 +38,8 @@ export class TargetingControls {
         button.setAttribute("aria-pressed", "false");
         button.addEventListener("click", () => {
           if (!controls?.skillGestureActive)
-            simulation.attack(null, category.id);
+            simulation.requestAttack?.(null, category.id) ??
+              simulation.attack(null, category.id);
           button.blur();
         });
       }
@@ -65,6 +66,38 @@ export class TargetingControls {
       root.parentElement.append(clear);
       this.elements["clear-target"] = clear;
     }
+    this.simulation.combatSettings ||= {
+      rangeDisplay: "context",
+      towerRanges: true,
+    };
+    const rangeOptions = document.createElement("div");
+    rangeOptions.innerHTML =
+      '<label class="setting-row">Attack range display<select id="attack-range-display"><option value="context">While targeting / attacking / aiming</option><option value="always">Always</option><option value="off">Off</option></select></label><label class="setting-row">Nearby tower ranges<input id="show-tower-ranges" type="checkbox" checked></label>';
+    root.parentElement.append(rangeOptions);
+    if (this.simulation.combatHero) {
+      const options = document.createElement("div");
+      options.innerHTML =
+        '<label class="setting-row">Main attack category<select id="basic-category-priority"><option value="hero">Hero priority</option><option value="minion">Minion priority</option><option value="tower">Tower / structure priority</option></select></label><label class="setting-row">Smart basic attack / automatic approach<input id="smart-basic" type="checkbox" checked></label><label class="setting-row">Automatic target switching<input id="automatic-target-switch" type="checkbox" checked></label><label class="setting-row">Smart skill target on tap<input id="smart-skills" type="checkbox" checked></label><label class="setting-row">Skill range indicators<input id="skill-ranges" type="checkbox" checked></label><p>Hold a skill and drag its wheel for directional manual aim. Manual movement cancels an attack approach.</p>';
+      root.parentElement.append(options);
+      for (const [id, key] of [
+        ["basic-category-priority", "categoryPriority"],
+        ["smart-basic", "smartBasic"],
+        ["automatic-target-switch", "autoSwitch"],
+        ["smart-skills", "smartSkills"],
+        ["skill-ranges", "skillRanges"],
+      ]) {
+        const el = options.querySelector("#" + id);
+        el.onchange = () => {
+          this.simulation.combatSettings[key] =
+            el.type === "checkbox" ? el.checked : el.value;
+          this.simulation.cancelAttackCommand();
+        };
+      }
+    }
+    rangeOptions.querySelector("select").onchange = (e) =>
+      (this.simulation.combatSettings.rangeDisplay = e.target.value);
+    rangeOptions.querySelector("input").onchange = (e) =>
+      (this.simulation.combatSettings.towerRanges = e.target.checked);
     for (const [value, label] of Object.entries(TARGET_MODES)) {
       const option = document.createElement("label");
       option.className = "priority-option";

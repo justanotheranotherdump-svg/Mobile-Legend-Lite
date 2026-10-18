@@ -39,7 +39,7 @@ try {
   browser = await playwright.launch({ executablePath, args, env, headless: true });
   const context = await browser.newContext({ viewport: { width: 1440, height: 900 }, offline: true });
   const page = await context.newPage();
-  page.setDefaultTimeout(30000);
+  page.setDefaultTimeout(90000); // Software WebGL: retain simulation-time assertions, allow slower wall-clock rendering.
   page.on('pageerror', error => errors.push(String(error)));
   page.on('console', message => {
     if (message.type() === 'error') errors.push(message.text());
@@ -341,7 +341,7 @@ try {
   // Isolate the ZIP's index.html in a folder with spaces/Unicode and no siblings.
   const isolated = join(await mkdtemp(join(tmpdir(), 'moba-source-')), 'Windows download — offline');
   await mkdir(isolated);
-  const archivedIndex = execFileSync('unzip', ['-p', 'deliverables/MOBA-Lab-Phase-3-source.zip', 'index.html'], { maxBuffer: 12 * 1024 * 1024 });
+  const archivedIndex = execFileSync('unzip', ['-p', 'deliverables/MOBA-Lab-Game-Polish-source.zip', 'index.html'], { maxBuffer: 12 * 1024 * 1024 });
   assert.ok(archivedIndex.equals(await readFile('index.html')), 'ZIP must include the current playable root index');
   await writeFile(join(isolated, 'index.html'), archivedIndex);
   for (const [entry, label] of [[resolve('index.html'), 'repository root index.html'], [join(isolated, 'index.html'), 'source-ZIP index.html isolated without sibling files (spaces/Unicode path)']]) {

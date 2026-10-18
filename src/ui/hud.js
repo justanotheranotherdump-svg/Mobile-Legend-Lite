@@ -79,7 +79,7 @@ export class Hud {
       e.reset.blur();
     });
     e.attack.addEventListener("click", () => {
-      if (!controls.skillGestureActive) simulation.attack();
+      if (!controls.skillGestureActive) (simulation.requestAttack?.() ?? simulation.attack());
       e.attack.blur();
     });
     e["toggle-map-range"].setAttribute("aria-pressed", "true");

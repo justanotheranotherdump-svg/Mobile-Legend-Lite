@@ -76,7 +76,7 @@ try {
   assert.equal(await p.locator("#armory-catalog [data-item]").count(), 45);
   assert.equal(
     await p.locator("[data-category=Recommended]").isDisabled(),
-    true,
+    false,
   );
   assert.equal(await p.locator("#item-replace").count(), 0);
   await p.locator("[data-view=simple]").click();
@@ -99,20 +99,12 @@ try {
   );
   await p.locator("#quick-buy").click();
   let s = await snap();
-  assert.equal(s.inventory[0], "dagger");
-  assert.equal(s.gold, 550);
-  await p.locator("#quick-buy").click();
-  s = await snap();
-  assert.equal(s.inventory[1], "knife");
-  assert.equal(s.gold, 270);
-  await p.locator("#quick-buy").click();
-  s = await snap();
   assert.deepEqual(s.inventory.filter(Boolean), ["regular-spear"]);
   assert.equal(s.gold, 200);
   assert.equal(s.player.attributes.physicalAttack, 170);
   assert.ok(s.player.attributes.attackSpeed > 1.1);
   pass(
-    "All Equipment lists all45, Simple omits components, real nested tree appears and three quick buys consume Dagger/Knife into Regular Spear with exact gold/stat accounting",
+    "All Equipment lists all45, Simple omits components, real nested tree appears and quick buy chooses the most useful affordable Regular Spear component with exact gold/stat accounting",
   );
   await p.locator("#shop").click();
   await p.locator("[data-view=all]").click();
@@ -136,7 +128,7 @@ try {
   await p.locator("#quick-clear").click();
   assert.equal(await p.locator("#quick-buy-panel").isHidden(), true);
   pass(
-    "Owned tree credit updates immediately, explicit sale reverses stats/recipe credit, quick priority clears and no manual slot/recommendation UI remains",
+    "Owned tree credit updates immediately, explicit sale reverses stats/recipe credit, quick priority clears and no manual slot replacement is required",
   );
   await p.locator("#shop").click();
   for (const [width, height] of [

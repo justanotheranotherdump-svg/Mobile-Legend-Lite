@@ -1,3 +1,13 @@
+import { SPELL_ART } from "../spells/art.js";
+import { HistoryStore } from "../player/history.js";
+import {
+  resetLocalAccount,
+  restoreLocalBackup,
+  BACKUP_KEY,
+} from "../player/account-tools.js";
+import { mountPlayerProfile, mountOwnedHeroes } from "./player-profile.js";
+import { BuildStore } from "../player/builds.js";
+import { mountPreparation } from "./preparation-screen.js";
 import { BattleAccountStore } from "./battle-account.js";
 import { openBattleScreen } from "./battle-screen.js";
 import { getSpell } from "../spells/catalog.js";
@@ -65,7 +75,12 @@ export function startMenuApplication(registry, startTraining) {
     runtime = null,
     lastDisposed = null;
   const battleAccounts = new Map();
-  let battleAccount = null;
+  let battleAccount = null,
+    builds = null,
+    history = null,
+    heroReturn = "shop";
+  const historyStores = new Map();
+  const buildStores = new Map();
   const shopState = { role: "All", query: "", scrollTop: 0 };
   let selectedHeroId = "layla";
   let entering = false,
@@ -95,6 +110,22 @@ export function startMenuApplication(registry, startTraining) {
           new BattleAccountStore(storage, store.profile.username),
         );
       battleAccount = battleAccounts.get(store.profile.username);
+      if (!buildStores.has(store.profile.username))
+        buildStores.set(
+          store.profile.username,
+          new BuildStore(
+            storage,
+            store.profile.username,
+            progress.current.ownedHeroes,
+          ),
+        );
+      builds = buildStores.get(store.profile.username);
+      if (!historyStores.has(store.profile.username))
+        historyStores.set(
+          store.profile.username,
+          new HistoryStore(storage, store.profile.username),
+        );
+      history = historyStores.get(store.profile.username);
     }
     root.querySelector("#lobby-backdrop").src =
       nav.screen === "selection" ? SELECTION_BACKGROUND : LOBBY_BACKGROUND;
@@ -127,8 +158,12 @@ export function startMenuApplication(registry, startTraining) {
           modes: () => go("modes"),
           shop: () => go("shop"),
           settings: () => go("settings"),
+          preparation: () => go("preparation"),
+          profile: () => go("profile"),
+          owned: () => go("owned"),
         },
         progress.snapshot(),
+        battleAccount,
       );
     if (nav.screen === "lobby" && (progress.recovered || !progress.persistent))
       content
@@ -140,6 +175,72 @@ export function startMenuApplication(registry, startTraining) {
               : "Wallet is session-only · ",
           ),
         );
+    if (nav.screen === "create") {
+      let canRestore = false;
+      try {
+        canRestore = Boolean(storage?.getItem(BACKUP_KEY));
+      } catch {}
+      if (canRestore) {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.id = "restore-local-account";
+        b.textContent = "Restore last deleted local account";
+        content.querySelector("#profile-form").append(b);
+        b.onclick = () => {
+          if (restoreLocalBackup(storage)) {
+            store.load();
+            if (store.profile) {
+              nav.go("lobby");
+              render();
+            }
+          }
+        };
+      }
+    }
+    if (nav.screen === "profile")
+      mountPlayerProfile(content, {
+        profile: store.profile,
+        account: battleAccount,
+        history,
+        progress,
+        onBack: () => go("lobby"),
+        onReset: () => {
+          const name = store.profile.username,
+            r = resetLocalAccount(storage, name);
+          if (!r.ok) return r;
+          battleAccounts.delete(name);
+          buildStores.delete(name);
+          historyStores.delete(name);
+          progress.sessions.clear();
+          progress.current = null;
+          store.profile = null;
+          store.persistent = false;
+          battleAccount = null;
+          builds = null;
+          history = null;
+          nav.go("create");
+          render();
+          return r;
+        },
+      });
+    if (nav.screen === "owned")
+      mountOwnedHeroes(content, {
+        owned: progress.current.ownedHeroes,
+        registry,
+        onBack: () => go("lobby"),
+        onHero: (id) => {
+          selectedHeroId = id;
+          heroReturn = "owned";
+          go("hero");
+        },
+      });
+    if (nav.screen === "preparation")
+      cleanup = mountPreparation(content, {
+        builds,
+        account: battleAccount,
+        owned: progress.current.ownedHeroes,
+        onBack: () => go("lobby"),
+      });
     if (nav.screen === "modes")
       mountModes(
         content,
@@ -202,6 +303,7 @@ export function startMenuApplication(registry, startTraining) {
         state: shopState,
         onHero: (id) => {
           selectedHeroId = id;
+          heroReturn = "shop";
           go("hero");
         },
       });
@@ -210,7 +312,7 @@ export function startMenuApplication(registry, startTraining) {
         content,
         registry.get(selectedHeroId),
         progress.snapshot(),
-        () => go("shop"),
+        () => go(heroReturn),
       );
     if (nav.screen === "settings")
       cleanup = mountLobbySettings(content, preferences, audio, () =>
@@ -223,13 +325,29 @@ export function startMenuApplication(registry, startTraining) {
       button.className = "setup-battle-spell";
       if (nav.screen === "lobby") button.classList.add("spell-lobby-entry");
       const label = () =>
-        (button.textContent = `Spell: ${getSpell(battleAccount.value.selected).name} · Account Lv ${battleAccount.level}${flow.mode === "practice" && nav.screen !== "lobby" ? " · inactive in dummy Practice" : ""}`);
+        (button.innerHTML = `<img class="selection-spell-icon" src="${SPELL_ART[battleAccount.value.selected]}" alt=""><span class="spell-entry-caption">BATTLE SPELL</span><span class="spell-entry-value"> ${getSpell(battleAccount.value.selected).name} · Account Lv ${battleAccount.level}${flow.mode === "practice" && nav.screen !== "lobby" ? " · inactive in dummy Practice" : ""}</span><small>Change before entering match ›</small>`);
       label();
       const anchor = content.querySelector("#hero-confirm"),
         heading = content.querySelector(".room-heading");
       if (anchor) anchor.before(button);
       else if (heading) heading.append(button);
       else content.append(button);
+      if (nav.screen === "selection") {
+        const label = document.createElement("label");
+        label.className = "selection-build-label";
+        label.textContent = "EQUIPMENT BUILD";
+        const select = document.createElement("select");
+        select.id = "selection-build";
+        select.setAttribute("aria-label", "Match equipment build");
+        select.append(
+          new Option("Manual item priority", ""),
+          ...builds.hero("layla").builds.map((b) => new Option(b.name, b.id)),
+        );
+        select.value = builds.hero("layla").selected || "";
+        select.onchange = () => builds.select("layla", select.value || null);
+        label.append(select);
+        button.after(label);
+      }
       button.onclick = () => {
         const opened = Date.now();
         if (nav.screen === "selection") flow.selectionPausedAt = opened;
@@ -263,6 +381,7 @@ export function startMenuApplication(registry, startTraining) {
       if (config) {
         config.spellId = battleAccount.value.selected;
         config.accountLevel = battleAccount.level;
+        config.build = builds.selected(config.heroId)?.items.slice() || [];
         flow.config.spellId = config.spellId;
       }
       if (!config) return;
@@ -324,6 +443,7 @@ export function startMenuApplication(registry, startTraining) {
           const awarded = battleAccount.award(matchIdentity);
           result.accountXpEarned = awarded ? 100 : 0;
           result.accountLevel = battleAccount.level;
+          history.record(matchIdentity, config, result);
           flow.result = result;
           leaveRuntime("results");
         },
@@ -393,12 +513,14 @@ export function startMenuApplication(registry, startTraining) {
         "[data-ability-sheet]:not([hidden]) #ability-close",
       );
       if (close) close.click();
-      else go("shop");
+      else go(heroReturn);
       return;
     }
     if (
       event.code === "Escape" &&
-      ["modes", "shop", "settings"].includes(nav.screen) &&
+      ["modes", "shop", "settings", "preparation", "profile", "owned"].includes(
+        nav.screen,
+      ) &&
       !entering
     ) {
       event.preventDefault();
@@ -454,6 +576,8 @@ export function startMenuApplication(registry, startTraining) {
           enemyCount: flow.enemyCount,
         },
         battleAccount: battleAccount?.snapshot(),
+        builds: builds && structuredClone(builds.value),
+        history: history && structuredClone(history.value),
         lastDisposed,
         lobby: lobby.diagnostics(),
       }),

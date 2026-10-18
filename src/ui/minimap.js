@@ -1,3 +1,4 @@
+import { getHeroPortrait } from "./portraits.js";
 const NS = "http://www.w3.org/2000/svg";
 export function mapPoint(x, z, halfSize, flipped = false) {
   if (flipped)
@@ -98,6 +99,12 @@ export class Minimap {
       { d: "M0 -7 5 5 0 3 -5 5Z", class: "map-player-arrow" },
       this.player,
     );
+    this.playerPortrait = svgNode(
+      "image",
+      { href: getHeroPortrait("layla"), x: -8, y: -8, width: 16, height: 16 },
+      this.player,
+    );
+    this.portraits = new Map();
     this.heading = 0;
   }
   update(state, aim) {
@@ -110,6 +117,7 @@ export class Minimap {
       "transform",
       `translate(${p.x} ${p.y}) rotate(${this.heading})`,
     );
+    this.playerPortrait.setAttribute("transform", `rotate(${-this.heading})`);
     this.player.dataset.x = state.player.x;
     this.player.dataset.z = state.player.z;
     for (const [key, value] of Object.entries({
@@ -125,6 +133,11 @@ export class Minimap {
       if (!actors.some((a) => a.id === id)) {
         marker.remove();
         this.targets.delete(id);
+      }
+    for (const [id, marker] of this.portraits)
+      if (!actors.some((a) => a.id === id && a.hp > 0)) {
+        marker.remove();
+        this.portraits.delete(id);
       }
     for (const enemy of actors) {
       if (!this.targets.has(enemy.id))
@@ -142,6 +155,29 @@ export class Minimap {
         );
       const marker = this.targets.get(enemy.id),
         point = this.point(enemy.x, enemy.z, this.arena.halfSize);
+      if (["hero", "player", "bot"].includes(enemy.kind) && enemy.hp > 0) {
+        if (!this.portraits.has(enemy.id))
+          this.portraits.set(
+            enemy.id,
+            svgNode(
+              "image",
+              {
+                href: getHeroPortrait(enemy.heroId || "layla"),
+                width: 12,
+                height: 12,
+                "data-map-portrait": enemy.id,
+              },
+              this.svg,
+            ),
+          );
+        const portrait = this.portraits.get(enemy.id);
+        portrait.setAttribute("x", point.x - 6);
+        portrait.setAttribute("y", point.y - 6);
+      }
+      if (["hero", "bot", "player"].includes(enemy.kind)) {
+        marker.setAttribute("r", 8);
+        marker.style.stroke = enemy.team === "player" ? "#65e2df" : "#ff787b";
+      }
       marker.style.fill = enemy.team === "player" ? "#80e7e6" : "#f79188";
       marker.setAttribute("cx", point.x);
       marker.setAttribute("cy", point.y);

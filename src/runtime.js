@@ -1,3 +1,4 @@
+import { rangeSnapshot } from "./simulation/ranges.js";
 import { SpellHud } from "./ui/spell-hud.js";
 import { UtilityHud } from "./ui/utility-hud.js";
 import { FixedClock } from "./core/clock.js";
@@ -80,10 +81,11 @@ export async function createRuntime({
         view.canvas,
         (pointer) => {
           if (!controls.skillGestureActive)
-            simulation.attack(view.pickTarget(pointer));
+            (simulation.requestAttack?.(view.pickTarget(pointer)) ?? simulation.attack(view.pickTarget(pointer)));
         },
         { allowMenuGameplay: !fixture },
       );
+      controls.registerReset(()=>simulation.cancelAttackCommand?.());
       hud = new Hud(
         simulation,
         () => {
@@ -176,6 +178,7 @@ export async function createRuntime({
     const diagnosticSnapshot = () => ({
       ...simulation.snapshot(),
       aim: view.aim && { ...view.aim },
+      ranges: rangeSnapshot(simulation),
       paused: paused || userPaused,
       width: view.width,
       height: view.height,
@@ -190,6 +193,7 @@ export async function createRuntime({
           modelStatus: heroVisual.status,
           modelFacing: view.hero.rotation.y,
           sightVisible: Boolean(view.aimSight?.group.visible),
+          rangeVisuals: {player:{radius:view.rangeVisuals.player.scale.x,visible:view.rangeVisuals.player.visible},towers:[...view.rangeVisuals.towers].map(([id,r])=>({id,radius:r.scale.x,visible:r.visible}))},
           visual: heroVisual.diagnostics(),
           effects: view.combatVfx?.diagnostics(),
           registeredIds: ["layla", "training"],

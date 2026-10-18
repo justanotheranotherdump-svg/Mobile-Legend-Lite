@@ -1016,3 +1016,5 @@
     bottom: 140px;
   }
 }
+.recipe-tree .next-component>button{outline:2px solid #e6ce82;box-shadow:0 0 12px #f2cc4a44}.recipe-tree .next-component>button small{color:#ffe4a1}#build-recommendation-note{font-size:11px;color:#b2c7d7;line-height:1.4;padding:5px 10px}#resume-saved-build{background:#23465c;color:#e7dcb5;border:1px solid #ac9767;padding:8px}#quick-buy-panel #quick-buy span{font-weight:600;color:#f4e2a9}
+.record-portrait{width:23px;height:23px;border-radius:50%;border:1px solid #a6beca;vertical-align:middle;object-fit:contain}

@@ -23,7 +23,8 @@
     "test:browser:roster": "node tests/browser-roster.mjs",
     "test:browser:draft": "node tests/browser-draft.mjs",
     "test:browser:batch1": "node tests/browser-batch1.mjs",
-    "test:browser:shop-spells": "node tests/browser-shop-spells.mjs"
+    "test:browser:shop-spells": "node tests/browser-shop-spells.mjs",
+    "test:browser:game-polish": "node tests/browser-game-polish.mjs"
   },
   "dependencies": {
     "three": "0.186.1"

@@ -1,3 +1,4 @@
+import { utilityCooldown, applyUtilityCooldown } from "./utility-cooldowns.js";
 export class UtilityHud {
   constructor(s) {
     this.s = s;
@@ -25,11 +26,13 @@ export class UtilityHud {
       const b = document.getElementById(id),
         status = b.querySelector(".utility-state"),
         cd = id === "regen" ? Math.max(0, u.regenReadyAt - s.time) : 0;
+      const presentation=utilityCooldown(s,id);
+      applyUtilityCooldown(b,presentation);
       status.textContent =
         id === "recall" && u.recall
           ? `${Math.max(0, u.recall.endsAt - s.time).toFixed(1)}s`
           : cd
-            ? String(Math.ceil(cd))
+            ? presentation.text
             : "";
       b.classList.toggle(
         "utility-active",

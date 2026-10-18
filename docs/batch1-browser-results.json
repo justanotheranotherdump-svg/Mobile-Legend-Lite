@@ -9,9 +9,9 @@
     "Selected enemy panel mirrors live name, level, exact HP and mana with no fabricated fields",
     "Enemy hero overhead name/level/HP/mana stays visible with a red team health bar",
     "Selected enemy panel remains in bounds without covering map, testing toggle or player HUD at all three landscape sizes",
-    "Native Space uses the same smart attack without moving/chasing; cooldown/action locks remain authoritative",
-    "Minion priority is an attack command with a safe live fallback, not a filter-only toggle",
-    "Tower priority attacks an eligible structure or safely falls back when no structure is in range",
+    "Native Space single-attempt setting preserves targeting, position, cooldown and action locks",
+    "Minion priority persists through cooldown/approach and fires only at its minion category",
+    "Tower priority persists and approaches an eligible structure without falling back to heroes",
     "AI Training also enforces the same >=10-second readiness-plus-presentation gate",
     "Separate Practice waits >=10 seconds too and does not pretend minions/towers exist",
     "Preserved Layla learned skill/attack-follow-up path still casts with authoritative mana/cooldown",
@@ -20,21 +20,21 @@
   "timings": [
     {
       "mode": "brawl",
-      "elapsedMs": 10023.599999999627
+      "elapsedMs": 10023.5
     },
     {
       "mode": "ai-training",
-      "elapsedMs": 10019.099999999627
+      "elapsedMs": 10022.299999999814
     },
     {
       "mode": "practice",
-      "elapsedMs": 10021.200000000186
+      "elapsedMs": 10037.5
     }
   ],
   "errors": [],
   "warnings": [],
   "requests": [],
   "selectionBackgroundIsDedicated": true,
-  "bundleSha256": "198aad05670f6906cc386ede85744e9a5a989456e8e06e8d31d234c32cdaa8be",
+  "bundleSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8",
   "environment": "Linux Chromium software WebGL; offline file://; not native Windows or physical touch"
 }

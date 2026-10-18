@@ -30,6 +30,10 @@ export class CombatVfx {
     );
   }
   addTransient(mesh, time, duration) {
+    if (this.transients.length >= 160) {
+      const old = this.transients.shift();
+      this.dispose(old.mesh);
+    }
     this.scene.add(mesh);
     this.transients.push({ mesh, start: time, end: time + duration });
   }
@@ -61,6 +65,7 @@ export class CombatVfx {
       new THREE.RingGeometry(Math.max(0.01, radius - 0.07), radius, 48),
       color,
     );
+    m.userData.expand = true;
     m.rotation.x = -Math.PI / 2;
     m.position.set(point.x, 0.08, point.z);
     return m;
@@ -96,12 +101,24 @@ export class CombatVfx {
       flash.position.set(e.source.x, 1.11, e.source.z);
       this.addTransient(flash, e.time, 0.1);
     }
-    if (e.type === "beam")
+    if (e.type === "beam") {
+      this.addTransient(
+        this.line(
+          e.source,
+          e.end,
+          Math.min(0.22, e.width * 0.2),
+          "#fffbdc",
+          1.11,
+        ),
+        e.time,
+        0.2,
+      );
       this.addTransient(
         this.line(e.source, e.end, e.width, colors["line-blast"], 1.11),
         e.time,
         0.28,
       );
+    }
     if (["hit", "impact", "explosion", "mark-trigger"].includes(e.type)) {
       const color =
         e.type === "mark-trigger"
@@ -120,6 +137,18 @@ export class CombatVfx {
         new THREE.SphereGeometry(e.radius ? 0.3 : 0.12, 8, 6),
         color,
       );
+      for (let k = 0; k < 5; k++) {
+        const angle = (k / 5) * Math.PI * 2,
+          shard = this.mesh(new THREE.OctahedronGeometry(0.065, 0), color);
+        shard.material.blending = THREE.AdditiveBlending;
+        shard.position.set(e.point.x, 0.7, e.point.z);
+        shard.userData.origin = { x: e.point.x, z: e.point.z };
+        shard.userData.velocity = {
+          x: Math.cos(angle) * 1.8,
+          z: Math.sin(angle) * 1.8,
+        };
+        this.addTransient(shard, e.time, 0.28);
+      }
       spark.position.set(e.point.x, 0.85, e.point.z);
       this.addTransient(spark, e.time, 0.15);
     }
@@ -141,6 +170,13 @@ export class CombatVfx {
           colors[p.effect],
         );
         g.add(orb);
+        const halo = this.mesh(
+          new THREE.SphereGeometry(p.radius * 1.7, 8, 6),
+          colors[p.effect],
+        );
+        halo.material.opacity = 0.15;
+        halo.material.blending = THREE.AdditiveBlending;
+        g.add(halo);
         const trail = this.mesh(
           new THREE.ConeGeometry(p.radius * 0.7, 0.7, 8),
           colors[p.effect],
@@ -194,6 +230,18 @@ export class CombatVfx {
       }
       const f = (time - t.start) / (t.end - t.start);
       t.mesh.material.opacity = Math.max(0, (1 - f) * 0.8);
+      if (t.mesh.userData.expand) t.mesh.scale.setScalar(0.65 + 0.35 * f);
+      const o = t.mesh.userData.origin,
+        v = t.mesh.userData.velocity;
+      if (o && v) {
+        const elapsed = time - t.start;
+        t.mesh.position.set(
+          o.x + v.x * elapsed,
+          0.7 + elapsed * 0.8,
+          o.z + v.z * elapsed,
+        );
+        t.mesh.rotation.y = f * 4;
+      }
       return true;
     });
   }

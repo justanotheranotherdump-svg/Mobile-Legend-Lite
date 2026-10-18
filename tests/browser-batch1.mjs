@@ -131,6 +131,12 @@ try {
   );
   await p.setViewportSize({ width: 1280, height: 720 });
   const snap = () => p.evaluate(() => window.foundationDiagnostics.snapshot());
+  // Historical exact-attempt fixtures opt out explicitly; persistent commands
+  // are exercised below after restoring the native setting (and in game-polish).
+  await p.locator("#settings").click();
+  await p.locator("#settings-tab-controls").click();
+  await p.locator("#smart-basic").uncheck();
+  await p.locator("#settings-dialog [data-close]").click();
   await p.locator("#world").focus();
   await p.keyboard.down("KeyW");
   await p.keyboard.down("KeyD");
@@ -263,25 +269,93 @@ try {
   assert.equal(s.player.x, pos.x);
   assert.equal(s.player.z, pos.z);
   pass(
-    "Native Space uses the same smart attack without moving/chasing; cooldown/action locks remain authoritative",
+    "Native Space single-attempt setting preserves targeting, position, cooldown and action locks",
   );
+  await p.locator("#settings").click();
+  await p.locator("#settings-tab-controls").click();
+  await p.locator("#smart-basic").check();
+  await p.locator("#settings-dialog [data-close]").click();
   await ready();
   await p.locator("#priority-minion").click();
   s = await snap();
-  assert.equal(s.lastAttack.reason, "fired");
-  assert.ok(s.lastAttack.targetId);
+  assert.equal(s.attackCommand.filter, "minion");
+  assert.equal(
+    s.enemies.find((a) => a.id === s.attackCommand.targetId).kind,
+    "minion",
+  );
+  await p.waitForFunction(
+    () => {
+      const s = window.foundationDiagnostics.snapshot();
+      return (
+        s.lastAttack.reason === "fired" &&
+        s.enemies.some(
+          (a) => a.id === s.lastAttack.targetId && a.kind === "minion",
+        )
+      );
+    },
+    null,
+    { timeout: 60000 },
+  );
   assert.equal(s.targetCategory, "minion");
   pass(
-    "Minion priority is an attack command with a safe live fallback, not a filter-only toggle",
+    "Minion priority persists through cooldown/approach and fires only at its minion category",
   );
-  await ready();
+  // Category replacement remains valid even while the persistent minion command is firing.
   await p.locator("#priority-tower").click();
   s = await snap();
-  assert.equal(s.lastAttack.reason, "fired");
-  assert.ok(s.lastAttack.targetId);
+  if (!s.attackCommand) {
+    assert.match(
+      await p.locator("#attack-feedback").innerText(),
+      /No eligible target.*search range/,
+    );
+    // The nearby hero must NOT steal this command. Walk into the permitted
+    // tower search radius rather than requiring an unbounded cross-map chase.
+    await p.locator("#world").focus();
+    await p.keyboard.down("KeyW");
+    try {
+      await p.waitForFunction(
+        () => {
+          const s = window.foundationDiagnostics.snapshot();
+          return s.structures.some(
+            (t) =>
+              t.team === "enemy" &&
+              t.hp > 0 &&
+              !t.protected &&
+              Math.hypot(t.x - s.player.x, t.z - s.player.z) <
+                s.player.range + 9.5,
+          );
+        },
+        null,
+        { timeout: 60000 },
+      );
+    } finally {
+      await p.keyboard.up("KeyW");
+    }
+    await p.locator("#priority-tower").click();
+    s = await snap();
+  }
+  assert.equal(s.attackCommand.filter, "tower");
+  assert.ok(
+    ["tower", "core"].includes(
+      s.enemies.find((a) => a.id === s.attackCommand.targetId).kind,
+    ),
+  );
+  await p.waitForFunction(
+    () => {
+      const s = window.foundationDiagnostics.snapshot();
+      return (
+        s.lastAttack.reason === "fired" &&
+        s.structures.some(
+          (a) => a.id === s.lastAttack.targetId && a.team === "enemy",
+        )
+      );
+    },
+    null,
+    { timeout: 60000 },
+  );
   assert.equal(s.targetCategory, "tower");
   pass(
-    "Tower priority attacks an eligible structure or safely falls back when no structure is in range",
+    "Tower priority persists and approaches an eligible structure without falling back to heroes",
   );
   for (const [width, height] of [
     [1280, 720],

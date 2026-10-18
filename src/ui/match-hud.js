@@ -1,3 +1,4 @@
+import { COMBAT_ART } from "./combat-art.js";
 import { MatchShop } from "./match-shop.js";
 import "./styles/match.css";
 export class MatchHud {
@@ -6,8 +7,7 @@ export class MatchHud {
     this.shop = new MatchShop(simulation);
     this.root = document.createElement("section");
     this.root.id = "match-live";
-    this.root.innerHTML =
-      '<div class="live-objectives" id="objective-status"></div><div class="live-record"><span id="match-record"></span><button id="match-pause" type="button">Pause / Quit</button></div><div id="match-countdown" role="status"></div><p id="match-feed" role="status"></p><div id="match-pause-panel" hidden><section><h2>Match paused</h2><p>Quit this local match? No account currency or rank is awarded.</p><button id="match-resume" type="button">Resume</button><button id="match-quit-room" type="button">Leave to room</button><button id="match-quit-menu" type="button">Main Menu</button></section></div>';
+    this.root.innerHTML = `<div class="live-objectives" id="objective-status"></div><div class="live-record"><img class="record-portrait" src="${COMBAT_ART.layla}" alt="Layla player record"><span id="match-record"></span><button id="match-pause" type="button">Pause / Quit</button></div><div id="match-countdown" role="status"></div><p id="match-feed" role="status"></p><div id="match-pause-panel" hidden><section><h2>Match paused</h2><p>Quit this local match? No account currency or rank is awarded.</p><button id="match-resume" type="button">Resume</button><button id="match-quit-room" type="button">Leave to room</button><button id="match-quit-menu" type="button">Main Menu</button></section></div>`;
     document.querySelector("#hud-root").append(this.root);
     const paused = this.root.querySelector("#match-pause-panel");
     this.root.querySelector("#match-pause").addEventListener("click", () => {
@@ -63,10 +63,7 @@ export class MatchHud {
       }
       const messages = {
         "objective-destroyed": `${e.team === "enemy" ? "Enemy" : "Allied"} ${e.kind} destroyed`,
-        "gold-gained": `+${e.amount} match gold`,
-        "xp-gained": `+${e.amount} XP`,
         respawn: e.id === "player" ? "You have respawned" : null,
-        "item-purchased": "Equipment purchased",
       };
       if (messages[e.type]) {
         this.root.querySelector("#match-feed").textContent = messages[e.type];

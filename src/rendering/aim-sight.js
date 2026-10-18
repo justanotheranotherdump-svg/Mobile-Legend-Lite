@@ -1,3 +1,4 @@
+import { aimingShape } from "../input/directional-aim.js";
 import * as THREE from "three";
 
 // Original lightweight ground sight; it reads the same range/width/point as combat.
@@ -9,7 +10,7 @@ export class AimSight {
     this.outline = new THREE.LineSegments(
       new THREE.BufferGeometry().setAttribute(
         "position",
-        new THREE.Float32BufferAttribute(new Float32Array(72), 3),
+        new THREE.Float32BufferAttribute(new Float32Array(768), 3),
       ),
       new THREE.LineBasicMaterial({
         color: "#5ef4ff",
@@ -34,12 +35,12 @@ export class AimSight {
     this.blast.renderOrder = 10;
     this.group.add(this.blast);
     this.range = new THREE.Mesh(
-      new THREE.RingGeometry(0.997, 1, 96),
+      new THREE.RingGeometry(0.993, 1, 96),
       new THREE.MeshBasicMaterial({
         color: "#80c6df",
         side: THREE.DoubleSide,
         transparent: true,
-        opacity: 0.22,
+        opacity: 0.7,
         depthTest: false,
       }),
     );
@@ -56,11 +57,13 @@ export class AimSight {
       d = state.direction(state.aiming.point) || state.facing;
     this.outline.visible = true;
     this.range.visible = true;
-    if (a.aimStyle === "none") {
+    const shape = aimingShape(a);
+    this.range.visible = state.combatSettings?.skillRanges !== false;
+    if (shape === "none") {
       this.group.visible = false;
       return;
     }
-    if (a.aimStyle === "area") {
+    if (shape === "self-area") {
       this.outline.visible = false;
       this.range.visible = false;
       this.blast.visible = true;
@@ -69,7 +72,7 @@ export class AimSight {
       return;
     }
     const dist =
-      a.effectId === "orb-mark"
+      shape === "circle"
         ? Math.min(
             r,
             Math.hypot(state.aiming.point.x - p.x, state.aiming.point.z - p.z),
@@ -96,6 +99,21 @@ export class AimSight {
         [pos(n - 0.3, Math.max(width / 2, 0.28)), pos(n, 0)],
       );
     }
+    if (shape === "cone") {
+      pairs.length = 0;
+      const angle = a.parameters.angle || Math.PI / 3;
+      const edge = (t) => {
+        const cx = d.x * Math.cos(t) - d.z * Math.sin(t),
+          cz = d.z * Math.cos(t) + d.x * Math.sin(t);
+        return new THREE.Vector3(p.x + cx * r, 0.085, p.z + cz * r);
+      };
+      pairs.push([pos(0, 0), edge(-angle / 2)], [pos(0, 0), edge(angle / 2)]);
+      for (let n = 0; n < 24; n++)
+        pairs.push([
+          edge(-angle / 2 + (angle * n) / 24),
+          edge(-angle / 2 + (angle * (n + 1)) / 24),
+        ]);
+    }
     const attr = this.outline.geometry.attributes.position;
     let i = 0;
     for (const pair of pairs)
@@ -105,8 +123,13 @@ export class AimSight {
     this.outline.geometry.computeBoundingSphere();
     this.range.position.set(p.x, 0.06, p.z);
     this.range.scale.setScalar(r);
-    this.blast.visible = a.effectId === "orb-mark";
+    this.range.visible = state.combatSettings?.skillRanges !== false;
+    this.blast.visible = ["circle", "targeted"].includes(shape);
     this.blast.position.copy(pos(dist, 0));
-    this.blast.scale.setScalar(a.parameters.blastRadius || 1);
+    this.blast.scale.setScalar(
+      shape === "targeted"
+        ? 0.6
+        : a.parameters.blastRadius || a.parameters.radius || 1,
+    );
   }
 }

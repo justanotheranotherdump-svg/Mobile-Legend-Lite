@@ -1,3 +1,4 @@
+import { utilityCooldown, applyUtilityCooldown } from "./utility-cooldowns.js";
 import { SPELL_ART } from "../spells/art.js";
 export class SpellHud {
   constructor(s) {
@@ -35,6 +36,7 @@ export class SpellHud {
       snap = spell.snapshot(),
       q = spell.definition;
     const time = snap.remaining;
+    applyUtilityCooldown(b,utilityCooldown(s,"battle-spell"));
     b.querySelector(".spell-cooldown").textContent = time
       ? Math.ceil(time)
       : "";

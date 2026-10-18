@@ -366,3 +366,27 @@ that same branch; no additional feature batch. This supersedes the preceding
 review-only/no-push handoff. The sandbox checkpoint lineage and published earlier
 milestone lineage diverge; reconcile ancestry without force-pushing or replacing
 the reviewed working version. All published tracked files exist in this workspace.
+
+## Authorized complete game-polish milestone — 2026-10-19
+User authorizes Parts 1–10 sequentially with relevant tests between parts and no
+intermediate approval stops. Local recoverable checkpoint d94cbb6 (including
+published history) preserves the reviewed workspace; baseline 555/555 unit tests.
+Connect existing spell selection, Preparation/builds/wiki, consistent portraits,
+real local profile/history/reset and explicit developer cheats; truthful future
+Emblems/Rank placeholders. Add real range indicators, persistent obstacle-safe
+attack approach with category/settings/manual control, directional skill joystick,
+cooldown overlays, clean announcements and saved-build component quick buy.
+This explicitly supersedes earlier no-build/no-cheat/no-chase restrictions for
+this milestone. Preserve approved assets/hero/spell/item definitions/camera/map,
+wallet migration, offline workflow and native focused-button input safety. Use
+uploaded images as visual guidance only; historical reference docs were removed
+by user request and must not be restored or bundled. No new heroes/skills/ranked/
+Emblem mechanics/services. Finish all parts, tests and final delivery, then stop
+for review; no new push authorized by this implementation request.
+
+## Subsequent Game Polish branch-update authorization — 2026-10-19
+After the complete Game Polish review handoff, the user explicitly requested
+updating `arena/55ce0f80-mobile-legend-lite`. Commit and push the reviewed current
+tree to that same branch. This supersedes the milestone's review-only/no-push
+handoff; it authorizes publication only, not another feature milestone. Preserve
+published ancestry; no force push, reset or branch switch.

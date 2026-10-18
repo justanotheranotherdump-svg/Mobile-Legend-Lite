@@ -1,4 +1,5 @@
 import {
+  recipeDisplayTree,
   recipeData,
   recipeQuote,
   purchaseQuote,
@@ -62,7 +63,7 @@ const labels = {
   lifesteal: "Lifesteal",
   spellVamp: "Spell Vamp",
 };
-const textStats = (i) => [
+export const textStats = (i) => [
   ...Object.entries(i.modifiers.flat).map(
     ([k, v]) =>
       `+${k === "criticalDamage" ? Math.round(v * 100) + "%" : v} ${labels[k] || k}`,
@@ -94,7 +95,7 @@ export class MatchShop {
     const d = (this.dialog = document.querySelector("#shop-dialog"));
     d.classList.remove("match-shop");
     d.classList.add("live-armory");
-    d.innerHTML = `<header class="shop-header"><div class="shop-wallet"><span id="match-shop-gold"></span></div><div class="shop-view-tabs"><button type="button" data-view="all" aria-pressed="true">All Equipment</button><button type="button" data-view="simple" aria-pressed="false">Simple Mode</button></div><button type="button" class="tool-button" data-close aria-label="Close shop">×</button></header><nav class="shop-categories">${["Recommended", "All", "Attack", "Movement", "Legacy"].map((c) => `<button type="button" data-category="${c}" ${["Recommended"].includes(c) ? 'disabled title="Coming later — no items in this category"' : ""}>${c}</button>`).join("")}</nav><section class="shop-catalog"><div class="armory-search"><input id="item-search" placeholder="Search equipment" aria-label="Search equipment"><select id="item-sort" aria-label="Sort equipment">${[["name", "Name"], ["price-low", "Price: low to high"], ["price-high", "Price: high to low"], ...["maxHp", "physicalAttack", "magicPower", "physicalDefense", "magicDefense", "attackSpeed", "cooldownReduction", "movementSpeed", "penetration", "lifesteal", "spellVamp"].map((k) => [k, labels[k] || k])].map(([key, label]) => `<option value="${key}">${label}</option>`).join("")}</select></div><h3 id="shop-category-title"></h3><div id="armory-catalog" class="shop-slot-grid"></div></section><section class="shop-builder"><div class="armory-builds"><h3>Build tree</h3><small>Local prototype recipes</small></div><div id="item-tree"></div><div class="armory-detail"><div class="armory-item-hero"><img id="item-art" alt=""><div><h3 id="item-name"></h3><small id="item-category"></small></div></div><ul id="item-stats"></ul><p id="item-description"></p><p id="recipe-cost"></p><p id="purchase-validation" role="status"></p><button id="item-prioritize" type="button">Prioritize Item</button><button id="item-active" type="button" hidden>Activate Wind Chant</button><p id="item-result" role="status"></p></div></section><footer class="shop-equipment"><span>Equipment<br><small>Select to sell</small></span><div id="match-inventory" class="shop-equipment-slots"></div></footer><div class="shop-purchase"><button id="item-sell" type="button" hidden>Sell</button><button id="item-purchase" type="button">Purchase</button></div>`;
+    d.innerHTML = `<header class="shop-header"><div class="shop-wallet"><span id="match-shop-gold"></span></div><div class="shop-view-tabs"><button type="button" data-view="all" aria-pressed="true">All Equipment</button><button type="button" data-view="simple" aria-pressed="false">Simple Mode</button></div><button type="button" class="tool-button" data-close aria-label="Close shop">×</button></header><nav class="shop-categories">${["Recommended", "All", "Attack", "Movement", "Legacy"].map((c) => `<button type="button" data-category="${c}" >${c}</button>`).join("")}</nav><section class="shop-catalog"><div class="armory-search"><input id="item-search" placeholder="Search equipment" aria-label="Search equipment"><select id="item-sort" aria-label="Sort equipment">${[["name", "Name"], ["price-low", "Price: low to high"], ["price-high", "Price: high to low"], ...["maxHp", "physicalAttack", "magicPower", "physicalDefense", "magicDefense", "attackSpeed", "cooldownReduction", "movementSpeed", "penetration", "lifesteal", "spellVamp"].map((k) => [k, labels[k] || k])].map(([key, label]) => `<option value="${key}">${label}</option>`).join("")}</select></div><h3 id="shop-category-title"></h3><button type="button" id="resume-saved-build" hidden>Resume saved build</button><p id="build-recommendation-note" hidden></p><div id="armory-catalog" class="shop-slot-grid"></div></section><section class="shop-builder"><div class="armory-builds"><h3>Build tree</h3><small>Local prototype recipes</small></div><div id="item-tree"></div><div class="armory-detail"><div class="armory-item-hero"><img id="item-art" alt=""><div><h3 id="item-name"></h3><small id="item-category"></small></div></div><ul id="item-stats"></ul><p id="item-description"></p><p id="recipe-cost"></p><p id="purchase-validation" role="status"></p><button id="item-prioritize" type="button">Prioritize Item</button><button id="item-active" type="button" hidden>Activate Wind Chant</button><p id="item-result" role="status"></p></div></section><footer class="shop-equipment"><span>Equipment<br><small>Select to sell</small></span><div id="match-inventory" class="shop-equipment-slots"></div></footer><div class="shop-purchase"><button id="item-sell" type="button" hidden>Sell</button><button id="item-purchase" type="button">Purchase</button></div>`;
     d.querySelector("[data-close]").onclick = () => {
       d.close();
       document.querySelector("#world").focus({ preventScroll: true });
@@ -112,6 +113,11 @@ export class MatchShop {
         for (const x of d.querySelectorAll("[data-view]"))
           x.setAttribute("aria-pressed", String(x === b));
       };
+    d.querySelector("#resume-saved-build").onclick = () => {
+      simulation.resumeBuild();
+      this.sync();
+      this.renderCatalog();
+    };
     d.querySelector("#item-search").oninput = (e) => {
       this.query = e.target.value;
       this.renderCatalog();
@@ -177,13 +183,31 @@ export class MatchShop {
     const d = this.dialog,
       items = filterItems(
         catalogItems,
-        this.category,
+        this.category === "Recommended" ? "All" : this.category,
         this.query,
         this.sort,
       ).filter(
         (i) =>
-          this.view !== "simple" || recipeData.items[i.id].tier === "completed",
+          (this.category !== "Recommended" ||
+            this.simulation.buildPriority.sequence.includes(i.id)) &&
+          (this.view !== "simple" ||
+            recipeData.items[i.id].tier === "completed"),
       );
+    if (this.category === "Recommended")
+      items.sort(
+        (a, b) =>
+          this.simulation.buildPriority.sequence.indexOf(a.id) -
+          this.simulation.buildPriority.sequence.indexOf(b.id),
+      );
+    d.querySelector("#resume-saved-build").hidden =
+      this.category !== "Recommended" ||
+      !this.simulation.buildPriority.sequence.length;
+    d.querySelector("#build-recommendation-note").hidden =
+      this.category !== "Recommended";
+    d.querySelector("#build-recommendation-note").textContent = this.simulation
+      .buildPriority.sequence.length
+      ? "Your Preparation build · missing components appear in Quick Buy. Manual priorities override until completed; Resume restores your build."
+      : "No saved build selected. Configure My Setups in lobby Preparation, or prioritize one item manually.";
     d.querySelector("#shop-category-title").textContent =
       `${this.category} · ${items.length}`;
     d.querySelector("#armory-catalog").innerHTML = items.length
@@ -237,13 +261,24 @@ export class MatchShop {
       q.tree.ownedSlot = this.simulation.inventory.indexOf(this.selected);
       q.tree.children = [];
     }
+    const next = completed
+      ? null
+      : priorityStep(
+          this.simulation.gold,
+          this.simulation.inventory,
+          this.selected,
+        ).id;
     const tree = (n) =>
-      `<li class="${n.ownedSlot >= 0 ? "owned-component" : "missing-component"}"><button type="button" data-tree-item="${n.id}"><img src="${image(getItem(n.id))}" alt=""><span>${getItem(n.id).name}<small>${n.total} gold ${n.ownedSlot >= 0 ? "· OWNED" : "· missing / combine"}</small></span></button>${n.children.length ? `<ul>${n.children.map(tree).join("")}</ul>` : ""}</li>`;
-    const stamp = JSON.stringify([this.selected, this.simulation.inventory]);
+      `<li class="${n.ownedSlot >= 0 ? "owned-component" : "missing-component"} ${n.id === next && !n.covered ? "next-component" : ""}"><button type="button" data-tree-item="${n.id}"><img src="${image(getItem(n.id))}" alt=""><span>${getItem(n.id).name}<small>${n.total} gold ${n.ownedSlot >= 0 ? "· OWNED" : n.covered ? "· included in owned upgrade" : n.id === next ? "· NEXT COMPONENT" : "· missing / combine"}</small></span></button>${n.children.length ? `<ul>${n.children.map(tree).join("")}</ul>` : ""}</li>`;
+    const stamp = JSON.stringify([
+      this.selected,
+      this.simulation.inventory,
+      next,
+    ]);
     if (this.treeStamp !== stamp) {
       this.treeStamp = stamp;
       d.querySelector("#item-tree").innerHTML =
-        `<ul class="recipe-tree">${tree(q.tree)}</ul>`;
+        `<ul class="recipe-tree">${tree(recipeDisplayTree(q.tree))}</ul>`;
       for (const b of d.querySelectorAll("[data-tree-item]"))
         b.onclick = () => {
           this.selected = b.dataset.treeItem;
@@ -276,12 +311,13 @@ export class MatchShop {
     const step = priorityStep(s.gold, s.inventory, id),
       i = getItem(id),
       next = getItem(step.id);
-    this.quick.querySelector("img").src = image(i);
+    this.quick.querySelector("img").src = image(next);
+    this.quick.querySelector("#quick-buy").dataset.item = next.id;
     this.quick.querySelector("span").textContent =
-      `${i.name} · ${step.completed ? "Completed" : step.remaining + " remaining"}`;
+      `${next.name} · ${step.completed ? "Completed" : purchaseQuote(s.gold, s.inventory, step.id).remaining + " gold"}`;
     this.quick.querySelector("small").textContent = step.completed
       ? "Priority complete"
-      : `${next.name} · ${purchaseQuote(s.gold, s.inventory, step.id).remaining} gold${step.error ? " · " + step.error : ""}`;
+      : `Goal: ${i.name} · ${step.remaining} remaining${s.buildPriority?.manual ? " · manual priority" : s.buildPriority?.sequence.length ? " · saved build" : ""}${step.error ? " · " + step.error : ""}`;
     this.quick.querySelector("#quick-buy").disabled = Boolean(
       step.completed || step.error,
     );

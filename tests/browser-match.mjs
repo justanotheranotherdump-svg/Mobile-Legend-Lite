@@ -329,14 +329,20 @@ try {
   const resultText = await page.locator(".results-screen").innerText();
   assert.match(resultText, /Victory|Defeat/i);
   assert.match(resultText, /Core destruction/);
-  assert.match(resultText,/ACCOUNT XP \+100.*LV 2/);
-  assert.equal((await menu()).battleAccount.level,2);
+  assert.match(resultText, /ACCOUNT XP \+100.*LV 2/);
+  assert.equal((await menu()).battleAccount.level, 2);
   assert.deepEqual((await menu()).progress, wallet);
   assert.equal((await menu()).lastDisposed.disposed, true);
   await page.screenshot({ path: "artifacts/match-results.png" });
   pass(
     "actual unattended Brawl reaches sequential core destruction → real results with implemented duration / eliminations / deaths / assists / level / combat gold, no account currency/rank rewards; explicit account XP only",
   );
+  const recorded = (await menu()).history.matches;
+  assert.equal(recorded.length, 1);
+  assert.equal(recorded[0].mode, "brawl");
+  assert.equal(recorded[0].hero, "layla");
+  assert.match(resultText, new RegExp(recorded[0].result, "i"));
+  assert.ok(recorded[0].duration > 0);
   await page.locator("#results-replay").click();
   await screen("selection");
   await confirm();
@@ -359,6 +365,22 @@ try {
   assert.deepEqual((await menu()).progress, wallet);
   pass(
     "fresh replay re-enters explicit hero confirmation and resets all match state; Main Menu restores the same approved shared GLB without a second asset load",
+  );
+  await page.locator("#open-player-profile").click();
+  await page.locator("[data-profile-tab=history]").click();
+  assert.equal(await page.locator(".history-card").count(), 1);
+  assert.match(
+    await page.locator(".history-card").innerText(),
+    new RegExp(recorded[0].result, "i"),
+  );
+  await page.locator("[data-profile-tab=heroes]").click();
+  assert.match(
+    await page.locator(".hero-stat").innerText(),
+    /1 completed matches/,
+  );
+  await page.locator("#player-profile-back").click();
+  pass(
+    "Completed natural match records actual result/hero/mode/duration/KDA once; replay quit adds nothing and Profile History/Statistics read the saved record",
   );
   // A separate coarse-pointer context validates the actual virtual joystick, not a CSS-only control.
   const touch = await browser.newContext({

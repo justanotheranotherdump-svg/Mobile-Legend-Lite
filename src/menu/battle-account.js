@@ -72,6 +72,7 @@ export class BattleAccountStore {
     this.save();
     return true;
   }
+  developerMax() { this.value.xp = 2400; this.save(); }
   snapshot() {
     return {
       ...structuredClone(this.value),

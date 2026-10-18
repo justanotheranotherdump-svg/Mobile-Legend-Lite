@@ -1,3 +1,4 @@
+import { AttackController, COMBAT_DEFAULTS } from "./attack-command.js";
 import { stunActor, healActor } from "./status.js";
 import {
   resetUtilities,
@@ -43,6 +44,9 @@ export class HeroCombatSimulation extends TrainingSimulation {
     this.pending = [];
     this.buff = null;
     this.serial = 0;
+    this.combatSettings ||= { ...COMBAT_DEFAULTS };
+    this.attackController = new AttackController(this);
+    this.attackCommand = null;
     this.lastCast = { serial: 0, slot: null };
     this.lastCastResult = "ready";
     if (this.hero.schemaVersion === 3) {
@@ -54,6 +58,16 @@ export class HeroCombatSimulation extends TrainingSimulation {
           number(enemy[k], `training.dummies.${enemy.id}.${k}`);
       }
     }
+  }
+  clearManualTarget() {
+    this.cancelAttackCommand();
+    return super.clearManualTarget();
+  }
+  requestAttack(id = null, category = null) {
+    return this.attackController.request(id, category);
+  }
+  cancelAttackCommand() {
+    this.attackController?.cancel();
   }
   isHostile(target) {
     return isEligibleEnemy(target, this.player);
@@ -159,6 +173,10 @@ export class HeroCombatSimulation extends TrainingSimulation {
       if (this.aiming) this.aiming.point = { ...this.aim };
     }
   }
+  setDirectionalAim(p) {
+    this.setAim(p);
+    if (this.aiming) this.aiming.directional = true;
+  }
   direction(p) {
     const dx = p.x - this.player.x,
       dz = p.z - this.player.z,
@@ -181,7 +199,11 @@ export class HeroCombatSimulation extends TrainingSimulation {
       this.lastCastResult = reason;
       return false;
     }
-    const target = this.targetForAbility(a);
+    this.cancelAttackCommand();
+    const target =
+      this.combatSettings?.smartSkills === false
+        ? null
+        : this.targetForAbility(a);
     this.aiming = {
       slot,
       point: target
@@ -200,7 +222,7 @@ export class HeroCombatSimulation extends TrainingSimulation {
   }
   releaseAim() {
     if (!this.aiming) return "cancelled";
-    const { slot, point } = this.aiming,
+    const { slot, point, directional } = this.aiming,
       a = this.ability(slot);
     const target = this.enemies
       .filter(
@@ -217,7 +239,7 @@ export class HeroCombatSimulation extends TrainingSimulation {
           a.id.localeCompare(b.id),
       )[0];
     this.cancelAim();
-    return this.cast(slot, point, target?.id || null);
+    return this.cast(slot, point, directional ? null : target?.id || null);
   }
   canQueueFollowUp() {
     return (
@@ -227,6 +249,7 @@ export class HeroCombatSimulation extends TrainingSimulation {
     );
   }
   useUtility(id) {
+    this.cancelAttackCommand();
     return useUtility(this, id);
   }
   castAvailability(a) {
@@ -249,6 +272,7 @@ export class HeroCombatSimulation extends TrainingSimulation {
   }
   update(dt, h = 0, v = 0) {
     if (!Number.isFinite(dt) || dt < 0) throw Error("Invalid combat timestep");
+    if (Math.hypot(h, v) > 0.05) this.cancelAttackCommand();
     this.player.stunned = Boolean(
       this.player.stunnedUntil > this.time ||
         this.player.suppressionUntil > this.time,
@@ -266,6 +290,11 @@ export class HeroCombatSimulation extends TrainingSimulation {
       this.queuedSkill = null;
     }
     this.applyRangeAndSpeed();
+    const commandInput = this.attackController?.vector(dt, h, v);
+    if (commandInput) {
+      h = commandInput.h;
+      v = commandInput.v;
+    }
     super.update(dt, h, v);
     if (
       !this.aiming &&
@@ -352,7 +381,10 @@ export class HeroCombatSimulation extends TrainingSimulation {
     let reason = this.castAvailability(a);
     let point = aim;
     if (!reason && aim === undefined) {
-      const target = this.targetForAbility(a);
+      const target =
+        this.combatSettings?.smartSkills === false
+          ? null
+          : this.targetForAbility(a);
       if (!target) reason = "no-target";
       else {
         targetId = target.id;
@@ -388,6 +420,7 @@ export class HeroCombatSimulation extends TrainingSimulation {
       this.lastCastResult = "queued";
       return "queued";
     }
+    this.cancelAttackCommand();
     cancelRecovery(this, "casting");
     this.lockKind = "skill";
     this.onHeroCast?.(a);

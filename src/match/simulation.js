@@ -1,3 +1,4 @@
+import { BuildPriority } from "./build-priority.js";
 import { BattleSpells } from "../spells/system.js";
 import { absorbShields, healActor } from "../simulation/status.js";
 import { resolveMatchTarget, attackFeedback } from "./targeting.js";
@@ -75,6 +76,7 @@ export class MatchSimulation extends HeroCombatSimulation {
         ? { allyCount: config.allyCount, enemyCount: config.enemyCount }
         : {}),
       seed: config.seed ?? checked.seed,
+      build: Array.isArray(config.build) ? [...config.build] : [],
       spellId: config.spellId || "execute",
       accountLevel: config.accountLevel || 1,
     };
@@ -100,7 +102,8 @@ export class MatchSimulation extends HeroCombatSimulation {
     this.result = null;
     this.gold = c.gold;
     this.inventory = Array(6).fill(null);
-    this.priorityItem = null;
+    this.buildPriority = new BuildPriority(c.build);
+    this.priorityItem = this.buildPriority.refresh(this.inventory);
     this.score = { player: 0, enemy: 0 };
     this.stats = {
       eliminations: 0,
@@ -165,6 +168,7 @@ export class MatchSimulation extends HeroCombatSimulation {
       this.lastCastResult = why;
       return false;
     }
+    this.cancelAttackCommand();
     const a = this.spells.ability();
     this.aiming = {
       slot,
@@ -178,9 +182,30 @@ export class MatchSimulation extends HeroCombatSimulation {
   }
   releaseAim() {
     if (this.aiming?.slot !== "battle-spell") return super.releaseAim();
-    const point = this.aiming.point;
+    const { point, directional } = this.aiming;
+    let target = null;
+    if (directional && ["execute", "retribution"].includes(this.spells.id)) {
+      const d = this.direction(point),
+        range = this.spells.ability().range;
+      target = this.spells
+        .targets(this.spells.id === "execute" ? "hero" : "farm")
+        .filter((a) => {
+          const x = a.x - this.player.x,
+            z = a.z - this.player.z;
+          return (
+            distance(this.player, a) <= range &&
+            x * d.x + z * d.z > 0 &&
+            Math.abs(x * d.z - z * d.x) <= a.radius + 0.65
+          );
+        })
+        .sort((a, b) => distance(this.player, a) - distance(this.player, b))[0];
+    }
     this.cancelAim();
-    return this.spells.cast(point);
+    return this.spells.cast(
+      point,
+      target?.id || null,
+      Boolean(directional && this.spells.ability().targetShape === "targeted"),
+    );
   }
   cast(slot, point, targetId) {
     if (slot === "battle-spell")
@@ -219,6 +244,14 @@ export class MatchSimulation extends HeroCombatSimulation {
   refreshTarget() {
     if (this.isMatch && !this.resetting) {
       this.syncEnemies();
+      const commandTarget = this.enemies.find(
+        (a) =>
+          a.id === this.attackCommand?.targetId && validTarget(this.player, a),
+      );
+      if (commandTarget) {
+        this.selectedTargetId = commandTarget.id;
+        return commandTarget;
+      }
       const result = resolveMatchTarget(
         this.player,
         this.enemies,
@@ -295,9 +328,15 @@ export class MatchSimulation extends HeroCombatSimulation {
         reason,
         targetId: id,
       };
-    } else reason = super.attack(id);
+    } else {
+      const pin = this.manualTargetId;
+      reason = super.attack(id);
+      if (this.attackCommand && !this.attackCommand.manualId)
+        this.manualTargetId = pin;
+    }
     const message = attackFeedback(reason);
-    if (message) this.emit("attack-feedback", { message, reason });
+    if (message && !["cooldown", "animation", "casting"].includes(reason))
+      this.emit("attack-feedback", { message, reason });
     return reason;
   }
 
@@ -602,6 +641,7 @@ export class MatchSimulation extends HeroCombatSimulation {
     this.player.criticalChance = bonus.criticalChance;
     this.player.lifesteal = bonus.lifesteal;
     this.itemEffects?.refresh();
+    this.refreshPriority();
     return "ok";
   }
   purchaseItem(id, replace = null) {
@@ -617,8 +657,16 @@ export class MatchSimulation extends HeroCombatSimulation {
     if (this.paused || this.phase === "ended") return "cannot-prioritize";
     if (id !== null && !equipment.items.some((i) => i.id === id))
       return "unknown-item";
+    this.buildPriority.prioritize(id);
     this.priorityItem = id;
     return "ok";
+  }
+  refreshPriority() {
+    this.priorityItem = this.buildPriority?.refresh(this.inventory) ?? null;
+  }
+  resumeBuild() {
+    this.buildPriority.resume();
+    this.refreshPriority();
   }
   sellItem(slot) {
     if (this.paused) return "paused";
@@ -866,6 +914,7 @@ export class MatchSimulation extends HeroCombatSimulation {
     this.tickNpcProjectiles(dt);
     this.syncEnemies();
     this.refreshTarget();
+    this.refreshPriority();
   }
   get renderProjectiles() {
     return [
@@ -886,6 +935,9 @@ export class MatchSimulation extends HeroCombatSimulation {
       gold: this.gold,
       inventory: this.inventory && [...this.inventory],
       priorityItem: this.priorityItem,
+      buildPriority: this.buildPriority?.snapshot(),
+      attackCommand: this.attackCommand && structuredClone(this.attackCommand),
+      combatSettings: { ...this.combatSettings },
       score: this.score && { ...this.score },
       stats: this.stats && { ...this.stats },
       wave: this.waveNumber,

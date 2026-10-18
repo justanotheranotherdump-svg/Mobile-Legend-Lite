@@ -1,3 +1,8 @@
+import {
+  directionalAim,
+  aimingShape,
+  AIM_WHEEL_RADIUS,
+} from "./directional-aim.js";
 import { listen } from "../core/events.js";
 import { blocksGameplayInput } from "./input-policy.js";
 
@@ -10,6 +15,13 @@ export class SkillGestures {
     this.controls = controls;
     this.view = view;
     this.active = null;
+    this.buttons = buttons;
+    this.wheel = document.createElement("div");
+    this.wheel.id = "skill-aim-wheel";
+    this.wheel.hidden = true;
+    this.knob = document.createElement("span");
+    this.wheel.append(this.knob);
+    document.querySelector("#hud-root").append(this.wheel);
     this.cancelButton = document.createElement("button");
     this.cancelButton.id = "cancel-skill";
     this.cancelButton.type = "button";
@@ -118,7 +130,37 @@ export class SkillGestures {
       this.simulation.lastCastResult = reason;
       return false;
     }
-    this.active = { slot, held: false, overCancel: false, ...extra };
+    const button = this.buttons.find((x) => x.a.slot === slot)?.b;
+    const r = button?.getBoundingClientRect();
+    let startX = extra.startX,
+      startY = extra.startY;
+    if (!Number.isFinite(startX)) {
+      const c = this.view.canvas.getBoundingClientRect(),
+        p = this.controls.pointer;
+      startX =
+        p.active && Number.isFinite(p.x)
+          ? c.left + ((p.x + 1) * (c.right - c.left)) / 2
+          : r
+            ? r.left + (r.right - r.left) / 2
+            : window.innerWidth / 2;
+      startY =
+        p.active && Number.isFinite(p.y)
+          ? c.top + ((1 - p.y) * (c.bottom - c.top)) / 2
+          : r
+            ? r.top + (r.bottom - r.top) / 2
+            : window.innerHeight / 2;
+    }
+    this.active = {
+      slot,
+      held: false,
+      overCancel: false,
+      ...extra,
+      startX,
+      startY,
+    };
+    this.wheel.style.left = startX + "px";
+    this.wheel.style.top = startY + "px";
+    this.knob.style.transform = "translate(0,0)";
     this.controls.skillGestureActive = true;
     this.timer = setTimeout(() => {
       const g = this.active;
@@ -129,15 +171,12 @@ export class SkillGestures {
       }
       g.held = true;
       this.cancelButton.hidden = false;
+      this.wheel.hidden = false;
       this.hint.hidden = false;
       this.hint.textContent =
-        "AIM · release to cast · Esc / right-click / drag to CANCEL";
+        "DRAG WHEEL TO AIM · release to cast · Esc / right-click / CANCEL";
       if (g.kind === "pointer")
         this.move({ pointerId: g.pointerId, clientX: g.x, clientY: g.y });
-      if (g.kind === "key" && this.controls.pointer.active) {
-        const point = this.view.groundAtPointer(this.controls.pointer);
-        if (point) this.simulation.setAim(point);
-      }
     }, SKILL_HOLD_MS);
     return true;
   }
@@ -164,8 +203,30 @@ export class SkillGestures {
       (g.kind === "key" ||
         Math.hypot(e.clientX - g.startX, e.clientY - g.startY) > 6)
     ) {
-      const point = this.view.groundAtClient(e.clientX, e.clientY);
-      if (point) this.simulation.setAim(point);
+      const dx = e.clientX - g.startX,
+        dy = e.clientY - g.startY,
+        n = Math.hypot(dx, dy),
+        scale = Math.min(1, AIM_WHEEL_RADIUS / Math.max(n, 0.001));
+      this.knob.style.transform = `translate(${dx * scale}px,${dy * scale}px)`;
+      const a = this.simulation.ability(g.slot),
+        shape = aimingShape(a);
+      const point = this.simulation.player
+        ? directionalAim(
+            this.view,
+            this.simulation.player,
+            this.simulation.abilityRange(a),
+            g.startX,
+            g.startY,
+            e.clientX,
+            e.clientY,
+            shape === "circle",
+          )
+        : this.view.groundAtClient(e.clientX, e.clientY);
+      if (point) {
+        if (this.simulation.setDirectionalAim)
+          this.simulation.setDirectionalAim(point);
+        else this.simulation.setAim(point);
+      }
     }
   }
   clearGesture() {
@@ -176,6 +237,7 @@ export class SkillGestures {
     this.cancelButton.hidden = true;
     this.cancelButton.classList.remove("cancel-hover");
     this.hint.hidden = true;
+    this.wheel.hidden = true;
     if (g?.button?.hasPointerCapture(g.pointerId))
       g.button.releasePointerCapture(g.pointerId);
     g?.button?.blur();

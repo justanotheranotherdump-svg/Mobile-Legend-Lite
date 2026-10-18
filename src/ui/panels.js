@@ -66,6 +66,7 @@ export class PlaceholderPanels {
           }
           for (const other of [e["shop-dialog"], e["settings-dialog"]])
             if (other !== dialog) other.close();
+          if(controls.skillGestureActive)clearInput();
           dialog.show();
         } else {
           clearInput();

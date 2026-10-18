@@ -1,0 +1,28 @@
+{
+  "checks": [
+    "Preparation creates/edits/reorders/saves active hero build through native controls",
+    "Equipment wiki uses all 45 registry entries and connected actual recipe data",
+    "Emblems clearly inactive layout, no invented stat system",
+    "Spell choice and selected build persist across offline file reload",
+    "Owned Heroes tab exposes only the actual owned Layla with shared circular portrait",
+    "Profile identity, empty actual history, hero statistics and inactive ranked placeholder are truthful",
+    "Explicit developer additions/max level persist; reset cancel preserves account; confirmed delete and recovery backup work",
+    "Selection room changes the actual equipped spell carried through loading into Brawl",
+    "Native tower-priority command persists, approaches from outside range and stops to fire without overlap",
+    "Rendered ground ring radii equal live attack/tower simulation values",
+    "WASD cancels automatic approach immediately",
+    "Native combat settings drive the actual simulation policy",
+    "Held pointer displays directional skill wheel and actual range; Escape cancels without casting/spending",
+    "Relative pointer drag and release casts actual projectile once through normal mana/cooldown authority",
+    "Keyboard hold uses the same relative wheel/release lifecycle for circular orb aiming",
+    "Dedicated cancel area discards ultimate aim without a cast or cooldown",
+    "Spell/Regen cooldowns and Recall channel use dark overlays and authoritative numerical countdowns; ordinary action feed is clean",
+    "Selected Preparation build automatically enters match and advances to missing component after completed item purchase",
+    "Recommended uses saved order; Simple/All modes, complete recipe trees, next missing highlight and manual override/resume remain connected",
+    "Reference-inspired spell icon browser/detail panel retains detailed cards; shop stays usable at all three landscape sizes"
+  ],
+  "errors": [],
+  "warnings": [],
+  "requests": [],
+  "htmlSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8"
+}

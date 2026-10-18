@@ -71,6 +71,7 @@ export class BattleSpells {
       rank: 1,
       manaCost: 0,
       range: d.parameters.range || d.parameters.radius || 0,
+      targetShape: ["execute","retribution"].includes(d.id) ? "targeted" : undefined,
       aimStyle:
         d.target === "direction"
           ? "line"
@@ -131,7 +132,7 @@ export class BattleSpells {
         ["tower", "core", "minion", "trap"].includes(a.kind),
     );
   }
-  cast(point, explicitId) {
+  cast(point, explicitId, directional = false) {
     const s = this.s,
       p = s.player,
       d = this.definition,
@@ -141,7 +142,8 @@ export class BattleSpells {
     let reason = this.availability(),
       target;
     if (!reason && ["execute", "retribution"].includes(this.id)) {
-      target = this.pick(this.id === "execute" ? "hero" : "farm");
+      const kind=this.id === "execute" ? "hero" : "farm";
+      target = directional ? this.targets(kind).find(a=>a.id===explicitId&&distance(p,a)<=q.range) : this.pick(kind);
       if (!target) reason = "no-valid-target";
     }
     if (!point && d.target === "direction") {
@@ -170,6 +172,7 @@ export class BattleSpells {
       s.emit("spell-feedback", { message: `${d.name}: ${reason}` });
       return reason;
     }
+    s.cancelAttackCommand?.();
     s.cancelAim();
     s.utilities.recall = null;
     s.utilities.regen = null;

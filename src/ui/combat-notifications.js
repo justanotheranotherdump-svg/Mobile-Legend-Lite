@@ -1,3 +1,4 @@
+import { getHeroPortrait } from "./portraits.js";
 // These classifications prepare future events, but do not generate combat.
 export function describeCombatEvent(event) {
   if (
@@ -99,7 +100,8 @@ export class CombatNotifications {
         detail = document.createElement("span");
       title.textContent = notice.title;
       detail.textContent = notice.detail;
-      this.root.append(title, detail);
+      const portrait=document.createElement("img");portrait.src=getHeroPortrait("layla");portrait.alt="Layla";portrait.className="announcement-portrait";
+      this.root.append(portrait,title, detail);
     }
   }
 }

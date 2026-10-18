@@ -9,3 +9,5 @@ deliverables/*
 
 # User-provided visual references must not be committed or shipped.
 docs/references/
+
+.venv/

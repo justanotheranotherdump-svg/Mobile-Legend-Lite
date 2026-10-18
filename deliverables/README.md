@@ -1,21 +1,27 @@
-> **Subsequent branch-update authorization:** the user requested committing and pushing this reviewed work to `arena/55ce0f80-mobile-legend-lite`. This supersedes the historical review-only/no-push handoff below; it does not authorize another feature batch.
+> **Game Polish publication authorized (2026-10-19):** after the review handoff, the user requested updating `arena/55ce0f80-mobile-legend-lite`. This authorizes committing and pushing the reviewed Game Polish work to that branch, superseding the historical review-only/no-push statements below. No additional feature milestone is authorized.
 
-> **Current combined Batch 2 → Batch 3 review:** equipment recipes/discounts/automatic slots/individual quick buy and twelve battle spells with separate account unlocks. See [../docs/SHOP_AND_BATTLE_SPELLS.md](../docs/SHOP_AND_BATTLE_SPELLS.md) for prototype recipe provenance, exact spell rules, mode limits and validation. No further milestone or push.
+# Game Polish — regenerable offline downloads
 
-> **Current Batch 1:** see [../docs/BATCH_1.md](../docs/BATCH_1.md). Same standalone HTML/source ZIP workflow; no shop redesign or new battle spells in this batch.
+Current milestone: Preparation, smart combat targeting, directional skills, HUD,
+real local Profile/History and saved-build shop priority. Review only; no new push.
 
-> **Current review follow-up:** editable Computer rosters, timed hero selection/actual team loading, 37 Attack/Movement items in the restored wide shop, queued skills, Recall/Regen and flipped improved lane. See [../docs/ROSTER_EQUIPMENT_FOLLOWUP.md](../docs/ROSTER_EQUIPMENT_FOLLOWUP.md). This follow-up is uncommitted pending review.
+- `npm run build` → **MOBA-Lab-Game-Polish.html**, complete offline game.
+- `npm run package:source` → **MOBA-Lab-Game-Polish-source.zip**, editable source +
+  tests + docs + playable root `index.html`.
+- Root index, dist/index, current named HTML and historical Phase-3 HTML alias are
+  byte-identical. Only one playable HTML is included in the source ZIP.
 
-# Regenerable offline downloads — AI Training / Brawl
+Open the HTML alone in Chrome/Edge with WebGL2, including with networking disabled.
+No server, Node, sibling assets, CDN or runtime installation is needed. The source
+ZIP excludes dependencies, Git, reference screenshots/test captures and build copies.
 
-- `npm run build`: **MOBA-Lab-Phase-3.html**, the complete self-contained game.
-- `npm run package:source`: **MOBA-Lab-Phase-3-source.zip**, editable source + tests + docs + playable root index.
-- Root `../index.html`, `../dist/index.html` and the named HTML are byte-identical. The historical Phase-3 filename is retained solely for packaging compatibility.
+Lobby Preparation edits saved builds and spells; upper-left identity opens Profile.
+MODE → AI Training/Brawl → START GAME → explicitly choose Layla → CONFIRM → actual
+loading/countdown. Main attack now approaches and repeats safely; dedicated category
+commands stay filtered. Hold/drag relative to the skill wheel, release to cast;
+cancel without spending. Equipment/spells/utilities remain authoritative and local.
+Classic/Ranked and functional Emblems remain unimplemented; only Layla is playable.
 
-Open either HTML alone in Chrome/Edge with WebGL2, including offline. No Node, server, sibling assets or CDN is required to play. Edit `src/` / `dev.html`, not generated index. Dependencies, reference screenshots, test screenshots and duplicate builds are excluded from the source ZIP.
-
-Main Menu → MODE → AI TRAINING ROOM → choose scenario, or BRAWL → local room → START GAME → choose Layla → CONFIRM → local loading → countdown/gameplay. Practice is the preserved separate dummy map; lane modes have real waves, Training Bots, sequential towers/cores, XP/gold, six-slot items, death/respawn, actual results and fresh replay/menu return. Only Layla is selectable. Classic/Ranked remain disabled.
-
-The approved GLB/creation PNG are unchanged. Newly authored PNG controls and procedural causeway/bot geometry are original temporary prototype art. Recall/Regen/spell controls remain art-only reserved slots. Match gold never alters the persistent account wallet (30,000 coins / 0 diamonds granted once). Shop and Settings retain centered non-modal gameplay behavior; match pause/quit actually freezes the simulation.
-
-See `../docs/AI_TRAINING_BRAWL.md` for values, limits, verification, play steps and changed-file references. Automated Linux offline/touch-emulated results do not certify native Windows/physical touch/speakers. The user subsequently authorized committing and pushing the reviewed expansion to `arena/55ce0f80-mobile-legend-lite`.
+See `../README.md` and `../docs/GAME_POLISH.md` for controls, feature completion,
+actual test results, hashes and manual Windows limitations. Approved GLB and
+creation PNG are unchanged. Match gold is not persistent account currency.

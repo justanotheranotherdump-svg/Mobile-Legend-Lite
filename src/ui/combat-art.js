@@ -1,4 +1,4 @@
-import layla from './assets/layla.png';
+import layla from './assets/layla-portrait.png';
 import skill1 from './assets/skill-1.png';
 import skill2 from './assets/skill-2.png';
 import ultimate from './assets/skill-ultimate.png';

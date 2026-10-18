@@ -100,8 +100,14 @@ export function priorityStep(gold, inventory, id) {
   };
   visit(q.tree);
   const candidate =
-    missing.find((k) => !purchaseQuote(gold, inventory, k).error) ||
-    missing[0] ||
+    [...missing]
+      .sort((a, b) => getItem(b).cost - getItem(a).cost)
+      .find((k) => !purchaseQuote(gold, inventory, k).error) ||
+    [...missing].sort(
+      (a, b) =>
+        purchaseQuote(gold, inventory, a).remaining -
+        purchaseQuote(gold, inventory, b).remaining,
+    )[0] ||
     id;
   const quote = purchaseQuote(gold, inventory, candidate);
   return {
@@ -110,5 +116,25 @@ export function priorityStep(gold, inventory, id) {
     remaining: q.remaining,
     nextCost: quote.remaining,
     error: quote.error,
+  };
+}
+
+// Presentation-only expansion keeps the entire recipe visible beneath owned
+// upgrades. Covered descendants are not additional owned credit.
+export function recipeDisplayTree(node, covered = false) {
+  const children = node.children.length
+    ? node.children
+    : data.items[node.id].components.map((id) => ({
+        id,
+        total: getItem(id).cost,
+        ownedSlot: -1,
+        children: [],
+      }));
+  return {
+    ...node,
+    covered,
+    children: children.map((n) =>
+      recipeDisplayTree(n, covered || node.ownedSlot >= 0),
+    ),
   };
 }

@@ -169,15 +169,13 @@ try {
     Boolean(window.foundationDiagnostics.snapshot().aiming),
   );
   await page.locator("#shop").click();
-  assert.ok((await snap()).aiming);
+  assert.equal((await snap()).aiming,null);
   await page.keyboard.press("Escape");
   await page.keyboard.up("1");
   assert.equal((await snap()).player.mana, 800);
-  assert.equal(await page.locator("#shop-dialog").isVisible(), true);
-  await page.keyboard.press("Escape");
   assert.equal(await page.locator("#shop-dialog").isVisible(), false);
   pass(
-    "opening a panel preserves held aim; first Escape cancels aim, second closes panel",
+    "opening a panel cancels held aim without spending; Escape closes the panel",
   );
   await page.locator("#settings").click();
   await page.locator("#settings-tab-controls").click();
@@ -243,13 +241,13 @@ try {
   await page.locator("#shop").click();
   await page.locator("#settings").click();
   assert.equal(await page.locator("#shop-dialog").isVisible(), false);
-  assert.ok((await snap()).aiming);
+  assert.equal((await snap()).aiming,null);
   await page.locator("#settings").click();
   assert.equal(await page.locator("#settings-dialog").isVisible(), false);
-  assert.ok((await snap()).aiming);
+  assert.equal((await snap()).aiming,null);
   await page.locator("#shop").click();
   await page.locator('[aria-label="Close shop"]').click();
-  assert.ok((await snap()).aiming);
+  assert.equal((await snap()).aiming,null);
   await page.keyboard.press("Escape");
   await page.keyboard.up("1");
   assert.equal((await snap()).player.mana, 800);

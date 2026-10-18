@@ -70,6 +70,15 @@ export class ProgressStore {
     });
     return this.snapshot();
   }
+  developerAdd(kind, amount) {
+    if (!["coins", "diamonds"].includes(kind) || !Number.isSafeInteger(amount) || amount < 1 || amount > 1000000 || !this.current || !Number.isSafeInteger(this.current[kind] + amount)) return "invalid-amount";
+    this.current[kind] += amount;
+    this.persistent = false;
+    const key = [...this.sessions].find(([,v])=>v.current===this.current)?.[0];
+    try { this.storage?.setItem(key, JSON.stringify(this.current)); this.persistent = this.storage?.getItem(key) === JSON.stringify(this.current); } catch {}
+    if (key) this.sessions.set(key,{current:this.current,persistent:this.persistent,recovered:this.recovered});
+    return "ok";
+  }
   snapshot() {
     return (
       this.current && {

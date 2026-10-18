@@ -1,3 +1,4 @@
+import { RangeVisuals } from "./range-visuals.js";
 import { SpellVfx } from "./spell-vfx.js";
 import * as THREE from "three";
 import { CombatVfx } from "./combat-vfx.js";
@@ -61,6 +62,8 @@ export class WorldView {
     this.scene.add(this.selectionRing);
     this.rangeRing = this.circle(6, "#7cb8a3", 0.24, true);
     this.scene.add(this.rangeRing);
+    this.rangeRing.visible=false;
+    this.rangeVisuals=new RangeVisuals(this.scene);
     this.aimMarker = new THREE.Group();
     this.aimMarker.add(this.circle(0.27, "#a7f2db", 0.95));
     const cross = new THREE.LineSegments(
@@ -423,6 +426,7 @@ export class WorldView {
         0.025,
         state.selectedTarget.z,
       );
+    this.rangeVisuals.update(state);
     this.rangeRing.scale.setScalar(player.range / 6);
     this.rangeRing.position.set(player.x, 0, player.z);
     this.updateCamera(player);

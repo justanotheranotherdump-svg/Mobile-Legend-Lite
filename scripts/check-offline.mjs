@@ -11,6 +11,7 @@ const css = [...html.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi)].map(match 
 assert.ok(!/@import\s|url\(\s*["']?(?!data:|#)/i.test(css), 'External CSS dependency');
 assert.deepEqual(await readdir('dist'), ['index.html'], 'dist must contain just one HTML file');
 assert.equal(html, await readFile('dist/index.html', 'utf8'));
+assert.equal(html, await readFile('deliverables/MOBA-Lab-Game-Polish.html', 'utf8'), 'Current named download must be byte-identical too');
 assert.ok(html === await readFile('index.html', 'utf8'), 'Root index.html must match the standalone download; run npm run build before committing');
 assert.ok(html.includes('name="moba-build" content="standalone-offline"'), 'Standalone build marker missing');
 assert.ok(css.length > 1000 && /<script type="module">/.test(html), 'Missing inline application/CSS');

@@ -1,0 +1,211 @@
+{
+  "milestone": "GAME POLISH \u2014 Lobby Preparation, Combat Targeting, HUD, Player Profile",
+  "date": "2026-10-19",
+  "branch": "arena/55ce0f80-mobile-legend-lite",
+  "checkpoint": "d94cbb6ae0b3a2a54ae0d37865399584ddb32a6e",
+  "commitAfterCheckpointPerformed": false,
+  "pushPerformed": false,
+  "status": "PASS",
+  "units": {
+    "baseline": 555,
+    "passed": 576,
+    "failed": 0,
+    "skipped": 0,
+    "additional": 21
+  },
+  "browser": {
+    "suitesPassed": 14,
+    "checksPassed": 205,
+    "newPolishChecks": 20,
+    "execution": "sequential Linux Chromium software WebGL, actual file:// with offline:true, ordinary file-origin security; native UI input and emulated touch",
+    "records": [
+      {
+        "suite": "browser-game-polish",
+        "exitCode": 0,
+        "checks": 20,
+        "seconds": 191.8,
+        "command": "node tests/browser-game-polish.mjs",
+        "htmlSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8"
+      },
+      {
+        "suite": "browser-shop-spells",
+        "exitCode": 0,
+        "checks": 11,
+        "seconds": 143.5,
+        "command": "node tests/browser-shop-spells.mjs",
+        "htmlSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8"
+      },
+      {
+        "suite": "browser-batch1",
+        "exitCode": 0,
+        "checks": 16,
+        "seconds": 124.2,
+        "command": "node tests/browser-batch1.mjs",
+        "htmlSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8"
+      },
+      {
+        "suite": "browser",
+        "exitCode": 0,
+        "checks": 50,
+        "seconds": 816.9,
+        "command": "node tests/browser.mjs",
+        "htmlSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8"
+      },
+      {
+        "suite": "browser-layla",
+        "exitCode": 0,
+        "checks": 19,
+        "seconds": 214.2,
+        "command": "node tests/browser-layla.mjs",
+        "htmlSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8"
+      },
+      {
+        "suite": "browser-panels",
+        "exitCode": 0,
+        "checks": 16,
+        "seconds": 240.1,
+        "command": "node tests/browser-panels.mjs",
+        "htmlSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8"
+      },
+      {
+        "suite": "browser-progression",
+        "exitCode": 0,
+        "checks": 10,
+        "seconds": 59.7,
+        "command": "node tests/browser-progression.mjs",
+        "htmlSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8"
+      },
+      {
+        "suite": "browser-menu",
+        "exitCode": 0,
+        "checks": 11,
+        "seconds": 292.5,
+        "command": "node tests/browser-menu.mjs",
+        "htmlSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8"
+      },
+      {
+        "suite": "browser-polish",
+        "exitCode": 0,
+        "checks": 13,
+        "seconds": 55.6,
+        "command": "node tests/browser-polish.mjs",
+        "htmlSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8"
+      },
+      {
+        "suite": "browser-hero-browser",
+        "exitCode": 0,
+        "checks": 9,
+        "seconds": 44.9,
+        "command": "node tests/browser-hero-browser.mjs",
+        "htmlSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8"
+      },
+      {
+        "suite": "browser-roster",
+        "exitCode": 0,
+        "checks": 9,
+        "seconds": 67.3,
+        "command": "node tests/browser-roster.mjs",
+        "htmlSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8"
+      },
+      {
+        "suite": "browser-draft",
+        "exitCode": 0,
+        "checks": 5,
+        "seconds": 78.0,
+        "command": "node tests/browser-draft.mjs",
+        "htmlSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8"
+      },
+      {
+        "suite": "browser-recovery",
+        "exitCode": 0,
+        "checks": 5,
+        "seconds": 43.2,
+        "command": "node tests/browser-recovery.mjs",
+        "htmlSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8"
+      },
+      {
+        "suite": "browser-match",
+        "exitCode": 0,
+        "checks": 11,
+        "seconds": 547.0,
+        "command": "node tests/browser-match.mjs",
+        "htmlSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8"
+      }
+    ]
+  },
+  "artifacts": {
+    "htmlSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8",
+    "byteIdentical": [
+      "index.html",
+      "dist/index.html",
+      "deliverables/MOBA-Lab-Phase-3.html",
+      "deliverables/MOBA-Lab-Game-Polish.html"
+    ],
+    "sourceZip": "deliverables/MOBA-Lab-Game-Polish-source.zip",
+    "sourceZipChecks": "unzip CRC; every payload matches workspace; HTML extracted into empty Unicode/spaces path and exercised offline in Foundation/Layla suites; final ZIP hash is in deliverables/SHA256SUMS.txt"
+  },
+  "preservedAssets": {
+    "laylaGlb": "963a4902955cb8ad345c74eb63b76e602ade5247c2bd94544ce3000cba6edd51",
+    "creationPng": "bc2b258b61ddceb7aa9abe9a82c9ebe25d30b7ba91c6d3a58a57b4f15005fca1",
+    "newOriginalPortrait": "67878f3996f6e24c213cdc7b86a91858d4ab5e3be675d648652f5e2650435d3e"
+  },
+  "build": {
+    "production": "PASS",
+    "heroAssetValidation": "PASS",
+    "offlineDependencyValidation": "PASS",
+    "diffWhitespace": "PASS",
+    "warning": "Vite large-single-chunk warning is expected for the self-contained offline bundle, not a runtime warning."
+  },
+  "priorFailuresAndCorrections": [
+    {
+      "stage": "initial parallel regression",
+      "suite": "browser",
+      "completedChecks": 18,
+      "cause": "30-second wall-clock timeout while waiting for 5.5 simulation seconds under overlapping software WebGL. Sequential execution + 90-second real-time allowance; simulation-time and boundary assertions unchanged."
+    },
+    {
+      "stage": "initial regression",
+      "suite": "browser-batch1",
+      "completedChecks": 10,
+      "cause": "Obsolete immediate-fired/fallback expectation during persistent cooldown/approach. Historical exact-attempt fixtures now explicitly choose single-attempt mode; restored default command tests require actual strict-category shots."
+    },
+    {
+      "stage": "initial regression",
+      "suite": "browser-shop-spells",
+      "completedChecks": 0,
+      "cause": "Real CSS regression: shared selection-room relative positioning overrode absolute lobby shortcut placement, putting the spell button outside the viewport. Fixed with specific lobby selector; actual native click rerun passed."
+    },
+    {
+      "stage": "initial natural Brawl",
+      "suite": "browser-match",
+      "completedChecks": 7,
+      "cause": "New saved-history assertion compared title-case Defeat with uppercase DEFEAT result text. Actual natural completion/history were present; fixed case-insensitive text assertion without changing outcome or simulation."
+    },
+    {
+      "stage": "first sequential final pass",
+      "suite": "browser",
+      "completedChecks": 21,
+      "cause": "Source ZIP not yet generated; unzip failed. Package generated, tests updated to current archive filename; rerun includes isolated ZIP-index offline checks."
+    },
+    {
+      "stage": "first sequential final pass",
+      "suite": "browser-batch1",
+      "completedChecks": 11,
+      "cause": "Tower was outside permitted search area: old fixture assumed hero fallback or cross-map chase. Now asserts honest no-eligible feedback, manually walks into bounded search range, then requires actual tower approach/fire."
+    }
+  ],
+  "notPerformed": [
+    "Native Windows Chrome/Edge execution",
+    "Physical Android/iOS touch test",
+    "Human speaker/audio audibility verification",
+    "Optional DEV_TEST_URL development-server smoke path (production offline release was tested instead)"
+  ],
+  "limits": [
+    "Only existing Layla playable; no new hero/model/skill/ranked/functional Emblem",
+    "Prototype recipes, not certified official patch recipes",
+    "100 retained local history records, not fabricated earlier/lifetime statistics",
+    "Bounded local grid steering, not global strategic navigation",
+    "Browser/file-origin local persistence only; no cloud/server guarantee",
+    "Six geometry adapters; no invented live cone hero ability"
+  ]
+}

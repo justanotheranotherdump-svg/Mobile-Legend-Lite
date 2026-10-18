@@ -101,7 +101,7 @@ export class ButtonShortcuts {
     }
     const help = this.root.querySelector("[data-key-help]");
     if (help)
-      help.textContent = `Attack: ${bindings.labelFor("attack")} (+ mouse) · Skill I: ${bindings.labelFor("skill-1")} · Skill II: ${bindings.labelFor("skill-2")} · Ultimate: ${bindings.labelFor("skill-ultimate")}. ${this.root.querySelector(".hero-skill") ? "Tap a skill to auto-target by priority. Hold to aim, release to cast; Esc/right-click cancels. WASD resumes after firing. Recall and Regen are functional; the battle-spell slot remains reserved." : "Skill and utility gameplay is still reserved."}`;
+      help.textContent = `Attack: ${bindings.labelFor("attack")} (+ mouse) · Skill I: ${bindings.labelFor("skill-1")} · Skill II: ${bindings.labelFor("skill-2")} · Ultimate: ${bindings.labelFor("skill-ultimate")}. ${this.root.querySelector(".hero-skill") ? "Tap a skill to auto-target by priority. Hold to aim, release to cast; Esc/right-click cancels. WASD resumes after firing. Recall and Regen are functional; the equipped battle spell is active in lane matches." : "Skill and utility gameplay is still reserved."}`;
     const title = this.root.querySelector(".movement-hint");
     if (title)
       title.title =

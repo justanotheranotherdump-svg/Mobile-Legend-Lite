@@ -94,6 +94,11 @@ try {
     const p = await project(x, 0, z);
     await page.mouse.move(p.x, p.y);
   };
+  const aimWheelAt = async(x,z) => {
+    const s=await snap(),a=await project(s.player.x,0,s.player.z),b=await project(x,0,z),r=await page.locator('#skill-aim-wheel').boundingBox();
+    const dx=b.x-a.x,dy=b.y-a.y,n=Math.hypot(dx,dy);
+    await page.mouse.move(r.x+r.width/2+dx/n*55,r.y+r.height/2+dy/n*55);
+  };
   const hold = async (key) => {
     await page.keyboard.down(key);
     await page.waitForFunction(() =>
@@ -215,7 +220,7 @@ try {
   assert.equal(s.pendingCasts.length, 0);
   assert.equal((await hero()).sightVisible, true);
   assert.equal(await page.locator("#cancel-skill").isVisible(), true);
-  await ground(3, 1);
+  await aimWheelAt(3, 1);
   await elapsed(0.08);
   await page.screenshot({ path: "artifacts/combat-controls-aim.png" });
   await page.keyboard.press("Escape");
@@ -231,7 +236,7 @@ try {
   await page.mouse.click(pin.x, pin.y);
   assert.equal((await snap()).manualTargetId, "dummy-a");
   await hold("1");
-  await ground(3, 1);
+  await aimWheelAt(3, 1);
   await elapsed(0.08);
   await page.keyboard.up("1");
   await elapsed(1.2);
@@ -240,13 +245,14 @@ try {
   assert.ok(Math.abs(s.enemies[1].hp - woundedAfterS1) < 1e-6);
   assert.equal(s.manualTargetId, "dummy-a");
   pass(
-    "hold-and-release can override auto/manual pin with an aimed enemy lock without changing pin",
+    "relative hold-and-release overrides smart/manual pin direction without changing the pin",
   );
   await reset();
   let b = await page.locator("#skill-1").boundingBox();
   await page.mouse.move(b.x + b.width / 2, b.y + b.height / 2);
   await page.mouse.down();
-  await ground(3, 1);
+  await page.waitForSelector("#skill-aim-wheel:not([hidden])");
+  await aimWheelAt(3, 1);
   await page.waitForFunction(() =>
     Boolean(window.foundationDiagnostics.snapshot().aiming),
   );
@@ -288,12 +294,10 @@ try {
   await reset();
   await hold("1");
   await page.locator("#settings").click();
-  assert.ok((await snap()).aiming);
-  // Opening the panel moves the real pointer; explicitly aim back at A before release.
-  await ground(0, 0);
+  assert.equal((await snap()).aiming,null);
   await page.keyboard.up("1");
-  await elapsed(1.2);
-  assert.ok(Math.abs((await snap()).enemies[0].hp - afterS1) < 1e-6);
+  assert.equal((await snap()).lastCast.serial,0);
+  assert.equal((await snap()).player.mana,800);
   const beforeMenuMove = (await snap()).player.x;
   await page.keyboard.down("d");
   await elapsed(0.15);
@@ -303,11 +307,11 @@ try {
   await page.locator("#shop").click();
   await page.keyboard.press("3");
   await elapsed(1.2);
-  assert.ok((await snap()).lastCast.serial >= 2);
+  assert.ok((await snap()).lastCast.serial >= 1);
   await page.keyboard.press("Escape");
   await reset();
   pass(
-    "non-modal Settings/Shop preserve held aim and allow WASD and real skill casts while open",
+    "switching panels cancels stale aim; non-modal panels still allow WASD and fresh skill casts",
   );
   await page.locator("#settings").click();
   await page.locator("#settings-tab-controls").click();
@@ -386,7 +390,7 @@ try {
   await mkdir(isolated);
   const bytes = execFileSync(
     "unzip",
-    ["-p", "deliverables/MOBA-Lab-Phase-3-source.zip", "index.html"],
+    ["-p", "deliverables/MOBA-Lab-Game-Polish-source.zip", "index.html"],
     { maxBuffer: 12 * 1024 * 1024 },
   );
   assert.ok(bytes.equals(await readFile("index.html")));
