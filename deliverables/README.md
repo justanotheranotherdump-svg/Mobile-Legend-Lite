@@ -16,3 +16,12 @@ Read `../docs/LIVE_PANELS.md`, `../docs/COMBAT_CONTROLS.md` and `../docs/LAYLA_I
 GLB validation, tests and limitations. Windows native offline acceptance remains
 manual; automated file:// checks run Linux Chromium. No server/sibling assets/CDN
 are needed to play the HTML. Stop after this milestone for approval.
+
+The game now opens Create Username (or the lobby for a valid saved local profile).
+Continue → MODE → AI TRAINING ROOM enters the existing Layla demo. The creation
+screen uses the original alpha PNG; lobby/modes use the approved GLB. Lobby Shop and Settings are now functional; other lobby navigation and
+Classic/Ranked/Brawl remain disabled previews. The background is an original
+embedded PNG, the approved 3D hero is unchanged, and the Shop uses the original
+illustration. Audio is synthesized locally. A one-time per-profile wallet starts
+at 30,000 coins / 0 diamonds; no earning, spending or real purchases.
+See `../docs/LOBBY_POLISH.md` and `../docs/MENU_SYSTEM.md` for persistence, asset assignment and validation.

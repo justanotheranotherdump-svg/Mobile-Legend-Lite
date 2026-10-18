@@ -13,7 +13,9 @@
     "package:source": "npm run build && node scripts/package-source.mjs",
     "validate:heroes": "node scripts/validate-heroes.mjs",
     "test:browser:layla": "node tests/browser-layla.mjs",
-    "test:browser:panels": "node tests/browser-panels.mjs"
+    "test:browser:panels": "node tests/browser-panels.mjs",
+    "test:browser:menu": "node tests/browser-menu.mjs",
+    "test:browser:polish": "node tests/browser-polish.mjs"
   },
   "dependencies": {
     "three": "0.186.1"

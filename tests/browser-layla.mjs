@@ -94,7 +94,7 @@ try {
     );
   };
   const load = async (file) => {
-    await page.goto(pathToFileURL(file).href + "#diagnostics");
+    await page.goto(pathToFileURL(file).href + "?screen=training#diagnostics");
     await page.bringToFront();
     await page.waitForFunction(
       () => window.foundationDiagnostics?.snapshot().time > 0.05,
@@ -379,7 +379,7 @@ try {
   const bytes = execFileSync(
     "unzip",
     ["-p", "deliverables/MOBA-Lab-Phase-3-source.zip", "index.html"],
-    { maxBuffer: 5 * 1024 * 1024 },
+    { maxBuffer: 12 * 1024 * 1024 },
   );
   assert.ok(bytes.equals(await readFile("index.html")));
   const standalone = join(isolated, "index.html");

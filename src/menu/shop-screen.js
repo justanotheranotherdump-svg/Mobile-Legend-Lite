@@ -1,0 +1,10 @@
+import { CREATION_ARTWORK, imageIcon } from "./art.js";
+import { walletMarkup } from "./wallet-view.js";
+export function mountHeroShop(root, wallet, onBack) {
+  root.innerHTML = `<section class="front-panel hero-shop" aria-labelledby="hero-shop-title"><header class="front-panel-header"><button id="shop-back" class="front-back" type="button">${imageIcon("back")}<span>Back</span></button><div><p class="menu-kicker">YOUR HERO COLLECTION</p><h1 id="hero-shop-title">Hero Shop</h1></div>${walletMarkup(wallet)}</header>
+ <nav class="shop-front-tabs" aria-label="Shop categories"><span class="selected">Heroes</span><span class="shop-tab-reserved">Skins · not available</span><span class="shop-owned-count">1 / 1 hero owned</span></nav>
+ <div class="hero-shop-content"><article class="owned-hero-card" aria-label="Layla, owned starting hero"><div class="hero-card-art"><img id="shop-layla-portrait" src="${CREATION_ARTWORK}" alt="Layla illustrated hero portrait"><span class="starter-ribbon">STARTING HERO</span><span class="owned-badge">✓ OWNED</span></div><div class="hero-card-title"><h2>Layla</h2><p>Marksman</p></div><div class="hero-card-owned">Already in your collection</div></article>
+ <div class="hero-collection-info"><p class="menu-kicker">THE MALEFIC GUNNER</p><h2>Your first hero.<br>Your first adventure.</h2><p>Layla is yours from the start. Practice her aim, learn her abilities, and find your rhythm in the Training Room.</p><div class="starter-wallet-note">${imageIcon("coins")}<div><strong>30,000 starting coins</strong><span>Granted once to your local profile. No top-ups or spending in this prototype.</span></div></div><div class="future-heroes-note">${imageIcon("heroes")}<div><strong>More heroes, later.</strong><span>Future heroes will appear here when added. There are no purchasable heroes or invented prices yet.</span></div></div></div></div>
+ <footer class="front-panel-footer">LOCAL COLLECTION <span>Layla is already owned · no purchase required</span></footer></section>`;
+  root.querySelector("#shop-back").addEventListener("click", onBack);
+}

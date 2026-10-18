@@ -186,3 +186,33 @@ Follow-up authorization: commit and push this verified non-blocking-panel fix to
 The user requests Shop and Settings centered in the viewport, horizontally and
 vertically. Supersede the former left-side placement only; preserve non-modal
 WASD/combat, held-input lifecycle, panel contents, sizing and approved model.
+
+## Authorized front-end menu milestone — 2026-10-18
+The user authorizes Create Username → Main Menu → MODE → Mode Selection → AI
+Training Room → established gameplay. Restore a valid locally saved profile to the
+lobby; gracefully support session-only storage fallback. ASCII usernames 4–20
+letters/numbers/underscores; exactly PH/US/JP image flags and Male/Female choices.
+Use the supplied alpha-bearing anime PNG (original bytes) ONLY for creation; it is
+explicitly authorized runtime artwork, unlike the other uploaded reference screens.
+Reuse the byte-unchanged approved GLB for lobby/modes and transfer its presentation
+safely to existing training initialization. No combat or hero-config edits, new AI,
+modes, economy, purchases, online accounts, multiplayer or fake stats. All other
+lobby controls and Classic/Ranked/Brawl remain disabled visual previews. Bundle
+original local image icons/flags, isolate menu input from game initialization,
+validate file:// persistence/asset assignment/responsive/touch-emulated flows and
+existing regressions; ship updated standalone/source/reports, then stop for review.
+
+## Authorized lobby polish / audio / collection — 2026-10-18
+Supersedes the prior menu-only restrictions only for these approved features:
+original embedded PNG lobby environment, unchanged approved 3D Layla in lobby/modes
+and gameplay; supplied original transparent illustration also allowed in the Hero
+Shop; Layla already owned/free; actual coin/diamond display with a one-time local
+profile starter grant of 30,000 coins / 0 diamonds, including old-profile migration.
+No earning, spending, prices, new heroes, real purchases, accounts or online services.
+Original locally synthesized fantasy instrumental (calm lobby / energetic training),
+gesture-aware mute and volume, persisted supported Settings. Use read-only combat
+events for sound, never rewrite combat or model assets. Functional lobby Shop and
+Settings replace only those disabled placeholders. Retain all earlier gameplay,
+non-modal panel, asset-integrity, modularity and offline delivery requirements.
+Rebuild/test standalone HTML and editable source ZIP, document evidence and limits,
+then stop for review. No new commit or push authorized.

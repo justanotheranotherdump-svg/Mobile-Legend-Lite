@@ -341,7 +341,7 @@ try {
   // Isolate the ZIP's index.html in a folder with spaces/Unicode and no siblings.
   const isolated = join(await mkdtemp(join(tmpdir(), 'moba-source-')), 'Windows download — offline');
   await mkdir(isolated);
-  const archivedIndex = execFileSync('unzip', ['-p', 'deliverables/MOBA-Lab-Phase-3-source.zip', 'index.html'], { maxBuffer: 4 * 1024 * 1024 });
+  const archivedIndex = execFileSync('unzip', ['-p', 'deliverables/MOBA-Lab-Phase-3-source.zip', 'index.html'], { maxBuffer: 12 * 1024 * 1024 });
   assert.ok(archivedIndex.equals(await readFile('index.html')), 'ZIP must include the current playable root index');
   await writeFile(join(isolated, 'index.html'), archivedIndex);
   for (const [entry, label] of [[resolve('index.html'), 'repository root index.html'], [join(isolated, 'index.html'), 'source-ZIP index.html isolated without sibling files (spaces/Unicode path)']]) {

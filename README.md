@@ -1,6 +1,8 @@
-# MOBA Lab — Layla reconstruction
+# MOBA Lab — offline lobby and Layla training
 
 A 3D offline training sandbox with **Layla only**, using the unchanged approved rigid-part GLB. A full recovery search found no previous kit; the user authorized this **intentional reconstruction**, not recovery. New mana/skill/buff values are editable initial values, not recovered or official balance. Existing arena HP/movement/basic damage/range/cooldown values remain. See [live Shop/Settings panels](docs/LIVE_PANELS.md), [combat-control correction](docs/COMBAT_CONTROLS.md) and [initial integration/configuration](docs/LAYLA_INTEGRATION.md) and read [PROJECT_RULES.md](PROJECT_RULES.md) before future work.
+
+See [current lobby/audio/wallet report](docs/LOBBY_POLISH.md) and [changed files](docs/POLISH_CHANGED_FILES.md). The [prior menu report](docs/MENU_SYSTEM.md) records the original front-end milestone.
 
 ## Play offline on Windows
 
@@ -9,7 +11,11 @@ Extract this branch's source ZIP and double-click the root **`index.html`**. Tha
 1. Disconnect networking.
 2. Double-click the HTML. If needed, choose **Open with → Chrome or Edge**.
 3. Confirm it opens as `file:///…/index.html` (or the named standalone file).
-4. Click the arena if necessary to focus movement controls.
+4. Create a local username (4–20 letters/numbers/underscores), select PH/US/JP and Male/Female, then Continue. A valid saved profile skips creation on later same-file launches when browser storage is available.
+5. In the lobby choose **MODE → AI TRAINING ROOM**. This opens the existing Layla demo. The lobby **Shop** shows owned starter Layla, **Settings** offers audio/motion, and the top bar shows **30,000 starting coins / 0 diamonds**, granted once per local profile. Other lobby icons and Classic/Ranked/Brawl remain disabled previews.
+6. Click the arena if necessary to focus movement controls.
+
+The creation screen uses the supplied transparent anime PNG. Lobby and mode selection use the existing approved 3D GLB; the same model instance transfers to gameplay. Local persistence was checked at offline file:// on Linux Chromium; moving/renaming the HTML or using another browser can change its storage scope. If blocked, a session profile still works. No online account is created.
 
 No server, Node.js, npm, sibling assets, or internet is needed to play. Requires a modern browser with **WebGL2**/graphics acceleration. Linux Chromium 153 offline file:// tests passed; Windows-specific verification remains manual. See [the current controls report](docs/COMBAT_CONTROLS.md).
 
@@ -23,7 +29,7 @@ No server, Node.js, npm, sibling assets, or internet is needed to play. Requires
 - **Clear lock** (Settings → Controls): release the pin without changing modes or resetting cooldown.
 - **Minimap buttons**: toggle the live map and its attack-range overlay (not the world range ring).
 - **Shop**: open the centered landscape empty-slot equipment panel. Category selection and All equipment / Simple view change only the interface; purchases do not exist.
-- **Settings**: centered original landscape panel with Basic / Controls / Interface tabs. Basic offers reduced HUD motion; Controls contains target priority, Clear lock and **Customize key controls**; Interface offers **Show button key hints**. Choose single-key shortcuts for attack, skills, utilities, target priorities, reset/clear lock, panels and map controls. Unbind keys or restore defaults; duplicate assignments are rejected. WASD/mouse stay fixed. Both panels are non-modal: WASD, attacks and skills stay active on the exposed battlefield/HUD. Opening/closing preserves held movement and skill aim. Escape cancels aiming first, then closes the panel; X or the trigger also closes it. **Preferences are session-only: reopening Settings preserves them; reloading/reopening the HTML restores defaults.**
+- **Settings**: centered original landscape panel with Basic / Controls / Interface tabs. Basic offers reduced HUD motion and shared audio controls (also reached via the Audio shortcut); Controls contains target priority, Clear lock and **Customize key controls**; Interface offers **Show button key hints**. Choose single-key shortcuts for attack, skills, utilities, target priorities, reset/clear lock, panels and map controls. Unbind keys or restore defaults; duplicate assignments are rejected. WASD/mouse stay fixed. Both panels are non-modal: WASD, attacks and skills stay active on the exposed battlefield/HUD. Opening/closing preserves held movement and skill aim. Escape cancels aiming first, then closes the panel; X or the trigger also closes it. **Audio and reduced motion save locally when storage is available; combat targeting, key bindings and button hints remain session-only.**
 - **Reset arena**: restore player, all dummy starting HP/max HP, positions, mode, selection, pin, cooldown, mana, projectiles, marks, stuns, buffs and hit count.
 
 One click/Space requests one attack; this is **smart target selection, not continuous auto-firing**. Leaving the browser window pauses simulation and clears held input. **Exactly three skill slots:** top-row **1 = Skill I, 2 = Skill II, 3 = Ultimate** (physical `Digit1/2/3`, not numpad or F keys). These are the defaults; Settings can rebind them, including to Q/E/R or numpad keys. **These three buttons are functional for Layla:** 1 Malefic Bomb, 2 Void Projectile, 3 Destruction Rush. **Tap a button/key to auto-target by Settings priority and that skill’s range. Hold for 180ms to preview a sight, move the pointer, then release to cast. Escape, right-click or release over the visible CANCEL area cancels without cost/CD.** An enemy under the released sight is locked; otherwise the skill is freely aimed. Auto/locked S1 and S2 home; the ultimate follows its locked enemy until firing. No eligible tap target means no cast/spend. F battle spell, B recall, **V Regen**, equipment and quick-buy also remain reserved.
@@ -78,20 +84,24 @@ Used Node **22.22.3**, npm **10.9.8**, Vite **7.3.7**, Three.js **0.186.1**. Mod
 ```bash
 npm ci
 npm run dev -- --port 5173
-npm test                   # 170 unit tests, including all 112 foundation tests
+npm test                   # 181 unit tests, including all 112 foundation tests
 npm run validate:heroes    # Schema/reference/embedded-model validation
 npm run build              # Build and validate the standalone game
 npm run validate:offline
 npm run package:source     # Rebuild then archive (zip CLI required)
 npm run test:browser        # 50 historical-fixture offline checks; requires source ZIP
+npm run test:browser:menu   # first/returning profile, lobby, modes and actual gameplay flow
 npm run test:browser:layla  # current tap/hold/homing/keyboard-only offline checks
 npm run test:browser:panels # live movement/combat with Shop and Settings open
+npm run test:browser:polish # wallet, owned hero Shop, audio, Settings and responsive offline flow
 npm run preview -- --port 4173
 ```
 
 The development server binds to `0.0.0.0`, accepts Arena `*.e2b.app` hosts, and serves editable **`dev.html`** at `/` and `/index.html`. Edit `dev.html`/`src/`, not the generated root index. There are no browser-facing localhost API calls.
 
 Browser tests use development-only `playwright-core`, npm-packaged Linux Chromium, software WebGL, and the `unzip` CLI. On the minimal Linux environment, bundled NSS libraries are extracted into temporary storage. These tools are **not needed to play**. On other platforms, set `BROWSER_PATH` to an installed Chromium/Chrome executable and provide unzip as a developer prerequisite. Optional `DEV_TEST_URL=http://127.0.0.1:5173 npm run test:browser` also checks that Vite serves live source. Test prerequisites unavailable means **not tested**, not passed.
+
+Developer regression entry: `?screen=training#diagnostics` bypasses the front end for the dedicated current-combat/panel suites; `?hero=training` retains the historical fixture. Neither shortcut is exposed by the normal UI. The new menu suite tests the real, unshortened flow separately.
 
 ## Files and packaging
 
@@ -116,15 +126,15 @@ Vite builds `dev.html`; packaging embeds its JS, CSS, Three.js and JSON, includi
 
 - **`index.html`** — deliberately committed so GitHub source ZIPs play directly.
 - `dist/index.html` — the only file in dist.
-- `deliverables/MOBA-Lab-Phase-3.html` — named download (~840 KiB, including embedded GLB).
+- `deliverables/MOBA-Lab-Phase-3.html` — named download (includes embedded GLB, PNG artwork and audio synthesis source).
 
-No CDN, external font, external model/texture/data file, fetched JSON, service worker, decoder, or remote API is required. The >500 kB Vite chunk warning is expected because Three.js must be embedded. Hero GLBs are prepared for eager inline bundling and in-memory parsing; external GLB resources/decoders are rejected. No genuine character GLBs exist yet. Future audio/other asset types require their own approved embedding workflow.
+No CDN, external font, external model/texture/data file, fetched JSON, service worker, decoder, or remote API is required. The >500 kB Vite chunk warning is expected because Three.js must be embedded. Hero GLBs are prepared for eager inline bundling and in-memory parsing; external GLB resources/decoders are rejected. The approved Layla GLB is bundled unchanged. Music/effects are synthesized locally; the original lobby PNG and illustration are embedded.
 
 Root `index.html` is the intentional generated-artifact exception: rebuild and commit it with runtime changes. Duplicate downloads/dist, dependencies, caches and screenshots stay ignored. The source ZIP contains root index, editable source, lockfile, tests, and docs—but **no reference screenshots/notes**. Per this architecture milestone, hero runtime models belong to `src/heroes/<id>/assets/*.glb`, alongside hero-owned JSON and animation mappings. Legacy public model/texture paths remain reserved for other world assets; editable Blender sources remain `assets/source_blender/`. Empty directories may be absent until genuine assets exist.
 
-Add `#diagnostics` to a game URL only for the read-only state snapshot/projection API used by tests; it cannot mutate gameplay. No persistent match/progression save system is included.
+Add `#diagnostics` to a game URL only for the read-only state snapshot/projection API used by tests; it cannot mutate gameplay. No match/reward progression is included. A separate local wallet stores only the one-time starter balances and Layla ownership; there is no earning/spending system.
 
-Latest changes, per-test evidence and limitations: [docs/LIVE_PANELS.md](docs/LIVE_PANELS.md). Combat-control details: [docs/COMBAT_CONTROLS.md](docs/COMBAT_CONTROLS.md). The [Settings/input report](docs/SETTINGS_INPUT_FIX.md) records the preserved earlier milestone. The [empty-shop report](docs/EMPTY_SHOP_LAYOUT.md) records the retained empty-slot shop. The [key-settings report](docs/KEY_CONTROL_SETTINGS.md) documents the preserved session-only key editor. The [initial Phase 3 report](docs/PHASE_3_HUD_REPORT.md) retains its original Windows checklist/history. The [hero architecture guide](docs/HERO_ARCHITECTURE.md) explains schema, discovery, model replacement and adding a future approved hero. Earlier reports remain historical evidence. Stop here for approval before additional gameplay.
+Latest lobby/audio/wallet changes: [docs/LOBBY_POLISH.md](docs/LOBBY_POLISH.md). Prior menu milestone: [docs/MENU_SYSTEM.md](docs/MENU_SYSTEM.md). Previous panel details: [docs/LIVE_PANELS.md](docs/LIVE_PANELS.md). Combat-control details: [docs/COMBAT_CONTROLS.md](docs/COMBAT_CONTROLS.md). The [Settings/input report](docs/SETTINGS_INPUT_FIX.md) records the preserved earlier milestone. The [empty-shop report](docs/EMPTY_SHOP_LAYOUT.md) records the retained empty-slot shop. The [key-settings report](docs/KEY_CONTROL_SETTINGS.md) documents the preserved session-only key editor. The [initial Phase 3 report](docs/PHASE_3_HUD_REPORT.md) retains its original Windows checklist/history. The [hero architecture guide](docs/HERO_ARCHITECTURE.md) explains schema, discovery, model replacement and adding a future approved hero. Earlier reports remain historical evidence. Stop here for approval before additional gameplay.
 
 
 ## Layla module and historical fixture

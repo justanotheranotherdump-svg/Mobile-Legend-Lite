@@ -79,7 +79,7 @@ try {
   };
   await page.goto(
     pathToFileURL(resolve("deliverables/MOBA-Lab-Phase-3.html")).href +
-      "#diagnostics",
+      "?screen=training#diagnostics",
   );
   await page.waitForFunction(
     () => window.foundationDiagnostics?.snapshot().time > 0.05,
