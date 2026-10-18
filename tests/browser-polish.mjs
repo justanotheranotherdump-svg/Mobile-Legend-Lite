@@ -100,7 +100,7 @@ try {
   pass(
     "fresh page creates no audio context or scheduler before a real gesture",
   );
-  await page.locator("#audio-toggle").click();
+  await page.locator("#open-lobby-settings").click();
   await page.waitForFunction(
     () =>
       window.menuDiagnostics.snapshot().audio.contextState === "running" &&
@@ -114,13 +114,15 @@ try {
   pass(
     "trusted click unlocks actual Web Audio; original score renders nonzero stereo energy without clipping",
   );
+  await page.locator("#preferences-back").click();
   await page.locator("#open-hero-shop").click();
   assert.equal((await snap()).screen, "shop");
   assert.equal(await page.locator("#lobby-preview").isHidden(), true);
   await page.locator("#shop-layla-portrait").evaluate((i) => i.decode());
   assert.equal(await page.locator("canvas:visible").count(), 0);
   assert.match(await page.locator(".owned-badge").innerText(), /OWNED/);
-  assert.equal(await page.locator(".hero-shop button").count(), 1);
+  assert.equal(await page.locator(".catalog-hero-card").count(), 1);
+  assert.equal(await page.locator(".catalog-empty-slot").count(), 14);
   assert.equal((await snap()).gameInitializations, 0);
   pass(
     "Hero Shop uses supplied 2D PNG, already-owned Layla, no purchase controls and no combat initialization",
@@ -187,9 +189,9 @@ try {
       );
       const selector =
         route === "lobby"
-          ? "#open-modes,#open-hero-shop,#open-lobby-settings,#audio-toggle,.currency-bar"
+          ? "#open-modes,#open-hero-shop,#open-lobby-settings,.currency-bar"
           : route === "shop"
-            ? "#shop-back,.currency-bar,.owned-hero-card"
+            ? "#shop-back,.currency-bar"
             : route === "settings"
               ? "#preferences-back,#pref-tab-audio,#pref-tab-display"
               : "#modes-back,#mode-classic,#mode-ranked,#mode-brawl,#mode-training";
@@ -311,7 +313,7 @@ try {
   assert.equal(fs.progress.coins, 30000);
   assert.equal(fs.progressPersistent, false);
   assert.equal(fs.audio.status, "unavailable");
-  assert.equal(await fp.locator("#audio-toggle").isDisabled(), true);
+  assert.equal(await fp.locator("#audio-toggle").count(), 0);
   await fp.locator("#open-lobby-settings").click();
   assert.match(
     await fp.locator("[data-audio-status]").innerText(),

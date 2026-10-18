@@ -4,6 +4,7 @@ import { MenuNavigation } from "./navigation.js";
 import { mountProfile } from "./profile-screen.js";
 import { mountLobby } from "./lobby-screen.js";
 import { mountModes } from "./mode-screen.js";
+import { mountHeroDetails } from "./hero-details.js";
 import { mountHeroShop } from "./shop-screen.js";
 import { mountLobbySettings } from "./settings-screen.js";
 import { LobbyView } from "./lobby-view.js";
@@ -14,6 +15,7 @@ import { renderMusicProof } from "../audio/score.js";
 import { connectTrainingAudio } from "../audio/integration.js";
 import "./menu.css";
 import "./polish.css";
+import "./hero-browser.css";
 import "../audio/audio.css";
 export function startMenuApplication(registry, startTraining) {
   const root = document.createElement("div");
@@ -41,6 +43,8 @@ export function startMenuApplication(registry, startTraining) {
   store.load();
   const nav = new MenuNavigation(Boolean(store.profile)),
     lobby = new LobbyView(root.querySelector("#lobby-preview"), registry);
+  const shopState = { role: "All", query: "", scrollTop: 0 };
+  let selectedHeroId = "layla";
   let entering = false,
     gameInitializations = 0,
     cleanup = () => {};
@@ -81,8 +85,6 @@ export function startMenuApplication(registry, startTraining) {
           settings: () => go("settings"),
         },
         progress.snapshot(),
-        audio,
-        preferences,
       );
     if (nav.screen === "lobby" && (progress.recovered || !progress.persistent))
       content
@@ -97,7 +99,21 @@ export function startMenuApplication(registry, startTraining) {
     if (nav.screen === "modes")
       mountModes(content, () => go("lobby"), enterTraining);
     if (nav.screen === "shop")
-      mountHeroShop(content, progress.snapshot(), () => go("lobby"));
+      mountHeroShop(content, progress.snapshot(), () => go("lobby"), {
+        registry,
+        state: shopState,
+        onHero: (id) => {
+          selectedHeroId = id;
+          go("hero");
+        },
+      });
+    if (nav.screen === "hero")
+      mountHeroDetails(
+        content,
+        registry.get(selectedHeroId),
+        progress.snapshot(),
+        () => go("shop"),
+      );
     if (nav.screen === "settings")
       cleanup = mountLobbySettings(content, preferences, audio, () =>
         go("lobby"),
@@ -135,6 +151,16 @@ export function startMenuApplication(registry, startTraining) {
     }
   }
   function backKey(event) {
+    if (event.defaultPrevented) return;
+    if (event.code === "Escape" && nav.screen === "hero") {
+      event.preventDefault();
+      const close = content.querySelector(
+        "[data-ability-sheet]:not([hidden]) #ability-close",
+      );
+      if (close) close.click();
+      else go("shop");
+      return;
+    }
     if (
       event.code === "Escape" &&
       ["modes", "shop", "settings"].includes(nav.screen) &&
@@ -145,10 +171,7 @@ export function startMenuApplication(registry, startTraining) {
     }
   }
   function gesture(event) {
-    if (
-      !event.isTrusted ||
-      event.target?.closest?.("#audio-toggle,[data-audio-enable]")
-    )
+    if (!event.isTrusted || event.target?.closest?.("[data-audio-enable]"))
       return;
     if (event.type === "keydown" && !["Enter", "Space"].includes(event.code))
       return;

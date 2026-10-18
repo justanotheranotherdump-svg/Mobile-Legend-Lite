@@ -15,7 +15,8 @@
     "test:browser:layla": "node tests/browser-layla.mjs",
     "test:browser:panels": "node tests/browser-panels.mjs",
     "test:browser:menu": "node tests/browser-menu.mjs",
-    "test:browser:polish": "node tests/browser-polish.mjs"
+    "test:browser:polish": "node tests/browser-polish.mjs",
+    "test:browser:heroes": "node tests/browser-hero-browser.mjs"
   },
   "dependencies": {
     "three": "0.186.1"

@@ -216,3 +216,18 @@ Settings replace only those disabled placeholders. Retain all earlier gameplay,
 non-modal panel, asset-integrity, modularity and offline delivery requirements.
 Rebuild/test standalone HTML and editable source ZIP, document evidence and limits,
 then stop for review. No new commit or push authorized.
+
+## Authorized hero browser / creation refinement — 2026-10-18
+Keep the whole supplied creation illustration visible, enlarge its available
+presentation where layout permits, and blend its bottom edge into the background
+(no new image/model). Sound controls belong in Settings, not a lobby quick button.
+Replace the lobby Hero Shop with a reference-inspired original catalog layout:
+role filters, one owned Layla card, empty future slots; selectable real hero cards
+open a PNG detail view with role, abilities and four presentation ratings. User
+explicitly chose editable, clearly labeled prototype Durability/Offense/Control
+Effect/Difficulty ratings. These never affect combat or claim official values.
+Use existing registry skill descriptions/numbers, not screenshot balance. Do not
+invent other heroes, skins, prices, purchases, skill levels, videos or stats.
+Keep approved 3D lobby/gameplay and combat unchanged, test offline/responsive and
+existing regressions, rebuild standalone/source/report, then stop for review.
+No fresh commit/push authorization for this new milestone.

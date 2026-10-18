@@ -1,5 +1,7 @@
 # Lobby polish, local wallet, owned Hero Shop and audio
 
+> Historical polish milestone: [HERO_BROWSER.md](HERO_BROWSER.md) supersedes the quick sound button and single-card Shop layout. Earlier tests/hashes below belong to that milestone.
+
 Date: 2026-10-18. This supersedes the prior menu milestone only for the explicitly
 authorized presentation, starter balances, Hero Shop and useful Settings.
 

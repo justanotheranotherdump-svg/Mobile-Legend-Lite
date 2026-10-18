@@ -2,7 +2,9 @@
 
 A 3D offline training sandbox with **Layla only**, using the unchanged approved rigid-part GLB. A full recovery search found no previous kit; the user authorized this **intentional reconstruction**, not recovery. New mana/skill/buff values are editable initial values, not recovered or official balance. Existing arena HP/movement/basic damage/range/cooldown values remain. See [live Shop/Settings panels](docs/LIVE_PANELS.md), [combat-control correction](docs/COMBAT_CONTROLS.md) and [initial integration/configuration](docs/LAYLA_INTEGRATION.md) and read [PROJECT_RULES.md](PROJECT_RULES.md) before future work.
 
-See [current lobby/audio/wallet report](docs/LOBBY_POLISH.md) and [changed files](docs/POLISH_CHANGED_FILES.md). The [prior menu report](docs/MENU_SYSTEM.md) records the original front-end milestone.
+Latest: [hero catalog, creation artwork and skill guide](docs/HERO_BROWSER.md).
+
+See [previous lobby/audio/wallet report](docs/LOBBY_POLISH.md) and [changed files](docs/POLISH_CHANGED_FILES.md). The [prior menu report](docs/MENU_SYSTEM.md) records the original front-end milestone.
 
 ## Play offline on Windows
 
@@ -12,7 +14,7 @@ Extract this branch's source ZIP and double-click the root **`index.html`**. Tha
 2. Double-click the HTML. If needed, choose **Open with → Chrome or Edge**.
 3. Confirm it opens as `file:///…/index.html` (or the named standalone file).
 4. Create a local username (4–20 letters/numbers/underscores), select PH/US/JP and Male/Female, then Continue. A valid saved profile skips creation on later same-file launches when browser storage is available.
-5. In the lobby choose **MODE → AI TRAINING ROOM**. This opens the existing Layla demo. The lobby **Shop** shows owned starter Layla, **Settings** offers audio/motion, and the top bar shows **30,000 starting coins / 0 diamonds**, granted once per local profile. Other lobby icons and Classic/Ranked/Brawl remain disabled previews.
+5. In the lobby choose **MODE → AI TRAINING ROOM**. This opens the existing Layla demo. The lobby **Shop** has an owned Layla card, 14 empty future slots, role/search filters, and a clickable PNG hero/skill guide; **Settings** contains all audio/motion controls (no separate lobby sound button), and the top bar shows **30,000 starting coins / 0 diamonds**, granted once per local profile. Other lobby icons and Classic/Ranked/Brawl remain disabled previews.
 6. Click the arena if necessary to focus movement controls.
 
 The creation screen uses the supplied transparent anime PNG. Lobby and mode selection use the existing approved 3D GLB; the same model instance transfers to gameplay. Local persistence was checked at offline file:// on Linux Chromium; moving/renaming the HTML or using another browser can change its storage scope. If blocked, a session profile still works. No online account is created.

@@ -25,3 +25,6 @@ embedded PNG, the approved 3D hero is unchanged, and the Shop uses the original
 illustration. Audio is synthesized locally. A one-time per-profile wallet starts
 at 30,000 coins / 0 diamonds; no earning, spending or real purchases.
 See `../docs/LOBBY_POLISH.md` and `../docs/MENU_SYSTEM.md` for persistence, asset assignment and validation.
+
+Latest: `../docs/HERO_BROWSER.md` — complete creation PNG with blended bottom,
+15-slot hero catalog, PNG guide and actual skill facts; sound stays in Settings.

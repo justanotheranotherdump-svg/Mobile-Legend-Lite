@@ -1,10 +1,78 @@
 import { CREATION_ARTWORK, imageIcon } from "./art.js";
 import { walletMarkup } from "./wallet-view.js";
-export function mountHeroShop(root, wallet, onBack) {
-  root.innerHTML = `<section class="front-panel hero-shop" aria-labelledby="hero-shop-title"><header class="front-panel-header"><button id="shop-back" class="front-back" type="button">${imageIcon("back")}<span>Back</span></button><div><p class="menu-kicker">YOUR HERO COLLECTION</p><h1 id="hero-shop-title">Hero Shop</h1></div>${walletMarkup(wallet)}</header>
- <nav class="shop-front-tabs" aria-label="Shop categories"><span class="selected">Heroes</span><span class="shop-tab-reserved">Skins · not available</span><span class="shop-owned-count">1 / 1 hero owned</span></nav>
- <div class="hero-shop-content"><article class="owned-hero-card" aria-label="Layla, owned starting hero"><div class="hero-card-art"><img id="shop-layla-portrait" src="${CREATION_ARTWORK}" alt="Layla illustrated hero portrait"><span class="starter-ribbon">STARTING HERO</span><span class="owned-badge">✓ OWNED</span></div><div class="hero-card-title"><h2>Layla</h2><p>Marksman</p></div><div class="hero-card-owned">Already in your collection</div></article>
- <div class="hero-collection-info"><p class="menu-kicker">THE MALEFIC GUNNER</p><h2>Your first hero.<br>Your first adventure.</h2><p>Layla is yours from the start. Practice her aim, learn her abilities, and find your rhythm in the Training Room.</p><div class="starter-wallet-note">${imageIcon("coins")}<div><strong>30,000 starting coins</strong><span>Granted once to your local profile. No top-ups or spending in this prototype.</span></div></div><div class="future-heroes-note">${imageIcon("heroes")}<div><strong>More heroes, later.</strong><span>Future heroes will appear here when added. There are no purchasable heroes or invented prices yet.</span></div></div></div></div>
- <footer class="front-panel-footer">LOCAL COLLECTION <span>Layla is already owned · no purchase required</span></footer></section>`;
+import {
+  heroCatalog,
+  filterHeroes,
+  HERO_ROLES,
+  CATALOG_SLOT_COUNT,
+} from "./hero-presentation.js";
+export function mountHeroShop(
+  root,
+  wallet,
+  onBack,
+  { registry, onHero, state = { role: "All", query: "", scrollTop: 0 } },
+) {
+  const heroes = heroCatalog(registry);
+  root.innerHTML = `<section class="front-panel hero-shop catalog-shop" aria-labelledby="hero-shop-title"><header class="front-panel-header"><button id="shop-back" class="front-back" type="button">${imageIcon("back")}<span>Back</span></button><div><p class="menu-kicker">LOCAL HERO COLLECTION</p><h1 id="hero-shop-title">Shop</h1></div><label class="hero-search"><span class="sr-only">Search heroes</span><input id="hero-search" type="search" placeholder="Search heroes" maxlength="40" autocomplete="off"></label>${walletMarkup(wallet)}</header>
+ <div class="catalog-body"><nav class="catalog-sidebar" aria-label="Shop categories"><button disabled type="button">Featured<small>NOT AVAILABLE</small></button><button type="button" aria-current="page">${imageIcon("heroes")}Heroes</button><button disabled type="button">Skins<small>NOT AVAILABLE</small></button><p>More heroes will appear here when added.</p></nav><div class="catalog-main"><div class="hero-role-filters" role="group" aria-label="Filter heroes by role">${HERO_ROLES.map((role) => `<button type="button" data-hero-role="${role}" aria-pressed="false">${role}</button>`).join("")}</div><div class="catalog-summary"><span id="hero-result-count" role="status"></span><span>Layla is free & already owned</span></div><div class="hero-catalog-scroll"><div class="hero-catalog-grid" aria-label="Hero catalog"></div></div></div></div><footer class="front-panel-footer">HEROES <span>No purchases, skins or extra heroes yet · empty slots are future space</span></footer></section>`;
+  const input = root.querySelector("#hero-search"),
+    grid = root.querySelector(".hero-catalog-grid"),
+    scroll = root.querySelector(".hero-catalog-scroll");
+  input.value = state.query;
+  function populate() {
+    const matches = filterHeroes(heroes, state);
+    root.querySelector("#hero-result-count").textContent =
+      `${matches.length} hero${matches.length === 1 ? "" : "es"} available${matches.length === 0 ? " · No matching heroes yet" : ""}`;
+    root
+      .querySelectorAll("[data-hero-role]")
+      .forEach((b) =>
+        b.setAttribute(
+          "aria-pressed",
+          String(b.dataset.heroRole === state.role),
+        ),
+      );
+    grid.replaceChildren();
+    for (const hero of matches) {
+      const card = document.createElement("button");
+      card.type = "button";
+      card.className = "catalog-hero-card";
+      card.dataset.heroId = hero.id;
+      card.setAttribute(
+        "aria-label",
+        `View ${hero.name}, ${hero.role}, owned starting hero`,
+      );
+      card.innerHTML = `<div class="catalog-portrait"><img id="shop-layla-portrait" src="${CREATION_ARTWORK}" alt="${hero.name} illustrated hero portrait" draggable="false"><span class="catalog-starter">STARTING HERO</span></div><div class="catalog-card-label"><strong></strong><span></span></div><div class="owned-badge">OWNED <span>View hero ›</span></div>`;
+      card.querySelector("strong").textContent = hero.name;
+      card.querySelector(".catalog-card-label>span").textContent = hero.role;
+      card.addEventListener("click", () => {
+        state.scrollTop = scroll.scrollTop;
+        onHero(hero.id);
+      });
+      grid.append(card);
+    }
+    for (let i = matches.length; i < CATALOG_SLOT_COUNT; i++) {
+      const empty = document.createElement("div");
+      empty.className = "catalog-empty-slot";
+      empty.setAttribute("aria-label", "Empty future hero slot");
+      empty.innerHTML = `<div class="empty-hero-crest" aria-hidden="true">${imageIcon("heroes")}</div><span>EMPTY SLOT</span><small>Future hero</small>`;
+      grid.append(empty);
+    }
+  }
+  input.addEventListener("input", () => {
+    state.query = input.value;
+    state.scrollTop = 0;
+    populate();
+    scroll.scrollTop = 0;
+  });
+  root.querySelectorAll("[data-hero-role]").forEach((b) =>
+    b.addEventListener("click", () => {
+      state.role = b.dataset.heroRole;
+      state.scrollTop = 0;
+      populate();
+      scroll.scrollTop = 0;
+    }),
+  );
   root.querySelector("#shop-back").addEventListener("click", onBack);
+  populate();
+  scroll.scrollTop = state.scrollTop;
 }
