@@ -35,7 +35,7 @@ export class HeroSkillHud {
     }
     this.gestures = new SkillGestures(simulation, controls, view, this.buttons);
     document.querySelector(".build-note").textContent =
-      "LAYLA · RECONSTRUCTED KIT · EDITABLE INITIAL VALUES";
+      "LAYLA · PHASE 1 STATS / LEVELS · PROTOTYPE BALANCE";
     const passive = simulation.ability("passive");
     document.querySelector(".hero-icon").title =
       `${passive.name}: damage scales with distance, up to ${Math.round(passive.parameters.maxMultiplier * 100)}% at ${passive.parameters.referenceDistance}m. Turrets excluded.`;
@@ -52,10 +52,14 @@ export class HeroSkillHud {
     this.mana.setAttribute("aria-valuemax", p.maxMana);
     this.mana.setAttribute("aria-valuenow", p.mana.toFixed(2));
     this.mana.firstElementChild.style.width = `${(p.mana / p.maxMana) * 100}%`;
-    for (const { b, a, status } of this.buttons) {
+    for (const entry of this.buttons) {
+      const { b, status } = entry, a = s.ability(entry.a.slot);
+      b.querySelector('.skill-cost').textContent = `${a.manaCost} MP`;
+      b.querySelector('.slot-label').textContent = `${SKILL_SLOTS.find(slot => slot.id === a.slot).label}${a.rank !== undefined ? ` · ${a.rank}/${a.ranks.max}` : ''}`;
+      b.setAttribute('aria-label', `${a.name}, rank ${a.rank ?? 1}, ${a.manaCost} mana${a.rank === 0 ? ', unlearned' : ''}`);
       const cd = s.cooldowns[a.id] || 0,
         reason =
-          p.hp <= 0
+          a.rank === 0 ? "UNLEARNED" : p.hp <= 0
             ? "DEAD"
             : p.stunned
               ? "STUN"
@@ -67,6 +71,7 @@ export class HeroSkillHud {
                     ? "FIRING"
                     : "READY";
       status.textContent = reason === "READY" ? "" : reason;
+      b.disabled = a.rank === 0;
       b.dataset.state = reason === "READY" ? "ready" : "unavailable";
       b.setAttribute("aria-disabled", String(reason !== "READY"));
       b.style.setProperty(

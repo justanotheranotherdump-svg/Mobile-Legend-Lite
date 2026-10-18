@@ -1,3 +1,4 @@
+import { statText } from '../simulation/stats/attributes.js';
 export function attackFeedback(player) {
   const fraction = Math.max(
     0,
@@ -22,7 +23,12 @@ export class CooldownDisplay {
   }
   update(player, firingFor = 0) {
     const details = document.querySelector(".attack-panel small");
-    if (details) details.childNodes[2].textContent = ` ${player.range}m range `;
+    if (details && player.attributes) {
+      details.childNodes[0].textContent = `${statText(player.damage)} raw damage `;
+      details.childNodes[2].textContent = ` ${statText(player.range)} world range `;
+      details.childNodes[4].textContent = ` ${statText(player.attackCooldown)}s interval`;
+    }
+    else if (details) details.childNodes[2].textContent = ` ${player.range}m range `;
     const state = attackFeedback(player),
       e = this.e;
     e["attack-status"].textContent =

@@ -257,7 +257,7 @@ try {
     "audio reset preserves motion preference; blur suspends audio/scheduler and focus resumes one scheduler",
   );
   await page.locator("#open-modes").tap();
-  await page.locator("#mode-training").tap();
+  await page.locator("#mode-training").tap({ timeout: 90000 });
   await page.waitForFunction(
     () => window.foundationDiagnostics?.snapshot().time > 0.05,
   );
@@ -265,6 +265,8 @@ try {
   assert.equal((await snap()).audio.scene, "training");
   assert.equal((await snap()).lobby.disposed, true);
   assert.equal(await page.locator("#game-audio-controls").count(), 1);
+  await page.locator("#upgrade-skill-1").click();
+  await page.waitForFunction(() => !document.querySelector("#skill-1").disabled);
   const before = (await snap()).audio.effectsPlayed;
   await page.keyboard.press("1");
   await page.waitForFunction(

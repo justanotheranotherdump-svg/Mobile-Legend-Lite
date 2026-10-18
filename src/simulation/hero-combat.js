@@ -1,3 +1,7 @@
+import { calculateAttributes, runtimeAttributes } from './stats/attributes.js';
+import { HeroProgression, rankedAbility } from './stats/progression.js';
+import { damagePower, resolveDamage } from './stats/damage.js';
+import { number } from './stats/validation.js';
 import { TrainingSimulation } from "./game.js";
 import {
   isEligibleEnemy,
@@ -31,10 +35,57 @@ export class HeroCombatSimulation extends TrainingSimulation {
     this.serial = 0;
     this.lastCast = { serial: 0, slot: null };
     this.lastCastResult = "ready";
+    if (this.hero.schemaVersion === 3) {
+      this.progression = new HeroProgression(this.hero);
+      this.statModifiers = {};
+      this.recalculateStats();
+      for (const enemy of this.enemies) {
+        for (const k of ['physicalDefense', 'magicDefense']) number(enemy[k], `training.dummies.${enemy.id}.${k}`);
+      }
+    }
   }
   ability(slot) {
-    return this.hero.abilities.find((a) => a.slot === slot || a.id === slot);
+    const a = this.hero.abilities.find((a) => a.slot === slot || a.id === slot);
+    return a && this.progression ? rankedAbility(a, this.progression) : a;
   }
+  // All progression mutations enter the simulation, never UI/render callbacks.
+  recalculateStats() {
+    const p = this.player, oldHp = p.maxHp, oldMana = p.maxMana;
+    const attributes = calculateAttributes(this.hero, this.progression.level, this.statModifiers);
+    const runtime = runtimeAttributes(this.hero, attributes);
+    Object.assign(p, runtime, { attributes, maxHp: attributes.maxHp, maxMana: attributes.maxMana,
+      hpRegen: attributes.hpRegen, manaRegen: attributes.manaRegen,
+      damage: damagePower(this.hero.basicAttack.damage, this.hero.basicAttack.damageModel, attributes) });
+    // Level gains preserve missing numeric resources; never heal a dead actor.
+    p.hp = Math.max(0, Math.min(p.maxHp, p.hp <= 0 ? 0 : p.hp + p.maxHp - oldHp));
+    p.mana = Math.max(0, Math.min(p.maxMana, p.mana + p.maxMana - oldMana));
+    this.applyRangeAndSpeed();
+    this.refreshTarget();
+  }
+  applyRangeAndSpeed() {
+    const active = this.buff && this.time < this.buff.until;
+    const runtime = this.progression ? runtimeAttributes(this.hero, this.player.attributes)
+      : { speed: this.hero.baseStats.movementSpeed, range: this.hero.basicAttack.range };
+    this.player.speed = runtime.speed * (active ? this.ability('skill-1').parameters.speedMultiplier : 1);
+    this.player.range = runtime.range + (active ? this.ability('skill-1').parameters.attackRangeBonus : 0);
+  }
+  grantXp(amount) {
+    const result = this.progression.grantXp(amount);
+    this.recalculateStats();
+    return result;
+  }
+  upgradeSkill(slot) { return this.progression.upgrade(slot); }
+  setPracticeLevel(level) {
+    this.progression.setLevel(level);
+    // Explicit debug command: cancel in-flight actions/aim/status and cooldowns,
+    // preserving positions, pins, time, dummy HP and numerical resource deficit.
+    this.cancelAim(); this.pending = []; this.projectiles = []; this.buff = null;
+    this.cooldowns = {}; this.player.cooldown = 0; this.lockUntil = this.time;
+    this.firingTargetId = null; this.firing = null;
+    this.recalculateStats();
+    return this.progression.snapshot();
+  }
+  restoreResources() { this.player.hp = this.player.maxHp; this.player.mana = this.player.maxMana; }
   abilityRange(a) {
     return (
       a.range +
@@ -116,6 +167,7 @@ export class HeroCombatSimulation extends TrainingSimulation {
   }
   castAvailability(a) {
     if (!a || a.slot === "passive") return "invalid-ability";
+    if (this.progression && a.rank === 0) return "unlearned";
     if (!canActorAct(this.player)) return "cannot-act";
     if (this.cooldowns[a.id] > 1e-8) return "cooldown";
     if (this.pending.length) return "casting";
@@ -145,13 +197,7 @@ export class HeroCombatSimulation extends TrainingSimulation {
       this.projectiles = [];
       this.buff = null;
     }
-    const active = this.buff && this.time < this.buff.until;
-    this.player.speed =
-      this.hero.baseStats.movementSpeed *
-      (active ? this.ability("skill-1").parameters.speedMultiplier : 1);
-    this.player.range =
-      this.hero.basicAttack.range +
-      (active ? this.ability("skill-1").parameters.attackRangeBonus : 0);
+    this.applyRangeAndSpeed();
     super.update(dt, h, v);
     if (
       !this.aiming &&
@@ -162,6 +208,7 @@ export class HeroCombatSimulation extends TrainingSimulation {
           x: this.player.x + (this.player.x - before.x),
           z: this.player.z + (this.player.z - before.z),
         }) || this.facing;
+    if (this.player.hp > 0 && this.progression) this.player.hp = Math.min(this.player.maxHp, this.player.hp + this.player.hpRegen * dt);
     if (this.player.hp > 0)
       this.player.mana = Math.min(
         this.player.maxMana,
@@ -182,8 +229,7 @@ export class HeroCombatSimulation extends TrainingSimulation {
     }
     if (this.buff && this.time >= this.buff.until) {
       this.buff = null;
-      this.player.speed = this.hero.baseStats.movementSpeed;
-      this.player.range = this.hero.basicAttack.range;
+      this.applyRangeAndSpeed();
       this.refreshTarget();
     }
     const due = this.pending.filter((c) => c.at <= this.time);
@@ -260,7 +306,7 @@ export class HeroCombatSimulation extends TrainingSimulation {
     const cast = {
       id: ++this.serial,
       targetId,
-      a,
+      a: this.progression ? { ...a, damage: damagePower(a.damage, a.damageModel, this.player.attributes) } : a,
       dir: d,
       distance,
       at: this.time + a.castTime,
@@ -339,7 +385,8 @@ export class HeroCombatSimulation extends TrainingSimulation {
     if (!reason && this.isActionLocked()) reason = "animation";
     if (!reason) {
       const dir = this.direction(t) || this.facing,
-        b = this.hero.basicAttack;
+        b = this.progression ? { ...this.hero.basicAttack, damage: this.player.damage, cooldown: this.player.attackCooldown,
+          castTime: this.hero.basicAttack.castTime * this.player.attackCooldown / this.hero.actionLockDuration } : this.hero.basicAttack;
       const a = {
         ...b,
         effectId: "basic-projectile",
@@ -361,7 +408,7 @@ export class HeroCombatSimulation extends TrainingSimulation {
       this.facing = { ...dir };
       this.firing = { ...dir };
       this.lockUntil =
-        this.time + Math.max(this.hero.actionLockDuration, b.castTime);
+        this.time + (this.progression ? b.cooldown : Math.max(this.hero.actionLockDuration, b.castTime));
       this.firingTargetId = t.id;
       this.cancelAim();
       reason = "fired";
@@ -370,14 +417,18 @@ export class HeroCombatSimulation extends TrainingSimulation {
       reason,
       serial: this.lastAttack.serial + 1,
       targetId: t?.id || id,
+      duration: this.progression ? this.player.attackCooldown : this.hero.actionLockDuration,
     };
     return reason;
   }
 
-  damageEnemy(target, base) {
+  damageEnemy(target, base, type = "physical") {
     if (!isEligibleEnemy(target)) return;
-    const damage = (base + this.consumeMark(target)) * this.passive(target),
-      before = target.hp;
+    const raw = base + this.consumeMark(target);
+    const damage = this.progression ? resolveDamage({ base: raw,
+      model: { type, physicalScaling: 0, magicScaling: 0 }, source: this.player.attributes,
+      target, multiplier: this.passive(target) }).amount : raw * this.passive(target);
+    const before = target.hp;
     target.hp = Math.max(0, before - damage);
     this.emit("hit", { point: { x: target.x, z: target.z }, damage });
     if (before > 0 && target.hp === 0) {
@@ -435,7 +486,7 @@ export class HeroCombatSimulation extends TrainingSimulation {
           (e.x - center.x) * dir.x + (e.z - center.z) * dir.z >= 0 &&
           segmentCircle(center, end, e, a.parameters.width / 2) !== null
         )
-          this.damageEnemy(e, a.damage);
+          this.damageEnemy(e, a.damage, a.damageModel?.type);
       this.emit("beam", { source: origin, end, width: a.parameters.width });
       return;
     }
@@ -526,7 +577,7 @@ export class HeroCombatSimulation extends TrainingSimulation {
           Math.hypot(e.x - point.x, e.z - point.z) <=
             a.parameters.blastRadius + e.radius
         ) {
-          this.damageEnemy(e, a.damage);
+          this.damageEnemy(e, a.damage, a.damageModel?.type);
           if (e.hp > 0)
             e.mark = {
               until: this.time + a.parameters.markDuration,
@@ -536,14 +587,11 @@ export class HeroCombatSimulation extends TrainingSimulation {
       this.emit("explosion", { point, radius: a.parameters.blastRadius });
     } else {
       if (target) {
-        this.damageEnemy(target, a.damage);
+        this.damageEnemy(target, a.damage, a.damageModel?.type);
         if (a.effectId === "basic-projectile") this.hits++;
         if (a.effectId === "line-projectile") {
           this.buff = { until: this.time + a.parameters.buffDuration };
-          this.player.speed =
-            this.hero.baseStats.movementSpeed * a.parameters.speedMultiplier;
-          this.player.range =
-            this.hero.basicAttack.range + a.parameters.attackRangeBonus;
+          this.applyRangeAndSpeed();
           this.refreshTarget();
         }
       }
@@ -553,6 +601,7 @@ export class HeroCombatSimulation extends TrainingSimulation {
   snapshot() {
     return structuredClone({
       ...super.snapshot(),
+      ...(this.progression ? { progression: this.progression.snapshot() } : {}),
       mana: this.player.mana,
       abilityCooldowns: { ...this.cooldowns },
       projectiles: this.projectiles.map(({ a, ...p }) => p),

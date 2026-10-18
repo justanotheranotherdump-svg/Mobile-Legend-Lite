@@ -30,10 +30,12 @@ const enemy = (id, x, z, hp = 1000, extra = {}) => ({
   radius: 0.45,
   team: "enemy",
   targetable: true,
+  physicalDefense: 0,
+  magicDefense: 0,
   ...extra,
 });
 function sim(enemies = [enemy("a", 0, 5)], customArena = arena) {
-  return new HeroCombatSimulation(
+  const s = new HeroCombatSimulation(
     customArena,
     {
       player: { heroId: "layla", x: 0, z: 0 },
@@ -42,6 +44,14 @@ function sim(enemies = [enemy("a", 0, 5)], customArena = arena) {
     },
     registry,
   );
+  learnKit(s);
+  return s;
+}
+// Explicit level-4/rank-1 setup for the existing geometry/control regressions.
+// Fresh level-1/XP/skill-point behavior is tested in progression.test.js.
+function learnKit(s) {
+  s.setPracticeLevel(4);
+  for (const slot of ['skill-1','skill-2','skill-ultimate']) assert.equal(s.upgradeSkill(slot), 'upgraded');
 }
 function step(s, t) {
   for (let i = 0; i < Math.round(t * 120); i++) s.update(1 / 120);
@@ -54,14 +64,14 @@ test("roster is only approved Layla plus explicitly preserved historical fixture
   assert.equal(hero.abilities.length, 4);
   assert.equal(registry.get("training").abilities.length, 0);
 });
-test("preserved arena HP, speed, collider and basic numerical defaults; initial mana separate", () => {
-  assert.equal(hero.baseStats.maxHp, 100);
-  assert.equal(hero.baseStats.movementSpeed, 5.5);
+test("reference stats replace prototype numbers; movement conversion and collider preserved", () => {
+  assert.equal(hero.baseStats.maxHp, 2250);
+  assert.equal(hero.baseStats.movementSpeed, 240);
   assert.equal(hero.baseStats.collisionRadius, 0.45);
-  assert.equal(hero.basicAttack.damage, 25);
+  assert.equal(hero.basicAttack.damage, 0);
   assert.equal(hero.basicAttack.range, 6);
-  assert.equal(hero.basicAttack.cooldown, 0.65);
-  assert.equal(sim().player.mana, 100);
+  assert.equal(hero.basicAttack.cooldown, 1 / 1.06);
+  assert.equal(sim().player.mana, 800);
 });
 test("passive close/intermediate/reference/beyond, turret and tower exclusion", () => {
   const p = hero.abilities[0].parameters,
@@ -84,7 +94,7 @@ test("ranged basic travels authoritatively, damages once on collision, passive o
   assert.ok(s.projectiles.length);
   assert.equal(s.hits, 0);
   step(s, 0.6);
-  near(s.enemies[0].hp, 1000 - 25 * 1.125);
+  near(s.enemies[0].hp, 1000 - 158.5 * 1.125);
   assert.equal(s.hits, 1);
   near(s.player.z, 0);
   assert.equal(s.projectiles.length, 0);
@@ -115,7 +125,7 @@ test("swept projectile catches first valid enemy even in large time step, ignore
   ]);
   s.cast("skill-1", aim);
   s.update(0.5);
-  near(s.enemies[3].hp, 1000 - 35 * 1.075);
+  near(s.enemies[3].hp, 1000 - 306.8 * 1.075);
   near(s.enemies[4].hp, 1000);
   assert.equal(s.projectiles.length, 0);
   assert.ok(s.buff);
@@ -155,7 +165,7 @@ test("S1 muzzle sweep catches close targets; newly approved shots pass through w
   });
   w.cast("skill-1", aim);
   step(w, 1);
-  near(w.enemies[0].hp, 1000-35*1.125);
+  near(w.enemies[0].hp, 1000-306.8*1.125);
   assert.ok(w.buff);
 });
 test("basic locked projectile passes walls and damages only on authoritative contact", () => {
@@ -165,7 +175,7 @@ test("basic locked projectile passes walls and damages only on authoritative con
   });
   s.attack();
   step(s, 1);
-  near(s.enemies[0].hp, 1000-25*1.125);
+  near(s.enemies[0].hp, 1000-158.5*1.125);
   assert.equal(s.hits, 1);
 });
 test("S2 detonates at intended destination with area damage and visible tracked mark", () => {
@@ -205,7 +215,7 @@ test("marks expire without proc; expired marked target takes no bonus", () => {
   const hp = s.enemies[0].hp;
   s.attack();
   step(s, 1);
-  near(hp - s.enemies[0].hp, 25 * 1.125);
+  near(hp - s.enemies[0].hp, 158.5 * 1.125);
   assert.equal(s.enemies[0].stunned, false);
 });
 test("marked basic consumes once; bonus and base share a single passive multiplier, nearby stun expires", () => {
@@ -213,7 +223,7 @@ test("marked basic consumes once; bonus and base share a single passive multipli
   s.enemies[0].mark = { until: 10 };
   s.attack("a");
   step(s, 0.5);
-  near(s.enemies[0].hp, 1000 - (25 + 15) * 1.125);
+  near(s.enemies[0].hp, 1000 - (158.5 + 80) * 1.125);
   assert.equal(s.enemies[0].mark, undefined);
   assert.equal(s.enemies[0].stunned, true);
   assert.equal(s.enemies[1].stunned, true);
@@ -240,7 +250,7 @@ test("S2 mark-trigger damage cannot recursively trigger same event, survivor rec
   s.enemies[0].mark = { until: 10 };
   s.cast("skill-2", aim);
   step(s, 1);
-  near(s.enemies[0].hp, 1000 - (30 + 15) * 1.125);
+  near(s.enemies[0].hp, 1000 - (253.025 + 80) * 1.125);
   assert.equal(triggers, 1);
   assert.ok(s.enemies[0].mark);
 });
@@ -255,9 +265,9 @@ test("ultimate covers wide line, all valid enemies exactly once, excludes outsid
   ]);
   s.cast("skill-ultimate", aim);
   step(s, 1);
-  near(s.enemies[0].hp, 1000 - 70 * 1.075);
-  near(s.enemies[1].hp, 1000 - 70 * 1.15);
-  near(s.enemies[2].hp, 1000 - 70 * 1.15);
+  near(s.enemies[0].hp, 1000 - 687.75 * 1.075);
+  near(s.enemies[1].hp, 1000 - 687.75 * 1.15);
+  near(s.enemies[2].hp, 1000 - 687.75 * 1.15);
   for (const e of s.enemies.slice(3)) near(e.hp, 1000);
   const hp = s.enemies[0].hp;
   step(s, 1);
@@ -271,7 +281,7 @@ test("passive excludes turrets for basic AND all three offensive abilities", () 
     near(
       s.enemies[0].hp,
       1000 -
-        { basic: 25, "skill-1": 35, "skill-2": 30, "skill-ultimate": 70 }[slot],
+        { basic: 158.5, "skill-1": 306.8, "skill-2": 253.025, "skill-ultimate": 687.75 }[slot],
     );
   }
 });
@@ -283,35 +293,35 @@ test("cast invalid aim/death/mana/cooldown/concurrent windup are rejected withou
     { x: 0, z: 0 },
   ])
     assert.equal(s.cast("skill-1", a), "invalid-aim");
-  assert.equal(s.player.mana, 100);
+  assert.equal(s.player.mana, 800);
   assert.equal(s.cast("missing", aim), "invalid-ability");
   assert.equal(s.cast("passive", aim), "invalid-ability");
   s.player.mana = 19;
   assert.equal(s.cast("skill-1", aim), "mana");
-  s.player.mana = 100;
+  s.player.mana = 800;
   s.player.hp = 0;
   assert.equal(s.cast("skill-1", aim), "cannot-act");
   s.player.hp = 100;
   assert.equal(s.cast("skill-1", aim), "cast");
-  near(s.player.mana, 80);
+  near(s.player.mana, 765);
   assert.equal(s.cast("skill-1", aim), "cooldown");
   assert.equal(s.cast("skill-2", aim), "casting");
-  near(s.player.mana, 80);
+  near(s.player.mana, 765);
 });
 test("mana regenerates/caps; per-skill cooldowns expire; reset clears all authoritative state", () => {
   const s = sim();
   s.cast("skill-1", aim);
   step(s, 1);
-  near(s.player.mana, 84);
+  near(s.player.mana, 769.6);
   assert.ok(s.cooldowns["malefic-bomb"] > 0);
-  step(s, 5);
+  step(s, 10);
   near(s.cooldowns["malefic-bomb"], 0);
-  near(s.player.mana, 100);
+  near(s.player.mana, 800);
   s.enemies[0].mark = { until: 20 };
   s.enemies[0].stunned = true;
   s.reset();
   assert.deepEqual(s.cooldowns, {});
-  assert.equal(s.player.mana, 100);
+  assert.equal(s.player.mana, 500);
   assert.equal(s.enemies[0].mark, undefined);
   assert.equal(s.projectiles.length, 0);
   assert.equal(s.pending.length, 0);
@@ -328,6 +338,7 @@ test("death cancels pending casts/projectiles and movement; reset restores actio
   near(s.player.z, 0);
   assert.equal(s.pending.length, 0);
   s.reset();
+  learnKit(s);
   assert.equal(s.cast("skill-1", aim), "cast");
 });
 test("death event only once and real victim/pin cleared on ability kill", () => {

@@ -50,7 +50,7 @@ test("four explicitly UI-only editable ratings are bounded and frozen", () => {
   for (const n of Object.values(r))
     assert.ok(Number.isInteger(n) && n >= 0 && n <= 10);
   assert.ok(Object.isFrozen(r));
-  assert.equal(hero.baseStats.maxHp, 100);
+  assert.equal(hero.baseStats.maxHp, 2250);
   assert.ok(!("ratings" in hero));
 });
 test("hero inspection requires Shop and returns to Shop before lobby", () => {

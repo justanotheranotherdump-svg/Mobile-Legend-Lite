@@ -1,3 +1,4 @@
+import { learnPracticeKit, afterS1, woundedAfterS1, afterUltimate } from './helpers/practice.mjs';
 // New default-mode integration coverage. Legacy tests explicitly use ?hero=training.
 import assert from "node:assert/strict";
 import { readFile, writeFile, mkdir, mkdtemp } from "node:fs/promises";
@@ -76,6 +77,7 @@ try {
   const reset = async () => {
     await page.locator("#reset").click();
     await elapsed(0.05);
+    await learnPracticeKit(page);
   };
   await page.goto(
     pathToFileURL(resolve("deliverables/MOBA-Lab-Phase-3.html")).href +
@@ -84,6 +86,7 @@ try {
   await page.waitForFunction(
     () => window.foundationDiagnostics?.snapshot().time > 0.05,
   );
+  await learnPracticeKit(page);
   for (const panel of ["shop", "settings"]) {
     await reset();
     await page.keyboard.down("d");
@@ -120,13 +123,13 @@ try {
     await page.keyboard.press("1");
     await elapsed(1.2);
     let s = await snap();
-    assert.equal(s.enemies[0].hp, 159.75);
+    assert.ok(Math.abs(s.enemies[0].hp - afterS1) < 1e-6);
     assert.equal(await page.locator("#" + panel + "-dialog").isVisible(), true);
     await page.keyboard.press("Space");
     await elapsed(1.2);
     s = await snap();
     assert.equal(s.hits, 1);
-    assert.ok(s.enemies[0].hp < 159.75);
+    assert.ok(s.enemies[0].hp < afterS1);
     pass(
       panel +
         ": skill and basic shortcuts deal real damage while panel stays open",
@@ -168,7 +171,7 @@ try {
   assert.ok((await snap()).aiming);
   await page.keyboard.press("Escape");
   await page.keyboard.up("1");
-  assert.equal((await snap()).player.mana, 100);
+  assert.equal((await snap()).player.mana, 800);
   assert.equal(await page.locator("#shop-dialog").isVisible(), true);
   await page.keyboard.press("Escape");
   assert.equal(await page.locator("#shop-dialog").isVisible(), false);
@@ -211,7 +214,7 @@ try {
   await page.locator("#bind-skill-1").focus();
   await page.locator("#skill-1").click();
   await elapsed(1.2);
-  assert.equal((await snap()).enemies[0].hp, 159.75);
+  assert.ok(Math.abs((await snap()).enemies[0].hp - afterS1) < 1e-6);
   await page.locator("#bind-skill-1").focus();
   await page.mouse.click(1420, 450);
   await elapsed(1.2);
@@ -248,7 +251,7 @@ try {
   assert.ok((await snap()).aiming);
   await page.keyboard.press("Escape");
   await page.keyboard.up("1");
-  assert.equal((await snap()).player.mana, 100);
+  assert.equal((await snap()).player.mana, 800);
   await page.keyboard.down("d");
   await page.locator("#shop").click();
   await page.locator("#settings").click();
@@ -266,7 +269,8 @@ try {
     [800, 450],
   ]) {
     await page.setViewportSize({ width, height });
-    for (const panel of ["shop", "settings"]) {
+    await learnPracticeKit(page);
+  for (const panel of ["shop", "settings"]) {
       await page.locator("#" + panel).click();
       if (panel === "settings")
         await page.locator("#settings-tab-controls").click();

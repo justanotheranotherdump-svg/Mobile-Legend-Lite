@@ -50,7 +50,7 @@ export function abilityDescription(a) {
     case "orb-mark":
       return `Launch an orb that damages enemies within ${p.blastRadius} units and marks affected surviving enemies for ${p.markDuration}s. A subsequent hit on a marked target triggers ${p.bonusDamage} extra damage and a ${p.stunDuration}s area stun within ${p.stunRadius} units.`;
     case "line-blast":
-      return `Fire a ${p.width}-unit-wide blast through enemies in a line. A locked target is tracked until firing; free-aimed casts follow the chosen direction. No passive range upgrades or skill levels are implemented.`;
+      return `Fire a ${p.width}-unit-wide blast through enemies in a line. A locked target is tracked until firing; free-aimed casts follow the chosen direction. Active ranks upgrade in training; ultimate ranks unlock at hero levels 4, 8 and 12. No passive range upgrades are implemented.`;
     default:
       return "This ability has no authored presentation description yet.";
   }
@@ -71,5 +71,7 @@ export function abilityFacts(a) {
         ["Mana cost", String(a.manaCost)],
         ["Range", `${a.range} units`],
         ["Windup", `${a.castTime}s`],
+        ...(a.damageModel ? [["Damage type", a.damageModel.type], ["Scaling", `${a.damageModel.physicalScaling} × physical attack + ${a.damageModel.magicScaling} × magic power`]] : []),
+        ...(a.ranks ? [["Rank damage", a.ranks.damage.join(" / ")], ["Rank cooldowns", a.ranks.cooldown.map(n => `${n}s`).join(" / ")], ["Rank mana", a.ranks.manaCost.join(" / ")], ["Rank unlock levels", a.ranks.requiredLevels.join(" / ")]] : []),
       ];
 }

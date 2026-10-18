@@ -44,7 +44,7 @@ export async function createHeroVisual(hero, bytes, { loader = createEmbeddedLoa
   }
   model ??= createTrainingPlaceholder();
   anchor.add(model);
-  function play(state, once = false) {
+  function play(state, once = false, duration = null) {
     const clip = hero.animations.clips[state];
     if (!mixer) return;
     if (!clip) { mixer.stopAllAction(); current=null; oneShot=false; return; }
@@ -53,7 +53,14 @@ export async function createHeroVisual(hero, bytes, { loader = createEmbeddedLoa
     const action = mixer.clipAction(clips.get(clip));
     action.setLoop(once ? LoopOnce : LoopRepeat, once ? 1 : Infinity);
     action.clampWhenFinished = once;
-    action.reset().play();
+    action.reset();
+    // Identical clip bytes, presentation follows the accepted action's duration.
+    action.setEffectiveTimeScale(1);
+    if (duration !== null) {
+      if (!Number.isFinite(duration) || duration <= 0) throw Error('Animation duration must be positive and finite');
+      action.setDuration(duration);
+    }
+    action.play();
     current = clip; oneShot = once;
   }
   return {

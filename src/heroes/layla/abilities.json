@@ -16,7 +16,13 @@
         "turret",
         "tower"
       ]
-    }
+    },
+    "damageModel": {
+      "type": "physical",
+      "physicalScaling": 0,
+      "magicScaling": 0
+    },
+    "ranks": null
   },
   {
     "id": "malefic-bomb",
@@ -24,9 +30,9 @@
     "slot": "skill-1",
     "effectId": "line-projectile",
     "range": 9,
-    "damage": 35,
-    "manaCost": 20,
-    "cooldown": 5,
+    "damage": 180,
+    "manaCost": 35,
+    "cooldown": 6,
     "castTime": 0.25,
     "parameters": {
       "speed": 14,
@@ -36,6 +42,54 @@
       "attackRangeBonus": 2,
       "skill2RangeBonus": 2,
       "collidesWithWalls": false
+    },
+    "damageModel": {
+      "type": "physical",
+      "physicalScaling": 0.8,
+      "magicScaling": 0
+    },
+    "ranks": {
+      "max": 6,
+      "requiredLevels": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "damage": [
+        180,
+        220,
+        260,
+        300,
+        340,
+        380
+      ],
+      "manaCost": [
+        35,
+        40,
+        45,
+        50,
+        55,
+        60
+      ],
+      "cooldown": [
+        6,
+        5.6,
+        5.2,
+        4.8,
+        4.4,
+        4
+      ],
+      "bonusDamage": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
     }
   },
   {
@@ -44,19 +98,67 @@
     "slot": "skill-2",
     "effectId": "orb-mark",
     "range": 7,
-    "damage": 30,
-    "manaCost": 25,
-    "cooldown": 7,
+    "damage": 150,
+    "manaCost": 60,
+    "cooldown": 7.5,
     "castTime": 0.25,
     "parameters": {
       "speed": 10,
       "radius": 0.22,
       "blastRadius": 2,
       "markDuration": 4,
-      "bonusDamage": 15,
+      "bonusDamage": 80,
       "stunDuration": 0.6,
       "stunRadius": 2,
       "collidesWithWalls": false
+    },
+    "damageModel": {
+      "type": "physical",
+      "physicalScaling": 0.65,
+      "magicScaling": 0
+    },
+    "ranks": {
+      "max": 6,
+      "requiredLevels": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "damage": [
+        150,
+        180,
+        210,
+        240,
+        270,
+        300
+      ],
+      "manaCost": [
+        60,
+        65,
+        70,
+        75,
+        80,
+        85
+      ],
+      "cooldown": [
+        7.5,
+        7.3,
+        7.1,
+        6.9,
+        6.7,
+        6.5
+      ],
+      "bonusDamage": [
+        80,
+        100,
+        120,
+        140,
+        160,
+        180
+      ]
     }
   },
   {
@@ -65,12 +167,45 @@
     "slot": "skill-ultimate",
     "effectId": "line-blast",
     "range": 12,
-    "damage": 70,
-    "manaCost": 40,
-    "cooldown": 14,
+    "damage": 450,
+    "manaCost": 100,
+    "cooldown": 30,
     "castTime": 0.25,
     "parameters": {
       "width": 1.4
+    },
+    "damageModel": {
+      "type": "physical",
+      "physicalScaling": 1.5,
+      "magicScaling": 0
+    },
+    "ranks": {
+      "max": 3,
+      "requiredLevels": [
+        4,
+        8,
+        12
+      ],
+      "damage": [
+        450,
+        600,
+        750
+      ],
+      "manaCost": [
+        100,
+        120,
+        140
+      ],
+      "cooldown": [
+        30,
+        27,
+        24
+      ],
+      "bonusDamage": [
+        0,
+        0,
+        0
+      ]
     }
   }
 ]

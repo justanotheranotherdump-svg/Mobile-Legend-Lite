@@ -1,3 +1,4 @@
+import { learnPracticeKit, afterS1, woundedAfterS1, afterUltimate } from './helpers/practice.mjs';
 // New default-mode integration coverage. Legacy tests explicitly use ?hero=training.
 import assert from "node:assert/strict";
 import { readFile, writeFile, mkdir, mkdtemp } from "node:fs/promises";
@@ -77,6 +78,7 @@ try {
   const reset = async () => {
     await page.locator("#reset").click();
     await elapsed(0.05);
+    await learnPracticeKit(page);
   };
   const project = (x, y, z) =>
     page.evaluate(
@@ -100,6 +102,7 @@ try {
       () => window.foundationDiagnostics?.snapshot().time > 0.05,
     );
     assert.ok(await page.locator("#error").isHidden());
+    await learnPracticeKit(page);
   };
   const setMode = async (mode) => {
     await page.locator("#settings").click();
@@ -169,7 +172,7 @@ try {
   await page.keyboard.press("1");
   assert.equal((await snap()).lastCastResult, "cast");
   await elapsed(1.2);
-  assert.equal((await snap()).enemies[0].hp, 159.75);
+  assert.ok(Math.abs((await snap()).enemies[0].hp - afterS1) < 1e-6);
   assert.equal((await snap()).player.range, 8);
   pass(
     "quick key tap ignores mouse and auto-targets nearest eligible enemy at skill range; normal damage/buff/mana/CD retained",
@@ -195,15 +198,15 @@ try {
   await page.locator("#skill-1").click();
   await elapsed(1.2);
   s = await snap();
-  assert.equal(s.enemies[0].hp, 200);
-  assert.equal(s.enemies[1].hp, 49.75);
+  assert.equal(s.enemies[0].hp, 2000);
+  assert.ok(Math.abs(s.enemies[1].hp - woundedAfterS1) < 1e-6);
   pass(
     "pointer tap auto-targets using Settings priority, not cursor position; Settings is sole priority selector",
   );
   await reset();
   await hold("1");
   s = await snap();
-  assert.equal(s.player.mana, 100);
+  assert.equal(s.player.mana, 800);
   assert.equal(s.pendingCasts.length, 0);
   assert.equal((await hero()).sightVisible, true);
   assert.equal(await page.locator("#cancel-skill").isVisible(), true);
@@ -214,7 +217,7 @@ try {
   await page.keyboard.up("1");
   s = await snap();
   assert.equal(s.aiming, null);
-  assert.equal(s.player.mana, 100);
+  assert.equal(s.player.mana, 800);
   assert.deepEqual(s.abilityCooldowns, {});
   pass(
     "held bound key previews original directional sight without spending; Escape cancels and stale keyup does not cast",
@@ -228,8 +231,8 @@ try {
   await page.keyboard.up("1");
   await elapsed(1.2);
   s = await snap();
-  assert.equal(s.enemies[0].hp, 200);
-  assert.equal(s.enemies[1].hp, 49.75);
+  assert.equal(s.enemies[0].hp, 2000);
+  assert.ok(Math.abs(s.enemies[1].hp - woundedAfterS1) < 1e-6);
   assert.equal(s.manualTargetId, "dummy-a");
   pass(
     "hold-and-release can override auto/manual pin with an aimed enemy lock without changing pin",
@@ -245,7 +248,7 @@ try {
   await elapsed(0.08);
   await page.mouse.up();
   await elapsed(1.2);
-  assert.equal((await snap()).enemies[1].hp, 49.75);
+  assert.ok(Math.abs((await snap()).enemies[1].hp - woundedAfterS1) < 1e-6);
   assert.equal((await snap()).lastCast.serial, 1);
   pass(
     "pointer capture supports held button drag aim and release, with exactly one cast and no native-click duplicate",
@@ -263,7 +266,7 @@ try {
     cancel.y + cancel.height / 2,
   );
   await page.mouse.up();
-  assert.equal((await snap()).player.mana, 100);
+  assert.equal((await snap()).player.mana, 800);
   assert.equal((await snap()).lastCast.serial, 0);
   assert.equal((await snap()).aiming, null);
   pass(
@@ -272,7 +275,7 @@ try {
   await hold("2");
   await page.mouse.click(600, 350, { button: "right" });
   await page.keyboard.up("2");
-  assert.equal((await snap()).player.mana, 100);
+  assert.equal((await snap()).player.mana, 800);
   assert.equal((await snap()).aiming, null);
   pass(
     "right-click cancels a held skill without basic attack or resource spend",
@@ -285,7 +288,7 @@ try {
   await ground(0, 0);
   await page.keyboard.up("1");
   await elapsed(1.2);
-  assert.equal((await snap()).enemies[0].hp, 159.75);
+  assert.ok(Math.abs((await snap()).enemies[0].hp - afterS1) < 1e-6);
   const beforeMenuMove = (await snap()).player.x;
   await page.keyboard.down("d");
   await elapsed(0.15);
@@ -311,10 +314,10 @@ try {
   await hold("Numpad1");
   await page.keyboard.press("Escape");
   await page.keyboard.up("Numpad1");
-  assert.equal((await snap()).player.mana, 100);
+  assert.equal((await snap()).player.mana, 800);
   await page.keyboard.press("Numpad1");
   await elapsed(1.2);
-  assert.equal((await snap()).enemies[0].hp, 159.75);
+  assert.ok(Math.abs((await snap()).enemies[0].hp - afterS1) < 1e-6);
   assert.equal(await page.locator("#skill-1 .slot-key").innerText(), "Num 1");
   pass(
     "session custom numpad keys support both tap-auto and held preview/cancel; old key is replaced",
@@ -323,7 +326,7 @@ try {
   await page.locator("#skill-ultimate").focus();
   await page.keyboard.press("Enter");
   await elapsed(1.2);
-  assert.equal((await snap()).enemies[0].hp, 119.5);
+  assert.ok(Math.abs((await snap()).enemies[0].hp - afterUltimate) < 1e-6);
   assert.equal((await hero()).effects.events.beam, 1);
   pass(
     "native accessible button activation shares auto-targeted ultimate and authoritative one-hit beam",
@@ -334,7 +337,7 @@ try {
   await page.keyboard.up("Numpad1");
   await page.evaluate(() => window.dispatchEvent(new Event("focus")));
   assert.equal((await snap()).aiming, null);
-  assert.equal((await snap()).player.mana, 100);
+  assert.equal((await snap()).player.mana, 800);
   assert.equal((await snap()).lastCast.serial, 0);
   pass(
     "blur/reset lifecycle clears held preview/capture without spending or reviving old gestures",
@@ -387,7 +390,7 @@ try {
   await load(standalone);
   await page.keyboard.press("1");
   await elapsed(1.2);
-  assert.equal((await snap()).enemies[0].hp, 159.75);
+  assert.ok(Math.abs((await snap()).enemies[0].hp - afterS1) < 1e-6);
   assert.equal(await page.locator("#joystick,.target-panel").count(), 0);
   pass(
     "source ZIP HTML works copied alone at offline file:// Unicode/spaces path, with new controls and real embedded GLB",

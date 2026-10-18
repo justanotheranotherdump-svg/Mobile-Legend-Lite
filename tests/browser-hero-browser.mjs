@@ -266,7 +266,7 @@ try {
   assert.equal((await state()).gameInitializations, 0);
   await page.locator("#shop-back").tap();
   await page.locator("#open-modes").tap();
-  await page.locator("#mode-training").tap();
+  await page.locator("#mode-training").tap({ timeout: 90000 });
   await page.waitForFunction(
     () => window.foundationDiagnostics?.snapshot().time > 0.05,
   );

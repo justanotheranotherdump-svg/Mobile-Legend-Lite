@@ -27,8 +27,8 @@ const schemas = Object.freeze({
   "line-blast": { width: [0.01, 20] },
 });
 export function validateCombatAbility(a, path) {
-  const fail = (m) => {
-    throw Error(`${path}: ${m}`);
+  const fail = (m, field = "") => {
+    throw Error(`${path}${field ? `.${field}` : ""}: ${m}`);
   };
   const fields = [
     "id",
@@ -65,12 +65,12 @@ export function validateCombatAbility(a, path) {
     fail("passive requires distance-scaling");
   for (const k of ["range", "damage", "manaCost", "cooldown", "castTime"])
     if (!Number.isFinite(a[k]) || a[k] < 0 || a[k] > 100000)
-      fail(`invalid ${k}`);
+      fail(`invalid ${k}`, k);
   if (
     a.castTime > 5 ||
     (a.slot !== "passive" && (a.cooldown <= 0 || a.range <= 0))
   )
-    fail("invalid cast time/cooldown/range");
+    fail("invalid cast time/cooldown/range", a.castTime > 5 ? "castTime" : a.cooldown <= 0 ? "cooldown" : "range");
   const p = a.parameters,
     s = schemas[a.effectId];
   if (
@@ -81,7 +81,7 @@ export function validateCombatAbility(a, path) {
     fail("invalid parameter fields");
   for (const [k, rule] of Object.entries(s)) {
     if (rule === "boolean") {
-      if (typeof p[k] !== "boolean") fail(`invalid ${k}`);
+      if (typeof p[k] !== "boolean") fail(`invalid ${k}`, `parameters.${k}`);
     } else if (rule === "kinds") {
       if (
         !Array.isArray(p[k]) ||
@@ -89,6 +89,6 @@ export function validateCombatAbility(a, path) {
       )
         fail("invalid excludedKinds");
     } else if (!Number.isFinite(p[k]) || p[k] < rule[0] || p[k] > rule[1])
-      fail(`invalid ${k}`);
+      fail(`invalid ${k}`, `parameters.${k}`);
   }
 }

@@ -1,3 +1,5 @@
+import { ProgressionHud } from './progression.js';
+import { statText } from '../simulation/stats/attributes.js';
 import { HeroSkillHud } from "./hero-skills.js";
 import { KeyBindings } from "../input/key-bindings.js";
 import { ButtonShortcuts } from "./button-shortcuts.js";
@@ -37,6 +39,7 @@ export class Hud {
       ? null
       : new Joystick(e.joystick, controls);
     this.skills = new HeroSkillHud(simulation, controls, view);
+    this.progression = new ProgressionHud(simulation, controls);
     this.panels = new PlaceholderPanels(
       e,
       this.joystick,
@@ -125,7 +128,7 @@ export class Hud {
           : "Pinned target out of range · no chasing"
         : "Approach a living training target";
     }
-    e["player-health"].textContent = `${player.hp} / ${player.maxHp}`;
+    e["player-health"].textContent = `${statText(player.hp)} / ${statText(player.maxHp)}`;
     const playerMeter = document.querySelector('[aria-label="Player health"]');
     playerMeter.setAttribute("aria-valuemax", player.maxHp);
     playerMeter.setAttribute("aria-valuenow", player.hp);
@@ -148,6 +151,7 @@ export class Hud {
       state.combatHero ? Math.max(0, state.lockUntil - state.time) : 0,
     );
     this.skills.update();
+    this.progression.update();
     const face = state.combatHero ? state.currentFacing() : null;
     this.minimap.update(
       state,

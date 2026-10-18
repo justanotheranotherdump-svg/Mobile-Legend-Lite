@@ -1,0 +1,26 @@
+.xp-caption { display:flex; justify-content:space-between; margin-top:5px; font-size:8px; color:#ead4a1; }
+.xp-track { height:3px; margin-top:4px; overflow:hidden; background:#635c494d; }
+.xp-track i { display:block; height:100%; background:#e9bd70; }
+.progression-tools { position:absolute; left:22px; bottom:174px; width:230px; pointer-events:auto; z-index:12; font-size:10px; }
+.upgrade-caption { display:flex; justify-content:space-between; padding:3px 2px; color:#ecd09d; font-size:8px; letter-spacing:1px; text-shadow:0 1px 3px #000; }
+.skill-upgrades { display:grid; grid-template-columns:repeat(3,1fr); gap:5px; }
+.skill-upgrades button { min-height:29px; padding:3px; color:#ffe1a5; background:#173044ef; border-color:#b19b6d; border-radius:4px; font-size:10px; }
+.skill-upgrades button:disabled { color:#abb9be; background:#152432da; border-color:#566672; opacity:.75; }
+#practice-tools { margin-top:5px; }
+#practice-tools summary { cursor:pointer; padding:7px; border:1px solid #72949b77; border-radius:4px; background:#102735ee; font-size:10px; color:#c9e8e4; }
+.practice-body { position:absolute; bottom:100%; left:0; width:310px; max-width:calc(100vw - 28px); max-height:min(480px,calc(100vh - 270px)); overflow-y:auto; overscroll-behavior:contain; padding:14px; border:1px solid #8faaa9; border-radius:6px; background:#0a1c2bf7; box-shadow:0 12px 36px #0009; }
+.practice-body h2 { margin:0 0 6px; font-size:14px; color:#f1d4a1; }
+.practice-body p { color:#a7bfc5; line-height:1.45; font-size:10px; }
+#live-attributes { display:grid; grid-template-columns:1fr auto; gap:6px 12px; border-top:1px solid #607d8455; border-bottom:1px solid #607d8455; padding:10px 0; }
+#live-attributes dt { color:#b3c7ce; }
+#live-attributes dd { margin:0; color:#d7eee7; font-variant-numeric:tabular-nums; }
+.practice-body label { display:grid; gap:5px; margin-top:10px; color:#d5e4e4; }
+.practice-body input { width:100%; min-height:30px; background:#142b3c; border:1px solid #547481; border-radius:3px; padding:5px 8px; color:#eef6ef; }
+.practice-body button { position:static; min-height:30px; margin-top:6px; padding:6px 10px; border-radius:3px; }
+.practice-actions { display:flex; flex-wrap:wrap; gap:6px; margin-top:7px; }
+@media(max-height:600px),(max-width:850px) {
+ .progression-tools { left:12px; bottom:156px; width:190px; }
+ .practice-body { max-height:calc(100vh - 260px); width:295px; padding:10px; }
+ .skill-upgrades button { min-height:25px; font-size:9px; }
+ #practice-tools summary { font-size:9px; padding:6px; }
+}

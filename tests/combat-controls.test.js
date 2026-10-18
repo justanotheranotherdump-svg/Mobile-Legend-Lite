@@ -14,10 +14,12 @@ const enemy = (id, x, z, hp = 1000, maxHp = hp, extra = {}) => ({
   team: "enemy",
   radius: 0.45,
   targetable: true,
+  physicalDefense: 0,
+  magicDefense: 0,
   ...extra,
 });
-const sim = (enemies = [enemy("a", 0, 5)], obstacles = []) =>
-  new HeroCombatSimulation(
+const sim = (enemies = [enemy("a", 0, 5)], obstacles = []) => {
+  const s = new HeroCombatSimulation(
     { halfSize: 30, obstacles },
     {
       player: { heroId: "layla", x: 0, z: 0 },
@@ -26,6 +28,10 @@ const sim = (enemies = [enemy("a", 0, 5)], obstacles = []) =>
     },
     registry,
   );
+  s.setPracticeLevel(4);
+  for (const slot of ['skill-1','skill-2','skill-ultimate']) s.upgradeSkill(slot);
+  return s;
+};
 const step = (s, t, h = 0, v = 0) => {
   for (let i = 0; i < Math.round(t * 120); i++) s.update(1 / 120, h, v);
 };
@@ -37,13 +43,13 @@ test("movement is locked throughout real Shoot, held WASD resumes after complete
       registry.get("layla"),
       registry.modelBytes("layla"),
     );
-  visual.play("basicAttack", true);
+  visual.play("basicAttack", true, s.player.attackCooldown);
   s.attack();
-  step(s, 1, 1, 0);
+  step(s, s.player.attackCooldown - .05, 1, 0);
   near(s.player.x, 0);
   near(s.player.z, 0);
   assert.equal(s.isActionLocked(), true);
-  visual.update(1, "idle");
+  visual.update(s.player.attackCooldown - .05, "idle");
   assert.equal(visual.diagnostics().oneShot, true);
   step(s, 0.2, 1, 0);
   assert.equal(s.isActionLocked(), false);
@@ -60,16 +66,16 @@ test("all 3 skills stop movement for the complete cast animation, not just windu
     assert.ok(s.player.x > 0);
   }
 });
-test("ready cooldown cannot restart/extend an unfinished animation", () => {
+test("basic cooldown and full scaled animation agree; rejected actions never extend them", () => {
   const s = sim();
   s.attack();
   step(s, 0.7);
-  near(s.player.cooldown, 0);
-  assert.equal(s.attack(), "animation");
+  assert.ok(s.player.cooldown > 0);
+  assert.equal(s.attack(), "cooldown");
   const before = s.player.mana;
   assert.equal(s.cast("skill-2"), "animation");
   near(s.player.mana, before);
-  near(s.lockUntil, 1.05);
+  near(s.lockUntil, s.player.attackCooldown);
 });
 test("basic lock homes to moving target, passes walls and other enemies, hits exactly once", () => {
   const s = sim(
@@ -142,7 +148,7 @@ test("no eligible auto target never spends mana or cooldown; out-of-range pin ne
   const s = sim([enemy("a", 0, 20), enemy("b", 0, 4)]);
   s.prioritizeTarget("a");
   assert.equal(s.cast("skill-1"), "no-target");
-  near(s.player.mana, 100);
+  near(s.player.mana, 800);
   assert.deepEqual(s.cooldowns, {});
   assert.equal(s.pending.length, 0);
   assert.equal(s.isActionLocked(), false);
@@ -151,18 +157,18 @@ test("aim preview has no costs, cancellation has no effect and release casts exa
   const s = sim();
   assert.equal(s.beginAim("skill-1"), true);
   s.setAim({ x: 5, z: 0 });
-  near(s.player.mana, 100);
+  near(s.player.mana, 800);
   assert.equal(s.pending.length, 0);
   s.cancelAim();
-  near(s.player.mana, 100);
+  near(s.player.mana, 800);
   assert.deepEqual(s.cooldowns, {});
   assert.equal(s.releaseAim(), "cancelled");
   s.beginAim("skill-1");
   s.setAim({ x: 0, z: 5 });
   assert.equal(s.releaseAim(), "cast");
-  near(s.player.mana, 80);
+  near(s.player.mana, 765);
   assert.equal(s.releaseAim(), "cancelled");
-  near(s.player.mana, 80);
+  near(s.player.mana, 765);
 });
 test("manual hold aim may override pin; enemy under sight locks and homes, ground aim never auto-retargets", () => {
   const s = sim([enemy("a", 0, 5), enemy("b", 5, 0)]);
@@ -220,5 +226,5 @@ test("reset/death clears preview/action lock and all targeted projectile state",
   assert.equal(s.pending.length, 0);
   s.reset();
   assert.equal(s.firingTargetId, null);
-  near(s.player.mana, 100);
+  near(s.player.mana, 500);
 });

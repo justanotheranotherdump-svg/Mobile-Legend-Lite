@@ -1,4 +1,4 @@
-# Regenerable downloads — Layla reconstruction
+# Regenerable downloads — gameplay roadmap Phase 1
 
 `npm run build` generates `MOBA-Lab-Phase-3.html`, the single self-contained game,
 now with intentionally reconstructed Layla and the unchanged approved embedded GLB.
@@ -28,3 +28,10 @@ See `../docs/LOBBY_POLISH.md` and `../docs/MENU_SYSTEM.md` for persistence, asse
 
 Latest: `../docs/HERO_BROWSER.md` — complete creation PNG with blended bottom,
 15-slot hero catalog, PNG guide and actual skill facts; sound stays in Settings.
+
+
+Current content: **gameplay roadmap Phase 1 stats/progression**, documented in
+`../docs/GAMEPLAY_PHASE_1.md`. The historical Phase-3 artifact filenames are
+retained solely for packaging/test compatibility; they do NOT mean roadmap
+Phases 2–5 have been implemented. Level 1 starts with one point/unlearned skills;
+use the S1/S2/ULT upgrade row and Attributes / Practice · Testing controls.

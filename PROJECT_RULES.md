@@ -231,3 +231,29 @@ invent other heroes, skins, prices, purchases, skill levels, videos or stats.
 Keep approved 3D lobby/gameplay and combat unchanged, test offline/responsive and
 existing regressions, rebuild standalone/source/report, then stop for review.
 No fresh commit/push authorization for this new milestone.
+
+
+## Authorized gameplay roadmap Phase 1 — 2026-10-18 (current approval)
+This is a NEW gameplay roadmap, not the old foundation/HUD phase numbering.
+Supersedes previous gameplay freezes only for: immutable per-hero base/growth and
+explicit world conversions; validated levels/XP to 15; real HP/mana/regen and
+numerical max-delta level-up policy; 15 total skill points (one at level 1),
+S1/S2 caps 6, ultimate cap 3 at levels 4/8/12; configurable reconstructed skill
+rank scaling; shared physical/magic/true damage and documented defense/penetration;
+truthful live stat/rank UI and modular, labeled session-only Practice controls.
+Use the user-supplied Layla reference table; label XP/rank tuning as prototype,
+not official parity. Level 1 starts with unlearned actives and one point.
+User explicitly approved scaling playback of the SAME Shoot clip for BASIC
+attacks so actual cooldown/rate and full movement lock agree. Skill animations
+and 1.05s locks remain unchanged; never change approved GLB/PNG bytes.
+Preserve targeting/aim/homing/collision/WASD/key bindings/non-modal panels,
+lobby/audio/profile/wallet and the exact historical training regression fixture.
+No Phase 2–5 systems: Brawl map/minions/towers/base, AI/death/respawn gameplay,
+items/gold/rewards, dedicated TrainingRoom/selection or new heroes. No kill XP.
+Rebuild root offline HTML and editable ZIP with the existing workflow, run real
+checks, document values/XP/ranks/files/limits and propose Phase 2 ONLY. Stop for
+review. No fresh commit or push authorized. See docs/GAMEPLAY_PHASE_1.md.
+
+Follow-up authorization: the user approved committing and pushing the verified
+Phase 1 gameplay milestone to `arena/55ce0f80-mobile-legend-lite`. This updates
+the branch only; it does not authorize starting roadmap Phase 2 or later phases.

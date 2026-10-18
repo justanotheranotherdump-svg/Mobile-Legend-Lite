@@ -214,7 +214,7 @@ export class WorldView {
     this.aimMarker.visible = !state.combatHero && Boolean(this.aim);
     if (state.lastAttack.serial !== this.lastHitSerial) {
       this.lastHitSerial = state.lastAttack.serial;
-      if (state.lastAttack.reason === 'hit' || state.lastAttack.reason === 'fired') { this.beamUntil = state.time + 0.14; this.beamTargetId = state.lastAttack.targetId; this.heroVisual.play('basicAttack', true); }
+      if (state.lastAttack.reason === 'hit' || state.lastAttack.reason === 'fired') { this.beamUntil = state.time + 0.14; this.beamTargetId = state.lastAttack.targetId; this.heroVisual.play('basicAttack', true, state.lastAttack.duration ?? null); }
     }
     this.beam.visible = !state.combatHero && state.time < this.beamUntil;
     if (this.beam.visible) {

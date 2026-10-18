@@ -289,7 +289,8 @@ try {
     assert.equal(await p.locator("#local-username").innerText(), "Touch_Hero");
     if (width === 844) {
       await p.locator("#open-modes").tap();
-      await p.locator("#mode-training").tap();
+      // Software WebGL can spend >30s compiling the transferred scene on CI.
+      await p.locator("#mode-training").tap({ timeout: 90000 });
       await p.waitForFunction(
         () => window.foundationDiagnostics?.snapshot().time > 0.05,
       );
@@ -385,13 +386,14 @@ try {
   );
   await page.keyboard.up("d");
   assert.ok((await s()).player.x > x + 0.3);
+  await page.locator("#upgrade-skill-1").click();
   await page.keyboard.press("1");
   const castTime = (await s()).time;
   await page.waitForFunction(
     (t) => window.foundationDiagnostics.snapshot().time > t,
     castTime + 1.2,
   );
-  assert.ok((await s()).enemies[0].hp < 200);
+  assert.ok((await s()).enemies[0].hp < 2000);
   assert.equal((await s()).lastCast.serial, 1);
   await page.screenshot({
     animations: "disabled",

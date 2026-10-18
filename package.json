@@ -16,7 +16,8 @@
     "test:browser:panels": "node tests/browser-panels.mjs",
     "test:browser:menu": "node tests/browser-menu.mjs",
     "test:browser:polish": "node tests/browser-polish.mjs",
-    "test:browser:heroes": "node tests/browser-hero-browser.mjs"
+    "test:browser:heroes": "node tests/browser-hero-browser.mjs",
+    "test:browser:progression": "node tests/browser-progression.mjs"
   },
   "dependencies": {
     "three": "0.186.1"
