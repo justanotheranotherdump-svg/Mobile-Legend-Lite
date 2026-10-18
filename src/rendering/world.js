@@ -60,7 +60,8 @@ export class WorldView {
     this.beam = new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(), new THREE.Vector3()]), new THREE.LineBasicMaterial({ color: '#bbffe2', transparent: true, opacity: 0.9 }));
     this.scene.add(this.beam);
     this.resize();
-    window.addEventListener('resize', () => this.resize());
+    this.onResize=()=>this.resize();
+    window.addEventListener('resize', this.onResize);
   }
 
   material(color, extra = {}) { return new THREE.MeshStandardMaterial({ color, roughness: 0.85, ...extra }); }
@@ -179,6 +180,15 @@ export class WorldView {
   }
 
   connectCombat(state) { if(state.combatHero) {this.combatVfx=new CombatVfx(this.scene,state);this.aimSight=new AimSight(this.scene);} }
+
+  dispose() {
+    window.removeEventListener('resize', this.onResize);
+    this.combatVfx?.unsubscribe(); this.combatVfx?.clear();
+    this.scene.remove(this.hero); // Shared approved GLB is retained, not disposed.
+    const geometry=new Set(), materials=new Set();
+    this.scene.traverse(o=>{if(o.isInstancedMesh)o.dispose();if(o.geometry)geometry.add(o.geometry);for(const m of Array.isArray(o.material)?o.material:[o.material])if(m)materials.add(m);});
+    geometry.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());this.renderer.dispose();
+  }
 
   resetFeedback() { this.lastHitSerial = 0; this.lastCastSerial=0; this.beamUntil = -1; this.lastVisualTime=undefined; this.combatVfx?.clear(); }
 

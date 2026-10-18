@@ -1,3 +1,4 @@
+import { finishPracticeEntry } from './helpers/menu-practice.mjs';
 // New default-mode integration coverage. Legacy tests explicitly use ?hero=training.
 import assert from "node:assert/strict";
 import { readFile, writeFile, mkdir, mkdtemp } from "node:fs/promises";
@@ -191,7 +192,7 @@ try {
   );
   await page.locator("#open-modes").click();
   await screen("modes");
-  for (const id of ["classic", "ranked", "brawl"]) {
+  for (const id of ["classic", "ranked"]) {
     assert.equal(await page.locator("#mode-" + id).isDisabled(), true);
     await page.locator("#mode-" + id).evaluate((b) => b.click());
     assert.equal((await menu()).screen, "modes");
@@ -211,7 +212,7 @@ try {
   });
   assert.equal((await menu()).lobby.modelLoads, 1);
   pass(
-    "MODE/back/Escape preserve profile and reuse one GLB presentation; Classic/Ranked/Brawl cannot launch matches",
+    "MODE/back/Escape preserve profile and reuse one GLB presentation; Classic/Ranked cannot launch matches; Brawl is covered by connected-match tests",
   );
   // Independent contexts ensure each responsive sample genuinely starts without a profile.
   for (const [width, height] of [
@@ -291,6 +292,7 @@ try {
       await p.locator("#open-modes").tap();
       // Software WebGL can spend >30s compiling the transferred scene on CI.
       await p.locator("#mode-training").tap({ timeout: 90000 });
+      await finishPracticeEntry(p);
       await p.waitForFunction(
         () => window.foundationDiagnostics?.snapshot().time > 0.05,
       );
@@ -358,6 +360,7 @@ try {
     b.click();
     b.click();
   });
+  await finishPracticeEntry(page);
   await page.waitForFunction(
     () => window.foundationDiagnostics?.snapshot().time > 0.05,
   );

@@ -1,3 +1,4 @@
+import { finishPracticeEntry } from './helpers/menu-practice.mjs';
 // New default-mode integration coverage. Legacy tests explicitly use ?hero=training.
 import assert from "node:assert/strict";
 import { readFile, writeFile, mkdir, mkdtemp } from "node:fs/promises";
@@ -258,6 +259,7 @@ try {
   );
   await page.locator("#open-modes").tap();
   await page.locator("#mode-training").tap({ timeout: 90000 });
+  await finishPracticeEntry(page);
   await page.waitForFunction(
     () => window.foundationDiagnostics?.snapshot().time > 0.05,
   );

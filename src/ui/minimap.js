@@ -111,9 +111,13 @@ export class Minimap {
       r: (state.player.range * 44 * Math.SQRT2) / this.arena.halfSize,
     }))
       this.range.setAttribute(key, value);
-    for (const enemy of state.enemies) {
+    const actors=state.isMatch?state.actors.filter(a=>a!==state.player):state.enemies;
+    for(const [id,marker] of this.targets)if(!actors.some(a=>a.id===id)){marker.remove();this.targets.delete(id);}
+    for (const enemy of actors) {
+      if(!this.targets.has(enemy.id)) this.targets.set(enemy.id,svgNode('circle',{r:enemy.kind==='minion'?2.5:4,class:'map-target','data-map-enemy':enemy.id},this.svg));
       const marker = this.targets.get(enemy.id),
         point = mapPoint(enemy.x, enemy.z, this.arena.halfSize);
+      marker.style.fill=enemy.team==="player"?"#80e7e6":"#f79188";
       marker.setAttribute("cx", point.x);
       marker.setAttribute("cy", point.y);
       marker.classList.toggle("selected", state.selectedTargetId === enemy.id);

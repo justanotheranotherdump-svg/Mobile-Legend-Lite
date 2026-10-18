@@ -2,12 +2,13 @@ import { mountAudioControls } from "./settings-controls.js";
 // Read-only consumer of established combat events; never applies gameplay effects.
 export function connectTrainingAudio({ simulation }, audio, preferences) {
   audio.setScene("training");
-  simulation.events.subscribe((event) => {
+  const offEvents=simulation.events.subscribe((event) => {
     if (event.type === "launch") audio.effect("shot");
     else if (event.type === "cast" || event.type === "beam")
       audio.effect("skill");
     else if (event.type === "hit") audio.effect("impact");
   });
+  let offControls=()=>{};
   const panel = document.querySelector("#settings-page-basic");
   if (panel && !document.querySelector("#game-audio-controls")) {
     const audioBlock = document.createElement("div");
@@ -15,7 +16,7 @@ export function connectTrainingAudio({ simulation }, audio, preferences) {
     audioBlock.innerHTML =
       '<h3 class="settings-divider">Audio</h3><div data-game-audio></div>';
     panel.append(audioBlock);
-    mountAudioControls(
+    offControls=mountAudioControls(
       audioBlock.querySelector("[data-game-audio]"),
       preferences,
       audio,
@@ -50,4 +51,5 @@ export function connectTrainingAudio({ simulation }, audio, preferences) {
       preferences.update({ reduceMotion: motion.checked }),
     );
   }
+  return ()=>{offEvents();offControls();};
 }

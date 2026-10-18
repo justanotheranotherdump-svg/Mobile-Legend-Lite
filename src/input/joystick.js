@@ -1,3 +1,4 @@
+import { listen } from '../core/events.js';
 export function joystickAxes(dx, dy, radius) {
   if (
     !Number.isFinite(dx) ||
@@ -22,8 +23,9 @@ export class Joystick {
     this.knob = element.querySelector(".stick-knob");
     controls.registerReset(() => this.reset());
     element.addEventListener("pointerdown", (event) => {
-      if (event.button !== 0 || this.pointerId !== null || controls.blocked)
-        return;
+      if (event.button !== 0 || this.pointerId !== null || controls.suspended || (!controls.allowMenuGameplay && controls.blocked)) return;
+      if(controls.allowMenuGameplay)controls.canvas.focus({preventScroll:true});
+      if(controls.blocked)return;
       event.preventDefault();
       this.pointerId = event.pointerId;
       element.setPointerCapture(event.pointerId);
@@ -36,7 +38,7 @@ export class Joystick {
       element.addEventListener(type, (event) => {
         if (event.pointerId === this.pointerId) this.reset();
       });
-    window.addEventListener("resize", () => this.reset());
+    listen(window, "resize", () => this.reset());
   }
   move(event) {
     if (this.controls.blocked) {

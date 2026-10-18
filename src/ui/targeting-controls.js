@@ -27,10 +27,11 @@ export class TargetingControls {
       button.id = `priority-${category.id}`;
       button.className = "category-button";
       button.type = "button";
-      button.disabled = true;
-      button.dataset.controlKind = "reserved";
+      button.disabled = !simulation.isMatch;
+      button.dataset.controlKind = simulation.isMatch?"functional":"reserved";
       button.dataset.category = category.id;
       button.title = `${category.label} reserved — no ${category.id} units implemented`;
+      if(simulation.isMatch){button.title=`Toggle ${category.label}; explicit manual pins take precedence`;button.setAttribute('aria-pressed','false');button.addEventListener('click',()=>{simulation.setTargetCategory(simulation.targetCategory===category.id?null:category.id);button.blur();});}
       button.setAttribute("aria-label", button.title);
       button.innerHTML = icon(`${category.id}-crest`);
       const label = document.createElement("span");
@@ -77,5 +78,6 @@ export class TargetingControls {
     this.elements["clear-target"].disabled = !this.simulation.manualTargetId;
     for (const input of this.priorityInputs)
       input.checked = input.value === mode;
+    if(this.simulation.isMatch)for(const b of this.elements["target-categories"].querySelectorAll("button"))b.setAttribute("aria-pressed",String(this.simulation.targetCategory===b.dataset.category));
   }
 }

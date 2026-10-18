@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-18",
+  "environment": "Linux, Node 22.22.3, npm test; actual execution",
+  "baseline": {
+    "tests": 290,
+    "pass": 290,
+    "fail": 0
+  },
+  "current": {
+    "tests": 333,
+    "pass": 333,
+    "fail": 0
+  },
+  "newTests": 43,
+  "regressions": "Historical tests retained; terminal/direct-entry navigation expectation expanded for authorized prematch and return lifecycle."
+}

@@ -405,19 +405,19 @@ select {
 .action-dock button {
   position: absolute;
 }
-.action-dock #skill-1 {
+.action-dock #skill-1, .action-dock #control-skill-1 {
   left: 24px;
   bottom: 12px;
   width: 66px;
   height: 66px;
 }
-.action-dock #skill-2 {
+.action-dock #skill-2, .action-dock #control-skill-2 {
   left: 28px;
   bottom: 112px;
   width: 68px;
   height: 68px;
 }
-.action-dock #skill-ultimate {
+.action-dock #skill-ultimate, .action-dock #control-skill-ultimate {
   left: 122px;
   bottom: 198px;
   width: 78px;

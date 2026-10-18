@@ -1,3 +1,14 @@
+import { MatchFlow } from "./match-flow.js";
+import {
+  mountAiModes,
+  mountRoom,
+  mountSelection,
+  mountLoading,
+  mountResults,
+} from "./match-screens.js";
+import { startMatch } from "../match/start.js";
+import { createMatchConfig } from "../match/config.js";
+import "./match-flow.css";
 import { ProfileStore, browserStorage } from "./profile.js";
 import { ProgressStore } from "./progress.js";
 import { MenuNavigation } from "./navigation.js";
@@ -42,7 +53,11 @@ export function startMenuApplication(registry, startTraining) {
   applyPresentation();
   store.load();
   const nav = new MenuNavigation(Boolean(store.profile)),
-    lobby = new LobbyView(root.querySelector("#lobby-preview"), registry);
+    flow = new MatchFlow();
+  let lobby = new LobbyView(root.querySelector("#lobby-preview"), registry),
+    sharedVisual = null,
+    runtime = null,
+    lastDisposed = null;
   const shopState = { role: "All", query: "", scrollTop: 0 };
   let selectedHeroId = "layla";
   let entering = false,
@@ -65,7 +80,16 @@ export function startMenuApplication(registry, startTraining) {
     cleanup = () => {};
     root.dataset.screen = nav.screen;
     if (store.profile) progress.loadFor(store.profile);
-    lobby.setActive(nav.screen === "lobby" || nav.screen === "modes");
+    const visualScreen = ["lobby", "modes", "selection"].includes(nav.screen);
+    if (visualScreen && lobby.disposed) {
+      const canvas = document.createElement("canvas");
+      canvas.id = "lobby-preview";
+      canvas.setAttribute("aria-label", "Shared approved Layla model");
+      root.insertBefore(canvas, content);
+      lobby = new LobbyView(canvas, registry, sharedVisual);
+    }
+    lobby.setSelection(nav.screen === "selection");
+    lobby.setActive(visualScreen);
     if (nav.screen === "create")
       mountProfile(content, (profile) => {
         if (nav.screen !== "create") return;
@@ -97,7 +121,44 @@ export function startMenuApplication(registry, startTraining) {
           ),
         );
     if (nav.screen === "modes")
-      mountModes(content, () => go("lobby"), enterTraining);
+      mountModes(
+        content,
+        () => go("lobby"),
+        () => go("ai-modes"),
+        () => {
+          flow.chooseMode("brawl");
+          flow.teamSize = 5;
+          go("room");
+        },
+      );
+    if (nav.screen === "ai-modes")
+      mountAiModes(
+        content,
+        () => go("modes"),
+        (mode) => {
+          flow.chooseMode(mode);
+          flow.teamSize = 5;
+          go("room");
+        },
+      );
+    if (nav.screen === "room")
+      mountRoom(content, flow, store.profile, {
+        onBack: () => go(flow.mode === "brawl" ? "modes" : "ai-modes"),
+        onStart: () => {
+          if (flow.startSelection()) go("selection");
+        },
+      });
+    if (nav.screen === "selection")
+      mountSelection(content, flow, () => go("room"), enterMatch);
+    if (nav.screen === "results")
+      mountResults(content, flow.result, {
+        onReplay: () => {
+          flow.startSelection();
+          go("selection");
+        },
+        onRoom: () => go("room"),
+        onMenu: () => go("lobby"),
+      });
     if (nav.screen === "shop")
       mountHeroShop(content, progress.snapshot(), () => go("lobby"), {
         registry,
@@ -118,40 +179,113 @@ export function startMenuApplication(registry, startTraining) {
       cleanup = mountLobbySettings(content, preferences, audio, () =>
         go("lobby"),
       );
-    if (nav.screen === "lobby" || nav.screen === "modes")
-      lobby.prepare().catch(fail);
+    if (visualScreen) lobby.prepare().catch(fail);
   }
-  async function enterTraining() {
-    if (entering || nav.screen !== "modes") return;
-    entering = true;
-    content.querySelector("#mode-training").disabled = true;
-    content.querySelector("#mode-training small").textContent =
-      "PREPARING ARENA…";
+  function leaveRuntime(destination) {
+    runtime?.dispose();
+    lastDisposed = runtime?.diagnostics();
+    runtime = null;
+    entering = false;
+    flow.preparing = false;
+    root.hidden = false;
+    audio.setScene("lobby");
+    if (nav.go(destination)) render();
+  }
+  async function enterMatch() {
+    if (entering || nav.screen !== "selection") return;
+    let config;
     try {
-      const heroVisual = await lobby.release();
-      if (!nav.go("training")) return;
-      cleanup();
-      cleanup = () => {};
+      config = flow.confirm(store.profile);
+      if (!config) return;
+      createMatchConfig(config.mode, config.difficulty, config.teamSize);
+    } catch (cause) {
+      fail(cause);
+      return;
+    }
+    entering = true;
+    nav.go("loading");
+    cleanup();
+    cleanup = () => {};
+    root.dataset.screen = "loading";
+    mountLoading(content, flow, store.profile);
+    const stage = async (value, message) => {
+      content.querySelector("#local-load-progress").value = value;
+      content.querySelector("#local-load-stage").textContent =
+        `${value}/7 · ${message}`;
+      await new Promise((resolve) => requestAnimationFrame(resolve));
+    };
+    try {
+      await stage(1, "Mode, hero, difficulty and roster validated");
+      sharedVisual = await lobby.release();
+      sharedVisual.reset();
+      await stage(2, "Approved local Layla GLB and textures ready");
+      const options = {
+        registry,
+        heroVisual: sharedVisual,
+        profile: store.profile,
+        config,
+        onProgress: stage,
+        onReady: (context) => connectTrainingAudio(context, audio, preferences),
+        onExit: leaveRuntime,
+        onEnd: (result) => {
+          flow.result = result;
+          leaveRuntime("results");
+        },
+      };
+      if (config.mode === "practice") {
+        runtime = await startTraining({ ...options, throwOnError: true });
+      } else runtime = await startMatch(options);
+      nav.go("training");
       root.dataset.screen = "training";
       root.hidden = true;
-      document.querySelector("#app").hidden = false;
-      window.removeEventListener("keydown", backKey);
-      gameInitializations++;
-      await startTraining({
-        registry,
-        heroVisual,
-        onReady: (context) => connectTrainingAudio(context, audio, preferences),
-      });
-      document.querySelector("#world").focus({ preventScroll: true });
       content.replaceChildren();
+      gameInitializations++;
+      entering = false;
+      flow.preparing = false;
     } catch (cause) {
+      runtime?.dispose();
+      runtime = null;
       root.hidden = false;
-      document.querySelector("#app").hidden = true;
-      fail(cause);
+      entering = false;
+      flow.preparing = false;
+      content.innerHTML =
+        '<section class="flow-screen"><div class="flow-error"><h1>Local preparation failed</h1><p id="load-error" role="alert"></p><button id="load-retry" type="button">Retry</button><button id="load-back" type="button">Back to room</button></div></section>';
+      content.querySelector("#load-error").textContent = cause.message;
+      content.querySelector("#load-back").onclick = () => {
+        nav.go("room");
+        render();
+      };
+      content.querySelector("#load-retry").onclick = () => {
+        nav.go("room");
+        flow.startSelection();
+        nav.go("selection");
+        flow.selectHero("layla");
+        enterMatch();
+      };
+      console.error(cause);
     }
   }
   function backKey(event) {
     if (event.defaultPrevented) return;
+    if (
+      event.code === "Escape" &&
+      !entering &&
+      ["ai-modes", "room", "selection", "results"].includes(nav.screen)
+    ) {
+      event.preventDefault();
+      go(
+        nav.screen === "selection"
+          ? "room"
+          : nav.screen === "ai-modes"
+            ? "modes"
+            : nav.screen === "results"
+              ? "lobby"
+              : flow.mode === "brawl"
+                ? "modes"
+                : "ai-modes",
+      );
+      return;
+    }
     if (event.code === "Escape" && nav.screen === "hero") {
       event.preventDefault();
       const close = content.querySelector(
@@ -210,6 +344,13 @@ export function startMenuApplication(registry, startTraining) {
         audio: audio.diagnostics(),
         entering,
         gameInitializations,
+        match: {
+          mode: flow.mode,
+          difficulty: flow.difficulty,
+          teamSize: flow.teamSize,
+          selectedHeroId: flow.heroId,
+        },
+        lastDisposed,
         lobby: lobby.diagnostics(),
       }),
       audioProof: renderMusicProof,

@@ -1,3 +1,5 @@
+> Historical milestone. The authorized connected AI Training / Brawl expansion is documented in [AI_TRAINING_BRAWL.md](AI_TRAINING_BRAWL.md).
+
 # Gameplay roadmap — Phase 1: stats and progression
 
 2026-10-18. Builds on the previously pushed `e6c8f392be86dce43bb6e9bf4d9f10b0e8590164`.

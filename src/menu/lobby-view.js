@@ -2,26 +2,27 @@ import * as THREE from "three";
 import { createHeroVisual } from "../rendering/heroes/hero-visual.js";
 // Presentation only. No simulation, Controls or Hud is instantiated in the lobby.
 export class LobbyView {
-  constructor(canvas, registry) {
+  constructor(canvas, registry, sharedVisual = null) {
     this.canvas = canvas;
     this.registry = registry;
     this.ready = null;
-    this.visual = null;
+    this.visual = sharedVisual;
     this.disposed = false;
     this.active = true;
     this.modelLoads = 0;
   }
   prepare() {
     if (this.ready) return this.ready;
-    this.ready = this.initialize();
+    this.ready = this.initialize().catch(error=>{this.ready=null;if(this.visual?.status!=="glb")this.visual=null;this.renderer?.dispose();throw error;});
     return this.ready;
   }
   async initialize() {
-    this.modelLoads++;
+    if(!this.visual){this.modelLoads++;
     this.visual = await createHeroVisual(
       this.registry.get("layla"),
       this.registry.modelBytes("layla"),
     );
+    }
     if (this.visual.status !== "glb")
       throw new Error("The approved lobby model could not be loaded.");
     this.renderer = new THREE.WebGLRenderer({
@@ -46,7 +47,8 @@ export class LobbyView {
     rim.position.set(5, 3, -2);
     this.scene.add(rim);
     // The environment is a locally embedded PNG. Only the approved hero is 3D.
-    this.visual.root.position.set(-1.15, 0, 0);
+    this.visual.reset();this.visual.root.visible=true;
+    this.visual.root.position.set(this.selection?0:-1.15, 0, 0);
     this.visual.root.rotation.y = 0.28;
     this.visual.play("idle");
     this.scene.add(this.visual.root);
@@ -74,6 +76,7 @@ export class LobbyView {
     if (this.renderer && !this.disposed && this.active && !document.hidden)
       this.renderer.render(this.scene, this.camera);
   }
+  setSelection(active){this.selection=active;if(this.visual){this.visual.root.position.x=active?0:-1.15;this.draw();}}
   setActive(active) {
     this.active = active;
     this.canvas.hidden = !active;

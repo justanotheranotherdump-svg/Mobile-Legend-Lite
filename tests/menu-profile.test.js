@@ -126,9 +126,10 @@ test("first and returning navigation follow the exact front-end flow", () => {
     assert.equal(n.go("modes"), true);
     assert.equal(n.go("lobby"), true);
     assert.equal(n.go("modes"), true);
-    assert.equal(n.go("training"), true);
+    assert.equal(n.go("training"), false, 'no pre-confirmation launch');
+    for(const screen of ['ai-modes','room','selection','loading','training'])assert.equal(n.go(screen),true,screen);
     assert.equal(n.go("training"), false);
-    assert.equal(n.go("lobby"), false);
+    assert.equal(n.go("lobby"), true); // Expanded lifecycle supports safe return.
   }
 });
 test("navigation cannot jump past creation/lobby or launch placeholder modes", () => {

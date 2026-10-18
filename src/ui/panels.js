@@ -1,3 +1,4 @@
+import { listen } from '../core/events.js';
 import { ShopPanel, EQUIPMENT_SLOT_COUNT } from "./shop-panel.js";
 import { SettingsPanel } from "./settings-panel.js";
 import { icon } from "./components/icons.js";
@@ -91,7 +92,7 @@ export class PlaceholderPanels {
         syncMenu();
       });
       if (controls.allowMenuGameplay)
-        window.addEventListener("keydown", (event) => {
+        listen(window, "keydown", (event) => {
           if (
             event.code === "Escape" &&
             dialog.open &&

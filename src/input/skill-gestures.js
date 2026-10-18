@@ -1,3 +1,4 @@
+import { listen } from '../core/events.js';
 import { blocksGameplayInput } from "./input-policy.js";
 
 export const SKILL_HOLD_MS = 180;
@@ -57,20 +58,20 @@ export class SkillGestures {
         }
       });
     }
-    window.addEventListener("pointermove", (e) => this.move(e));
-    window.addEventListener("pointerup", (e) => {
+    listen(window, "pointermove", (e) => this.move(e));
+    listen(window, "pointerup", (e) => {
       if (this.active?.pointerId === e.pointerId) this.finish();
     });
-    window.addEventListener("pointercancel", (e) => {
+    listen(window, "pointercancel", (e) => {
       if (this.active?.pointerId === e.pointerId) this.cancel();
     });
-    window.addEventListener("keyup", (e) => {
+    listen(window, "keyup", (e) => {
       if (this.active?.kind === "key" && this.active.code === e.code) {
         e.preventDefault();
         this.finish();
       }
     });
-    window.addEventListener(
+    listen(window,
       "keydown",
       (e) => {
         if (e.code === "Escape" && this.active) {
@@ -81,7 +82,7 @@ export class SkillGestures {
       },
       true,
     );
-    window.addEventListener(
+    listen(window,
       "pointerdown",
       (e) => {
         if (e.button === 2 && this.active) {
@@ -93,7 +94,7 @@ export class SkillGestures {
       },
       true,
     );
-    window.addEventListener("contextmenu", (e) => {
+    listen(window, "contextmenu", (e) => {
       if (this.active || this.suppressContext || e.target === view.canvas)
         e.preventDefault();
       this.suppressContext = false;

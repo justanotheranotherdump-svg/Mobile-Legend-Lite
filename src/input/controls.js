@@ -1,3 +1,4 @@
+import { listen } from '../core/events.js';
 import {
   blocksGameplayInput,
   blocksMovementInput,
@@ -13,7 +14,7 @@ export class Controls {
     this.resetListeners = new Set();
     this.pointer = { x: 0, y: 0, active: false };
     this.canvas = canvas;
-    window.addEventListener("keydown", (event) => {
+    listen(window, "keydown", (event) => {
       if (
         ["KeyW", "KeyA", "KeyS", "KeyD"].includes(event.code) &&
         !event.repeat &&
@@ -29,20 +30,20 @@ export class Controls {
         this.keys.add(event.code);
       }
     });
-    document.addEventListener("focusin", (event) => {
+    listen(document, "focusin", (event) => {
       if (this.allowMenuGameplay) {
         if (blocksMovementInput(event.target)) this.clear();
         else if (blocksCombatInput(event.target)) this.cancelCombatInput();
       } else if (blocksGameplayInput(event.target)) this.clear();
     });
-    window.addEventListener("keyup", (event) => this.keys.delete(event.code));
-    window.addEventListener("blur", () => this.clear());
-    document.addEventListener("visibilitychange", () => this.clear());
-    canvas.addEventListener("pointermove", (event) => this.setPointer(event));
-    canvas.addEventListener("pointerleave", () => {
+    listen(window, "keyup", (event) => this.keys.delete(event.code));
+    listen(window, "blur", () => this.clear());
+    listen(document, "visibilitychange", () => this.clear());
+    listen(canvas, "pointermove", (event) => this.setPointer(event));
+    listen(canvas, "pointerleave", () => {
       this.pointer.active = false;
     });
-    canvas.addEventListener("pointerdown", (event) => {
+    listen(canvas, "pointerdown", (event) => {
       if (event.button !== 0 || (!this.allowMenuGameplay && this.blocked))
         return;
       canvas.focus({ preventScroll: true });
@@ -82,11 +83,13 @@ export class Controls {
     return this.combatInputBlocked(document.activeElement);
   }
   combatInputBlocked(target) {
+    if(this.suspended)return true;
     return this.allowMenuGameplay
       ? blocksCombatInput(target)
       : this.menuBlocked || blocksGameplayInput(target);
   }
   get movementBlocked() {
+    if(this.suspended)return true;
     return this.allowMenuGameplay
       ? blocksMovementInput(document.activeElement)
       : this.blocked;
@@ -98,7 +101,7 @@ export class Controls {
         Number(this.keys.has("KeyD")) - Number(this.keys.has("KeyA")),
         Number(this.keys.has("KeyW")) - Number(this.keys.has("KeyS")),
       ],
-      this.menuBlocked ? [0, 0] : this.virtualAxes,
+      this.menuBlocked && !this.allowMenuGameplay ? [0, 0] : this.virtualAxes,
     );
   }
 }

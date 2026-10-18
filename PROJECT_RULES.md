@@ -233,7 +233,7 @@ existing regressions, rebuild standalone/source/report, then stop for review.
 No fresh commit/push authorization for this new milestone.
 
 
-## Authorized gameplay roadmap Phase 1 — 2026-10-18 (current approval)
+## Authorized gameplay roadmap Phase 1 — 2026-10-18 (historical; superseded below)
 This is a NEW gameplay roadmap, not the old foundation/HUD phase numbering.
 Supersedes previous gameplay freezes only for: immutable per-hero base/growth and
 explicit world conversions; validated levels/XP to 15; real HP/mana/regen and
@@ -257,3 +257,36 @@ review. No fresh commit or push authorized. See docs/GAMEPLAY_PHASE_1.md.
 Follow-up authorization: the user approved committing and pushing the verified
 Phase 1 gameplay milestone to `arena/55ce0f80-mobile-legend-lite`. This updates
 the branch only; it does not authorize starting roadmap Phase 2 or later phases.
+
+## Authorized connected AI Training / Brawl expansion — 2026-10-18
+Supersedes the prior Phase-1-only restriction for this explicit milestone ONLY:
+MODE → AI mode selection → offline room → real Layla selection → honest local
+setup/VS → countdown → distinct dummy Practice or new single-lane 5v5 match →
+real core victory/defeat/results → replay/room/menu. Brawl shares that pipeline;
+Classic/Ranked remain disabled. Implement deterministic difficulty-driven bots,
+waves, two sequential towers + core per team, targeting/retaliation, death/respawn,
+event XP/gold, six-slot original prototype items and real effective modifiers.
+Preserve profile/wallet/audio/Shop/settings, approved GLB/creation PNG bytes,
+existing Layla controls and exact historical fixture. Bot visuals are explicitly
+Training Bot placeholders, not new playable heroes/final character artwork.
+Correct HUD: each legal + is anchored to its own skill wrapper; upgrades never
+cast; unlearned icons darken without UNLEARNED text; original local PNG icons;
+actual username/HP/mana/level over player. Touch joystick + keyboard retained.
+Use modular simulation/config/render/UI/lifecycle systems; no gameplay in mesh
+callbacks, no copied reference art, runtime network services or packaging change.
+Baseline 290 unit tests passed before edits. Add new system/flow/responsive/
+offline tests; run actual available checks, rebuild root HTML/source ZIP, document
+functional systems, reconstruction/balance and device/art limitations. Stop for
+review; no Classic/Ranked, other playable heroes, skins/monetization or fresh push.
+
+Expansion review handoff: connected gameplay implemented; actual final verification
+is documented in `docs/AI_TRAINING_BRAWL.md` and `docs/match-verification.json`
+(333 units, 143 browser checks). Approved asset bytes remain unchanged. Native
+Windows/physical touch/speakers and polished bot art/team tactics are not certified.
+Review only: no expansion commit/push; the authorized branch remains unchanged.
+
+## Subsequent branch-update authorization — 2026-10-18
+The user explicitly requested updating `arena/55ce0f80-mobile-legend-lite` after
+the completed expansion review handoff. Commit and push the reviewed expansion
+to that same branch. This supersedes the preceding review-only / no-push status,
+without authorizing additional gameplay scope or another branch.

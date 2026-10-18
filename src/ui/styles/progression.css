@@ -24,3 +24,4 @@
  .skill-upgrades button { min-height:25px; font-size:9px; }
  #practice-tools summary { font-size:9px; padding:6px; }
 }
+.available-skill-points{display:inline;font-size:6px;color:#f1d48c;margin-top:0;letter-spacing:.4px;}

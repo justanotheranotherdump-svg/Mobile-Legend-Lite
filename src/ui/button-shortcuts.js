@@ -1,3 +1,4 @@
+import { listen } from '../core/events.js';
 import { blocksGameplayInput } from "../input/input-policy.js";
 import { BUTTON_ACTIONS, keyLabel } from "../input/key-bindings.js";
 import { requestSkillButton } from "./skill-controls.js";
@@ -6,7 +7,7 @@ export class ButtonShortcuts {
   constructor(root, bindings, skillGestures = null, controls = null) {
     this.root = root;
     this.bindings = bindings;
-    window.addEventListener("keydown", (event) => {
+    listen(window, "keydown", (event) => {
       if (event.defaultPrevented) return;
       const blocked = (target) =>
         controls?.combatInputBlocked(target) ?? blocksGameplayInput(target);

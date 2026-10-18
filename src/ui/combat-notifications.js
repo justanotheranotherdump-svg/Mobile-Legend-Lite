@@ -15,6 +15,7 @@ export function describeCombatEvent(event) {
       prominent: false,
       tone: "training",
     };
+  if (!["hero","player"].includes(victim.kind)) return null;
   if (victim.kind === "player" && actor.team === "enemy")
     return {
       title: "You have fallen",
@@ -29,14 +30,14 @@ export function describeCombatEvent(event) {
       prominent: true,
       tone: "victory",
     };
-  if (actor.team === "ally" && victim.team === "enemy")
+  if (["ally","player"].includes(actor.team) && victim.team === "enemy")
     return {
       title: "Ally eliminated an enemy",
       detail: `${actor.name} · ${victim.name}`,
       prominent: false,
       tone: "victory",
     };
-  if (victim.team === "ally" && actor.team === "enemy")
+  if (["ally","player"].includes(victim.team) && actor.team === "enemy")
     return {
       title: "Ally has fallen",
       detail: victim.name,

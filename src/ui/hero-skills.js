@@ -1,3 +1,4 @@
+import { COMBAT_ART } from './combat-art.js';
 import { SKILL_SLOTS } from "./skill-controls.js";
 import { SkillGestures } from "../input/skill-gestures.js";
 
@@ -31,11 +32,27 @@ export class HeroSkillHud {
       b.append(cost);
       b.setAttribute("aria-label", `${a.name}, ${a.manaCost} mana`);
       b.dataset.abilityName = a.name;
+      const wrapper = document.createElement('div');
+      wrapper.id = `control-${slot.id}`; wrapper.className = 'skill-control';
+      b.before(wrapper); wrapper.append(b);
+      const art = b.querySelector('.icon');
+      if (art) { const img = document.createElement('img'); img.src = COMBAT_ART[slot.id]; img.alt = ''; img.className = 'skill-png'; art.replaceWith(img); }
+      const upgrade = document.createElement('button');
+      upgrade.type = 'button'; upgrade.id = `upgrade-${slot.id}`; upgrade.className = 'skill-upgrade'; upgrade.textContent = '+';
+      for (const type of ['pointerdown','pointerup']) upgrade.addEventListener(type, event => event.stopPropagation());
+      upgrade.addEventListener('click', event => { event.stopPropagation(); simulation.upgradeSkill(slot.id); upgrade.blur(); });
+      for(const type of ['keydown','keyup'])upgrade.addEventListener(type,event=>{if(['Space','Enter'].includes(event.code))event.stopPropagation();});
+      wrapper.append(upgrade);
       this.buttons.push({ b, a, status });
     }
+    for (const id of ['recall','regen']) {
+      const art = document.querySelector(`#${id} .icon`);
+      if (art) { const img=document.createElement('img');img.src=COMBAT_ART[id];img.alt='';img.className='utility-png';art.replaceWith(img); }
+    }
+    document.querySelector('.hero-icon').innerHTML = `<img class="portrait-png" src="${COMBAT_ART.layla}" alt="Layla">`;
     this.gestures = new SkillGestures(simulation, controls, view, this.buttons);
     document.querySelector(".build-note").textContent =
-      "LAYLA · PHASE 1 STATS / LEVELS · PROTOTYPE BALANCE";
+      "LAYLA · LOCAL PROTOTYPE BALANCE";
     const passive = simulation.ability("passive");
     document.querySelector(".hero-icon").title =
       `${passive.name}: damage scales with distance, up to ${Math.round(passive.parameters.maxMultiplier * 100)}% at ${passive.parameters.referenceDistance}m. Turrets excluded.`;
@@ -59,7 +76,7 @@ export class HeroSkillHud {
       b.setAttribute('aria-label', `${a.name}, rank ${a.rank ?? 1}, ${a.manaCost} mana${a.rank === 0 ? ', unlearned' : ''}`);
       const cd = s.cooldowns[a.id] || 0,
         reason =
-          a.rank === 0 ? "UNLEARNED" : p.hp <= 0
+          a.rank === 0 ? "LOCKED" : p.hp <= 0
             ? "DEAD"
             : p.stunned
               ? "STUN"
@@ -70,7 +87,8 @@ export class HeroSkillHud {
                   : s.isActionLocked()
                     ? "FIRING"
                     : "READY";
-      status.textContent = reason === "READY" ? "" : reason;
+      status.textContent = a.rank === 0 || reason === "READY" ? "" : reason;
+      b.classList.toggle("unlearned", a.rank === 0);
       b.disabled = a.rank === 0;
       b.dataset.state = reason === "READY" ? "ready" : "unavailable";
       b.setAttribute("aria-disabled", String(reason !== "READY"));

@@ -1,0 +1,348 @@
+.action-dock .skill-control > .hero-skill {
+  position: relative !important;
+  inset: auto !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+.touch-controls .movement-dock {
+  display: block;
+  position: absolute;
+  left: 30px;
+  bottom: 40px;
+  z-index: 8;
+}
+.touch-controls .hero-panel {
+  bottom: 210px;
+}
+.touch-controls .progression-tools {
+  bottom: 335px;
+}
+.touch-controls .movement-hint {
+  display: none;
+}
+.allied-label .small-track i {
+  background: #70dce8;
+}
+.protected-objective {
+  opacity: 0.6;
+}
+#match-live {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+}
+.live-objectives {
+  position: absolute;
+  top: 71px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 65%;
+  text-align: center;
+  font-size: 8px;
+  color: #c4d9e2;
+  text-shadow: 0 2px 3px #000;
+}
+.live-record {
+  position: absolute;
+  top: 88px;
+  right: 18px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: #d5e9e7;
+  font-size: 10px;
+}
+.live-record button {
+  pointer-events: auto;
+  padding: 7px;
+  border-radius: 4px;
+}
+#match-countdown {
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  font-weight: 800;
+  color: #f6d995;
+  text-shadow: 0 3px 16px #091329;
+}
+#match-feed {
+  position: absolute;
+  left: 50%;
+  top: 115px;
+  transform: translateX(-50%);
+  color: #f3d591;
+  font-size: 12px;
+  text-shadow: 0 1px 4px #000;
+}
+#match-pause-panel {
+  pointer-events: auto;
+  position: absolute;
+  inset: 0;
+  background: #071326c9;
+  display: grid;
+  place-items: center;
+  z-index: 60;
+}
+#match-pause-panel[hidden] {
+  display: none;
+}
+#match-pause-panel section {
+  padding: 28px;
+  background: #102839;
+  border: 1px solid #9bacaa;
+  border-radius: 8px;
+  max-width: 80vw;
+}
+#match-pause-panel button {
+  padding: 12px;
+  margin: 6px;
+}
+#shop-dialog.match-shop {
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+  overflow: hidden;
+}
+.match-shop header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #577580;
+}
+.match-shop header h2 {
+  margin: 5px 0;
+  color: #e7d3a0;
+}
+.match-shop header small {
+  font-size: 9px;
+  color: #8bd8e1;
+}
+.match-shop header strong {
+  margin-left: auto;
+  color: #f4d68c;
+}
+.match-shop header button {
+  font-size: 25px;
+  width: 35px;
+}
+.match-shop-main {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 20px;
+  min-height: 0;
+  flex: 1;
+  overflow: auto;
+  padding-top: 14px;
+}
+.match-shop-main nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+  align-content: start;
+}
+.match-shop-main nav button {
+  display: flex;
+  align-items: center;
+  padding: 7px;
+  gap: 8px;
+  text-align: left;
+}
+.match-shop img {
+  width: 38px;
+  height: 38px;
+  border-radius: 7px;
+}
+.match-shop small {
+  display: block;
+  color: #b7a87f;
+  font-size: 9px;
+}
+.match-shop-main section {
+  padding: 8px;
+}
+.match-shop-main section h3 {
+  color: #e4d0a2;
+}
+.match-shop-main p {
+  color: #b9cdd2;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.match-shop-main dl {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  color: #a1d6d8;
+  font-size: 12px;
+}
+.match-shop-main dd {
+  margin: 0;
+}
+.match-shop-main label {
+  display: grid;
+  gap: 5px;
+  font-size: 10px;
+}
+.match-shop-main select {
+  max-width: 100%;
+  padding: 8px;
+}
+#item-purchase {
+  padding: 10px;
+  margin-top: 12px;
+  color: #ffe6a9;
+}
+.match-shop footer {
+  border-top: 1px solid #577580;
+  padding-top: 8px;
+}
+.match-shop footer > p {
+  font-size: 9px;
+  color: #a8c3c8;
+}
+#match-inventory {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 5px;
+}
+#match-inventory button {
+  padding: 5px;
+  min-height: 65px;
+  font-size: 9px;
+}
+#match-inventory span {
+  display: block;
+}
+.item-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+@media (max-height: 600px), (max-width: 850px) {
+  .live-objectives {
+    font-size: 6px;
+    top: 55px;
+    width: 64%;
+  }
+  .live-record {
+    top: 71px;
+    font-size: 8px;
+    gap: 5px;
+  }
+  .live-record button {
+    padding: 4px;
+  }
+  #match-feed {
+    top: 99px;
+    font-size: 9px;
+  }
+  #shop-dialog.match-shop {
+    padding: 10px;
+  }
+  .match-shop-main {
+    gap: 8px;
+  }
+  .match-shop-main nav button {
+    padding: 4px;
+    font-size: 9px;
+  }
+  .match-shop img {
+    width: 26px;
+    height: 26px;
+  }
+  .match-shop header h2 {
+    font-size: 16px;
+  }
+  .match-shop-main section h3 {
+    margin: 2px 0;
+  }
+  .match-shop-main p {
+    font-size: 9px;
+  }
+  #match-inventory button {
+    min-height: 42px;
+  }
+  #match-inventory img {
+    width: 21px;
+    height: 21px;
+  }
+  .touch-controls .hero-panel {
+    display: none;
+  }
+  .touch-controls .progression-tools {
+    bottom: 162px;
+  }
+  .touch-controls .movement-dock {
+    left: 18px;
+    bottom: 35px;
+  }
+}
+.practice-exit {
+  position: absolute;
+  right: 18px;
+  top: 82px;
+  padding: 8px;
+  pointer-events: auto;
+}
+.practice-exit-confirm {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: #091527c9;
+  z-index: 60;
+  pointer-events: auto;
+}
+.practice-exit-confirm section {
+  background: #152b3c;
+  padding: 28px;
+  border: 1px solid #9bb5bc;
+}
+.practice-exit-confirm button {
+  padding: 10px;
+  margin: 6px;
+}
+#shop-dialog.shop-window.match-shop:not([open]) {
+  display: none;
+}
+#shop-dialog.shop-window.match-shop[open] {
+  display: flex;
+  flex-direction: column;
+}
+#hud-root {
+  z-index: 5;
+}
+.player-overhead {
+  z-index: 3;
+}
+.actor-label.bot-label,
+.actor-label.minion-label {
+  width: 35px;
+}
+.actor-label.bot-label span,
+.actor-label.bot-label small,
+.actor-label.minion-label span,
+.actor-label.minion-label small {
+  display: none;
+}
+.actor-label.bot-label.selected {
+  width: 95px;
+}
+.actor-label.bot-label.selected span,
+.actor-label.bot-label.selected small {
+  display: block;
+}
+.actor-label.tower-label,
+.actor-label.core-label {
+  font-size: 7px;
+}
+#player-label.player-overhead {
+  width: 132px;
+}
+.player-overhead .overhead-values {
+  white-space: nowrap;
+  letter-spacing: 0;
+  font-size: 7px;
+}

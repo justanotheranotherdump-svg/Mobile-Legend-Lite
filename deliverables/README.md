@@ -1,37 +1,13 @@
-# Regenerable downloads — gameplay roadmap Phase 1
+# Regenerable offline downloads — AI Training / Brawl
 
-`npm run build` generates `MOBA-Lab-Phase-3.html`, the single self-contained game,
-now with intentionally reconstructed Layla and the unchanged approved embedded GLB.
-The Phase-3 filename remains compatible with the existing packaging/tests.
-`npm run package:source` generates `MOBA-Lab-Phase-3-source.zip`.
+- `npm run build`: **MOBA-Lab-Phase-3.html**, the complete self-contained game.
+- `npm run package:source`: **MOBA-Lab-Phase-3-source.zip**, editable source + tests + docs + playable root index.
+- Root `../index.html`, `../dist/index.html` and the named HTML are byte-identical. The historical Phase-3 filename is retained solely for packaging compatibility.
 
-Root `../index.html` is the identical standalone game, deliberately tracked so a
-source ZIP can play without building. Edit `../dev.html` / `../src/`, not generated
-index. Downloads/dist/dependencies/screenshots remain ignored by Git.
+Open either HTML alone in Chrome/Edge with WebGL2, including offline. No Node, server, sibling assets or CDN is required to play. Edit `src/` / `dev.html`, not generated index. Dependencies, reference screenshots, test screenshots and duplicate builds are excluded from the source ZIP.
 
-Shop and Settings now stay open without blocking WASD, basic attacks or skills.
-Panel transitions preserve held movement and aim; editing controls keep their keys.
+Main Menu → MODE → AI TRAINING ROOM → choose scenario, or BRAWL → local room → START GAME → choose Layla → CONFIRM → local loading → countdown/gameplay. Practice is the preserved separate dummy map; lane modes have real waves, Training Bots, sequential towers/cores, XP/gold, six-slot items, death/respawn, actual results and fresh replay/menu return. Only Layla is selectable. Classic/Ranked remain disabled.
 
-Read `../docs/LIVE_PANELS.md`, `../docs/COMBAT_CONTROLS.md` and `../docs/LAYLA_INTEGRATION.md` for recovery result, configuration, mechanics,
-GLB validation, tests and limitations. Windows native offline acceptance remains
-manual; automated file:// checks run Linux Chromium. No server/sibling assets/CDN
-are needed to play the HTML. Stop after this milestone for approval.
+The approved GLB/creation PNG are unchanged. Newly authored PNG controls and procedural causeway/bot geometry are original temporary prototype art. Recall/Regen/spell controls remain art-only reserved slots. Match gold never alters the persistent account wallet (30,000 coins / 0 diamonds granted once). Shop and Settings retain centered non-modal gameplay behavior; match pause/quit actually freezes the simulation.
 
-The game now opens Create Username (or the lobby for a valid saved local profile).
-Continue → MODE → AI TRAINING ROOM enters the existing Layla demo. The creation
-screen uses the original alpha PNG; lobby/modes use the approved GLB. Lobby Shop and Settings are now functional; other lobby navigation and
-Classic/Ranked/Brawl remain disabled previews. The background is an original
-embedded PNG, the approved 3D hero is unchanged, and the Shop uses the original
-illustration. Audio is synthesized locally. A one-time per-profile wallet starts
-at 30,000 coins / 0 diamonds; no earning, spending or real purchases.
-See `../docs/LOBBY_POLISH.md` and `../docs/MENU_SYSTEM.md` for persistence, asset assignment and validation.
-
-Latest: `../docs/HERO_BROWSER.md` — complete creation PNG with blended bottom,
-15-slot hero catalog, PNG guide and actual skill facts; sound stays in Settings.
-
-
-Current content: **gameplay roadmap Phase 1 stats/progression**, documented in
-`../docs/GAMEPLAY_PHASE_1.md`. The historical Phase-3 artifact filenames are
-retained solely for packaging/test compatibility; they do NOT mean roadmap
-Phases 2–5 have been implemented. Level 1 starts with one point/unlearned skills;
-use the S1/S2/ULT upgrade row and Attributes / Practice · Testing controls.
+See `../docs/AI_TRAINING_BRAWL.md` for values, limits, verification, play steps and changed-file references. Automated Linux offline/touch-emulated results do not certify native Windows/physical touch/speakers. The user subsequently authorized committing and pushing the reviewed expansion to `arena/55ce0f80-mobile-legend-lite`.

@@ -4,8 +4,13 @@ const routes = {
   shop: ["lobby", "hero"],
   hero: ["shop"],
   settings: ["lobby"],
-  modes: ["lobby", "training"],
-  training: [],
+  modes: ["lobby", "ai-modes", "room"],
+  "ai-modes": ["modes","room"],
+  room: ["ai-modes","modes","lobby","selection"],
+  selection: ["room","loading"],
+  loading: ["training","room"],
+  training: ["results","room","lobby"],
+  results: ["selection","room","lobby"],
 };
 export class MenuNavigation {
   constructor(hasProfile = false) {

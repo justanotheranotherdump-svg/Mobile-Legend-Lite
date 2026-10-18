@@ -587,7 +587,7 @@ export class HeroCombatSimulation extends TrainingSimulation {
       this.emit("explosion", { point, radius: a.parameters.blastRadius });
     } else {
       if (target) {
-        this.damageEnemy(target, a.damage, a.damageModel?.type);
+        this.damageEnemy(target, a.damage, a.damageModel?.type, {basic:a.effectId === 'basic-projectile'});
         if (a.effectId === "basic-projectile") this.hits++;
         if (a.effectId === "line-projectile") {
           this.buff = { until: this.time + a.parameters.buffDuration };

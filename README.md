@@ -1,10 +1,8 @@
-# MOBA Lab — offline lobby and Layla training
+# MOBA Lab — offline AI Training and Brawl
 
-A modular 3D offline Layla sandbox. **Latest milestone: gameplay-roadmap Phase 1 only — stats/growth, XP levels 1–15, active skill ranks, shared damage/defense, live attributes and session-only Practice tools.** This supersedes the earlier prototype HP/damage/cooldown values, not the approved controls or assets. The rigid-part GLB and original creation PNG remain byte-identical. No Phases 2–5 gameplay has been implemented.
+A modular local 3D MOBA prototype with **connected rooms → Layla selection → honest local loading → single-lane AI gameplay → results/replay** and a separate preserved dummy Practice sandbox. Only Layla is playable; Training Bots and the original causeway are explicitly temporary geometry. Classic/Ranked, online play and monetization are not implemented.
 
-Read [the Phase 1 report](docs/GAMEPLAY_PHASE_1.md), [changed files](docs/GAMEPLAY_PHASE_1_CHANGED_FILES.md) and [PROJECT_RULES.md](PROJECT_RULES.md). Earlier [hero-browser work](docs/HERO_BROWSER.md) remains preserved; its old balance/no-level statements are historical.
-
-See [previous lobby/audio/wallet report](docs/LOBBY_POLISH.md) and [changed files](docs/POLISH_CHANGED_FILES.md). The [prior menu report](docs/MENU_SYSTEM.md) records the original front-end milestone.
+Read the current [AI Training / Brawl report](docs/AI_TRAINING_BRAWL.md), [changed files](docs/AI_TRAINING_BRAWL_CHANGED_FILES.md), and [PROJECT_RULES.md](PROJECT_RULES.md). The approved GLB and creation PNG remain byte-identical. Historical Phase-1/menu reports describe earlier milestones, not the current feature boundary.
 
 ## Play offline on Windows
 
@@ -14,14 +12,15 @@ Extract this branch's source ZIP and double-click the root **`index.html`**. Tha
 2. Double-click the HTML. If needed, choose **Open with → Chrome or Edge**.
 3. Confirm it opens as `file:///…/index.html` (or the named standalone file).
 4. Create a local username (4–20 letters/numbers/underscores), select PH/US/JP and Male/Female, then Continue. A valid saved profile skips creation on later same-file launches when browser storage is available.
-5. In the lobby choose **MODE → AI TRAINING ROOM**. This opens the existing Layla demo. The lobby **Shop** has an owned Layla card, 14 empty future slots, role/search filters, and a clickable PNG hero/skill guide; **Settings** contains all audio/motion controls (no separate lobby sound button), and the top bar shows **30,000 starting coins / 0 diamonds**, granted once per local profile. Other lobby icons and Classic/Ranked/Brawl remain disabled previews.
-6. You start at **level 1 with one skill point and unlearned active skills**. Use the visible **S1 / S2 / ULT +** upgrade row above the player card. Ultimate ranks require levels **4 / 8 / 12**.
-7. Open **Attributes / Practice · Testing** to inspect real stats, set level 1–15, grant configurable XP, restore HP/mana or reset to level 1. Set-level resets ranks and cancels actions/cooldowns; normal XP gains preserve ranks and numerical resource deficits. No dummy kill grants XP. These tools never alter your account wallet.
-8. Click the arena if necessary to focus movement controls.
+5. Choose **MODE → AI TRAINING ROOM → PRACTICE / VS A.I. / CUSTOM / AI TRAINING**, or **MODE → BRAWL**. Classic and Ranked are disabled. Set real AI difficulty in the local room (Normal default); Custom also configures team size.
+6. **START GAME → select Layla → OK / CONFIRM**. Seven actual local setup tasks finish before countdown/gameplay. No combat starts merely by opening a room or selection.
+7. Use **WASD / touch joystick**, **Space / left-click basic attack**, **1/2/3** skills; existing aiming, cancellation, targeting and rebindings remain. Spend legal skill points with the **+ beside the top-right of each skill**, not a separate upgrade row. Ultimate gates remain levels 4/8/12.
+8. In lane modes, follow real waves, fight bots, buy/sell original items with **separate match gold** in six equipment slots, and destroy **outer tower → inner tower → core**. Core destruction gives Victory/Defeat and actual results. Dead heroes respawn. Pause / Quit provides safe room/menu return; replay starts fresh through selection.
+9. Practice keeps the existing reward-free three-dummy map and testing/reset/exit controls. AI Training/Custom also have testing tools. VS A.I./Brawl have no level/XP/resource cheats; Brawl starts at level 3 / 800 match gold, AI scenarios at level 1 / 350. Account coins/diamonds never fund or receive match purchases/rewards.
 
 The creation screen uses the supplied transparent anime PNG. Lobby and mode selection use the existing approved 3D GLB; the same model instance transfers to gameplay. Local persistence was checked at offline file:// on Linux Chromium; moving/renaming the HTML or using another browser can change its storage scope. If blocked, a session profile still works. No online account is created.
 
-No server, Node.js, npm, sibling assets, or internet is needed to play. Requires a modern browser with **WebGL2**/graphics acceleration. Linux Chromium 153 offline file:// tests passed; Windows-specific verification remains manual. See [the current controls report](docs/COMBAT_CONTROLS.md).
+No server, Node.js, npm, sibling assets, or internet is needed to play. Requires a modern browser with **WebGL2**/graphics acceleration. Linux Chromium offline file:// verification is documented in the current report; Windows-specific verification remains manual. See [the current controls report](docs/COMBAT_CONTROLS.md).
 
 ## Controls
 
@@ -77,13 +76,11 @@ The latest refinement uses an original faceted attack-guard illustration with sm
 
 ## Honest interface status
 
-- **Functional:** live map/HP/target feedback, simulation/session timer, WASD, Settings priority/clear pin, tap/hold/release/cancel skills, click/Space/basic attack, actual cooldown/mana feedback, Layla passive/three skills/buffs/marks/stuns, reset, and real training-target elimination announcements.
-- **Interface-only:** shop categories/view layout, settings/help shell, non-modal panel open/close, reduced HUD motion. The default layout is keyboard-only; no joystick setting remains.
-- **Reserved:** team kill counters and gold show **—**, not fabricated numbers; Recall/Regen/battle spell, six equipment slots/quick buy, minion/tower priorities and empty catalog/build slots and disabled Purchase/Prioritize buttons have no gameplay functionality.
+- **Functional:** connected local rooms/selection/loading, real one-lane waves/bots/towers/cores, actual hero team score/time/HP/mana/XP/ranks/gold, six-slot purchases/sales/modifiers, death/respawn/pause/quit/results/replay, dynamic minimap, preserved controls/settings/audio and separate dummy Practice.
+- **Temporary presentation:** original procedural causeway/tower/core/bot geometry; authored local PNG controls; only the existing approved Layla GLB is a playable character.
+- **Reserved/unimplemented:** Classic/Ranked/online services, additional heroes, utility Recall/Regen/spell mechanics, production bot tactics/pathfinding and an official item catalog. Disabled slots never cast fake abilities. Practice's empty shop/score placeholders remain truthful for that reward-free sandbox.
 
-Dummy deaths announce **Target eliminated**, not competitive hero kills; no fake team score changes. Player/ally kill/death announcement classifications are prepared and unit-tested, but cannot occur with the existing non-retaliating dummies and absent allies. No demo notifications fire at startup. The timer is elapsed training simulation time, not a newly invented competitive match system.
-
-Current keyboard-only layout checked at **800×450, 960×540 and 1440×900**. The historical fixture also retains its five-size regression coverage. Portrait/very small windows, physical touch devices and native Windows verification are not certified here.
+Supported landscape checks target **1280×720, 960×540 and 844×390**. Coarse-pointer input adds the real virtual joystick. Physical devices, portrait/very small windows and native Windows verification are not certified. See [the current report](docs/AI_TRAINING_BRAWL.md) for exact evidence and prototype balance.
 
 ## Develop and validate
 
@@ -92,13 +89,14 @@ Used Node **22.22.3**, npm **10.9.8**, Vite **7.3.7**, Three.js **0.186.1**. Mod
 ```bash
 npm ci
 npm run dev -- --port 5173
-npm test                   # 290 unit tests; historical fixture + Phase 1 coverage
+npm test                   # historical fixture + progression + match + lifecycle coverage
 npm run validate:heroes    # Schema/reference/embedded-model validation
 npm run build              # Build and validate the standalone game
 npm run validate:offline
 npm run package:source     # Rebuild then archive (zip CLI required)
 npm run test:browser        # 50 historical-fixture offline checks; requires source ZIP
 npm run test:browser:menu   # first/returning profile, lobby, modes and actual gameplay flow
+npm run test:browser:match  # complete connected offline lane flow, real result/replay, responsive and touch
 npm run test:browser:progression # real XP/ranks/stats/Practice UI and compact layouts
 npm run test:browser:layla  # current tap/hold/homing/keyboard-only offline checks
 npm run test:browser:panels # live movement/combat with Shop and Settings open
@@ -124,10 +122,10 @@ Developer regression entry: `?screen=training#diagnostics` bypasses the front en
 - `src/simulation/targeting.js`: pure eligibility, mode scoring, in-range filtering, deterministic tie-breaking.
 - `src/simulation/game.js`: mesh-independent state, movement integration, manual pin lifecycle, validated attacks/reset.
 - `src/data/training.json`: scenario hero ID/spawn, default mode, dummy IDs/positions/HP. Hero stats are no longer duplicated here.
-- `src/input/`: keyboard/pointer/Space, shared skill gestures/cancellation and safe UI-focus handling; legacy joystick adapter only for the training fixture.
+- `src/input/`: keyboard/pointer/Space, shared skill gestures/cancellation and safe UI-focus handling; shared joystick for coarse-pointer gameplay and the training fixture.
 - `src/rendering/world.js`: approved injected hero visual, temporary arena/dummies, camera, ray picking, selection and event-driven VFX.
 - `src/simulation/combat-events.js`: presentation-neutral death/reset transport; no score or damage rules.
-- `src/ui/`: separate layout/styles, original vector/button components, live minimap, targeting, cooldown display, shop/settings/equipment placeholders and queued combat announcements.
+- `src/ui/`: separate layout/styles, original vector/button components, live minimap, targeting, cooldown display, match shop/settings/equipment, preserved Practice placeholders and real combat announcements.
 - `tests/`: simulation, targeting and actual offline browser regressions.
 - `scripts/`: inline HTML packaging, structural validation, source archive.
 
@@ -141,11 +139,11 @@ No CDN, external font, external model/texture/data file, fetched JSON, service w
 
 Root `index.html` is the intentional generated-artifact exception: rebuild and commit it with runtime changes. Duplicate downloads/dist, dependencies, caches and screenshots stay ignored. The source ZIP contains root index, editable source, lockfile, tests, and docs—but **no reference screenshots/notes**. Per this architecture milestone, hero runtime models belong to `src/heroes/<id>/assets/*.glb`, alongside hero-owned JSON and animation mappings. Legacy public model/texture paths remain reserved for other world assets; editable Blender sources remain `assets/source_blender/`. Empty directories may be absent until genuine assets exist.
 
-Add `#diagnostics` to a game URL only for the read-only state snapshot/projection API used by tests; it cannot mutate gameplay. Hero XP/levels are session-only and manually granted through Practice; no match/reward/account-level progression is included. A separate local wallet stores only the one-time starter balances and Layla ownership; there is no earning/spending system.
+Add `#diagnostics` to a game URL only for the read-only state snapshot/projection API used by tests; it cannot mutate gameplay. Hero XP/levels and equipment are match/session-only; real lane combat events grant XP and match gold. Practice is reward-free. A separate local wallet stores only the one-time starter balances and Layla ownership; match earning/spending never touches it.
 
-Latest lobby/audio/wallet changes: [docs/LOBBY_POLISH.md](docs/LOBBY_POLISH.md). Prior menu milestone: [docs/MENU_SYSTEM.md](docs/MENU_SYSTEM.md). Previous panel details: [docs/LIVE_PANELS.md](docs/LIVE_PANELS.md). Combat-control details: [docs/COMBAT_CONTROLS.md](docs/COMBAT_CONTROLS.md). The [Settings/input report](docs/SETTINGS_INPUT_FIX.md) records the preserved earlier milestone. The [empty-shop report](docs/EMPTY_SHOP_LAYOUT.md) records the retained empty-slot shop. The [key-settings report](docs/KEY_CONTROL_SETTINGS.md) documents the preserved session-only key editor. The [initial Phase 3 report](docs/PHASE_3_HUD_REPORT.md) retains its original Windows checklist/history. The [hero architecture guide](docs/HERO_ARCHITECTURE.md) explains schema, discovery, model replacement and adding a future approved hero. Earlier reports remain historical evidence. See the new Phase 1 report for current values. Stop here for review; Phase 2 is proposed only.
+Latest lobby/audio/wallet changes: [docs/LOBBY_POLISH.md](docs/LOBBY_POLISH.md). Prior menu milestone: [docs/MENU_SYSTEM.md](docs/MENU_SYSTEM.md). Previous panel details: [docs/LIVE_PANELS.md](docs/LIVE_PANELS.md). Combat-control details: [docs/COMBAT_CONTROLS.md](docs/COMBAT_CONTROLS.md). The [Settings/input report](docs/SETTINGS_INPUT_FIX.md) records the preserved earlier milestone. The [empty-shop report](docs/EMPTY_SHOP_LAYOUT.md) records the retained empty-slot shop. The [key-settings report](docs/KEY_CONTROL_SETTINGS.md) documents the preserved session-only key editor. The [initial Phase 3 report](docs/PHASE_3_HUD_REPORT.md) retains its original Windows checklist/history. The [hero architecture guide](docs/HERO_ARCHITECTURE.md) explains schema, discovery, model replacement and adding a future approved hero. Earlier reports remain historical evidence. See the current AI Training / Brawl report for values and scope. The user subsequently authorized updating `arena/55ce0f80-mobile-legend-lite` with the reviewed expansion.
 
 
 ## Layla module and historical fixture
 
-`src/heroes/layla/` owns JSON definitions/animation mappings and the approved GLB. Shared `src/simulation/hero-combat.js` owns casts/projectiles/statuses/damage; `src/rendering/combat-vfx.js` consumes events and never applies damage. No additional playable hero or AI was added. `?hero=training` deliberately selects the old Test Hero fixture for unchanged historical regression checks; the default is Layla. `npm test` runs both foundation and reconstructed-kit coverage; `npm run test:browser:layla` exercises the current tap/hold/locked-attack default, while `npm run test:browser` exercises the explicitly selected historical fixture.
+`src/heroes/layla/` owns JSON definitions/animation mappings and the approved GLB. Shared `src/simulation/hero-combat.js` owns casts/projectiles/statuses/damage; `src/rendering/combat-vfx.js` consumes events and never applies damage. No additional playable hero was added; lane AI uses explicitly temporary Training Bot geometry and reference attributes. `?hero=training` deliberately selects the old Test Hero fixture for unchanged historical regression checks; the default is Layla. `npm test` runs both foundation and reconstructed-kit coverage; `npm run test:browser:layla` exercises the current tap/hold/locked-attack default, while `npm run test:browser` exercises the explicitly selected historical fixture.

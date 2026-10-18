@@ -1,0 +1,132 @@
+{
+  "refundRatio": 0.6,
+  "slots": 6,
+  "items": [
+    {
+      "id": "edge",
+      "name": "Prism Edge",
+      "cost": 300,
+      "description": "Original prototype equipment. Bonuses apply once per equipped copy.",
+      "modifiers": {
+        "flat": {
+          "physicalAttack": 30
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "maxCopies": 1,
+      "icon": "skill-1"
+    },
+    {
+      "id": "spring",
+      "name": "Clockwork Spring",
+      "cost": 280,
+      "description": "Original prototype equipment. Bonuses apply once per equipped copy.",
+      "modifiers": {
+        "flat": {},
+        "percent": {
+          "attackSpeed": 0.2
+        }
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "maxCopies": 1,
+      "icon": "recall"
+    },
+    {
+      "id": "lens",
+      "name": "Fortune Lens",
+      "cost": 350,
+      "description": "Original prototype equipment. Bonuses apply once per equipped copy.",
+      "modifiers": {
+        "flat": {},
+        "percent": {}
+      },
+      "criticalChance": 0.2,
+      "lifesteal": 0,
+      "maxCopies": 1,
+      "icon": "skill-ultimate"
+    },
+    {
+      "id": "plate",
+      "name": "Bastion Plate",
+      "cost": 300,
+      "description": "Original prototype equipment. Bonuses apply once per equipped copy.",
+      "modifiers": {
+        "flat": {
+          "physicalDefense": 25
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "maxCopies": 1,
+      "icon": "bot"
+    },
+    {
+      "id": "ward",
+      "name": "Aether Ward",
+      "cost": 300,
+      "description": "Original prototype equipment. Bonuses apply once per equipped copy.",
+      "modifiers": {
+        "flat": {
+          "magicDefense": 25
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "maxCopies": 1,
+      "icon": "skill-2"
+    },
+    {
+      "id": "heart",
+      "name": "Crystal Heart",
+      "cost": 400,
+      "description": "Original prototype equipment. Bonuses apply once per equipped copy.",
+      "modifiers": {
+        "flat": {
+          "maxHp": 500
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "maxCopies": 1,
+      "icon": "regen"
+    },
+    {
+      "id": "boots",
+      "name": "Wayfarer Boots",
+      "cost": 250,
+      "description": "Original prototype equipment. Bonuses apply once per equipped copy.",
+      "modifiers": {
+        "flat": {},
+        "percent": {
+          "movementSpeed": 0.1
+        }
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "maxCopies": 1,
+      "icon": "recall"
+    },
+    {
+      "id": "fang",
+      "name": "Sanguine Fang",
+      "cost": 450,
+      "description": "Original prototype equipment. Bonuses apply once per equipped copy.",
+      "modifiers": {
+        "flat": {
+          "physicalAttack": 15
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0.12,
+      "maxCopies": 1,
+      "icon": "skill-1"
+    }
+  ]
+}

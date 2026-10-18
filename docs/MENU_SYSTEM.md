@@ -1,3 +1,5 @@
+> Historical milestone. The authorized connected AI Training / Brawl expansion is documented in [AI_TRAINING_BRAWL.md](AI_TRAINING_BRAWL.md).
+
 # MOBA Lab — profile, lobby and mode selection
 
 > Historical menu milestone. The current authorized Shop, wallet, PNG environment and audio update supersedes disabled-Shop/Settings and procedural-environment statements below. See [LOBBY_POLISH.md](LOBBY_POLISH.md).

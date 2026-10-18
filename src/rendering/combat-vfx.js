@@ -127,7 +127,7 @@ export class CombatVfx {
     const s = this.simulation,
       time = s.time,
       ids = new Set();
-    for (const p of s.projectiles) {
+    for (const p of [...s.projectiles,...(s.npcProjectiles||[])]) {
       ids.add(p.id);
       let g = this.shots.get(p.id);
       if (!g) {
@@ -156,6 +156,7 @@ export class CombatVfx {
         this.dispose(g);
         this.shots.delete(id);
       }
+    for(const [id,mesh] of this.statuses)if(!s.enemies.some(e=>e.id===id)){this.dispose(mesh);this.statuses.delete(id);}
     for (const e of s.enemies) {
       let g = this.statuses.get(e.id);
       if (!g) {
