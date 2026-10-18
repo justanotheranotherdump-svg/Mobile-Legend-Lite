@@ -1,0 +1,834 @@
+{
+  "before": {
+    "passed": 101,
+    "failed": 0,
+    "tests": [
+      {
+        "name": "production catalog eagerly bundles hero JSON and GLB bytes even with file inlining disabled",
+        "status": "passed"
+      },
+      {
+        "name": "39 complete simulation snapshots match pre-refactor baseline exactly",
+        "status": "passed"
+      },
+      {
+        "name": "migrated hero produces the identical player fields/values; world data owns spawn only",
+        "status": "passed"
+      },
+      {
+        "name": "hero directory auto-discovery supports adding definitions without a central roster",
+        "status": "passed"
+      },
+      {
+        "name": "duplicate registry IDs, unknown IDs and empty registry give clear errors",
+        "status": "passed"
+      },
+      {
+        "name": "registry definitions are immutable; independent state/reset cannot mutate definitions",
+        "status": "passed"
+      },
+      {
+        "name": "missing hero.json reports its hero-local file path",
+        "status": "passed"
+      },
+      {
+        "name": "missing abilities.json reports its hero-local file path",
+        "status": "passed"
+      },
+      {
+        "name": "missing animations.json reports its hero-local file path",
+        "status": "passed"
+      },
+      {
+        "name": "missing visual.json reports its hero-local file path",
+        "status": "passed"
+      },
+      {
+        "name": "orphan data, folder/ID mismatch and unexpected fields are rejected",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: missing identity",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: invalid ID",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: schema version",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: zero max HP",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: infinite speed",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: negative radius",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: negative damage",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: NaN range",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: zero cooldown",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: unknown effect",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: inherited effect",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: missing reference",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: unknown placeholder",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: invalid visual scale",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: external model reference",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: missing model",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: invented placeholder clips",
+        "status": "passed"
+      },
+      {
+        "name": "ability schema validates required fields, slot/effect/target/ranges and exact references",
+        "status": "passed"
+      },
+      {
+        "name": "shared damage effect preserves clamping and rejects arbitrary handlers/invalid input",
+        "status": "passed"
+      },
+      {
+        "name": "GLB contract rejects invalid headers, truncated binary, external resources and decoders",
+        "status": "passed"
+      },
+      {
+        "name": "actual GLB clip names are required; runtime asset bytes are registry-owned copies",
+        "status": "passed"
+      },
+      {
+        "name": "placeholder adapter keeps exact existing mesh and contains no animation claims",
+        "status": "passed"
+      },
+      {
+        "name": "real GLTFLoader parses synthetic in-memory GLB and AnimationMixer plays verified clip",
+        "status": "passed"
+      },
+      {
+        "name": "runtime model parse or actual clip mismatch retains a working placeholder and reports it",
+        "status": "passed"
+      },
+      {
+        "name": "presentation adapter supports mapped basic-attack one-shots and reset independently of combat",
+        "status": "passed"
+      },
+      {
+        "name": "null/malformed hero files produce clear file-scoped validation errors",
+        "status": "passed"
+      },
+      {
+        "name": "invalid registry input and malformed GLB records fail explicitly",
+        "status": "passed"
+      },
+      {
+        "name": "joystick maps screen-up to positive vertical and right to positive horizontal",
+        "status": "passed"
+      },
+      {
+        "name": "joystick diagonal and out-of-radius input is clamped, never speed-boosted",
+        "status": "passed"
+      },
+      {
+        "name": "joystick deadzone, analog partial input and invalid geometry are safe",
+        "status": "passed"
+      },
+      {
+        "name": "keyboard takes priority rather than adding joystick speed; release restores virtual movement",
+        "status": "passed"
+      },
+      {
+        "name": "joystick uses exactly the same camera-relative simulation and collision path as WASD",
+        "status": "passed"
+      },
+      {
+        "name": "minimap rotates world axes to match camera-relative movement and diamond arena bounds",
+        "status": "passed"
+      },
+      {
+        "name": "cooldown display clamps ring progress and never invents skill resources",
+        "status": "passed"
+      },
+      {
+        "name": "only existing dummy target category is available; minions/towers remain reserved",
+        "status": "passed"
+      },
+      {
+        "name": "all local icon output is inline SVG and unknown/prototype names are rejected",
+        "status": "passed"
+      },
+      {
+        "name": "real damage emits one death only at a living-to-zero transition with immutable metadata",
+        "status": "passed"
+      },
+      {
+        "name": "rejected, nonlethal attacks and selection changes never fabricate notifications",
+        "status": "passed"
+      },
+      {
+        "name": "combat subscription unsubscribe and presentation errors cannot change gameplay",
+        "status": "passed"
+      },
+      {
+        "name": "training deaths are truthfully named and not hero/team kills",
+        "status": "passed"
+      },
+      {
+        "name": "player kill and death classifications prepare prominent notifications",
+        "status": "passed"
+      },
+      {
+        "name": "allied kill and allied death classifications are smaller, with no runtime fabricated events",
+        "status": "passed"
+      },
+      {
+        "name": "non-death, living victim and unrelated event classifications are ignored",
+        "status": "passed"
+      },
+      {
+        "name": "notification queue dismisses, bounds backlog, prioritizes prominent events and resets",
+        "status": "passed"
+      },
+      {
+        "name": "default skill HUD has exactly first/second/ultimate slots on top-row Digit1/2/3",
+        "status": "passed"
+      },
+      {
+        "name": "skill shortcuts explicitly exclude numpad, F keys and old Q/E/R",
+        "status": "passed"
+      },
+      {
+        "name": "reserved skill requests never cast; a future enabled binding shares native button activation",
+        "status": "passed"
+      },
+      {
+        "name": "default key bindings preserve attack/three top-row skills and original utility labels",
+        "status": "passed"
+      },
+      {
+        "name": "assigning active/reserved button keys updates lookup without enabling gameplay",
+        "status": "passed"
+      },
+      {
+        "name": "duplicate keys reject atomically with conflict explanation",
+        "status": "passed"
+      },
+      {
+        "name": "movement/navigation/browser keys are protected from rebinding",
+        "status": "passed"
+      },
+      {
+        "name": "unbinding releases a key and multiple unbound buttons do not conflict",
+        "status": "passed"
+      },
+      {
+        "name": "restore default keys does not undo the independent visibility preference",
+        "status": "passed"
+      },
+      {
+        "name": "key configurations are session-local and independent",
+        "status": "passed"
+      },
+      {
+        "name": "binding and visibility subscribers update immediately and unsubscribe",
+        "status": "passed"
+      },
+      {
+        "name": "unknown and prototype action names never read or overwrite inherited values",
+        "status": "passed"
+      },
+      {
+        "name": "WASD is camera relative; every cardinal and diagonal has unit speed",
+        "status": "passed"
+      },
+      {
+        "name": "diagonal displacement equals cardinal displacement",
+        "status": "passed"
+      },
+      {
+        "name": "boundaries retain the entire player collider on all four sides",
+        "status": "passed"
+      },
+      {
+        "name": "solid obstacles stop movement from every side without tunneling",
+        "status": "passed"
+      },
+      {
+        "name": "collision permits sliding along an obstacle and handles rounded corners",
+        "status": "passed"
+      },
+      {
+        "name": "living dummy blocks movement; dead dummy does not",
+        "status": "passed"
+      },
+      {
+        "name": "attack rejects invalid target and out-of-range dummy without consuming cooldown",
+        "status": "passed"
+      },
+      {
+        "name": "attack accepts exact range, rejects beyond it, and enforces cooldown",
+        "status": "passed"
+      },
+      {
+        "name": "dummy death clamps health, rejects attacks, and reset restores all match state",
+        "status": "passed"
+      },
+      {
+        "name": "fixed timestep gives the same displacement at 30, 60, and 144 render FPS",
+        "status": "passed"
+      },
+      {
+        "name": "clock clamps catch-up and reset removes suspended-tab time",
+        "status": "passed"
+      },
+      {
+        "name": "Nearest Enemy selects dummy-a from meaningful training data",
+        "status": "passed"
+      },
+      {
+        "name": "Lowest Current HP selects dummy-b from meaningful training data",
+        "status": "passed"
+      },
+      {
+        "name": "Lowest HP Percentage selects dummy-c from meaningful training data",
+        "status": "passed"
+      },
+      {
+        "name": "Manual Target selects dummy-a from meaningful training data",
+        "status": "passed"
+      },
+      {
+        "name": "only valid, living, targetable enemy units qualify",
+        "status": "passed"
+      },
+      {
+        "name": "nearest: in-range eligible target is preferred to an out-of-range lower-HP unit",
+        "status": "passed"
+      },
+      {
+        "name": "current-hp: in-range eligible target is preferred to an out-of-range lower-HP unit",
+        "status": "passed"
+      },
+      {
+        "name": "hp-percent: in-range eligible target is preferred to an out-of-range lower-HP unit",
+        "status": "passed"
+      },
+      {
+        "name": "manual: in-range eligible target is preferred to an out-of-range lower-HP unit",
+        "status": "passed"
+      },
+      {
+        "name": "nearest: ties use distance then stable ID, independent of array order",
+        "status": "passed"
+      },
+      {
+        "name": "current-hp: ties use distance then stable ID, independent of array order",
+        "status": "passed"
+      },
+      {
+        "name": "hp-percent: ties use distance then stable ID, independent of array order",
+        "status": "passed"
+      },
+      {
+        "name": "manual: ties use distance then stable ID, independent of array order",
+        "status": "passed"
+      },
+      {
+        "name": "manual click overrides each auto mode and ground attacks preserve that lock",
+        "status": "passed"
+      },
+      {
+        "name": "Manual Target mode pins a specific target and reselects nearest after death",
+        "status": "passed"
+      },
+      {
+        "name": "changing modes or clearing a lock returns to that automatic policy without resetting cooldown",
+        "status": "passed"
+      },
+      {
+        "name": "dead/invalid target is never selected; invalid direct clicks do not damage another enemy",
+        "status": "passed"
+      },
+      {
+        "name": "target removed from the registry releases the pin and falls back using the active mode",
+        "status": "passed"
+      },
+      {
+        "name": "automatic killing blow immediately reselects according to each policy",
+        "status": "passed"
+      },
+      {
+        "name": "out-of-range pinned targets never get attacked, even if another enemy is in range",
+        "status": "passed"
+      },
+      {
+        "name": "automatic targeting and attacks never move the player, including empty and out-of-range states",
+        "status": "passed"
+      },
+      {
+        "name": "reset restores configured HP/max HP, all player and target state, and default selection",
+        "status": "passed"
+      },
+      {
+        "name": "default mode is configurable; unsupported modes fail without corrupting selection",
+        "status": "passed"
+      }
+    ]
+  },
+  "after": {
+    "passed": 104,
+    "failed": 0,
+    "tests": [
+      {
+        "name": "production catalog eagerly bundles hero JSON and GLB bytes even with file inlining disabled",
+        "status": "passed"
+      },
+      {
+        "name": "39 complete simulation snapshots match pre-refactor baseline exactly",
+        "status": "passed"
+      },
+      {
+        "name": "migrated hero produces the identical player fields/values; world data owns spawn only",
+        "status": "passed"
+      },
+      {
+        "name": "hero directory auto-discovery supports adding definitions without a central roster",
+        "status": "passed"
+      },
+      {
+        "name": "duplicate registry IDs, unknown IDs and empty registry give clear errors",
+        "status": "passed"
+      },
+      {
+        "name": "registry definitions are immutable; independent state/reset cannot mutate definitions",
+        "status": "passed"
+      },
+      {
+        "name": "missing hero.json reports its hero-local file path",
+        "status": "passed"
+      },
+      {
+        "name": "missing abilities.json reports its hero-local file path",
+        "status": "passed"
+      },
+      {
+        "name": "missing animations.json reports its hero-local file path",
+        "status": "passed"
+      },
+      {
+        "name": "missing visual.json reports its hero-local file path",
+        "status": "passed"
+      },
+      {
+        "name": "orphan data, folder/ID mismatch and unexpected fields are rejected",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: missing identity",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: invalid ID",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: schema version",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: zero max HP",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: infinite speed",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: negative radius",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: negative damage",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: NaN range",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: zero cooldown",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: unknown effect",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: inherited effect",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: missing reference",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: unknown placeholder",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: invalid visual scale",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: external model reference",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: missing model",
+        "status": "passed"
+      },
+      {
+        "name": "invalid hero data: invented placeholder clips",
+        "status": "passed"
+      },
+      {
+        "name": "ability schema validates required fields, slot/effect/target/ranges and exact references",
+        "status": "passed"
+      },
+      {
+        "name": "shared damage effect preserves clamping and rejects arbitrary handlers/invalid input",
+        "status": "passed"
+      },
+      {
+        "name": "GLB contract rejects invalid headers, truncated binary, external resources and decoders",
+        "status": "passed"
+      },
+      {
+        "name": "actual GLB clip names are required; runtime asset bytes are registry-owned copies",
+        "status": "passed"
+      },
+      {
+        "name": "placeholder adapter keeps exact existing mesh and contains no animation claims",
+        "status": "passed"
+      },
+      {
+        "name": "real GLTFLoader parses synthetic in-memory GLB and AnimationMixer plays verified clip",
+        "status": "passed"
+      },
+      {
+        "name": "runtime model parse or actual clip mismatch retains a working placeholder and reports it",
+        "status": "passed"
+      },
+      {
+        "name": "presentation adapter supports mapped basic-attack one-shots and reset independently of combat",
+        "status": "passed"
+      },
+      {
+        "name": "null/malformed hero files produce clear file-scoped validation errors",
+        "status": "passed"
+      },
+      {
+        "name": "invalid registry input and malformed GLB records fail explicitly",
+        "status": "passed"
+      },
+      {
+        "name": "joystick maps screen-up to positive vertical and right to positive horizontal",
+        "status": "passed"
+      },
+      {
+        "name": "joystick diagonal and out-of-radius input is clamped, never speed-boosted",
+        "status": "passed"
+      },
+      {
+        "name": "joystick deadzone, analog partial input and invalid geometry are safe",
+        "status": "passed"
+      },
+      {
+        "name": "keyboard takes priority rather than adding joystick speed; release restores virtual movement",
+        "status": "passed"
+      },
+      {
+        "name": "joystick uses exactly the same camera-relative simulation and collision path as WASD",
+        "status": "passed"
+      },
+      {
+        "name": "minimap rotates world axes to match camera-relative movement and diamond arena bounds",
+        "status": "passed"
+      },
+      {
+        "name": "cooldown display clamps ring progress and never invents skill resources",
+        "status": "passed"
+      },
+      {
+        "name": "only existing dummy target category is available; minions/towers remain reserved",
+        "status": "passed"
+      },
+      {
+        "name": "all local icon output is inline SVG and unknown/prototype names are rejected",
+        "status": "passed"
+      },
+      {
+        "name": "real damage emits one death only at a living-to-zero transition with immutable metadata",
+        "status": "passed"
+      },
+      {
+        "name": "rejected, nonlethal attacks and selection changes never fabricate notifications",
+        "status": "passed"
+      },
+      {
+        "name": "combat subscription unsubscribe and presentation errors cannot change gameplay",
+        "status": "passed"
+      },
+      {
+        "name": "training deaths are truthfully named and not hero/team kills",
+        "status": "passed"
+      },
+      {
+        "name": "player kill and death classifications prepare prominent notifications",
+        "status": "passed"
+      },
+      {
+        "name": "allied kill and allied death classifications are smaller, with no runtime fabricated events",
+        "status": "passed"
+      },
+      {
+        "name": "non-death, living victim and unrelated event classifications are ignored",
+        "status": "passed"
+      },
+      {
+        "name": "notification queue dismisses, bounds backlog, prioritizes prominent events and resets",
+        "status": "passed"
+      },
+      {
+        "name": "default skill HUD has exactly first/second/ultimate slots on top-row Digit1/2/3",
+        "status": "passed"
+      },
+      {
+        "name": "skill shortcuts explicitly exclude numpad, F keys and old Q/E/R",
+        "status": "passed"
+      },
+      {
+        "name": "reserved skill requests never cast; a future enabled binding shares native button activation",
+        "status": "passed"
+      },
+      {
+        "name": "default key bindings preserve attack/three top-row skills and original utility labels",
+        "status": "passed"
+      },
+      {
+        "name": "assigning active/reserved button keys updates lookup without enabling gameplay",
+        "status": "passed"
+      },
+      {
+        "name": "duplicate keys reject atomically with conflict explanation",
+        "status": "passed"
+      },
+      {
+        "name": "movement/navigation/browser keys are protected from rebinding",
+        "status": "passed"
+      },
+      {
+        "name": "unbinding releases a key and multiple unbound buttons do not conflict",
+        "status": "passed"
+      },
+      {
+        "name": "restore default keys does not undo the independent visibility preference",
+        "status": "passed"
+      },
+      {
+        "name": "key configurations are session-local and independent",
+        "status": "passed"
+      },
+      {
+        "name": "binding and visibility subscribers update immediately and unsubscribe",
+        "status": "passed"
+      },
+      {
+        "name": "unknown and prototype action names never read or overwrite inherited values",
+        "status": "passed"
+      },
+      {
+        "name": "shop has sixteen catalog, four build and six equipment slots without fabricated items",
+        "status": "passed"
+      },
+      {
+        "name": "empty slots and unavailable purchase/build actions are natively disabled and marked reserved",
+        "status": "passed"
+      },
+      {
+        "name": "shop category and view controls are explicitly interface-only; initial category is accessible",
+        "status": "passed"
+      },
+      {
+        "name": "WASD is camera relative; every cardinal and diagonal has unit speed",
+        "status": "passed"
+      },
+      {
+        "name": "diagonal displacement equals cardinal displacement",
+        "status": "passed"
+      },
+      {
+        "name": "boundaries retain the entire player collider on all four sides",
+        "status": "passed"
+      },
+      {
+        "name": "solid obstacles stop movement from every side without tunneling",
+        "status": "passed"
+      },
+      {
+        "name": "collision permits sliding along an obstacle and handles rounded corners",
+        "status": "passed"
+      },
+      {
+        "name": "living dummy blocks movement; dead dummy does not",
+        "status": "passed"
+      },
+      {
+        "name": "attack rejects invalid target and out-of-range dummy without consuming cooldown",
+        "status": "passed"
+      },
+      {
+        "name": "attack accepts exact range, rejects beyond it, and enforces cooldown",
+        "status": "passed"
+      },
+      {
+        "name": "dummy death clamps health, rejects attacks, and reset restores all match state",
+        "status": "passed"
+      },
+      {
+        "name": "fixed timestep gives the same displacement at 30, 60, and 144 render FPS",
+        "status": "passed"
+      },
+      {
+        "name": "clock clamps catch-up and reset removes suspended-tab time",
+        "status": "passed"
+      },
+      {
+        "name": "Nearest Enemy selects dummy-a from meaningful training data",
+        "status": "passed"
+      },
+      {
+        "name": "Lowest Current HP selects dummy-b from meaningful training data",
+        "status": "passed"
+      },
+      {
+        "name": "Lowest HP Percentage selects dummy-c from meaningful training data",
+        "status": "passed"
+      },
+      {
+        "name": "Manual Target selects dummy-a from meaningful training data",
+        "status": "passed"
+      },
+      {
+        "name": "only valid, living, targetable enemy units qualify",
+        "status": "passed"
+      },
+      {
+        "name": "nearest: in-range eligible target is preferred to an out-of-range lower-HP unit",
+        "status": "passed"
+      },
+      {
+        "name": "current-hp: in-range eligible target is preferred to an out-of-range lower-HP unit",
+        "status": "passed"
+      },
+      {
+        "name": "hp-percent: in-range eligible target is preferred to an out-of-range lower-HP unit",
+        "status": "passed"
+      },
+      {
+        "name": "manual: in-range eligible target is preferred to an out-of-range lower-HP unit",
+        "status": "passed"
+      },
+      {
+        "name": "nearest: ties use distance then stable ID, independent of array order",
+        "status": "passed"
+      },
+      {
+        "name": "current-hp: ties use distance then stable ID, independent of array order",
+        "status": "passed"
+      },
+      {
+        "name": "hp-percent: ties use distance then stable ID, independent of array order",
+        "status": "passed"
+      },
+      {
+        "name": "manual: ties use distance then stable ID, independent of array order",
+        "status": "passed"
+      },
+      {
+        "name": "manual click overrides each auto mode and ground attacks preserve that lock",
+        "status": "passed"
+      },
+      {
+        "name": "Manual Target mode pins a specific target and reselects nearest after death",
+        "status": "passed"
+      },
+      {
+        "name": "changing modes or clearing a lock returns to that automatic policy without resetting cooldown",
+        "status": "passed"
+      },
+      {
+        "name": "dead/invalid target is never selected; invalid direct clicks do not damage another enemy",
+        "status": "passed"
+      },
+      {
+        "name": "target removed from the registry releases the pin and falls back using the active mode",
+        "status": "passed"
+      },
+      {
+        "name": "automatic killing blow immediately reselects according to each policy",
+        "status": "passed"
+      },
+      {
+        "name": "out-of-range pinned targets never get attacked, even if another enemy is in range",
+        "status": "passed"
+      },
+      {
+        "name": "automatic targeting and attacks never move the player, including empty and out-of-range states",
+        "status": "passed"
+      },
+      {
+        "name": "reset restores configured HP/max HP, all player and target state, and default selection",
+        "status": "passed"
+      },
+      {
+        "name": "default mode is configurable; unsupported modes fail without corrupting selection",
+        "status": "passed"
+      }
+    ]
+  }
+}

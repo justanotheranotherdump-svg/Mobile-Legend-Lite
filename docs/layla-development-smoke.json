@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "platform": "linux",
+  "defaultHero": "layla",
+  "modelStatus": "glb",
+  "skill1RealDamage": 40.25,
+  "errors": [],
+  "sourcePreview": true
+}

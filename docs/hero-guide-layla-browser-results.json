@@ -1,0 +1,31 @@
+{
+  "platform": "linux",
+  "browser": "153.0.8010.0",
+  "offline": true,
+  "fileProtocol": true,
+  "checks": [
+    "offline default uses approved GLB, 3 skills, keyboard-only HUD; no joystick/duplicate priority card, hero status bottom-left",
+    "idle mouse hover does not rotate model or create an aim sight",
+    "normal model facing follows actual camera-relative movement rather than mouse",
+    "moving basic locks movement for full Shoot, hits locked enemy, then held WASD resumes automatically",
+    "quick key tap ignores mouse and auto-targets nearest eligible enemy at skill range; normal damage/buff/mana/CD retained",
+    "auto orb/basic chaining retains marks, bonus damage, stun trigger and authoritative presentation",
+    "pointer tap auto-targets using Settings priority, not cursor position; Settings is sole priority selector",
+    "held bound key previews original directional sight without spending; Escape cancels and stale keyup does not cast",
+    "hold-and-release can override auto/manual pin with an aimed enemy lock without changing pin",
+    "pointer capture supports held button drag aim and release, with exactly one cast and no native-click duplicate",
+    "dragging held pointer into visible CANCEL area and releasing cancels without mana/cooldown",
+    "right-click cancels a held skill without basic attack or resource spend",
+    "non-modal Settings/Shop preserve held aim and allow WASD and real skill casts while open",
+    "session custom numpad keys support both tap-auto and held preview/cancel; old key is replaced",
+    "native accessible button activation shares auto-targeted ultimate and authoritative one-hit beam",
+    "blur/reset lifecycle clears held preview/capture without spending or reviving old gestures",
+    "keyboard-only status/skills/attack remain accessible in desktop and compact landscape layouts",
+    "source ZIP HTML works copied alone at offline file:// Unicode/spaces path, with new controls and real embedded GLB",
+    "ZERO runtime errors, warnings or subresource requests across offline interaction"
+  ],
+  "errors": [],
+  "warnings": [],
+  "requests": [],
+  "date": "2026-10-18"
+}

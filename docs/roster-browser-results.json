@@ -1,0 +1,18 @@
+{
+  "environment": "Linux Chromium software WebGL; offline file://; not native Windows/physical touch",
+  "bundleSha256": "198aad05670f6906cc386ede85744e9a5a989456e8e06e8d31d234c32cdaa8be",
+  "checks": [
+    "Brawl starts with empty Computer slots, prevents no-enemy Start, adds/removes allied/enemy Computers and preserves an asymmetric 2v2 roster",
+    "Timed selection shows actual ally Computer Layla pick and ready state; only the implemented Layla is selectable, confirm requires a pick",
+    "Confirmed asymmetric roster creates exactly the requested real Layla Computers with cloned approved GLB meshes/clips and authoritative hero kits",
+    "3D map orientation projects allied base bottom-left and enemy base top-right without swapping world teams",
+    "Restored wide shop filters all 45 supported items, decodes original PNGs, equips +8% crit Javelin, and requires explicit Sell to free an equipped slot/refund once",
+    "Boots use supplied display-stat/world conversion, Movement filters/sorting work and six-slot purchase/sale remains separate from the account wallet",
+    "Recall/Regen controls are live: Regen starts a real cooldown and movement cancels the real recall channel",
+    "Preserved Practice supports a real basic→skill follow-up through native keyboard input without interrupting the basic animation",
+    "Standalone file://, offline networking: no unexpected JavaScript errors or external asset requests through room, draft, gameplay, shop, utilities and return"
+  ],
+  "errors": [],
+  "warnings": [],
+  "requests": []
+}

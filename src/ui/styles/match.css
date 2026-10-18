@@ -1,0 +1,1018 @@
+.action-dock .skill-control > .hero-skill {
+  position: relative !important;
+  inset: auto !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+.touch-controls .movement-dock {
+  display: block;
+  position: absolute;
+  left: 30px;
+  bottom: 40px;
+  z-index: 8;
+}
+.touch-controls .hero-panel {
+  bottom: 210px;
+}
+.touch-controls .progression-tools {
+  bottom: 335px;
+}
+.touch-controls .movement-hint {
+  display: none;
+}
+.allied-label .small-track i {
+  background: #70dce8;
+}
+.protected-objective {
+  opacity: 0.6;
+}
+#match-live {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+}
+.live-objectives {
+  position: absolute;
+  top: 71px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 65%;
+  text-align: center;
+  font-size: 8px;
+  color: #c4d9e2;
+  text-shadow: 0 2px 3px #000;
+}
+.live-record {
+  position: absolute;
+  top: 88px;
+  right: 18px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: #d5e9e7;
+  font-size: 10px;
+}
+.live-record button {
+  pointer-events: auto;
+  padding: 7px;
+  border-radius: 4px;
+}
+#match-countdown {
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  font-weight: 800;
+  color: #f6d995;
+  text-shadow: 0 3px 16px #091329;
+}
+#match-feed {
+  position: absolute;
+  left: 50%;
+  top: 115px;
+  transform: translateX(-50%);
+  color: #f3d591;
+  font-size: 12px;
+  text-shadow: 0 1px 4px #000;
+}
+#match-pause-panel {
+  pointer-events: auto;
+  position: absolute;
+  inset: 0;
+  background: #071326c9;
+  display: grid;
+  place-items: center;
+  z-index: 60;
+}
+#match-pause-panel[hidden] {
+  display: none;
+}
+#match-pause-panel section {
+  padding: 28px;
+  background: #102839;
+  border: 1px solid #9bacaa;
+  border-radius: 8px;
+  max-width: 80vw;
+}
+#match-pause-panel button {
+  padding: 12px;
+  margin: 6px;
+}
+#shop-dialog.match-shop {
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+  overflow: hidden;
+}
+.match-shop header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #577580;
+}
+.match-shop header h2 {
+  margin: 5px 0;
+  color: #e7d3a0;
+}
+.match-shop header small {
+  font-size: 9px;
+  color: #8bd8e1;
+}
+.match-shop header strong {
+  margin-left: auto;
+  color: #f4d68c;
+}
+.match-shop header button {
+  font-size: 25px;
+  width: 35px;
+}
+.match-shop-main {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 20px;
+  min-height: 0;
+  flex: 1;
+  overflow: auto;
+  padding-top: 14px;
+}
+.match-shop-main nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+  align-content: start;
+}
+.match-shop-main nav button {
+  display: flex;
+  align-items: center;
+  padding: 7px;
+  gap: 8px;
+  text-align: left;
+}
+.match-shop img {
+  width: 38px;
+  height: 38px;
+  border-radius: 7px;
+}
+.match-shop small {
+  display: block;
+  color: #b7a87f;
+  font-size: 9px;
+}
+.match-shop-main section {
+  padding: 8px;
+}
+.match-shop-main section h3 {
+  color: #e4d0a2;
+}
+.match-shop-main p {
+  color: #b9cdd2;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.match-shop-main dl {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  color: #a1d6d8;
+  font-size: 12px;
+}
+.match-shop-main dd {
+  margin: 0;
+}
+.match-shop-main label {
+  display: grid;
+  gap: 5px;
+  font-size: 10px;
+}
+.match-shop-main select {
+  max-width: 100%;
+  padding: 8px;
+}
+#item-purchase {
+  padding: 10px;
+  margin-top: 12px;
+  color: #ffe6a9;
+}
+.match-shop footer {
+  border-top: 1px solid #577580;
+  padding-top: 8px;
+}
+.match-shop footer > p {
+  font-size: 9px;
+  color: #a8c3c8;
+}
+#match-inventory {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 5px;
+}
+#match-inventory button {
+  padding: 5px;
+  min-height: 65px;
+  font-size: 9px;
+}
+#match-inventory span {
+  display: block;
+}
+.item-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+@media (max-height: 600px), (max-width: 850px) {
+  .live-objectives {
+    font-size: 6px;
+    top: 55px;
+    width: 64%;
+  }
+  .live-record {
+    top: 71px;
+    font-size: 8px;
+    gap: 5px;
+  }
+  .live-record button {
+    padding: 4px;
+  }
+  #match-feed {
+    top: 99px;
+    font-size: 9px;
+  }
+  #shop-dialog.match-shop {
+    padding: 10px;
+  }
+  .match-shop-main {
+    gap: 8px;
+  }
+  .match-shop-main nav button {
+    padding: 4px;
+    font-size: 9px;
+  }
+  .match-shop img {
+    width: 26px;
+    height: 26px;
+  }
+  .match-shop header h2 {
+    font-size: 16px;
+  }
+  .match-shop-main section h3 {
+    margin: 2px 0;
+  }
+  .match-shop-main p {
+    font-size: 9px;
+  }
+  #match-inventory button {
+    min-height: 42px;
+  }
+  #match-inventory img {
+    width: 21px;
+    height: 21px;
+  }
+  .touch-controls .hero-panel {
+    display: none;
+  }
+  .touch-controls .progression-tools {
+    bottom: 162px;
+  }
+  .touch-controls .movement-dock {
+    left: 18px;
+    bottom: 35px;
+  }
+}
+.practice-exit {
+  position: absolute;
+  right: 18px;
+  top: 82px;
+  padding: 8px;
+  pointer-events: auto;
+}
+.practice-exit-confirm {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: #091527c9;
+  z-index: 60;
+  pointer-events: auto;
+}
+.practice-exit-confirm section {
+  background: #152b3c;
+  padding: 28px;
+  border: 1px solid #9bb5bc;
+}
+.practice-exit-confirm button {
+  padding: 10px;
+  margin: 6px;
+}
+#shop-dialog.shop-window.match-shop:not([open]) {
+  display: none;
+}
+#shop-dialog.shop-window.match-shop[open] {
+  display: flex;
+  flex-direction: column;
+}
+#hud-root {
+  z-index: 5;
+}
+.player-overhead {
+  z-index: 3;
+}
+.actor-label.bot-label,
+.actor-label.minion-label {
+  width: 35px;
+}
+.actor-label.bot-label span,
+.actor-label.bot-label small,
+.actor-label.minion-label span,
+.actor-label.minion-label small {
+  display: none;
+}
+.actor-label.bot-label.selected {
+  width: 95px;
+}
+.actor-label.bot-label.selected span,
+.actor-label.bot-label.selected small {
+  display: block;
+}
+.actor-label.tower-label,
+.actor-label.core-label {
+  font-size: 7px;
+}
+#player-label.player-overhead {
+  width: 132px;
+}
+.player-overhead .overhead-values {
+  white-space: nowrap;
+  letter-spacing: 0;
+  font-size: 7px;
+}
+/* Restored wide landscape shop shell; only Attack and Movement are live. */
+#shop-dialog.shop-window.live-armory {
+  width: min(1220px, 96vw);
+  height: min(690px, 93vh);
+  max-height: 93vh;
+  background: linear-gradient(120deg, #193c50f5, #102536ec);
+  color: #cde4ed;
+}
+#shop-dialog.shop-window.live-armory[open] {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-rows: 58px minmax(0, 1fr) 78px;
+}
+.live-armory .shop-header {
+  gap: 18px;
+}
+.live-armory .shop-wallet {
+  font-size: 19px;
+  min-width: 112px;
+}
+.live-armory .shop-builder {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
+}
+.armory-search {
+  display: flex;
+  gap: 8px;
+  position: sticky;
+  top: 0;
+  background: #17364b;
+  padding: 6px;
+  z-index: 1;
+}
+.armory-search input {
+  width: 55%;
+  min-width: 0;
+}
+.armory-search select {
+  width: 45%;
+  min-width: 0;
+}
+.armory-search input,
+.armory-search select {
+  padding: 7px;
+  font-size: 11px;
+  background: #0a2133;
+  color: #d4e8ee;
+  border: 1px solid #517d96;
+}
+.live-armory #armory-catalog {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.live-armory #armory-catalog button {
+  display: grid;
+  justify-items: center;
+  border: 0;
+  background: transparent;
+  gap: 4px;
+  color: #dcecf4;
+  min-height: 100px;
+}
+.live-armory #armory-catalog button img {
+  width: 66px;
+  height: 66px;
+  object-fit: contain;
+}
+.live-armory #armory-catalog button span {
+  font-size: 10px;
+}
+.live-armory #armory-catalog button small {
+  color: #ebd492;
+  font-size: 12px;
+}
+.live-armory #armory-catalog button[aria-pressed="true"] img {
+  filter: drop-shadow(0 0 7px #f7d478);
+}
+.live-armory.shop-simple-view #armory-catalog {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.armory-builds {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #7dacc444;
+}
+.armory-builds h3 {
+  font-size: 13px;
+  margin-right: 5px;
+}
+.armory-builds button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.armory-builds img {
+  width: 35px;
+  height: 35px;
+}
+.armory-detail {
+  overflow: auto;
+  flex: 1;
+  padding: 16px;
+}
+.armory-item-hero {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+.armory-item-hero img {
+  width: 80px;
+  height: 80px;
+}
+.armory-detail h3 {
+  font-size: 19px;
+}
+.armory-detail small {
+  font-size: 10px;
+  color: #91afc1;
+  line-height: 1.5;
+}
+.armory-detail label {
+  display: block;
+  margin-top: 12px;
+  font-size: 11px;
+}
+.armory-detail select {
+  max-width: 100%;
+  padding: 7px;
+}
+.armory-detail ul {
+  padding-left: 17px;
+  font-size: 13px;
+  color: #9fe0e5;
+  line-height: 1.7;
+}
+.armory-detail p {
+  font-size: 12px;
+  line-height: 1.6;
+}
+.live-armory .shop-purchase {
+  gap: 7px;
+}
+.live-armory .shop-purchase button {
+  padding: 10px 14px;
+}
+.live-armory #item-sell {
+  background: #314e67;
+  color: #f3d393;
+}
+.live-armory .shop-equipment {
+  gap: 12px;
+}
+.live-armory .shop-equipment-slots .shop-slot {
+  width: 50px;
+  height: 50px;
+  min-height: 0;
+  padding: 0;
+  border-radius: 50%;
+  background: #071725;
+}
+.live-armory .shop-equipment-slots img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.item-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+@media (max-height: 600px), (max-width: 900px) {
+  #shop-dialog.shop-window.live-armory[open] {
+    grid-template-columns: 88px minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: 43px minmax(0, 1fr) 58px;
+  }
+  .live-armory .shop-header {
+    padding: 6px 12px;
+    gap: 6px;
+  }
+  .live-armory .shop-wallet {
+    font-size: 14px;
+    min-width: 88px;
+  }
+  .live-armory .shop-view-tabs button {
+    padding: 5px;
+    font-size: 10px;
+  }
+  .live-armory .shop-categories {
+    padding-top: 5px;
+  }
+  .live-armory .shop-categories button {
+    min-height: 35px;
+    font-size: 10px;
+    padding: 6px;
+  }
+  .live-armory .shop-catalog {
+    padding: 6px;
+  }
+  .live-armory #armory-catalog {
+    gap: 5px;
+  }
+  .live-armory #armory-catalog button {
+    min-height: 83px;
+  }
+  .live-armory #armory-catalog button img {
+    width: 46px;
+    height: 46px;
+  }
+  .live-armory #armory-catalog button span {
+    font-size: 8px;
+  }
+  .armory-search {
+    gap: 3px;
+    padding: 2px;
+  }
+  .armory-search input,
+  .armory-search select {
+    padding: 4px;
+    font-size: 9px;
+  }
+  .armory-builds {
+    padding: 5px;
+    gap: 2px;
+  }
+  .armory-builds img {
+    width: 27px;
+    height: 27px;
+  }
+  .armory-builds h3 {
+    font-size: 11px;
+  }
+  .armory-detail {
+    padding: 8px;
+  }
+  .armory-item-hero img {
+    width: 52px;
+    height: 52px;
+  }
+  .armory-detail h3 {
+    font-size: 13px;
+  }
+  .armory-detail ul,
+  .armory-detail p {
+    font-size: 10px;
+    line-height: 1.45;
+  }
+  .armory-detail small {
+    font-size: 8px;
+  }
+  .live-armory .shop-equipment {
+    padding: 5px;
+    gap: 7px;
+  }
+  .live-armory .shop-equipment > span {
+    font-size: 10px;
+  }
+  .live-armory .shop-equipment-slots .shop-slot {
+    width: 34px;
+    height: 34px;
+  }
+  .live-armory .shop-equipment-slots {
+    gap: 4px;
+  }
+  .live-armory .shop-purchase {
+    padding: 5px;
+  }
+  .live-armory .shop-purchase button {
+    padding: 7px;
+    font-size: 10px;
+  }
+}
+.utility-state {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  color: #fff;
+  text-shadow: 0 1px 4px #000;
+  pointer-events: none;
+}
+.utility-active {
+  box-shadow: 0 0 12px #6de6c7 !important;
+}
+.equipped-control {
+  position: relative;
+  display: flex;
+  min-width: 0;
+}
+.equipped-control #wind-chant {
+  position: absolute;
+  right: -3px;
+  top: -15px;
+  min-width: 30px;
+  height: 19px;
+  padding: 0 3px;
+  background: #244b67;
+  border: 1px solid #82e3ed;
+  color: #d9ffff;
+  font-size: 8px;
+  z-index: 2;
+}
+/* Batch 1 live enemy presentation; unchanged player/control anchors. */
+.actor-label.bot-label.hero-nameplate,
+.actor-label.bot-label.hero-nameplate.selected {
+  width: 110px;
+  pointer-events: none;
+  text-align: center;
+  background: none;
+  border: 0;
+  box-shadow: none;
+}
+.actor-label.bot-label.hero-nameplate .actor-name {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+  text-shadow: 0 1px 3px #000;
+  color: #ffe3df;
+}
+.actor-label.bot-label.hero-nameplate .actor-values {
+  display: block;
+  font-size: 6px;
+  white-space: nowrap;
+  color: #f2e7e2;
+  text-shadow: 0 1px 2px #000;
+}
+.actor-vitals {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+.actor-level {
+  font-size: 9px;
+  color: #ffe5a6;
+  border: 1px solid #b6b491;
+  background: #122f3d;
+  border-radius: 50%;
+  width: 17px;
+  height: 17px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.actor-bars {
+  flex: 1;
+}
+.actor-bars > div {
+  height: 5px;
+  margin: 2px 0;
+  background: #211b24;
+  overflow: hidden;
+}
+.actor-bars i {
+  display: block;
+  height: 100%;
+}
+.actor-hp {
+  background: #f1666c;
+}
+.actor-mana {
+  background: #55bdf0;
+}
+.allied-label .actor-hp {
+  background: #73dfe0;
+}
+.allied-label .actor-name {
+  color: #ccf7fa !important;
+}
+#selected-enemy-info {
+  position: absolute;
+  left: 18px;
+  top: 230px;
+  width: 190px;
+  padding: 9px;
+  background: linear-gradient(120deg, #321e2eee, #0f2732ed);
+  border: 1px solid #c77a83aa;
+  color: #e6eced;
+  pointer-events: none;
+}
+#selected-enemy-info header {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+  font-size: 12px;
+}
+#selected-enemy-info header b {
+  color: #e2c48a;
+  font-size: 10px;
+  white-space: nowrap;
+}
+.enemy-info-values {
+  font-size: 9px;
+  margin: 5px 0 3px;
+}
+.enemy-info-track {
+  height: 5px;
+  background: #16232d;
+  overflow: hidden;
+}
+.enemy-info-track i {
+  display: block;
+  height: 100%;
+  background: #ef6570;
+}
+.enemy-info-track.mana i {
+  background: #58baf0;
+}
+#attack-feedback {
+  position: absolute;
+  top: 115px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 45vw;
+  padding: 7px 12px;
+  background: #172d3de8;
+  border: 1px solid #bfa574;
+  color: #ffe3aa;
+  font-size: 12px;
+  text-align: center;
+}
+@media (max-height: 600px), (max-width: 900px) {
+  .actor-label.bot-label.hero-nameplate,
+  .actor-label.bot-label.hero-nameplate.selected {
+    width: 95px;
+  }
+  .actor-label.bot-label.hero-nameplate .actor-name {
+    font-size: 8px;
+  }
+  .actor-label.bot-label.hero-nameplate .actor-values {
+    font-size: 5px;
+  }
+  .actor-level {
+    width: 14px;
+    height: 14px;
+    font-size: 8px;
+  }
+  .actor-bars > div {
+    height: 4px;
+    margin: 1px 0;
+  }
+  #selected-enemy-info {
+    left: 12px;
+    top: 164px;
+    width: 168px;
+    padding: 7px;
+  }
+  #selected-enemy-info header {
+    font-size: 10px;
+  }
+  .enemy-info-values {
+    font-size: 8px;
+    margin-top: 3px;
+  }
+  #attack-feedback {
+    top: 88px;
+    font-size: 10px;
+    padding: 5px 9px;
+  }
+}
+.actor-label:not(.allied-label) .small-track i {
+  background: #f18b84;
+}
+/* Compact left column already contains map, testing toggle and player card. */
+@media (max-height: 600px), (max-width: 900px) {
+  #selected-enemy-info {
+    left: 150px;
+    top: 72px;
+    width: 150px;
+  }
+}
+#item-tree {
+  max-height: 210px;
+  overflow: auto;
+  padding: 8px;
+  border-bottom: 1px solid #9bc0d333;
+}
+.recipe-tree,
+.recipe-tree ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 14px;
+}
+.recipe-tree ul {
+  border-left: 1px solid #8fb0c0;
+  margin-left: 16px;
+}
+.recipe-tree li {
+  padding: 5px 0;
+}
+.recipe-tree button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px;
+  background: #0b233580;
+  border: 1px solid #749caa66;
+  max-width: 100%;
+}
+.recipe-tree img {
+  width: 32px;
+  height: 32px;
+}
+.recipe-tree span {
+  font-size: 10px;
+  text-align: left;
+}
+.recipe-tree small {
+  display: block;
+  font-size: 8px;
+}
+.recipe-tree .owned-component > button {
+  border-color: #7bd8ad;
+  background: #25544d88;
+}
+.unaffordable {
+  opacity: 0.5;
+}
+.owned-item > img {
+  outline: 2px solid #72dbaa;
+  border-radius: 50%;
+}
+.armory-builds small {
+  font-size: 9px;
+  color: #9ac4d5;
+}
+#item-prioritize {
+  padding: 7px;
+  background: #27617d;
+  border: 1px solid #6facbf;
+}
+#quick-buy-panel {
+  position: absolute;
+  right: 16px;
+  top: 170px;
+  width: 190px;
+  pointer-events: auto;
+  background: #142e40eb;
+  border: 1px solid #c5ab6d;
+  padding: 5px;
+}
+#quick-buy {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: calc(100% - 20px);
+  padding: 0;
+  background: transparent;
+  border: 0;
+  text-align: left;
+}
+#quick-buy img {
+  width: 38px;
+  height: 38px;
+}
+#quick-buy span {
+  font-size: 10px;
+  color: #f0daa5;
+}
+#quick-clear {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  padding: 0 4px;
+}
+#quick-buy-panel > small {
+  font-size: 8px;
+  display: block;
+  color: #b8d3df;
+}
+#quick-buy:disabled {
+  opacity: 0.5;
+}
+@media (max-height: 600px), (max-width: 900px) {
+  #item-tree {
+    max-height: 135px;
+  }
+  #quick-buy-panel {
+    top: 100px;
+    right: 12px;
+    width: 150px;
+  }
+  .recipe-tree img {
+    width: 24px;
+    height: 24px;
+  }
+  .recipe-tree span {
+    font-size: 8px;
+  }
+  #quick-buy img {
+    width: 28px;
+    height: 28px;
+  }
+  #quick-buy span {
+    font-size: 8px;
+  }
+}
+#battle-spell-status {
+  position: absolute;
+  bottom: 105px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: #f3d89c;
+  max-width: 340px;
+  text-align: center;
+  pointer-events: none;
+}
+#battle-spell-status label {
+  display: block;
+  pointer-events: auto;
+  font-size: 9px;
+}
+#battle-spell-status label[hidden] {
+  display: none;
+}
+#arrival-destination {
+  max-width: 200px;
+  background: #122c3f;
+  color: #dbe5eb;
+  font-size: 10px;
+  padding: 4px;
+}
+#battle-spell .utility-png {
+  width: 100%;
+  height: 100%;
+}
+@media (max-height: 600px), (max-width: 900px) {
+  #battle-spell-status {
+    bottom: 70px;
+    font-size: 8px;
+    max-width: 220px;
+  }
+  #arrival-destination {
+    max-width: 145px;
+    font-size: 8px;
+  }
+}
+/* Keep tree + item details on one readable right-pane scroll at short heights. */
+.live-armory .shop-builder {
+  display: block;
+  overflow: auto;
+}
+.live-armory #item-tree {
+  max-height: none;
+  overflow: visible;
+}
+.live-armory .armory-detail {
+  overflow: visible;
+}
+.live-armory #shop-category-title {
+  font-size: 13px;
+}
+.live-armory #armory-catalog button small {
+  font-size: 10px;
+}
+/* Active spell information sits above equipment, never over utility buttons. */
+#battle-spell-status {
+  bottom: 185px;
+}
+@media (max-height: 600px), (max-width: 900px) {
+  #battle-spell-status {
+    bottom: 140px;
+  }
+}

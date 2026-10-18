@@ -1,0 +1,31 @@
+{
+  "platform": "linux",
+  "browser": "153.0.8010.0",
+  "offline": true,
+  "fileProtocol": true,
+  "persistence": "same-file reload verified; denied-storage fallback verified",
+  "artwork": {
+    "min": 0,
+    "max": 254,
+    "transparent": 482401,
+    "width": 1536,
+    "height": 1024,
+    "fit": "contain"
+  },
+  "checks": [
+    "first launch shows creation only; supplied RGBA artwork decodes with its real alpha preserved and no 3D model loaded",
+    "invalid names cannot continue, and a valid name still requires explicit gender selection",
+    "country/gender selection saves the actual local profile and lobby displays it with the existing GLB, not the PNG",
+    "all 13 lobby placeholders are disabled/no-op; menu combat keys never initialize training",
+    "actual offline file:// localStorage survives same-file reload and skips creation for a valid profile",
+    "MODE/back/Escape preserve profile and reuse one GLB presentation; Classic/Ranked/Brawl cannot launch matches",
+    "1280x720, 960x540, 844x390: all three screens fit, cards stay in bounds, PNG stays contained and touch-emulated profile/MODE/back and compact AI entry work",
+    "denied storage remains usable for the session and honestly displays the persistence limitation",
+    "corrupt/invalid saved data safely returns to creation",
+    "AI Training enters the established real Layla simulation exactly once, transfers the same GLB safely, disposes lobby rendering and restores movement/skill damage",
+    "actual standalone offline menu-to-game flow has zero runtime errors, warnings or external/subresource requests"
+  ],
+  "errors": [],
+  "warnings": [],
+  "requests": []
+}

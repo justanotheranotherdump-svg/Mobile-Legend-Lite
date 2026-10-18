@@ -1,0 +1,244 @@
+@import "./styles/layout.css";
+@import "./styles/controls.css";
+@import "./styles/panels.css";
+@import "./styles/shop.css";
+@import "./styles/settings.css";
+@import "./styles/combat-cluster.css";
+:root {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #e1ecee;
+  background: #101b24;
+  font-synthesis: none;
+  color-scheme: dark;
+  --ink: #0c1d29;
+  --glass: #102634eb;
+  --line: #688c9466;
+  --aqua: #75e5df;
+  --gold: #e4c288;
+  --muted: #a2b9c4;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+:where(button, input, select) {
+  font: inherit;
+}
+button {
+  color: inherit;
+  cursor: pointer;
+}
+button,
+select {
+  border: 1px solid var(--line);
+  background: var(--glass);
+}
+button:focus-visible,
+select:focus-visible,
+input:focus-visible {
+  outline: 2px solid #acf6ef;
+  outline-offset: 4px;
+}
+button:not(:disabled):hover {
+  border-color: var(--gold);
+  filter: brightness(1.18);
+}
+button:not(:disabled):active {
+  filter: brightness(0.9);
+}
+button:disabled {
+  cursor: not-allowed;
+}
+button .icon {
+  pointer-events: none;
+}
+.icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+.eyebrow {
+  font-size: 9px;
+  letter-spacing: 1.8px;
+  color: #abc1cb;
+  font-weight: 600;
+}
+.panel {
+  background: linear-gradient(145deg, #1b3442ed, #0c1c28ed);
+  border: 1px solid var(--line);
+  box-shadow: 0 6px 25px #0003;
+  backdrop-filter: blur(6px);
+  border-radius: 5px;
+}
+#world {
+  display: block;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  cursor: crosshair;
+  touch-action: none;
+}
+#hud-root {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+}
+#hud-root button,
+#hud-root select,
+#hud-root input,
+#hud-root .panel,
+#hud-root dialog {
+  pointer-events: auto;
+}
+[hidden] {
+  display: none !important;
+}
+.health-track {
+  height: 5px;
+  background: #06151eb3;
+  overflow: hidden;
+  border: 1px solid #c6f9ed22;
+  transform: skew(-10deg);
+}
+.health-track i {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #399e9e, #94f0d7);
+}
+.health-track.enemy i {
+  background: linear-gradient(90deg, #a9574d, #e8b296);
+}
+.world-label {
+  position: absolute;
+  text-align: center;
+  font-size: 9px;
+  color: #fff0d3;
+  text-shadow: 0 1px 3px #000;
+  transform: translate(-50%, -100%);
+  pointer-events: none;
+  width: 110px;
+  letter-spacing: 0.5px;
+}
+.world-label span {
+  display: block;
+  margin-bottom: 4px;
+}
+.small-track {
+  height: 4px;
+  background: #0d171fea;
+  box-shadow: 0 1px 2px #000;
+  border: 1px solid #e1c6a844;
+}
+.small-track i {
+  display: block;
+  height: 100%;
+  background: #dc9c7e;
+}
+.world-label small {
+  display: block;
+  font-size: 8px;
+  margin-top: 4px;
+}
+.player-label {
+  width: 66px;
+  color: #b5f9ed;
+}
+.player-label .small-track i {
+  background: #74dace;
+}
+.dummy-label.selected {
+  color: #ffde87;
+}
+.dummy-label.selected .small-track {
+  outline: 1px solid #ffde87;
+  outline-offset: 2px;
+}
+.dummy-label.selected .small-track i {
+  background: #ffde87;
+}
+.build-note {
+  position: absolute;
+  bottom: 6px;
+  left: 18px;
+  font-size: 8px;
+  letter-spacing: 1.4px;
+  color: #9ab5c3;
+  pointer-events: none;
+}
+.build-note span {
+  margin: 0 6px;
+}
+#pause {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #102634f5;
+  padding: 15px 22px;
+  border: 1px solid var(--gold);
+  font-size: 13px;
+  pointer-events: none;
+}
+#error:not([hidden]) {
+  position: absolute;
+  inset: 20%;
+  background: #152b35f5;
+  padding: 30px;
+  border: 1px solid #e4a587;
+  color: #f1ccc0;
+  line-height: 1.8;
+  font-size: 14px;
+  display: grid;
+  place-content: center;
+  z-index: 20;
+}
+.reduce-motion * {
+  animation: none !important;
+  transition: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Layla capability UI: the preserved fixture retains its original reserved slots. */
+.health-track.mana { height: 4px; margin-top: 3px; }
+.health-track.mana i { background: linear-gradient(90deg,#5088d0,#96d9ff); }
+.mana-caption { display:flex; justify-content:space-between; gap:8px; margin-top:4px; font-size:9px; color:#b4d9ef; }
+#hero-buff { color:#ffe0a1; font-size:8px; }
+.hero-skill { position:relative; cursor:pointer; border-color:#b9a66a; }
+.hero-skill[data-state="unavailable"] { filter:saturate(.6); }
+.skill-state { position:absolute; z-index:3; inset:23% 0 auto; text-align:center; font-size:14px; font-weight:800; color:#fff; text-shadow:0 1px 5px #000; pointer-events:none; }
+.skill-cost { position:absolute; top:-13px; left:0; right:0; text-align:center; font-size:9px; color:#a5d8ff; white-space:nowrap; }
+
+/* Current keyboard-only HUD; training fixture retains its historical layout. */
+.keyboard-only .hero-panel { left:22px; bottom:42px; width:230px; }
+#cancel-skill { position:absolute; right:30px; top:100px; width:148px; height:70px; border:2px solid #ffb2b2; border-radius:36px; background:#431d39de; color:#ffd1d1; font-size:14px; letter-spacing:2px; touch-action:none; }
+#cancel-skill.cancel-hover { background:#9c284ce8; transform:scale(1.08); }
+#skill-aim-help { position:absolute; bottom:155px; left:50%; transform:translateX(-50%); max-width:65%; padding:9px 15px; border:1px solid #82e9e3; border-radius:4px; background:#0a263cdd; color:#c6ffff; font-size:11px; text-align:center; pointer-events:none; }
+@media(max-height:600px),(max-width:850px) { .keyboard-only .hero-panel { left:12px; bottom:36px; width:190px; } #cancel-skill { top:65px; right:15px; width:120px; height:55px; font-size:11px; } #skill-aim-help { bottom:132px; font-size:9px; } }
+
+/* Centered, non-modal panels: exposed battlefield/HUD remains interactive. */
+.keyboard-only #shop-dialog[open], .keyboard-only #settings-dialog[open] {
+  position:fixed; z-index:20; top:50%; left:50%; right:auto; bottom:auto;
+  transform:translate(-50%,-50%);
+  margin:0; width:min(900px,70vw); height:min(650px,80vh); max-height:80vh;
+}
+.keyboard-only #cancel-skill, .keyboard-only #skill-aim-help { z-index:30; }
+@media(max-height:600px) {
+ .keyboard-only #shop-dialog[open], .keyboard-only #settings-dialog[open] { height:calc(100vh - 62px); max-height:calc(100vh - 62px); }
+}

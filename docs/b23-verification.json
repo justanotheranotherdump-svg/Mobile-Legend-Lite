@@ -1,0 +1,179 @@
+{
+  "date": "2026-10-18",
+  "branch": "arena/55ce0f80-mobile-legend-lite",
+  "scopeAuthorization": "User explicitly chose BOTH IN ORDER without intermediate stop in clarification; no further milestone",
+  "checkpoint": "b60f96cf240485186e5e6d7f7bd5dcfcf10cf8b0",
+  "reviewState": "User authorized same-branch commit/push after completed review delivery; no further feature milestone.",
+  "baseline": {
+    "units": 448,
+    "batch1Browser": 16
+  },
+  "units": {
+    "passed": 555,
+    "failed": 0,
+    "additional": 107
+  },
+  "browser": {
+    "passed": 184,
+    "suiteCount": 13,
+    "newShopSpellNativeChecks": 11,
+    "unexpectedErrors": 0,
+    "warnings": 0,
+    "externalRuntimeRequests": 0
+  },
+  "testedHtmlSha256": "8181d06e87f65312deddd9b9e6c2bbc03d235f325bb00bcf80967e3f80204c41",
+  "equipment": {
+    "catalog": 45,
+    "tiers": {
+      "completed": 32,
+      "component": 6,
+      "intermediate": 7
+    },
+    "recipeProvenance": "Editable LOCAL PROTOTYPE recipes reconstructed for this project; NOT official recipes. Existing total prices/stats unchanged. One copy per item preserved, so repeated ingredients may be credited once per actual owned copy and the balance paid directly.",
+    "maxSlots": 6,
+    "existingMaxCopyRulesRetained": true,
+    "automaticSlots": true,
+    "fullBuildRecommendations": false
+  },
+  "spells": [
+    {
+      "id": "execute",
+      "cooldown": 90,
+      "unlockLevel": 1,
+      "roles": [
+        "Fighter",
+        "Assassin",
+        "Mage"
+      ]
+    },
+    {
+      "id": "retribution",
+      "cooldown": 35,
+      "unlockLevel": 1,
+      "roles": [
+        "Assassin",
+        "Fighter",
+        "Mage"
+      ]
+    },
+    {
+      "id": "inspire",
+      "cooldown": 75,
+      "unlockLevel": 5,
+      "roles": [
+        "Marksman",
+        "Fighter"
+      ]
+    },
+    {
+      "id": "sprint",
+      "cooldown": 100,
+      "unlockLevel": 9,
+      "roles": [
+        "Marksman",
+        "Mage",
+        "Support"
+      ]
+    },
+    {
+      "id": "revitalize",
+      "cooldown": 75,
+      "unlockLevel": 11,
+      "roles": [
+        "Support",
+        "Tank"
+      ]
+    },
+    {
+      "id": "aegis",
+      "cooldown": 75,
+      "unlockLevel": 13,
+      "roles": [
+        "Support",
+        "Tank",
+        "Mage"
+      ]
+    },
+    {
+      "id": "petrify",
+      "cooldown": 75,
+      "unlockLevel": 15,
+      "roles": [
+        "Fighter",
+        "Tank",
+        "Support"
+      ]
+    },
+    {
+      "id": "purify",
+      "cooldown": 90,
+      "unlockLevel": 17,
+      "roles": [
+        "Mage",
+        "Support",
+        "Marksman"
+      ]
+    },
+    {
+      "id": "flameshot",
+      "cooldown": 50,
+      "unlockLevel": 19,
+      "roles": [
+        "Mage",
+        "Support"
+      ]
+    },
+    {
+      "id": "flicker",
+      "cooldown": 120,
+      "unlockLevel": 21,
+      "roles": [
+        "Fighter",
+        "Mage",
+        "Marksman",
+        "Assassin",
+        "Tank",
+        "Support"
+      ]
+    },
+    {
+      "id": "vengeance",
+      "cooldown": 75,
+      "unlockLevel": 23,
+      "roles": [
+        "Tank",
+        "Fighter"
+      ]
+    },
+    {
+      "id": "arrival",
+      "cooldown": 75,
+      "unlockLevel": 25,
+      "roles": [
+        "Fighter",
+        "Tank"
+      ]
+    }
+  ],
+  "account": {
+    "saveKey": "moba-lab.battle.v1:<username>",
+    "xpPerCompletedLaneMatch": 100,
+    "xpPerLevel": 100,
+    "maxLevel": 25,
+    "walletAndHeroXpSeparate": true,
+    "unlockAllPlayerControl": false
+  },
+  "observedNaturalBrowserResult": "LOCAL MATCH COMPLETE \u00b7 ACCOUNT XP +100 \u00b7 LV 2\n\nDEFEAT\n\nCore destruction decided this result.\n\nDuration\n4:32\nEliminations\n0\nDeaths\n0\nAssists\n0\nHero level\n6\nMatch gold earned\n0\nEnemy structures destroyed\n0\nPLAY AGAINReturn to Training LobbyMain Menu",
+  "approvedAssets": {
+    "src/heroes/layla/assets/layla.glb": "963a4902955cb8ad345c74eb63b76e602ade5247c2bd94544ce3000cba6edd51",
+    "src/assets/images/layla-creation.png": "bc2b258b61ddceb7aa9abe9a82c9ebe25d30b7ba91c6d3a58a57b4f15005fca1"
+  },
+  "knownInactiveSystems": [
+    "No actual jungle regions/creep spawner in lane maps",
+    "No Jungling Boots Blessing/evolved definitions; explicit extension data only",
+    "No allied traps",
+    "Battle spells intentionally inactive in separate dummy Practice; supported in lane AI/Custom/Brawl"
+  ],
+  "environment": "Linux Chromium software WebGL and trusted touch emulation, offline file://. NOT native Windows, physical phones, speakers or subjective tactical-quality certification.",
+  "branchUpdateAuthorized": true
+}

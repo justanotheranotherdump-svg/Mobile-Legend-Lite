@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-18",
+  "command": "npm test",
+  "platform": "linux",
+  "tests": 170,
+  "passed": 170,
+  "failed": 0,
+  "existingTests": 163,
+  "newLivePanelTests": 7,
+  "htmlSha256": "805f55da0ebeb9d0be31fdc11a981844bbd82fca5e826da9f34093702fc4b95d",
+  "glbSha256": "963a4902955cb8ad345c74eb63b76e602ade5247c2bd94544ce3000cba6edd51",
+  "checks": [
+    "default Controls policy permits movement and canvas attacks with panels open",
+    "opening/closing does not clear held movement or reset ongoing aim",
+    "text entry blocks gameplay; select editors own combat keys but permit WASD",
+    "explicit canvas pointer attack leaves editors on first click",
+    "blur/visibility/reset still clear input; repeat events do not revive stale keys",
+    "browser modifier shortcuts are not stolen"
+  ]
+}

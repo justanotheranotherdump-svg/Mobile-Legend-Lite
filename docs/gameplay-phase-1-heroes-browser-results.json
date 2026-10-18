@@ -1,0 +1,20 @@
+{
+  "browser": "153.0.8010.0",
+  "offline": true,
+  "fileProtocol": true,
+  "checks": [
+    "creation uses complete contained original PNG, larger layout allocation and a smooth bottom alpha mask at four viewport sizes",
+    "lobby quick sound button is gone; working sound controls remain in Settings",
+    "Shop has one owned Layla, fourteen truly empty noninteractive slots, seven role filters, wallet and no match/purchase initialization",
+    "role filtering and search work without inventing heroes, and announce empty results",
+    "hero PNG detail exposes role, four prototype ratings, passive plus three actual skill descriptions/values and truthful notes; Escape closes each sheet before leaving hero",
+    "hero back preserves Shop filters/search and one model instance; no reload or wallet changes",
+    "catalog scroll and touch hero/skill/back flows fit 1280x720, 960x540 and 844x390 with reachable close controls",
+    "leaving the guide restores original lobby/modes and transfers the same approved model once into unchanged training with audio",
+    "actual standalone file:// guide flow has zero runtime errors, warnings or subresource/network requests"
+  ],
+  "errors": [],
+  "warnings": [],
+  "requests": [],
+  "limitations": "Linux software WebGL and touch emulation, not Windows/physical-device certification"
+}
