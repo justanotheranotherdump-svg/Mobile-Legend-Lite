@@ -1,0 +1,23 @@
+{
+  "easy": {
+    "reaction": 0.8,
+    "aimSpread": 2.3,
+    "aggression": 0.65,
+    "retreatHp": 0.3,
+    "targetPolicy": "nearest"
+  },
+  "normal": {
+    "reaction": 0.4,
+    "aimSpread": 1,
+    "aggression": 0.85,
+    "retreatHp": 0.24,
+    "targetPolicy": "lowest-hp"
+  },
+  "hard": {
+    "reaction": 0.18,
+    "aimSpread": 0.3,
+    "aggression": 1,
+    "retreatHp": 0.18,
+    "targetPolicy": "threat"
+  }
+}

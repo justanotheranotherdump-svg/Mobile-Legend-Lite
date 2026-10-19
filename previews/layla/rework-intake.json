@@ -1,0 +1,37 @@
+{
+  "revision": "layla-rework-intake-2026-10-19",
+  "status": "Initial choices approved; researched numeric specification and travel settings still require review. No new model or game integration.",
+  "appearance": {
+    "choice": "modern Energy Gunner default",
+    "features": ["blonde twin tails", "goggles", "white/purple/gold outfit", "forked cyan-core energy gun"],
+    "assetPolicy": "Original authored 3D interpretation; supplied images are visual guidance only; no official/ripped assets or screenshot textures."
+  },
+  "mechanicsChoice": {
+    "baseline": "user written version, not older screenshot mechanics",
+    "passiveMaxMultiplier": 1.15,
+    "passiveReferenceDistance": 6,
+    "passiveExcludesTurrets": true,
+    "markBehavior": "triggered explosion and brief stun, not older slow-only version",
+    "numericDetailsStatus": "Research candidate only; conflicting/missing rank tables and range units must be resolved."
+  },
+  "approvedAnimationProposal": {
+    "clockOrigin": "input acceptance to shot release; NOT projectile arrival",
+    "basicReleaseAtBaseAPS": 0.25,
+    "baseAPS": 1.06,
+    "basicWindupScalesWithAPS": true,
+    "skill1Release": 0.25,
+    "skill2Release": 0.4,
+    "ultimateRelease": 0.65,
+    "postReleaseRecovery": "cancellable, no reset of original attack cooldown or duplicate projectile",
+    "ultimateWindup": "committed direction and not voluntarily cancellable",
+    "projectileTravel": null,
+    "recoveryClipDurations": null,
+    "hardCCInterruption": null
+  },
+  "numericBaselineWorkflow": "Research a dated dataset, flag conflicts and estimates, present for user approval before implementation.",
+  "scope": {
+    "franco": "Plan B/R5 selected and parked unchanged",
+    "layla": "Separate complete rework preview; preserve existing playable Layla until combined integration approval",
+    "integration": "Both reviewed hero proposals together later; not authorized now"
+  }
+}

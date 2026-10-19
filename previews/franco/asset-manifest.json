@@ -1,0 +1,77 @@
+{
+  "authoring": "Original custom-contour anatomical mesh / unified sculpt surface / hand-authored armor, hair, rig and clips. No screenshot textures, ripped model, external source asset or motion capture.",
+  "timingRevision": "plan-b-r5",
+  "timingProvenance": "User explicitly selected 0.40 s input-to-max: 0.15 s actual exported cast + 0.25 s outbound flight; custom comparison against saved Plan A / Timing R4. Not official MLBB timing.",
+  "blender": "4.2.22 LTS",
+  "rigBones": [
+    "root",
+    "pelvis",
+    "chest",
+    "neck",
+    "head",
+    "upper_arm.R",
+    "forearm.R",
+    "hand.R",
+    "thigh.R",
+    "shin.R",
+    "foot.R",
+    "upper_arm.L",
+    "forearm.L",
+    "hand.L",
+    "thigh.L",
+    "shin.L",
+    "foot.L"
+  ],
+  "clips": [
+    {
+      "name": "BasicAttack",
+      "duration": 0.6
+    },
+    {
+      "name": "BloodyHunt",
+      "duration": 1.8
+    },
+    {
+      "name": "Death",
+      "duration": 2.0
+    },
+    {
+      "name": "FuryShock",
+      "duration": 0.3
+    },
+    {
+      "name": "HitReact",
+      "duration": 0.5333333333333333
+    },
+    {
+      "name": "HookMechanism",
+      "duration": 0.15
+    },
+    {
+      "name": "HookMiss",
+      "duration": 0.15
+    },
+    {
+      "name": "Idle",
+      "duration": 2.0
+    },
+    {
+      "name": "IronHook",
+      "duration": 0.15
+    },
+    {
+      "name": "Run",
+      "duration": 0.8
+    },
+    {
+      "name": "Walk",
+      "duration": 1.2
+    }
+  ],
+  "model": "assets/franco-proposed.glb",
+  "hook": "assets/franco-hook.glb",
+  "source": "assets/source_blender/franco-preview.blend",
+  "totalSkinnedVertices": 29385,
+  "totalSkinnedPolygons": 37322,
+  "approval": "UNAPPROVED VISUAL PROPOSAL \u2014 not registered in gameplay"
+}

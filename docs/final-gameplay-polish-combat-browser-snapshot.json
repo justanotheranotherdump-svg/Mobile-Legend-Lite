@@ -1,0 +1,1093 @@
+{
+  "player": {
+    "x": 0.36126983722055545,
+    "z": 3.1112698372208096,
+    "radius": 0.45,
+    "attributes": {
+      "maxHp": 2554,
+      "hpRegen": 5.800000000000001,
+      "maxMana": 700,
+      "manaRegen": 4.4,
+      "physicalAttack": 165,
+      "physicalDefense": 23,
+      "magicDefense": 20,
+      "magicPower": 0,
+      "attackSpeed": 1.1,
+      "attackSpeedRatio": 1,
+      "criticalDamage": 2,
+      "movementSpeed": 240,
+      "attackRange": 4.3
+    },
+    "speed": 5.5,
+    "range": 6,
+    "attackRate": 1.1,
+    "attackCooldown": 0.9090909090909091,
+    "maxHp": 2554,
+    "hp": 2411.6856199403896,
+    "hpRegen": 5.800000000000001,
+    "maxMana": 700,
+    "mana": 700,
+    "manaRegen": 4.4,
+    "damage": 165,
+    "cooldown": 0.7257575757575752,
+    "id": "player",
+    "heroId": "layla",
+    "lastDamageAt": 33.41666666666605,
+    "channeling": false,
+    "kind": "player",
+    "team": "player",
+    "name": "Final_Polish",
+    "targetable": true,
+    "spawnProtectedUntil": 0,
+    "criticalChance": 0,
+    "lifesteal": 0,
+    "cooldownReduction": 0,
+    "spellVamp": 0,
+    "tenacity": 0,
+    "recoveryBoost": 1,
+    "stunned": false,
+    "shields": [],
+    "protected": false,
+    "lastHitAt": 33.41666666666605,
+    "contributors": {
+      "enemy-bot-0": 33.41666666666605
+    }
+  },
+  "enemies": [
+    {
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "radius": 0.45,
+      "attributes": {
+        "maxHp": 2554,
+        "hpRegen": 5.800000000000001,
+        "maxMana": 700,
+        "manaRegen": 4.4,
+        "physicalAttack": 150,
+        "physicalDefense": 23,
+        "magicDefense": 20,
+        "magicPower": 0,
+        "attackSpeed": 1.1,
+        "attackSpeedRatio": 1,
+        "criticalDamage": 2,
+        "movementSpeed": 240,
+        "attackRange": 4.3
+      },
+      "speed": 5.5,
+      "range": 6,
+      "attackRate": 1.1,
+      "attackCooldown": 0.9090909090909091,
+      "maxHp": 2554,
+      "hp": 1667.4842425406034,
+      "hpRegen": 5.800000000000001,
+      "maxMana": 700,
+      "mana": 624.7933333334005,
+      "manaRegen": 4.4,
+      "damage": 150,
+      "cooldown": 0.45909090909090783,
+      "id": "enemy-bot-0",
+      "heroId": "layla",
+      "lastDamageAt": 32.76666666666609,
+      "channeling": false,
+      "name": "Computer 1",
+      "heroName": "Layla",
+      "kind": "bot",
+      "team": "enemy",
+      "laneOffset": -1.6500000000000001,
+      "home": {
+        "x": 33,
+        "z": 0
+      },
+      "nextThink": 33.81666666666605,
+      "readyAt": 0,
+      "abilityReadyAt": 0,
+      "targetable": true,
+      "spawnProtectedUntil": 0,
+      "progression": {
+        "hero": {
+          "schemaVersion": 3,
+          "id": "layla",
+          "name": "Layla",
+          "role": "marksman",
+          "baseStats": {
+            "maxHp": 2250,
+            "hpRegen": 5.4,
+            "maxMana": 500,
+            "manaRegen": 4,
+            "physicalAttack": 133,
+            "physicalDefense": 15,
+            "magicDefense": 15,
+            "magicPower": 0,
+            "attackSpeed": 1.06,
+            "attackSpeedRatio": 1,
+            "criticalDamage": 2,
+            "movementSpeed": 240,
+            "attackRange": 4.3,
+            "collisionRadius": 0.45
+          },
+          "basicAttack": {
+            "effectId": "direct-damage",
+            "damage": 0,
+            "range": 6,
+            "cooldown": 0.9433962264150942,
+            "projectileSpeed": 18,
+            "castTime": 0.25,
+            "damageModel": {
+              "type": "physical",
+              "physicalScaling": 1,
+              "magicScaling": 0
+            }
+          },
+          "abilityIds": [
+            "malefic-gun",
+            "malefic-bomb",
+            "void-projectile",
+            "destruction-rush"
+          ],
+          "visual": "visual.json",
+          "actionLockDuration": 1.05,
+          "growthStats": {
+            "maxHp": 152,
+            "hpRegen": 0.2,
+            "maxMana": 100,
+            "manaRegen": 0.2,
+            "physicalAttack": 8.5,
+            "physicalDefense": 4,
+            "magicDefense": 2.5,
+            "magicPower": 0,
+            "attackSpeed": 0.02,
+            "attackSpeedRatio": 0,
+            "criticalDamage": 0,
+            "movementSpeed": 0,
+            "attackRange": 0
+          },
+          "runtimeScale": {
+            "movement": 0.022916666666666665,
+            "range": 1.3953488372093024,
+            "maximumAttackRate": 2.5
+          },
+          "progression": {
+            "minLevel": 1,
+            "maxLevel": 15,
+            "xpThresholds": [
+              0,
+              200,
+              500,
+              900,
+              1400,
+              2000,
+              2700,
+              3500,
+              4400,
+              5400,
+              6500,
+              7700,
+              9000,
+              10400,
+              11900
+            ]
+          },
+          "abilities": [
+            {
+              "id": "malefic-gun",
+              "name": "Malefic Gun",
+              "slot": "passive",
+              "effectId": "distance-scaling",
+              "range": 0,
+              "damage": 0,
+              "manaCost": 0,
+              "cooldown": 0,
+              "castTime": 0,
+              "parameters": {
+                "referenceDistance": 6,
+                "maxMultiplier": 1.15,
+                "excludedKinds": [
+                  "turret",
+                  "tower"
+                ]
+              },
+              "damageModel": {
+                "type": "physical",
+                "physicalScaling": 0,
+                "magicScaling": 0
+              },
+              "ranks": null
+            },
+            {
+              "id": "malefic-bomb",
+              "name": "Malefic Bomb",
+              "slot": "skill-1",
+              "effectId": "line-projectile",
+              "range": 9,
+              "damage": 180,
+              "manaCost": 35,
+              "cooldown": 6,
+              "castTime": 0.25,
+              "parameters": {
+                "speed": 24,
+                "radius": 0.16,
+                "buffDuration": 3,
+                "speedMultiplier": 1.2,
+                "attackRangeBonus": 2,
+                "skill2RangeBonus": 2,
+                "collidesWithWalls": false
+              },
+              "damageModel": {
+                "type": "physical",
+                "physicalScaling": 0.8,
+                "magicScaling": 0
+              },
+              "ranks": {
+                "max": 6,
+                "requiredLevels": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "damage": [
+                  180,
+                  220,
+                  260,
+                  300,
+                  340,
+                  380
+                ],
+                "manaCost": [
+                  35,
+                  40,
+                  45,
+                  50,
+                  55,
+                  60
+                ],
+                "cooldown": [
+                  6,
+                  5.6,
+                  5.2,
+                  4.8,
+                  4.4,
+                  4
+                ],
+                "bonusDamage": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "id": "void-projectile",
+              "name": "Void Projectile",
+              "slot": "skill-2",
+              "effectId": "orb-mark",
+              "range": 7,
+              "damage": 150,
+              "manaCost": 60,
+              "cooldown": 7.5,
+              "castTime": 0.4,
+              "parameters": {
+                "speed": 10,
+                "radius": 0.22,
+                "blastRadius": 1.4,
+                "markDuration": 3,
+                "bonusDamage": 80,
+                "stunDuration": 0.25,
+                "stunRadius": 1.4,
+                "collidesWithWalls": false
+              },
+              "damageModel": {
+                "type": "physical",
+                "physicalScaling": 0.65,
+                "magicScaling": 0
+              },
+              "ranks": {
+                "max": 6,
+                "requiredLevels": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "damage": [
+                  150,
+                  180,
+                  210,
+                  240,
+                  270,
+                  300
+                ],
+                "manaCost": [
+                  60,
+                  65,
+                  70,
+                  75,
+                  80,
+                  85
+                ],
+                "cooldown": [
+                  7.5,
+                  7.3,
+                  7.1,
+                  6.9,
+                  6.7,
+                  6.5
+                ],
+                "bonusDamage": [
+                  80,
+                  100,
+                  120,
+                  140,
+                  160,
+                  180
+                ]
+              }
+            },
+            {
+              "id": "destruction-rush",
+              "name": "Destruction Rush",
+              "slot": "skill-ultimate",
+              "effectId": "line-blast",
+              "range": 48,
+              "damage": 450,
+              "manaCost": 100,
+              "cooldown": 30,
+              "castTime": 0.65,
+              "parameters": {
+                "width": 1
+              },
+              "damageModel": {
+                "type": "physical",
+                "physicalScaling": 1.5,
+                "magicScaling": 0
+              },
+              "ranks": {
+                "max": 3,
+                "requiredLevels": [
+                  4,
+                  8,
+                  12
+                ],
+                "damage": [
+                  450,
+                  600,
+                  750
+                ],
+                "manaCost": [
+                  100,
+                  120,
+                  140
+                ],
+                "cooldown": [
+                  30,
+                  27,
+                  24
+                ],
+                "bonusDamage": [
+                  0,
+                  0,
+                  0
+                ]
+              }
+            }
+          ],
+          "animations": {
+            "clips": {
+              "idle": "Idle",
+              "move": "Walk",
+              "run": "Run",
+              "basicAttack": "BasicAttack",
+              "dead": "Death",
+              "hit": "HitReact",
+              "cast": "MaleficBomb",
+              "skill-1": "MaleficBomb",
+              "skill-2": "VoidProjectile",
+              "skill-ultimate": "DestructionRush"
+            }
+          },
+          "presentation": {
+            "kind": "glb",
+            "placeholder": "training-capsule",
+            "model": "assets/energy-gunner.glb",
+            "scale": 0.72,
+            "rotationY": 0,
+            "offset": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            }
+          }
+        },
+        "level": 3,
+        "totalXp": 820,
+        "ranks": {
+          "malefic-bomb": 3,
+          "void-projectile": 0,
+          "destruction-rush": 0
+        }
+      },
+      "inventory": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "tenacity": 0,
+      "recoveryBoost": 1,
+      "stunned": false,
+      "shields": [],
+      "protected": false,
+      "canUseAbility": true,
+      "skillOptions": [
+        {
+          "effect": "line-projectile",
+          "range": 9,
+          "radius": 0.16,
+          "ready": true
+        },
+        {
+          "effect": "orb-mark",
+          "range": 7,
+          "radius": 0.22,
+          "ready": false
+        },
+        {
+          "effect": "line-blast",
+          "range": 48,
+          "radius": 0,
+          "ready": false
+        }
+      ],
+      "facing": {
+        "x": 0.43429890204618554,
+        "z": 0.9007688181112165
+      },
+      "actionLocked": true,
+      "castSerial": 17,
+      "actionDuration": 0.9090909090909091,
+      "aiState": {
+        "mode": "engage",
+        "since": 0.016666666666666666,
+        "commitUntil": 0,
+        "graceUntil": 0
+      },
+      "lanePlan": {
+        "towerId": "player-0",
+        "mode": "hold",
+        "coverSince": null,
+        "since": 26.33333333333312,
+        "support": "minion-wave",
+        "reason": "wait-for-wave",
+        "goal": {
+          "x": -1.93434055811543,
+          "z": -1.6500000000000001
+        }
+      },
+      "intent": {
+        "type": "attack",
+        "targetId": "player",
+        "reposition": false,
+        "x": 5.123527705081136,
+        "z": 1.4612698372208095,
+        "ability": true,
+        "aimOffset": 0.20425499184057117
+      },
+      "retreating": false,
+      "attackSerial": 865,
+      "lastHitAt": 32.76666666666609,
+      "contributors": {
+        "wave-1-player-0": 11.200000000000136,
+        "wave-1-player-1": 13.63333333333359,
+        "wave-1-player-2": 10.100000000000081,
+        "player-0": 28.166666666666348,
+        "player": 32.76666666666609
+      },
+      "earnedGold": 60
+    },
+    {
+      "id": "wave-2-enemy-0",
+      "name": "Red minion",
+      "kind": "minion",
+      "team": "enemy",
+      "x": -2.6443419418858993,
+      "z": -0.8551720251265351,
+      "radius": 0.3,
+      "hp": 159.09090909090907,
+      "maxHp": 650,
+      "physicalDefense": 12,
+      "magicDefense": 12,
+      "speed": 2.8,
+      "range": 1.8,
+      "damage": 60,
+      "readyAt": 33.766666666666104,
+      "targetable": true,
+      "stunned": false,
+      "recoveryBoost": 1,
+      "shields": [],
+      "lastDamageAt": 32.666666666666096,
+      "lastHitAt": 32.666666666666096,
+      "contributors": {
+        "wave-2-player-0": 32.666666666666096,
+        "wave-2-player-1": 32.666666666666096,
+        "wave-2-player-2": 29.083333333332963
+      }
+    },
+    {
+      "id": "wave-2-enemy-1",
+      "name": "Red minion",
+      "kind": "minion",
+      "team": "enemy",
+      "x": -2.661425639889395,
+      "z": -0.6805884324633166,
+      "radius": 0.3,
+      "hp": 650,
+      "maxHp": 650,
+      "physicalDefense": 12,
+      "magicDefense": 12,
+      "speed": 2.8,
+      "range": 1.8,
+      "damage": 60,
+      "readyAt": 33.78333333333277,
+      "targetable": true,
+      "stunned": false,
+      "recoveryBoost": 1,
+      "shields": []
+    },
+    {
+      "id": "wave-2-enemy-2",
+      "name": "Red minion",
+      "kind": "minion",
+      "team": "enemy",
+      "x": -2.7294667650564532,
+      "z": -0.5289936469902977,
+      "radius": 0.3,
+      "hp": 650,
+      "maxHp": 650,
+      "physicalDefense": 12,
+      "magicDefense": 12,
+      "speed": 2.8,
+      "range": 1.8,
+      "damage": 60,
+      "readyAt": 33.83333333333277,
+      "targetable": true,
+      "stunned": false,
+      "recoveryBoost": 1,
+      "shields": []
+    },
+    {
+      "id": "enemy-0",
+      "name": "Red Outer Tower",
+      "kind": "tower",
+      "team": "enemy",
+      "order": 0,
+      "requires": null,
+      "x": 12,
+      "z": 0,
+      "maxHp": 3600,
+      "physicalDefense": 55,
+      "magicDefense": 40,
+      "damage": 220,
+      "range": 8,
+      "cooldown": 1.1,
+      "gold": 100,
+      "xp": 120,
+      "hp": 3600,
+      "radius": 0.8,
+      "speed": 0,
+      "targetable": true,
+      "protected": false,
+      "readyAt": 0,
+      "recoveryBoost": 1,
+      "stunned": false,
+      "shields": [],
+      "targetId": null
+    },
+    {
+      "id": "enemy-1",
+      "name": "Red Inner Tower",
+      "kind": "tower",
+      "team": "enemy",
+      "order": 1,
+      "requires": "enemy-0",
+      "x": 22,
+      "z": 0,
+      "maxHp": 4200,
+      "physicalDefense": 55,
+      "magicDefense": 40,
+      "damage": 220,
+      "range": 8,
+      "cooldown": 1.1,
+      "gold": 100,
+      "xp": 120,
+      "hp": 4200,
+      "radius": 0.8,
+      "speed": 0,
+      "targetable": false,
+      "protected": true,
+      "readyAt": 0,
+      "recoveryBoost": 1,
+      "stunned": false,
+      "shields": [],
+      "targetId": null
+    },
+    {
+      "id": "enemy-2",
+      "name": "Red Core",
+      "kind": "core",
+      "team": "enemy",
+      "order": 2,
+      "requires": "enemy-1",
+      "x": 30,
+      "z": 0,
+      "maxHp": 6500,
+      "physicalDefense": 65,
+      "magicDefense": 40,
+      "damage": 260,
+      "range": 8,
+      "cooldown": 1.1,
+      "gold": 0,
+      "xp": 0,
+      "hp": 6500,
+      "radius": 1.1,
+      "speed": 0,
+      "targetable": false,
+      "protected": true,
+      "readyAt": 0,
+      "recoveryBoost": 1,
+      "stunned": false,
+      "shields": [],
+      "targetId": null
+    }
+  ],
+  "hits": 1,
+  "time": 33.449999999999385,
+  "targetMode": "nearest",
+  "manualTargetId": null,
+  "selectedTargetId": "enemy-bot-0",
+  "lastAttack": {
+    "reason": "fired",
+    "serial": 2,
+    "targetId": "enemy-bot-0",
+    "duration": 0.9090909090909091
+  },
+  "utilities": {
+    "recall": null,
+    "regen": null,
+    "regenReadyAt": 0
+  },
+  "queuedSkill": null,
+  "progression": {
+    "level": 3,
+    "totalXp": 500,
+    "xp": 0,
+    "xpToNext": 400,
+    "atMax": false,
+    "skillPoints": 3,
+    "ranks": {
+      "malefic-bomb": 0,
+      "void-projectile": 0,
+      "destruction-rush": 0
+    }
+  },
+  "mana": 700,
+  "abilityCooldowns": {},
+  "projectiles": [],
+  "pendingCasts": [
+    {
+      "id": 2,
+      "at": 33.48311688311628
+    }
+  ],
+  "buff": null,
+  "lastCast": {
+    "serial": 0,
+    "slot": null
+  },
+  "lastCastResult": "ready",
+  "facing": {
+    "x": -0.43429890204618554,
+    "z": -0.9007688181112165
+  },
+  "actionLocked": true,
+  "lockUntil": 34.17575757575697,
+  "aiming": null,
+  "phase": "running",
+  "targetCategory": null,
+  "countdown": 0,
+  "matchConfig": {
+    "mode": "brawl",
+    "difficulty": "normal",
+    "teamSize": 5,
+    "allyCount": 0,
+    "enemyCount": 1,
+    "heroId": "layla",
+    "seed": 20261018,
+    "level": 3,
+    "gold": 800,
+    "tools": false,
+    "botHeroIds": {
+      "player": [],
+      "enemy": [
+        "layla"
+      ]
+    },
+    "build": [],
+    "spellId": "execute",
+    "accountLevel": 1,
+    "roleSetup": {
+      "kind": "none",
+      "blessingId": null
+    }
+  },
+  "gold": 20548,
+  "inventory": [
+    "dagger",
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "priorityItem": null,
+  "buildPriority": {
+    "sequence": [],
+    "completed": [],
+    "manual": null,
+    "paused": false
+  },
+  "attackCommand": {
+    "filter": null,
+    "manualId": null,
+    "targetId": "enemy-bot-0",
+    "origin": {
+      "x": 0.36126983722055545,
+      "z": 3.1112698372208096
+    }
+  },
+  "combatSettings": {
+    "smartBasic": true,
+    "autoSwitch": true,
+    "categoryPriority": "hero",
+    "smartSkills": true,
+    "skillRanges": true,
+    "rangeDisplay": "context",
+    "towerRanges": true,
+    "searchExtra": 10
+  },
+  "score": {
+    "player": 0,
+    "enemy": 0
+  },
+  "stats": {
+    "eliminations": 0,
+    "deaths": 0,
+    "assists": 0,
+    "goldEarned": 0,
+    "structures": 0
+  },
+  "wave": 2,
+  "npcProjectiles": [],
+  "structures": [
+    {
+      "id": "player-0",
+      "name": "Blue Outer Tower",
+      "kind": "tower",
+      "team": "player",
+      "order": 0,
+      "requires": null,
+      "x": -12,
+      "z": 0,
+      "maxHp": 3600,
+      "physicalDefense": 55,
+      "magicDefense": 40,
+      "damage": 220,
+      "range": 8,
+      "cooldown": 1.1,
+      "gold": 100,
+      "xp": 120,
+      "hp": 2351.9999999999995,
+      "radius": 0.8,
+      "speed": 0,
+      "targetable": true,
+      "protected": false,
+      "readyAt": 28.516666666666392,
+      "recoveryBoost": 1,
+      "stunned": false,
+      "shields": [],
+      "targetId": null,
+      "lastDamageAt": 25.733333333333153,
+      "lastHitAt": 25.733333333333153,
+      "contributors": {
+        "wave-1-enemy-1": 23.399999999999952,
+        "wave-1-enemy-2": 19.800000000000157,
+        "wave-1-enemy-0": 23.433333333333284,
+        "enemy-bot-0": 25.733333333333153
+      }
+    },
+    {
+      "id": "player-1",
+      "name": "Blue Inner Tower",
+      "kind": "tower",
+      "team": "player",
+      "order": 1,
+      "requires": "player-0",
+      "x": -22,
+      "z": 0,
+      "maxHp": 4200,
+      "physicalDefense": 55,
+      "magicDefense": 40,
+      "damage": 220,
+      "range": 8,
+      "cooldown": 1.1,
+      "gold": 100,
+      "xp": 120,
+      "hp": 4200,
+      "radius": 0.8,
+      "speed": 0,
+      "targetable": false,
+      "protected": true,
+      "readyAt": 0,
+      "recoveryBoost": 1,
+      "stunned": false,
+      "shields": [],
+      "targetId": null
+    },
+    {
+      "id": "player-2",
+      "name": "Blue Core",
+      "kind": "core",
+      "team": "player",
+      "order": 2,
+      "requires": "player-1",
+      "x": -30,
+      "z": 0,
+      "maxHp": 6500,
+      "physicalDefense": 65,
+      "magicDefense": 40,
+      "damage": 260,
+      "range": 8,
+      "cooldown": 1.1,
+      "gold": 0,
+      "xp": 0,
+      "hp": 6500,
+      "radius": 1.1,
+      "speed": 0,
+      "targetable": false,
+      "protected": true,
+      "readyAt": 0,
+      "recoveryBoost": 1,
+      "stunned": false,
+      "shields": [],
+      "targetId": null
+    },
+    {
+      "id": "enemy-0",
+      "name": "Red Outer Tower",
+      "kind": "tower",
+      "team": "enemy",
+      "order": 0,
+      "requires": null,
+      "x": 12,
+      "z": 0,
+      "maxHp": 3600,
+      "physicalDefense": 55,
+      "magicDefense": 40,
+      "damage": 220,
+      "range": 8,
+      "cooldown": 1.1,
+      "gold": 100,
+      "xp": 120,
+      "hp": 3600,
+      "radius": 0.8,
+      "speed": 0,
+      "targetable": true,
+      "protected": false,
+      "readyAt": 0,
+      "recoveryBoost": 1,
+      "stunned": false,
+      "shields": [],
+      "targetId": null
+    },
+    {
+      "id": "enemy-1",
+      "name": "Red Inner Tower",
+      "kind": "tower",
+      "team": "enemy",
+      "order": 1,
+      "requires": "enemy-0",
+      "x": 22,
+      "z": 0,
+      "maxHp": 4200,
+      "physicalDefense": 55,
+      "magicDefense": 40,
+      "damage": 220,
+      "range": 8,
+      "cooldown": 1.1,
+      "gold": 100,
+      "xp": 120,
+      "hp": 4200,
+      "radius": 0.8,
+      "speed": 0,
+      "targetable": false,
+      "protected": true,
+      "readyAt": 0,
+      "recoveryBoost": 1,
+      "stunned": false,
+      "shields": [],
+      "targetId": null
+    },
+    {
+      "id": "enemy-2",
+      "name": "Red Core",
+      "kind": "core",
+      "team": "enemy",
+      "order": 2,
+      "requires": "enemy-1",
+      "x": 30,
+      "z": 0,
+      "maxHp": 6500,
+      "physicalDefense": 65,
+      "magicDefense": 40,
+      "damage": 260,
+      "range": 8,
+      "cooldown": 1.1,
+      "gold": 0,
+      "xp": 0,
+      "hp": 6500,
+      "radius": 1.1,
+      "speed": 0,
+      "targetable": false,
+      "protected": true,
+      "readyAt": 0,
+      "recoveryBoost": 1,
+      "stunned": false,
+      "shields": [],
+      "targetId": null
+    }
+  ],
+  "allies": [],
+  "result": null,
+  "battleSpell": {
+    "id": "execute",
+    "accountLevel": 1,
+    "readyAt": 0,
+    "remaining": 0,
+    "active": {},
+    "channel": null,
+    "destinationId": null,
+    "progress": 0,
+    "upgradeReady": false,
+    "blessing": "not-configured",
+    "progressStats": false,
+    "lastResult": "ready",
+    "springs": []
+  },
+  "roleEquipment": {
+    "kind": "none",
+    "blessingId": null,
+    "ruleset": "classic-boots-600-v1",
+    "compatible": false,
+    "active": false,
+    "progressGold": 0,
+    "qualifyingActions": 0,
+    "reason": "No blessing selected",
+    "cooldown": 0
+  },
+  "expandedItemEffects": {
+    "timers": {
+      "athenaReadyAt": 33.41666666666605,
+      "lastHeroDamage": 33.41666666666605,
+      "lastDamage": 33.41666666666605
+    }
+  },
+  "potion": null,
+  "itemEffects": {
+    "active": [],
+    "timers": {
+      "anyCombatUntil": 38.41666666666605,
+      "lastNonMinion": 33.41666666666605
+    }
+  },
+  "aim": null,
+  "ranges": {
+    "player": {
+      "x": 0.36126983722055545,
+      "z": 3.1112698372208096,
+      "radius": 6,
+      "visible": true,
+      "targetInRange": true
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "radius": 8,
+        "enemy": false,
+        "inside": false,
+        "visible": true
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "radius": 8,
+        "enemy": false,
+        "inside": false,
+        "visible": false
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "radius": 8,
+        "enemy": false,
+        "inside": false,
+        "visible": false
+      },
+      {
+        "id": "enemy-0",
+        "x": 12,
+        "z": 0,
+        "radius": 8,
+        "enemy": true,
+        "inside": false,
+        "visible": true
+      },
+      {
+        "id": "enemy-1",
+        "x": 22,
+        "z": 0,
+        "radius": 8,
+        "enemy": true,
+        "inside": false,
+        "visible": false
+      },
+      {
+        "id": "enemy-2",
+        "x": 30,
+        "z": 0,
+        "radius": 8,
+        "enemy": true,
+        "inside": false,
+        "visible": false
+      }
+    ]
+  },
+  "paused": false,
+  "width": 1280,
+  "height": 720
+}

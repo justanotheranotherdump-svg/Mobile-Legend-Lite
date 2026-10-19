@@ -1,0 +1,400 @@
+{
+  "passed": 8,
+  "checks": [
+    {
+      "direction": [
+        1,
+        0
+      ],
+      "end": [
+        55,
+        1.1754790478277777,
+        -11
+      ],
+      "samples": [
+        {
+          "t": 0.08,
+          "brightness": 255
+        },
+        {
+          "t": 0.15,
+          "brightness": 255
+        },
+        {
+          "t": 0.25,
+          "brightness": 255
+        },
+        {
+          "t": 0.35,
+          "brightness": 255
+        },
+        {
+          "t": 0.5,
+          "brightness": 255
+        },
+        {
+          "t": 0.65,
+          "brightness": 255
+        },
+        {
+          "t": 0.75,
+          "brightness": 255
+        },
+        {
+          "t": 0.85,
+          "brightness": 255
+        },
+        {
+          "t": 0.95,
+          "brightness": 255
+        }
+      ]
+    },
+    {
+      "direction": [
+        -1,
+        0
+      ],
+      "end": [
+        -41,
+        1.1754790478277777,
+        -11
+      ],
+      "samples": [
+        {
+          "t": 0.08,
+          "brightness": 255
+        },
+        {
+          "t": 0.15,
+          "brightness": 255
+        },
+        {
+          "t": 0.25,
+          "brightness": 255
+        },
+        {
+          "t": 0.35,
+          "brightness": 255
+        },
+        {
+          "t": 0.5,
+          "brightness": 255
+        },
+        {
+          "t": 0.65,
+          "brightness": 255
+        },
+        {
+          "t": 0.75,
+          "brightness": 255
+        },
+        {
+          "t": 0.85,
+          "brightness": 255
+        },
+        {
+          "t": 0.95,
+          "brightness": 255
+        }
+      ]
+    },
+    {
+      "direction": [
+        0,
+        1
+      ],
+      "end": [
+        7,
+        1.1754790478277777,
+        37
+      ],
+      "samples": [
+        {
+          "t": 0.08,
+          "brightness": 255
+        },
+        {
+          "t": 0.15,
+          "brightness": 255
+        },
+        {
+          "t": 0.25,
+          "brightness": 255
+        },
+        {
+          "t": 0.35,
+          "brightness": 255
+        },
+        {
+          "t": 0.5,
+          "brightness": 255
+        },
+        {
+          "t": 0.65,
+          "brightness": 255
+        },
+        {
+          "t": 0.75,
+          "brightness": 255
+        },
+        {
+          "t": 0.85,
+          "brightness": 255
+        },
+        {
+          "t": 0.95,
+          "brightness": 255
+        }
+      ]
+    },
+    {
+      "direction": [
+        0,
+        -1
+      ],
+      "end": [
+        7,
+        1.1754790478277777,
+        -59
+      ],
+      "samples": [
+        {
+          "t": 0.08,
+          "brightness": 255
+        },
+        {
+          "t": 0.15,
+          "brightness": 255
+        },
+        {
+          "t": 0.25,
+          "brightness": 255
+        },
+        {
+          "t": 0.35,
+          "brightness": 255
+        },
+        {
+          "t": 0.5,
+          "brightness": 255
+        },
+        {
+          "t": 0.65,
+          "brightness": 255
+        },
+        {
+          "t": 0.75,
+          "brightness": 255
+        },
+        {
+          "t": 0.85,
+          "brightness": 255
+        },
+        {
+          "t": 0.95,
+          "brightness": 255
+        }
+      ]
+    },
+    {
+      "direction": [
+        1,
+        1
+      ],
+      "end": [
+        40.94112549695428,
+        1.1754790478277777,
+        22.941125496954278
+      ],
+      "samples": [
+        {
+          "t": 0.08,
+          "brightness": 255
+        },
+        {
+          "t": 0.15,
+          "brightness": 255
+        },
+        {
+          "t": 0.25,
+          "brightness": 255
+        },
+        {
+          "t": 0.35,
+          "brightness": 255
+        },
+        {
+          "t": 0.5,
+          "brightness": 255
+        },
+        {
+          "t": 0.65,
+          "brightness": 255
+        },
+        {
+          "t": 0.75,
+          "brightness": 255
+        },
+        {
+          "t": 0.85,
+          "brightness": 255
+        },
+        {
+          "t": 0.95,
+          "brightness": 255
+        }
+      ]
+    },
+    {
+      "direction": [
+        -1,
+        1
+      ],
+      "end": [
+        -26.941125496954278,
+        1.1754790478277777,
+        22.941125496954278
+      ],
+      "samples": [
+        {
+          "t": 0.08,
+          "brightness": 255
+        },
+        {
+          "t": 0.15,
+          "brightness": 255
+        },
+        {
+          "t": 0.25,
+          "brightness": 255
+        },
+        {
+          "t": 0.35,
+          "brightness": 255
+        },
+        {
+          "t": 0.5,
+          "brightness": 255
+        },
+        {
+          "t": 0.65,
+          "brightness": 255
+        },
+        {
+          "t": 0.75,
+          "brightness": 255
+        },
+        {
+          "t": 0.85,
+          "brightness": 255
+        },
+        {
+          "t": 0.95,
+          "brightness": 255
+        }
+      ]
+    },
+    {
+      "direction": [
+        1,
+        -1
+      ],
+      "end": [
+        40.94112549695428,
+        1.1754790478277777,
+        -44.94112549695428
+      ],
+      "samples": [
+        {
+          "t": 0.08,
+          "brightness": 255
+        },
+        {
+          "t": 0.15,
+          "brightness": 255
+        },
+        {
+          "t": 0.25,
+          "brightness": 255
+        },
+        {
+          "t": 0.35,
+          "brightness": 255
+        },
+        {
+          "t": 0.5,
+          "brightness": 255
+        },
+        {
+          "t": 0.65,
+          "brightness": 255
+        },
+        {
+          "t": 0.75,
+          "brightness": 255
+        },
+        {
+          "t": 0.85,
+          "brightness": 255
+        },
+        {
+          "t": 0.95,
+          "brightness": 255
+        }
+      ]
+    },
+    {
+      "direction": [
+        -1,
+        -1
+      ],
+      "end": [
+        -26.941125496954278,
+        1.1754790478277777,
+        -44.94112549695428
+      ],
+      "samples": [
+        {
+          "t": 0.08,
+          "brightness": 255
+        },
+        {
+          "t": 0.15,
+          "brightness": 255
+        },
+        {
+          "t": 0.25,
+          "brightness": 255
+        },
+        {
+          "t": 0.35,
+          "brightness": 255
+        },
+        {
+          "t": 0.5,
+          "brightness": 255
+        },
+        {
+          "t": 0.65,
+          "brightness": 255
+        },
+        {
+          "t": 0.75,
+          "brightness": 255
+        },
+        {
+          "t": 0.85,
+          "brightness": 255
+        },
+        {
+          "t": 0.95,
+          "brightness": 255
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "environment": "Linux Chromium SwiftShader, not native hardware certification"
+}

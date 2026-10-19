@@ -1,0 +1,20 @@
+{
+  "checks": [
+    "Native visual six-slot icon catalog places/reorders and saves actual build",
+    "Duplicate is independent and selected custom build survives offline reload",
+    "Three immutable community templates create editable six-icon custom copies",
+    "Battle Spells opens all twelve cards directly and equips without an intermediate button",
+    "Structured Emblem interface has only intentionally empty future slots and no applied bonuses",
+    "Six-slot editor remains bounded at all three landscape sizes",
+    "All 108 canonical wiki entries, exact category counts and individual embedded PNGs decode offline",
+    "Floryn exclusives are truthful unavailable references; typed Jungle selection saves intention, not free inventory",
+    "Native offline reload → selection → real loading → Brawl carries six-item Recommended, actual spell and restricted blessing; purchasing boots charges real Gold and advances the saved order",
+    "Native expanded shop enforces real affordability for Winter and consumables: no granted item, active USE button or potion effect from merely selecting a catalog card",
+    "Native fresh Brawl carries Conceal intention and real non-Retribution spell; buying boots still cannot activate Conceal without earned Thriving progress",
+    "Leaving a real role-equipped match disposes role/active-item/Quick Buy controls rather than leaking or duplicating HUD into the lobby",
+    "Actual file:// standalone loads without runtime errors/warnings or external requests"
+  ],
+  "errors": [],
+  "warnings": [],
+  "requests": []
+}

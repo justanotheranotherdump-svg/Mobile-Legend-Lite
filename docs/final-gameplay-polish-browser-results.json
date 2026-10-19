@@ -1,0 +1,12 @@
+{
+  "checks": [
+    "Real null selection: roster stays visible; selected portrait/details/preview and confirm follow explicit pick, clear and re-entry",
+    "Actual fresh Brawl player/NPC share all effective base attributes and runtime HP/mana, movement, range and attack speed; no display-only parity",
+    "Actual unattended offline Brawl: NPC settles outside real tower range without wave, then commits with arriving minions and damages a structure",
+    "Final in-match Cheats tab adds exactly 9999 real Gold twice, updates HUD/shop, preserves normal purchase deduction and resumes live simulation",
+    "Native main attack (hero priority) command approaches and deals real damage to an NPC; that NPC casts its real kit and deals damage to the human in the live offline match"
+  ],
+  "errors": [],
+  "warnings": [],
+  "requests": []
+}

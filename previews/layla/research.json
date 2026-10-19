@@ -1,0 +1,28 @@
+{
+  "retrieved": "2026-10-19",
+  "classification": "Source-derived candidates only; no live-game frame measurement or verified final balance.",
+  "sources": [
+    {"id":"LP","name":"Liquipedia · ability-table baseline","url":"https://liquipedia.net/mobilelegends/Layla","version":"Page fetched 2026-10-19; exact skill revision not established","notes":"115% passive, S1 mana35–60, S2 header70 with no rank-cost table, ultimate37/32/27 and130/150/170. BaseHP2320/DEF17/MS250."},
+    {"id":"IO","name":"MLBB.io · comparison","url":"https://mlbb.io/en/hero/layla","version":"Page says data updated Oct18,2026; individual stat/skill revision unconfirmed","notes":"130% passive. BaseHP2250/DEF15/MS240; these contradict LP despite recent overall page timestamp."},
+    {"id":"GUIDES","name":"MLBB Guides · comparison","url":"https://www.mlbbguides.com/heroes/layla/","version":"Page body says Sep29,2026 local dataset","notes":"115% passive. S1 mana40–65, S2 mana65–90 disagree with LP. Damage endpoints and ultimate agree. Combo prose includes unsupported Starlight stacks/lock-on claims: NOT adopted."},
+    {"id":"ONE","name":"ONE Esports · qualitative sequences","url":"https://www.oneesports.gg/mobile-legends/layla-guide-best-build-emblem/","version":"Byline Apr10,2025; embedded Dec6 note refers to patch1.9.32 builds, year unspecified","notes":"Minion/creep S1 hits can enable range; basic, S1 and ultimate can trigger mark. Qualitative wind-up delay, not exact frames. No builds implemented."}
+  ],
+  "baseStatsCandidate": {"maxHp":2320,"mana":500,"hpRegen":5.4,"manaRegen":4,"physicalAttack":133,"physicalDefense":17,"magicDefense":15,"attackSpeed":1.06,"attackSpeedRatio":1,"movementSpeed":250},
+  "abilities": {
+    "passive":{"maximum":1.15,"threshold":6,"excluded":["turret"],"source":"LP","curve":"Unconfirmed; workshop illustrates linear clamp 1+(max-1)*clamp(distance/threshold,0,1). Target distance is actor-center distance, not measured official projectile-path sampling."},
+    "s1":{"damage":[200,240,280,320,360,400],"physicalScaling":0.8,"cooldown":[6,5.6,5.2,4.8,4.4,4],"mana":[35,40,45,50,55,60],"alternateMana":[40,45,50,55,60,65],"canCrit":true,"rangeBuffDuration":3,"moveBonus":0.6,"moveDuration":1.2,"heroDurationMultiplier":2,"source":"LP","status":"Candidate: crit eligible in descriptions; no actual combat damage/crit simulation."},
+    "s2":{"damage":[170,200,230,260,290,320],"physicalScaling":0.65,"cooldown":[7.5,7.3,7.1,6.9,6.7,6.5],"manaHeader":70,"manaRanks":null,"alternateMana":[65,70,75,80,85,90],"markDuration":3,"markDamage":[100,120,140,160,180,200],"markScaling":0.35,"stun":0.25,"source":"LP","status":"LP lacks rank mana table; 70 all ranks is not inferred from a single header. Alternate table is separately labeled GUIDES. Mark scope and target/tracking rules unconfirmed."},
+    "ult":{"damage":[500,650,800],"physicalScaling":1.5,"cooldown":[37,32,27],"mana":[130,150,170],"rangeBonus":[0.6,1.2,1.8],"source":"LP","visionBonus":null,"status":"No fog/vision subsystem added. Geometric range/width/travel and voluntary interruption are prototype settings."}
+  },
+  "unresolved": [
+    "115% versus130% passive maximum; exact curve and distance-sampling rule not verified.",
+    "S1 mana35–60 versus40–65; S2 header70 versus65–90 rank table. Both records kept separate.",
+    "S2 marks all impact-AoE targets versus only primary target; selector compares both, not a certified final rule.",
+    "S2 targeted/tracking versus directional path. This workshop uses a declared fixed directional orb; no official targeting certification.",
+    "Range geometry, S1 bonus amount/stacking, collision widths, AoE radius, speeds and unit mapping are provisional. Range rank increases use candidate .6/1.2/1.8.",
+    "Exact cast/recovery frame data unavailable; editable .25/.25/.40/.65 release times are user-supplied candidates.",
+    "Ultimate travelling front versus near-instant line is a visual comparison, same width/range in both modes. Commitment toggle is not proof of official cancellation rules.",
+    "Base stats and growth versions conflict; no mixed growth table or silently computed latest-live level15 stats.",
+    "Mark refresh/secondary explosion chain/death handling and range-gating are explicit prototype rules, not verified game mechanics. No chain spread in this preview."
+  ]
+}

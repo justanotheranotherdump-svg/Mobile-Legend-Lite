@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-18",
+  "branch": "arena/55ce0f80-mobile-legend-lite",
+  "reviewState": "Reviewed expansion; user authorized commit/push to the same Arena branch",
+  "baselineUnits": 290,
+  "currentUnits": 333,
+  "newUnitChecks": 43,
+  "browserChecks": {
+    "historical": 128,
+    "connected": 10,
+    "recovery": 5,
+    "total": 143
+  },
+  "unexpectedErrors": 0,
+  "runtimeAssetRequests": 0,
+  "expectedRecoveryGraphicsErrors": 4,
+  "testedHtmlSha256": "7793dd18082b46d0efa42d29ebe0ae3392298aa029766b9b9c77a2d96db5f1e8",
+  "approvedAssets": {
+    "src/heroes/layla/assets/layla.glb": "963a4902955cb8ad345c74eb63b76e602ade5247c2bd94544ce3000cba6edd51",
+    "src/assets/images/layla-creation.png": "bc2b258b61ddceb7aa9abe9a82c9ebe25d30b7ba91c6d3a58a57b4f15005fca1"
+  },
+  "environment": "Linux Chromium software WebGL, standalone file://, offline networking, trusted touch emulation; NOT native Windows, physical-touch or speaker certification",
+  "packaging": "Root/dist/named HTML and ZIP index checked byte-identical; no dependencies, duplicate builds or references in source archive",
+  "observedFinalResult": "LOCAL MATCH COMPLETE \u00b7 NO ACCOUNT REWARDS\n\nDEFEAT\n\nCore destruction decided this result.\n\nDuration\n6:47\nEliminations\n0\nDeaths\n0\nAssists\n0\nHero level\n4\nMatch gold earned\n100\nEnemy structures destroyed\n1\nPLAY AGAINReturn to Training LobbyMain Menu"
+}

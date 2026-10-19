@@ -1,0 +1,12 @@
+{
+  "heroId": "franco",
+  "role": "Tank",
+  "position": "Roam",
+  "prices": {
+    "coins": 32000,
+    "diamonds": 749
+  },
+  "source": "https://mlbb.io/en/hero/franco",
+  "retrieved": "2026-10-19",
+  "status": "User-selected initial project prices; existing account Coins and Diamonds only"
+}

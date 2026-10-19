@@ -1,0 +1,12 @@
+PASS: fresh offline level 1: 2250 HP / 500 mana, one point, zero XP, three visibly unlearned skills and locked ultimate
+PASS: one real skill point enables the same rebound/click skill action, costs real mana, deals scaled defended damage and grants no reward XP
+PASS: configurable real XP crosses exact/multiple thresholds, keeps learned ranks, adds points/resources and updates live level/XP meter
+PASS: Practice set-level resets ranks/flight/cooldowns; level 5 has 2858 HP / 167 PA; invalid inputs report errors without lowering XP/level
+PASS: level 15 UI exactly reflects 4378 HP / 1900 mana / 252 PA / 71 PD / 50 MD / 1.34 attacks/s, explicit display-to-world units and maximum XP saturation
+PASS: all fifteen points allocate exactly 6/6/3, live rank costs refresh, and every capped upgrade is visibly disabled
+PASS: Practice Reset to level 1 restores resources/XP/ranks without resetting targets or fabricating eliminations
+PASS: real Practice numeric editor owns typing: no WASD movement or skill casts leak through
+PASS: level/XP, skills/upgrades and scrollable Practice controls remain reachable at 1280x720, 960x540 and 844x390
+PASS: actual root file:// runs offline with zero browser errors and no external runtime requests
+10 progression browser checks passed.
+

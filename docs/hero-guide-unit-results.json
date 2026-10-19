@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-18",
+  "command": "npm test",
+  "tests": 200,
+  "passed": 200,
+  "failed": 0,
+  "previousTestsPreserved": 193,
+  "newHeroGuideUnitCases": 7,
+  "htmlBytes": 5119510,
+  "htmlSha256": "b0778cfdbfeaee7b9f6f313cd70979d556c12c7e0b3ad376804aa93261638dbd",
+  "glbSha256": "963a4902955cb8ad345c74eb63b76e602ade5247c2bd94544ce3000cba6edd51",
+  "illustrationSha256": "bc2b258b61ddceb7aa9abe9a82c9ebe25d30b7ba91c6d3a58a57b4f15005fca1"
+}

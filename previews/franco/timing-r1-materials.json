@@ -1,0 +1,240 @@
+[
+  {
+    "doubleSided": true,
+    "name": "Weathered warm skin",
+    "pbrMetallicRoughness": {
+      "baseColorFactor": [
+        0.550000011920929,
+        0.27000001072883606,
+        0.17000000178813934,
+        1
+      ],
+      "metallicFactor": 0,
+      "roughnessFactor": 0.6000000238418579
+    }
+  },
+  {
+    "doubleSided": true,
+    "name": "Face planes",
+    "pbrMetallicRoughness": {
+      "baseColorFactor": [
+        0.6899999976158142,
+        0.3700000047683716,
+        0.23999999463558197,
+        1
+      ],
+      "metallicFactor": 0,
+      "roughnessFactor": 0.6000000238418579
+    }
+  },
+  {
+    "doubleSided": true,
+    "name": "Leather seams",
+    "pbrMetallicRoughness": {
+      "baseColorFactor": [
+        0.07500000298023224,
+        0.03799999877810478,
+        0.02500000037252903,
+        1
+      ],
+      "metallicFactor": 0,
+      "roughnessFactor": 0.6000000238418579
+    }
+  },
+  {
+    "doubleSided": true,
+    "name": "Eyes",
+    "pbrMetallicRoughness": {
+      "baseColorFactor": [
+        0.8700000047683716,
+        0.8199999928474426,
+        0.6600000262260437,
+        1
+      ],
+      "metallicFactor": 0,
+      "roughnessFactor": 0.6000000238418579
+    }
+  },
+  {
+    "doubleSided": true,
+    "name": "Pale blue iris",
+    "pbrMetallicRoughness": {
+      "baseColorFactor": [
+        0.12999999523162842,
+        0.38999998569488525,
+        0.4699999988079071,
+        1
+      ],
+      "metallicFactor": 0,
+      "roughnessFactor": 0.6000000238418579
+    }
+  },
+  {
+    "doubleSided": true,
+    "name": "Pupil and mouth",
+    "pbrMetallicRoughness": {
+      "baseColorFactor": [
+        0.017999999225139618,
+        0.012000000104308128,
+        0.009999999776482582,
+        1
+      ],
+      "metallicFactor": 0,
+      "roughnessFactor": 0.6000000238418579
+    }
+  },
+  {
+    "doubleSided": true,
+    "name": "Copper red beard",
+    "pbrMetallicRoughness": {
+      "baseColorFactor": [
+        0.5299999713897705,
+        0.07500000298023224,
+        0.02199999988079071,
+        1
+      ],
+      "metallicFactor": 0,
+      "roughnessFactor": 0.6000000238418579
+    }
+  },
+  {
+    "doubleSided": true,
+    "name": "Oxhide leather",
+    "pbrMetallicRoughness": {
+      "baseColorFactor": [
+        0.17000000178813934,
+        0.08500000089406967,
+        0.0430000014603138,
+        1
+      ],
+      "metallicFactor": 0,
+      "roughnessFactor": 0.6000000238418579
+    }
+  },
+  {
+    "doubleSided": true,
+    "name": "Teeth and horn scratches",
+    "pbrMetallicRoughness": {
+      "baseColorFactor": [
+        0.7300000190734863,
+        0.6399999856948853,
+        0.44999998807907104,
+        1
+      ],
+      "metallicFactor": 0,
+      "roughnessFactor": 0.6000000238418579
+    }
+  },
+  {
+    "doubleSided": true,
+    "name": "Copper hair highlights",
+    "pbrMetallicRoughness": {
+      "baseColorFactor": [
+        0.7799999713897705,
+        0.18000000715255737,
+        0.03500000014901161,
+        1
+      ],
+      "metallicFactor": 0,
+      "roughnessFactor": 0.6000000238418579
+    }
+  },
+  {
+    "doubleSided": true,
+    "name": "Aged brass",
+    "pbrMetallicRoughness": {
+      "baseColorFactor": [
+        0.4699999988079071,
+        0.28999999165534973,
+        0.10999999940395355,
+        1
+      ],
+      "metallicFactor": 0.7200000286102295,
+      "roughnessFactor": 0.3499999940395355
+    }
+  },
+  {
+    "doubleSided": true,
+    "name": "Fur tips",
+    "pbrMetallicRoughness": {
+      "baseColorFactor": [
+        0.3499999940395355,
+        0.1899999976158142,
+        0.11999999731779099,
+        1
+      ],
+      "metallicFactor": 0,
+      "roughnessFactor": 0.6000000238418579
+    }
+  },
+  {
+    "doubleSided": true,
+    "name": "Auburn mane",
+    "pbrMetallicRoughness": {
+      "baseColorFactor": [
+        0.2199999988079071,
+        0.0949999988079071,
+        0.061000000685453415,
+        1
+      ],
+      "metallicFactor": 0,
+      "roughnessFactor": 0.6000000238418579
+    }
+  },
+  {
+    "doubleSided": true,
+    "name": "Cold forged iron",
+    "pbrMetallicRoughness": {
+      "baseColorFactor": [
+        0.0949999988079071,
+        0.14000000059604645,
+        0.18000000715255737,
+        1
+      ],
+      "metallicFactor": 0.8299999833106995,
+      "roughnessFactor": 0.33000001311302185
+    }
+  },
+  {
+    "doubleSided": true,
+    "name": "Worn steel edges",
+    "pbrMetallicRoughness": {
+      "baseColorFactor": [
+        0.3700000047683716,
+        0.46000000834465027,
+        0.49000000953674316,
+        1
+      ],
+      "metallicFactor": 0.8199999928474426,
+      "roughnessFactor": 0.3100000023841858
+    }
+  },
+  {
+    "doubleSided": true,
+    "name": "Dark horn",
+    "pbrMetallicRoughness": {
+      "baseColorFactor": [
+        0.06800000369548798,
+        0.054999999701976776,
+        0.04600000008940697,
+        1
+      ],
+      "metallicFactor": 0,
+      "roughnessFactor": 0.6000000238418579
+    }
+  },
+  {
+    "doubleSided": true,
+    "name": "Charcoal quilted armor",
+    "pbrMetallicRoughness": {
+      "baseColorFactor": [
+        0.054999999701976776,
+        0.07599999755620956,
+        0.08500000089406967,
+        1
+      ],
+      "metallicFactor": 0,
+      "roughnessFactor": 0.6000000238418579
+    }
+  }
+]

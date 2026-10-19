@@ -1,0 +1,52 @@
+{
+  "hero": "layla",
+  "source": "https://mlbb.io/en/hero/layla/build",
+  "checked": "2026-10-19",
+  "sampleSize": 6,
+  "label": "October 2026 community recommendations · 6 submissions · no match-outcome or win-rate evidence",
+  "emblemNote": "Research notes only: Marksman; Fatal, Weapon Master, Quantum Charge. No emblem selection or bonus applied.",
+  "presets": [
+    {
+      "id": "balanced",
+      "name": "Standard / Balanced",
+      "spell": "flicker",
+      "purpose": "Community average order: Windtalker is the reported early core spike, followed by critical damage and range. Starting point, not a proven optimal build.",
+      "items": [
+        "tough-boots",
+        "windtalker",
+        "haas-claws",
+        "berserkers-fury",
+        "blade-of-despair",
+        "malefic-gun"
+      ]
+    },
+    {
+      "id": "anti-healing",
+      "name": "Anti-Healing",
+      "spell": "flicker",
+      "purpose": "Includes Sea Halberd's actual healing reduction for enemies reliant on recovery. Rose Gold Meteor is a low-HP shield item, not an anti-heal substitute.",
+      "items": [
+        "tough-boots",
+        "windtalker",
+        "berserkers-fury",
+        "haas-claws",
+        "malefic-gun",
+        "sea-halberd"
+      ]
+    },
+    {
+      "id": "on-hit",
+      "name": "Attack Speed / On-Hit",
+      "spell": "vengeance",
+      "purpose": "Alternative submitted build: Corrosion Scythe, Golden Staff and Demon Hunter Sword instead of the standard crit core. Rose Gold Meteor adds its existing defensive shield.",
+      "items": [
+        "tough-boots",
+        "corrosion-scythe",
+        "golden-staff",
+        "demon-hunter-sword",
+        "malefic-gun",
+        "rose-gold-meteor"
+      ]
+    }
+  ]
+}

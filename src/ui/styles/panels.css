@@ -1,0 +1,159 @@
+.hud-dialog {
+  color: #dfebee;
+  background: radial-gradient(ellipse at 0 0, #294d5d, #102332 65%);
+  border: 1px solid #c7ad7977;
+  border-radius: 9px;
+  width: min(530px, 90vw);
+  padding: 26px;
+  box-shadow: 0 20px 70px #0009;
+  max-height: 88vh;
+  overflow: auto;
+}
+.hud-dialog::backdrop {
+  background: #03131e99;
+  backdrop-filter: blur(3px);
+}
+.dialog-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+.dialog-heading h2 {
+  font-size: 25px;
+  font-weight: 400;
+  color: #f2dfb3;
+  margin: 7px 0 12px;
+  letter-spacing: 0.5px;
+}
+.hud-dialog p {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #afc5ce;
+  margin: 0 0 20px;
+}
+.setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-block-start: 1px solid #7698a144;
+  padding: 16px 0;
+  font-size: 13px;
+}
+.setting-row small {
+  display: block;
+  font-size: 10px;
+  color: #b0c7cc;
+  margin-top: 6px;
+}
+.setting-row input {
+  accent-color: #6bdbc9;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.controls-help {
+  font-size: 11px;
+  margin: 12px 0 24px;
+}
+.controls-help div {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  line-height: 2;
+}
+.controls-help dt {
+  color: #d5c59a;
+}
+.controls-help dd {
+  color: #aac4cc;
+  margin: 0;
+}
+.hud-dialog :focus-visible {
+  outline: 2px solid #83ecda;
+  outline-offset: 4px;
+}
+@media (max-height: 600px) {
+  .hud-dialog {
+    padding: 18px;
+  }
+  .dialog-heading h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  .setting-row {
+    padding: 10px 0;
+  }
+  .controls-help {
+    margin-bottom: 12px;
+  }
+  .hud-dialog p {
+    margin-bottom: 12px;
+  }
+}
+.key-hints-hidden #hud-root .slot-key {
+  display: none;
+}
+#key-controls {
+  border-block: 1px solid #7698a144;
+  margin: 4px 0 18px;
+  padding: 12px 0;
+}
+#key-controls summary {
+  cursor: pointer;
+  color: #e6ce9d;
+  font-size: 13px;
+  padding: 6px 0;
+}
+.hud-dialog .key-settings-note {
+  font-size: 10px;
+  margin: 12px 0;
+}
+.binding-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 7px 0;
+  font-size: 11px;
+  color: #c6d9df;
+}
+.binding-row select {
+  width: 112px;
+  flex-shrink: 0;
+  font-size: 12px;
+}
+#restore-key-defaults {
+  padding: 8px 12px;
+  margin: 12px 0 8px;
+  border-radius: 4px;
+  font-size: 11px;
+}
+#key-binding-status {
+  font-size: 10px;
+  min-height: 30px;
+  margin: 6px 0 0;
+}
+#key-binding-status.binding-error {
+  color: #ffc2a4;
+}
+.tool-button.has-shortcut,
+.shop-button.has-shortcut,
+#clear-target.has-shortcut {
+  position: relative;
+}
+#hud-root .shortcut-extra {
+  top: -5px;
+  left: -5px;
+  bottom: auto;
+  right: auto;
+  width: 17px;
+  min-width: 17px;
+  height: 17px;
+  line-height: 16px;
+  font-size: 7px;
+  letter-spacing: 0;
+  padding: 0 2px;
+  z-index: 3;
+  pointer-events: none;
+}
