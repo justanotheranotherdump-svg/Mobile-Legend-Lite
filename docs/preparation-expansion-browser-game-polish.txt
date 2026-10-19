@@ -1,0 +1,21 @@
+PASS: Preparation creates/edits/reorders/saves active hero build through native controls
+PASS: Equipment wiki uses all 108 canonical registry entries and connected actual recipe data
+PASS: Emblems clearly inactive layout, no invented stat system
+PASS: Spell choice and selected build persist across offline file reload
+PASS: Owned Heroes tab exposes only the actual owned Layla with shared circular portrait
+PASS: Profile identity, empty actual history, hero statistics and inactive ranked placeholder are truthful
+PASS: Explicit developer additions/max level persist; reset cancel preserves account; confirmed delete and recovery backup work
+PASS: Selection room changes the actual equipped spell carried through loading into Brawl
+PASS: Native tower-priority command persists, approaches from outside range and stops to fire without overlap
+PASS: Rendered ground ring radii equal live attack/tower simulation values
+PASS: WASD cancels automatic approach immediately
+PASS: Native combat settings drive the actual simulation policy
+PASS: Held pointer displays directional skill wheel and actual range; Escape cancels without casting/spending
+PASS: Relative pointer drag and release casts actual projectile once through normal mana/cooldown authority
+PASS: Keyboard hold uses the same relative wheel/release lifecycle for circular orb aiming
+PASS: Dedicated cancel area discards ultimate aim without a cast or cooldown
+PASS: Spell/Regen cooldowns and Recall channel use dark overlays and authoritative numerical countdowns; ordinary action feed is clean
+PASS: Selected Preparation build automatically enters match and advances to missing component after completed item purchase
+PASS: Recommended uses saved order; Simple/All modes, complete recipe trees, next missing highlight and manual override/resume remain connected
+PASS: Reference-inspired spell icon browser/detail panel retains detailed cards; shop stays usable at all three landscape sizes
+{"passed":20,"errors":[],"warnings":[],"requests":[]}

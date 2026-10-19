@@ -1,0 +1,40 @@
+
+> moba-foundation@0.1.0 test:browser:layla
+> node tests/browser-layla.mjs
+
+PASS: offline default uses approved GLB, 3 skills, keyboard-only HUD; no joystick/duplicate priority card, hero status bottom-left
+PASS: idle mouse hover does not rotate model or create an aim sight
+PASS: normal model facing follows actual camera-relative movement rather than mouse
+PASS: moving basic locks movement for full Shoot, hits locked enemy, then held WASD resumes automatically
+PASS: quick key tap ignores mouse and auto-targets nearest eligible enemy at skill range; normal damage/buff/mana/CD retained
+PASS: auto orb/basic chaining retains marks, bonus damage, stun trigger and authoritative presentation
+PASS: pointer tap auto-targets using Settings priority, not cursor position; Settings is sole priority selector
+PASS: held bound key previews original directional sight without spending; Escape cancels and stale keyup does not cast
+PASS: hold-and-release can override auto/manual pin with an aimed enemy lock without changing pin
+PASS: pointer capture supports held button drag aim and release, with exactly one cast and no native-click duplicate
+PASS: dragging held pointer into visible CANCEL area and releasing cancels without mana/cooldown
+PASS: right-click cancels a held skill without basic attack or resource spend
+PASS: non-modal Settings/Shop preserve held aim and allow WASD and real skill casts while open
+PASS: session custom numpad keys support both tap-auto and held preview/cancel; old key is replaced
+PASS: native accessible button activation shares auto-targeted ultimate and authoritative one-hit beam
+PASS: blur/reset lifecycle clears held preview/capture without spending or reviving old gestures
+PASS: keyboard-only status/skills/attack remain accessible in desktop and compact landscape layouts
+node:internal/errors:983
+  const err = new Error(message);
+              ^
+
+Error: Command failed: unzip -p deliverables/MOBA-Lab-Phase-3-source.zip index.html
+    at genericNodeError (node:internal/errors:983:15)
+    at wrappedFn (node:internal/errors:537:14)
+    at checkExecSyncError (node:child_process:916:11)
+    at execFileSync (node:child_process:952:15)
+    at file:///home/user/Mobile-Legend-Lite/tests/browser-layla.mjs:379:17 {
+  status: 9,
+  signal: null,
+  output: [ null, Buffer(0) [Uint8Array] [], Buffer(0) [Uint8Array] [] ],
+  pid: 2974,
+  stdout: Buffer(0) [Uint8Array] [],
+  stderr: Buffer(0) [Uint8Array] []
+}
+
+Node.js v22.22.3

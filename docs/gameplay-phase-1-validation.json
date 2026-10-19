@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-18",
+  "scope": "Gameplay roadmap Phase 1 only",
+  "baseCommit": "e6c8f392be86dce43bb6e9bf4d9f10b0e8590164",
+  "unit": {
+    "passed": 290,
+    "failed": 0,
+    "report": "docs/gameplay-phase-1-unit-results.json"
+  },
+  "browser": [
+    {
+      "suite": "foundation",
+      "checks": 50,
+      "errors": 0,
+      "warnings": 0,
+      "runtimeRequests": 0,
+      "report": "docs/gameplay-phase-1-foundation-browser-results.json"
+    },
+    {
+      "suite": "layla",
+      "checks": 19,
+      "errors": 0,
+      "warnings": 0,
+      "runtimeRequests": 0,
+      "report": "docs/gameplay-phase-1-layla-browser-results.json"
+    },
+    {
+      "suite": "panels",
+      "checks": 16,
+      "errors": 0,
+      "warnings": 0,
+      "runtimeRequests": 0,
+      "report": "docs/gameplay-phase-1-panels-browser-results.json"
+    },
+    {
+      "suite": "menu",
+      "checks": 11,
+      "errors": 0,
+      "warnings": 0,
+      "runtimeRequests": 0,
+      "report": "docs/gameplay-phase-1-menu-browser-results.json"
+    },
+    {
+      "suite": "polish",
+      "checks": 13,
+      "errors": 0,
+      "warnings": 0,
+      "runtimeRequests": 0,
+      "report": "docs/gameplay-phase-1-polish-browser-results.json"
+    },
+    {
+      "suite": "heroes",
+      "checks": 9,
+      "errors": 0,
+      "warnings": 0,
+      "runtimeRequests": 0,
+      "report": "docs/gameplay-phase-1-heroes-browser-results.json"
+    },
+    {
+      "suite": "progression",
+      "checks": 10,
+      "errors": 0,
+      "warnings": 0,
+      "runtimeRequests": 0,
+      "report": "docs/progression-browser-results.json"
+    }
+  ],
+  "browserChecksTotal": 128,
+  "structuralOfflineValidation": "passed; root index/dist/named HTML byte-identical; inline scripts/styles/assets",
+  "heroValidation": "passed; layla and exact historical training fixture",
+  "limitations": [
+    "Linux Chromium + software WebGL + offline file://, not native Windows/physical touch/speaker certification.",
+    "Foundation command exceeded initial 600-second tool wait, continued once without duplication, and produced its complete 50-check successful report with zero errors/warnings/requests.",
+    "An initial menu action exceeded its 30-second CI budget; compact handoff test budget raised to 90 seconds; rerun passed."
+  ]
+}

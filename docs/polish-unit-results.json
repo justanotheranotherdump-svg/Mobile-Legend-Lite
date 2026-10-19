@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-18",
+  "platform": "linux",
+  "command": "npm test",
+  "tests": 193,
+  "passed": 193,
+  "failed": 0,
+  "preservedTests": 181,
+  "newPolishTests": 12,
+  "htmlSha256": "d4dea3a38fe564034a43aeaa020991c0a4954e04fef579c0ad949920f9a7baec",
+  "htmlBytes": 5093599,
+  "pngSha256": "bc2b258b61ddceb7aa9abe9a82c9ebe25d30b7ba91c6d3a58a57b4f15005fca1",
+  "glbSha256": "963a4902955cb8ad345c74eb63b76e602ade5247c2bd94544ce3000cba6edd51",
+  "coverage": [
+    "one-time wallet and migration",
+    "no regrant on existing/corrupt record",
+    "profile isolation and session fallback",
+    "validation and preference persistence/clamping",
+    "original score structure",
+    "audio context/timer lifecycle and actual independent bus gains",
+    "mute/scene/background cleanup"
+  ],
+  "browserEvidence": "Separate actual offline browser reports; node graph tests do not claim physical audibility."
+}

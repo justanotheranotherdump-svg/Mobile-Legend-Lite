@@ -1,0 +1,40 @@
+{
+  "checks": [
+    "Selection opens empty: no default model, description/debug panel or gameplay initialization",
+    "Explicit Layla pick reveals the genuine shared GLB; hero name and confirm remain available",
+    "Leave/re-enter selection resets pick/preview without losing Brawl room configuration",
+    "Out-of-range attack gives visible feedback instead of silently doing nothing",
+    "Brawl lineup is a true >=10-second loading state, animated viewing progress, actual picks, and no gameplay HUD leak",
+    "Large mouse attack acquires a real nearby hero automatically without any manual click",
+    "Selected enemy panel mirrors live name, level, exact HP and mana with no fabricated fields",
+    "Enemy hero overhead name/level/HP/mana stays visible with a red team health bar",
+    "Selected enemy panel remains in bounds without covering map, testing toggle or player HUD at all three landscape sizes",
+    "Native Space single-attempt setting preserves targeting, position, cooldown and action locks",
+    "Minion priority persists through cooldown/approach and fires only at its minion category",
+    "Tower priority persists and approaches an eligible structure without falling back to heroes",
+    "AI Training also enforces the same >=10-second readiness-plus-presentation gate",
+    "Separate Practice waits >=10 seconds too and does not pretend minions/towers exist",
+    "Preserved Layla learned skill/attack-follow-up path still casts with authoritative mana/cooldown",
+    "Actual standalone offline game has no runtime errors/warnings or external asset requests"
+  ],
+  "timings": [
+    {
+      "mode": "brawl",
+      "elapsedMs": 10023.799999999814
+    },
+    {
+      "mode": "ai-training",
+      "elapsedMs": 10011.799999999814
+    },
+    {
+      "mode": "practice",
+      "elapsedMs": 10021.299999999814
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "requests": [],
+  "selectionBackgroundIsDedicated": true,
+  "bundleSha256": "fdb043347dfc131b6df8eb21118c6f7e2aeec5795876040ed849bf8fdf20a626",
+  "environment": "Linux Chromium software WebGL; offline file://; not native Windows or physical touch"
+}

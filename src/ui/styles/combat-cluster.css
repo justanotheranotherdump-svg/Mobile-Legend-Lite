@@ -1,0 +1,195 @@
+/* Original "Aegis strike" cluster: faceted guard + two small target satellites.
+   Visuals only. The two unavailable categories remain native disabled buttons. */
+.attack-panel,
+.attack-panel .attack-key {
+  width: 140px;
+  height: 140px;
+}
+.attack-key {
+  background: transparent;
+  border: 0;
+  border-radius: 27px;
+  box-shadow: none;
+  color: #b9eeff;
+  isolation: isolate;
+}
+.attack-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  filter: drop-shadow(0 3px 5px #0009);
+}
+.attack-key > .attack-emblem {
+  width: 73px;
+  height: 73px;
+  transform: rotate(-22deg) translateY(-4px);
+  filter: drop-shadow(0 0 8px #7edcff66);
+}
+.attack-key::before {
+  inset: 12px;
+  z-index: 1;
+  border-radius: 0;
+  clip-path: polygon(
+    26% 0,
+    76% 6%,
+    100% 34%,
+    94% 77%,
+    66% 100%,
+    21% 94%,
+    0 69%,
+    6% 24%
+  );
+}
+.attack-key[data-state="cooldown"] > .attack-frame {
+  opacity: 0.8;
+}
+.attack-key[data-state="cooldown"] > .attack-emblem {
+  opacity: 0.32;
+}
+.attack-key .slot-label {
+  z-index: 2;
+  bottom: 20px;
+  font-size: 9px;
+  color: #cfecf5;
+  letter-spacing: 2.5px;
+}
+.attack-key .slot-key {
+  left: 40px;
+  bottom: -10px;
+}
+#attack-countdown {
+  z-index: 2;
+  top: 43px;
+  font-size: 29px;
+}
+.cooldown-track {
+  width: 98px;
+  right: 21px;
+}
+.target-categories {
+  width: 140px;
+  height: 140px;
+  right: 0;
+}
+.target-categories::before {
+  content: "";
+  position: absolute;
+  inset: -33px -7px -7px -33px;
+  border: 1px solid #8ba1b237;
+  border-radius: 50%;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  pointer-events: none;
+}
+.target-categories .category-button {
+  width: 50px;
+  height: 50px;
+  padding: 3px 3px 10px;
+  border: 2px solid #aaac98;
+  color: #afc3cc;
+  background: radial-gradient(circle at 35% 20%, #3b5669, #142b43 65%, #0a172b);
+  box-shadow:
+    0 0 0 3px #081728a6,
+    inset 0 0 0 2px #1e3b53,
+    0 3px 8px #0005;
+}
+.target-categories #priority-minion {
+  left: -54px;
+  bottom: 1px;
+}
+.target-categories #priority-tower {
+  left: 40px;
+  top: -58px;
+}
+.category-button .icon {
+  width: 27px;
+  height: 27px;
+  opacity: 0.78;
+}
+.category-button .category-label {
+  bottom: 6px;
+  font-size: 5px;
+  letter-spacing: 0.7px;
+  color: #bfcac7;
+}
+.action-dock #skill-1 {
+  background: radial-gradient(circle at 35% 22%, #2e6172, #142b43 70%);
+}
+.action-dock #skill-2 {
+  background: radial-gradient(circle at 35% 22%, #514971, #182941 70%);
+}
+.action-dock #skill-ultimate {
+  border-color: #baa77c;
+  background: radial-gradient(circle at 35% 22%, #716142, #253348 70%);
+}
+.action-dock .reserved .slot-key {
+  min-width: 20px;
+  height: 20px;
+  line-height: 19px;
+  font-size: 11px;
+}
+.utility-dock .orb {
+  width: 50px;
+  height: 50px;
+}
+.utility-dock .orb > .icon {
+  width: 28px;
+  height: 28px;
+}
+@media (max-width: 850px), (max-height: 600px) {
+  .utility-dock .orb {
+    width: 38px;
+    height: 38px;
+  }
+  .utility-dock .orb > .icon {
+    width: 21px;
+    height: 21px;
+  }
+}
+@media (max-width: 650px) {
+  .utility-dock .orb {
+    width: 32px;
+    height: 32px;
+  }
+  .utility-dock .orb > .icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+/* Place the key hint below the metal guard and clear of its cooldown rail. */
+.attack-key .slot-key {
+  bottom: -17px;
+  height: 12px;
+  line-height: 11px;
+  font-size: 6px;
+}
+.utility-dock .reserved-mark {
+  width: 12px;
+  height: 12px;
+}
+.utility-dock .reserved-mark .icon {
+  width: 8px;
+  height: 8px;
+}
+
+/* Wrapper owns geometry; sibling + never enters the cast button gesture path. */
+.action-dock .skill-control { position:absolute; pointer-events:auto; }
+.action-dock .skill-control > .hero-skill { position:relative; inset:auto; width:100%; height:100%; }
+.action-dock .skill-upgrade { position:absolute; right:-9px; top:-9px; width:27px; height:27px; border-radius:50%; border:2px solid #ffe6a0; background:radial-gradient(circle,#f5cf6b,#a87018); color:#fff9dc; font-size:24px; line-height:20px; padding:0; box-shadow:0 0 13px #f1c45688; z-index:5; touch-action:manipulation; }
+.skill-png { width:86%;height:86%;border-radius:50%;object-fit:contain; pointer-events:none; }
+.hero-skill.unlearned .skill-png { filter:brightness(.24) saturate(.35); }
+.utility-png { width:83%;height:83%;border-radius:50%;object-fit:contain;pointer-events:none; }
+.portrait-png { width:100%;height:100%;object-fit:contain; }
+.skill-upgrades:empty { display:none; }
+.player-overhead { width:145px; text-align:center; text-shadow:0 1px 3px #000; }
+.player-overhead .overhead-name { display:block;color:#e4fff6;font-size:11px;margin-bottom:3px; }
+.player-overhead .overhead-row { display:flex;align-items:center;gap:4px; }
+.overhead-level { border:2px solid #d9c58c;border-radius:50%;background:#142839;width:24px;height:24px;line-height:20px;color:#ffe6a6; }
+.overhead-bars { flex:1; }
+.overhead-bars i { display:block;height:5px;background:#55e294; }
+.overhead-bars .overhead-mana { background:#4dacf2;height:3px;margin-top:2px; }
+.overhead-values { display:block;font-size:7px;color:#d4eceb;margin-top:2px; }
+#skill-aim-wheel{position:fixed;width:146px;height:146px;margin:-73px 0 0 -73px;border:2px solid #98dcffb8;border-radius:50%;background:radial-gradient(circle,#44688b66,#14346f77);box-shadow:0 0 22px #59c6ff38,inset 0 0 14px #90d1ff22;pointer-events:none;z-index:30}#skill-aim-wheel span{position:absolute;left:50%;top:50%;width:42px;height:42px;margin:-21px;border-radius:50%;border:2px solid #c6edff;background:radial-gradient(circle at 35% 30%,#8ab8e8,#305277);box-shadow:0 0 8px #7edbff88}#cancel-skill{border-radius:50%;width:72px;height:72px;font-size:11px;background:radial-gradient(circle,#354c79,#132d58);border:2px solid #8fbae5;color:#e1f4ff}#cancel-skill.cancel-hover{background:#ad4343;border-color:#ffc2bc}
+.orb.cooling-down::after{content:"";position:absolute;inset:7%;border-radius:50%;background:#000b;pointer-events:none;z-index:2}.orb.cooling-down .utility-state{z-index:4;font-size:23px;font-weight:800;color:white;text-shadow:0 2px 2px #000,1px 0 3px #000;letter-spacing:-.5px}.orb.cooling-down .slot-key{z-index:5}.orb[data-channel=true] .utility-state{font-size:18px}

@@ -1,0 +1,27 @@
+{
+  "brawl": {
+    "level": 3,
+    "gold": 800,
+    "tools": false
+  },
+  "ai-training": {
+    "level": 1,
+    "gold": 350,
+    "tools": true
+  },
+  "vs-ai": {
+    "level": 1,
+    "gold": 350,
+    "tools": false
+  },
+  "custom": {
+    "level": 1,
+    "gold": 350,
+    "tools": true
+  },
+  "practice": {
+    "level": 1,
+    "gold": 0,
+    "tools": true
+  }
+}

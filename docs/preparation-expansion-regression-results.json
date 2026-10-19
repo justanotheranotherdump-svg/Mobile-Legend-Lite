@@ -1,0 +1,121 @@
+{
+  "status": "passed",
+  "bundleSha256": "fdb043347dfc131b6df8eb21118c6f7e2aeec5795876040ed849bf8fdf20a626",
+  "results": [
+    {
+      "suite": "browser.mjs",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 491,
+      "checkGroups": 50,
+      "log": "docs/preparation-expansion-browser.txt"
+    },
+    {
+      "suite": "browser-layla.mjs",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 128,
+      "checkGroups": 19,
+      "log": "docs/preparation-expansion-browser-layla.txt"
+    },
+    {
+      "suite": "browser-panels.mjs",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 140,
+      "checkGroups": 16,
+      "log": "docs/preparation-expansion-browser-panels.txt"
+    },
+    {
+      "suite": "browser-menu.mjs",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 171,
+      "checkGroups": 11,
+      "log": "docs/preparation-expansion-browser-menu.txt"
+    },
+    {
+      "suite": "browser-polish.mjs",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 41,
+      "checkGroups": 13,
+      "log": "docs/preparation-expansion-browser-polish.txt"
+    },
+    {
+      "suite": "browser-hero-browser.mjs",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 35,
+      "checkGroups": 9,
+      "log": "docs/preparation-expansion-browser-hero-browser.txt"
+    },
+    {
+      "suite": "browser-progression.mjs",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 39,
+      "checkGroups": 10,
+      "log": "docs/preparation-expansion-browser-progression.txt"
+    },
+    {
+      "suite": "browser-match.mjs",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 415,
+      "checkGroups": 11,
+      "log": "docs/preparation-expansion-browser-match.txt"
+    },
+    {
+      "suite": "browser-recovery.mjs",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 34,
+      "checkGroups": 5,
+      "log": "docs/preparation-expansion-browser-recovery.txt"
+    },
+    {
+      "suite": "browser-roster.mjs",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 52,
+      "checkGroups": 9,
+      "log": "docs/preparation-expansion-browser-roster.txt"
+    },
+    {
+      "suite": "browser-draft.mjs",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 70,
+      "checkGroups": 5,
+      "log": "docs/preparation-expansion-browser-draft.txt"
+    },
+    {
+      "suite": "browser-batch1.mjs",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 96,
+      "checkGroups": 16,
+      "log": "docs/preparation-expansion-browser-batch1.txt"
+    },
+    {
+      "suite": "browser-shop-spells.mjs",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 114,
+      "checkGroups": 11,
+      "log": "docs/preparation-expansion-browser-shop-spells.txt"
+    },
+    {
+      "suite": "browser-game-polish.mjs",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 134,
+      "checkGroups": 20,
+      "log": "docs/preparation-expansion-browser-game-polish.txt"
+    }
+  ],
+  "totalCheckGroups": 205,
+  "failed": [],
+  "environment": "Linux Chromium, software WebGL, actual standalone file://, offline networking; no native Windows or physical-device claim"
+}

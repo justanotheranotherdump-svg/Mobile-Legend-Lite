@@ -1,0 +1,17 @@
+PASS: shop: held/fresh WASD works in non-modal panel, keyup stops, closing preserves held movement
+PASS: shop: skill and basic shortcuts deal real damage while panel stays open
+PASS: shop: HUD skill pointer hold/release remains interactive outside panel
+PASS: shop: exposed battlefield LMB attacks work without dismissing panel
+PASS: settings: held/fresh WASD works in non-modal panel, keyup stops, closing preserves held movement
+PASS: settings: skill and basic shortcuts deal real damage while panel stays open
+PASS: settings: HUD skill pointer hold/release remains interactive outside panel
+PASS: settings: exposed battlefield LMB attacks work without dismissing panel
+PASS: opening a panel cancels held aim without spending; Escape closes the panel
+PASS: focused key-binding select owns combat keys but still permits protected WASD movement
+PASS: actual text entry does not move, attack or cast while typing
+PASS: explicit HUD or battlefield pointer attacks leave editors and work on the first click
+PASS: blur still clears held movement without stale resumption
+PASS: panel switching, trigger toggling and X closing preserve held aim and movement
+PASS: both panels are centered horizontally and vertically, non-modal and in bounds with reachable close/attack at desktop and compact landscape sizes
+PASS: offline file://: zero runtime errors, warnings or subresource requests
+16 live-panel browser checks passed.

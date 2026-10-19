@@ -1,0 +1,186 @@
+{
+  "version": 1,
+  "provenance": "Editable LOCAL PROTOTYPE recipes reconstructed for this project; NOT official recipes. Existing total prices/stats unchanged. One copy per item preserved, so repeated ingredients may be credited once per actual owned copy and the balance paid directly.",
+  "items": {
+    "edge": {
+      "tier": "completed",
+      "components": []
+    },
+    "spring": {
+      "tier": "completed",
+      "components": []
+    },
+    "lens": {
+      "tier": "completed",
+      "components": []
+    },
+    "plate": {
+      "tier": "completed",
+      "components": []
+    },
+    "ward": {
+      "tier": "completed",
+      "components": []
+    },
+    "heart": {
+      "tier": "completed",
+      "components": []
+    },
+    "boots": {
+      "tier": "completed",
+      "components": []
+    },
+    "fang": {
+      "tier": "completed",
+      "components": []
+    },
+    "berserkers-fury": {
+      "tier": "completed",
+      "components": ["legion-sword", "javelin"]
+    },
+    "blade-of-despair": {
+      "tier": "completed",
+      "components": ["legion-sword", "legion-sword"]
+    },
+    "blade-of-the-heptaseas": {
+      "tier": "completed",
+      "components": ["fury-hammer", "dagger"]
+    },
+    "corrosion-scythe": {
+      "tier": "completed",
+      "components": ["regular-spear", "swift-crossbow"]
+    },
+    "dagger": {
+      "tier": "component",
+      "components": []
+    },
+    "demon-hunter-sword": {
+      "tier": "completed",
+      "components": ["regular-spear", "vampire-mallet"]
+    },
+    "endless-battle": {
+      "tier": "completed",
+      "components": ["iron-hunting-bow", "vampire-mallet", "dagger"]
+    },
+    "fury-hammer": {
+      "tier": "intermediate",
+      "components": ["dagger", "dagger"]
+    },
+    "golden-staff": {
+      "tier": "completed",
+      "components": ["regular-spear", "legion-sword"]
+    },
+    "great-dragon-spear": {
+      "tier": "completed",
+      "components": ["legion-sword", "iron-hunting-bow"]
+    },
+    "haas-claws": {
+      "tier": "completed",
+      "components": ["vampire-mallet", "regular-spear"]
+    },
+    "hunter-strike": {
+      "tier": "completed",
+      "components": ["fury-hammer", "iron-hunting-bow"]
+    },
+    "iron-hunting-bow": {
+      "tier": "intermediate",
+      "components": ["dagger"]
+    },
+    "javelin": {
+      "tier": "component",
+      "components": []
+    },
+    "knife": {
+      "tier": "component",
+      "components": []
+    },
+    "legion-sword": {
+      "tier": "component",
+      "components": []
+    },
+    "magic-blade": {
+      "tier": "intermediate",
+      "components": ["vampire-mallet", "dagger"]
+    },
+    "malefic-gun": {
+      "tier": "completed",
+      "components": ["regular-spear", "legion-sword"]
+    },
+    "malefic-roar": {
+      "tier": "completed",
+      "components": ["legion-sword", "fury-hammer"]
+    },
+    "ogre-tomahawk": {
+      "tier": "intermediate",
+      "components": ["dagger"]
+    },
+    "regular-spear": {
+      "tier": "intermediate",
+      "components": ["dagger", "knife"]
+    },
+    "rogue-meteor": {
+      "tier": "intermediate",
+      "components": ["knife", "javelin"]
+    },
+    "rose-gold-meteor": {
+      "tier": "completed",
+      "components": ["magic-blade", "regular-spear"]
+    },
+    "sea-halberd": {
+      "tier": "completed",
+      "components": ["regular-spear", "legion-sword"]
+    },
+    "swift-crossbow": {
+      "tier": "intermediate",
+      "components": ["knife", "knife"]
+    },
+    "vampire-mallet": {
+      "tier": "component",
+      "components": []
+    },
+    "war-axe": {
+      "tier": "completed",
+      "components": ["ogre-tomahawk", "iron-hunting-bow"]
+    },
+    "wind-of-nature": {
+      "tier": "completed",
+      "components": ["regular-spear", "vampire-mallet"]
+    },
+    "windtalker": {
+      "tier": "completed",
+      "components": ["rogue-meteor", "knife"]
+    },
+    "arcane-boots": {
+      "tier": "completed",
+      "components": ["basic-boots"]
+    },
+    "basic-boots": {
+      "tier": "component",
+      "components": []
+    },
+    "demon-shoes": {
+      "tier": "completed",
+      "components": ["basic-boots"]
+    },
+    "magic-shoes": {
+      "tier": "completed",
+      "components": ["basic-boots"]
+    },
+    "rapid-boots": {
+      "tier": "completed",
+      "components": ["basic-boots"]
+    },
+    "swift-boots": {
+      "tier": "completed",
+      "components": ["basic-boots", "knife"]
+    },
+    "tough-boots": {
+      "tier": "completed",
+      "components": ["basic-boots"]
+    },
+    "warrior-boots": {
+      "tier": "completed",
+      "components": ["basic-boots"]
+    }
+  }
+}

@@ -1,0 +1,368 @@
+{
+  "version": 1,
+  "prototypeNotes": "Unspecified ranges/world units/radii/knockback are editable local prototypes, not official. Flameshot linear travel/12. Retribution boot blessings use the explicitly classic role-equipment module; lane maps have no spawned jungle camps. Revitalize follows caster; healing/shield received multiplier max1.25. Vengeance uses actual HP damage after defenses/reduction/shields.",
+  "retributionBlessings": {},
+  "spells": [
+    {
+      "id": "execute",
+      "name": "Execute",
+      "cooldown": 90,
+      "unlockLevel": 1,
+      "roles": [
+        "Fighter",
+        "Assassin",
+        "Mage"
+      ],
+      "target": "enemy-hero",
+      "parameters": {
+        "range": 6,
+        "base": 100,
+        "perLevel": 10,
+        "lostHp": 0.13,
+        "killCooldownReduction": 0.4
+      },
+      "ability": "True damage: 100 + 10 \u00d7 hero level + 13% lost HP. Ignores shields. Kill reduces remaining cooldown 40%.",
+      "strategy": "Finish injured enemy heroes; confirm the range and missing-HP bonus.",
+      "icon": "execute",
+      "vfx": "execute",
+      "color": "#ef9b5a",
+      "modes": [
+        "vs-ai",
+        "custom",
+        "ai-training",
+        "brawl"
+      ]
+    },
+    {
+      "id": "retribution",
+      "name": "Retribution",
+      "cooldown": 35,
+      "unlockLevel": 1,
+      "roles": [
+        "Assassin",
+        "Fighter",
+        "Mage"
+      ],
+      "target": "creep-minion",
+      "parameters": {
+        "range": 6,
+        "base": 750,
+        "perLevel": 150,
+        "creepReward": 0.6,
+        "creepReduction": 0.4,
+        "jungleReduction": 0.15,
+        "jungleSeconds": 120,
+        "noShareSeconds": 300,
+        "upgradeActions": 5,
+        "statsActions": 15,
+        "physicalBonus": 10,
+        "magicBonus": 10,
+        "hpBonus": 100
+      },
+      "ability": "750 + 150 \u00d7 hero level True Damage to minion/creep. Creeps: +60% rewards, -40% basic creep damage. Actual configured allied jungle region: -15% damage for first 2min. No shared minion rewards for first 5min. Selected compatible jungle boots unlock their distinct blessing after 5 real creep/hero kills or assists; at 15, +10 Physical Attack, +10 Magic Power, +100 max HP while those boots remain valid. Lane maps do not spawn camps; minion kills do not advance the upgrade.",
+      "strategy": "Choose one jungle intention in Preparation, equip Retribution and buy boots; no free standalone blessing purchase. Actual hero kills/assists can advance the lane prototype. Classic rules and source conflicts are documented.",
+      "icon": "retribution",
+      "vfx": "retribution",
+      "color": "#be77ef",
+      "modes": [
+        "vs-ai",
+        "custom",
+        "ai-training",
+        "brawl"
+      ]
+    },
+    {
+      "id": "inspire",
+      "name": "Inspire",
+      "cooldown": 75,
+      "unlockLevel": 5,
+      "roles": [
+        "Marksman",
+        "Fighter"
+      ],
+      "target": "self",
+      "parameters": {
+        "duration": 5,
+        "charges": 8,
+        "speed": 1.5,
+        "cap": 5,
+        "penetration": 0.08,
+        "penetrationPerLevel": 0.01,
+        "heal": 60
+      },
+      "ability": "Up to 8 successful basics in 5s: \u00d71.5 attack speed, 500% cap, ignore 8% + 1% per hero level defense, heal 60 per hit.",
+      "strategy": "Use before sustained basic attacks; rejected attacks and misses do not spend charges.",
+      "icon": "inspire",
+      "vfx": "inspire",
+      "color": "#e4bd63",
+      "modes": [
+        "vs-ai",
+        "custom",
+        "ai-training",
+        "brawl"
+      ]
+    },
+    {
+      "id": "sprint",
+      "name": "Sprint",
+      "cooldown": 100,
+      "unlockLevel": 9,
+      "roles": [
+        "Marksman",
+        "Mage",
+        "Support"
+      ],
+      "target": "self",
+      "parameters": {
+        "duration": 6,
+        "speed": 0.5
+      },
+      "ability": "+50% movement speed and slow immunity for 6s; removes the active slow.",
+      "strategy": "Escape or pursue without being held by slows; no damage immunity.",
+      "icon": "sprint",
+      "vfx": "sprint",
+      "color": "#67cbea",
+      "modes": [
+        "vs-ai",
+        "custom",
+        "ai-training",
+        "brawl"
+      ]
+    },
+    {
+      "id": "revitalize",
+      "name": "Revitalize",
+      "cooldown": 75,
+      "unlockLevel": 11,
+      "roles": [
+        "Support",
+        "Tank"
+      ],
+      "target": "self-area",
+      "parameters": {
+        "duration": 4,
+        "interval": 0.4,
+        "heal": 0.025,
+        "bonus": 0.25,
+        "radius": 4,
+        "followsCaster": true
+      },
+      "ability": "For 4s, nearby allied heroes heal 2.5% max HP every 0.4s and receive 25% increased healing/shield effects. Aura bonus does not stack.",
+      "strategy": "Group within the visible spring; allies outside its radius lose its effects.",
+      "icon": "revitalize",
+      "vfx": "revitalize",
+      "color": "#76dfaa",
+      "modes": [
+        "vs-ai",
+        "custom",
+        "ai-training",
+        "brawl"
+      ]
+    },
+    {
+      "id": "aegis",
+      "name": "Aegis",
+      "cooldown": 75,
+      "unlockLevel": 13,
+      "roles": [
+        "Support",
+        "Tank",
+        "Mage"
+      ],
+      "target": "self",
+      "parameters": {
+        "duration": 5,
+        "base": 750,
+        "perLevel": 90
+      },
+      "ability": "Gain a shield of 750 + 90 \u00d7 hero level for 5s. Shield absorbs damage, not permanent HP.",
+      "strategy": "Absorb incoming burst. Execute can bypass shields.",
+      "icon": "aegis",
+      "vfx": "aegis",
+      "color": "#f1d980",
+      "modes": [
+        "vs-ai",
+        "custom",
+        "ai-training",
+        "brawl"
+      ]
+    },
+    {
+      "id": "petrify",
+      "name": "Petrify",
+      "cooldown": 75,
+      "unlockLevel": 15,
+      "roles": [
+        "Fighter",
+        "Tank",
+        "Support"
+      ],
+      "target": "enemy-area",
+      "parameters": {
+        "radius": 3,
+        "base": 100,
+        "perLevel": 15,
+        "duration": 0.8,
+        "slow": 0.5,
+        "slowDuration": 0.8
+      },
+      "ability": "Nearby enemies take 100 + 15 \u00d7 hero level magic damage, stun 0.8s, then 50% slow for 0.8s.",
+      "strategy": "Interrupt nearby heroes and set up follow-up attacks; control immunity is respected.",
+      "icon": "petrify",
+      "vfx": "petrify",
+      "color": "#80a7eb",
+      "modes": [
+        "vs-ai",
+        "custom",
+        "ai-training",
+        "brawl"
+      ]
+    },
+    {
+      "id": "purify",
+      "name": "Purify",
+      "cooldown": 90,
+      "unlockLevel": 17,
+      "roles": [
+        "Mage",
+        "Support",
+        "Marksman"
+      ],
+      "target": "self",
+      "parameters": {
+        "duration": 1.2,
+        "speed": 0.15
+      },
+      "ability": "Cleanse removable debuffs except Suppression, gain control immunity and +15% movement for 1.2s. Cannot activate under Suppression.",
+      "strategy": "Escape stuns/slows; it does not prevent damage or remove Suppression.",
+      "icon": "purify",
+      "vfx": "purify",
+      "color": "#a7e3a1",
+      "modes": [
+        "vs-ai",
+        "custom",
+        "ai-training",
+        "brawl"
+      ]
+    },
+    {
+      "id": "flameshot",
+      "name": "Flameshot",
+      "cooldown": 50,
+      "unlockLevel": 19,
+      "roles": [
+        "Mage",
+        "Support"
+      ],
+      "target": "direction",
+      "parameters": {
+        "range": 12,
+        "speed": 18,
+        "radius": 0.2,
+        "min": 200,
+        "max": 680,
+        "knockbackRadius": 2.5,
+        "knockback": 1.5
+      },
+      "ability": "Directional projectile: 200\u2013680 magic damage, linearly scaled with actual travel distance, first hero/creep hit. Knockback nearby enemies.",
+      "strategy": "Aim at distant heroes for maximum damage or disrupt nearby attackers; lane minions are not creep targets for this spell.",
+      "icon": "flameshot",
+      "vfx": "flameshot",
+      "color": "#ed7f52",
+      "modes": [
+        "vs-ai",
+        "custom",
+        "ai-training",
+        "brawl"
+      ]
+    },
+    {
+      "id": "flicker",
+      "name": "Flicker",
+      "cooldown": 120,
+      "unlockLevel": 21,
+      "roles": [
+        "Fighter",
+        "Mage",
+        "Marksman",
+        "Assassin",
+        "Tank",
+        "Support"
+      ],
+      "target": "direction",
+      "parameters": {
+        "range": 3.5,
+        "duration": 1,
+        "defenseBase": 5,
+        "defensePerLevel": 1
+      },
+      "ability": "Blink 3.5 world units safely along the aim, stopping before walls/bounds; +5 + hero level hybrid defense for 1s.",
+      "strategy": "Reposition or escape through open gaps, never through solid walls.",
+      "icon": "flicker",
+      "vfx": "flicker",
+      "color": "#f0d1a3",
+      "modes": [
+        "vs-ai",
+        "custom",
+        "ai-training",
+        "brawl"
+      ]
+    },
+    {
+      "id": "vengeance",
+      "name": "Vengeance",
+      "cooldown": 75,
+      "unlockLevel": 23,
+      "roles": [
+        "Tank",
+        "Fighter"
+      ],
+      "target": "self",
+      "parameters": {
+        "duration": 3,
+        "reduction": 0.35,
+        "reflection": 0.35
+      },
+      "ability": "For 3s reduce incoming damage 35%, reflect 35% of actual post-mitigation HP damage as magic. Reflection cannot reflect again.",
+      "strategy": "Survive focused attacks and punish living valid attackers. Shields reduce the HP damage used for reflection.",
+      "icon": "vengeance",
+      "vfx": "vengeance",
+      "color": "#8aa9f3",
+      "modes": [
+        "vs-ai",
+        "custom",
+        "ai-training",
+        "brawl"
+      ]
+    },
+    {
+      "id": "arrival",
+      "name": "Arrival",
+      "cooldown": 75,
+      "unlockLevel": 25,
+      "roles": [
+        "Fighter",
+        "Tank"
+      ],
+      "target": "ally-destination",
+      "parameters": {
+        "channel": 3,
+        "speed": 0.6,
+        "speedDuration": 3,
+        "refund": 30,
+        "safeRadius": 2
+      },
+      "ability": "Channel 3s to an existing allied tower/core/minion, then +60% movement decaying over 3s. Interrupted channel refunds 30s of cooldown.",
+      "strategy": "Choose a living allied destination; movement, damage, death, casting or target loss interrupts. Traps are unavailable in this project.",
+      "icon": "arrival",
+      "vfx": "arrival",
+      "color": "#82d9eb",
+      "modes": [
+        "vs-ai",
+        "custom",
+        "ai-training",
+        "brawl"
+      ]
+    }
+  ]
+}

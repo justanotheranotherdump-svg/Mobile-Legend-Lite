@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-18",
+  "baseline": {
+    "tests": 333,
+    "pass": 333
+  },
+  "current": {
+    "tests": 407,
+    "pass": 407,
+    "fail": 0
+  },
+  "additionalChecks": 74,
+  "notes": "37 additional catalog modifier cases + 37 follow-up scenarios; original tests retained, only superseded animation/utility/NPC expectations updated for explicit new behavior."
+}
