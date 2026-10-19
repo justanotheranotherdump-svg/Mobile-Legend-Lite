@@ -1,0 +1,27 @@
+{
+  "revision": "layla-workshop-r2",
+  "entry": "/home/user/Mobile-Legend-Lite/.cache/layla-r2-alone-fsdeholq/Layla-Animation-Preview-R2.html",
+  "checks": [
+    "R2 offline load keeps original skinned model/ten clips and exposes deliberate provisional beam/speed defaults",
+    "Actual rendered basic/S1/orb have distinct compact/spindle/spherical geometry, relative sizes/speeds and trails",
+    "S1 forceful impact and brief cyan buff streaks occur on hit only, not on a miss",
+    "Orb initial detonation shows actual-radius boundary and area-hit fragments, then leaves distinct persistent sigils without premature stun",
+    "Basic/S1/ultimate mark triggers produce a later smaller explosion and crisp stun, separate from original orb detonation",
+    "Charge gathers at live muzzle, then full48u beam connects to recoiling cannon and hits near/mid/far without stopping",
+    "Pixel-readback verifies bright continuous core across at least17/19 samples from cannon to distant endpoint",
+    "Close, medium, far-end and three-in-line presets all produce eligible hits across the arena",
+    "Range64, width1.8, duration.5 and zero halo genuinely change independent rendered properties and clean up without changing release",
+    "Optional extending-front alternative is also muzzle-anchored rather than a short disconnected projectile",
+    "Four real animated cloned actors display all four effect identities simultaneously at identical camera/world calibration",
+    "Comparison phase controls expose wind-up, independent releases, impacts, persistent mark, separate trigger/stun and clean ends",
+    "Shared full-arena camera shows huge ultimate scale without resizing individual projectiles",
+    "Each comparison attack plays independently and Pause all freezes actual actor/effect clocks",
+    "Comparison actual0.25× clock tracks elapsed time and all four attacks play through completion at1×",
+    "Tuning refreshes comparison actors and returning to unchanged workshop motions restores normal camera/transport",
+    "390px emulated comparison and long-range workshop remain usable without horizontal overflow"
+  ],
+  "errors": [],
+  "warnings": [],
+  "requests": [],
+  "environment": "Linux Chromium/software WebGL2; offline file://; actual framebuffer samples; real normal/slow playback; 390px emulation. Not physical-device/GPU certification."
+}

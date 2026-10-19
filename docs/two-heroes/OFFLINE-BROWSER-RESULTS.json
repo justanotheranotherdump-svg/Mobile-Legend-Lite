@@ -1,0 +1,26 @@
+{
+  "checks": [
+    "Fresh account remains 30000 Coins / 0 Diamonds; Layla owned, Franco locked",
+    "Two distinct correct portrait cards; locked Franco details and real GLB load offline, both insufficient purchase options disabled",
+    "All four Franco PNG ability controls open the correct kit descriptions",
+    "Actual 3D showcase rotates with pointer input and zooms, without replacing the GLB",
+    "Selection entry is genuinely null in controller, config-facing state and showcase, with empty portrait/skills and disabled confirmation",
+    "Locked preview cannot confirm; switching replaces background/portrait/all four abilities; clear removes actual model and details",
+    "Rapid switch/clear leaves null state with no stale GLB attachment",
+    "Selected approved Layla GLB enters the preserved practice arena with real rig/ten clips and correct HUD",
+    "coins: explicit choice + cancel + double-confirm guard, only chosen balance deducted once, ownership/UI and reload preserved",
+    "Purchased Franco enters existing AI lane match; nine real mixed-roster NPC models, hero-specific clips and correct hook/slam/Hunt HUD",
+    "Live match runs without wallet/match-gold conversion or render errors",
+    "diamonds: explicit choice + cancel + double-confirm guard, only chosen balance deducted once, ownership/UI and reload preserved",
+    "Actual shared-engine S1 renders approved elongated spindle/fins, not the basic bolt",
+    "Actual S2 reactor orb → AoE → persistent mark → separate subsequent-hit trigger/stun renders distinct approved effects",
+    "Actual locked-near-target ultimate extends full 48 local units; near/mid/far hit once, off-line excluded, muzzle connected, ≥8/9 bright framebuffer samples",
+    "Actual approved enlarged Franco hook GLB and connecting chain fly and return on miss, without duplicate in-hand hook",
+    "Actual approved Hunt animation and six authoritative strikes stay synchronized, then release suppression at 1.80s",
+    "Clean isolated HTML-only offline execution: no external resource requests and no browser errors"
+  ],
+  "errors": [],
+  "warnings": [],
+  "requests": [],
+  "standalone": "file:///home/user/Mobile-Legend-Lite/artifacts/two-heroes/fresh-standalone/Game.html#diagnostics"
+}

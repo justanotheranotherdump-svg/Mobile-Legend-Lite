@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 3,
+  "id": "franco",
+  "name": "Franco",
+  "role": "tank",
+  "baseStats": {
+    "maxHp": 2600,
+    "hpRegen": 9.2,
+    "maxMana": 500,
+    "manaRegen": 4,
+    "physicalAttack": 116,
+    "physicalDefense": 25,
+    "magicDefense": 15,
+    "magicPower": 0,
+    "attackSpeed": 1.03,
+    "attackSpeedRatio": 1,
+    "criticalDamage": 2,
+    "movementSpeed": 260,
+    "attackRange": 1.4,
+    "collisionRadius": 0.6
+  },
+  "basicAttack": {
+    "effectId": "direct-damage",
+    "damage": 0,
+    "range": 1.4,
+    "cooldown": 0.970873786407767,
+    "projectileSpeed": 18,
+    "castTime": 0.4,
+    "damageModel": {
+      "type": "physical",
+      "physicalScaling": 1,
+      "magicScaling": 0
+    }
+  },
+  "abilityIds": [
+    "wasteland-force",
+    "iron-hook",
+    "fury-shock",
+    "bloody-hunt"
+  ],
+  "visual": "visual.json",
+  "actionLockDuration": 0.6,
+  "growthStats": {
+    "maxHp": 281,
+    "hpRegen": 0.67,
+    "maxMana": 100,
+    "manaRegen": 0.2,
+    "physicalAttack": 7.21,
+    "physicalDefense": 4.86,
+    "magicDefense": 2.5,
+    "magicPower": 0,
+    "attackSpeed": 0.02,
+    "attackSpeedRatio": 0,
+    "criticalDamage": 0,
+    "movementSpeed": 0,
+    "attackRange": 0
+  },
+  "runtimeScale": {
+    "movement": 0.022916666666666665,
+    "range": 1,
+    "maximumAttackRate": 2.5
+  },
+  "progression": {
+    "minLevel": 1,
+    "maxLevel": 15,
+    "xpThresholds": [
+      0,
+      200,
+      500,
+      900,
+      1400,
+      2000,
+      2700,
+      3500,
+      4400,
+      5400,
+      6500,
+      7700,
+      9000,
+      10400,
+      11900
+    ]
+  }
+}

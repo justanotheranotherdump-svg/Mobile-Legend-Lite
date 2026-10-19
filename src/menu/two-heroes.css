@@ -1,0 +1,192 @@
+.hero-ability-png {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.hero-detail-art {
+  opacity: 0.32;
+}
+.hero-buy-options {
+  display: flex;
+  gap: 0.6rem;
+}
+.hero-buy-options button,
+.hero-purchase-dialog button {
+  border: 1px solid #bca477;
+  background: #203b50;
+  color: #f5e4bd;
+  border-radius: 5px;
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+}
+.hero-buy-options button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.hero-owned-footer {
+  z-index: 4;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+}
+.hero-owned-footer #purchase-status {
+  margin: 0;
+  font-size: 0.8rem;
+}
+.hero-purchase-dialog {
+  max-width: 460px;
+  border: 1px solid #c6ad7a;
+  border-radius: 10px;
+  color: #e9eff6;
+  background: #142b3e;
+  padding: 1.5rem;
+}
+.hero-purchase-dialog::backdrop {
+  background: #06111cbb;
+}
+.hero-purchase-dialog > div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+}
+#menu-root[data-screen="hero"] #lobby-preview {
+  left: 35%;
+  top: 8%;
+  width: 42%;
+  height: 80%;
+  z-index: 3;
+  pointer-events: auto;
+  touch-action: none;
+  cursor: grab;
+}
+#menu-root[data-screen="hero"] .hero-detail-art {
+  pointer-events: none;
+}
+#menu-root[data-screen="hero"] .hero-detail-info,
+#menu-root[data-screen="hero"] .hero-detail-header,
+#menu-root[data-screen="hero"] .hero-appearance {
+  z-index: 5;
+}
+#menu-root[data-screen="hero"] .hero-ability-sheet {
+  z-index: 8;
+}
+#menu-root[data-screen="selection"] #lobby-preview {
+  pointer-events: auto;
+  touch-action: none;
+  cursor: grab;
+}
+.hero-pick-grid {
+  overflow-y: auto;
+  max-height: 90vh;
+}
+.hero-pick-grid [data-pick-hero] {
+  padding: 0.4rem !important;
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  align-items: center;
+  gap: 0.1rem 0.6rem;
+}
+.hero-pick-grid [data-pick-hero] img {
+  width: 64px !important;
+  height: 64px !important;
+  grid-row: span 2;
+  object-fit: cover;
+}
+.hero-pick-grid [data-pick-hero] strong,
+.hero-pick-grid [data-pick-hero] small {
+  text-align: left;
+}
+.selection-skills {
+  gap: 0.7rem;
+}
+.selection-skills > button {
+  background: #112d46dd;
+  border: 1px solid #7fa1b9;
+  border-radius: 8px;
+  color: #eaf5ff;
+  display: grid;
+  justify-items: center;
+  width: 90px;
+  font-size: 0.7rem;
+  padding: 0.4rem;
+  cursor: pointer;
+}
+.selection-skills > button img {
+  width: 52px;
+  height: 52px;
+}
+.selection-ability-details {
+  position: absolute;
+  bottom: 25%;
+  left: 32%;
+  width: 40%;
+  z-index: 6;
+  background: #122a40f5;
+  border: 1px solid #d3b77d;
+  border-radius: 8px;
+  padding: 1rem;
+  color: #eff7ff;
+}
+.selection-ability-details button {
+  float: right;
+  background: none;
+  color: white;
+  border: 0;
+  font-size: 1.5rem;
+}
+.selection-prompt {
+  pointer-events: none;
+}
+.hero-owned-footer button:focus-visible,
+.selection-skills > button:focus-visible {
+  outline: 2px solid #80e5ff;
+  outline-offset: 3px;
+}
+@media (max-width: 760px) {
+  #menu-root[data-screen="hero"] #lobby-preview {
+    left: 29%;
+    width: 44%;
+    height: 65%;
+    top: 15%;
+  }
+  .hero-buy-options button {
+    font-size: 0.72rem;
+    padding: 0.4rem;
+  }
+  .hero-pick-grid [data-pick-hero] {
+    grid-template-columns: 42px 1fr;
+  }
+  .hero-pick-grid [data-pick-hero] img {
+    width: 42px !important;
+    height: 42px !important;
+  }
+  .selection-skills {
+    gap: 0.25rem;
+  }
+  .selection-skills > button {
+    width: 60px;
+    font-size: 0.6rem;
+  }
+  .selection-skills > button img {
+    width: 36px;
+    height: 36px;
+  }
+  .selection-ability-details {
+    left: 25%;
+    width: 55%;
+    font-size: 0.8rem;
+  }
+}
+
+#menu-root[data-screen="hero"] .hero-detail-header {
+  position: relative;
+}
+#menu-root[data-screen="selection"] #lobby-preview {
+  z-index: 0;
+}
+.selection-team,
+.hero-pick-grid,
+.selection-clock,
+.selection-skills,
+#selection-back {
+  z-index: 2;
+}

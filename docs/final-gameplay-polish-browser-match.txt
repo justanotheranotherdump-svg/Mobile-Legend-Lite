@@ -1,0 +1,25 @@
+PASS: Classic/Ranked disabled; four AI scenarios, Normal default, real Hard/custom roster configuration, guarded selection and all Back routes remain combat-isolated
+PASS: validated hero confirmation completes seven actual local setup stages, then one 5v5 simulation/countdown; saved name, actual level/HP/mana and six objectives rendered
+PASS: wrapper-relative legal + badges remain top-right at 1280×720, 960×540 and 844×390; click spends exactly one point without casting; dark rank-zero local PNGs, no far-left row or UNLEARNED text
+PASS: actual shop buy/equip/unique/insufficient/sell transactions update six slots, gold and effective PA; pause freezes clock; safe quit disposes listeners/RAF and preserves account wallet
+PASS: Practice travels through the same guarded prematch flow but retains separate three-dummy, reward-free sandbox and working exit / resume
+PASS: Brawl uses level 3 / 800 gold and actual editable 1v1 roster; unique items reject repeat purchases, explicit sale credits 60% once before automatic free-slot purchase and recomputes attack/movement speed
+Waiting for an actual unattended Brawl result (fixed simulation clock, no state injection)…
+Live Brawl 53.5s, wave 3, objectives 964/4200/6500/3600/4200/6500
+Live Brawl 102.3s, wave 6, objectives 0/3912/6500/3600/4200/6500
+Live Brawl 151.2s, wave 9, objectives 0/3183/6500/3600/4200/6500
+Live Brawl 201.1s, wave 12, objectives 0/2084/6500/3600/4200/6500
+Live Brawl 250.6s, wave 14, objectives 0/1044/6500/3600/4200/6500
+Live Brawl 300.1s, wave 17, objectives 0/180/6500/3600/4200/6500
+Live Brawl 347.8s, wave 20, objectives 0/0/5264/3600/4200/6500
+Live Brawl 397.2s, wave 23, objectives 0/0/4358/3600/4200/6500
+Live Brawl 447.4s, wave 25, objectives 0/0/4358/3600/4200/6500
+Live Brawl 497.4s, wave 28, objectives 0/0/3679/3600/4200/6500
+Live Brawl 548.1s, wave 31, objectives 0/0/998/3600/4200/6500
+PASS: actual unattended Brawl reaches sequential core destruction → real results with implemented duration / eliminations / deaths / assists / level / combat gold, no account currency/rank rewards; explicit account XP only
+PASS: fresh replay re-enters explicit hero confirmation and resets all match state; Main Menu restores the same approved shared GLB without a second asset load
+PASS: Completed natural match records actual result/hero/mode/duration/KDA once; replay quit adds nothing and Profile History/Statistics read the saved record
+PASS: coarse-pointer 844×390 exposes a real drag joystick that moves the authoritative hero, with existing WASD and skill gestures preserved
+PASS: actual standalone file:// with offline networking: no JavaScript errors or external runtime asset requests
+11 connected-match browser checks passed.
+

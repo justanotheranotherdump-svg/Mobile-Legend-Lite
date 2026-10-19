@@ -1,0 +1,5 @@
+PASS: Actual 45-second expiry auto-confirms the only available hero and starts the requested 5v5 roster, without timer injection
+PASS: Loading renders all five actual allied and five enemy Layla picks with player/Computer names; no invented heroes or per-client download percentages
+PASS: Trusted touch drag moves the player in the flipped lane with nine real-model Computer heroes
+PASS: Full roster quits safely, aborts match listeners and restores the single retained approved menu model
+PASS: Full draft/loading/touch/quit offline flow has zero runtime errors, warnings or external requests

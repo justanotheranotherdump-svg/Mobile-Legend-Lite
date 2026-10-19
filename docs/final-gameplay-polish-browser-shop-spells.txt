@@ -1,0 +1,12 @@
+PASS: Level1 card screen contains twelve actual definitions, exact locked level metadata, only Execute/Retribution unlocked and persistent one-spell selection
+PASS: Selected spell survives room, explicit hero pick, 10-second local loading and Brawl initialization
+PASS: All Equipment lists all 99, Simple omits components, real nested tree appears and quick buy chooses the most useful affordable Regular Spear component with exact gold/stat accounting
+PASS: Owned tree credit updates immediately, explicit sale reverses stats/recipe credit, quick priority clears and no manual slot replacement is required
+PASS: Native F uses the same actual Retribution activation: eligible lane minion hit, exact35s cooldown, no fabricated jungle entities
+PASS: Quit match grants no account XP; hero combat levels do not bypass persistent account locks
+PASS: Level25 fixture unlocks all twelve, native hold/release reuses aim sight and Flicker teleports safely with120s cooldown while preserving exactly3 hero skill controls
+PASS: Native Flameshot creates and renders its actual directional projectile/trail/impact without visual callbacks applying damage
+PASS: Native Aegis grants the actual hero-level3 1020 shield, with active HUD status and real world shield VFX
+PASS: Native Revitalize shows a live healing spring and its timed aura VFX/HUD alongside unchanged hero controls
+PASS: Actual standalone file:// shop/spell/aiming flows have zero runtime errors, warnings and external requests
+

@@ -1,0 +1,114 @@
+[
+  {
+    "suite": "browser-game-polish",
+    "exitCode": 0,
+    "checks": 20,
+    "seconds": 191.8,
+    "command": "node tests/browser-game-polish.mjs",
+    "htmlSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8"
+  },
+  {
+    "suite": "browser-shop-spells",
+    "exitCode": 0,
+    "checks": 11,
+    "seconds": 143.5,
+    "command": "node tests/browser-shop-spells.mjs",
+    "htmlSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8"
+  },
+  {
+    "suite": "browser-batch1",
+    "exitCode": 0,
+    "checks": 16,
+    "seconds": 124.2,
+    "command": "node tests/browser-batch1.mjs",
+    "htmlSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8"
+  },
+  {
+    "suite": "browser",
+    "exitCode": 0,
+    "checks": 50,
+    "seconds": 816.9,
+    "command": "node tests/browser.mjs",
+    "htmlSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8"
+  },
+  {
+    "suite": "browser-layla",
+    "exitCode": 0,
+    "checks": 19,
+    "seconds": 214.2,
+    "command": "node tests/browser-layla.mjs",
+    "htmlSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8"
+  },
+  {
+    "suite": "browser-panels",
+    "exitCode": 0,
+    "checks": 16,
+    "seconds": 240.1,
+    "command": "node tests/browser-panels.mjs",
+    "htmlSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8"
+  },
+  {
+    "suite": "browser-progression",
+    "exitCode": 0,
+    "checks": 10,
+    "seconds": 59.7,
+    "command": "node tests/browser-progression.mjs",
+    "htmlSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8"
+  },
+  {
+    "suite": "browser-menu",
+    "exitCode": 0,
+    "checks": 11,
+    "seconds": 292.5,
+    "command": "node tests/browser-menu.mjs",
+    "htmlSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8"
+  },
+  {
+    "suite": "browser-polish",
+    "exitCode": 0,
+    "checks": 13,
+    "seconds": 55.6,
+    "command": "node tests/browser-polish.mjs",
+    "htmlSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8"
+  },
+  {
+    "suite": "browser-hero-browser",
+    "exitCode": 0,
+    "checks": 9,
+    "seconds": 44.9,
+    "command": "node tests/browser-hero-browser.mjs",
+    "htmlSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8"
+  },
+  {
+    "suite": "browser-roster",
+    "exitCode": 0,
+    "checks": 9,
+    "seconds": 67.3,
+    "command": "node tests/browser-roster.mjs",
+    "htmlSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8"
+  },
+  {
+    "suite": "browser-draft",
+    "exitCode": 0,
+    "checks": 5,
+    "seconds": 78.0,
+    "command": "node tests/browser-draft.mjs",
+    "htmlSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8"
+  },
+  {
+    "suite": "browser-recovery",
+    "exitCode": 0,
+    "checks": 5,
+    "seconds": 43.2,
+    "command": "node tests/browser-recovery.mjs",
+    "htmlSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8"
+  },
+  {
+    "suite": "browser-match",
+    "exitCode": 0,
+    "checks": 11,
+    "seconds": 547.0,
+    "command": "node tests/browser-match.mjs",
+    "htmlSha256": "3de33668607e96d6fae4782d3c30b3077d964aaf92c45921996f2868e9aff0e8"
+  }
+]

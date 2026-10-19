@@ -1,0 +1,251 @@
+
+===== browser-game-polish =====
+PASS: Preparation creates/edits/reorders/saves active hero build through native controls
+PASS: Equipment wiki uses all 45 registry entries and connected actual recipe data
+PASS: Emblems clearly inactive layout, no invented stat system
+PASS: Spell choice and selected build persist across offline file reload
+PASS: Owned Heroes tab exposes only the actual owned Layla with shared circular portrait
+PASS: Profile identity, empty actual history, hero statistics and inactive ranked placeholder are truthful
+PASS: Explicit developer additions/max level persist; reset cancel preserves account; confirmed delete and recovery backup work
+PASS: Selection room changes the actual equipped spell carried through loading into Brawl
+PASS: Native tower-priority command persists, approaches from outside range and stops to fire without overlap
+PASS: Rendered ground ring radii equal live attack/tower simulation values
+PASS: WASD cancels automatic approach immediately
+PASS: Native combat settings drive the actual simulation policy
+PASS: Held pointer displays directional skill wheel and actual range; Escape cancels without casting/spending
+PASS: Relative pointer drag and release casts actual projectile once through normal mana/cooldown authority
+PASS: Keyboard hold uses the same relative wheel/release lifecycle for circular orb aiming
+PASS: Dedicated cancel area discards ultimate aim without a cast or cooldown
+PASS: Spell/Regen cooldowns and Recall channel use dark overlays and authoritative numerical countdowns; ordinary action feed is clean
+PASS: Selected Preparation build automatically enters match and advances to missing component after completed item purchase
+PASS: Recommended uses saved order; Simple/All modes, complete recipe trees, next missing highlight and manual override/resume remain connected
+PASS: Reference-inspired spell icon browser/detail panel retains detailed cards; shop stays usable at all three landscape sizes
+{"passed":20,"errors":[],"warnings":[],"requests":[]}
+
+===== browser-shop-spells =====
+PASS: Level1 card screen contains twelve actual definitions, exact locked level metadata, only Execute/Retribution unlocked and persistent one-spell selection
+PASS: Selected spell survives room, explicit hero pick, 10-second local loading and Brawl initialization
+PASS: All Equipment lists all45, Simple omits components, real nested tree appears and quick buy chooses the most useful affordable Regular Spear component with exact gold/stat accounting
+PASS: Owned tree credit updates immediately, explicit sale reverses stats/recipe credit, quick priority clears and no manual slot replacement is required
+PASS: Native F uses the same actual Retribution activation: eligible lane minion hit, exact35s cooldown, no fabricated jungle entities
+PASS: Quit match grants no account XP; hero combat levels do not bypass persistent account locks
+PASS: Level25 fixture unlocks all twelve, native hold/release reuses aim sight and Flicker teleports safely with120s cooldown while preserving exactly3 hero skill controls
+PASS: Native Flameshot creates and renders its actual directional projectile/trail/impact without visual callbacks applying damage
+PASS: Native Aegis grants the actual hero-level3 1020 shield, with active HUD status and real world shield VFX
+PASS: Native Revitalize shows a live healing spring and its timed aura VFX/HUD alongside unchanged hero controls
+PASS: Actual standalone file:// shop/spell/aiming flows have zero runtime errors, warnings and external requests
+
+===== browser-batch1 =====
+PASS: Selection opens empty: no default model, description/debug panel or gameplay initialization
+PASS: Explicit Layla pick reveals the genuine shared GLB; hero name and confirm remain available
+PASS: Leave/re-enter selection resets pick/preview without losing Brawl room configuration
+PASS: Out-of-range attack gives visible feedback instead of silently doing nothing
+PASS: Brawl lineup is a true >=10-second loading state, animated viewing progress, actual picks, and no gameplay HUD leak
+PASS: Large mouse attack acquires a real nearby hero automatically without any manual click
+PASS: Selected enemy panel mirrors live name, level, exact HP and mana with no fabricated fields
+PASS: Enemy hero overhead name/level/HP/mana stays visible with a red team health bar
+PASS: Selected enemy panel remains in bounds without covering map, testing toggle or player HUD at all three landscape sizes
+PASS: Native Space single-attempt setting preserves targeting, position, cooldown and action locks
+PASS: Minion priority persists through cooldown/approach and fires only at its minion category
+PASS: Tower priority persists and approaches an eligible structure without falling back to heroes
+PASS: AI Training also enforces the same >=10-second readiness-plus-presentation gate
+PASS: Separate Practice waits >=10 seconds too and does not pretend minions/towers exist
+PASS: Preserved Layla learned skill/attack-follow-up path still casts with authoritative mana/cooldown
+PASS: Actual standalone offline game has no runtime errors/warnings or external asset requests
+
+===== browser =====
+PASS: downloaded HTML initializes actual WebGL2 using file:// with network disabled
+PASS: inline CSS is applied: dark background, positioned HUD, full-viewport canvas (unstyled-page regression)
+PASS: eager bundled hero registry drives exact existing stats/HUD and honest placeholder/empty clips
+PASS: three distinct configured dummies expose current/max HP in world labels
+PASS: out-of-range automatic and pinned direct attacks reject damage/cooldown and NEVER chase
+PASS: real keyboard movement and diagonal normalization (measured against simulation time)
+PASS: camera follows player and mouse ray maps to the correct ground position after movement
+PASS: HUD mode nearest selects dummy-a and visibly highlights it without moving
+PASS: HUD mode current-hp selects dummy-b and visibly highlights it without moving
+PASS: HUD mode hp-percent selects dummy-c and visibly highlights it without moving
+PASS: HUD mode manual selects dummy-a and visibly highlights it without moving
+PASS: direct enemy click pins over auto mode; ground attacks use pin and preserve cooldown/no-chase rules
+PASS: mode changes and Clear lock restore automatic policy without bypassing cooldown
+PASS: a pinned target dying releases override immediately; dead clicks never select or damage an enemy
+PASS: Manual Target mode pins chosen enemy and falls back to nearest living in-range enemy on death
+PASS: ground-click auto attacks reselect by lowest current HP after death; HUD attack button uses same rules
+PASS: Reset restores all HP/max HP, player/target state, mode, pins, cooldown and hit count
+PASS: real keyboard movement hits a solid obstacle and slides without penetrating
+PASS: held real keyboard movement remains inside arena boundaries
+PASS: blur pauses simulation, clears held input, and resume has no movement jump (synthetic focus events)
+PASS: resize at 1000×700, 800×600, 1440×900 preserves canvas, camera, ground picking, and reset control
+PASS: repository root index.html: styled offline 3D, keyboard movement, attack and reset
+PASS: source-ZIP index.html isolated without sibling files (spaces/Unicode path): styled offline 3D, keyboard movement, attack and reset
+PASS: live SVG minimap tracks actual player/targets and original vector icons are bundled locally
+PASS: session timer follows actual simulation time, pauses on blur and resets without inventing match scores
+PASS: map visibility and range controls change presentation only, never attack or move
+PASS: real pointer joystick movement uses camera-relative normalized speed and releases without attacking
+PASS: keyboard takes priority over joystick; pointer capture releases outside the control with no stuck input
+PASS: blur, keyboard reset, synthetic cancellation and forced capture loss clear the joystick without stuck movement
+PASS: settings allow optional joystick/reduced HUD motion, preserve WASD, and support Escape/focus return
+PASS: shop is a keyboard-accessible inert placeholder; skills/spells/equipment/minion/tower controls are honestly disabled
+PASS: exactly three reserved skills map only top-row 1/2/3 to first/second/ultimate; no numpad or old Q/E/R binding and no fabricated casts
+PASS: Space and native focused-button activation each attack once through existing cooldown/target validation
+PASS: actual lethal damage triggers a truthful training elimination, no fabricated team score; notice dismisses and resets
+PASS: HUD regions do not overlap, controls stay hit-testable, dialogs work and center remains clear at five landscape sizes
+PASS: empty shop has sixteen catalog, four build and six equipment slots; disabled slots/purchases/priorities never mutate gameplay
+PASS: shop categories and view tabs only change the empty interface; simple layout scrolls and all-equipment restores four columns
+PASS: landscape shop supports native keyboard opening, close/Escape/backdrop, world focus return and clears movement input
+PASS: empty landscape shop stays in bounds with accessible close/purchase/equipment and no shell overflow at five desktop/compact sizes
+PASS: Settings can hide button key hints without hiding names or disabling the actual attack shortcut
+PASS: Custom attack key replaces Space immediately, updates visible hints and uses original damage/cooldown validation
+PASS: Reserved bindings cannot cast; duplicate bindings are rejected, WASD/navigation keys protected and menus suppress gameplay shortcuts
+PASS: Unbinding keeps mouse/HUD attack available, custom numpad keys work, game reset preserves preferences and restore defaults restores Space/1/2/3
+PASS: Scrollable key settings remain usable at compact landscape sizes and Escape returns focus without stuck input
+PASS: held WASD continues through mouse Attack and Space without re-pressing movement; each requests exactly one attack
+PASS: Shop and Settings stop held movement, reject fresh/off-dialog gameplay events and resume only after new movement input
+PASS: opening either modal cancels active joystick capture/axes and closing never revives the old drag
+PASS: Settings target priority shares existing HUD/simulation modes and reset; Regen defaults to V and remains reserved without healing
+PASS: landscape Settings tabs/keyboard navigation and close remain accessible with no shell overflow at five desktop/compact sizes
+PASS: no runtime errors/warnings and ZERO subresource requests during full offline interaction
+
+50 browser checks passed. Windows double-click testing remains manual.
+
+===== browser-layla =====
+PASS: offline default uses approved GLB, 3 skills, keyboard-only HUD; no joystick/duplicate priority card, hero status bottom-left
+PASS: idle mouse hover does not rotate model or create an aim sight
+PASS: normal model facing follows actual camera-relative movement rather than mouse
+PASS: moving basic locks movement for full Shoot, hits locked enemy, then held WASD resumes automatically
+PASS: quick key tap ignores mouse and auto-targets nearest eligible enemy at skill range; normal damage/buff/mana/CD retained
+PASS: auto orb/basic chaining retains marks, bonus damage, stun trigger and authoritative presentation
+PASS: pointer tap auto-targets using Settings priority, not cursor position; Settings is sole priority selector
+PASS: held bound key previews original directional sight without spending; Escape cancels and stale keyup does not cast
+PASS: relative hold-and-release overrides smart/manual pin direction without changing the pin
+PASS: pointer capture supports held button drag aim and release, with exactly one cast and no native-click duplicate
+PASS: dragging held pointer into visible CANCEL area and releasing cancels without mana/cooldown
+PASS: right-click cancels a held skill without basic attack or resource spend
+PASS: switching panels cancels stale aim; non-modal panels still allow WASD and fresh skill casts
+PASS: session custom numpad keys support both tap-auto and held preview/cancel; old key is replaced
+PASS: native accessible button activation shares auto-targeted ultimate and authoritative one-hit beam
+PASS: blur/reset lifecycle clears held preview/capture without spending or reviving old gestures
+PASS: keyboard-only status/skills/attack remain accessible in desktop and compact landscape layouts
+PASS: source ZIP HTML works copied alone at offline file:// Unicode/spaces path, with new controls and real embedded GLB
+PASS: ZERO runtime errors, warnings or subresource requests across offline interaction
+19 combat-control browser checks passed.
+
+===== browser-panels =====
+PASS: shop: held/fresh WASD works in non-modal panel, keyup stops, closing preserves held movement
+PASS: shop: skill and basic shortcuts deal real damage while panel stays open
+PASS: shop: HUD skill pointer hold/release remains interactive outside panel
+PASS: shop: exposed battlefield LMB attacks work without dismissing panel
+PASS: settings: held/fresh WASD works in non-modal panel, keyup stops, closing preserves held movement
+PASS: settings: skill and basic shortcuts deal real damage while panel stays open
+PASS: settings: HUD skill pointer hold/release remains interactive outside panel
+PASS: settings: exposed battlefield LMB attacks work without dismissing panel
+PASS: opening a panel cancels held aim without spending; Escape closes the panel
+PASS: focused key-binding select owns combat keys but still permits protected WASD movement
+PASS: actual text entry does not move, attack or cast while typing
+PASS: explicit HUD or battlefield pointer attacks leave editors and work on the first click
+PASS: blur still clears held movement without stale resumption
+PASS: panel switching, trigger toggling and X closing preserve held aim and movement
+PASS: both panels are centered horizontally and vertically, non-modal and in bounds with reachable close/attack at desktop and compact landscape sizes
+PASS: offline file://: zero runtime errors, warnings or subresource requests
+16 live-panel browser checks passed.
+
+===== browser-progression =====
+PASS: fresh offline level 1: 2250 HP / 500 mana, one point, zero XP, three visibly unlearned skills and locked ultimate
+PASS: one real skill point enables the same rebound/click skill action, costs real mana, deals scaled defended damage and grants no reward XP
+PASS: configurable real XP crosses exact/multiple thresholds, keeps learned ranks, adds points/resources and updates live level/XP meter
+PASS: Practice set-level resets ranks/flight/cooldowns; level 5 has 2858 HP / 167 PA; invalid inputs report errors without lowering XP/level
+PASS: level 15 UI exactly reflects 4378 HP / 1900 mana / 252 PA / 71 PD / 50 MD / 1.34 attacks/s, explicit display-to-world units and maximum XP saturation
+PASS: all fifteen points allocate exactly 6/6/3, live rank costs refresh, and every capped upgrade is visibly disabled
+PASS: Practice Reset to level 1 restores resources/XP/ranks without resetting targets or fabricating eliminations
+PASS: real Practice numeric editor owns typing: no WASD movement or skill casts leak through
+PASS: level/XP, skills/upgrades and scrollable Practice controls remain reachable at 1280x720, 960x540 and 844x390
+PASS: actual root file:// runs offline with zero browser errors and no external runtime requests
+10 progression browser checks passed.
+
+===== browser-menu =====
+PASS: first launch shows creation only; supplied RGBA artwork decodes with its real alpha preserved and no 3D model loaded
+PASS: invalid names cannot continue, and a valid name still requires explicit gender selection
+PASS: country/gender selection saves the actual local profile and lobby displays it with the existing GLB, not the PNG
+PASS: all 7 remaining lobby placeholders are disabled/no-op; menu combat keys never initialize training
+PASS: actual offline file:// localStorage survives same-file reload and skips creation for a valid profile
+PASS: MODE/back/Escape preserve profile and reuse one GLB presentation; Classic/Ranked cannot launch matches; Brawl is covered by connected-match tests
+PASS: 1280x720, 960x540, 844x390: all three screens fit, cards stay in bounds, PNG stays contained and touch-emulated profile/MODE/back and compact AI entry work
+PASS: denied storage remains usable for the session and honestly displays the persistence limitation
+PASS: corrupt/invalid saved data safely returns to creation
+PASS: AI Training enters the established real Layla simulation exactly once, transfers the same GLB safely, disposes lobby rendering and restores movement/skill damage
+PASS: actual standalone offline menu-to-game flow has zero runtime errors, warnings or external/subresource requests
+11 menu browser checks passed.
+
+===== browser-polish =====
+PASS: old valid profile migrates once to 30,000 coins / 0 diamonds with owned Layla
+PASS: fresh page creates no audio context or scheduler before a real gesture
+PASS: trusted click unlocks actual Web Audio; original score renders nonzero stereo energy without clipping
+PASS: Hero Shop uses supplied 2D PNG, already-owned Layla, no purchase controls and no combat initialization
+PASS: real music/effects/master switches, volume and reduced motion persist on same-file reload without autoplay
+PASS: reopening preserves an existing changed balance; starter grant is never reapplied
+PASS: 1280x720 / 960x540 / 844x390 touch navigation, currency bounds, Shop, Settings and MODE fit; PNG uses undistorted cover
+PASS: Shop/Settings/back/resize retain exactly one model and restore on-demand lobby rendering
+PASS: audio reset preserves motion preference; blur suspends audio/scheduler and focus resumes one scheduler
+PASS: normal entry transfers approved model once, switches to energetic score and actual accepted combat events produce effects
+PASS: training Settings exposes the same working persisted audio controls in its non-modal centered panel
+PASS: blocked storage and missing Web Audio preserve session wallet and useful settings without crashing
+PASS: final standalone offline flow has no runtime errors, warnings, or subresource/network requests
+13 polish browser checks passed.
+
+===== browser-hero-browser =====
+PASS: creation uses complete contained original PNG, larger layout allocation and a smooth bottom alpha mask at four viewport sizes
+PASS: lobby quick sound button is gone; working sound controls remain in Settings
+PASS: Shop has one owned Layla, fourteen truly empty noninteractive slots, seven role filters, wallet and no match/purchase initialization
+PASS: role filtering and search work without inventing heroes, and announce empty results
+PASS: hero PNG detail exposes role, four prototype ratings, passive plus three actual skill descriptions/values and truthful notes; Escape closes each sheet before leaving hero
+PASS: hero back preserves Shop filters/search and one model instance; no reload or wallet changes
+PASS: catalog scroll and touch hero/skill/back flows fit 1280x720, 960x540 and 844x390 with reachable close controls
+PASS: leaving the guide restores original lobby/modes and transfers the same approved model once into unchanged training with audio
+PASS: actual standalone file:// guide flow has zero runtime errors, warnings or subresource/network requests
+9 hero browser checks passed.
+
+===== browser-roster =====
+PASS: Brawl starts with empty Computer slots, prevents no-enemy Start, adds/removes allied/enemy Computers and preserves an asymmetric 2v2 roster
+PASS: Timed selection shows actual ally Computer Layla pick and ready state; only the implemented Layla is selectable, confirm requires a pick
+PASS: Confirmed asymmetric roster creates exactly the requested real Layla Computers with cloned approved GLB meshes/clips and authoritative hero kits
+PASS: 3D map orientation projects allied base bottom-left and enemy base top-right without swapping world teams
+PASS: Restored wide shop filters all 45 supported items, decodes original PNGs, equips +8% crit Javelin, and requires explicit Sell to free an equipped slot/refund once
+PASS: Boots use supplied display-stat/world conversion, Movement filters/sorting work and six-slot purchase/sale remains separate from the account wallet
+PASS: Recall/Regen controls are live: Regen starts a real cooldown and movement cancels the real recall channel
+PASS: Preserved Practice supports a real basic→skill follow-up through native keyboard input without interrupting the basic animation
+PASS: Standalone file://, offline networking: no unexpected JavaScript errors or external asset requests through room, draft, gameplay, shop, utilities and return
+9 roster browser checks passed.
+
+===== browser-draft =====
+PASS: Actual 45-second expiry auto-confirms the only available hero and starts the requested 5v5 roster, without timer injection
+PASS: Loading renders all five actual allied and five enemy Layla picks with player/Computer names; no invented heroes or per-client download percentages
+PASS: Trusted touch drag moves the player in the flipped lane with nine real-model Computer heroes
+PASS: Full roster quits safely, aborts match listeners and restores the single retained approved menu model
+PASS: Full draft/loading/touch/quit offline flow has zero runtime errors, warnings or external requests
+
+===== browser-recovery =====
+PASS: actual local graphics-preparation failure shows honest reason and Retry / Back, disposes partial input/HUD and never counts a started match
+PASS: Retry revalidates the confirmed pick and reruns actual preparation, starting exactly one healthy match with the retained approved model
+PASS: Back from a second real failure returns safely to the configured room with no duplicate runtime, input or HUD
+PASS: trusted emulated touch drag still moves the hero with a centered non-modal Shop open; modal fixture protection and editor isolation remain separate
+PASS: native keyboard activation of a focused + spends exactly one point without leaking Space into an attack or skill cast
+
+===== browser-match =====
+PASS: Classic/Ranked disabled; four AI scenarios, Normal default, real Hard/custom roster configuration, guarded selection and all Back routes remain combat-isolated
+PASS: validated hero confirmation completes seven actual local setup stages, then one 5v5 simulation/countdown; saved name, actual level/HP/mana and six objectives rendered
+PASS: wrapper-relative legal + badges remain top-right at 1280×720, 960×540 and 844×390; click spends exactly one point without casting; dark rank-zero local PNGs, no far-left row or UNLEARNED text
+PASS: actual shop buy/equip/unique/insufficient/sell transactions update six slots, gold and effective PA; pause freezes clock; safe quit disposes listeners/RAF and preserves account wallet
+PASS: Practice travels through the same guarded prematch flow but retains separate three-dummy, reward-free sandbox and working exit / resume
+PASS: Brawl uses level 3 / 800 gold and actual editable 1v1 roster; unique items reject repeat purchases, explicit sale credits 60% once before automatic free-slot purchase and recomputes attack/movement speed
+Waiting for an actual unattended Brawl result (fixed simulation clock, no state injection)…
+Live Brawl 43.1s, wave 3, objectives 0/4200/6500/3600/4200/6500
+Live Brawl 81.9s, wave 5, objectives 0/3830/6500/3600/4200/6500
+Live Brawl 122.2s, wave 7, objectives 0/1720/6500/3600/4200/6500
+Live Brawl 163.4s, wave 10, objectives 0/0/5847/3600/4200/6500
+Live Brawl 202.5s, wave 12, objectives 0/0/3867/3600/4200/6500
+Live Brawl 241.4s, wave 14, objectives 0/0/1481/3600/4200/6500
+PASS: actual unattended Brawl reaches sequential core destruction → real results with implemented duration / eliminations / deaths / assists / level / combat gold, no account currency/rank rewards; explicit account XP only
+PASS: fresh replay re-enters explicit hero confirmation and resets all match state; Main Menu restores the same approved shared GLB without a second asset load
+PASS: Completed natural match records actual result/hero/mode/duration/KDA once; replay quit adds nothing and Profile History/Statistics read the saved record
+PASS: coarse-pointer 844×390 exposes a real drag joystick that moves the authoritative hero, with existing WASD and skill gestures preserved
+PASS: actual standalone file:// with offline networking: no JavaScript errors or external runtime asset requests
+11 connected-match browser checks passed.

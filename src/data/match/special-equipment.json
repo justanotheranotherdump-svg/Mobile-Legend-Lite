@@ -1,0 +1,77 @@
+{
+  "ruleset": "Classic documented boot blessings: 5 qualifying actions; roam 600 Thriving unlock, 1500 scaling cap. Not asserted to be the live 2026 ruleset.",
+  "items": [
+    {
+      "id": "bloody-retribution",
+      "name": "Bloody Retribution",
+      "category": "Jungling",
+      "type": "jungle_blessing",
+      "cost": 0,
+      "description": "Boots + Retribution required. After 5 actual creep/hero kills or hero assists, farm-target Retribution deals 150% damage; hero cast deals 100 True Damage plus steals 250 +20% extra HP over 4s. Legacy Liquipedia ruleset; does not occupy an equipment slot."
+    },
+    {
+      "id": "flame-retribution",
+      "name": "Flame Retribution",
+      "category": "Jungling",
+      "type": "jungle_blessing",
+      "cost": 0,
+      "description": "Boots + Retribution; unlock at 5 qualifying actions. Farm-target Retribution deals 150%; hero cast deals 100 True Damage and steals 58–100 Physical Attack and Magic Power for 4s, by level. Legacy Liquipedia ruleset; not an ordinary purchase."
+    },
+    {
+      "id": "ice-retribution",
+      "name": "Ice Retribution",
+      "category": "Jungling",
+      "type": "jungle_blessing",
+      "cost": 0,
+      "description": "Boots + Retribution; unlock at 5 qualifying actions. Farm-target Retribution deals 150%; hero cast deals 100 True Damage and steals 72–100 Movement Speed for 4s, by level. Legacy Liquipedia ruleset; not an ordinary purchase."
+    },
+    {
+      "id": "conceal",
+      "name": "Conceal",
+      "category": "Roaming",
+      "type": "roaming_blessing",
+      "cost": 0,
+      "description": "Roam setup + boots, incompatible with Retribution. Devotion restricts shared farming for first 8min; Thriving unlocks at 600 earned role Gold. Active: nearby allied heroes gain camouflage and 24%–60% Movement Speed for 5s; damage breaks camouflage. 80s cooldown. Classic rules, not a live-patch claim."
+    },
+    {
+      "id": "dire-hit",
+      "name": "Dire Hit",
+      "category": "Roaming",
+      "type": "roaming_blessing",
+      "cost": 0,
+      "description": "Roam setup + boots; unlock after 600 Thriving Gold, scaling capped at 1500. Damaging heroes below 35% HP adds 7%–18% target Max HP hybrid damage, once per 30s. Explicit classic execute version, not the disputed newer movement-stack/mark reworks."
+    },
+    {
+      "id": "encourage",
+      "name": "Encourage",
+      "category": "Roaming",
+      "type": "roaming_blessing",
+      "cost": 0,
+      "description": "Roam setup + boots; unlock after 600 Thriving Gold. Nearby allied heroes gain 12–30 Physical Attack and Magic Power and 15% Attack Speed; scaling cap 1500 role Gold. Classic offensive aura, not the conflicting newer defensive rework."
+    },
+    {
+      "id": "favor",
+      "name": "Favor",
+      "category": "Roaming",
+      "type": "roaming_blessing",
+      "cost": 0,
+      "description": "Roam setup + boots; unlock after 600 Thriving Gold. A non-self-only healing/shield skill heals the lowest-HP allied hero within 5 units for 480–1200; 15s cooldown. Self-only Aegis, lifesteal and regeneration do not trigger Favor; Revitalize can. Classic rules."
+    },
+    {
+      "id": "flower-of-hope",
+      "name": "Flower of Hope",
+      "category": "Magic",
+      "type": "hero_exclusive",
+      "cost": 0,
+      "description": "Floryn-granted allied equipment only; not a free shop item. Floryn is not in this prototype, so this reference-only entry cannot be acquired, equipped, sold or put into a Layla build. No bonuses applied."
+    },
+    {
+      "id": "lantern-of-hope",
+      "name": "Lantern of Hope",
+      "category": "Magic",
+      "type": "hero_exclusive",
+      "cost": 0,
+      "description": "Floryn-exclusive permanent equipment, obtained by her passive, never purchased or sold. Only Layla is playable here; this reference entry is unavailable and grants no stats."
+    }
+  ]
+}

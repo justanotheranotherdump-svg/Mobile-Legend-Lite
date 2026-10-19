@@ -1,0 +1,18 @@
+{
+  "environment": "Linux Chromium; file://; offline:true; software WebGL; not native Windows or physical touch",
+  "checks": [
+    "fresh offline level 1: 2250 HP / 500 mana, one point, zero XP, three visibly unlearned skills and locked ultimate",
+    "one real skill point enables the same rebound/click skill action, costs real mana, deals scaled defended damage and grants no reward XP",
+    "configurable real XP crosses exact/multiple thresholds, keeps learned ranks, adds points/resources and updates live level/XP meter",
+    "Practice set-level resets ranks/flight/cooldowns; level 5 has 2858 HP / 167 PA; invalid inputs report errors without lowering XP/level",
+    "level 15 UI exactly reflects 4378 HP / 1900 mana / 252 PA / 71 PD / 50 MD / 1.34 attacks/s, explicit display-to-world units and maximum XP saturation",
+    "all fifteen points allocate exactly 6/6/3, live rank costs refresh, and every capped upgrade is visibly disabled",
+    "Practice Reset to level 1 restores resources/XP/ranks without resetting targets or fabricating eliminations",
+    "real Practice numeric editor owns typing: no WASD movement or skill casts leak through",
+    "level/XP, skills/upgrades and scrollable Practice controls remain reachable at 1280x720, 960x540 and 844x390",
+    "actual root file:// runs offline with zero browser errors and no external runtime requests"
+  ],
+  "errors": [],
+  "warnings": [],
+  "requests": []
+}

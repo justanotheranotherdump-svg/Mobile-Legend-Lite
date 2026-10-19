@@ -1,0 +1,22 @@
+{
+  "platform": "linux",
+  "browser": "153.0.8010.0",
+  "offline": true,
+  "fileProtocol": true,
+  "checks": [
+    "default standalone boots actual approved GLB, only Walk/Shoot, 3 functional skills and mana; utilities reserved",
+    "mouse-ground S1 has authoritative travel, single collision damage/passive, real timed buffs, cost/cooldown and Shoot cast",
+    "keyboard S2 and HUD basic share authoritative actions: orb/explosion/mark then traveling basic triggers bonus/stun without VFX-owned damage",
+    "ultimate directional cast executes one full-width beam and one damage application",
+    "shared key actions reject concurrent/cooldown casts without extra mana charge",
+    "clicking a functional skill does not freeze held WASD",
+    "modal gates real skills/movement; custom numpad binding replaces default and truthful labels/hints update",
+    "shop remains empty/interface-only; reset clears combat/marks/VFX and preserves session key preferences",
+    "actual GLB/HUD and 3 skill controls stay visible at desktop and compact landscape sizes",
+    "source ZIP index runs alone at file:// in spaces/Unicode path with network offline, real GLB and skill damage",
+    "ZERO runtime errors/warnings/subresource requests across default offline integration"
+  ],
+  "errors": [],
+  "warnings": [],
+  "requests": []
+}

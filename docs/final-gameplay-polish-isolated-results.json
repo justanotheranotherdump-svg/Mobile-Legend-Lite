@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "bundleSha256": "ae74c0349662142c0272a781e4ee3bc6315943a84128b1715fe2ae8329d7a2c0",
+  "environment": "Linux Chromium/software WebGL, offline file:// with ordinary file-origin security; no sibling assets; Unicode and spaces paths; no diagnostic simulation mutations; the only Gold grant is the requested native Settings Cheats button",
+  "results": [
+    {
+      "label": "standaloneFile",
+      "entry": "/tmp/MOBA final polish — Unicode space DbI0AX/Standalone only — 测试/Play final polish.html",
+      "sha256": "ae74c0349662142c0272a781e4ee3bc6315943a84128b1715fe2ae8329d7a2c0",
+      "seconds": 169,
+      "checkGroups": 5,
+      "log": "docs/final-gameplay-polish-isolated-standaloneFile.txt",
+      "record": "docs/final-gameplay-polish-isolated-standaloneFile.json",
+      "status": "passed"
+    },
+    {
+      "label": "archiveFile",
+      "entry": "/tmp/MOBA final polish — Unicode space DbI0AX/Source ZIP index only — 测试/index.html",
+      "sha256": "ae74c0349662142c0272a781e4ee3bc6315943a84128b1715fe2ae8329d7a2c0",
+      "seconds": 170,
+      "checkGroups": 5,
+      "log": "docs/final-gameplay-polish-isolated-archiveFile.txt",
+      "record": "docs/final-gameplay-polish-isolated-archiveFile.json",
+      "status": "passed"
+    }
+  ]
+}

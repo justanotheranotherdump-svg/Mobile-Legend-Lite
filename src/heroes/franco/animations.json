@@ -1,0 +1,14 @@
+{
+  "clips": {
+    "idle": "Idle",
+    "move": "Walk",
+    "run": "Run",
+    "basicAttack": "BasicAttack",
+    "dead": "Death",
+    "hit": "HitReact",
+    "cast": "IronHook",
+    "skill-1": "IronHook",
+    "skill-2": "FuryShock",
+    "skill-ultimate": "BloodyHunt"
+  }
+}

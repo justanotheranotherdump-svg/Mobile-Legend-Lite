@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-19",
+  "revision": "plan-b-r5",
+  "scope": "Separate unapproved Franco visual preview; actual clips retimed to user-supplied provisional targets",
+  "unchangedGameFiles": 305,
+  "rootGameHtmlSHA256": "ae74c0349662142c0272a781e4ee3bc6315943a84128b1715fe2ae8329d7a2c0",
+  "differences": [],
+  "addedRuntimeFiles": [],
+  "gameIntegration": false,
+  "unitTests": {
+    "total": 796,
+    "passed": 796,
+    "failed": 0,
+    "skipped": 0,
+    "existingBaseline": 777,
+    "addedPreviewTests": 19
+  },
+  "browserChecks": 32,
+  "browserEnvironment": "Linux Chromium software WebGL2, offline file://; no physical-device, Windows or hardware-GPU certification.",
+  "assets": {
+    "previews/franco/assets/franco-proposed.glb": "9b0e454a10d9bc4f97ce68797bb5ad9bf7572ae741372c3df52d1e0906587da1",
+    "previews/franco/assets/franco-hook.glb": "87fa7c06e61d9b066a4ea5506b257f13e7f56e923a24a599bdcceb9f42bf06fe",
+    "assets/source_blender/franco-preview.blend": "ac68c64eaea14107d3c8b59616b8bad8e88cb4ff1e242854c79adb13b9e1434c",
+    "previews/franco/Franco-Animation-Preview.html": "69c12395439b7d7ad71f7e37c996fef029cfff9ecb173ab8df6f41bb2918ff7b",
+    "previews/franco/timing-proposal.json": "721f2e3ced9048dfc75137780b62aa4d29d552a815a4fef036400e7d20d40e9e",
+    "previews/franco/cancel-demo.js": "7449c0355ea95195917dd6821522c3cd36aad9a7dd9e7be3222e57dd3eccedc4",
+    "previews/franco/flicker-demo.js": "94e600c86bb3d5c08b8080eb1f1ce92c762d8344131893db2b2f099a8b3abbf3",
+    "previews/franco/plans/plan-a-r4.json": "b36a6a8d4059feabb770ec3906c5f39c1e86efe6433f2d5b06252628d9df402c"
+  },
+  "approval": "WAITING FOR EXPLICIT USER VISUAL APPROVAL — no Franco gameplay, registry, AI or builds implemented"
+}

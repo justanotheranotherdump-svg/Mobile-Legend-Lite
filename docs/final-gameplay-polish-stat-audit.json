@@ -1,0 +1,213 @@
+{
+  "status": "passed",
+  "initial": [
+    {
+      "difficulty": "easy",
+      "hero": "layla",
+      "level": 3,
+      "attributes": {
+        "maxHp": 2554,
+        "hpRegen": 5.800000000000001,
+        "maxMana": 700,
+        "manaRegen": 4.4,
+        "physicalAttack": 150,
+        "physicalDefense": 23,
+        "magicDefense": 20,
+        "magicPower": 0,
+        "attackSpeed": 1.1,
+        "attackSpeedRatio": 1,
+        "criticalDamage": 2,
+        "movementSpeed": 240,
+        "attackRange": 4.3
+      },
+      "runtime": {
+        "maxHp": 2554,
+        "maxMana": 700,
+        "hpRegen": 5.800000000000001,
+        "manaRegen": 4.4,
+        "damage": 150,
+        "speed": 5.5,
+        "range": 6,
+        "attackRate": 1.1,
+        "attackCooldown": 0.9090909090909091,
+        "criticalChance": 0,
+        "cooldownReduction": 0,
+        "lifesteal": 0,
+        "spellVamp": 0,
+        "tenacity": 0
+      },
+      "humanRanks": {
+        "level": 3,
+        "totalXp": 500,
+        "xp": 0,
+        "xpToNext": 400,
+        "atMax": false,
+        "skillPoints": 3,
+        "ranks": {
+          "malefic-bomb": 0,
+          "void-projectile": 0,
+          "destruction-rush": 0
+        }
+      },
+      "npcRanks": {
+        "level": 3,
+        "totalXp": 500,
+        "xp": 0,
+        "xpToNext": 400,
+        "atMax": false,
+        "skillPoints": 0,
+        "ranks": {
+          "malefic-bomb": 3,
+          "void-projectile": 0,
+          "destruction-rush": 0
+        }
+      },
+      "strategy": {
+        "reaction": 0.8,
+        "aimSpread": 2.3,
+        "aggression": 0.65,
+        "retreatHp": 0.3,
+        "targetPolicy": "nearest"
+      }
+    },
+    {
+      "difficulty": "normal",
+      "hero": "layla",
+      "level": 3,
+      "attributes": {
+        "maxHp": 2554,
+        "hpRegen": 5.800000000000001,
+        "maxMana": 700,
+        "manaRegen": 4.4,
+        "physicalAttack": 150,
+        "physicalDefense": 23,
+        "magicDefense": 20,
+        "magicPower": 0,
+        "attackSpeed": 1.1,
+        "attackSpeedRatio": 1,
+        "criticalDamage": 2,
+        "movementSpeed": 240,
+        "attackRange": 4.3
+      },
+      "runtime": {
+        "maxHp": 2554,
+        "maxMana": 700,
+        "hpRegen": 5.800000000000001,
+        "manaRegen": 4.4,
+        "damage": 150,
+        "speed": 5.5,
+        "range": 6,
+        "attackRate": 1.1,
+        "attackCooldown": 0.9090909090909091,
+        "criticalChance": 0,
+        "cooldownReduction": 0,
+        "lifesteal": 0,
+        "spellVamp": 0,
+        "tenacity": 0
+      },
+      "humanRanks": {
+        "level": 3,
+        "totalXp": 500,
+        "xp": 0,
+        "xpToNext": 400,
+        "atMax": false,
+        "skillPoints": 3,
+        "ranks": {
+          "malefic-bomb": 0,
+          "void-projectile": 0,
+          "destruction-rush": 0
+        }
+      },
+      "npcRanks": {
+        "level": 3,
+        "totalXp": 500,
+        "xp": 0,
+        "xpToNext": 400,
+        "atMax": false,
+        "skillPoints": 0,
+        "ranks": {
+          "malefic-bomb": 3,
+          "void-projectile": 0,
+          "destruction-rush": 0
+        }
+      },
+      "strategy": {
+        "reaction": 0.4,
+        "aimSpread": 1,
+        "aggression": 0.85,
+        "retreatHp": 0.24,
+        "targetPolicy": "lowest-hp"
+      }
+    },
+    {
+      "difficulty": "hard",
+      "hero": "layla",
+      "level": 3,
+      "attributes": {
+        "maxHp": 2554,
+        "hpRegen": 5.800000000000001,
+        "maxMana": 700,
+        "manaRegen": 4.4,
+        "physicalAttack": 150,
+        "physicalDefense": 23,
+        "magicDefense": 20,
+        "magicPower": 0,
+        "attackSpeed": 1.1,
+        "attackSpeedRatio": 1,
+        "criticalDamage": 2,
+        "movementSpeed": 240,
+        "attackRange": 4.3
+      },
+      "runtime": {
+        "maxHp": 2554,
+        "maxMana": 700,
+        "hpRegen": 5.800000000000001,
+        "manaRegen": 4.4,
+        "damage": 150,
+        "speed": 5.5,
+        "range": 6,
+        "attackRate": 1.1,
+        "attackCooldown": 0.9090909090909091,
+        "criticalChance": 0,
+        "cooldownReduction": 0,
+        "lifesteal": 0,
+        "spellVamp": 0,
+        "tenacity": 0
+      },
+      "humanRanks": {
+        "level": 3,
+        "totalXp": 500,
+        "xp": 0,
+        "xpToNext": 400,
+        "atMax": false,
+        "skillPoints": 3,
+        "ranks": {
+          "malefic-bomb": 0,
+          "void-projectile": 0,
+          "destruction-rush": 0
+        }
+      },
+      "npcRanks": {
+        "level": 3,
+        "totalXp": 500,
+        "xp": 0,
+        "xpToNext": 400,
+        "atMax": false,
+        "skillPoints": 0,
+        "ranks": {
+          "malefic-bomb": 3,
+          "void-projectile": 0,
+          "destruction-rush": 0
+        }
+      },
+      "strategy": {
+        "reaction": 0.18,
+        "aimSpread": 0.3,
+        "aggression": 1,
+        "retreatHp": 0.18,
+        "targetPolicy": "threat"
+      }
+    }
+  ],
+  "scope": "Only implemented Layla. Actual simulation values; human unspent skill points versus NPC automatic allocation is explicitly recorded, not hidden. Identical controlled-rank/build/buff attacks are tested by tests/hero-fairness.test.js, not inferred from this base-stat snapshot."
+}

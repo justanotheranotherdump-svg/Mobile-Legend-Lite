@@ -1,0 +1,211 @@
+[
+  {
+    "id": "wasteland-force",
+    "name": "Wasteland Force",
+    "slot": "passive",
+    "effectId": "wasteland-force",
+    "range": 0,
+    "damage": 0,
+    "manaCost": 0,
+    "cooldown": 0,
+    "castTime": 0,
+    "parameters": {
+      "noDamageSeconds": 5,
+      "movementBonus": 0.1,
+      "hpRatioPerSecond": 0.01,
+      "maxStacks": 10,
+      "stackInterval": 1,
+      "bonusPerStack": 0.15
+    },
+    "damageModel": {
+      "type": "physical",
+      "physicalScaling": 0,
+      "magicScaling": 0
+    },
+    "ranks": null
+  },
+  {
+    "id": "iron-hook",
+    "name": "Iron Hook",
+    "slot": "skill-1",
+    "effectId": "iron-hook",
+    "range": 6.4,
+    "damage": 400,
+    "manaCost": 135,
+    "cooldown": 15,
+    "castTime": 0.15,
+    "parameters": {
+      "speed": 25.6,
+      "radius": 0.22,
+      "pullDuration": 0.18,
+      "pullStop": 1.1,
+      "stunDuration": 0.5,
+      "returnDuration": 0.2,
+      "contactPause": 0.02,
+      "hitReturnDuration": 0.08
+    },
+    "damageModel": {
+      "type": "physical",
+      "physicalScaling": 1,
+      "magicScaling": 0
+    },
+    "ranks": {
+      "max": 6,
+      "requiredLevels": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "damage": [
+        400,
+        450,
+        500,
+        550,
+        600,
+        650
+      ],
+      "manaCost": [
+        135,
+        140,
+        145,
+        150,
+        155,
+        160
+      ],
+      "cooldown": [
+        15,
+        14.2,
+        13.4,
+        12.6,
+        11.8,
+        11
+      ],
+      "bonusDamage": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  {
+    "id": "fury-shock",
+    "name": "Fury Shock",
+    "slot": "skill-2",
+    "effectId": "fury-shock",
+    "range": 3.2,
+    "damage": 300,
+    "manaCost": 40,
+    "cooldown": 7,
+    "castTime": 0.3,
+    "parameters": {
+      "radius": 3.2,
+      "maxHpScaling": 0.04,
+      "slowRatio": 0.7,
+      "slowDuration": 1.5
+    },
+    "damageModel": {
+      "type": "physical",
+      "physicalScaling": 0,
+      "magicScaling": 0
+    },
+    "ranks": {
+      "max": 6,
+      "requiredLevels": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "damage": [
+        300,
+        330,
+        360,
+        390,
+        420,
+        450
+      ],
+      "manaCost": [
+        40,
+        45,
+        50,
+        55,
+        60,
+        65
+      ],
+      "cooldown": [
+        7,
+        6.5,
+        6,
+        5.5,
+        5,
+        4.5
+      ],
+      "bonusDamage": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  {
+    "id": "bloody-hunt",
+    "name": "Bloody Hunt",
+    "slot": "skill-ultimate",
+    "effectId": "bloody-hunt",
+    "range": 1.8,
+    "damage": 50,
+    "manaCost": 110,
+    "cooldown": 62,
+    "castTime": 0,
+    "parameters": {
+      "duration": 1.8,
+      "strikes": 6,
+      "firstStrike": 0.15,
+      "strikeInterval": 0.3
+    },
+    "damageModel": {
+      "type": "physical",
+      "physicalScaling": 0.7,
+      "magicScaling": 0
+    },
+    "ranks": {
+      "max": 3,
+      "requiredLevels": [
+        4,
+        8,
+        12
+      ],
+      "damage": [
+        50,
+        60,
+        70
+      ],
+      "manaCost": [
+        110,
+        125,
+        140
+      ],
+      "cooldown": [
+        62,
+        55,
+        48
+      ],
+      "bonusDamage": [
+        0,
+        0,
+        0
+      ]
+    }
+  }
+]

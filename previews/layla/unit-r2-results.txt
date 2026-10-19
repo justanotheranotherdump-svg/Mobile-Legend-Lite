@@ -1,0 +1,202 @@
+TAP version 13
+# Subtest: R2 preserves accepted GLB, Blender, rig/action manifest, author script and research byte-for-byte
+ok 1 - R2 preserves accepted GLB, Blender, rig/action manifest, author script and research byte-for-byte
+  ---
+  duration_ms: 14.446324
+  type: 'test'
+  ...
+# Subtest: Four actual graph identities use sphere bolt, pointed lathe, orbit-band orb and separate continuous cylinders
+ok 2 - Four actual graph identities use sphere bolt, pointed lathe, orbit-band orb and separate continuous cylinders
+  ---
+  duration_ms: 93.092769
+  type: 'test'
+  ...
+# Subtest: Default S1 is faster and heavier than basic; orb is slower; all release candidates and source clips preserved
+ok 3 - Default S1 is faster and heavier than basic; orb is slower; all release candidates and source clips preserved
+  ---
+  duration_ms: 1.46682
+  type: 'test'
+  ...
+# Subtest: Actual effect graph launches at captured muzzle and never appears before release
+ok 4 - Actual effect graph launches at captured muzzle and never appears before release
+  ---
+  duration_ms: 52.09393
+  type: 'test'
+  ...
+# Subtest: Ultimate full-length graph is muzzle-connected and stable for entire main phase, with independent width/duration/glow
+ok 5 - Ultimate full-length graph is muzzle-connected and stable for entire main phase, with independent width/duration/glow
+  ---
+  duration_ms: 46.637328
+  type: 'test'
+  ...
+# Subtest: Optional extending front stays connected to muzzle, never a moving short bullet
+ok 6 - Optional extending front stays connected to muzzle, never a moving short bullet
+  ---
+  duration_ms: 27.045637
+  type: 'test'
+  ...
+# Subtest: Superline places targets near/mid/far, hits all immediately and respects width/range/empty path
+ok 7 - Superline places targets near/mid/far, hits all immediately and respects width/range/empty path
+  ---
+  duration_ms: 0.628767
+  type: 'test'
+  ...
+# Subtest: Charge, release, stable beam, fade and clean ending are discrete graph states
+ok 8 - Charge, release, stable beam, fade and clean ending are discrete graph states
+  ---
+  duration_ms: 38.724569
+  type: 'test'
+  ...
+# Subtest: Orb detonation radius is exact and mark-trigger visual is separate, sharper and smaller
+ok 9 - Orb detonation radius is exact and mark-trigger visual is separate, sharper and smaller
+  ---
+  duration_ms: 22.12369
+  type: 'test'
+  ...
+# Subtest: S1 hit has a short buff outline but a miss has none; effect cleanup is reversible under scrub
+ok 10 - S1 hit has a short buff outline but a miss has none; effect cleanup is reversible under scrub
+  ---
+  duration_ms: 22.722521
+  type: 'test'
+  ...
+# Subtest: Beam flash duration extends study without extending actor commitment or changing release/collision
+ok 11 - Beam flash duration extends study without extending actor commitment or changing release/collision
+  ---
+  duration_ms: 0.26109
+  type: 'test'
+  ...
+# Subtest: Layla workshop contains genuine original GLB mesh, valid skin and named muzzle/hand/grip/hair bones
+ok 12 - Layla workshop contains genuine original GLB mesh, valid skin and named muzzle/hand/grip/hair bones
+  ---
+  duration_ms: 1.730436
+  type: 'test'
+  ...
+# Subtest: Actual skin weights are normalized, finite and reference valid joints
+ok 13 - Actual skin weights are normalized, finite and reference valid joints
+  ---
+  duration_ms: 13.211334
+  type: 'test'
+  ...
+# Subtest: All ten genuine clips start at zero and match exported durations with finite animation samples
+ok 14 - All ten genuine clips start at zero and match exported durations with finite animation samples
+  ---
+  duration_ms: 3.689955
+  type: 'test'
+  ...
+# Subtest: Idle, walk and run endpoints loop cleanly in actual baked animation channels
+ok 15 - Idle, walk and run endpoints loop cleanly in actual baked animation channels
+  ---
+  duration_ms: 0.530406
+  type: 'test'
+  ...
+# Subtest: Local GLB has no external resource URLs and editable Blender source is genuine
+ok 16 - Local GLB has no external resource URLs and editable Blender source is genuine
+  ---
+  duration_ms: 4.128238
+  type: 'test'
+  ...
+# Subtest: Release settings retime actual pose sampling independently from projectile flight
+ok 17 - Release settings retime actual pose sampling independently from projectile flight
+  ---
+  duration_ms: 1.236785
+  type: 'test'
+  ...
+# Subtest: Near target arrives earlier; range/speed and release are separate, including a muzzle offset
+ok 18 - Near target arrives earlier; range/speed and release are separate, including a muzzle offset
+  ---
+  duration_ms: 1.046501
+  type: 'test'
+  ...
+# Subtest: Miss and empty path never create impact, capture, mark or S1 buffs
+ok 19 - Miss and empty path never create impact, capture, mark or S1 buffs
+  ---
+  duration_ms: 0.893912
+  type: 'test'
+  ...
+# Subtest: Passive explicitly compares115/130 candidates with editable threshold and excludes turret damage bonus
+ok 20 - Passive explicitly compares115/130 candidates with editable threshold and excludes turret damage bonus
+  ---
+  duration_ms: 0.265891
+  type: 'test'
+  ...
+# Subtest: S1 hits first eligible target, grants finite range/speed windows and doubles hero-hit duration only
+ok 21 - S1 hits first eligible target, grants finite range/speed windows and doubles hero-hit duration only
+  ---
+  duration_ms: 4.691965
+  type: 'test'
+  ...
+# Subtest: S2 area and primary-only mark interpretations are distinct, with real initial AoE events
+ok 22 - S2 area and primary-only mark interpretations are distinct, with real initial AoE events
+  ---
+  duration_ms: 0.674324
+  type: 'test'
+  ...
+# Subtest: Basic/S1/ultimate follow-ups consume a mark once and show a separate bounded stun, not initial-impact stun
+ok 23 - Basic/S1/ultimate follow-ups consume a mark once and show a separate bounded stun, not initial-impact stun
+  ---
+  duration_ms: 3.176384
+  type: 'test'
+  ...
+# Subtest: Mark expires without follow-up; death removes target mark and escaped target cannot receive follow-up shot
+ok 24 - Mark expires without follow-up; death removes target mark and escaped target cannot receive follow-up shot
+  ---
+  duration_ms: 0.671683
+  type: 'test'
+  ...
+# Subtest: Ultimate alternatives preserve line/range/width and hit every eligible lined-up target at independent times
+ok 25 - Ultimate alternatives preserve line/range/width and hit every eligible lined-up target at independent times
+  ---
+  duration_ms: 0.210306
+  type: 'test'
+  ...
+# Subtest: Ultimate rank and S1 buff range bonuses are explicit additive proposals
+ok 26 - Ultimate rank and S1 buff range bonuses are explicit additive proposals
+  ---
+  duration_ms: 0.070116
+  type: 'test'
+  ...
+# Subtest: APS scales contact/clip and repeated attack interval without turning .25 release into total interval
+ok 27 - APS scales contact/clip and repeated attack interval without turning .25 release into total interval
+  ---
+  duration_ms: 0.211049
+  type: 'test'
+  ...
+# Subtest: Walk before release aborts projectile; after release keeps projectile and original cooldown
+ok 28 - Walk before release aborts projectile; after release keeps projectile and original cooldown
+  ---
+  duration_ms: 0.235474
+  type: 'test'
+  ...
+# Subtest: Basic→S1/S2/ultimate and run→aim→fire use distinct clips while prior projectile remains independent
+ok 29 - Basic→S1/S2/ultimate and run→aim→fire use distinct clips while prior projectile remains independent
+  ---
+  duration_ms: 0.807784
+  type: 'test'
+  ...
+# Subtest: Ultimate movement commitment is explicitly switchable and cancelling does not create a blast
+ok 30 - Ultimate movement commitment is explicitly switchable and cancelling does not create a blast
+  ---
+  duration_ms: 0.148752
+  type: 'test'
+  ...
+# Subtest: All modes are deterministic, finite and contain only real actor clips under their default configurations
+ok 31 - All modes are deterministic, finite and contain only real actor clips under their default configurations
+  ---
+  duration_ms: 9.774304
+  type: 'test'
+  ...
+# Subtest: Preview imports no game runtime, no fetch, and research keeps conflicting records separate
+ok 32 - Preview imports no game runtime, no fetch, and research keeps conflicting records separate
+  ---
+  duration_ms: 0.582504
+  type: 'test'
+  ...
+1..32
+# tests 32
+# suites 0
+# pass 32
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 507.405217

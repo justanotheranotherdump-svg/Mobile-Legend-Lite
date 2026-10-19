@@ -1,0 +1,25 @@
+
+> moba-foundation@0.1.0 build
+> npm run validate:heroes && vite build && node scripts/package-html.mjs
+
+
+> moba-foundation@0.1.0 validate:heroes
+> node scripts/validate-heroes.mjs
+
+PASS: validated hero data/assets: layla, training
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 297 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/dev.html                     1.10 kB │ gzip:     0.57 kB
+dist/assets/dev-F8Cv8Ahw.css    786.09 kB │ gzip:   519.68 kB
+dist/assets/dev-BfNj-Nr6.js   9,674.17 kB │ gzip: 6,722.20 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 2.94s
+Standalone HTML generated: 10218 KiB
+PASS: one HTML, inline JS/CSS, no external markup/CSS dependencies; root index, dist and download match.

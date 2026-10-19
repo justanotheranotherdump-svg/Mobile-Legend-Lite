@@ -1,0 +1,8 @@
+{
+  "kind": "placeholder",
+  "placeholder": "training-capsule",
+  "model": null,
+  "scale": 1,
+  "rotationY": 0,
+  "offset": { "x": 0, "y": 0, "z": 0 }
+}

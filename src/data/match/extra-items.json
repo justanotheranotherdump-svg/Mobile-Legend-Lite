@@ -1,0 +1,1665 @@
+{
+  "provenance": "Stats/effects researched from https://www.mlbbguides.com/items/ (2026-09-29 dataset, checked 2026-10-19); local prototype recipes and expressly labeled radii. Existing 45-item baseline not rewritten. Sources disagree; see docs/PREPARATION_EXPANSION.md.",
+  "items": [
+    {
+      "id": "mystery-codex",
+      "name": "Mystery Codex",
+      "category": "Magic",
+      "cost": 300,
+      "type": "standard_purchase",
+      "description": "Flat attributes apply while equipped.",
+      "modifiers": {
+        "flat": {
+          "magicPower": 15
+        },
+        "percent": {}
+      },
+      "effects": [],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "mystery-codex"
+    },
+    {
+      "id": "magic-necklace",
+      "name": "Magic Necklace",
+      "category": "Magic",
+      "cost": 120,
+      "type": "standard_purchase",
+      "description": "Flat attributes apply while equipped.",
+      "modifiers": {
+        "flat": {
+          "manaRegen": 2
+        },
+        "percent": {}
+      },
+      "effects": [],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "magic-necklace"
+    },
+    {
+      "id": "power-crystal",
+      "name": "Power Crystal",
+      "category": "Magic",
+      "cost": 220,
+      "type": "standard_purchase",
+      "description": "Flat attributes apply while equipped.",
+      "modifiers": {
+        "flat": {
+          "maxMana": 280
+        },
+        "percent": {}
+      },
+      "effects": [],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "power-crystal"
+    },
+    {
+      "id": "magic-wand",
+      "name": "Magic Wand",
+      "category": "Magic",
+      "cost": 820,
+      "type": "standard_purchase",
+      "description": "Flat attributes apply while equipped.",
+      "modifiers": {
+        "flat": {
+          "magicPower": 45
+        },
+        "percent": {}
+      },
+      "effects": [],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "magic-wand"
+    },
+    {
+      "id": "book-of-sages",
+      "name": "Book of Sages",
+      "category": "Magic",
+      "cost": 450,
+      "type": "standard_purchase",
+      "description": "Flat attributes apply while equipped.",
+      "modifiers": {
+        "flat": {
+          "magicPower": 8
+        },
+        "percent": {}
+      },
+      "effects": [],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0.05,
+      "adaptiveAttack": 0,
+      "icon": "book-of-sages"
+    },
+    {
+      "id": "expert-gloves",
+      "name": "Expert Gloves",
+      "category": "Magic",
+      "cost": 500,
+      "type": "standard_purchase",
+      "description": "+16 Adaptive Attack: Physical Attack for Layla; Magic Power for a magic-oriented hero.",
+      "modifiers": {
+        "flat": {},
+        "percent": {}
+      },
+      "effects": [],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 16,
+      "icon": "expert-gloves"
+    },
+    {
+      "id": "elegant-gem",
+      "name": "Elegant Gem",
+      "category": "Magic",
+      "cost": 700,
+      "type": "standard_purchase",
+      "description": "Gift: below 50% HP or Mana, restores 15% of that maximum over 3s; separate 60s cooldowns.",
+      "modifiers": {
+        "flat": {
+          "maxHp": 300,
+          "maxMana": 380
+        },
+        "percent": {}
+      },
+      "effects": [
+        "gift"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "elegant-gem"
+    },
+    {
+      "id": "exotic-veil",
+      "name": "Exotic Veil",
+      "category": "Magic",
+      "cost": 600,
+      "type": "standard_purchase",
+      "description": "Flat attributes apply while equipped.",
+      "modifiers": {
+        "flat": {
+          "magicPower": 30
+        },
+        "percent": {
+          "movementSpeed": 0.05
+        }
+      },
+      "effects": [],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "exotic-veil"
+    },
+    {
+      "id": "mystic-container",
+      "name": "Mystic Container",
+      "category": "Magic",
+      "cost": 500,
+      "type": "standard_purchase",
+      "description": "Flat attributes apply while equipped.",
+      "modifiers": {
+        "flat": {
+          "magicPower": 15
+        },
+        "percent": {}
+      },
+      "effects": [],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0.08,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "mystic-container"
+    },
+    {
+      "id": "tome-of-evil",
+      "name": "Tome of Evil",
+      "category": "Magic",
+      "cost": 950,
+      "type": "standard_purchase",
+      "description": "Flat attributes apply while equipped.",
+      "modifiers": {
+        "flat": {
+          "magicPower": 30,
+          "manaRegen": 2
+        },
+        "percent": {}
+      },
+      "effects": [],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0.1,
+      "adaptiveAttack": 0,
+      "icon": "tome-of-evil"
+    },
+    {
+      "id": "azure-blade",
+      "name": "Azure Blade",
+      "category": "Magic",
+      "cost": 600,
+      "type": "standard_purchase",
+      "description": "Judgement: after a skill, next basic attack within 3s deals 50 extra True Damage; 1.5s cooldown.",
+      "modifiers": {
+        "flat": {
+          "manaRegen": 5
+        },
+        "percent": {}
+      },
+      "effects": [
+        "judgement"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0.05,
+      "adaptiveAttack": 0,
+      "icon": "azure-blade"
+    },
+    {
+      "id": "blood-wings",
+      "name": "Blood Wings",
+      "category": "Magic",
+      "cost": 2100,
+      "type": "standard_purchase",
+      "description": "Guard: 800 +100% Magic Power shield; recharges 20s after shield damage. +30 Movement Speed while shielded; +150 for 1s after breaking.",
+      "modifiers": {
+        "flat": {
+          "magicPower": 90
+        },
+        "percent": {}
+      },
+      "effects": [
+        "guard"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "blood-wings"
+    },
+    {
+      "id": "clock-of-destiny",
+      "name": "Clock of Destiny",
+      "category": "Magic",
+      "cost": 2030,
+      "type": "standard_purchase",
+      "description": "Destiny: Magic Damage to heroes grants 4.5 +0.5 per level Hybrid Defense for 5s, up to 6 stacks, once per 0.4s. Gift restores 15% HP/Mana over 3s below half, on separate 60s cooldowns.",
+      "modifiers": {
+        "flat": {
+          "magicPower": 45,
+          "maxHp": 400,
+          "maxMana": 400
+        },
+        "percent": {}
+      },
+      "effects": [
+        "destiny",
+        "gift"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0.1,
+      "adaptiveAttack": 0,
+      "icon": "clock-of-destiny"
+    },
+    {
+      "id": "concentrated-energy",
+      "name": "Concentrated Energy",
+      "category": "Magic",
+      "cost": 2020,
+      "type": "standard_purchase",
+      "description": "20% Hybrid Lifesteal. Recharge: Magic Damage grants 5 Magic Power per stack, up to 6; 0.4s interval. At full stacks, +12% Magic Damage for 5s.",
+      "modifiers": {
+        "flat": {
+          "magicPower": 75,
+          "maxHp": 400
+        },
+        "percent": {}
+      },
+      "effects": [
+        "recharge"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0.2,
+      "spellVamp": 0.2,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "concentrated-energy"
+    },
+    {
+      "id": "divine-glaive",
+      "name": "Divine Glaive",
+      "category": "Magic",
+      "cost": 1970,
+      "type": "standard_purchase",
+      "description": "40% Magic Penetration; Spellbreaker adds 0.1% per target Magic Defense, capped at 20% additional.",
+      "modifiers": {
+        "flat": {
+          "magicPower": 65
+        },
+        "percent": {}
+      },
+      "effects": [
+        "spellbreaker"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "divine-glaive"
+    },
+    {
+      "id": "enchanted-talisman",
+      "name": "Enchanted Talisman",
+      "category": "Magic",
+      "cost": 2070,
+      "type": "standard_purchase",
+      "description": "Mana Spring restores 15% Max Mana every 10s. Magic Mastery raises maximum Cooldown Reduction from 40% to 45%.",
+      "modifiers": {
+        "flat": {
+          "magicPower": 70,
+          "maxHp": 300
+        },
+        "percent": {}
+      },
+      "effects": [
+        "mana-spring",
+        "magic-mastery"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0.15,
+      "adaptiveAttack": 0,
+      "icon": "enchanted-talisman"
+    },
+    {
+      "id": "feather-of-heaven",
+      "name": "Feather of Heaven",
+      "category": "Magic",
+      "cost": 2030,
+      "type": "standard_purchase",
+      "description": "Affliction: Basic Attacks add 50 +30% Magic Power Magic Damage. Impulse grants 6% Attack Speed per basic hit for 3s, up to 5 stacks.",
+      "modifiers": {
+        "flat": {
+          "magicPower": 60
+        },
+        "percent": {
+          "attackSpeed": 0.2
+        }
+      },
+      "effects": [
+        "affliction",
+        "impulse"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0.1,
+      "spellVamp": 0,
+      "cooldownReduction": 0.05,
+      "adaptiveAttack": 0,
+      "icon": "feather-of-heaven"
+    },
+    {
+      "id": "flask-of-the-oasis",
+      "name": "Flask of the Oasis",
+      "category": "Magic",
+      "cost": 1850,
+      "type": "standard_purchase",
+      "description": "+12% outgoing Healing Effect. Healing/shield skills that are not self-only mark allies for 3s; below 35% HP grants 100 per caster level shield for 3s and reduces caster skill cooldowns by 2s, once per ally per 60s. Revitalize can trigger this; self-only Aegis cannot.",
+      "modifiers": {
+        "flat": {
+          "magicPower": 60,
+          "maxHp": 300
+        },
+        "percent": {}
+      },
+      "effects": [
+        "oasis-blessing"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0.1,
+      "adaptiveAttack": 0,
+      "icon": "flask-of-the-oasis"
+    },
+    {
+      "id": "fleeting-time",
+      "name": "Fleeting Time",
+      "category": "Magic",
+      "cost": 2050,
+      "type": "standard_purchase",
+      "description": "Timestream: a credited hero kill or assist reduces the Ultimate's remaining cooldown by 30%. One canonical hybrid item; not a second Defense record.",
+      "modifiers": {
+        "flat": {
+          "maxHp": 600
+        },
+        "percent": {}
+      },
+      "effects": [
+        "timestream"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0.15,
+      "adaptiveAttack": 30,
+      "icon": "fleeting-time"
+    },
+    {
+      "id": "genius-wand",
+      "name": "Genius Wand",
+      "category": "Magic",
+      "cost": 2000,
+      "type": "standard_purchase",
+      "description": "+10 Magic Penetration. Magic Damage to enemy heroes reduces Magic Defense by 2.5 +0.5 per level for 2s, up to 3 stacks.",
+      "modifiers": {
+        "flat": {
+          "magicPower": 75
+        },
+        "percent": {
+          "movementSpeed": 0.05
+        }
+      },
+      "effects": [
+        "genius-magic"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "genius-wand"
+    },
+    {
+      "id": "glowing-wand",
+      "name": "Glowing Wand",
+      "category": "Magic",
+      "cost": 2150,
+      "type": "standard_purchase",
+      "description": "Scorch: Magic Damage burns for 1% target Max HP each second for 3s. Lifebane reduces healing and shields to 60% for 3s after dealing damage.",
+      "modifiers": {
+        "flat": {
+          "magicPower": 60,
+          "maxHp": 300
+        },
+        "percent": {
+          "movementSpeed": 0.05
+        }
+      },
+      "effects": [
+        "scorch",
+        "lifebane"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "glowing-wand"
+    },
+    {
+      "id": "holy-crystal",
+      "name": "Holy Crystal",
+      "category": "Magic",
+      "cost": 3000,
+      "type": "standard_purchase",
+      "description": "Mystery grants 21%\u201335% additional Magic Power, scaling from hero level 1\u201315.",
+      "modifiers": {
+        "flat": {
+          "magicPower": 165
+        },
+        "percent": {}
+      },
+      "effects": [
+        "mystery"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "holy-crystal"
+    },
+    {
+      "id": "ice-queen-wand",
+      "name": "Ice Queen Wand",
+      "category": "Magic",
+      "cost": 2040,
+      "type": "standard_purchase",
+      "description": "Skill damage to an enemy hero applies 10% slow per stack for 2s, up to 3 stacks, once every 0.4s.",
+      "modifiers": {
+        "flat": {
+          "magicPower": 60,
+          "maxHp": 300
+        },
+        "percent": {
+          "movementSpeed": 0.07
+        }
+      },
+      "effects": [
+        "ice-bound"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0.1,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "ice-queen-wand"
+    },
+    {
+      "id": "lightning-truncheon",
+      "name": "Lightning Truncheon",
+      "category": "Magic",
+      "cost": 2250,
+      "type": "standard_purchase",
+      "description": "Every 6s, a skill hit echoes 255 +85% Magic Power Magic Damage to enemies near the target. Prototype echo radius: 3 units.",
+      "modifiers": {
+        "flat": {
+          "magicPower": 75,
+          "maxMana": 400
+        },
+        "percent": {}
+      },
+      "effects": [
+        "resonate"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0.1,
+      "adaptiveAttack": 0,
+      "icon": "lightning-truncheon"
+    },
+    {
+      "id": "starlium-scythe",
+      "name": "Starlium Scythe",
+      "category": "Magic",
+      "cost": 2120,
+      "type": "standard_purchase",
+      "description": "8% Hybrid Lifesteal. After a skill, next basic attack within 3s adds 90 +60% Magic Power True Damage and slows 15% for 1.5s; 1.5s cooldown.",
+      "modifiers": {
+        "flat": {
+          "magicPower": 75,
+          "manaRegen": 6
+        },
+        "percent": {}
+      },
+      "effects": [
+        "crisis"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0.08,
+      "spellVamp": 0.08,
+      "cooldownReduction": 0.1,
+      "adaptiveAttack": 0,
+      "icon": "starlium-scythe"
+    },
+    {
+      "id": "wishing-lantern",
+      "name": "Wishing Lantern",
+      "category": "Magic",
+      "cost": 2250,
+      "type": "standard_purchase",
+      "description": "Each 900 pre-mitigation Magic Damage dealt to an enemy hero summons a butterfly dealing 8% of its current HP as Magic Damage.",
+      "modifiers": {
+        "flat": {
+          "magicPower": 75,
+          "maxMana": 400
+        },
+        "percent": {}
+      },
+      "effects": [
+        "butterfly"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0.1,
+      "adaptiveAttack": 0,
+      "icon": "wishing-lantern"
+    },
+    {
+      "id": "sky-piercer",
+      "name": "Sky Piercer",
+      "category": "Magic",
+      "cost": 1500,
+      "type": "standard_purchase",
+      "description": "Hybrid Attack/Magic item. After damaging an enemy hero, executes below 4% HP plus 0.1% per Lethality stack. +10 stacks per hero kill, cap 80; death loses 30% of current stacks.",
+      "modifiers": {
+        "flat": {
+          "movementSpeed": 15
+        },
+        "percent": {}
+      },
+      "effects": [
+        "lethality"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 60,
+      "icon": "sky-piercer"
+    },
+    {
+      "id": "winter-crown",
+      "name": "Winter Crown",
+      "category": "Magic",
+      "cost": 1910,
+      "type": "standard_purchase",
+      "description": "Hybrid Attack/Magic item. Active Frozen: untargetable and damage-immune for 2s; movement and new skills blocked, existing projectiles continue. 100s cooldown. Shares the one-active-item restriction with Wind of Nature.",
+      "modifiers": {
+        "flat": {
+          "maxHp": 400
+        },
+        "percent": {}
+      },
+      "effects": [
+        "frozen"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0.05,
+      "adaptiveAttack": 45,
+      "icon": "winter-crown"
+    },
+    {
+      "id": "magic-potion",
+      "name": "Magic Potion",
+      "category": "Magic",
+      "cost": 1500,
+      "type": "consumable",
+      "description": "Automatically consumed on purchase: +30 Magic Power and +10% Cooldown Reduction for 120s. One potion effect at a time; no equipment slot or resale.",
+      "modifiers": {
+        "flat": {},
+        "percent": {}
+      },
+      "effects": [
+        "magic-potion"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "magic-potion"
+    },
+    {
+      "id": "vitality-crystal",
+      "name": "Vitality Crystal",
+      "category": "Defense",
+      "cost": 300,
+      "type": "standard_purchase",
+      "description": "Flat attributes apply while equipped.",
+      "modifiers": {
+        "flat": {
+          "maxHp": 230
+        },
+        "percent": {}
+      },
+      "effects": [],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "vitality-crystal"
+    },
+    {
+      "id": "healing-necklace",
+      "name": "Healing Necklace",
+      "category": "Defense",
+      "cost": 140,
+      "type": "standard_purchase",
+      "description": "Flat attributes apply while equipped.",
+      "modifiers": {
+        "flat": {
+          "hpRegen": 4
+        },
+        "percent": {}
+      },
+      "effects": [],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "healing-necklace"
+    },
+    {
+      "id": "leather-jerkin",
+      "name": "Leather Jerkin",
+      "category": "Defense",
+      "cost": 220,
+      "type": "standard_purchase",
+      "description": "Flat attributes apply while equipped.",
+      "modifiers": {
+        "flat": {
+          "physicalDefense": 14
+        },
+        "percent": {}
+      },
+      "effects": [],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "leather-jerkin"
+    },
+    {
+      "id": "magic-resist-cloak",
+      "name": "Magic Resist Cloak",
+      "category": "Defense",
+      "cost": 220,
+      "type": "standard_purchase",
+      "description": "Flat attributes apply while equipped.",
+      "modifiers": {
+        "flat": {
+          "magicDefense": 14
+        },
+        "percent": {}
+      },
+      "effects": [],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "magic-resist-cloak"
+    },
+    {
+      "id": "ares-belt",
+      "name": "Ares Belt",
+      "category": "Defense",
+      "cost": 700,
+      "type": "standard_purchase",
+      "description": "Flat attributes apply while equipped.",
+      "modifiers": {
+        "flat": {
+          "maxHp": 600
+        },
+        "percent": {}
+      },
+      "effects": [],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "ares-belt"
+    },
+    {
+      "id": "heros-ring",
+      "name": "Hero's Ring",
+      "category": "Defense",
+      "cost": 450,
+      "type": "standard_purchase",
+      "description": "Flat attributes apply while equipped.",
+      "modifiers": {
+        "flat": {
+          "maxHp": 150
+        },
+        "percent": {}
+      },
+      "effects": [],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0.05,
+      "adaptiveAttack": 0,
+      "icon": "heros-ring"
+    },
+    {
+      "id": "black-ice-shield",
+      "name": "Black Ice Shield",
+      "category": "Defense",
+      "cost": 780,
+      "type": "standard_purchase",
+      "description": "Fortress Shield: +4 Hybrid Defense per enemy hero within 3.55 units, up to 20. Does not stack with the stronger Dominance Ice aura.",
+      "modifiers": {
+        "flat": {
+          "physicalDefense": 20,
+          "magicDefense": 20
+        },
+        "percent": {}
+      },
+      "effects": [
+        "fortress-small"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "black-ice-shield"
+    },
+    {
+      "id": "dreadnaught-armor",
+      "name": "Dreadnaught Armor",
+      "category": "Defense",
+      "cost": 730,
+      "type": "standard_purchase",
+      "description": "When hit by a skill, reduces attacker Physical Damage by 4% per stack for 2s, up to 3. Stronger Antique Cuirass replaces this effect.",
+      "modifiers": {
+        "flat": {
+          "physicalDefense": 30
+        },
+        "percent": {}
+      },
+      "effects": [
+        "deter-small"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "dreadnaught-armor"
+    },
+    {
+      "id": "molten-essence",
+      "name": "Molten Essence",
+      "category": "Defense",
+      "cost": 800,
+      "type": "standard_purchase",
+      "description": "Nearby enemies take 0.6% caster Max HP Magic Damage each second; increased by 125% +15% per hero level against creeps/minions. Prototype radius: 3 units.",
+      "modifiers": {
+        "flat": {
+          "maxHp": 540
+        },
+        "percent": {}
+      },
+      "effects": [
+        "burning-small"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "molten-essence"
+    },
+    {
+      "id": "silence-robe",
+      "name": "Silence Robe",
+      "category": "Defense",
+      "cost": 1020,
+      "type": "standard_purchase",
+      "description": "Flat attributes apply while equipped.",
+      "modifiers": {
+        "flat": {
+          "maxHp": 540,
+          "magicDefense": 23
+        },
+        "percent": {}
+      },
+      "effects": [],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "silence-robe"
+    },
+    {
+      "id": "steel-legplates",
+      "name": "Steel Legplates",
+      "category": "Defense",
+      "cost": 630,
+      "type": "standard_purchase",
+      "description": "Flat attributes apply while equipped.",
+      "modifiers": {
+        "flat": {
+          "physicalDefense": 35
+        },
+        "percent": {}
+      },
+      "effects": [],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "steel-legplates"
+    },
+    {
+      "id": "antique-cuirass",
+      "name": "Antique Cuirass",
+      "category": "Defense",
+      "cost": 2170,
+      "type": "standard_purchase",
+      "description": "Deter: when hit by a skill, reduces attacker Physical Damage by 6% per stack for 2s, up to 3 stacks.",
+      "modifiers": {
+        "flat": {
+          "maxHp": 920,
+          "physicalDefense": 40,
+          "hpRegen": 4
+        },
+        "percent": {}
+      },
+      "effects": [
+        "deter"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "antique-cuirass"
+    },
+    {
+      "id": "athenas-shield",
+      "name": "Athena's Shield",
+      "category": "Defense",
+      "cost": 2150,
+      "type": "standard_purchase",
+      "description": "Taking Magic Damage from a hero starts 25% Magic Damage reduction for 3s, including triggering damage; re-arms after 5s out of combat.",
+      "modifiers": {
+        "flat": {
+          "maxHp": 900,
+          "magicDefense": 48,
+          "hpRegen": 2
+        },
+        "percent": {}
+      },
+      "effects": [
+        "athena-shield"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "athenas-shield"
+    },
+    {
+      "id": "blade-armor",
+      "name": "Blade Armor",
+      "category": "Defense",
+      "cost": 1910,
+      "type": "standard_purchase",
+      "description": "20% critical damage reduction. Reflects (30 +2% Total Physical Defense)% of pre-reduction incoming basic damage as Physical Damage and slows attacker 15% for 1s.",
+      "modifiers": {
+        "flat": {
+          "physicalDefense": 80
+        },
+        "percent": {}
+      },
+      "effects": [
+        "bladed-armor"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "blade-armor"
+    },
+    {
+      "id": "brute-force-breastplate",
+      "name": "Brute Force Breastplate",
+      "category": "Defense",
+      "cost": 2070,
+      "type": "standard_purchase",
+      "description": "Dealing damage grants 8 Adaptive Attack and 2% Movement Speed per stack for 4s, at most one stack per second; cap 6. Full stacks grant 25% Control Duration Reduction.",
+      "modifiers": {
+        "flat": {
+          "maxHp": 800,
+          "physicalDefense": 20
+        },
+        "percent": {}
+      },
+      "effects": [
+        "brute-force"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0.1,
+      "adaptiveAttack": 0,
+      "icon": "brute-force-breastplate"
+    },
+    {
+      "id": "chastise-pauldron",
+      "name": "Chastise Pauldron",
+      "category": "Defense",
+      "cost": 2100,
+      "type": "standard_purchase",
+      "description": "Damage received reduces attacker Attack Speed and cap to 75% for 2s. Below 30% HP, restores 20% Max HP over 2s; 60s cooldown.",
+      "modifiers": {
+        "flat": {
+          "maxHp": 900,
+          "physicalDefense": 40
+        },
+        "percent": {}
+      },
+      "effects": [
+        "chastise",
+        "redemption"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "chastise-pauldron"
+    },
+    {
+      "id": "cursed-helmet",
+      "name": "Cursed Helmet",
+      "category": "Defense",
+      "cost": 1910,
+      "type": "standard_purchase",
+      "description": "Nearby enemies take 1.2% caster Max HP Magic Damage per second, increased by 125% +15% per hero level against creeps/minions. Burns reduce Hybrid Defense by 3 per stack, up to 3, for 3s. Prototype radius: 3 units.",
+      "modifiers": {
+        "flat": {
+          "maxHp": 1200,
+          "magicDefense": 20
+        },
+        "percent": {}
+      },
+      "effects": [
+        "burning-soul",
+        "curse"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "cursed-helmet"
+    },
+    {
+      "id": "dominance-ice",
+      "name": "Dominance Ice",
+      "category": "Defense",
+      "cost": 2010,
+      "type": "standard_purchase",
+      "description": "Fortress Shield: +8 Hybrid Defense per enemy hero within 5 units, cap 40. Nearby enemy healing/shields reduced to 60%, refreshed for 1s.",
+      "modifiers": {
+        "flat": {
+          "physicalDefense": 40,
+          "magicDefense": 40
+        },
+        "percent": {
+          "movementSpeed": 0.05
+        }
+      },
+      "effects": [
+        "fortress",
+        "lifebane-aura"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "dominance-ice"
+    },
+    {
+      "id": "guardian-helmet",
+      "name": "Guardian Helmet",
+      "category": "Defense",
+      "cost": 2500,
+      "type": "standard_purchase",
+      "description": "Recovery: after 5s out of combat, heals 2.5% Max HP each second. Defender: taking more than 500 damage heals (30 +0.3% Max HP)% of excess damage. Prototype caps this fraction at 100%.",
+      "modifiers": {
+        "flat": {
+          "maxHp": 1800,
+          "hpRegen": 20
+        },
+        "percent": {}
+      },
+      "effects": [
+        "recovery",
+        "defender"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "guardian-helmet"
+    },
+    {
+      "id": "immortality",
+      "name": "Immortality",
+      "category": "Defense",
+      "cost": 2120,
+      "type": "standard_purchase",
+      "description": "On lethal damage, resurrects after 2.5s with 16% Max HP and 150 +70 per hero level shield for 3s; 210s cooldown. Only a subsequent real death gives kill rewards.",
+      "modifiers": {
+        "flat": {
+          "maxHp": 850,
+          "physicalDefense": 15
+        },
+        "percent": {}
+      },
+      "effects": [
+        "immortal"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "immortality"
+    },
+    {
+      "id": "oracle",
+      "name": "Oracle",
+      "category": "Defense",
+      "cost": 1860,
+      "type": "standard_purchase",
+      "description": "Received healing and shields increased by 25%. Does not remove anti-healing.",
+      "modifiers": {
+        "flat": {
+          "maxHp": 850,
+          "physicalDefense": 20,
+          "magicDefense": 20
+        },
+        "percent": {}
+      },
+      "effects": [
+        "bless"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0.1,
+      "adaptiveAttack": 0,
+      "icon": "oracle"
+    },
+    {
+      "id": "queens-wings",
+      "name": "Queen's Wings",
+      "category": "Defense",
+      "cost": 2250,
+      "type": "standard_purchase",
+      "description": "Below 40% HP, reduces damage by 30% for 3s and reduces skill cooldowns by 2s; 60s cooldown. Defiance increases damage 0.25% per 1% HP lost, capped at 15%.",
+      "modifiers": {
+        "flat": {
+          "maxHp": 750
+        },
+        "percent": {}
+      },
+      "effects": [
+        "demonize",
+        "defiance"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0.1,
+      "cooldownReduction": 0.1,
+      "adaptiveAttack": 30,
+      "icon": "queens-wings"
+    },
+    {
+      "id": "radiant-armor",
+      "name": "Radiant Armor",
+      "category": "Defense",
+      "cost": 1880,
+      "type": "standard_purchase",
+      "description": "Taking Magic Damage grants 5 +1 per hero level Magic Defense for 5s, up to 6 stacks, one stack per 0.4s.",
+      "modifiers": {
+        "flat": {
+          "maxHp": 950,
+          "magicDefense": 40,
+          "hpRegen": 12
+        },
+        "percent": {}
+      },
+      "effects": [
+        "holy-blessing"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "radiant-armor"
+    },
+    {
+      "id": "thunder-belt",
+      "name": "Thunder Belt",
+      "category": "Defense",
+      "cost": 1820,
+      "type": "standard_purchase",
+      "description": "Every 4s, next basic attack adds 50 +100% extra Physical Defense +100% extra Magic Defense True Damage in a prototype 2-unit area and slows 99% briefly. Each hero hit permanently adds 1 Hybrid Defense (0.5 for Marksmen/Mages).",
+      "modifiers": {
+        "flat": {
+          "maxHp": 600,
+          "physicalDefense": 15,
+          "magicDefense": 15,
+          "movementSpeed": 20
+        },
+        "percent": {}
+      },
+      "effects": [
+        "thunderbolt"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "thunder-belt"
+    },
+    {
+      "id": "rock-potion",
+      "name": "Rock Potion",
+      "category": "Defense",
+      "cost": 1500,
+      "type": "consumable",
+      "description": "Automatically consumed: +500 Max HP and 5% Damage Reduction for 120s. Replaces the current potion effect; no inventory slot or resale.",
+      "modifiers": {
+        "flat": {},
+        "percent": {}
+      },
+      "effects": [
+        "rock-potion"
+      ],
+      "maxCopies": 1,
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "spellVamp": 0,
+      "cooldownReduction": 0,
+      "adaptiveAttack": 0,
+      "icon": "rock-potion"
+    }
+  ],
+  "recipes": {
+    "mystery-codex": {
+      "tier": "component",
+      "components": []
+    },
+    "magic-necklace": {
+      "tier": "component",
+      "components": []
+    },
+    "power-crystal": {
+      "tier": "component",
+      "components": []
+    },
+    "magic-wand": {
+      "tier": "intermediate",
+      "components": [
+        "mystery-codex",
+        "mystery-codex"
+      ]
+    },
+    "book-of-sages": {
+      "tier": "component",
+      "components": []
+    },
+    "expert-gloves": {
+      "tier": "component",
+      "components": []
+    },
+    "elegant-gem": {
+      "tier": "intermediate",
+      "components": [
+        "power-crystal",
+        "vitality-crystal"
+      ]
+    },
+    "exotic-veil": {
+      "tier": "intermediate",
+      "components": [
+        "mystery-codex"
+      ]
+    },
+    "mystic-container": {
+      "tier": "intermediate",
+      "components": [
+        "mystery-codex"
+      ]
+    },
+    "tome-of-evil": {
+      "tier": "intermediate",
+      "components": [
+        "book-of-sages",
+        "magic-necklace"
+      ]
+    },
+    "azure-blade": {
+      "tier": "intermediate",
+      "components": [
+        "magic-necklace"
+      ]
+    },
+    "blood-wings": {
+      "tier": "completed",
+      "components": [
+        "magic-wand",
+        "magic-wand"
+      ]
+    },
+    "clock-of-destiny": {
+      "tier": "completed",
+      "components": [
+        "elegant-gem",
+        "book-of-sages",
+        "book-of-sages"
+      ]
+    },
+    "concentrated-energy": {
+      "tier": "completed",
+      "components": [
+        "mystic-container",
+        "magic-wand"
+      ]
+    },
+    "divine-glaive": {
+      "tier": "completed",
+      "components": [
+        "magic-wand",
+        "mystery-codex"
+      ]
+    },
+    "enchanted-talisman": {
+      "tier": "completed",
+      "components": [
+        "tome-of-evil",
+        "book-of-sages"
+      ]
+    },
+    "feather-of-heaven": {
+      "tier": "completed",
+      "components": [
+        "magic-wand",
+        "knife"
+      ]
+    },
+    "flask-of-the-oasis": {
+      "tier": "completed",
+      "components": [
+        "magic-wand",
+        "vitality-crystal"
+      ]
+    },
+    "fleeting-time": {
+      "tier": "completed",
+      "components": [
+        "expert-gloves",
+        "heros-ring",
+        "book-of-sages"
+      ]
+    },
+    "genius-wand": {
+      "tier": "completed",
+      "components": [
+        "magic-wand",
+        "exotic-veil"
+      ]
+    },
+    "glowing-wand": {
+      "tier": "completed",
+      "components": [
+        "exotic-veil",
+        "mystery-codex",
+        "vitality-crystal"
+      ]
+    },
+    "holy-crystal": {
+      "tier": "completed",
+      "components": [
+        "magic-wand",
+        "magic-wand"
+      ]
+    },
+    "ice-queen-wand": {
+      "tier": "completed",
+      "components": [
+        "exotic-veil",
+        "mystic-container"
+      ]
+    },
+    "lightning-truncheon": {
+      "tier": "completed",
+      "components": [
+        "magic-wand",
+        "power-crystal",
+        "book-of-sages"
+      ]
+    },
+    "starlium-scythe": {
+      "tier": "completed",
+      "components": [
+        "azure-blade",
+        "magic-wand",
+        "mystic-container"
+      ]
+    },
+    "wishing-lantern": {
+      "tier": "completed",
+      "components": [
+        "magic-wand",
+        "power-crystal",
+        "book-of-sages"
+      ]
+    },
+    "sky-piercer": {
+      "tier": "completed",
+      "components": [
+        "expert-gloves"
+      ]
+    },
+    "winter-crown": {
+      "tier": "completed",
+      "components": [
+        "expert-gloves",
+        "vitality-crystal",
+        "book-of-sages"
+      ]
+    },
+    "magic-potion": {
+      "tier": "component",
+      "components": []
+    },
+    "vitality-crystal": {
+      "tier": "component",
+      "components": []
+    },
+    "healing-necklace": {
+      "tier": "component",
+      "components": []
+    },
+    "leather-jerkin": {
+      "tier": "component",
+      "components": []
+    },
+    "magic-resist-cloak": {
+      "tier": "component",
+      "components": []
+    },
+    "ares-belt": {
+      "tier": "intermediate",
+      "components": [
+        "vitality-crystal"
+      ]
+    },
+    "heros-ring": {
+      "tier": "component",
+      "components": []
+    },
+    "black-ice-shield": {
+      "tier": "intermediate",
+      "components": [
+        "leather-jerkin",
+        "magic-resist-cloak"
+      ]
+    },
+    "dreadnaught-armor": {
+      "tier": "intermediate",
+      "components": [
+        "leather-jerkin",
+        "leather-jerkin"
+      ]
+    },
+    "molten-essence": {
+      "tier": "intermediate",
+      "components": [
+        "vitality-crystal"
+      ]
+    },
+    "silence-robe": {
+      "tier": "intermediate",
+      "components": [
+        "magic-resist-cloak",
+        "vitality-crystal"
+      ]
+    },
+    "steel-legplates": {
+      "tier": "intermediate",
+      "components": [
+        "leather-jerkin",
+        "leather-jerkin"
+      ]
+    },
+    "antique-cuirass": {
+      "tier": "completed",
+      "components": [
+        "dreadnaught-armor",
+        "ares-belt",
+        "healing-necklace"
+      ]
+    },
+    "athenas-shield": {
+      "tier": "completed",
+      "components": [
+        "silence-robe",
+        "magic-resist-cloak"
+      ]
+    },
+    "blade-armor": {
+      "tier": "completed",
+      "components": [
+        "steel-legplates",
+        "leather-jerkin"
+      ]
+    },
+    "brute-force-breastplate": {
+      "tier": "completed",
+      "components": [
+        "ares-belt",
+        "heros-ring",
+        "leather-jerkin"
+      ]
+    },
+    "chastise-pauldron": {
+      "tier": "completed",
+      "components": [
+        "ares-belt",
+        "steel-legplates"
+      ]
+    },
+    "cursed-helmet": {
+      "tier": "completed",
+      "components": [
+        "molten-essence",
+        "magic-resist-cloak",
+        "vitality-crystal"
+      ]
+    },
+    "dominance-ice": {
+      "tier": "completed",
+      "components": [
+        "black-ice-shield",
+        "steel-legplates"
+      ]
+    },
+    "guardian-helmet": {
+      "tier": "completed",
+      "components": [
+        "ares-belt",
+        "ares-belt",
+        "ares-belt"
+      ]
+    },
+    "immortality": {
+      "tier": "completed",
+      "components": [
+        "ares-belt",
+        "leather-jerkin"
+      ]
+    },
+    "oracle": {
+      "tier": "completed",
+      "components": [
+        "ares-belt",
+        "magic-resist-cloak",
+        "leather-jerkin"
+      ]
+    },
+    "queens-wings": {
+      "tier": "completed",
+      "components": [
+        "expert-gloves",
+        "ares-belt",
+        "heros-ring"
+      ]
+    },
+    "radiant-armor": {
+      "tier": "completed",
+      "components": [
+        "silence-robe",
+        "healing-necklace"
+      ]
+    },
+    "thunder-belt": {
+      "tier": "completed",
+      "components": [
+        "leather-jerkin",
+        "magic-resist-cloak",
+        "vitality-crystal"
+      ]
+    },
+    "rock-potion": {
+      "tier": "component",
+      "components": []
+    }
+  }
+}
