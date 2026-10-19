@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-19",
+  "branch": "arena/55ce0f80-mobile-legend-lite",
+  "html": {
+    "bytes": 32919994,
+    "sha256": "aa62e9168f4e047c83e5d129e878b9922550028d93880f932aabb841d9b4ccbe",
+    "rootDistAndCurrentDeliveryIdentical": true
+  },
+  "focusedUnits": {
+    "passed": 178,
+    "failed": 0,
+    "skipped": 0
+  },
+  "fullUnits": {
+    "tests": 1011,
+    "passed": 1010,
+    "failed": 1,
+    "skipped": 0,
+    "soleFailure": "Pre-existing missing saved historical Franco Plan A HTML/ZIP binaries"
+  },
+  "browsers": {
+    "twoHeroes": 18,
+    "actualEightDirectionUltimateFramebuffer": 8,
+    "heroGuide": 9,
+    "isolatedSourceArtCommerceSelectionAndPlayReturn": 10,
+    "pageErrors": [],
+    "remoteRequests": []
+  },
+  "assets": {
+    "verifiedRuntimeAssets": 34,
+    "separateHeroPngs": 18,
+    "approvedOriginalHashesUnchanged": 71,
+    "approvedGlbDiffs": [],
+    "artVariantZipPngs": 10,
+    "actualAlphaMasters": true
+  },
+  "isolatedSource": {
+    "freshNpmCiPassed": true,
+    "freshBuildPassed": true,
+    "rebuiltHtmlByteIdentical": true,
+    "fullUnitTests": 1011,
+    "fullUnitPassed": 1010,
+    "fullUnitFailed": 1,
+    "sameKnownPlanAFailure": true,
+    "htmlOnlyBrowserChecksPassed": 10
+  },
+  "scope": "Layla/Franco only; no commit/push, free funds, ownership grant or model reauthoring",
+  "testEnvironment": "Linux Chromium/SwiftShader, emulated landscape; not native GPU or physical hardware certification"
+}

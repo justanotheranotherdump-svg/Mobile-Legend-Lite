@@ -1,0 +1,46 @@
+{
+  "status": "running",
+  "bundleSha256": "0aea27688c45f4342f1fe391a662b6dbd63641b0604a43a9fd612b815a7a0e49",
+  "workers": 2,
+  "results": [
+    {
+      "suite": "browser.mjs",
+      "exitCode": 1,
+      "error": null,
+      "seconds": 274,
+      "checkGroups": 21,
+      "log": "docs/final-gameplay-polish-browser.txt"
+    },
+    {
+      "suite": "browser-layla.mjs",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 389,
+      "checkGroups": 19,
+      "log": "docs/final-gameplay-polish-browser-layla.txt"
+    },
+    {
+      "suite": "browser-menu.mjs",
+      "exitCode": 1,
+      "error": null,
+      "seconds": 55,
+      "checkGroups": 6,
+      "log": "docs/final-gameplay-polish-browser-menu.txt"
+    },
+    {
+      "suite": "browser-polish.mjs",
+      "exitCode": 1,
+      "error": null,
+      "seconds": 52,
+      "checkGroups": 4,
+      "log": "docs/final-gameplay-polish-browser-polish.txt"
+    }
+  ],
+  "totalCheckGroups": 50,
+  "failed": [
+    "browser.mjs",
+    "browser-menu.mjs",
+    "browser-polish.mjs"
+  ],
+  "environment": "Linux Chromium, software WebGL, standalone file://, offline networking; no native Windows or physical-device claim"
+}

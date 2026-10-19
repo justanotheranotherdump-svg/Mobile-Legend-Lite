@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-19",
+  "beforeNewPreviewTests": {
+    "total": 796,
+    "pass": 795,
+    "fail": 1
+  },
+  "afterNewPreviewTests": {
+    "total": 817,
+    "pass": 816,
+    "fail": 1
+  },
+  "unchangedFailure": "Saved Plan A HTML and source hashes are preserved exactly for fallback",
+  "cause": "Historical ignored Franco Plan A download files are absent from this workspace at task start. Existing fallback test was not changed/skipped.",
+  "focusedLayla": {
+    "total": 21,
+    "pass": 21,
+    "fail": 0,
+    "skipped": 0
+  }
+}

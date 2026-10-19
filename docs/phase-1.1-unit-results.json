@@ -1,0 +1,143 @@
+{
+  "phase": "1.1",
+  "passed": 34,
+  "failed": 0,
+  "tests": [
+    {
+      "name": "WASD is camera relative; every cardinal and diagonal has unit speed",
+      "status": "passed"
+    },
+    {
+      "name": "diagonal displacement equals cardinal displacement",
+      "status": "passed"
+    },
+    {
+      "name": "boundaries retain the entire player collider on all four sides",
+      "status": "passed"
+    },
+    {
+      "name": "solid obstacles stop movement from every side without tunneling",
+      "status": "passed"
+    },
+    {
+      "name": "collision permits sliding along an obstacle and handles rounded corners",
+      "status": "passed"
+    },
+    {
+      "name": "living dummy blocks movement; dead dummy does not",
+      "status": "passed"
+    },
+    {
+      "name": "attack rejects invalid target and out-of-range dummy without consuming cooldown",
+      "status": "passed"
+    },
+    {
+      "name": "attack accepts exact range, rejects beyond it, and enforces cooldown",
+      "status": "passed"
+    },
+    {
+      "name": "dummy death clamps health, rejects attacks, and reset restores all match state",
+      "status": "passed"
+    },
+    {
+      "name": "fixed timestep gives the same displacement at 30, 60, and 144 render FPS",
+      "status": "passed"
+    },
+    {
+      "name": "clock clamps catch-up and reset removes suspended-tab time",
+      "status": "passed"
+    },
+    {
+      "name": "Nearest Enemy selects dummy-a from meaningful training data",
+      "status": "passed"
+    },
+    {
+      "name": "Lowest Current HP selects dummy-b from meaningful training data",
+      "status": "passed"
+    },
+    {
+      "name": "Lowest HP Percentage selects dummy-c from meaningful training data",
+      "status": "passed"
+    },
+    {
+      "name": "Manual Target selects dummy-a from meaningful training data",
+      "status": "passed"
+    },
+    {
+      "name": "only valid, living, targetable enemy units qualify",
+      "status": "passed"
+    },
+    {
+      "name": "nearest: in-range eligible target is preferred to an out-of-range lower-HP unit",
+      "status": "passed"
+    },
+    {
+      "name": "current-hp: in-range eligible target is preferred to an out-of-range lower-HP unit",
+      "status": "passed"
+    },
+    {
+      "name": "hp-percent: in-range eligible target is preferred to an out-of-range lower-HP unit",
+      "status": "passed"
+    },
+    {
+      "name": "manual: in-range eligible target is preferred to an out-of-range lower-HP unit",
+      "status": "passed"
+    },
+    {
+      "name": "nearest: ties use distance then stable ID, independent of array order",
+      "status": "passed"
+    },
+    {
+      "name": "current-hp: ties use distance then stable ID, independent of array order",
+      "status": "passed"
+    },
+    {
+      "name": "hp-percent: ties use distance then stable ID, independent of array order",
+      "status": "passed"
+    },
+    {
+      "name": "manual: ties use distance then stable ID, independent of array order",
+      "status": "passed"
+    },
+    {
+      "name": "manual click overrides each auto mode and ground attacks preserve that lock",
+      "status": "passed"
+    },
+    {
+      "name": "Manual Target mode pins a specific target and reselects nearest after death",
+      "status": "passed"
+    },
+    {
+      "name": "changing modes or clearing a lock returns to that automatic policy without resetting cooldown",
+      "status": "passed"
+    },
+    {
+      "name": "dead/invalid target is never selected; invalid direct clicks do not damage another enemy",
+      "status": "passed"
+    },
+    {
+      "name": "target removed from the registry releases the pin and falls back using the active mode",
+      "status": "passed"
+    },
+    {
+      "name": "automatic killing blow immediately reselects according to each policy",
+      "status": "passed"
+    },
+    {
+      "name": "out-of-range pinned targets never get attacked, even if another enemy is in range",
+      "status": "passed"
+    },
+    {
+      "name": "automatic targeting and attacks never move the player, including empty and out-of-range states",
+      "status": "passed"
+    },
+    {
+      "name": "reset restores configured HP/max HP, all player and target state, and default selection",
+      "status": "passed"
+    },
+    {
+      "name": "default mode is configurable; unsupported modes fail without corrupting selection",
+      "status": "passed"
+    }
+  ]
+}

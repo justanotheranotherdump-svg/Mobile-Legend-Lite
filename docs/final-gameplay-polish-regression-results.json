@@ -1,0 +1,130 @@
+{
+  "status": "passed",
+  "bundleSha256": "ae74c0349662142c0272a781e4ee3bc6315943a84128b1715fe2ae8329d7a2c0",
+  "workers": 1,
+  "results": [
+    {
+      "suite": "browser.mjs",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 592,
+      "checkGroups": 50,
+      "log": "docs/final-gameplay-polish-browser.txt"
+    },
+    {
+      "suite": "browser-layla.mjs",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 158,
+      "checkGroups": 19,
+      "log": "docs/final-gameplay-polish-browser-layla.txt"
+    },
+    {
+      "suite": "browser-panels.mjs",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 171,
+      "checkGroups": 16,
+      "log": "docs/final-gameplay-polish-browser-panels.txt"
+    },
+    {
+      "suite": "browser-menu.mjs",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 214,
+      "checkGroups": 11,
+      "log": "docs/final-gameplay-polish-browser-menu.txt"
+    },
+    {
+      "suite": "browser-polish.mjs",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 47,
+      "checkGroups": 13,
+      "log": "docs/final-gameplay-polish-browser-polish.txt"
+    },
+    {
+      "suite": "browser-hero-browser.mjs",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 39,
+      "checkGroups": 9,
+      "log": "docs/final-gameplay-polish-browser-hero-browser.txt"
+    },
+    {
+      "suite": "browser-progression.mjs",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 45,
+      "checkGroups": 10,
+      "log": "docs/final-gameplay-polish-browser-progression.txt"
+    },
+    {
+      "suite": "browser-match.mjs",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 796,
+      "checkGroups": 11,
+      "log": "docs/final-gameplay-polish-browser-match.txt"
+    },
+    {
+      "suite": "browser-recovery.mjs",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 39,
+      "checkGroups": 5,
+      "log": "docs/final-gameplay-polish-browser-recovery.txt"
+    },
+    {
+      "suite": "browser-roster.mjs",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 58,
+      "checkGroups": 9,
+      "log": "docs/final-gameplay-polish-browser-roster.txt"
+    },
+    {
+      "suite": "browser-draft.mjs",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 74,
+      "checkGroups": 6,
+      "log": "docs/final-gameplay-polish-browser-draft.txt"
+    },
+    {
+      "suite": "browser-batch1.mjs",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 106,
+      "checkGroups": 16,
+      "log": "docs/final-gameplay-polish-browser-batch1.txt"
+    },
+    {
+      "suite": "browser-shop-spells.mjs",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 127,
+      "checkGroups": 11,
+      "log": "docs/final-gameplay-polish-browser-shop-spells.txt"
+    },
+    {
+      "suite": "browser-game-polish.mjs",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 157,
+      "checkGroups": 20,
+      "log": "docs/final-gameplay-polish-browser-game-polish.txt"
+    },
+    {
+      "suite": "browser-preparation-expansion.mjs",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 78,
+      "checkGroups": 13,
+      "log": "docs/final-gameplay-polish-browser-preparation-expansion.txt"
+    }
+  ],
+  "totalCheckGroups": 219,
+  "failed": [],
+  "environment": "Linux Chromium, software WebGL, standalone file://, offline networking; no native Windows or physical-device claim"
+}

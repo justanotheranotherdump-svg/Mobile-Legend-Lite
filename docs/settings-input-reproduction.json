@@ -1,0 +1,10 @@
+{
+  "platform": "linux",
+  "protocol": "file:",
+  "offline": true,
+  "baselineCommit": "920da4a",
+  "baselineHtmlSha256": "bc1b9cccb3e3458f030a342a976707789f46a73b2342b64751b552146524baf0",
+  "expectedBaselineFailure": "REPRODUCED BASELINE BUG: Held movement stopped after clicking Attack: -4.157364419086036 -> -4.157364419086036",
+  "method": "Real Playwright key hold + Attack pointer click; read-only game snapshot before/after simulated time. No gameplay mutation API.",
+  "regression": "checkMovingAttack in tests/browser-settings-input.mjs; final acceptance recorded in settings-input-browser-results.json"
+}

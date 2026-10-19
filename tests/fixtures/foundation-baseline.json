@@ -1,0 +1,14 @@
+{
+  "sha256": "14d08bd6e93e44c09c3d7481eb73ef8e9b76ce0e5f77b12388ca1a64a3edc296",
+  "snapshots": 39,
+  "player": {
+    "x": -5,
+    "z": 5,
+    "radius": 0.45,
+    "speed": 5.5,
+    "maxHp": 100,
+    "range": 6,
+    "attackCooldown": 0.65,
+    "damage": 25
+  }
+}

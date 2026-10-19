@@ -1,0 +1,3383 @@
+[
+  {
+    "time": 0.13333333333333333,
+    "x": 32.26666666666665,
+    "z": -1.6500000000000001,
+    "hp": 2554,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 0.4333333333333333,
+    "x": 30.616666666666674,
+    "z": -1.6500000000000001,
+    "hp": 2554,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 0.733333333333334,
+    "x": 28.966666666666704,
+    "z": -1.6500000000000001,
+    "hp": 2554,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 1.0333333333333345,
+    "x": 27.316666666666734,
+    "z": -1.6500000000000001,
+    "hp": 2554,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 1.3333333333333335,
+    "x": 25.666666666666764,
+    "z": -1.6500000000000001,
+    "hp": 2554,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 1.6166666666666658,
+    "x": 24.10833333333346,
+    "z": -1.6500000000000001,
+    "hp": 2554,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 1.9166666666666647,
+    "x": 22.45833333333349,
+    "z": -1.6500000000000001,
+    "hp": 2554,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 2.2166666666666637,
+    "x": 20.80833333333352,
+    "z": -1.6500000000000001,
+    "hp": 2554,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 2.5166666666666626,
+    "x": 19.158333333333548,
+    "z": -1.6500000000000001,
+    "hp": 2554,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 2.8166666666666615,
+    "x": 17.508333333333578,
+    "z": -1.6500000000000001,
+    "hp": 2554,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 3.1166666666666605,
+    "x": 15.858333333333604,
+    "z": -1.6500000000000001,
+    "hp": 2554,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 3.4166666666666594,
+    "x": 14.208333333333602,
+    "z": -1.6500000000000001,
+    "hp": 2554,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 3.7166666666666583,
+    "x": 12.5583333333336,
+    "z": -1.6500000000000001,
+    "hp": 2554,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 4.016666666666658,
+    "x": 10.908333333333598,
+    "z": -1.6500000000000001,
+    "hp": 2554,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 4.316666666666657,
+    "x": 9.258333333333596,
+    "z": -1.6500000000000001,
+    "hp": 2554,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 4.616666666666656,
+    "x": 7.608333333333594,
+    "z": -1.6500000000000001,
+    "hp": 2554,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 4.9166666666666545,
+    "x": 5.9583333333335915,
+    "z": -1.6500000000000001,
+    "hp": 2554,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 5.2166666666666535,
+    "x": 4.308333333333589,
+    "z": -1.6500000000000001,
+    "hp": 2554,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 5.516666666666652,
+    "x": 2.6583333333335872,
+    "z": -1.6500000000000001,
+    "hp": 2554,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 5.816666666666651,
+    "x": 1.0083333333335875,
+    "z": -1.6500000000000001,
+    "hp": 2554,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 6.11666666666665,
+    "x": -0.6416666666664125,
+    "z": -1.6500000000000001,
+    "hp": 2554,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 6.416666666666649,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2554,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 6.716666666666648,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2554,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 7.016666666666647,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2554,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 7.316666666666646,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2554,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 7.616666666666645,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2554,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 7.916666666666644,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2554,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 8.216666666666654,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2554,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 8.51666666666667,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2554,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 8.816666666666684,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2503.7470163170165,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "attack",
+      "targetId": "wave-1-player-0",
+      "reposition": false,
+      "x": 1.0574500503501687,
+      "z": -3.035710680386776,
+      "ability": true,
+      "aimOffset": -0.1144600878469646
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 9.1166666666667,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2404.7877156177183,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "attack",
+      "targetId": "wave-1-player-0",
+      "reposition": true,
+      "x": 1.0574500503501687,
+      "z": -3.035710680386776,
+      "ability": true,
+      "aimOffset": 0.7944124769419432
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 9.450000000000049,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2406.7210489510544,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "attack",
+      "targetId": "wave-1-player-0",
+      "reposition": true,
+      "x": 1.0574500503501687,
+      "z": -3.035710680386776,
+      "ability": true,
+      "aimOffset": 0.7944124769419432
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 9.750000000000064,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2408.461048951057,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "attack",
+      "targetId": "wave-1-player-0",
+      "reposition": false,
+      "x": 1.0574500503501687,
+      "z": -3.035710680386776,
+      "ability": true,
+      "aimOffset": -0.09968226635828614
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 10.050000000000079,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2309.5017482517587,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "attack",
+      "targetId": "wave-1-player-0",
+      "reposition": false,
+      "x": 2.8094764870007127,
+      "z": -3.035710680386776,
+      "ability": false,
+      "aimOffset": 0.8477259194478393
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 10.350000000000094,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2260.892097902111,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "attack",
+      "targetId": "wave-1-player-0",
+      "reposition": false,
+      "x": 2.8094764870007127,
+      "z": -3.035710680386776,
+      "ability": false,
+      "aimOffset": -0.5417951396666467
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 10.650000000000109,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2262.6320979021134,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "attack",
+      "targetId": "wave-1-player-0",
+      "reposition": false,
+      "x": 2.8094764870007127,
+      "z": -3.035710680386776,
+      "ability": false,
+      "aimOffset": -0.5417951396666467
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 10.950000000000124,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2264.372097902116,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "attack",
+      "targetId": "wave-1-player-0",
+      "reposition": true,
+      "x": 2.8094764870007127,
+      "z": -3.035710680386776,
+      "ability": false,
+      "aimOffset": 0.9172823205590248
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 11.250000000000139,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2165.4127972028177,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "attack",
+      "targetId": "wave-1-player-0",
+      "reposition": true,
+      "x": 2.8094764870007127,
+      "z": -3.035710680386776,
+      "ability": false,
+      "aimOffset": -0.17323554353788495
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 11.550000000000153,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2167.1527972028202,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "attack",
+      "targetId": "wave-1-player-0",
+      "reposition": false,
+      "x": 2.8094764870007127,
+      "z": -3.035710680386776,
+      "ability": false,
+      "aimOffset": -0.4209714522585273
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 11.850000000000168,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2168.8927972028227,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "attack",
+      "targetId": "wave-1-player-0",
+      "reposition": false,
+      "x": 2.8094764870007127,
+      "z": -3.035710680386776,
+      "ability": false,
+      "aimOffset": -0.4209714522585273
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 12.150000000000183,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2170.6327972028253,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "attack",
+      "targetId": "wave-1-player-2",
+      "reposition": true,
+      "x": 2.909877047812972,
+      "z": -2.7216356173221947,
+      "ability": false,
+      "aimOffset": 0.9655653205700219
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 12.450000000000198,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2122.0231468531774,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "attack",
+      "targetId": "wave-1-player-2",
+      "reposition": true,
+      "x": 2.909877047812972,
+      "z": -2.7216356173221947,
+      "ability": false,
+      "aimOffset": 0.08735776133835316
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 12.750000000000213,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2123.76314685318,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "attack",
+      "targetId": "wave-1-player-2",
+      "reposition": true,
+      "x": 2.909877047812972,
+      "z": -2.7216356173221947,
+      "ability": false,
+      "aimOffset": -0.3501723320223391
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 13.050000000000228,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2125.5031468531824,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "attack",
+      "targetId": "wave-1-player-2",
+      "reposition": true,
+      "x": 2.909877047812972,
+      "z": -2.7216356173221947,
+      "ability": false,
+      "aimOffset": -0.3501723320223391
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 13.350000000000243,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2127.243146853185,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "attack",
+      "targetId": "wave-1-player-2",
+      "reposition": true,
+      "x": 1.157850611162428,
+      "z": -2.7216356173221947,
+      "ability": false,
+      "aimOffset": -0.12882353831082582
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 13.650000000000258,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2078.633496503537,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "attack",
+      "targetId": "wave-1-player-2",
+      "reposition": true,
+      "x": 1.157850611162428,
+      "z": -2.7216356173221947,
+      "ability": false,
+      "aimOffset": 0.47202911833301187
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 13.950000000000273,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2080.3734965035396,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "attack",
+      "targetId": "wave-1-player-1",
+      "reposition": true,
+      "x": 1.1149377058215437,
+      "z": -2.8821864836023403,
+      "ability": false,
+      "aimOffset": 0.7403292022645473
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 14.250000000000288,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2082.113496503542,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "attack",
+      "targetId": "wave-1-player-1",
+      "reposition": true,
+      "x": 1.1149377058215437,
+      "z": -2.8821864836023403,
+      "ability": false,
+      "aimOffset": 0.7403292022645473
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 14.550000000000303,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2083.8534965035446,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "attack",
+      "targetId": "wave-1-player-1",
+      "reposition": false,
+      "x": 1.1149377058215437,
+      "z": -2.8821864836023403,
+      "ability": false,
+      "aimOffset": 0.9375353413634002
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 14.850000000000318,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2085.593496503547,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "attack",
+      "targetId": "wave-1-player-1",
+      "reposition": true,
+      "x": 1.1149377058215437,
+      "z": -2.8821864836023403,
+      "ability": false,
+      "aimOffset": -0.5137811405584216
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 15.150000000000333,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2087.3334965035497,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "attack",
+      "targetId": "wave-1-player-1",
+      "reposition": false,
+      "x": 1.1149377058215437,
+      "z": -2.8821864836023403,
+      "ability": true,
+      "aimOffset": 0.9191479389555752
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 15.450000000000347,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2089.073496503552,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "attack",
+      "targetId": "wave-1-player-1",
+      "reposition": false,
+      "x": 1.1149377058215437,
+      "z": -2.8821864836023403,
+      "ability": true,
+      "aimOffset": 0.9191479389555752
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 15.750000000000362,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2090.8134965035547,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "attack",
+      "targetId": "wave-1-player-1",
+      "reposition": false,
+      "x": 1.1149377058215437,
+      "z": -2.8821864836023403,
+      "ability": false,
+      "aimOffset": -0.8047740254551172
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 16.05000000000037,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2092.553496503557,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "attack",
+      "targetId": "wave-1-player-1",
+      "reposition": false,
+      "x": 1.1149377058215437,
+      "z": -2.8821864836023403,
+      "ability": false,
+      "aimOffset": -0.012584733311086893
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 16.350000000000353,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2094.2934965035597,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "attack",
+      "targetId": "wave-1-player-1",
+      "reposition": true,
+      "x": 1.1149377058215437,
+      "z": -2.8821864836023403,
+      "ability": false,
+      "aimOffset": 0.8689213087782264
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 16.650000000000336,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2096.033496503562,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "attack",
+      "targetId": "wave-1-player-1",
+      "reposition": true,
+      "x": 1.1149377058215437,
+      "z": -2.8821864836023403,
+      "ability": false,
+      "aimOffset": 0.8689213087782264
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 16.95000000000032,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2097.7734965035647,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "attack",
+      "targetId": "wave-1-player-1",
+      "reposition": true,
+      "x": 1.1149377058215437,
+      "z": -2.8821864836023403,
+      "ability": false,
+      "aimOffset": -0.28636997705325484
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 17.250000000000302,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2099.5134965035672,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 17.550000000000285,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2101.2534965035697,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 17.850000000000268,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2102.9934965035723,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": null,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "wait-for-wave",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "wait-for-wave"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 18.15000000000025,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2104.7334965035748,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": 18.00000000000026,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "form-up",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "form-up"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 18.450000000000234,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2106.4734965035773,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": 18.00000000000026,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "form-up",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "form-up"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 18.750000000000217,
+    "x": -1.9249999999997447,
+    "z": -1.6500000000000001,
+    "hp": 2108.21349650358,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "hold",
+      "coverSince": 18.00000000000026,
+      "since": 0.016666666666666666,
+      "support": "minion-wave",
+      "reason": "form-up",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -1.93434055811543,
+      "z": -1.6500000000000001,
+      "reason": "form-up"
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 19.0500000000002,
+    "x": -3.2083333333330795,
+    "z": -1.6500000000000001,
+    "hp": 2109.9534965035823,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "push",
+      "coverSince": 18.00000000000026,
+      "since": 18.833333333333545,
+      "support": "minion-wave",
+      "reason": "wave-covered",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -7.237742132139419,
+      "z": -1.6500000000000001
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 19.350000000000183,
+    "x": -4.858333333333081,
+    "z": -1.6500000000000001,
+    "hp": 2111.693496503585,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "push",
+      "coverSince": 18.00000000000026,
+      "since": 18.833333333333545,
+      "support": "minion-wave",
+      "reason": "wave-covered",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -7.237742132139419,
+      "z": -1.6500000000000001
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  },
+  {
+    "time": 19.650000000000166,
+    "x": -6.508333333333083,
+    "z": -1.6500000000000001,
+    "hp": 2113.4334965035873,
+    "plan": {
+      "towerId": "player-0",
+      "mode": "push",
+      "coverSince": 18.00000000000026,
+      "since": 18.833333333333545,
+      "support": "minion-wave",
+      "reason": "wave-covered",
+      "goal": {
+        "x": -1.93434055811543,
+        "z": -1.6500000000000001
+      }
+    },
+    "intent": {
+      "type": "move",
+      "x": -7.237742132139419,
+      "z": -1.6500000000000001
+    },
+    "towers": [
+      {
+        "id": "player-0",
+        "x": -12,
+        "z": 0,
+        "range": 8,
+        "hp": 3600,
+        "maxHp": 3600
+      },
+      {
+        "id": "player-1",
+        "x": -22,
+        "z": 0,
+        "range": 8,
+        "hp": 4200,
+        "maxHp": 4200
+      },
+      {
+        "id": "player-2",
+        "x": -30,
+        "z": 0,
+        "range": 8,
+        "hp": 6500,
+        "maxHp": 6500
+      }
+    ]
+  }
+]

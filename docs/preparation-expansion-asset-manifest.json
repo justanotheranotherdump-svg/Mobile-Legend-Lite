@@ -1,0 +1,573 @@
+{
+  "version": 1,
+  "count": 63,
+  "assets": [
+    {
+      "id": "mystery-codex",
+      "path": "src/ui/assets/items/mystery-codex.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "ce44628e685a166251b653804f8607b3ba1506c84562f7a9a0881ef470129903",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "magic-necklace",
+      "path": "src/ui/assets/items/magic-necklace.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "7af1c7665255fb4a2ff132b3c012767b508d28db5c31e327ef7be7a564ca9c93",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "power-crystal",
+      "path": "src/ui/assets/items/power-crystal.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "39ce1f7e17320900f9f702f605aa6725e50dc8440fef66a55892690e6be20307",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "magic-wand",
+      "path": "src/ui/assets/items/magic-wand.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "bddf2323e09e03d96a269006a3acf638d0531bd6d8f089416c647aa3f0915d29",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "book-of-sages",
+      "path": "src/ui/assets/items/book-of-sages.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "df01ec6e0360a8ba4156df1973e4c5992d32d9aed33e15c8d87874c6c2a7ba60",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "expert-gloves",
+      "path": "src/ui/assets/items/expert-gloves.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "5ae1fc849c2f818fa878e591710c59eeba6d0b890cc9c177916ab8c5880c9304",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "elegant-gem",
+      "path": "src/ui/assets/items/elegant-gem.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "77bc60fd0d41e0a5b835aa468422ad5b62ac771d679ec95517c88ca88a8643d1",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "exotic-veil",
+      "path": "src/ui/assets/items/exotic-veil.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "26e641b7340c19c10a61e22bb3d73e608c0f1b10d5d99947a55b1de4d8fcdbac",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "mystic-container",
+      "path": "src/ui/assets/items/mystic-container.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "fb572dbb02daa15f013e76ecfd04e433ddb53e04ac08ba61f85736819b767542",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "tome-of-evil",
+      "path": "src/ui/assets/items/tome-of-evil.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "51c9b51c440b1425ef309b488a12a159b15438f974cbb1e0430a637801a29d16",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "azure-blade",
+      "path": "src/ui/assets/items/azure-blade.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "7934981ce9823bbd75725d21b6eba2cf8300b8aa70b14dbdf76759b3d29c02c7",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "blood-wings",
+      "path": "src/ui/assets/items/blood-wings.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "2e047b36a1892e8ce8dd52aad03cf05f59d776ff137cf192ee76d9c2c1596d89",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "clock-of-destiny",
+      "path": "src/ui/assets/items/clock-of-destiny.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "2927fa3373c64bc5f25e427bbe30d0d11c10e54dcabc1768589ce9d2979bd572",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "concentrated-energy",
+      "path": "src/ui/assets/items/concentrated-energy.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "13f078a2ace13267b7a436d4217314685906b8801404596a457edfd312f6f894",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "divine-glaive",
+      "path": "src/ui/assets/items/divine-glaive.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "a9f19808bd1d3cd906965deff7884276119770cadb7173daed44cd8a67895601",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "enchanted-talisman",
+      "path": "src/ui/assets/items/enchanted-talisman.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "510a1f2d98dbf0650d4611598e2f250c523a23e98065af5ae4f808f309cd769e",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "feather-of-heaven",
+      "path": "src/ui/assets/items/feather-of-heaven.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "a471479e3cd0e898894d38c3f3ea5b08844edb176efce3abfcc399578980d2e0",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "flask-of-the-oasis",
+      "path": "src/ui/assets/items/flask-of-the-oasis.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "c9afc8359406ce0a3fa007be90ccb6e1693a25691bd6883e659d36595e379de4",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "fleeting-time",
+      "path": "src/ui/assets/items/fleeting-time.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "a2eb2828831fff62a229e62e6395382f295c7cb93b014b42d452b73d50ba0d75",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "genius-wand",
+      "path": "src/ui/assets/items/genius-wand.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "631aae29b66f2cfb19d4b4d60114a27aac6f98ca38a6014fab88a7e152923c02",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "glowing-wand",
+      "path": "src/ui/assets/items/glowing-wand.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "5231b52a404469b94ae311b27162376242fb2d739544e14a4c92ca7b1e4df4f6",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "holy-crystal",
+      "path": "src/ui/assets/items/holy-crystal.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "58e680e5b3f4637f58986caedd74fcb7809a2a05974b48dee97f47431e13ade3",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "ice-queen-wand",
+      "path": "src/ui/assets/items/ice-queen-wand.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "a7564325eab9ec3b38ebac446de47e49d252a642178eec151c18f117325d46ec",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "lightning-truncheon",
+      "path": "src/ui/assets/items/lightning-truncheon.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "c27c97784c6d71509702ab0d62ddbcf222247a073178be637a5f8d40a9a26c12",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "starlium-scythe",
+      "path": "src/ui/assets/items/starlium-scythe.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "d5ea194e0af4885421aefbcffc0266a675ea062481289d6aae54e26bf7c39d64",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "wishing-lantern",
+      "path": "src/ui/assets/items/wishing-lantern.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "b819ee15a01284bb51b78103e6c8275f671af96f00f7281cbda49c0f3560c5e8",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "sky-piercer",
+      "path": "src/ui/assets/items/sky-piercer.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "50f41bd0aa2259581777e30418c5e388ea595456113077013a0ab1ca03366082",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "winter-crown",
+      "path": "src/ui/assets/items/winter-crown.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "8a81aad3507619567124b5a33614035e935a7d176d8a7ca8a50ac5732e6d2799",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "magic-potion",
+      "path": "src/ui/assets/items/magic-potion.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "4d4cad06b0ac3272bd1f8b7ca3a0bf765cbc2c16ee4af8b7be5664bd2400b9d7",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "vitality-crystal",
+      "path": "src/ui/assets/items/vitality-crystal.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "cff9dc524e3b51087f19d450c5f0c4a47fe95e50d2c4de9a4cb1c88f63693eb5",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "healing-necklace",
+      "path": "src/ui/assets/items/healing-necklace.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "d3264a06a793b7575746a7f8148f51a001fb0aa84d813194385de3989e1cfb48",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "leather-jerkin",
+      "path": "src/ui/assets/items/leather-jerkin.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "ee49859a68cd69aec6599edaebaf5d667d31ed87c3764711dde443cc8a1eec59",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "magic-resist-cloak",
+      "path": "src/ui/assets/items/magic-resist-cloak.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "371688700419439296d4a2f08b501b9cc7e2062be0caafc64f9f9c1b8f51b195",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "ares-belt",
+      "path": "src/ui/assets/items/ares-belt.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "4745eb1303000dc81019d9e5a17b599069caf4539d3bd5190298ea9a35531611",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "heros-ring",
+      "path": "src/ui/assets/items/heros-ring.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "8438a1e2e27daa6c17634aae1b30c53e74886b76c9883bc21335d75aa9030bab",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "black-ice-shield",
+      "path": "src/ui/assets/items/black-ice-shield.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "98533403cda9d7c9aa12797ef8b0f1e24e1cb89fec89ae1fb4164ec1ecc42004",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "dreadnaught-armor",
+      "path": "src/ui/assets/items/dreadnaught-armor.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "bacbbc554cb8044edee8c59fe17074093bf6f4f431d83d75fdb9b1befcb636e6",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "molten-essence",
+      "path": "src/ui/assets/items/molten-essence.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "bfce292884264a2b7bee30a5e4eec33344e7e095900f1061c9970d7619856009",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "silence-robe",
+      "path": "src/ui/assets/items/silence-robe.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "da9d15a36b7518cd1f1cd1ba94754138f33489354cc676b439d128bcd7933178",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "steel-legplates",
+      "path": "src/ui/assets/items/steel-legplates.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "3814cda27443365124152440c2125664bf3ac1effc3dc92294da61b7073f5003",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "antique-cuirass",
+      "path": "src/ui/assets/items/antique-cuirass.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "7ad7fb6ef48e377f39ffd9b4aba238fc7283f2acde7e06752e580c2cfd09856e",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "athenas-shield",
+      "path": "src/ui/assets/items/athenas-shield.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "e8580d4e25ea9966d2765af66b30f7be5e2abc2e05a6884feba05d31425e8714",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "blade-armor",
+      "path": "src/ui/assets/items/blade-armor.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "e9ddf3e8b84844797768cf2876768ec4695483f3c7c76da2e43036692f5c72bc",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "brute-force-breastplate",
+      "path": "src/ui/assets/items/brute-force-breastplate.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "73e04d2765daa216e8cb5d43e235083b5f7dc7e268c98dc8329b9286dba2cac9",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "chastise-pauldron",
+      "path": "src/ui/assets/items/chastise-pauldron.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "490312f54c6bb3d3462602b20d6716e521b6a12750538cd4715801b6cb84fdfa",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "cursed-helmet",
+      "path": "src/ui/assets/items/cursed-helmet.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "86263df33d313ff49bd7ab0c3579c8fc444f227173d4142638617a53538bedc5",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "dominance-ice",
+      "path": "src/ui/assets/items/dominance-ice.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "23ee3936cfd41c1704545dc9d08ee42fc7a2e62bf6dcf3d0fad9c47f0fb77c80",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "guardian-helmet",
+      "path": "src/ui/assets/items/guardian-helmet.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "68bc066b1a549db17758886c904fb2b3855b68cbc5a8bff6dfa5b395a70aed21",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "immortality",
+      "path": "src/ui/assets/items/immortality.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "679c1c2b339e88a0d86e25852fa38f58ff3fafad6f0b67fee9c992b09d099db2",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "oracle",
+      "path": "src/ui/assets/items/oracle.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "7b3ce33941cd68e883e4560eec51af9701267c6cb725ec11f60bdd4ef28d57d7",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "queens-wings",
+      "path": "src/ui/assets/items/queens-wings.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "ce72140f4660e143083cae4494fdb26d05aec3052e9dcec304ca9900cc38d17c",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "radiant-armor",
+      "path": "src/ui/assets/items/radiant-armor.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "4665609064885b10c8f33aff36a13231d5d03ea66d8c638680a54e4568b6779f",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "thunder-belt",
+      "path": "src/ui/assets/items/thunder-belt.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "9ac72d97ab35ee218c19cbd33f0e778e79c88e9db29a5e02265181439f445adb",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "rock-potion",
+      "path": "src/ui/assets/items/rock-potion.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "f2a7a66f71128080eff4cb21a04bd04f0d46532c2b09d9b6a69808b6fa2add66",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "bloody-retribution",
+      "path": "src/ui/assets/items/bloody-retribution.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "5532694289025cd15e1208b0dea8dd901e87019e316bee37fb165715e4fbb495",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "flame-retribution",
+      "path": "src/ui/assets/items/flame-retribution.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "a2656c12a3f2121056da2a99fcd1728f10e930800be84a251da8c4254fe4c8d3",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "ice-retribution",
+      "path": "src/ui/assets/items/ice-retribution.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "1a1eeeb1adb060ff1017adc9557ea15755a1ffde43f2a46a882f8b2bea786a42",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "conceal",
+      "path": "src/ui/assets/items/conceal.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "db70b0bf931e95e0bf6d102632f283150a87fdf8a0603e66c4a8bb4d8910c905",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "dire-hit",
+      "path": "src/ui/assets/items/dire-hit.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "a3f60831ab7ee6957f1263935873c3964184ad44d96e559ec4376ef20e37a7fb",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "encourage",
+      "path": "src/ui/assets/items/encourage.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "e6bffd6e491e2fdbe6a733825e33503f482a86dc3f9339c8bdacd0ae4a50e3d5",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "favor",
+      "path": "src/ui/assets/items/favor.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "2d4f238aa1dbe6ce27e85afab3da3b8ddb485c613fb307ea00053056d669cc0a",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "flower-of-hope",
+      "path": "src/ui/assets/items/flower-of-hope.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "b3be6a2074bc7ccb3062ca1382be3bc9e73cd8f336279955be8e406fec48680a",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    },
+    {
+      "id": "lantern-of-hope",
+      "path": "src/ui/assets/items/lantern-of-hope.png",
+      "width": 160,
+      "height": 160,
+      "sha256": "dfdb9a92536943fe1d50143d0e9e5961534709014c7c0cc309040d30ee466d28",
+      "author": "Original local procedural illustration; explicit silhouette in scripts/create-expansion-art.py",
+      "source": "No downloaded art, reference-image pixels, emoji or runtime asset service"
+    }
+  ]
+}

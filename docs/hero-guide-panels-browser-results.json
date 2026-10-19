@@ -1,0 +1,27 @@
+{
+  "platform": "linux",
+  "browser": "153.0.8010.0",
+  "offline": true,
+  "checks": [
+    "shop: held/fresh WASD works in non-modal panel, keyup stops, closing preserves held movement",
+    "shop: skill and basic shortcuts deal real damage while panel stays open",
+    "shop: HUD skill pointer hold/release remains interactive outside panel",
+    "shop: exposed battlefield LMB attacks work without dismissing panel",
+    "settings: held/fresh WASD works in non-modal panel, keyup stops, closing preserves held movement",
+    "settings: skill and basic shortcuts deal real damage while panel stays open",
+    "settings: HUD skill pointer hold/release remains interactive outside panel",
+    "settings: exposed battlefield LMB attacks work without dismissing panel",
+    "opening a panel preserves held aim; first Escape cancels aim, second closes panel",
+    "focused key-binding select owns combat keys but still permits protected WASD movement",
+    "actual text entry does not move, attack or cast while typing",
+    "explicit HUD or battlefield pointer attacks leave editors and work on the first click",
+    "blur still clears held movement without stale resumption",
+    "panel switching, trigger toggling and X closing preserve held aim and movement",
+    "both panels are centered horizontally and vertically, non-modal and in bounds with reachable close/attack at desktop and compact landscape sizes",
+    "offline file://: zero runtime errors, warnings or subresource requests"
+  ],
+  "errors": [],
+  "warnings": [],
+  "requests": [],
+  "date": "2026-10-18"
+}

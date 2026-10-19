@@ -1,0 +1,9 @@
+
+> moba-foundation@0.1.0 test:browser:recovery
+> node tests/browser-recovery.mjs
+
+PASS: actual local graphics-preparation failure shows honest reason and Retry / Back, disposes partial input/HUD and never counts a started match
+PASS: Retry revalidates the confirmed pick and reruns actual preparation, starting exactly one healthy match with the retained approved model
+PASS: Back from a second real failure returns safely to the configured room with no duplicate runtime, input or HUD
+PASS: trusted emulated touch drag still moves the hero with a centered non-modal Shop open; modal fixture protection and editor isolation remain separate
+PASS: native keyboard activation of a focused + spends exactly one point without leaking Space into an attack or skill cast

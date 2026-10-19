@@ -1,0 +1,15 @@
+PASS: old valid profile migrates once to 30,000 coins / 0 diamonds with owned Layla
+PASS: fresh page creates no audio context or scheduler before a real gesture
+PASS: trusted click unlocks actual Web Audio; original score renders nonzero stereo energy without clipping
+PASS: Hero Shop uses supplied 2D PNG, already-owned Layla, no purchase controls and no combat initialization
+PASS: real music/effects/master switches, volume and reduced motion persist on same-file reload without autoplay
+PASS: reopening preserves an existing changed balance; starter grant is never reapplied
+PASS: 1280x720 / 960x540 / 844x390 touch navigation, currency bounds, Shop, Settings and MODE fit; PNG uses undistorted cover
+PASS: Shop/Settings/back/resize retain exactly one model and restore on-demand lobby rendering
+PASS: audio reset preserves motion preference; blur suspends audio/scheduler and focus resumes one scheduler
+PASS: normal entry transfers approved model once, switches to energetic score and actual accepted combat events produce effects
+PASS: training Settings exposes the same working persisted audio controls in its non-modal centered panel
+PASS: blocked storage and missing Web Audio preserve session wallet and useful settings without crashing
+PASS: final standalone offline flow has no runtime errors, warnings, or subresource/network requests
+13 polish browser checks passed.
+

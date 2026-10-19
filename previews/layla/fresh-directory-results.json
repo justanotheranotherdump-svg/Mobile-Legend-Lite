@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-19",
+  "revision": "layla-workshop-r1",
+  "packagedHTMLAlone": {
+    "browserGroups": 34,
+    "errors": [],
+    "warnings": [],
+    "externalRequests": [],
+    "entryFilesInFreshDirectory": 1,
+    "offline": "file://; network unavailable by request-aborting browser harness"
+  },
+  "extractedSource": {
+    "npmCi": "exit 0; 35 packages; 0 vulnerabilities",
+    "focusedUnits": {
+      "pass": 21,
+      "total": 21,
+      "fail": 0,
+      "skipped": 0
+    },
+    "productionBuild": "exit 0; Vite7.3.7",
+    "rebuiltHTMLSHA256": "751f64b390efbced86de07d43572b55dd5f6cae0ae882770ddac7f0a763e5098",
+    "deliveredHTMLSHA256": "751f64b390efbced86de07d43572b55dd5f6cae0ae882770ddac7f0a763e5098",
+    "byteIdentical": true
+  },
+  "packagingPolicy": "Final archive adds the report and fresh-directory evidence after testing; all runtime/source payloads remain hash-identical to the extracted and rebuilt archive."
+}

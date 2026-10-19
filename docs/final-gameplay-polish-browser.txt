@@ -1,0 +1,53 @@
+PASS: downloaded HTML initializes actual WebGL2 using file:// with network disabled
+PASS: inline CSS is applied: dark background, positioned HUD, full-viewport canvas (unstyled-page regression)
+PASS: eager bundled hero registry drives exact existing stats/HUD and honest placeholder/empty clips
+PASS: three distinct configured dummies expose current/max HP in world labels
+PASS: out-of-range automatic and pinned direct attacks reject damage/cooldown and NEVER chase
+PASS: real keyboard movement and diagonal normalization (measured against simulation time)
+PASS: camera follows player and mouse ray maps to the correct ground position after movement
+PASS: HUD mode nearest selects dummy-a and visibly highlights it without moving
+PASS: HUD mode current-hp selects dummy-b and visibly highlights it without moving
+PASS: HUD mode hp-percent selects dummy-c and visibly highlights it without moving
+PASS: HUD mode manual selects dummy-a and visibly highlights it without moving
+PASS: direct enemy click pins over auto mode; ground attacks use pin and preserve cooldown/no-chase rules
+PASS: mode changes and Clear lock restore automatic policy without bypassing cooldown
+PASS: a pinned target dying releases override immediately; dead clicks never select or damage an enemy
+PASS: Manual Target mode pins chosen enemy and falls back to nearest living in-range enemy on death
+PASS: ground-click auto attacks reselect by lowest current HP after death; HUD attack button uses same rules
+PASS: Reset restores all HP/max HP, player/target state, mode, pins, cooldown and hit count
+PASS: real keyboard movement hits a solid obstacle and slides without penetrating
+PASS: held real keyboard movement remains inside arena boundaries
+PASS: blur pauses simulation, clears held input, and resume has no movement jump (synthetic focus events)
+PASS: resize at 1000×700, 800×600, 1440×900 preserves canvas, camera, ground picking, and reset control
+PASS: repository root index.html: styled offline 3D, keyboard movement, attack and reset
+PASS: source-ZIP index.html isolated without sibling files (spaces/Unicode path): styled offline 3D, keyboard movement, attack and reset
+PASS: live SVG minimap tracks actual player/targets and original vector icons are bundled locally
+PASS: session timer follows actual simulation time, pauses on blur and resets without inventing match scores
+PASS: map visibility and range controls change presentation only, never attack or move
+PASS: real pointer joystick movement uses camera-relative normalized speed and releases without attacking
+PASS: keyboard takes priority over joystick; pointer capture releases outside the control with no stuck input
+PASS: blur, keyboard reset, synthetic cancellation and forced capture loss clear the joystick without stuck movement
+PASS: settings allow optional joystick/reduced HUD motion, preserve WASD, and support Escape/focus return
+PASS: shop is a keyboard-accessible inert placeholder; skills/spells/equipment/minion/tower controls are honestly disabled
+PASS: exactly three reserved skills map only top-row 1/2/3 to first/second/ultimate; no numpad or old Q/E/R binding and no fabricated casts
+PASS: Space and native focused-button activation each attack once through existing cooldown/target validation
+PASS: actual lethal damage triggers a truthful training elimination, no fabricated team score; notice dismisses and resets
+PASS: HUD regions do not overlap, controls stay hit-testable, dialogs work and center remains clear at five landscape sizes
+PASS: empty shop has sixteen catalog, four build and six equipment slots; disabled slots/purchases/priorities never mutate gameplay
+PASS: shop categories and view tabs only change the empty interface; simple layout scrolls and all-equipment restores four columns
+PASS: landscape shop supports native keyboard opening, close/Escape/backdrop, world focus return and clears movement input
+PASS: empty landscape shop stays in bounds with accessible close/purchase/equipment and no shell overflow at five desktop/compact sizes
+PASS: Settings can hide button key hints without hiding names or disabling the actual attack shortcut
+PASS: Custom attack key replaces Space immediately, updates visible hints and uses original damage/cooldown validation
+PASS: Reserved bindings cannot cast; duplicate bindings are rejected, WASD/navigation keys protected and menus suppress gameplay shortcuts
+PASS: Unbinding keeps mouse/HUD attack available, custom numpad keys work, game reset preserves preferences and restore defaults restores Space/1/2/3
+PASS: Scrollable key settings remain usable at compact landscape sizes and Escape returns focus without stuck input
+PASS: held WASD continues through mouse Attack and Space without re-pressing movement; each requests exactly one attack
+PASS: Shop and Settings stop held movement, reject fresh/off-dialog gameplay events and resume only after new movement input
+PASS: opening either modal cancels active joystick capture/axes and closing never revives the old drag
+PASS: Settings target priority shares existing HUD/simulation modes and reset; Regen defaults to V and remains reserved without healing
+PASS: landscape Settings tabs/keyboard navigation and close remain accessible with no shell overflow at five desktop/compact sizes
+PASS: no runtime errors/warnings and ZERO subresource requests during full offline interaction
+
+50 browser checks passed. Windows double-click testing remains manual.
+

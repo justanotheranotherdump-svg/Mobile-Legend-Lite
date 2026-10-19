@@ -1,0 +1,14 @@
+{
+  "checks": [
+    "Actual 45-second expiry preserves a genuine empty selection and cannot enter a match",
+    "Only an explicit post-expiry pick proceeds, after real loading, into the requested 5v5 roster without timer injection",
+    "Loading renders all five actual allied and five enemy approved Layla/Franco picks with player/Computer names; no invented heroes or per-client download percentages",
+    "Trusted touch drag moves the player in the flipped lane with nine real-model Computer heroes",
+    "Full roster quits safely, aborts match listeners and restores the single retained approved menu model",
+    "Full draft/loading/touch/quit offline flow has zero runtime errors, warnings or external requests"
+  ],
+  "errors": [],
+  "warnings": [],
+  "requests": [],
+  "environment": "Linux software WebGL, offline file://, trusted touch emulation; actual selection timer elapsed"
+}
