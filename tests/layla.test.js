@@ -201,7 +201,7 @@ test("S2 detonates on first enemy, not through to another distant target", () =>
   near(s.enemies[1].hp, 1000);
 });
 test("S2 destination stays fixed and casting movement is now animation-locked", () => {
-  const s = sim([]);
+  const s = sim([enemy("activation-hero", 5, 0, 1000, {kind:"hero"})]);
   s.cast("skill-2", { x: 0, z: 5 });
   s.update(hero.abilities.find(a=>a.slot==="skill-2").castTime, 1, 0);
   near(s.projectiles[0].end.x, 0);
@@ -275,7 +275,8 @@ test("ultimate covers wide line, all valid enemies exactly once, excludes outsid
 });
 test("passive excludes turrets for basic AND all three offensive abilities", () => {
   for (const slot of ["basic", "skill-1", "skill-2", "skill-ultimate"]) {
-    const s = sim([enemy("a", 0, 5, 1000, { kind: "turret" })]);
+    const s = sim([enemy("a", 0, 5, 1000, { kind: "turret" }),
+      ...(slot === "skill-2" ? [enemy("activation-hero", 5, 0, 1000, {kind:"hero"})] : [])]);
     slot === "basic" ? s.attack() : s.cast(slot, aim);
     step(s, 1.5);
     near(

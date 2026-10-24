@@ -134,7 +134,9 @@ export class HeroSkillHud {
                       ? "NO MP"
                       : s.isActionLocked()
                         ? "FIRING"
-                        : "READY";
+                        : s.castAvailability(a) === "no-target"
+                          ? "NO TARGET"
+                          : "READY";
       status.textContent = a.rank === 0 || reason === "READY" ? "" : reason;
       b.classList.toggle("unlearned", a.rank === 0);
       b.disabled = a.rank === 0;

@@ -551,3 +551,9 @@ User now explicitly authorizes longer runtime Iron Hook range and a0.5s hold on 
 
 ### Franco equipment recommendations — 2026-10-24
 User requests Franco recommended equipment builds, including tank/hybrid variants, guided by supplied screenshots. Add reference-inspired Tank/Roam, Hybrid/Pickoff and Damage/Burst templates using supported local items in existing Preparation/build-selection/shop workflow. Use saves/selects an editable paid-item order, not free inventory or stats; preserve ownership, wallet, account/hero isolation, custom work, three-build limit, spell unlocks and one-boots rule. Emblems/spell/roam suggestions must not pretend bonuses or unlocks. Preserve Layla builds, Franco's requested hook8/hero hold0.5s, models and all unrelated combat. Uploaded reference screenshots remain excluded. No push requested.
+
+## 2026-10-24 — Authorized Layla skill 2 activation prerequisite
+
+- User explicitly requires Layla skill 2 not to activate unless an enemy hero is inside its current skill range. Check living/targetable/hostile hero eligibility before aim/cast commitment and recheck at release/queued execution for player and AI. No mana, cooldown or animation on rejection; HUD may show NO TARGET.
+- Preserve existing range/buff, cost/cooldown, aimed projectile destination/collision/damage/mark and other skills. This is not a homing redesign. Practice hero stand-ins remain supported, while match minions/creeps/structures alone do not qualify.
+- Completed verification and known historical Plan A failure: `docs/layla-skill2-gate/README.md`. No push requested for this follow-up.

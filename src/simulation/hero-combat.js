@@ -261,6 +261,14 @@ export class HeroCombatSimulation extends TrainingSimulation {
     this.cancelAttackCommand();
     return useUtility(this, id);
   }
+  hasSkillHeroInRange(a) {
+    const range = this.abilityRange(a);
+    return this.enemies.some(e =>
+      this.isHostile(e) && !e.protected &&
+      (["player", "bot", "hero"].includes(e.kind) ||
+        (!this.isMatch && e.kind == null)) && // Practice hero stand-ins.
+      Math.hypot(e.x-this.player.x,e.z-this.player.z) <= range + 1e-8);
+  }
   castAvailability(a) {
     if (!a || a.slot === "passive") return "invalid-ability";
     if (this.progression && a.rank === 0) return "unlearned";
@@ -269,6 +277,10 @@ export class HeroCombatSimulation extends TrainingSimulation {
     if (this.pending.length && !this.canQueueFollowUp()) return "casting";
     if (this.isActionLocked() && !this.canQueueFollowUp()) return "animation";
     if (this.player.mana + 1e-8 < a.manaCost) return "mana";
+    // Requested activation gate only: keep Void Projectile's existing aim,
+    // flight/collision/mark rules once a valid cast has been committed.
+    if (this.hero.id === "layla" && a.effectId === "orb-mark" &&
+        !this.hasSkillHeroInRange(a)) return "no-target";
     return null;
   }
   currentFacing() {

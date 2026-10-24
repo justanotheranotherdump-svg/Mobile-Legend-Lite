@@ -109,3 +109,7 @@ Brawl has one real default Flicker slot; a second spell is not implemented. Nume
 ### Latest Franco recommended builds
 
 `MOBA-Lab-Franco-Builds.html` is the current standalone, with Tank / Roam, Hybrid / Pickoff and Damage / Burst recommendations under Preparation → Battle Setup → Franco. Use build saves/selects an editable item order; all equipment still costs match gold. `MOBA-Lab-Franco-Builds-source.zip` contains current source/tests/docs. See `docs/franco-builds/README.md` for verification and existing legacy test discrepancies.
+
+### Current — Layla skill 2 target gate
+
+`MOBA-Lab-Layla-Skill2-Target-Gate.html` supersedes the prior game download and retains the Franco builds/hook and Brawl work. Layla skill 2 requires a targetable living enemy hero in range; otherwise clicking does not cast or consume mana/cooldown. `MOBA-Lab-Layla-Skill2-Target-Gate-source.zip` includes editable source/tests/docs and playable root HTML. See `docs/layla-skill2-gate/README.md` and `Layla-Skill2-Target-Gate-Manifest.json` for checks, hashes and the unchanged historical test failure.
