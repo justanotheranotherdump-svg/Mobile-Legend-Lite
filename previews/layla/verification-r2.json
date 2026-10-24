@@ -1,0 +1,47 @@
+{
+  "revision": "layla-workshop-r2",
+  "date": "2026-10-19",
+  "scope": "Effects and comparison only; model/rig/ten source actions/basic animation unchanged",
+  "unchangedProtectedFiles": 342,
+  "differences": [],
+  "addedRuntime": [],
+  "gameIntegration": false,
+  "focused": {
+    "pass": 32,
+    "total": 32,
+    "fail": 0,
+    "skipped": 0
+  },
+  "browserGroups": 51,
+  "groups": [
+    {
+      "evidence": "browser-results.json",
+      "checks": 34
+    },
+    {
+      "evidence": "browser-effects-results.json",
+      "checks": 17
+    }
+  ],
+  "fullRepository": {
+    "pass": 827,
+    "total": 828,
+    "fail": 1,
+    "skipped": 0,
+    "knownUnchangedFailure": "Historical Franco Plan A ignored downloads already missing at initial baseline; not repaired by touching parked Franco or bypassed."
+  },
+  "assets": {
+    "previews/layla/assets/layla-rework.glb": "beed648c0fa411a0dd3fd4c09a9a10812a4af5ad012272af7d7fe930ac393bb4",
+    "assets/source_blender/layla-rework-preview.blend": "02906828c25551f524ec37168e5750685edff475c3ea249a0822d3437898a057",
+    "scripts/layla/author-model.py": "dac659ebab690e6a028138d85a06354770d02652b4b489c363ceacceba697d58",
+    "previews/layla/asset-manifest.json": "972a4ee1a5f21ce190db30a4cc94195875d5ff7ca1671199642f0e857881264e",
+    "previews/layla/research.json": "7fa8a95fa59b76e7a2dae7cb4b24e30d33a6c9024ecffcd83b2064e187391488",
+    "previews/layla/Layla-Animation-Preview.html": "2eb710ea10ed8193f05615acc6d8bc581b4831c5ccbc89a8d89ed8077f1863a0",
+    "previews/layla/settings.json": "526799050198a8f66c1632880fd8e300b0df0624f8f05791856278e804bc4002",
+    "previews/layla/viewer.js": "265f604a517d5251b0053cfa7ba438a67d4a431da4907f3a44bdc38f8f953e27",
+    "previews/layla/simulation.js": "d85975814b0099ea3f398cdf92ba1cbb0d17f6a8ba76558d60ae211af7028df5",
+    "previews/layla/effects.js": "a6a899c14e4f4d5b02045a6797234ff62a82b70a1e267d1b0bec03348226a85b",
+    "previews/layla/comparison.js": "e7953aea5cbb1f3b48f230c588f8254452a88aefa3fb6c29eac71caa1667c67f"
+  },
+  "approval": "STOP FOR USER EFFECTS REVIEW — no integration authorized"
+}

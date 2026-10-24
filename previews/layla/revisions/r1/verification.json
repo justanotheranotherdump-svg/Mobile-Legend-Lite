@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-19",
+  "revision": "layla-workshop-r1",
+  "scope": "Separate unapproved original Layla model and animation workshop only",
+  "unchangedOriginalFiles": 337,
+  "differences": [],
+  "addedRuntime": [],
+  "gameIntegration": false,
+  "rootGameHtmlSHA256": "ae74c0349662142c0272a781e4ee3bc6315943a84128b1715fe2ae8329d7a2c0",
+  "focusedUnitTests": {
+    "pass": 21,
+    "total": 21,
+    "fail": 0,
+    "skipped": 0
+  },
+  "fullRepositoryTests": {
+    "pass": 816,
+    "total": 817,
+    "fail": 1,
+    "skipped": 0,
+    "preexistingBaseline": {
+      "pass": 795,
+      "total": 796,
+      "fail": 1
+    },
+    "knownUnchangedFailure": "Historical Franco Plan A artifact-hash test: old ignored download files already absent at task start; not modified or bypassed."
+  },
+  "browserGroups": 34,
+  "browserEnvironment": "Linux Chromium/software WebGL2, offline file://; 390px emulation; synthetic visibility event; not Windows/physical-device certification.",
+  "assets": {
+    "previews/layla/assets/layla-rework.glb": "beed648c0fa411a0dd3fd4c09a9a10812a4af5ad012272af7d7fe930ac393bb4",
+    "assets/source_blender/layla-rework-preview.blend": "02906828c25551f524ec37168e5750685edff475c3ea249a0822d3437898a057",
+    "previews/layla/Layla-Animation-Preview.html": "751f64b390efbced86de07d43572b55dd5f6cae0ae882770ddac7f0a763e5098",
+    "previews/layla/settings.json": "0e023bf354c6fbf6b1ec48e07ab162257017afa1fb0523e5f5d126a2da8bf1ad",
+    "previews/layla/research.json": "7fa8a95fa59b76e7a2dae7cb4b24e30d33a6c9024ecffcd83b2064e187391488",
+    "previews/layla/simulation.js": "ceedc56232301621d497d28a722638b8314e48fc895e926d6141edac8d43433b",
+    "previews/layla/viewer.js": "ef1d90ac742b77470db2a0b5d6f51b535b4b2eb6a9d0715420a6fcb36faf7df6"
+  },
+  "approval": "STOP FOR USER VISUAL FEEDBACK — no Layla replacement or Franco integration authorized"
+}

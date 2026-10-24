@@ -1,0 +1,14 @@
+{
+  "checks": [
+    "first launch shows creation only; supplied RGBA artwork decodes with its real alpha preserved and no 3D model loaded",
+    "invalid names cannot continue, and a valid name still requires explicit gender selection",
+    "country/gender selection saves the actual local profile and lobby displays it with the existing GLB, not the PNG",
+    "all 13 lobby placeholders are disabled/no-op; menu combat keys never initialize training",
+    "actual offline file:// localStorage survives same-file reload and skips creation for a valid profile",
+    "MODE/back/Escape preserve profile and reuse one GLB presentation; Classic/Ranked/Brawl cannot launch matches"
+  ],
+  "errors": [],
+  "warnings": [],
+  "requests": [],
+  "failure": "AssertionError [ERR_ASSERTION]: horizontal overflow 1280x720\n\nfalse !== true\n"
+}

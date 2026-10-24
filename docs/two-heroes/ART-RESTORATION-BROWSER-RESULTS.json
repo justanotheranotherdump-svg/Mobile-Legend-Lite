@@ -1,0 +1,18 @@
+{
+  "passed": 10,
+  "checks": [
+    "Reference-inspired transparent Layla lobby illustration and illustrated avatar; left placement does not overlap invitation; zero model loads",
+    "Profile uses matching illustrated avatar; empty new-account statistics remain honest",
+    "Both Shop cards and clicked details use byte-identical per-hero 2D illustrations, full opacity and no 3D canvas",
+    "Illustrated details remain reachable at 960\u00d7540 and 844\u00d7390 landscape",
+    "Original 2D stage stays fixed for null/Layla/clear; illustrated teammates; unowned Franco absent from human picks even with AI Layla present",
+    "Real 32,000-Coin purchase unlocks Franco with AI Layla; only Coins debited; loading lineup uses illustrated PNGs",
+    "Actual match Shop permits paid duplicate daggers with stacked stats, sells only one copy, removes non-boot Owned lock and rejects a second boots purchase atomically",
+    "Duplicate active-item USE buttons are independently reachable with unique IDs; shared Wind cooldown cannot be reset, Frozen coexists, account wallet unchanged",
+    "Play Franco \u2192 quit \u2192 illustrated lobby \u2192 null selection \u2192 choose Layla recreates disposed preview correctly",
+    "Fresh HTML-only offline run: no remote requests or page errors"
+  ],
+  "external": [],
+  "errors": [],
+  "environment": "Linux Chromium software WebGL; not native GPU or physical device certification"
+}

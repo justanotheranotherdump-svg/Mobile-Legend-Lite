@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-19",
+  "branch": "arena/55ce0f80-mobile-legend-lite",
+  "htmlBytes": 20828946,
+  "htmlSha256": "faa2f84df58d0414f5caa8a84077a7e65f6ab4d4f3f56367ef84174ad9769ae8",
+  "runtimeAssets": 32,
+  "separateHeroPngs": 16,
+  "approvedOriginalHashesUnchanged": 71,
+  "zipContentsAndAssetHashesVerified": true,
+  "isolatedNpmCiAndBuildPassed": true,
+  "isolatedRebuildByteIdentical": true,
+  "isolatedFullUnit": {
+    "tests": 903,
+    "passed": 902,
+    "failed": 1,
+    "skipped": 0,
+    "soleFailure": "Pre-existing missing saved historical Plan A download binaries"
+  },
+  "browserChecks": {
+    "twoHeroes": 18,
+    "illustratedUI": 8,
+    "existingHeroGuide": 9
+  },
+  "excludedDependenciesGitCachesReferencesScreenshotsAndDuplicateBuilds": true,
+  "noCommitOrPush": true,
+  "finalExtractedSourceHtmlOnlyBrowserChecks": 8,
+  "finalExtractedSourceBrowserErrors": [],
+  "finalExtractedSourceExternalRequests": [],
+  "status": "Historical earlier restoration result; current results are CURRENT-FEEDBACK-RESULTS.json"
+}

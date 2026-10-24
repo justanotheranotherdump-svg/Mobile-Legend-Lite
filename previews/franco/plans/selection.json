@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-19",
+  "selectedPlan": "B",
+  "revision": "plan-b-r5",
+  "userDecision": "User prefers current Plan B; park Franco while Layla is completely reworked; integrate both later after review.",
+  "status": "Selected and parked; not integrated.",
+  "assetsAndSettings": "plan-b-r5.json",
+  "frozenDeliverables": {
+    "deliverables/Franco-Plan-B-R5.html": {
+      "bytes": 3208810,
+      "sha256": "69c12395439b7d7ad71f7e37c996fef029cfff9ecb173ab8df6f41bb2918ff7b"
+    },
+    "deliverables/Franco-Plan-B-R5-Source.zip": {
+      "bytes": 4041833,
+      "sha256": "bc7cc4243f6e42384c249f8c96042ed090ac89f4d9219a013a55ffa5cc1e8cc9"
+    }
+  },
+  "integrationAuthorizedNow": false
+}

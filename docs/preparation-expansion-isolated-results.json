@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "bundleSha256": "fdb043347dfc131b6df8eb21118c6f7e2aeec5795876040ed849bf8fdf20a626",
+  "environment": "Linux Chromium/software WebGL, offline file:// with ordinary file-origin security; no sibling assets; Unicode and spaces paths; no combat Gold or progression injection",
+  "results": [
+    {
+      "label": "standaloneFile",
+      "entry": "/tmp/MOBA preparation — Unicode space ODwoxk/Standalone only — 测试/Play preparation.html",
+      "sha256": "fdb043347dfc131b6df8eb21118c6f7e2aeec5795876040ed849bf8fdf20a626",
+      "seconds": 66,
+      "checkGroups": 13,
+      "log": "docs/preparation-expansion-isolated-standaloneFile.txt",
+      "record": "docs/preparation-expansion-isolated-standaloneFile.json",
+      "status": "passed"
+    },
+    {
+      "label": "archiveFile",
+      "entry": "/tmp/MOBA preparation — Unicode space ODwoxk/Source ZIP index only — 测试/index.html",
+      "sha256": "fdb043347dfc131b6df8eb21118c6f7e2aeec5795876040ed849bf8fdf20a626",
+      "seconds": 67,
+      "checkGroups": 13,
+      "log": "docs/preparation-expansion-isolated-archiveFile.txt",
+      "record": "docs/preparation-expansion-isolated-archiveFile.json",
+      "status": "passed"
+    }
+  ]
+}

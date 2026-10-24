@@ -1,0 +1,18 @@
+{
+  "environment": "Linux Chromium; standalone file://; offline; test-only world-context failure injection",
+  "checks": [
+    "actual local graphics-preparation failure shows honest reason and Retry / Back, disposes partial input/HUD and never counts a started match",
+    "Retry revalidates the confirmed pick and reruns actual preparation, starting exactly one healthy match with the retained approved model",
+    "Back from a second real failure returns safely to the configured room with no duplicate runtime, input or HUD",
+    "trusted emulated touch drag still moves the hero with a centered non-modal Shop open; modal fixture protection and editor isolation remain separate",
+    "native keyboard activation of a focused + spends exactly one point without leaking Space into an attack or skill cast"
+  ],
+  "errors": [],
+  "expectedGraphicsErrors": [
+    "THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context.",
+    "Error: THREE.WebGLRenderer: Error creating WebGL context.\n    at new jv (file:///home/user/Mobile-Legend-Lite/index.html:4264:24888)\n    at new Gv (file:///home/user/Mobile-Legend-Lite/index.html:4264:186335)\n    at new im (file:///home/user/Mobile-Legend-Lite/index.html:4264:5042506)\n    at hn (file:///home/user/Mobile-Legend-Lite/index.html:45:3573908)\n    at gm (file:///home/user/Mobile-Legend-Lite/index.html:4264:5048788)\n    at async S (file:///home/user/Mobile-Legend-Lite/index.html:4289:25080)",
+    "THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context.",
+    "Error: THREE.WebGLRenderer: Error creating WebGL context.\n    at new jv (file:///home/user/Mobile-Legend-Lite/index.html:4264:24888)\n    at new Gv (file:///home/user/Mobile-Legend-Lite/index.html:4264:186335)\n    at new im (file:///home/user/Mobile-Legend-Lite/index.html:4264:5042506)\n    at hn (file:///home/user/Mobile-Legend-Lite/index.html:45:3573908)\n    at gm (file:///home/user/Mobile-Legend-Lite/index.html:4264:5048788)\n    at async S (file:///home/user/Mobile-Legend-Lite/index.html:4289:25080)"
+  ],
+  "requests": []
+}

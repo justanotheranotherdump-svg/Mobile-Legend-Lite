@@ -1,0 +1,3344 @@
+
+> moba-foundation@0.1.0 test
+> node --test tests/*.test.js
+
+TAP version 13
+# Subtest: nearest: hero preference always wins across real categories
+ok 1 - nearest: hero preference always wins across real categories
+  ---
+  duration_ms: 1.504259
+  type: 'test'
+  ...
+# Subtest: nearest: minion preference always wins across real categories
+ok 2 - nearest: minion preference always wins across real categories
+  ---
+  duration_ms: 0.225956
+  type: 'test'
+  ...
+# Subtest: nearest: tower preference always wins across real categories
+ok 3 - nearest: tower preference always wins across real categories
+  ---
+  duration_ms: 0.172643
+  type: 'test'
+  ...
+# Subtest: current-hp: hero preference always wins across real categories
+ok 4 - current-hp: hero preference always wins across real categories
+  ---
+  duration_ms: 0.129317
+  type: 'test'
+  ...
+# Subtest: current-hp: minion preference always wins across real categories
+ok 5 - current-hp: minion preference always wins across real categories
+  ---
+  duration_ms: 0.18256
+  type: 'test'
+  ...
+# Subtest: current-hp: tower preference always wins across real categories
+ok 6 - current-hp: tower preference always wins across real categories
+  ---
+  duration_ms: 0.082322
+  type: 'test'
+  ...
+# Subtest: hp-percent: hero preference always wins across real categories
+ok 7 - hp-percent: hero preference always wins across real categories
+  ---
+  duration_ms: 0.199614
+  type: 'test'
+  ...
+# Subtest: hp-percent: minion preference always wins across real categories
+ok 8 - hp-percent: minion preference always wins across real categories
+  ---
+  duration_ms: 0.083631
+  type: 'test'
+  ...
+# Subtest: hp-percent: tower preference always wins across real categories
+ok 9 - hp-percent: tower preference always wins across real categories
+  ---
+  duration_ms: 0.416871
+  type: 'test'
+  ...
+# Subtest: manual: hero preference always wins across real categories
+ok 10 - manual: hero preference always wins across real categories
+  ---
+  duration_ms: 0.314891
+  type: 'test'
+  ...
+# Subtest: manual: minion preference always wins across real categories
+ok 11 - manual: minion preference always wins across real categories
+  ---
+  duration_ms: 0.147301
+  type: 'test'
+  ...
+# Subtest: manual: tower preference always wins across real categories
+ok 12 - manual: tower preference always wins across real categories
+  ---
+  duration_ms: 0.121431
+  type: 'test'
+  ...
+# Subtest: lowest absolute HP and percentage choose differently inside preferred hero category
+ok 13 - lowest absolute HP and percentage choose differently inside preferred hero category
+  ---
+  duration_ms: 0.150268
+  type: 'test'
+  ...
+# Subtest: valid explicit pin overrides all category/mode policies
+ok 14 - valid explicit pin overrides all category/mode policies
+  ---
+  duration_ms: 0.097654
+  type: 'test'
+  ...
+# Subtest: stale manual dead is discarded and actual eligible enemy reacquired
+ok 15 - stale manual dead is discarded and actual eligible enemy reacquired
+  ---
+  duration_ms: 0.108695
+  type: 'test'
+  ...
+# Subtest: stale manual out-of-range is discarded and actual eligible enemy reacquired
+ok 16 - stale manual out-of-range is discarded and actual eligible enemy reacquired
+  ---
+  duration_ms: 0.052388
+  type: 'test'
+  ...
+# Subtest: stale manual removed is discarded and actual eligible enemy reacquired
+ok 17 - stale manual removed is discarded and actual eligible enemy reacquired
+  ---
+  duration_ms: 0.054222
+  type: 'test'
+  ...
+# Subtest: stale manual protected is discarded and actual eligible enemy reacquired
+ok 18 - stale manual protected is discarded and actual eligible enemy reacquired
+  ---
+  duration_ms: 0.059893
+  type: 'test'
+  ...
+# Subtest: category with no eligible target falls back safely but never selects allies/protected structures
+ok 19 - category with no eligible target falls back safely but never selects allies/protected structures
+  ---
+  duration_ms: 0.103875
+  type: 'test'
+  ...
+# Subtest: large attack resets prior minion selection, minion/tower commands attack not only toggle, no chase/cooldown bypass
+ok 20 - large attack resets prior minion selection, minion/tower commands attack not only toggle, no chase/cooldown bypass
+  ---
+  duration_ms: 7.201793
+  type: 'test'
+  ...
+# Subtest: rejected attack emits visible-feedback data without spending mana or moving
+ok 21 - rejected attack emits visible-feedback data without spending mana or moving
+  ---
+  duration_ms: 2.165938
+  type: 'test'
+  ...
+# Subtest: death at 0s uses 5s shared respawn
+ok 22 - death at 0s uses 5s shared respawn
+  ---
+  duration_ms: 0.138935
+  type: 'test'
+  ...
+# Subtest: death at 30s uses 5s shared respawn
+ok 23 - death at 30s uses 5s shared respawn
+  ---
+  duration_ms: 0.052157
+  type: 'test'
+  ...
+# Subtest: death at 59.99s uses 5s shared respawn
+ok 24 - death at 59.99s uses 5s shared respawn
+  ---
+  duration_ms: 0.046349
+  type: 'test'
+  ...
+# Subtest: death at 60s uses 7s shared respawn
+ok 25 - death at 60s uses 7s shared respawn
+  ---
+  duration_ms: 0.069238
+  type: 'test'
+  ...
+# Subtest: death at 630s uses 25s shared respawn
+ok 26 - death at 630s uses 25s shared respawn
+  ---
+  duration_ms: 0.068915
+  type: 'test'
+  ...
+# Subtest: death at 1200s uses 45s shared respawn
+ok 27 - death at 1200s uses 45s shared respawn
+  ---
+  duration_ms: 0.083524
+  type: 'test'
+  ...
+# Subtest: death at 99999s uses 45s shared respawn
+ok 28 - death at 99999s uses 45s shared respawn
+  ---
+  duration_ms: 0.070122
+  type: 'test'
+  ...
+# Subtest: respawn rules are configurable, reject bad time/config and apply once to both hero teams
+ok 29 - respawn rules are configurable, reject bad time/config and apply once to both hero teams
+  ---
+  duration_ms: 4.824808
+  type: 'test'
+  ...
+# Subtest: low but safe NPC keeps fighting minions rather than fleeing because HP is not full
+ok 30 - low but safe NPC keeps fighting minions rather than fleeing because HP is not full
+  ---
+  duration_ms: 0.465423
+  type: 'test'
+  ...
+# Subtest: low-health NPC can safely finish an almost defeated hero
+ok 31 - low-health NPC can safely finish an almost defeated hero
+  ---
+  duration_ms: 0.111285
+  type: 'test'
+  ...
+# Subtest: outnumbered low-health NPC commits retreat across small health fluctuations
+ok 32 - outnumbered low-health NPC commits retreat across small health fluctuations
+  ---
+  duration_ms: 0.253333
+  type: 'test'
+  ...
+# Subtest: recovering NPC waits for commitment/recovery then reengages, grace prevents oscillation
+ok 33 - recovering NPC waits for commitment/recovery then reengages, grace prevents oscillation
+  ---
+  duration_ms: 0.366384
+  type: 'test'
+  ...
+# Subtest: recovery at own safe spawn is real and route flanks a blocking enemy
+ok 34 - recovery at own safe spawn is real and route flanks a blocking enemy
+  ---
+  duration_ms: 0.276342
+  type: 'test'
+  ...
+# Subtest: restore clears retreat commitment, stale marks, death timing and restores actual resources
+ok 35 - restore clears retreat commitment, stale marks, death timing and restores actual resources
+  ---
+  duration_ms: 0.21037
+  type: 'test'
+  ...
+# Subtest: loading state enforces 10s even if real resources ready early and does not cap slower loading
+ok 36 - loading state enforces 10s even if real resources ready early and does not cap slower loading
+  ---
+  duration_ms: 0.308728
+  type: 'test'
+  ...
+# Subtest: loading cannot finish before actual readiness and disposal invalidates ready state
+ok 37 - loading cannot finish before actual readiness and disposal invalidates ready state
+  ---
+  duration_ms: 1.034649
+  type: 'test'
+  ...
+# Subtest: selection resets hero on re-entry, never constructs simulation, preserves guarded flow
+ok 38 - selection resets hero on re-entry, never constructs simulation, preserves guarded flow
+  ---
+  duration_ms: 0.225467
+  type: 'test'
+  ...
+# Subtest: selected enemy HUD updates exact live HP/mana/level and switches target names
+ok 39 - selected enemy HUD updates exact live HP/mana/level and switches target names
+  ---
+  duration_ms: 0.312215
+  type: 'test'
+  ...
+# Subtest: enemy panel hides for death/removal/allies/minions and no fake mana row for mana-less actor
+ok 40 - enemy panel hides for death/removal/allies/minions and no fake mana row for mana-less actor
+  ---
+  duration_ms: 0.212678
+  type: 'test'
+  ...
+# Subtest: hero overhead data tracks actual team/name/level/HP/mana without using fixed values
+ok 41 - hero overhead data tracks actual team/name/level/HP/mana without using fixed values
+  ---
+  duration_ms: 0.165666
+  type: 'test'
+  ...
+# Subtest: execute: exact cooldown 90s and account unlock 1, valid descriptions/roles/icon
+ok 42 - execute: exact cooldown 90s and account unlock 1, valid descriptions/roles/icon
+  ---
+  duration_ms: 1.54626
+  type: 'test'
+  ...
+# Subtest: retribution: exact cooldown 35s and account unlock 1, valid descriptions/roles/icon
+ok 43 - retribution: exact cooldown 35s and account unlock 1, valid descriptions/roles/icon
+  ---
+  duration_ms: 0.115279
+  type: 'test'
+  ...
+# Subtest: inspire: exact cooldown 75s and account unlock 5, valid descriptions/roles/icon
+ok 44 - inspire: exact cooldown 75s and account unlock 5, valid descriptions/roles/icon
+  ---
+  duration_ms: 0.142641
+  type: 'test'
+  ...
+# Subtest: sprint: exact cooldown 100s and account unlock 9, valid descriptions/roles/icon
+ok 45 - sprint: exact cooldown 100s and account unlock 9, valid descriptions/roles/icon
+  ---
+  duration_ms: 0.117739
+  type: 'test'
+  ...
+# Subtest: revitalize: exact cooldown 75s and account unlock 11, valid descriptions/roles/icon
+ok 46 - revitalize: exact cooldown 75s and account unlock 11, valid descriptions/roles/icon
+  ---
+  duration_ms: 0.14595
+  type: 'test'
+  ...
+# Subtest: aegis: exact cooldown 75s and account unlock 13, valid descriptions/roles/icon
+ok 47 - aegis: exact cooldown 75s and account unlock 13, valid descriptions/roles/icon
+  ---
+  duration_ms: 0.106143
+  type: 'test'
+  ...
+# Subtest: petrify: exact cooldown 75s and account unlock 15, valid descriptions/roles/icon
+ok 48 - petrify: exact cooldown 75s and account unlock 15, valid descriptions/roles/icon
+  ---
+  duration_ms: 0.174472
+  type: 'test'
+  ...
+# Subtest: purify: exact cooldown 90s and account unlock 17, valid descriptions/roles/icon
+ok 49 - purify: exact cooldown 90s and account unlock 17, valid descriptions/roles/icon
+  ---
+  duration_ms: 0.067261
+  type: 'test'
+  ...
+# Subtest: flameshot: exact cooldown 50s and account unlock 19, valid descriptions/roles/icon
+ok 50 - flameshot: exact cooldown 50s and account unlock 19, valid descriptions/roles/icon
+  ---
+  duration_ms: 0.197623
+  type: 'test'
+  ...
+# Subtest: flicker: exact cooldown 120s and account unlock 21, valid descriptions/roles/icon
+ok 51 - flicker: exact cooldown 120s and account unlock 21, valid descriptions/roles/icon
+  ---
+  duration_ms: 0.299332
+  type: 'test'
+  ...
+# Subtest: vengeance: exact cooldown 75s and account unlock 23, valid descriptions/roles/icon
+ok 52 - vengeance: exact cooldown 75s and account unlock 23, valid descriptions/roles/icon
+  ---
+  duration_ms: 0.126522
+  type: 'test'
+  ...
+# Subtest: arrival: exact cooldown 75s and account unlock 25, valid descriptions/roles/icon
+ok 53 - arrival: exact cooldown 75s and account unlock 25, valid descriptions/roles/icon
+  ---
+  duration_ms: 0.057229
+  type: 'test'
+  ...
+# Subtest: spell validator rejects malformed count/cooldown/data; no executable config
+ok 54 - spell validator rejects malformed count/cooldown/data; no executable config
+  ---
+  duration_ms: 0.704056
+  type: 'test'
+  ...
+# Subtest: account save is separate from wallet/hero level, defaults to 1, awards once per match, caps25 and rejects stale locked selection
+ok 55 - account save is separate from wallet/hero level, defaults to 1, awards once per match, caps25 and rejects stale locked selection
+  ---
+  duration_ms: 0.606677
+  type: 'test'
+  ...
+# Subtest: blocked storage has session progress without corrupting old wallet
+ok 56 - blocked storage has session progress without corrupting old wallet
+  ---
+  duration_ms: 0.208234
+  type: 'test'
+  ...
+# Subtest: execute: rejected dead/paused/cooldown casts never consume a new cooldown
+ok 57 - execute: rejected dead/paused/cooldown casts never consume a new cooldown
+  ---
+  duration_ms: 5.373946
+  type: 'test'
+  ...
+# Subtest: retribution: rejected dead/paused/cooldown casts never consume a new cooldown
+ok 58 - retribution: rejected dead/paused/cooldown casts never consume a new cooldown
+  ---
+  duration_ms: 1.723885
+  type: 'test'
+  ...
+# Subtest: inspire: rejected dead/paused/cooldown casts never consume a new cooldown
+ok 59 - inspire: rejected dead/paused/cooldown casts never consume a new cooldown
+  ---
+  duration_ms: 1.809609
+  type: 'test'
+  ...
+# Subtest: sprint: rejected dead/paused/cooldown casts never consume a new cooldown
+ok 60 - sprint: rejected dead/paused/cooldown casts never consume a new cooldown
+  ---
+  duration_ms: 2.012013
+  type: 'test'
+  ...
+# Subtest: revitalize: rejected dead/paused/cooldown casts never consume a new cooldown
+ok 61 - revitalize: rejected dead/paused/cooldown casts never consume a new cooldown
+  ---
+  duration_ms: 1.362228
+  type: 'test'
+  ...
+# Subtest: aegis: rejected dead/paused/cooldown casts never consume a new cooldown
+ok 62 - aegis: rejected dead/paused/cooldown casts never consume a new cooldown
+  ---
+  duration_ms: 1.031947
+  type: 'test'
+  ...
+# Subtest: petrify: rejected dead/paused/cooldown casts never consume a new cooldown
+ok 63 - petrify: rejected dead/paused/cooldown casts never consume a new cooldown
+  ---
+  duration_ms: 1.315061
+  type: 'test'
+  ...
+# Subtest: purify: rejected dead/paused/cooldown casts never consume a new cooldown
+ok 64 - purify: rejected dead/paused/cooldown casts never consume a new cooldown
+  ---
+  duration_ms: 0.824966
+  type: 'test'
+  ...
+# Subtest: flameshot: rejected dead/paused/cooldown casts never consume a new cooldown
+ok 65 - flameshot: rejected dead/paused/cooldown casts never consume a new cooldown
+  ---
+  duration_ms: 1.514834
+  type: 'test'
+  ...
+# Subtest: flicker: rejected dead/paused/cooldown casts never consume a new cooldown
+ok 66 - flicker: rejected dead/paused/cooldown casts never consume a new cooldown
+  ---
+  duration_ms: 1.436759
+  type: 'test'
+  ...
+# Subtest: vengeance: rejected dead/paused/cooldown casts never consume a new cooldown
+ok 67 - vengeance: rejected dead/paused/cooldown casts never consume a new cooldown
+  ---
+  duration_ms: 2.395367
+  type: 'test'
+  ...
+# Subtest: arrival: rejected dead/paused/cooldown casts never consume a new cooldown
+ok 68 - arrival: rejected dead/paused/cooldown casts never consume a new cooldown
+  ---
+  duration_ms: 0.965309
+  type: 'test'
+  ...
+# Subtest: Execute exact true damage bypasses all shields and never hits a non-hero
+ok 69 - Execute exact true damage bypasses all shields and never hits a non-hero
+  ---
+  duration_ms: 1.612692
+  type: 'test'
+  ...
+# Subtest: Execute prefers valid manual hero pin, kill cooldown becomes 54, invalid categories reject
+ok 70 - Execute prefers valid manual hero pin, kill cooldown becomes 54, invalid categories reject
+  ---
+  duration_ms: 3.459806
+  type: 'test'
+  ...
+# Subtest: Retribution exact minion true damage, no jungle fabricated, and creep reductions/rewards/progression use real kind
+ok 71 - Retribution exact minion true damage, no jungle fabricated, and creep reductions/rewards/progression use real kind
+  ---
+  duration_ms: 1.489134
+  type: 'test'
+  ...
+# Subtest: Retribution five-action extension does not invent a blessing; fifteen actions grant stats once
+ok 72 - Retribution five-action extension does not invent a blessing; fifteen actions grant stats once
+  ---
+  duration_ms: 1.234744
+  type: 'test'
+  ...
+# Subtest: Retribution first-five-minute shared minion restriction is inactive after300s
+ok 73 - Retribution first-five-minute shared minion restriction is inactive after300s
+  ---
+  duration_ms: 1.672971
+  type: 'test'
+  ...
+# Subtest: Inspire 1.5 rate, eight successful hits, defense ignore 9% atL1, exact60 healing and expiry
+ok 74 - Inspire 1.5 rate, eight successful hits, defense ignore 9% atL1, exact60 healing and expiry
+  ---
+  duration_ms: 2.650014
+  type: 'test'
+  ...
+# Subtest: Inspire rejected basic actions do not spend charges or skip cooldown/animation lock
+ok 75 - Inspire rejected basic actions do not spend charges or skip cooldown/animation lock
+  ---
+  duration_ms: 1.449745
+  type: 'test'
+  ...
+# Subtest: Sprint only applies speed once, cleanses slow, immunity and full expiry
+ok 76 - Sprint only applies speed once, cleanses slow, immunity and full expiry
+  ---
+  duration_ms: 1.450802
+  type: 'test'
+  ...
+# Subtest: Revitalize ten ticks over4s with nonstacking receive bonus, no outside/enemy heals and cleanup
+ok 77 - Revitalize ten ticks over4s with nonstacking receive bonus, no outside/enemy heals and cleanup
+  ---
+  duration_ms: 2.31949
+  type: 'test'
+  ...
+# Subtest: Aegis exact840 shield lasts5s absorbs once without changing max HP
+ok 78 - Aegis exact840 shield lasts5s absorbs once without changing max HP
+  ---
+  duration_ms: 1.341633
+  type: 'test'
+  ...
+# Subtest: Petrify magic115, stun0.8 then50% slow0.8, immunity respected
+ok 79 - Petrify magic115, stun0.8 then50% slow0.8, immunity respected
+  ---
+  duration_ms: 1.039463
+  type: 'test'
+  ...
+# Subtest: Purify removes known removable debuffs, excludes Suppression and has1.2s control immunity not damage immunity
+ok 80 - Purify removes known removable debuffs, excludes Suppression and has1.2s control immunity not damage immunity
+  ---
+  duration_ms: 1.368973
+  type: 'test'
+  ...
+# Subtest: Flameshot first hero hit scales actual travel, not visual, minions ignored, obstacles block
+ok 81 - Flameshot first hero hit scales actual travel, not visual, minions ignored, obstacles block
+  ---
+  duration_ms: 5.636041
+  type: 'test'
+  ...
+# Subtest: Flameshot close knockback respects bounds and control immunity
+ok 82 - Flameshot close knockback respects bounds and control immunity
+  ---
+  duration_ms: 1.937194
+  type: 'test'
+  ...
+# Subtest: Flicker fixed3.5 safe distance, six hybrid defense atL1 for1s, walls/bounds block
+ok 83 - Flicker fixed3.5 safe distance, six hybrid defense atL1 for1s, walls/bounds block
+  ---
+  duration_ms: 2.080441
+  type: 'test'
+  ...
+# Subtest: Vengeance35% reduction then35% actualHP magic reflection, no recursion and expires3s
+ok 84 - Vengeance35% reduction then35% actualHP magic reflection, no recursion and expires3s
+  ---
+  duration_ms: 1.024621
+  type: 'test'
+  ...
+# Subtest: Arrival needs actual ally destination, channels3s safely, speeddecays3s and expires
+ok 85 - Arrival needs actual ally destination, channels3s safely, speeddecays3s and expires
+  ---
+  duration_ms: 1.047182
+  type: 'test'
+  ...
+# Subtest: Arrival move cancels once and refunds30 seconds
+ok 86 - Arrival move cancels once and refunds30 seconds
+  ---
+  duration_ms: 0.852743
+  type: 'test'
+  ...
+# Subtest: Arrival target-died cancels once and refunds30 seconds
+ok 87 - Arrival target-died cancels once and refunds30 seconds
+  ---
+  duration_ms: 0.68463
+  type: 'test'
+  ...
+# Subtest: Arrival damage cancels once and refunds30 seconds
+ok 88 - Arrival damage cancels once and refunds30 seconds
+  ---
+  duration_ms: 1.301994
+  type: 'test'
+  ...
+# Subtest: Arrival death cancels once and refunds30 seconds
+ok 89 - Arrival death cancels once and refunds30 seconds
+  ---
+  duration_ms: 0.698531
+  type: 'test'
+  ...
+# Subtest: Arrival hero-action cancels once and refunds30 seconds
+ok 90 - Arrival hero-action cancels once and refunds30 seconds
+  ---
+  duration_ms: 0.696805
+  type: 'test'
+  ...
+# Subtest: new match clears spell cooldown/effects/priority without resetting saved account unlocks
+ok 91 - new match clears spell cooldown/effects/priority without resetting saved account unlocks
+  ---
+  duration_ms: 1.43173
+  type: 'test'
+  ...
+# Subtest: all twelve exact informational role sets and unique bundled SVG icons match the supplied reference
+ok 92 - all twelve exact informational role sets and unique bundled SVG icons match the supplied reference
+  ---
+  duration_ms: 1.215611
+  type: 'test'
+  ...
+# Subtest: missing effect parameters and unknown target/executor fail loudly instead of activating a fake spell
+ok 93 - missing effect parameters and unknown target/executor fail loudly instead of activating a fake spell
+  ---
+  duration_ms: 1.099232
+  type: 'test'
+  ...
+# Subtest: Revitalize receive bonus affects shared healing/shields at1.25, never additive-stacks and disappears outside
+ok 94 - Revitalize receive bonus affects shared healing/shields at1.25, never additive-stacks and disappears outside
+  ---
+  duration_ms: 0.87872
+  type: 'test'
+  ...
+# Subtest: Purify exact15% speed and1.2s immunity expire without leaving permanent stat bonuses
+ok 95 - Purify exact15% speed and1.2s immunity expire without leaving permanent stat bonuses
+  ---
+  duration_ms: 0.71915
+  type: 'test'
+  ...
+# Subtest: Inspire does not consume charges on invalid/dead targets, but a shielded landed hit still does
+ok 96 - Inspire does not consume charges on invalid/dead targets, but a shielded landed hit still does
+  ---
+  duration_ms: 0.752311
+  type: 'test'
+  ...
+# Subtest: Retribution allied-jungle first120s extra15% applies to hero/skill damage too, only where a real region is configured
+ok 97 - Retribution allied-jungle first120s extra15% applies to hero/skill damage too, only where a real region is configured
+  ---
+  duration_ms: 0.906475
+  type: 'test'
+  ...
+# Subtest: movement is locked throughout real Shoot, held WASD resumes after complete clip
+ok 98 - movement is locked throughout real Shoot, held WASD resumes after complete clip
+  ---
+  duration_ms: 16.138167
+  type: 'test'
+  ...
+# Subtest: all 3 skills stop movement for the complete cast animation, not just windup
+ok 99 - all 3 skills stop movement for the complete cast animation, not just windup
+  ---
+  duration_ms: 4.425418
+  type: 'test'
+  ...
+# Subtest: basic cooldown/full scaled animation agree; a queued follow-up never extends or interrupts the basic lock
+ok 100 - basic cooldown/full scaled animation agree; a queued follow-up never extends or interrupts the basic lock
+  ---
+  duration_ms: 1.233085
+  type: 'test'
+  ...
+# Subtest: basic lock homes to moving target, passes walls and other enemies, hits exactly once
+ok 101 - basic lock homes to moving target, passes walls and other enemies, hits exactly once
+  ---
+  duration_ms: 3.998827
+  type: 'test'
+  ...
+# Subtest: range is checked on acceptance, never bypassed on new attack, valid locked shot follows beyond range
+ok 102 - range is checked on acceptance, never bypassed on new attack, valid locked shot follows beyond range
+  ---
+  duration_ms: 4.577677
+  type: 'test'
+  ...
+# Subtest: invalid/dead/untargetable locked target cancels shot with no retarget damage
+ok 103 - invalid/dead/untargetable locked target cancels shot with no retarget damage
+  ---
+  duration_ms: 5.771584
+  type: 'test'
+  ...
+# Subtest: tap auto-cast uses each skill range, not old mouse aim or basic range
+ok 104 - tap auto-cast uses each skill range, not old mouse aim or basic range
+  ---
+  duration_ms: 1.130493
+  type: 'test'
+  ...
+# Subtest: tap obeys Settings nearest/current HP/HP percentage, stable ties and manual pins
+ok 105 - tap obeys Settings nearest/current HP/HP percentage, stable ties and manual pins
+  ---
+  duration_ms: 0.767506
+  type: 'test'
+  ...
+# Subtest: no eligible auto target never spends mana or cooldown; out-of-range pin never silently switches
+ok 106 - no eligible auto target never spends mana or cooldown; out-of-range pin never silently switches
+  ---
+  duration_ms: 0.822434
+  type: 'test'
+  ...
+# Subtest: aim preview has no costs, cancellation has no effect and release casts exactly once
+ok 107 - aim preview has no costs, cancellation has no effect and release casts exactly once
+  ---
+  duration_ms: 0.67418
+  type: 'test'
+  ...
+# Subtest: manual hold aim may override pin; enemy under sight locks and homes, ground aim never auto-retargets
+ok 108 - manual hold aim may override pin; enemy under sight locks and homes, ground aim never auto-retargets
+  ---
+  duration_ms: 1.785369
+  type: 'test'
+  ...
+# Subtest: auto S1/S2 home through objects, ultimate adjusts to locked target at firing instant
+ok 109 - auto S1/S2 home through objects, ultimate adjusts to locked target at firing instant
+  ---
+  duration_ms: 5.062763
+  type: 'test'
+  ...
+# Subtest: hover aim no longer controls facing; movement, active aim and shot determine facing
+ok 110 - hover aim no longer controls facing; movement, active aim and shot determine facing
+  ---
+  duration_ms: 0.805132
+  type: 'test'
+  ...
+# Subtest: reset/death clears preview/action lock and all targeted projectile state
+ok 111 - reset/death clears preview/action lock and all targeted projectile state
+  ---
+  duration_ms: 0.453969
+  type: 'test'
+  ...
+# Subtest: catalog contains one approved playable hero, not the historical training fixture
+ok 112 - catalog contains one approved playable hero, not the historical training fixture
+  ---
+  duration_ms: 2.11578
+  type: 'test'
+  ...
+# Subtest: all seven role filters and normalized case-insensitive search are genuine
+ok 113 - all seven role filters and normalized case-insensitive search are genuine
+  ---
+  duration_ms: 0.211394
+  type: 'test'
+  ...
+# Subtest: four explicitly UI-only editable ratings are bounded and frozen
+ok 114 - four explicitly UI-only editable ratings are bounded and frozen
+  ---
+  duration_ms: 0.215973
+  type: 'test'
+  ...
+# Subtest: hero inspection requires Shop and returns to Shop before lobby
+ok 115 - hero inspection requires Shop and returns to Shop before lobby
+  ---
+  duration_ms: 0.11569
+  type: 'test'
+  ...
+# Subtest: all four abilities provide descriptions and actual current values
+ok 116 - all four abilities provide descriptions and actual current values
+  ---
+  duration_ms: 0.481562
+  type: 'test'
+  ...
+# Subtest: skill UI facts follow changed config without hard-coded screenshot values
+ok 117 - skill UI facts follow changed config without hard-coded screenshot values
+  ---
+  duration_ms: 0.142193
+  type: 'test'
+  ...
+# Subtest: read-only guide leaves registry configuration byte-equivalent
+ok 118 - read-only guide leaves registry configuration byte-equivalent
+  ---
+  duration_ms: 0.251061
+  type: 'test'
+  ...
+# Subtest: production catalog eagerly bundles hero JSON and GLB bytes even with file inlining disabled
+ok 119 - production catalog eagerly bundles hero JSON and GLB bytes even with file inlining disabled
+  ---
+  duration_ms: 273.318325
+  type: 'test'
+  ...
+# Subtest: 39 complete simulation snapshots match pre-refactor baseline exactly
+ok 120 - 39 complete simulation snapshots match pre-refactor baseline exactly
+  ---
+  duration_ms: 12.57791
+  type: 'test'
+  ...
+# Subtest: migrated hero produces the identical player fields/values; world data owns spawn only
+ok 121 - migrated hero produces the identical player fields/values; world data owns spawn only
+  ---
+  duration_ms: 0.800235
+  type: 'test'
+  ...
+# Subtest: hero directory auto-discovery supports adding definitions without a central roster
+ok 122 - hero directory auto-discovery supports adding definitions without a central roster
+  ---
+  duration_ms: 0.514606
+  type: 'test'
+  ...
+# Subtest: duplicate registry IDs, unknown IDs and empty registry give clear errors
+ok 123 - duplicate registry IDs, unknown IDs and empty registry give clear errors
+  ---
+  duration_ms: 0.602176
+  type: 'test'
+  ...
+# Subtest: registry definitions are immutable; independent state/reset cannot mutate definitions
+ok 124 - registry definitions are immutable; independent state/reset cannot mutate definitions
+  ---
+  duration_ms: 0.234933
+  type: 'test'
+  ...
+# Subtest: missing hero.json reports its hero-local file path
+ok 125 - missing hero.json reports its hero-local file path
+  ---
+  duration_ms: 0.18771
+  type: 'test'
+  ...
+# Subtest: missing abilities.json reports its hero-local file path
+ok 126 - missing abilities.json reports its hero-local file path
+  ---
+  duration_ms: 0.252956
+  type: 'test'
+  ...
+# Subtest: missing animations.json reports its hero-local file path
+ok 127 - missing animations.json reports its hero-local file path
+  ---
+  duration_ms: 0.118614
+  type: 'test'
+  ...
+# Subtest: missing visual.json reports its hero-local file path
+ok 128 - missing visual.json reports its hero-local file path
+  ---
+  duration_ms: 0.270022
+  type: 'test'
+  ...
+# Subtest: orphan data, folder/ID mismatch and unexpected fields are rejected
+ok 129 - orphan data, folder/ID mismatch and unexpected fields are rejected
+  ---
+  duration_ms: 0.750337
+  type: 'test'
+  ...
+# Subtest: invalid hero data: missing identity
+ok 130 - invalid hero data: missing identity
+  ---
+  duration_ms: 0.41825
+  type: 'test'
+  ...
+# Subtest: invalid hero data: invalid ID
+ok 131 - invalid hero data: invalid ID
+  ---
+  duration_ms: 0.191228
+  type: 'test'
+  ...
+# Subtest: invalid hero data: schema version
+ok 132 - invalid hero data: schema version
+  ---
+  duration_ms: 0.087947
+  type: 'test'
+  ...
+# Subtest: invalid hero data: zero max HP
+ok 133 - invalid hero data: zero max HP
+  ---
+  duration_ms: 0.110711
+  type: 'test'
+  ...
+# Subtest: invalid hero data: infinite speed
+ok 134 - invalid hero data: infinite speed
+  ---
+  duration_ms: 0.080302
+  type: 'test'
+  ...
+# Subtest: invalid hero data: negative radius
+ok 135 - invalid hero data: negative radius
+  ---
+  duration_ms: 0.075655
+  type: 'test'
+  ...
+# Subtest: invalid hero data: negative damage
+ok 136 - invalid hero data: negative damage
+  ---
+  duration_ms: 0.099638
+  type: 'test'
+  ...
+# Subtest: invalid hero data: NaN range
+ok 137 - invalid hero data: NaN range
+  ---
+  duration_ms: 0.131551
+  type: 'test'
+  ...
+# Subtest: invalid hero data: zero cooldown
+ok 138 - invalid hero data: zero cooldown
+  ---
+  duration_ms: 0.1971
+  type: 'test'
+  ...
+# Subtest: invalid hero data: unknown effect
+ok 139 - invalid hero data: unknown effect
+  ---
+  duration_ms: 0.102933
+  type: 'test'
+  ...
+# Subtest: invalid hero data: inherited effect
+ok 140 - invalid hero data: inherited effect
+  ---
+  duration_ms: 0.085508
+  type: 'test'
+  ...
+# Subtest: invalid hero data: missing reference
+ok 141 - invalid hero data: missing reference
+  ---
+  duration_ms: 0.099642
+  type: 'test'
+  ...
+# Subtest: invalid hero data: unknown placeholder
+ok 142 - invalid hero data: unknown placeholder
+  ---
+  duration_ms: 0.079339
+  type: 'test'
+  ...
+# Subtest: invalid hero data: invalid visual scale
+ok 143 - invalid hero data: invalid visual scale
+  ---
+  duration_ms: 0.102723
+  type: 'test'
+  ...
+# Subtest: invalid hero data: external model reference
+ok 144 - invalid hero data: external model reference
+  ---
+  duration_ms: 0.137991
+  type: 'test'
+  ...
+# Subtest: invalid hero data: missing model
+ok 145 - invalid hero data: missing model
+  ---
+  duration_ms: 0.125802
+  type: 'test'
+  ...
+# Subtest: invalid hero data: invented placeholder clips
+ok 146 - invalid hero data: invented placeholder clips
+  ---
+  duration_ms: 0.144146
+  type: 'test'
+  ...
+# Subtest: ability schema validates required fields, slot/effect/target/ranges and exact references
+ok 147 - ability schema validates required fields, slot/effect/target/ranges and exact references
+  ---
+  duration_ms: 0.566149
+  type: 'test'
+  ...
+# Subtest: shared damage effect preserves clamping and rejects arbitrary handlers/invalid input
+ok 148 - shared damage effect preserves clamping and rejects arbitrary handlers/invalid input
+  ---
+  duration_ms: 0.18701
+  type: 'test'
+  ...
+# Subtest: GLB contract rejects invalid headers, truncated binary, external resources and decoders
+ok 149 - GLB contract rejects invalid headers, truncated binary, external resources and decoders
+  ---
+  duration_ms: 1.518036
+  type: 'test'
+  ...
+# Subtest: actual GLB clip names are required; runtime asset bytes are registry-owned copies
+ok 150 - actual GLB clip names are required; runtime asset bytes are registry-owned copies
+  ---
+  duration_ms: 0.862119
+  type: 'test'
+  ...
+# Subtest: placeholder adapter keeps exact existing mesh and contains no animation claims
+ok 151 - placeholder adapter keeps exact existing mesh and contains no animation claims
+  ---
+  duration_ms: 3.993355
+  type: 'test'
+  ...
+# Subtest: real GLTFLoader parses synthetic in-memory GLB and AnimationMixer plays verified clip
+ok 152 - real GLTFLoader parses synthetic in-memory GLB and AnimationMixer plays verified clip
+  ---
+  duration_ms: 5.307008
+  type: 'test'
+  ...
+# Subtest: runtime model parse or actual clip mismatch retains a working placeholder and reports it
+ok 153 - runtime model parse or actual clip mismatch retains a working placeholder and reports it
+  ---
+  duration_ms: 2.644552
+  type: 'test'
+  ...
+# Subtest: presentation adapter supports mapped basic-attack one-shots and reset independently of combat
+ok 154 - presentation adapter supports mapped basic-attack one-shots and reset independently of combat
+  ---
+  duration_ms: 1.296686
+  type: 'test'
+  ...
+# Subtest: null/malformed hero files produce clear file-scoped validation errors
+ok 155 - null/malformed hero files produce clear file-scoped validation errors
+  ---
+  duration_ms: 0.572175
+  type: 'test'
+  ...
+# Subtest: invalid registry input and malformed GLB records fail explicitly
+ok 156 - invalid registry input and malformed GLB records fail explicitly
+  ---
+  duration_ms: 0.559154
+  type: 'test'
+  ...
+# Subtest: joystick maps screen-up to positive vertical and right to positive horizontal
+ok 157 - joystick maps screen-up to positive vertical and right to positive horizontal
+  ---
+  duration_ms: 1.327268
+  type: 'test'
+  ...
+# Subtest: joystick diagonal and out-of-radius input is clamped, never speed-boosted
+ok 158 - joystick diagonal and out-of-radius input is clamped, never speed-boosted
+  ---
+  duration_ms: 0.151462
+  type: 'test'
+  ...
+# Subtest: joystick deadzone, analog partial input and invalid geometry are safe
+ok 159 - joystick deadzone, analog partial input and invalid geometry are safe
+  ---
+  duration_ms: 0.215646
+  type: 'test'
+  ...
+# Subtest: keyboard takes priority rather than adding joystick speed; release restores virtual movement
+ok 160 - keyboard takes priority rather than adding joystick speed; release restores virtual movement
+  ---
+  duration_ms: 0.196763
+  type: 'test'
+  ...
+# Subtest: joystick uses exactly the same camera-relative simulation and collision path as WASD
+ok 161 - joystick uses exactly the same camera-relative simulation and collision path as WASD
+  ---
+  duration_ms: 3.483137
+  type: 'test'
+  ...
+# Subtest: minimap rotates world axes to match camera-relative movement and diamond arena bounds
+ok 162 - minimap rotates world axes to match camera-relative movement and diamond arena bounds
+  ---
+  duration_ms: 0.199995
+  type: 'test'
+  ...
+# Subtest: cooldown display clamps ring progress and never invents skill resources
+ok 163 - cooldown display clamps ring progress and never invents skill resources
+  ---
+  duration_ms: 0.259891
+  type: 'test'
+  ...
+# Subtest: only existing dummy target category is available; minions/towers remain reserved
+ok 164 - only existing dummy target category is available; minions/towers remain reserved
+  ---
+  duration_ms: 0.13915
+  type: 'test'
+  ...
+# Subtest: all local icon output is inline SVG and unknown/prototype names are rejected
+ok 165 - all local icon output is inline SVG and unknown/prototype names are rejected
+  ---
+  duration_ms: 0.756232
+  type: 'test'
+  ...
+# Subtest: real damage emits one death only at a living-to-zero transition with immutable metadata
+ok 166 - real damage emits one death only at a living-to-zero transition with immutable metadata
+  ---
+  duration_ms: 1.089343
+  type: 'test'
+  ...
+# Subtest: rejected, nonlethal attacks and selection changes never fabricate notifications
+ok 167 - rejected, nonlethal attacks and selection changes never fabricate notifications
+  ---
+  duration_ms: 0.30174
+  type: 'test'
+  ...
+# Subtest: combat subscription unsubscribe and presentation errors cannot change gameplay
+ok 168 - combat subscription unsubscribe and presentation errors cannot change gameplay
+  ---
+  duration_ms: 0.312273
+  type: 'test'
+  ...
+# Subtest: training deaths are truthfully named and not hero/team kills
+ok 169 - training deaths are truthfully named and not hero/team kills
+  ---
+  duration_ms: 0.173234
+  type: 'test'
+  ...
+# Subtest: player kill and death classifications prepare prominent notifications
+ok 170 - player kill and death classifications prepare prominent notifications
+  ---
+  duration_ms: 0.086904
+  type: 'test'
+  ...
+# Subtest: allied kill and allied death classifications are smaller, with no runtime fabricated events
+ok 171 - allied kill and allied death classifications are smaller, with no runtime fabricated events
+  ---
+  duration_ms: 0.071161
+  type: 'test'
+  ...
+# Subtest: non-death, living victim and unrelated event classifications are ignored
+ok 172 - non-death, living victim and unrelated event classifications are ignored
+  ---
+  duration_ms: 0.063787
+  type: 'test'
+  ...
+# Subtest: notification queue dismisses, bounds backlog, prioritizes prominent events and resets
+ok 173 - notification queue dismisses, bounds backlog, prioritizes prominent events and resets
+  ---
+  duration_ms: 0.202843
+  type: 'test'
+  ...
+# Subtest: default skill HUD has exactly first/second/ultimate slots on top-row Digit1/2/3
+ok 174 - default skill HUD has exactly first/second/ultimate slots on top-row Digit1/2/3
+  ---
+  duration_ms: 0.647182
+  type: 'test'
+  ...
+# Subtest: skill shortcuts explicitly exclude numpad, F keys and old Q/E/R
+ok 175 - skill shortcuts explicitly exclude numpad, F keys and old Q/E/R
+  ---
+  duration_ms: 0.184531
+  type: 'test'
+  ...
+# Subtest: reserved skill requests never cast; a future enabled binding shares native button activation
+ok 176 - reserved skill requests never cast; a future enabled binding shares native button activation
+  ---
+  duration_ms: 0.142639
+  type: 'test'
+  ...
+# Subtest: gameplay input policy permits HUD button focus but blocks editors and global open dialogs
+ok 177 - gameplay input policy permits HUD button focus but blocks editors and global open dialogs
+  ---
+  duration_ms: 0.98745
+  type: 'test'
+  ...
+# Subtest: focusing/clicking combat HUD does not clear a held movement key; keyup still stops it
+ok 178 - focusing/clicking combat HUD does not clear a held movement key; keyup still stops it
+  ---
+  duration_ms: 1.271179
+  type: 'test'
+  ...
+# Subtest: menu lock clears keyboard/virtual axes and blocks keyboard/canvas input until fresh input after closing
+ok 179 - menu lock clears keyboard/virtual axes and blocks keyboard/canvas input until fresh input after closing
+  ---
+  duration_ms: 0.40836
+  type: 'test'
+  ...
+# Subtest: global modal fallback blocks off-dialog key events and virtual movement even without explicit lock
+ok 180 - global modal fallback blocks off-dialog key events and virtual movement even without explicit lock
+  ---
+  duration_ms: 0.225987
+  type: 'test'
+  ...
+# Subtest: editors, blur and visibility changes clear held movement and virtual input
+ok 181 - editors, blur and visibility changes clear held movement and virtual input
+  ---
+  duration_ms: 0.348395
+  type: 'test'
+  ...
+# Subtest: late/repeated modal-close notifications do not erase fresh post-close movement
+ok 182 - late/repeated modal-close notifications do not erase fresh post-close movement
+  ---
+  duration_ms: 0.139296
+  type: 'test'
+  ...
+# Subtest: live panels preserve held WASD on open/close and accept fresh movement while focused inside
+ok 183 - live panels preserve held WASD on open/close and accept fresh movement while focused inside
+  ---
+  duration_ms: 0.338113
+  type: 'test'
+  ...
+# Subtest: live panels keep canvas attacks enabled even when panel-open flag is set
+ok 184 - live panels keep canvas attacks enabled even when panel-open flag is set
+  ---
+  duration_ms: 0.306845
+  type: 'test'
+  ...
+# Subtest: opening/closing a live panel does not reset ongoing combat/aim input
+ok 185 - opening/closing a live panel does not reset ongoing combat/aim input
+  ---
+  duration_ms: 0.466202
+  type: 'test'
+  ...
+# Subtest: text entry suspends movement and combat, while selects keep WASD but own combat keys
+ok 186 - text entry suspends movement and combat, while selects keep WASD but own combat keys
+  ---
+  duration_ms: 0.765672
+  type: 'test'
+  ...
+# Subtest: blur/visibility/reset still clear held movement in live panels; repeats cannot revive it
+ok 187 - blur/visibility/reset still clear held movement in live panels; repeats cannot revive it
+  ---
+  duration_ms: 0.331605
+  type: 'test'
+  ...
+# Subtest: movement ignores browser modifier shortcuts rather than stealing Ctrl/Alt/Meta WASD
+ok 188 - movement ignores browser modifier shortcuts rather than stealing Ctrl/Alt/Meta WASD
+  ---
+  duration_ms: 0.194942
+  type: 'test'
+  ...
+# Subtest: explicit canvas pointer attack leaves an editor in live-panel mode on the first click
+ok 189 - explicit canvas pointer attack leaves an editor in live-panel mode on the first click
+  ---
+  duration_ms: 0.361561
+  type: 'test'
+  ...
+# Subtest: default key bindings preserve attack/three top-row skills and original utility labels
+ok 190 - default key bindings preserve attack/three top-row skills and original utility labels
+  ---
+  duration_ms: 1.450405
+  type: 'test'
+  ...
+# Subtest: assigning active/reserved button keys updates lookup without enabling gameplay
+ok 191 - assigning active/reserved button keys updates lookup without enabling gameplay
+  ---
+  duration_ms: 0.39013
+  type: 'test'
+  ...
+# Subtest: duplicate keys reject atomically with conflict explanation
+ok 192 - duplicate keys reject atomically with conflict explanation
+  ---
+  duration_ms: 0.335335
+  type: 'test'
+  ...
+# Subtest: movement/navigation/browser keys are protected from rebinding
+ok 193 - movement/navigation/browser keys are protected from rebinding
+  ---
+  duration_ms: 0.221841
+  type: 'test'
+  ...
+# Subtest: unbinding releases a key and multiple unbound buttons do not conflict
+ok 194 - unbinding releases a key and multiple unbound buttons do not conflict
+  ---
+  duration_ms: 0.141944
+  type: 'test'
+  ...
+# Subtest: restore default keys does not undo the independent visibility preference
+ok 195 - restore default keys does not undo the independent visibility preference
+  ---
+  duration_ms: 0.130242
+  type: 'test'
+  ...
+# Subtest: key configurations are session-local and independent
+ok 196 - key configurations are session-local and independent
+  ---
+  duration_ms: 0.142962
+  type: 'test'
+  ...
+# Subtest: binding and visibility subscribers update immediately and unsubscribe
+ok 197 - binding and visibility subscribers update immediately and unsubscribe
+  ---
+  duration_ms: 0.141948
+  type: 'test'
+  ...
+# Subtest: unknown and prototype action names never read or overwrite inherited values
+ok 198 - unknown and prototype action names never read or overwrite inherited values
+  ---
+  duration_ms: 0.299785
+  type: 'test'
+  ...
+# Subtest: roster is only approved Layla plus explicitly preserved historical fixture
+ok 199 - roster is only approved Layla plus explicitly preserved historical fixture
+  ---
+  duration_ms: 2.231656
+  type: 'test'
+  ...
+# Subtest: reference stats replace prototype numbers; movement conversion and collider preserved
+ok 200 - reference stats replace prototype numbers; movement conversion and collider preserved
+  ---
+  duration_ms: 1.829497
+  type: 'test'
+  ...
+# Subtest: passive close/intermediate/reference/beyond, turret and tower exclusion
+ok 201 - passive close/intermediate/reference/beyond, turret and tower exclusion
+  ---
+  duration_ms: 0.430192
+  type: 'test'
+  ...
+# Subtest: ranged basic travels authoritatively, damages once on collision, passive once, no chasing
+ok 202 - ranged basic travels authoritatively, damages once on collision, passive once, no chasing
+  ---
+  duration_ms: 6.553231
+  type: 'test'
+  ...
+# Subtest: basics respect cooldown, dead/untargetable/ally/invalid pins and range
+ok 203 - basics respect cooldown, dead/untargetable/ally/invalid pins and range
+  ---
+  duration_ms: 0.933329
+  type: 'test'
+  ...
+# Subtest: swept projectile catches first valid enemy even in large time step, ignores allies/dead/hidden
+ok 204 - swept projectile catches first valid enemy even in large time step, ignores allies/dead/hidden
+  ---
+  duration_ms: 1.676045
+  type: 'test'
+  ...
+# Subtest: S1 success grants exactly timed movement/basic/S2 range buffs, with expiry/reset
+ok 205 - S1 success grants exactly timed movement/basic/S2 range buffs, with expiry/reset
+  ---
+  duration_ms: 6.371912
+  type: 'test'
+  ...
+# Subtest: S1 miss does not grant buffs and leaves pinned target/aim untouched
+ok 206 - S1 miss does not grant buffs and leaves pinned target/aim untouched
+  ---
+  duration_ms: 3.108307
+  type: 'test'
+  ...
+# Subtest: S1 muzzle sweep catches close targets; newly approved shots pass through walls
+ok 207 - S1 muzzle sweep catches close targets; newly approved shots pass through walls
+  ---
+  duration_ms: 2.185151
+  type: 'test'
+  ...
+# Subtest: basic locked projectile passes walls and damages only on authoritative contact
+ok 208 - basic locked projectile passes walls and damages only on authoritative contact
+  ---
+  duration_ms: 1.329004
+  type: 'test'
+  ...
+# Subtest: S2 detonates at intended destination with area damage and visible tracked mark
+ok 209 - S2 detonates at intended destination with area damage and visible tracked mark
+  ---
+  duration_ms: 2.017678
+  type: 'test'
+  ...
+# Subtest: S2 detonates on first enemy, not through to another distant target
+ok 210 - S2 detonates on first enemy, not through to another distant target
+  ---
+  duration_ms: 2.683742
+  type: 'test'
+  ...
+# Subtest: S2 destination stays fixed and casting movement is now animation-locked
+ok 211 - S2 destination stays fixed and casting movement is now animation-locked
+  ---
+  duration_ms: 0.428795
+  type: 'test'
+  ...
+# Subtest: marks expire without proc; expired marked target takes no bonus
+ok 212 - marks expire without proc; expired marked target takes no bonus
+  ---
+  duration_ms: 4.181147
+  type: 'test'
+  ...
+# Subtest: marked basic consumes once; bonus and base share a single passive multiplier, nearby stun expires
+ok 213 - marked basic consumes once; bonus and base share a single passive multiplier, nearby stun expires
+  ---
+  duration_ms: 1.386326
+  type: 'test'
+  ...
+# Subtest: stun is an enforced movement/action status, not just a VFX ring
+ok 214 - stun is an enforced movement/action status, not just a VFX ring
+  ---
+  duration_ms: 0.170474
+  type: 'test'
+  ...
+# Subtest: S2 mark-trigger damage cannot recursively trigger same event, survivor receives one new timed mark
+ok 215 - S2 mark-trigger damage cannot recursively trigger same event, survivor receives one new timed mark
+  ---
+  duration_ms: 1.584584
+  type: 'test'
+  ...
+# Subtest: ultimate covers wide line, all valid enemies exactly once, excludes outside/dead/friendly
+ok 216 - ultimate covers wide line, all valid enemies exactly once, excludes outside/dead/friendly
+  ---
+  duration_ms: 7.938075
+  type: 'test'
+  ...
+# Subtest: passive excludes turrets for basic AND all three offensive abilities
+ok 217 - passive excludes turrets for basic AND all three offensive abilities
+  ---
+  duration_ms: 11.803568
+  type: 'test'
+  ...
+# Subtest: cast invalid aim/death/mana/cooldown/concurrent windup are rejected without double charges
+ok 218 - cast invalid aim/death/mana/cooldown/concurrent windup are rejected without double charges
+  ---
+  duration_ms: 0.37233
+  type: 'test'
+  ...
+# Subtest: mana regenerates/caps; per-skill cooldowns expire; reset clears all authoritative state
+ok 219 - mana regenerates/caps; per-skill cooldowns expire; reset clears all authoritative state
+  ---
+  duration_ms: 4.80602
+  type: 'test'
+  ...
+# Subtest: death cancels pending casts/projectiles and movement; reset restores action
+ok 220 - death cancels pending casts/projectiles and movement; reset restores action
+  ---
+  duration_ms: 0.402496
+  type: 'test'
+  ...
+# Subtest: death event only once and real victim/pin cleared on ability kill
+ok 221 - death event only once and real victim/pin cleared on ability kill
+  ---
+  duration_ms: 0.816545
+  type: 'test'
+  ...
+# Subtest: target priority/manual pins are independent of directional skill aim
+ok 222 - target priority/manual pins are independent of directional skill aim
+  ---
+  duration_ms: 0.892458
+  type: 'test'
+  ...
+# Subtest: swept geometry handles tangent/start overlap/zero segment/box and misses
+ok 223 - swept geometry handles tangent/start overlap/zero segment/box and misses
+  ---
+  duration_ms: 0.289074
+  type: 'test'
+  ...
+# Subtest: new schema rejects executable/unknown fields, invalid parameters and missing/duplicate slots
+ok 224 - new schema rejects executable/unknown fields, invalid parameters and missing/duplicate slots
+  ---
+  duration_ms: 35.315241
+  type: 'test'
+  ...
+# Subtest: approved GLB immutable; actual loader, clip/bounds and honest idle/death behavior
+ok 225 - approved GLB immutable; actual loader, clip/bounds and honest idle/death behavior
+  ---
+  duration_ms: 17.882288
+  type: 'test'
+  ...
+# Subtest: invalid explicit null aim is rejected; returned snapshots cannot mutate authoritative vectors
+ok 226 - invalid explicit null aim is rejected; returned snapshots cannot mutate authoritative vectors
+  ---
+  duration_ms: 1.029665
+  type: 'test'
+  ...
+# Subtest: projectile travel uses only post-windup time; freely aimed sight can pass arena walls
+ok 227 - projectile travel uses only post-windup time; freely aimed sight can pass arena walls
+  ---
+  duration_ms: 1.32493
+  type: 'test'
+  ...
+# Subtest: ultimate does not hit a target behind caster
+ok 228 - ultimate does not hit a target behind caster
+  ---
+  duration_ms: 0.827639
+  type: 'test'
+  ...
+# Subtest: VFX adapter is read-only, resets/disposes all presentation objects without changing combat
+ok 229 - VFX adapter is read-only, resets/disposes all presentation objects without changing combat
+  ---
+  duration_ms: 12.566217
+  type: 'test'
+  ...
+# Subtest: owned runtime event scope aborts its listeners without touching legacy or nested scopes
+ok 230 - owned runtime event scope aborts its listeners without touching legacy or nested scopes
+  ---
+  duration_ms: 1.40059
+  type: 'test'
+  ...
+# Subtest: construction failures restore event scope instead of capturing future unrelated listeners
+ok 231 - construction failures restore event scope instead of capturing future unrelated listeners
+  ---
+  duration_ms: 0.38135
+  type: 'test'
+  ...
+# Subtest: all configured modes, default Normal, separate starts, invalid modes/difficulties/rosters
+ok 232 - all configured modes, default Normal, separate starts, invalid modes/difficulties/rosters
+  ---
+  duration_ms: 2.171268
+  type: 'test'
+  ...
+# Subtest: validated original continuous lane has six sequenced objective IDs and bounded spawn/wave data
+ok 233 - validated original continuous lane has six sequenced objective IDs and bounded spawn/wave data
+  ---
+  duration_ms: 1.58458
+  type: 'test'
+  ...
+# Subtest: flow requires explicit selection, double-confirm guarded, confirmed roster has one human plus nine bots
+ok 234 - flow requires explicit selection, double-confirm guarded, confirmed roster has one human plus nine bots
+  ---
+  duration_ms: 0.617712
+  type: 'test'
+  ...
+# Subtest: fresh simulation initialized exactly once: ten heroes, six objectives, no starting minions; countdown owns clock and input
+ok 235 - fresh simulation initialized exactly once: ten heroes, six objectives, no starting minions; countdown owns clock and input
+  ---
+  duration_ms: 12.349634
+  type: 'test'
+  ...
+# Subtest: wave scheduler emits accumulated deterministic waves once, never per render, reset restarts schedule
+ok 236 - wave scheduler emits accumulated deterministic waves once, never per render, reset restarts schedule
+  ---
+  duration_ms: 84.727728
+  type: 'test'
+  ...
+# Subtest: vs-ai uses its real starting rules and actor roster
+ok 237 - vs-ai uses its real starting rules and actor roster
+  ---
+  duration_ms: 13.648712
+  type: 'test'
+  ...
+# Subtest: custom uses its real starting rules and actor roster
+ok 238 - custom uses its real starting rules and actor roster
+  ---
+  duration_ms: 1.15248
+  type: 'test'
+  ...
+# Subtest: ai-training uses its real starting rules and actor roster
+ok 239 - ai-training uses its real starting rules and actor roster
+  ---
+  duration_ms: 1.433938
+  type: 'test'
+  ...
+# Subtest: brawl uses its real starting rules and actor roster
+ok 240 - brawl uses its real starting rules and actor roster
+  ---
+  duration_ms: 1.380068
+  type: 'test'
+  ...
+# Subtest: shared action guards block dead, stunned, allied, protected, destroyed, out-of-range and cooldown targets
+ok 241 - shared action guards block dead, stunned, allied, protected, destroyed, out-of-range and cooldown targets
+  ---
+  duration_ms: 0.651118
+  type: 'test'
+  ...
+# Subtest: protected inner/core reject direct, ability and NPC damage until each preceding objective dies
+ok 242 - protected inner/core reject direct, ability and NPC damage until each preceding objective dies
+  ---
+  duration_ms: 4.335425
+  type: 'test'
+  ...
+# Subtest: own core destruction produces a real Defeat with no invented eliminations or account currency
+ok 243 - own core destruction produces a real Defeat with no invented eliminations or account currency
+  ---
+  duration_ms: 1.786484
+  type: 'test'
+  ...
+# Subtest: towers prefer minions then nearest heroes; legitimate allied-hero attack triggers timed retaliation
+ok 244 - towers prefer minions then nearest heroes; legitimate allied-hero attack triggers timed retaliation
+  ---
+  duration_ms: 1.842638
+  type: 'test'
+  ...
+# Subtest: tower shots travel, obey cooldown, revalidate targets and cannot kill their own team
+ok 245 - tower shots travel, obey cooldown, revalidate targets and cannot kill their own team
+  ---
+  duration_ms: 1.676119
+  type: 'test'
+  ...
+# Subtest: minion motion, pursuit, defense, attack/cooldown, death rewards and removal are real events
+ok 246 - minion motion, pursuit, defense, attack/cooldown, death rewards and removal are real events
+  ---
+  duration_ms: 8.19379
+  type: 'test'
+  ...
+# Subtest: nearby bot minion kill grants real XP but not player last-hit gold; distant player gets neither
+ok 247 - nearby bot minion kill grants real XP but not player last-hit gold; distant player gets neither
+  ---
+  duration_ms: 2.264575
+  type: 'test'
+  ...
+# Subtest: hero death increments real score/rewards once, cancels player actions, respawns at own spawn/resources with protection
+ok 248 - hero death increments real score/rewards once, cancels player actions, respawns at own spawn/resources with protection
+  ---
+  duration_ms: 3.431039
+  type: 'test'
+  ...
+# Subtest: assist counts only recent real player contribution before an allied hero elimination
+ok 249 - assist counts only recent real player contribution before an allied hero elimination
+  ---
+  duration_ms: 1.743098
+  type: 'test'
+  ...
+# Subtest: easy decisions consume mana and cooldown, advance, detect, retreat, heal and resume without hidden damage cheats
+ok 250 - easy decisions consume mana and cooldown, advance, detect, retreat, heal and resume without hidden damage cheats
+  ---
+  duration_ms: 3.686333
+  type: 'test'
+  ...
+# Subtest: normal decisions consume mana and cooldown, advance, detect, retreat, heal and resume without hidden damage cheats
+ok 251 - normal decisions consume mana and cooldown, advance, detect, retreat, heal and resume without hidden damage cheats
+  ---
+  duration_ms: 2.461005
+  type: 'test'
+  ...
+# Subtest: hard decisions consume mana and cooldown, advance, detect, retreat, heal and resume without hidden damage cheats
+ok 252 - hard decisions consume mana and cooldown, advance, detect, retreat, heal and resume without hidden damage cheats
+  ---
+  duration_ms: 1.958198
+  type: 'test'
+  ...
+# Subtest: difficulty central reaction, aim spread and target/retreat policy genuinely differ
+ok 253 - difficulty central reaction, aim spread and target/retreat policy genuinely differ
+  ---
+  duration_ms: 0.435021
+  type: 'test'
+  ...
+# Subtest: item Prism Edge: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 254 - item Prism Edge: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 6.225947
+  type: 'test'
+  ...
+# Subtest: item Clockwork Spring: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 255 - item Clockwork Spring: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 1.629674
+  type: 'test'
+  ...
+# Subtest: item Fortune Lens: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 256 - item Fortune Lens: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 2.673937
+  type: 'test'
+  ...
+# Subtest: item Bastion Plate: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 257 - item Bastion Plate: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 1.357746
+  type: 'test'
+  ...
+# Subtest: item Aether Ward: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 258 - item Aether Ward: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 1.465539
+  type: 'test'
+  ...
+# Subtest: item Crystal Heart: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 259 - item Crystal Heart: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 1.507705
+  type: 'test'
+  ...
+# Subtest: item Wayfarer Boots: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 260 - item Wayfarer Boots: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 1.535331
+  type: 'test'
+  ...
+# Subtest: item Sanguine Fang: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 261 - item Sanguine Fang: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 2.431641
+  type: 'test'
+  ...
+# Subtest: item Berserker’s Fury: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 262 - item Berserker’s Fury: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 1.356849
+  type: 'test'
+  ...
+# Subtest: item Blade of Despair: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 263 - item Blade of Despair: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 1.078286
+  type: 'test'
+  ...
+# Subtest: item Blade of the Heptaseas: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 264 - item Blade of the Heptaseas: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 1.010889
+  type: 'test'
+  ...
+# Subtest: item Corrosion Scythe: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 265 - item Corrosion Scythe: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 1.184077
+  type: 'test'
+  ...
+# Subtest: item Dagger: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 266 - item Dagger: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 1.159207
+  type: 'test'
+  ...
+# Subtest: item Demon Hunter Sword: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 267 - item Demon Hunter Sword: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 1.798103
+  type: 'test'
+  ...
+# Subtest: item Endless Battle: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 268 - item Endless Battle: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 1.154061
+  type: 'test'
+  ...
+# Subtest: item Fury Hammer: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 269 - item Fury Hammer: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 3.236596
+  type: 'test'
+  ...
+# Subtest: item Golden Staff: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 270 - item Golden Staff: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 1.158866
+  type: 'test'
+  ...
+# Subtest: item Great Dragon Spear: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 271 - item Great Dragon Spear: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 1.071478
+  type: 'test'
+  ...
+# Subtest: item Haas’ Claws: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 272 - item Haas’ Claws: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 2.714367
+  type: 'test'
+  ...
+# Subtest: item Hunter Strike: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 273 - item Hunter Strike: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 1.486632
+  type: 'test'
+  ...
+# Subtest: item Iron Hunting Bow: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 274 - item Iron Hunting Bow: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 1.516515
+  type: 'test'
+  ...
+# Subtest: item Javelin: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 275 - item Javelin: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 1.253183
+  type: 'test'
+  ...
+# Subtest: item Knife: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 276 - item Knife: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 0.959256
+  type: 'test'
+  ...
+# Subtest: item Legion Sword: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 277 - item Legion Sword: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 2.409285
+  type: 'test'
+  ...
+# Subtest: item Magic Blade: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 278 - item Magic Blade: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 1.114897
+  type: 'test'
+  ...
+# Subtest: item Malefic Gun: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 279 - item Malefic Gun: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 1.036358
+  type: 'test'
+  ...
+# Subtest: item Malefic Roar: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 280 - item Malefic Roar: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 0.996703
+  type: 'test'
+  ...
+# Subtest: item Ogre Tomahawk: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 281 - item Ogre Tomahawk: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 0.986261
+  type: 'test'
+  ...
+# Subtest: item Regular Spear: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 282 - item Regular Spear: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 0.926609
+  type: 'test'
+  ...
+# Subtest: item Rogue Meteor: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 283 - item Rogue Meteor: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 1.828162
+  type: 'test'
+  ...
+# Subtest: item Rose Gold Meteor: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 284 - item Rose Gold Meteor: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 1.738736
+  type: 'test'
+  ...
+# Subtest: item Sea Halberd: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 285 - item Sea Halberd: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 0.958526
+  type: 'test'
+  ...
+# Subtest: item Swift Crossbow: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 286 - item Swift Crossbow: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 0.905323
+  type: 'test'
+  ...
+# Subtest: item Vampire Mallet: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 287 - item Vampire Mallet: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 0.990798
+  type: 'test'
+  ...
+# Subtest: item War Axe: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 288 - item War Axe: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 2.096156
+  type: 'test'
+  ...
+# Subtest: item Wind of Nature: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 289 - item Wind of Nature: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 0.961213
+  type: 'test'
+  ...
+# Subtest: item Windtalker: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 290 - item Windtalker: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 1.13781
+  type: 'test'
+  ...
+# Subtest: item Arcane Boots: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 291 - item Arcane Boots: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 1.086804
+  type: 'test'
+  ...
+# Subtest: item Boots: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 292 - item Boots: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 0.950621
+  type: 'test'
+  ...
+# Subtest: item Demon Shoes: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 293 - item Demon Shoes: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 1.751692
+  type: 'test'
+  ...
+# Subtest: item Magic Shoes: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 294 - item Magic Shoes: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 0.962747
+  type: 'test'
+  ...
+# Subtest: item Rapid Boots: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 295 - item Rapid Boots: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 1.471603
+  type: 'test'
+  ...
+# Subtest: item Swift Boots: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 296 - item Swift Boots: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 1.189644
+  type: 'test'
+  ...
+# Subtest: item Tough Boots: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 297 - item Tough Boots: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 1.080638
+  type: 'test'
+  ...
+# Subtest: item Warrior Boots: real cost, one equip copy, stat bonus and exact sale removal without healing
+ok 298 - item Warrior Boots: real cost, one equip copy, stat bonus and exact sale removal without healing
+  ---
+  duration_ms: 0.968206
+  type: 'test'
+  ...
+# Subtest: six-slot atomic transactions: no free gold, invalid sale, full/insufficient/unknown reject; manual replacement is rejected; explicit sale refunds once
+ok 299 - six-slot atomic transactions: no free gold, invalid sale, full/insufficient/unknown reject; manual replacement is rejected; explicit sale refunds once
+  ---
+  duration_ms: 0.296791
+  type: 'test'
+  ...
+# Subtest: critical chance and lifesteal affect only real basic hits; abilities never crit or lifesteal; dead/friendly/protected reject
+ok 300 - critical chance and lifesteal affect only real basic hits; abilities never crit or lifesteal; dead/friendly/protected reject
+  ---
+  duration_ms: 2.892001
+  type: 'test'
+  ...
+# Subtest: actual Layla projectile adapter identifies basic hits for item crit/lifesteal without altering approved skills
+ok 301 - actual Layla projectile adapter identifies basic hits for item crit/lifesteal without altering approved skills
+  ---
+  duration_ms: 10.118712
+  type: 'test'
+  ...
+# Subtest: minion-only / structure-only category filters change automatic targets; explicit manual pin retains precedence
+ok 302 - minion-only / structure-only category filters change automatic targets; explicit manual pin retains precedence
+  ---
+  duration_ms: 1.303705
+  type: 'test'
+  ...
+# Subtest: reset/replay restores initial waves, actor HP, objectives, inventory, gold, ranks, death counters and result
+ok 303 - reset/replay restores initial waves, actor HP, objectives, inventory, gold, ranks, death counters and result
+  ---
+  duration_ms: 1.98007
+  type: 'test'
+  ...
+# Subtest: seeded replay stable, explicit pause freezes all clocks/waves/AI/resources; illegal timestep rejects
+ok 304 - seeded replay stable, explicit pause freezes all clocks/waves/AI/resources; illegal timestep rejects
+  ---
+  duration_ms: 3.096477
+  type: 'test'
+  ...
+# Subtest: full deterministic unattended local match reaches a legitimate sequential core result and bounds live units
+ok 305 - full deterministic unattended local match reaches a legitimate sequential core result and bounds live units
+  ---
+  duration_ms: 1791.970613
+  type: 'test'
+  ...
+# Subtest: death notices distinguish real hero eliminations from minions/structures and correctly classify player death
+ok 306 - death notices distinguish real hero eliminations from minions/structures and correctly classify player death
+  ---
+  duration_ms: 2.754381
+  type: 'test'
+  ...
+# Subtest: paused commands cannot queue attacks, spend resources/points or transact match gold
+ok 307 - paused commands cannot queue attacks, spend resources/points or transact match gold
+  ---
+  duration_ms: 2.278501
+  type: 'test'
+  ...
+# Subtest: protected towers and cores may defend without dropping their sequential objective shield
+ok 308 - protected towers and cores may defend without dropping their sequential objective shield
+  ---
+  duration_ms: 1.667455
+  type: 'test'
+  ...
+# Subtest: configured hero/wave spawns and objective waypoint route are authoritative, including bot retreat and respawn
+ok 309 - configured hero/wave spawns and objective waypoint route are authoritative, including bot retreat and respawn
+  ---
+  duration_ms: 1.52497
+  type: 'test'
+  ...
+# Subtest: username validation rejects empty, short, long and forbidden characters
+ok 310 - username validation rejects empty, short, long and forbidden characters
+  ---
+  duration_ms: 1.083698
+  type: 'test'
+  ...
+# Subtest: valid profiles are normalized and copy only the three local fields
+ok 311 - valid profiles are normalized and copy only the three local fields
+  ---
+  duration_ms: 0.719315
+  type: 'test'
+  ...
+# Subtest: only PH, US, JP and Male/Female are allowed
+ok 312 - only PH, US, JP and Male/Female are allowed
+  ---
+  duration_ms: 0.159425
+  type: 'test'
+  ...
+# Subtest: profile save/read round trip is verified, not just an optimistic write
+ok 313 - profile save/read round trip is verified, not just an optimistic write
+  ---
+  duration_ms: 0.344089
+  type: 'test'
+  ...
+# Subtest: unavailable storage keeps a valid session profile without claiming persistence
+ok 314 - unavailable storage keeps a valid session profile without claiming persistence
+  ---
+  duration_ms: 0.267837
+  type: 'test'
+  ...
+# Subtest: no storage and silent/no-op storage writes degrade gracefully
+ok 315 - no storage and silent/no-op storage writes degrade gracefully
+  ---
+  duration_ms: 0.216863
+  type: 'test'
+  ...
+# Subtest: malformed and invalid saved profiles return to creation safely
+ok 316 - malformed and invalid saved profiles return to creation safely
+  ---
+  duration_ms: 0.230058
+  type: 'test'
+  ...
+# Subtest: invalid profile never overwrites stored data
+ok 317 - invalid profile never overwrites stored data
+  ---
+  duration_ms: 0.315751
+  type: 'test'
+  ...
+# Subtest: first and returning navigation follow the exact front-end flow
+ok 318 - first and returning navigation follow the exact front-end flow
+  ---
+  duration_ms: 0.316844
+  type: 'test'
+  ...
+# Subtest: navigation cannot jump past creation/lobby or launch placeholder modes
+ok 319 - navigation cannot jump past creation/lobby or launch placeholder modes
+  ---
+  duration_ms: 0.361718
+  type: 'test'
+  ...
+# Subtest: supplied creation PNG preserves original alpha-bearing bytes and GLB stays immutable
+ok 320 - supplied creation PNG preserves original alpha-bearing bytes and GLB stays immutable
+  ---
+  duration_ms: 15.971495
+  type: 'test'
+  ...
+# Subtest: new and migrated profile receives 30000 / 0 and owned Layla once
+ok 321 - new and migrated profile receives 30000 / 0 and owned Layla once
+  ---
+  duration_ms: 1.583899
+  type: 'test'
+  ...
+# Subtest: existing wallet never gains another starter grant
+ok 322 - existing wallet never gains another starter grant
+  ---
+  duration_ms: 0.300621
+  type: 'test'
+  ...
+# Subtest: per-profile isolation, defensive snapshots and session caching
+ok 323 - per-profile isolation, defensive snapshots and session caching
+  ---
+  duration_ms: 0.143782
+  type: 'test'
+  ...
+# Subtest: corrupt wallet recovers zero instead of regranting
+ok 324 - corrupt wallet recovers zero instead of regranting
+  ---
+  duration_ms: 0.267159
+  type: 'test'
+  ...
+# Subtest: wallet validates nonnegative safe integers and grant marker
+ok 325 - wallet validates nonnegative safe integers and grant marker
+  ---
+  duration_ms: 0.20078
+  type: 'test'
+  ...
+# Subtest: throwing and silently failing storage remains session-only
+ok 326 - throwing and silently failing storage remains session-only
+  ---
+  duration_ms: 0.343634
+  type: 'test'
+  ...
+# Subtest: audio preferences clamp numeric input and reject wrong types
+ok 327 - audio preferences clamp numeric input and reject wrong types
+  ---
+  duration_ms: 0.234133
+  type: 'test'
+  ...
+# Subtest: preferences persist independently of wallet and support cleanup
+ok 328 - preferences persist independently of wallet and support cleanup
+  ---
+  duration_ms: 0.244822
+  type: 'test'
+  ...
+# Subtest: missing Web Audio is graceful and creates no scheduler
+ok 329 - missing Web Audio is graceful and creates no scheduler
+  ---
+  duration_ms: 0.55637
+  type: 'test'
+  ...
+# Subtest: score contains eight complete bars and faster training arrangement
+ok 330 - score contains eight complete bars and faster training arrangement
+  ---
+  duration_ms: 0.379205
+  type: 'test'
+  ...
+# Subtest: audio graph uses one context/timer, true independent gains, no effects while muted
+ok 331 - audio graph uses one context/timer, true independent gains, no effects while muted
+  ---
+  duration_ms: 1.12116
+  type: 'test'
+  ...
+# Subtest: music switch leaves effects enabled; scene and visibility lifecycle stop old voices
+ok 332 - music switch leaves effects enabled; scene and visibility lifecycle stop old voices
+  ---
+  duration_ms: 0.663766
+  type: 'test'
+  ...
+# Subtest: level-1 offset growth: level 15 maxHp = 4378
+ok 333 - level-1 offset growth: level 15 maxHp = 4378
+  ---
+  duration_ms: 3.412497
+  type: 'test'
+  ...
+# Subtest: level-1 offset growth: level 15 hpRegen = 8.2
+ok 334 - level-1 offset growth: level 15 hpRegen = 8.2
+  ---
+  duration_ms: 0.278478
+  type: 'test'
+  ...
+# Subtest: level-1 offset growth: level 15 maxMana = 1900
+ok 335 - level-1 offset growth: level 15 maxMana = 1900
+  ---
+  duration_ms: 0.171734
+  type: 'test'
+  ...
+# Subtest: level-1 offset growth: level 15 manaRegen = 6.8
+ok 336 - level-1 offset growth: level 15 manaRegen = 6.8
+  ---
+  duration_ms: 0.195395
+  type: 'test'
+  ...
+# Subtest: level-1 offset growth: level 15 physicalAttack = 252
+ok 337 - level-1 offset growth: level 15 physicalAttack = 252
+  ---
+  duration_ms: 0.220605
+  type: 'test'
+  ...
+# Subtest: level-1 offset growth: level 15 physicalDefense = 71
+ok 338 - level-1 offset growth: level 15 physicalDefense = 71
+  ---
+  duration_ms: 0.217422
+  type: 'test'
+  ...
+# Subtest: level-1 offset growth: level 15 magicDefense = 50
+ok 339 - level-1 offset growth: level 15 magicDefense = 50
+  ---
+  duration_ms: 0.188248
+  type: 'test'
+  ...
+# Subtest: level-1 offset growth: level 15 magicPower = 0
+ok 340 - level-1 offset growth: level 15 magicPower = 0
+  ---
+  duration_ms: 0.184846
+  type: 'test'
+  ...
+# Subtest: level-1 offset growth: level 15 attackSpeed = 1.34
+ok 341 - level-1 offset growth: level 15 attackSpeed = 1.34
+  ---
+  duration_ms: 0.368682
+  type: 'test'
+  ...
+# Subtest: level-1 offset growth: level 15 attackSpeedRatio = 1
+ok 342 - level-1 offset growth: level 15 attackSpeedRatio = 1
+  ---
+  duration_ms: 0.417534
+  type: 'test'
+  ...
+# Subtest: level-1 offset growth: level 15 criticalDamage = 2
+ok 343 - level-1 offset growth: level 15 criticalDamage = 2
+  ---
+  duration_ms: 0.312936
+  type: 'test'
+  ...
+# Subtest: level-1 offset growth: level 15 movementSpeed = 240
+ok 344 - level-1 offset growth: level 15 movementSpeed = 240
+  ---
+  duration_ms: 0.196421
+  type: 'test'
+  ...
+# Subtest: level-1 offset growth: level 15 attackRange = 4.3
+ok 345 - level-1 offset growth: level 15 attackRange = 4.3
+  ---
+  duration_ms: 0.165679
+  type: 'test'
+  ...
+# Subtest: level 5 HP 2858; level-1 world speed/range stay 5.5/6 at display 240/4.3
+ok 346 - level 5 HP 2858; level-1 world speed/range stay 5.5/6 at display 240/4.3
+  ---
+  duration_ms: 1.052994
+  type: 'test'
+  ...
+# Subtest: immutable definition, independent player instances and layered flat/percentage modifiers
+ok 347 - immutable definition, independent player instances and layered flat/percentage modifiers
+  ---
+  duration_ms: 0.712294
+  type: 'test'
+  ...
+# Subtest: effective attack rate cap is explicit; invalid modifier values never leak NaN
+ok 348 - effective attack rate cap is explicit; invalid modifier values never leak NaN
+  ---
+  duration_ms: 0.481958
+  type: 'test'
+  ...
+# Subtest: level gains add only numerical max HP/mana increases, never refill
+ok 349 - level gains add only numerical max HP/mana increases, never refill
+  ---
+  duration_ms: 0.52136
+  type: 'test'
+  ...
+# Subtest: real HP/mana regen uses level-dependent rates, caps and never revives a dead actor
+ok 350 - real HP/mana regen uses level-dependent rates, caps and never revives a dead actor
+  ---
+  duration_ms: 4.523591
+  type: 'test'
+  ...
+# Subtest: XP threshold 2: just below / exact / granted skill point
+ok 351 - XP threshold 2: just below / exact / granted skill point
+  ---
+  duration_ms: 0.204805
+  type: 'test'
+  ...
+# Subtest: XP threshold 3: just below / exact / granted skill point
+ok 352 - XP threshold 3: just below / exact / granted skill point
+  ---
+  duration_ms: 0.0798
+  type: 'test'
+  ...
+# Subtest: XP threshold 4: just below / exact / granted skill point
+ok 353 - XP threshold 4: just below / exact / granted skill point
+  ---
+  duration_ms: 0.122106
+  type: 'test'
+  ...
+# Subtest: XP threshold 5: just below / exact / granted skill point
+ok 354 - XP threshold 5: just below / exact / granted skill point
+  ---
+  duration_ms: 0.074255
+  type: 'test'
+  ...
+# Subtest: XP threshold 6: just below / exact / granted skill point
+ok 355 - XP threshold 6: just below / exact / granted skill point
+  ---
+  duration_ms: 0.055767
+  type: 'test'
+  ...
+# Subtest: XP threshold 7: just below / exact / granted skill point
+ok 356 - XP threshold 7: just below / exact / granted skill point
+  ---
+  duration_ms: 0.052778
+  type: 'test'
+  ...
+# Subtest: XP threshold 8: just below / exact / granted skill point
+ok 357 - XP threshold 8: just below / exact / granted skill point
+  ---
+  duration_ms: 0.086124
+  type: 'test'
+  ...
+# Subtest: XP threshold 9: just below / exact / granted skill point
+ok 358 - XP threshold 9: just below / exact / granted skill point
+  ---
+  duration_ms: 0.054756
+  type: 'test'
+  ...
+# Subtest: XP threshold 10: just below / exact / granted skill point
+ok 359 - XP threshold 10: just below / exact / granted skill point
+  ---
+  duration_ms: 0.051108
+  type: 'test'
+  ...
+# Subtest: XP threshold 11: just below / exact / granted skill point
+ok 360 - XP threshold 11: just below / exact / granted skill point
+  ---
+  duration_ms: 0.054096
+  type: 'test'
+  ...
+# Subtest: XP threshold 12: just below / exact / granted skill point
+ok 361 - XP threshold 12: just below / exact / granted skill point
+  ---
+  duration_ms: 0.09523
+  type: 'test'
+  ...
+# Subtest: XP threshold 13: just below / exact / granted skill point
+ok 362 - XP threshold 13: just below / exact / granted skill point
+  ---
+  duration_ms: 0.054924
+  type: 'test'
+  ...
+# Subtest: XP threshold 14: just below / exact / granted skill point
+ok 363 - XP threshold 14: just below / exact / granted skill point
+  ---
+  duration_ms: 0.05052
+  type: 'test'
+  ...
+# Subtest: XP threshold 15: just below / exact / granted skill point
+ok 364 - XP threshold 15: just below / exact / granted skill point
+  ---
+  duration_ms: 0.060398
+  type: 'test'
+  ...
+# Subtest: multiple level jump, remainder and maximum overflow are deterministic
+ok 365 - multiple level jump, remainder and maximum overflow are deterministic
+  ---
+  duration_ms: 0.115757
+  type: 'test'
+  ...
+# Subtest: invalid XP -1 is rejected atomically
+ok 366 - invalid XP -1 is rejected atomically
+  ---
+  duration_ms: 1.490165
+  type: 'test'
+  ...
+# Subtest: invalid XP NaN is rejected atomically
+ok 367 - invalid XP NaN is rejected atomically
+  ---
+  duration_ms: 0.509798
+  type: 'test'
+  ...
+# Subtest: invalid XP Infinity is rejected atomically
+ok 368 - invalid XP Infinity is rejected atomically
+  ---
+  duration_ms: 0.329317
+  type: 'test'
+  ...
+# Subtest: invalid XP -Infinity is rejected atomically
+ok 369 - invalid XP -Infinity is rejected atomically
+  ---
+  duration_ms: 0.317221
+  type: 'test'
+  ...
+# Subtest: invalid XP 0.1 is rejected atomically
+ok 370 - invalid XP 0.1 is rejected atomically
+  ---
+  duration_ms: 0.328599
+  type: 'test'
+  ...
+# Subtest: invalid XP 200 is rejected atomically
+ok 371 - invalid XP 200 is rejected atomically
+  ---
+  duration_ms: 0.206932
+  type: 'test'
+  ...
+# Subtest: invalid XP undefined is rejected atomically
+ok 372 - invalid XP undefined is rejected atomically
+  ---
+  duration_ms: 0.17836
+  type: 'test'
+  ...
+# Subtest: invalid XP null is rejected atomically
+ok 373 - invalid XP null is rejected atomically
+  ---
+  duration_ms: 0.22914
+  type: 'test'
+  ...
+# Subtest: invalid practice level 0 is rejected atomically
+ok 374 - invalid practice level 0 is rejected atomically
+  ---
+  duration_ms: 0.458926
+  type: 'test'
+  ...
+# Subtest: invalid practice level 16 is rejected atomically
+ok 375 - invalid practice level 16 is rejected atomically
+  ---
+  duration_ms: 0.197946
+  type: 'test'
+  ...
+# Subtest: invalid practice level 1.5 is rejected atomically
+ok 376 - invalid practice level 1.5 is rejected atomically
+  ---
+  duration_ms: 0.227743
+  type: 'test'
+  ...
+# Subtest: invalid practice level NaN is rejected atomically
+ok 377 - invalid practice level NaN is rejected atomically
+  ---
+  duration_ms: 0.190002
+  type: 'test'
+  ...
+# Subtest: invalid practice level Infinity is rejected atomically
+ok 378 - invalid practice level Infinity is rejected atomically
+  ---
+  duration_ms: 0.167506
+  type: 'test'
+  ...
+# Subtest: invalid practice level 4 is rejected atomically
+ok 379 - invalid practice level 4 is rejected atomically
+  ---
+  duration_ms: 0.271678
+  type: 'test'
+  ...
+# Subtest: start one point, all actives unlearned, passive automatic; no unlearned cast/aim costs
+ok 380 - start one point, all actives unlearned, passive automatic; no unlearned cast/aim costs
+  ---
+  duration_ms: 0.648857
+  type: 'test'
+  ...
+# Subtest: ultimate gates exactly 4 / 8 / 12, standard caps 6, total spending never exceeds 15
+ok 381 - ultimate gates exactly 4 / 8 / 12, standard caps 6, total spending never exceeds 15
+  ---
+  duration_ms: 0.242341
+  type: 'test'
+  ...
+# Subtest: rank upgrade updates real mana/cooldown/damage; snapshot at accepted cast protects in-flight damage
+ok 382 - rank upgrade updates real mana/cooldown/damage; snapshot at accepted cast protects in-flight damage
+  ---
+  duration_ms: 2.530582
+  type: 'test'
+  ...
+# Subtest: physical damage at defense 0
+ok 383 - physical damage at defense 0
+  ---
+  duration_ms: 0.17048
+  type: 'test'
+  ...
+# Subtest: physical damage at defense 15
+ok 384 - physical damage at defense 15
+  ---
+  duration_ms: 0.064736
+  type: 'test'
+  ...
+# Subtest: physical damage at defense 120
+ok 385 - physical damage at defense 120
+  ---
+  duration_ms: 0.05811
+  type: 'test'
+  ...
+# Subtest: physical damage at defense 600
+ok 386 - physical damage at defense 600
+  ---
+  duration_ms: 0.139422
+  type: 'test'
+  ...
+# Subtest: magic damage at defense 0
+ok 387 - magic damage at defense 0
+  ---
+  duration_ms: 0.05808
+  type: 'test'
+  ...
+# Subtest: magic damage at defense 15
+ok 388 - magic damage at defense 15
+  ---
+  duration_ms: 0.054154
+  type: 'test'
+  ...
+# Subtest: magic damage at defense 120
+ok 389 - magic damage at defense 120
+  ---
+  duration_ms: 0.08831
+  type: 'test'
+  ...
+# Subtest: magic damage at defense 600
+ok 390 - magic damage at defense 600
+  ---
+  duration_ms: 0.117929
+  type: 'test'
+  ...
+# Subtest: true damage at defense 0
+ok 391 - true damage at defense 0
+  ---
+  duration_ms: 0.074071
+  type: 'test'
+  ...
+# Subtest: true damage at defense 15
+ok 392 - true damage at defense 15
+  ---
+  duration_ms: 0.054608
+  type: 'test'
+  ...
+# Subtest: true damage at defense 120
+ok 393 - true damage at defense 120
+  ---
+  duration_ms: 0.053633
+  type: 'test'
+  ...
+# Subtest: true damage at defense 600
+ok 394 - true damage at defense 600
+  ---
+  duration_ms: 0.045224
+  type: 'test'
+  ...
+# Subtest: physical/magic independently choose defense; true bypasses both; pipeline order explicit
+ok 395 - physical/magic independently choose defense; true bypasses both; pipeline order explicit
+  ---
+  duration_ms: 0.164057
+  type: 'test'
+  ...
+# Subtest: malformed damage models, missing defenses, reduction/penetration are errors, not fallback balance
+ok 396 - malformed damage models, missing defenses, reduction/penetration are errors, not fallback balance
+  ---
+  duration_ms: 0.206751
+  type: 'test'
+  ...
+# Subtest: actual level 1 basic interval / rate, full movement lock and next acceptance
+ok 397 - actual level 1 basic interval / rate, full movement lock and next acceptance
+  ---
+  duration_ms: 14.61354
+  type: 'test'
+  ...
+# Subtest: actual level 15 basic interval / rate, full movement lock and next acceptance
+ok 398 - actual level 15 basic interval / rate, full movement lock and next acceptance
+  ---
+  duration_ms: 13.567853
+  type: 'test'
+  ...
+# Subtest: all skill casts keep original 1.05 lock even at level 15
+ok 399 - all skill casts keep original 1.05 lock even at level 15
+  ---
+  duration_ms: 0.913746
+  type: 'test'
+  ...
+# Subtest: same Shoot clip obeys requested basic duration; following skill resets original playback rate
+ok 400 - same Shoot clip obeys requested basic duration; following skill resets original playback rate
+  ---
+  duration_ms: 29.161303
+  type: 'test'
+  ...
+# Subtest: Practice reset cancels flight/cooldowns/aim; full arena reset returns untouched level 1 state
+ok 401 - Practice reset cancels flight/cooldowns/aim; full arena reset returns untouched level 1 state
+  ---
+  duration_ms: 0.621653
+  type: 'test'
+  ...
+# Subtest: genuine target death grants no XP; snapshots are independent and training fixture unchanged
+ok 402 - genuine target death grants no XP; snapshots are independent and training fixture unchanged
+  ---
+  duration_ms: 0.779883
+  type: 'test'
+  ...
+# Subtest: strict useful hero file.field validation: baseStats.maxHp
+ok 403 - strict useful hero file.field validation: baseStats.maxHp
+  ---
+  duration_ms: 0.365534
+  type: 'test'
+  ...
+# Subtest: strict useful hero file.field validation: growthStats.physicalAttack
+ok 404 - strict useful hero file.field validation: growthStats.physicalAttack
+  ---
+  duration_ms: 0.289856
+  type: 'test'
+  ...
+# Subtest: strict useful hero file.field validation: baseStats.physicalDefense
+ok 405 - strict useful hero file.field validation: baseStats.physicalDefense
+  ---
+  duration_ms: 0.163496
+  type: 'test'
+  ...
+# Subtest: strict useful hero file.field validation: baseStats.attackSpeed
+ok 406 - strict useful hero file.field validation: baseStats.attackSpeed
+  ---
+  duration_ms: 0.140711
+  type: 'test'
+  ...
+# Subtest: strict useful hero file.field validation: growthStats.manaRegen
+ok 407 - strict useful hero file.field validation: growthStats.manaRegen
+  ---
+  duration_ms: 0.122129
+  type: 'test'
+  ...
+# Subtest: strict useful hero file.field validation: baseStats.hpRegen
+ok 408 - strict useful hero file.field validation: baseStats.hpRegen
+  ---
+  duration_ms: 0.185055
+  type: 'test'
+  ...
+# Subtest: strict useful hero file.field validation: baseStats.physiclAttack
+ok 409 - strict useful hero file.field validation: baseStats.physiclAttack
+  ---
+  duration_ms: 0.162523
+  type: 'test'
+  ...
+# Subtest: strict useful hero file.field validation: runtimeScale.range
+ok 410 - strict useful hero file.field validation: runtimeScale.range
+  ---
+  duration_ms: 0.227954
+  type: 'test'
+  ...
+# Subtest: strict useful hero file.field validation: basicAttack.cooldown
+ok 411 - strict useful hero file.field validation: basicAttack.cooldown
+  ---
+  duration_ms: 0.322397
+  type: 'test'
+  ...
+# Subtest: strict useful hero file.field validation: basicAttack.range
+ok 412 - strict useful hero file.field validation: basicAttack.range
+  ---
+  duration_ms: 0.346504
+  type: 'test'
+  ...
+# Subtest: strict useful hero file.field validation: progression.maxLevel
+ok 413 - strict useful hero file.field validation: progression.maxLevel
+  ---
+  duration_ms: 0.197908
+  type: 'test'
+  ...
+# Subtest: strict useful hero file.field validation: progression.xpThresholds
+ok 414 - strict useful hero file.field validation: progression.xpThresholds
+  ---
+  duration_ms: 0.144391
+  type: 'test'
+  ...
+# Subtest: strict useful hero file.field validation: hero.json.abilityIds
+ok 415 - strict useful hero file.field validation: hero.json.abilityIds
+  ---
+  duration_ms: 0.440261
+  type: 'test'
+  ...
+# Subtest: strict useful hero file.field validation: ranks.max
+ok 416 - strict useful hero file.field validation: ranks.max
+  ---
+  duration_ms: 1.186884
+  type: 'test'
+  ...
+# Subtest: strict useful hero file.field validation: ranks.requiredLevels
+ok 417 - strict useful hero file.field validation: ranks.requiredLevels
+  ---
+  duration_ms: 5.903523
+  type: 'test'
+  ...
+# Subtest: strict useful hero file.field validation: ranks.manaCost
+ok 418 - strict useful hero file.field validation: ranks.manaCost
+  ---
+  duration_ms: 1.006005
+  type: 'test'
+  ...
+# Subtest: strict useful hero file.field validation: ranks.damage
+ok 419 - strict useful hero file.field validation: ranks.damage
+  ---
+  duration_ms: 0.368067
+  type: 'test'
+  ...
+# Subtest: strict useful hero file.field validation: damageModel.type
+ok 420 - strict useful hero file.field validation: damageModel.type
+  ---
+  duration_ms: 2.535365
+  type: 'test'
+  ...
+# Subtest: strict useful hero file.field validation: damageModel.magicScaling
+ok 421 - strict useful hero file.field validation: damageModel.magicScaling
+  ---
+  duration_ms: 0.455047
+  type: 'test'
+  ...
+# Subtest: strict useful hero file.field validation: ranks.cooldown
+ok 422 - strict useful hero file.field validation: ranks.cooldown
+  ---
+  duration_ms: 0.585969
+  type: 'test'
+  ...
+# Subtest: Brawl room forbids no enemy, supports asymmetric exact counts and validates direct roster config
+ok 423 - Brawl room forbids no enemy, supports asymmetric exact counts and validates direct roster config
+  ---
+  duration_ms: 5.847245
+  type: 'test'
+  ...
+# Subtest: duplicate policy allows actual Layla now and enforces unique picks per team once five heroes exist
+ok 424 - duplicate policy allows actual Layla now and enforces unique picks per team once five heroes exist
+  ---
+  duration_ms: 0.187506
+  type: 'test'
+  ...
+# Subtest: map coordinate orientation flips only lane maps, allied base bottom-left
+ok 425 - map coordinate orientation flips only lane maps, allied base bottom-left
+  ---
+  duration_ms: 0.694447
+  type: 'test'
+  ...
+# Subtest: NPC owns actual Layla progression, learned abilities, mana/CD and independent authoritative engine
+ok 426 - NPC owns actual Layla progression, learned abilities, mana/CD and independent authoritative engine
+  ---
+  duration_ms: 3.137524
+  type: 'test'
+  ...
+# Subtest: 37 supplied Attack/Movement items with Javelin 8% crit and typed Rogue Meteor 900
+ok 427 - 37 supplied Attack/Movement items with Javelin 8% crit and typed Rogue Meteor 900
+  ---
+  duration_ms: 2.104111
+  type: 'test'
+  ...
+# Subtest: boots upgrade consumes basic pair automatically; a second different completed pair is rejected; explicit sale refunds once
+ok 428 - boots upgrade consumes basic pair automatically; a second different completed pair is rejected; explicit sale refunds once
+  ---
+  duration_ms: 1.997522
+  type: 'test'
+  ...
+# Subtest: queued skill spends nothing until full basic lock, then casts once and preserves skill lock
+ok 429 - queued skill spends nothing until full basic lock, then casts once and preserves skill lock
+  ---
+  duration_ms: 12.199928
+  type: 'test'
+  ...
+# Subtest: queued follow-up revalidates dead target and does not spend mana/cooldown on failure
+ok 430 - queued follow-up revalidates dead target and does not spend mana/cooldown on failure
+  ---
+  duration_ms: 8.685667
+  type: 'test'
+  ...
+# Subtest: Recall channels eight seconds and returns to configured own spawn; motion cancels
+ok 431 - Recall channels eight seconds and returns to configured own spawn; motion cancels
+  ---
+  duration_ms: 27.40006
+  type: 'test'
+  ...
+# Subtest: Regen heals configured resources over six seconds, clamps, cooldown, and damage cancels
+ok 432 - Regen heals configured resources over six seconds, clamps, cooldown, and damage cancels
+  ---
+  duration_ms: 21.020797
+  type: 'test'
+  ...
+# Subtest: Berserker Doom raises critical damage and temporary PA only on real crit
+ok 433 - Berserker Doom raises critical damage and temporary PA only on real crit
+  ---
+  duration_ms: 6.163631
+  type: 'test'
+  ...
+# Subtest: Blade of Despair triggers before damage and expires; minions do not trigger
+ok 434 - Blade of Despair triggers before damage and expires; minions do not trigger
+  ---
+  duration_ms: 1.083157
+  type: 'test'
+  ...
+# Subtest: Ambush charges after quiet period, grants correct extra physical and slow, cannot repeat on minions
+ok 435 - Ambush charges after quiet period, grants correct extra physical and slow, cannot repeat on minions
+  ---
+  duration_ms: 1.375243
+  type: 'test'
+  ...
+# Subtest: Corrosion adds 80 damage, ranged slow five stacks and Impulse expires
+ok 436 - Corrosion adds 80 damage, ranged slow five stacks and Impulse expires
+  ---
+  duration_ms: 2.093983
+  type: 'test'
+  ...
+# Subtest: Demon Hunter caps extra damage at 60 versus minions, stacks lifesteal and uses real HP
+ok 437 - Demon Hunter caps extra damage at 60 versus minions, stacks lifesteal and uses real HP
+  ---
+  duration_ms: 1.000172
+  type: 'test'
+  ...
+# Subtest: Divine Justice adds true damage after skill and exact heal, once per window/cooldown
+ok 438 - Divine Justice adds true damage after skill and exact heal, once per window/cooldown
+  ---
+  duration_ms: 1.190754
+  type: 'test'
+  ...
+# Subtest: Golden Staff converts crit, accelerates every third accepted basic and repeats on-hit effects twice
+ok 439 - Golden Staff converts crit, accelerates every third accepted basic and repeats on-hit effects twice
+  ---
+  duration_ms: 1.230468
+  type: 'test'
+  ...
+# Subtest: Spear ultimate speed buff lasts 7.5 and cooldown prevents immediate refresh
+ok 440 - Spear ultimate speed buff lasts 7.5 and cooldown prevents immediate refresh
+  ---
+  duration_ms: 1.44343
+  type: 'test'
+  ...
+# Subtest: Haas crit grants temporary attack speed
+ok 441 - Haas crit grants temporary attack speed
+  ---
+  duration_ms: 1.120871
+  type: 'test'
+  ...
+# Subtest: Hunter Strike uses five consecutive real hero hits, decaying speed, cooldown
+ok 442 - Hunter Strike uses five consecutive real hero hits, decaying speed, cooldown
+  ---
+  duration_ms: 1.042164
+  type: 'test'
+  ...
+# Subtest: Magic Blade Lifeline shields before fatal hit and shares preserved 60-second cooldown
+ok 443 - Magic Blade Lifeline shields before fatal hit and shares preserved 60-second cooldown
+  ---
+  duration_ms: 1.786717
+  type: 'test'
+  ...
+# Subtest: Malefic Gun adds actual range/percent penetration and brief speed without repeated range multiplication
+ok 444 - Malefic Gun adds actual range/percent penetration and brief speed without repeated range multiplication
+  ---
+  duration_ms: 1.002225
+  type: 'test'
+  ...
+# Subtest: Malefic Roar defense-dependent penetration is capped and unique Armor Buster does not add twice
+ok 445 - Malefic Roar defense-dependent penetration is capped and unique Armor Buster does not add twice
+  ---
+  duration_ms: 0.909103
+  type: 'test'
+  ...
+# Subtest: Rose Gold lifesteal-to-defense respects Marksman half and stronger unique Lifeline
+ok 446 - Rose Gold lifesteal-to-defense respects Marksman half and stronger unique Lifeline
+  ---
+  duration_ms: 1.030066
+  type: 'test'
+  ...
+# Subtest: Sea Halberd applies timed recovery reduction and real bonus-HP comparison
+ok 447 - Sea Halberd applies timed recovery reduction and real bonus-HP comparison
+  ---
+  duration_ms: 2.539112
+  type: 'test'
+  ...
+# Subtest: Crossbow adaptive on-hit damage and strongest shared Impulse
+ok 448 - Crossbow adaptive on-hit damage and strongest shared Impulse
+  ---
+  duration_ms: 0.926786
+  type: 'test'
+  ...
+# Subtest: War Axe builds once per second, half PA for Marksman and true bonus only at full stacks
+ok 449 - War Axe builds once per second, half PA for Marksman and true bonus only at full stacks
+  ---
+  duration_ms: 1.105748
+  type: 'test'
+  ...
+# Subtest: Wind of Nature actual active immunity excludes magic, has 90s cooldown and cannot be reset by sale
+ok 450 - Wind of Nature actual active immunity excludes magic, has 90s cooldown and cannot be reset by sale
+  ---
+  duration_ms: 1.566629
+  type: 'test'
+  ...
+# Subtest: Windtalker chains to at most three, correct magic damage/minion doubling and cooldown
+ok 451 - Windtalker chains to at most three, correct magic damage/minion doubling and cooldown
+  ---
+  duration_ms: 1.058428
+  type: 'test'
+  ...
+# Subtest: Arcane Boots penetration, Demon Shoes real recent minion contribution restores mana
+ok 452 - Arcane Boots penetration, Demon Shoes real recent minion contribution restores mana
+  ---
+  duration_ms: 1.485506
+  type: 'test'
+  ...
+# Subtest: Rapid Boots loses 20 speed after combat then recovers without stacking
+ok 453 - Rapid Boots loses 20 speed after combat then recovers without stacking
+  ---
+  duration_ms: 0.951138
+  type: 'test'
+  ...
+# Subtest: Tough Boots reduces slow duration; Warrior Boots stacks real physical-hit defense then expires
+ok 454 - Tough Boots reduces slow duration; Warrior Boots stacks real physical-hit defense then expires
+  ---
+  duration_ms: 1.853411
+  type: 'test'
+  ...
+# Subtest: equipped cooldown reduction caps at 40% and affects real skill cooldown on cast
+ok 455 - equipped cooldown reduction caps at 40% and affects real skill cooldown on cast
+  ---
+  duration_ms: 1.890589
+  type: 'test'
+  ...
+# Subtest: flat physical penetration sums across different items; unique percent Armor Buster does not
+ok 456 - flat physical penetration sums across different items; unique percent Armor Buster does not
+  ---
+  duration_ms: 0.950018
+  type: 'test'
+  ...
+# Subtest: duplicate hero marks belong to their caster and cannot consume an ally mark at another rank
+ok 457 - duplicate hero marks belong to their caster and cannot consume an ally mark at another rank
+  ---
+  duration_ms: 1.291254
+  type: 'test'
+  ...
+# Subtest: both red and blue real hero kits can actually hit the opposing team, never allies
+ok 458 - both red and blue real hero kits can actually hit the opposing team, never allies
+  ---
+  duration_ms: 25.863086
+  type: 'test'
+  ...
+# Subtest: Despair activated at impact scales only PA contribution and retains Layla distance multiplier
+ok 459 - Despair activated at impact scales only PA contribution and retains Layla distance multiplier
+  ---
+  duration_ms: 1.443178
+  type: 'test'
+  ...
+# Subtest: landscape settings has three accessible real pages and disabled sound/network placeholders
+ok 460 - landscape settings has three accessible real pages and disabled sound/network placeholders
+  ---
+  duration_ms: 1.905927
+  type: 'test'
+  ...
+# Subtest: Regen defaults to V, is uniquely reserved, can be rebound and restored without enabling an ability
+ok 461 - Regen defaults to V, is uniquely reserved, can be rebound and restored without enabling an ability
+  ---
+  duration_ms: 0.399512
+  type: 'test'
+  ...
+# Subtest: shop has sixteen catalog, four build and six equipment slots without fabricated items
+ok 462 - shop has sixteen catalog, four build and six equipment slots without fabricated items
+  ---
+  duration_ms: 1.002381
+  type: 'test'
+  ...
+# Subtest: empty slots and unavailable purchase/build actions are natively disabled and marked reserved
+ok 463 - empty slots and unavailable purchase/build actions are natively disabled and marked reserved
+  ---
+  duration_ms: 1.665251
+  type: 'test'
+  ...
+# Subtest: shop category and view controls are explicitly interface-only; initial category is accessible
+ok 464 - shop category and view controls are explicitly interface-only; initial category is accessible
+  ---
+  duration_ms: 0.230382
+  type: 'test'
+  ...
+# Subtest: all 45 supported entries including eight legacy items have explicit tier/recipe metadata
+ok 465 - all 45 supported entries including eight legacy items have explicit tier/recipe metadata
+  ---
+  duration_ms: 1.425732
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: edge
+ok 466 - recipe quote / direct automatic purchase: edge
+  ---
+  duration_ms: 0.364743
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: spring
+ok 467 - recipe quote / direct automatic purchase: spring
+  ---
+  duration_ms: 0.142253
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: lens
+ok 468 - recipe quote / direct automatic purchase: lens
+  ---
+  duration_ms: 0.08193
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: plate
+ok 469 - recipe quote / direct automatic purchase: plate
+  ---
+  duration_ms: 0.145276
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: ward
+ok 470 - recipe quote / direct automatic purchase: ward
+  ---
+  duration_ms: 0.069595
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: heart
+ok 471 - recipe quote / direct automatic purchase: heart
+  ---
+  duration_ms: 0.107692
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: boots
+ok 472 - recipe quote / direct automatic purchase: boots
+  ---
+  duration_ms: 0.064271
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: fang
+ok 473 - recipe quote / direct automatic purchase: fang
+  ---
+  duration_ms: 0.214997
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: berserkers-fury
+ok 474 - recipe quote / direct automatic purchase: berserkers-fury
+  ---
+  duration_ms: 0.445543
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: blade-of-despair
+ok 475 - recipe quote / direct automatic purchase: blade-of-despair
+  ---
+  duration_ms: 0.140828
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: blade-of-the-heptaseas
+ok 476 - recipe quote / direct automatic purchase: blade-of-the-heptaseas
+  ---
+  duration_ms: 0.064169
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: corrosion-scythe
+ok 477 - recipe quote / direct automatic purchase: corrosion-scythe
+  ---
+  duration_ms: 0.054305
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: dagger
+ok 478 - recipe quote / direct automatic purchase: dagger
+  ---
+  duration_ms: 0.056494
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: demon-hunter-sword
+ok 479 - recipe quote / direct automatic purchase: demon-hunter-sword
+  ---
+  duration_ms: 0.044646
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: endless-battle
+ok 480 - recipe quote / direct automatic purchase: endless-battle
+  ---
+  duration_ms: 0.059136
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: fury-hammer
+ok 481 - recipe quote / direct automatic purchase: fury-hammer
+  ---
+  duration_ms: 0.043945
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: golden-staff
+ok 482 - recipe quote / direct automatic purchase: golden-staff
+  ---
+  duration_ms: 0.059177
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: great-dragon-spear
+ok 483 - recipe quote / direct automatic purchase: great-dragon-spear
+  ---
+  duration_ms: 0.044646
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: haas-claws
+ok 484 - recipe quote / direct automatic purchase: haas-claws
+  ---
+  duration_ms: 0.044728
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: hunter-strike
+ok 485 - recipe quote / direct automatic purchase: hunter-strike
+  ---
+  duration_ms: 0.043917
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: iron-hunting-bow
+ok 486 - recipe quote / direct automatic purchase: iron-hunting-bow
+  ---
+  duration_ms: 0.041592
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: javelin
+ok 487 - recipe quote / direct automatic purchase: javelin
+  ---
+  duration_ms: 0.038899
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: knife
+ok 488 - recipe quote / direct automatic purchase: knife
+  ---
+  duration_ms: 0.156652
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: legion-sword
+ok 489 - recipe quote / direct automatic purchase: legion-sword
+  ---
+  duration_ms: 0.054106
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: magic-blade
+ok 490 - recipe quote / direct automatic purchase: magic-blade
+  ---
+  duration_ms: 0.051551
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: malefic-gun
+ok 491 - recipe quote / direct automatic purchase: malefic-gun
+  ---
+  duration_ms: 0.049087
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: malefic-roar
+ok 492 - recipe quote / direct automatic purchase: malefic-roar
+  ---
+  duration_ms: 0.044731
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: ogre-tomahawk
+ok 493 - recipe quote / direct automatic purchase: ogre-tomahawk
+  ---
+  duration_ms: 0.043193
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: regular-spear
+ok 494 - recipe quote / direct automatic purchase: regular-spear
+  ---
+  duration_ms: 0.092365
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: rogue-meteor
+ok 495 - recipe quote / direct automatic purchase: rogue-meteor
+  ---
+  duration_ms: 0.046115
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: rose-gold-meteor
+ok 496 - recipe quote / direct automatic purchase: rose-gold-meteor
+  ---
+  duration_ms: 0.064009
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: sea-halberd
+ok 497 - recipe quote / direct automatic purchase: sea-halberd
+  ---
+  duration_ms: 0.075915
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: swift-crossbow
+ok 498 - recipe quote / direct automatic purchase: swift-crossbow
+  ---
+  duration_ms: 0.052862
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: vampire-mallet
+ok 499 - recipe quote / direct automatic purchase: vampire-mallet
+  ---
+  duration_ms: 0.100562
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: war-axe
+ok 500 - recipe quote / direct automatic purchase: war-axe
+  ---
+  duration_ms: 0.062596
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: wind-of-nature
+ok 501 - recipe quote / direct automatic purchase: wind-of-nature
+  ---
+  duration_ms: 0.046406
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: windtalker
+ok 502 - recipe quote / direct automatic purchase: windtalker
+  ---
+  duration_ms: 0.045061
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: arcane-boots
+ok 503 - recipe quote / direct automatic purchase: arcane-boots
+  ---
+  duration_ms: 0.115986
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: basic-boots
+ok 504 - recipe quote / direct automatic purchase: basic-boots
+  ---
+  duration_ms: 0.060636
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: demon-shoes
+ok 505 - recipe quote / direct automatic purchase: demon-shoes
+  ---
+  duration_ms: 0.067276
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: magic-shoes
+ok 506 - recipe quote / direct automatic purchase: magic-shoes
+  ---
+  duration_ms: 0.080805
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: rapid-boots
+ok 507 - recipe quote / direct automatic purchase: rapid-boots
+  ---
+  duration_ms: 0.055016
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: swift-boots
+ok 508 - recipe quote / direct automatic purchase: swift-boots
+  ---
+  duration_ms: 0.071818
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: tough-boots
+ok 509 - recipe quote / direct automatic purchase: tough-boots
+  ---
+  duration_ms: 0.11135
+  type: 'test'
+  ...
+# Subtest: recipe quote / direct automatic purchase: warrior-boots
+ok 510 - recipe quote / direct automatic purchase: warrior-boots
+  ---
+  duration_ms: 0.055456
+  type: 'test'
+  ...
+# Subtest: component, multiple components, nested ancestor/descendants credit once and combine into next available slot
+ok 511 - component, multiple components, nested ancestor/descendants credit once and combine into next available slot
+  ---
+  duration_ms: 0.844012
+  type: 'test'
+  ...
+# Subtest: full inventory rejects unrelated purchase without spending, but combines valid owned components
+ok 512 - full inventory rejects unrelated purchase without spending, but combines valid owned components
+  ---
+  duration_ms: 0.144719
+  type: 'test'
+  ...
+# Subtest: one actual copy credits only one repeated branch, no free duplicate contribution
+ok 513 - one actual copy credits only one repeated branch, no free duplicate contribution
+  ---
+  duration_ms: 0.065292
+  type: 'test'
+  ...
+# Subtest: unaffordable/invalid transactions never mutate input; existing max-copy/one-pair/6-slot constraints preserved
+ok 514 - unaffordable/invalid transactions never mutate input; existing max-copy/one-pair/6-slot constraints preserved
+  ---
+  duration_ms: 0.123821
+  type: 'test'
+  ...
+# Subtest: quick buy uses same quotes, offers missing components/upgrade, changes with gold/ownership and completes honestly
+ok 515 - quick buy uses same quotes, offers missing components/upgrade, changes with gold/ownership and completes honestly
+  ---
+  duration_ms: 0.442245
+  type: 'test'
+  ...
+# Subtest: WASD is camera relative; every cardinal and diagonal has unit speed
+ok 516 - WASD is camera relative; every cardinal and diagonal has unit speed
+  ---
+  duration_ms: 2.489913
+  type: 'test'
+  ...
+# Subtest: diagonal displacement equals cardinal displacement
+ok 517 - diagonal displacement equals cardinal displacement
+  ---
+  duration_ms: 0.44212
+  type: 'test'
+  ...
+# Subtest: boundaries retain the entire player collider on all four sides
+ok 518 - boundaries retain the entire player collider on all four sides
+  ---
+  duration_ms: 4.124758
+  type: 'test'
+  ...
+# Subtest: solid obstacles stop movement from every side without tunneling
+ok 519 - solid obstacles stop movement from every side without tunneling
+  ---
+  duration_ms: 0.982351
+  type: 'test'
+  ...
+# Subtest: collision permits sliding along an obstacle and handles rounded corners
+ok 520 - collision permits sliding along an obstacle and handles rounded corners
+  ---
+  duration_ms: 0.171552
+  type: 'test'
+  ...
+# Subtest: living dummy blocks movement; dead dummy does not
+ok 521 - living dummy blocks movement; dead dummy does not
+  ---
+  duration_ms: 0.623234
+  type: 'test'
+  ...
+# Subtest: attack rejects invalid target and out-of-range dummy without consuming cooldown
+ok 522 - attack rejects invalid target and out-of-range dummy without consuming cooldown
+  ---
+  duration_ms: 0.35809
+  type: 'test'
+  ...
+# Subtest: attack accepts exact range, rejects beyond it, and enforces cooldown
+ok 523 - attack accepts exact range, rejects beyond it, and enforces cooldown
+  ---
+  duration_ms: 0.490626
+  type: 'test'
+  ...
+# Subtest: dummy death clamps health, rejects attacks, and reset restores all match state
+ok 524 - dummy death clamps health, rejects attacks, and reset restores all match state
+  ---
+  duration_ms: 1.497907
+  type: 'test'
+  ...
+# Subtest: fixed timestep gives the same displacement at 30, 60, and 144 render FPS
+ok 525 - fixed timestep gives the same displacement at 30, 60, and 144 render FPS
+  ---
+  duration_ms: 0.973805
+  type: 'test'
+  ...
+# Subtest: clock clamps catch-up and reset removes suspended-tab time
+ok 526 - clock clamps catch-up and reset removes suspended-tab time
+  ---
+  duration_ms: 0.170128
+  type: 'test'
+  ...
+# Subtest: quick press/release auto-casts once on release, not press or synthetic pointer click
+ok 527 - quick press/release auto-casts once on release, not press or synthetic pointer click
+  ---
+  duration_ms: 1.229504
+  type: 'test'
+  ...
+# Subtest: held key previews with no spend; release casts once and clears lifecycle
+ok 528 - held key previews with no spend; release casts once and clears lifecycle
+  ---
+  duration_ms: 1.418606
+  type: 'test'
+  ...
+# Subtest: Escape, right click and drag-to-cancel each cancel without costs
+ok 529 - Escape, right click and drag-to-cancel each cancel without costs
+  ---
+  duration_ms: 0.511381
+  type: 'test'
+  ...
+# Subtest: menu/reset input clear and pointer cancellation never cast on stale release
+ok 530 - menu/reset input clear and pointer cancellation never cast on stale release
+  ---
+  duration_ms: 0.375492
+  type: 'test'
+  ...
+# Subtest: another skill cancels old preview; only matching rebound-key release casts
+ok 531 - another skill cancels old preview; only matching rebound-key release casts
+  ---
+  duration_ms: 0.327543
+  type: 'test'
+  ...
+# Subtest: pointer movement before hold threshold is retained when preview opens
+ok 532 - pointer movement before hold threshold is retained when preview opens
+  ---
+  duration_ms: 0.627742
+  type: 'test'
+  ...
+# Subtest: Nearest Enemy selects dummy-a from meaningful training data
+ok 533 - Nearest Enemy selects dummy-a from meaningful training data
+  ---
+  duration_ms: 1.292077
+  type: 'test'
+  ...
+# Subtest: Lowest Current HP selects dummy-b from meaningful training data
+ok 534 - Lowest Current HP selects dummy-b from meaningful training data
+  ---
+  duration_ms: 0.204471
+  type: 'test'
+  ...
+# Subtest: Lowest HP Percentage selects dummy-c from meaningful training data
+ok 535 - Lowest HP Percentage selects dummy-c from meaningful training data
+  ---
+  duration_ms: 0.196517
+  type: 'test'
+  ...
+# Subtest: Manual Target selects dummy-a from meaningful training data
+ok 536 - Manual Target selects dummy-a from meaningful training data
+  ---
+  duration_ms: 0.103408
+  type: 'test'
+  ...
+# Subtest: only valid, living, targetable enemy units qualify
+ok 537 - only valid, living, targetable enemy units qualify
+  ---
+  duration_ms: 0.273282
+  type: 'test'
+  ...
+# Subtest: nearest: in-range eligible target is preferred to an out-of-range lower-HP unit
+ok 538 - nearest: in-range eligible target is preferred to an out-of-range lower-HP unit
+  ---
+  duration_ms: 0.129146
+  type: 'test'
+  ...
+# Subtest: current-hp: in-range eligible target is preferred to an out-of-range lower-HP unit
+ok 539 - current-hp: in-range eligible target is preferred to an out-of-range lower-HP unit
+  ---
+  duration_ms: 0.181216
+  type: 'test'
+  ...
+# Subtest: hp-percent: in-range eligible target is preferred to an out-of-range lower-HP unit
+ok 540 - hp-percent: in-range eligible target is preferred to an out-of-range lower-HP unit
+  ---
+  duration_ms: 0.07526
+  type: 'test'
+  ...
+# Subtest: manual: in-range eligible target is preferred to an out-of-range lower-HP unit
+ok 541 - manual: in-range eligible target is preferred to an out-of-range lower-HP unit
+  ---
+  duration_ms: 0.21622
+  type: 'test'
+  ...
+# Subtest: nearest: ties use distance then stable ID, independent of array order
+ok 542 - nearest: ties use distance then stable ID, independent of array order
+  ---
+  duration_ms: 1.040565
+  type: 'test'
+  ...
+# Subtest: current-hp: ties use distance then stable ID, independent of array order
+ok 543 - current-hp: ties use distance then stable ID, independent of array order
+  ---
+  duration_ms: 0.185307
+  type: 'test'
+  ...
+# Subtest: hp-percent: ties use distance then stable ID, independent of array order
+ok 544 - hp-percent: ties use distance then stable ID, independent of array order
+  ---
+  duration_ms: 0.140472
+  type: 'test'
+  ...
+# Subtest: manual: ties use distance then stable ID, independent of array order
+ok 545 - manual: ties use distance then stable ID, independent of array order
+  ---
+  duration_ms: 0.128854
+  type: 'test'
+  ...
+# Subtest: manual click overrides each auto mode and ground attacks preserve that lock
+ok 546 - manual click overrides each auto mode and ground attacks preserve that lock
+  ---
+  duration_ms: 0.764784
+  type: 'test'
+  ...
+# Subtest: Manual Target mode pins a specific target and reselects nearest after death
+ok 547 - Manual Target mode pins a specific target and reselects nearest after death
+  ---
+  duration_ms: 0.375246
+  type: 'test'
+  ...
+# Subtest: changing modes or clearing a lock returns to that automatic policy without resetting cooldown
+ok 548 - changing modes or clearing a lock returns to that automatic policy without resetting cooldown
+  ---
+  duration_ms: 0.177273
+  type: 'test'
+  ...
+# Subtest: dead/invalid target is never selected; invalid direct clicks do not damage another enemy
+ok 549 - dead/invalid target is never selected; invalid direct clicks do not damage another enemy
+  ---
+  duration_ms: 0.976559
+  type: 'test'
+  ...
+# Subtest: target removed from the registry releases the pin and falls back using the active mode
+ok 550 - target removed from the registry releases the pin and falls back using the active mode
+  ---
+  duration_ms: 0.156606
+  type: 'test'
+  ...
+# Subtest: automatic killing blow immediately reselects according to each policy
+ok 551 - automatic killing blow immediately reselects according to each policy
+  ---
+  duration_ms: 0.230034
+  type: 'test'
+  ...
+# Subtest: out-of-range pinned targets never get attacked, even if another enemy is in range
+ok 552 - out-of-range pinned targets never get attacked, even if another enemy is in range
+  ---
+  duration_ms: 0.114049
+  type: 'test'
+  ...
+# Subtest: automatic targeting and attacks never move the player, including empty and out-of-range states
+ok 553 - automatic targeting and attacks never move the player, including empty and out-of-range states
+  ---
+  duration_ms: 0.369407
+  type: 'test'
+  ...
+# Subtest: reset restores configured HP/max HP, all player and target state, and default selection
+ok 554 - reset restores configured HP/max HP, all player and target state, and default selection
+  ---
+  duration_ms: 0.261324
+  type: 'test'
+  ...
+# Subtest: default mode is configurable; unsupported modes fail without corrupting selection
+ok 555 - default mode is configurable; unsupported modes fail without corrupting selection
+  ---
+  duration_ms: 0.438029
+  type: 'test'
+  ...
+1..555
+# tests 555
+# suites 0
+# pass 555
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4801.806801

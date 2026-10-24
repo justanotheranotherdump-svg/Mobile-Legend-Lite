@@ -1,0 +1,76 @@
+{
+  "plan": "A",
+  "status": "Saved R4 comparison baseline; user says current Iron Hook looks good; not approval for game integration",
+  "savedDate": "2026-10-19",
+  "timing": {
+    "revision": "timing-r4",
+    "fps": 60,
+    "provenance": "User-requested faster prototype travel/pull/return tuning, intentionally faster than the previously supplied web travel figures. Cast/other actor clips unchanged; not an official timing claim.",
+    "hook": {
+      "cast": 0.45,
+      "maxTravel": 0.25,
+      "maxArrival": 0.7,
+      "hitArrival": 0.68,
+      "pullStart": 0.7,
+      "pullEnd": 0.88,
+      "hitReturnEnd": 0.96,
+      "emptyReturnEnd": 0.9,
+      "hitDuration": 0.96,
+      "emptyDuration": 0.9,
+      "clipDuration": 0.45
+    },
+    "slam": {
+      "impact": 0.3,
+      "effectEnd": 0.65,
+      "duration": 0.3
+    },
+    "hunt": {
+      "start": 0,
+      "secureEnd": 0.08,
+      "end": 1.8,
+      "strikes": [
+        0.15,
+        0.45,
+        0.75,
+        1.05,
+        1.35,
+        1.65
+      ],
+      "duration": 1.8
+    },
+    "attack": {
+      "impact": 0.4,
+      "duration": 0.6
+    },
+    "combo": {
+      "hitEnd": 0.96,
+      "slamEnd": 1.26,
+      "duration": 3.06
+    },
+    "notImplemented": [
+      "main-game mechanics/integration",
+      "final collision/damage/CC",
+      "Flicker combos",
+      "hard-CC interruption rules"
+    ]
+  },
+  "basicAttack": {
+    "baseEffectiveAPS": 1.03,
+    "contactSeconds": 0.4,
+    "clipSeconds": 0.6,
+    "cooldownFormula": "1 / effectiveAPS",
+    "animationScaleFormula": "effectiveAPS / 1.03",
+    "preContactWalk": "abort without hit",
+    "postContactWalkOrSkill": "cancel backswing; retain hit and original cooldown"
+  },
+  "artifacts": {
+    "deliverables/Franco-Timing-R4.html": {
+      "bytes": 3208936,
+      "sha256": "2e5c6fda852857067a4d92f2a96d768d804d2eac00cc9f83657f9506ae4fd6dc"
+    },
+    "deliverables/Franco-Timing-R4-Source.zip": {
+      "bytes": 4034484,
+      "sha256": "2182895c235fd64d8f09183d2e4b07db7312a7fe777e803d56ea9197e27d1a56"
+    }
+  }
+}

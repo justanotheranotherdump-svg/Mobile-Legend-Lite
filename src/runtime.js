@@ -1,0 +1,269 @@
+import { BrawlHud } from "./ui/brawl-hud.js";
+import { rangeSnapshot } from "./simulation/ranges.js";
+import { SpellHud } from "./ui/spell-hud.js";
+import { UtilityHud } from "./ui/utility-hud.js";
+import { FixedClock } from "./core/clock.js";
+import { withinEvents } from "./core/events.js";
+import { Controls } from "./input/controls.js";
+import { Hud } from "./ui/hud.js";
+import { MatchHud } from "./ui/match-hud.js";
+// One owned RAF, AbortController, renderer, HUD and event bus per session.
+export async function createRuntime({
+  simulation,
+  heroVisual,
+  View,
+  profile,
+  fixture = false,
+  onReady,
+  onExit,
+  onEnd,
+  onProgress = async () => {},
+  deferReveal = false,
+}) {
+  const scope = new AbortController();
+  let view,
+    controls,
+    hud,
+    matchHud,
+    raf = 0,
+    disposed = false,
+    paused = document.hidden,
+    userPaused = false,
+    offReady,
+    spellHud,
+    brawlHud;
+  const clock = new FixedClock();
+  if (profile) simulation.playerName = profile.username;
+  document.querySelector("#app").hidden = deferReveal;
+  document.querySelector("#error").hidden = true;
+  const syncPause = () => {
+    simulation.paused = paused || userPaused;
+    if (controls) controls.suspended = simulation.paused;
+  };
+  const setPaused = (value) => {
+    userPaused = value;
+    syncPause();
+    controls.clear();
+    clock.reset();
+  };
+  const dispose = () => {
+    if (disposed) return;
+    disposed = true;
+    cancelAnimationFrame(raf);
+    controls?.clear();
+    scope.abort();
+    offReady?.();
+    matchHud?.dispose();
+    spellHud?.dispose();
+    brawlHud?.dispose();
+    view?.dispose();
+    simulation.events.listeners.clear();
+    document.querySelector("#hud-root").replaceChildren();
+    document.querySelector("#enemy-labels").replaceChildren();
+    document.querySelector("#pause").hidden = true;
+    document.querySelector("#app").hidden = true;
+    if (window.foundationDiagnostics) delete window.foundationDiagnostics;
+  };
+  try {
+    view = new View(
+      document.querySelector("#world"),
+      simulation.arena,
+      simulation.isMatch ? [] : simulation.enemies,
+      heroVisual,
+    );
+    view.canvas.setAttribute(
+      "aria-label",
+      simulation.isMatch
+        ? "3D single-lane local MOBA. Move with WASD or the touch joystick, click enemies to target, and destroy the enemy outer tower, inner tower and core."
+        : "3D training arena. Use WASD or the joystick to move and left-click ground for smart attacks or a dummy to prioritize it.",
+    );
+    if(view.prepareHeroes)await view.prepareHeroes(simulation.registry);
+    await view.connectCombat(simulation);
+    await onProgress(4, "3D environment and objective visuals prepared");
+    withinEvents(scope, () => {
+      controls = new Controls(
+        view.canvas,
+        (pointer) => {
+          if (!controls.skillGestureActive)
+            (simulation.requestAttack?.(view.pickTarget(pointer)) ?? simulation.attack(view.pickTarget(pointer)));
+        },
+        { allowMenuGameplay: !fixture },
+      );
+      controls.registerReset(()=>simulation.cancelAttackCommand?.());
+      hud = new Hud(
+        simulation,
+        () => {
+          simulation.reset();
+          clock.reset();
+          controls.clear();
+          view.resetFeedback();
+          heroVisual.reset();
+        },
+        (mode) => simulation.setTargetMode(mode),
+        controls,
+        view,
+      );
+      if (simulation.combatHero) hud.utilities = new UtilityHud(simulation);
+      if (simulation.spells) spellHud = new SpellHud(simulation);
+      if (simulation.isMatch)
+        matchHud = new MatchHud(simulation, {
+          onPause: setPaused,
+          onQuit: (destination) => onExit?.(destination),
+        });
+      if(simulation.brawl)brawlHud=new BrawlHud(simulation,view);
+      if (onExit && !simulation.isMatch) {
+        const exit = document.createElement("button");
+        exit.id = "practice-exit";
+        exit.type = "button";
+        exit.textContent = "Exit Practice";
+        exit.className = "practice-exit";
+        exit.addEventListener("click", () => {
+          setPaused(true);
+          const panel = document.createElement("div");
+          panel.className = "practice-exit-confirm";
+          panel.innerHTML =
+            '<section><h2>Leave Practice?</h2><button data-resume type="button">Keep practicing</button><button data-leave type="button">Return to room</button></section>';
+          document.querySelector("#hud-root").append(panel);
+          panel.querySelector("[data-resume]").onclick = () => {
+            panel.remove();
+            setPaused(false);
+          };
+          panel.querySelector("[data-leave]").onclick = () => onExit("room");
+        });
+        document.querySelector("#hud-root").append(exit);
+      }
+    });
+    await onProgress(5, "HUD, equipment, touch and keyboard input initialized");
+    offReady = onReady?.({ simulation });
+    await onProgress(6, "Local audio and session resources connected");
+    const options = { signal: scope.signal };
+    window.addEventListener(
+      "blur",
+      () => {
+        paused = true;
+        syncPause();
+        clock.reset();
+        controls.clear();
+        hud.paused(true);
+      },
+      options,
+    );
+    window.addEventListener(
+      "focus",
+      () => {
+        paused = document.hidden;
+        syncPause();
+        clock.reset();
+        hud.paused(paused);
+      },
+      options,
+    );
+    document.addEventListener(
+      "visibilitychange",
+      () => {
+        paused = document.hidden;
+        syncPause();
+        clock.reset();
+        controls.clear();
+        hud.paused(paused);
+      },
+      options,
+    );
+    view.canvas.addEventListener(
+      "webglcontextlost",
+      (event) => {
+        event.preventDefault();
+        setPaused(true);
+        const e = document.querySelector("#error");
+        e.hidden = false;
+        e.textContent = "Graphics context lost. Leave to the room and retry.";
+      },
+      options,
+    );
+    const diagnosticSnapshot = () => ({
+      ...simulation.snapshot(),
+      aim: view.aim && { ...view.aim },
+      ranges: rangeSnapshot(simulation),
+      paused: paused || userPaused,
+      width: view.width,
+      height: view.height,
+    });
+    if (location.hash === "#diagnostics")
+      window.foundationDiagnostics = Object.freeze({
+        snapshot: diagnosticSnapshot,
+        project: (x, y, z) => view.project(x, y, z),
+        hero: () => ({
+          id: simulation.hero.id,
+          definition: structuredClone(simulation.hero),
+          modelStatus: heroVisual.status,
+          modelFacing: view.hero.rotation.y,
+          sightVisible: Boolean(view.aimSight?.group.visible),
+          rangeVisuals: {player:{radius:view.rangeVisuals.player.scale.x,visible:view.rangeVisuals.player.visible},towers:[...view.rangeVisuals.towers].map(([id,r])=>({id,radius:r.scale.x,visible:r.visible}))},
+          visual: heroVisual.diagnostics(),
+          effects: view.combatVfx?.diagnostics(),
+          registeredIds: ["franco", "layla", "training"],
+          npcModels: view.botVisuals
+            ? [...view.botVisuals].map(([id, v]) => ({
+                id,
+                meshCount: v.visual.root.getObjectsByProperty("isMesh", true)
+                  .length,
+                heroId:v.visual.heroId,
+                clips:Object.values(simulation.registry.get(v.visual.heroId).animations.clips),
+                pose:v.visual.diagnostics(),
+              }))
+            : [],
+        }),
+      });
+    function frame(timestamp) {
+      if (disposed) return;
+      try {
+        if (!paused && !userPaused)
+          clock.advance(timestamp, (dt) =>
+            simulation.update(dt, ...controls.axes),
+          );
+        else clock.reset();
+        view.render(simulation, controls.pointer);
+        hud.update(simulation, view);
+        hud.utilities?.update();
+        spellHud?.update();
+        brawlHud?.update();
+        matchHud?.update();
+        if (simulation.phase === "ended") {
+          onEnd?.(structuredClone(simulation.result));
+          if (disposed) return;
+        }
+        raf = requestAnimationFrame(frame);
+      } catch (error) {
+        setPaused(true);
+        const box = document.querySelector("#error");
+        box.hidden = false;
+        box.textContent = `Runtime stopped safely: ${error.message}. Use Pause / Quit to leave.`;
+        console.error(error);
+      }
+    }
+    await onProgress(7, "Ready — local simulation starts with countdown");
+    syncPause();
+    raf = requestAnimationFrame(frame);
+    if (!deferReveal) view.canvas.focus({ preventScroll: true });
+    return {
+      reveal() {
+        document.querySelector("#app").hidden = false;
+        view.resize();
+        view.canvas.focus({ preventScroll: true });
+      },
+      simulation,
+      heroVisual,
+      view,
+      controls,
+      dispose,
+      setPaused,
+      diagnostics: () => ({
+        disposed,
+        listenerScopeAborted: scope.signal.aborted,
+      }),
+    };
+  } catch (error) {
+    dispose();
+    throw error;
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "author": "Original custom contour anatomy/outfit/twin-tail/gun geometry, authored rig/IK and baked clips. No imported official assets/textures.",
+  "revision": "layla-workshop-r1",
+  "approval": "UNAPPROVED PREVIEW ONLY",
+  "bones": [
+    "root",
+    "pelvis",
+    "chest",
+    "neck",
+    "head",
+    "weapon",
+    "muzzle",
+    "upperArmR",
+    "forearmR",
+    "handR",
+    "gripR",
+    "thighR",
+    "shinR",
+    "footR",
+    "tailBaseR",
+    "tailTipR",
+    "upperArmL",
+    "forearmL",
+    "handL",
+    "gripL",
+    "thighL",
+    "shinL",
+    "footL",
+    "tailBaseL",
+    "tailTipL"
+  ],
+  "clips": [
+    {
+      "name": "Aim",
+      "duration": 1.0
+    },
+    {
+      "name": "BasicAttack",
+      "duration": 0.6
+    },
+    {
+      "name": "Death",
+      "duration": 1.5
+    },
+    {
+      "name": "DestructionRush",
+      "duration": 1.1
+    },
+    {
+      "name": "HitReact",
+      "duration": 0.4
+    },
+    {
+      "name": "Idle",
+      "duration": 2.0
+    },
+    {
+      "name": "MaleficBomb",
+      "duration": 0.6
+    },
+    {
+      "name": "Run",
+      "duration": 0.8
+    },
+    {
+      "name": "VoidProjectile",
+      "duration": 0.75
+    },
+    {
+      "name": "Walk",
+      "duration": 1.2
+    }
+  ],
+  "sourceRelease": {
+    "BasicAttack": 0.25,
+    "MaleficBomb": 0.25,
+    "VoidProjectile": 0.4,
+    "DestructionRush": 0.65
+  },
+  "sourceDuration": {
+    "BasicAttack": 0.6,
+    "MaleficBomb": 0.6,
+    "VoidProjectile": 0.75,
+    "DestructionRush": 1.1
+  },
+  "vertices": 13884,
+  "polygons": 12202,
+  "blender": "4.2.22 LTS",
+  "limits": [
+    "Stylized original interpretation, not official asset or commercial likeness guarantee",
+    "Rigid-panel outfit; no cloth/fur or facial expressions",
+    "Two bones per tail with keyed motion; no hair physics",
+    "Arm IK baked in GLB; no arbitrary-aim runtime IK",
+    "In-place walk/run, no foot-plant/navigation system",
+    "Fingers modeled but not separately rigged"
+  ]
+}

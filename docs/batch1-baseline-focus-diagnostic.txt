@@ -1,0 +1,13 @@
+Checkpoint focus before Space: <button type="button" data-shop-view="all" aria-pressed="true" data-control-kind="interface-only">All equipment</button>
+Checkpoint result: { hits: 0, lastAttack: { reason: 'ready', serial: 0, targetId: null } }
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+page.waitForFunction: Timeout 30000ms exceeded.
+    at /home/user/Mobile-Legend-Lite/[eval1]:1:1012 {
+  log: [],
+  name: 'TimeoutError'
+}
+
+Node.js v22.22.3

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101b24" />
+    <title>MOBA Lab · Your Arena Awaits</title>
+  </head>
+  <body>
+    <div id="app" hidden>
+      <canvas
+        id="world"
+        tabindex="0"
+        aria-label="3D training arena. Use WASD or the joystick to move and left-click ground for smart attacks or a dummy to prioritize it."
+      ></canvas>
+      <div id="hud-root"></div>
+      <div id="enemy-labels" aria-hidden="true"></div>
+      <div
+        id="player-label"
+        class="world-label player-label"
+        aria-hidden="true"
+      >
+        <span>YOU</span>
+        <div class="small-track"><i></i></div>
+      </div>
+      <div id="error" role="alert" hidden></div>
+      <div id="pause" hidden>Paused — return to the arena to continue</div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+
+> moba-foundation@0.1.0 test:browser:match
+> node tests/browser-match.mjs
+
+PASS: Classic/Ranked disabled; four AI scenarios, Normal default, real Hard/custom roster configuration, guarded selection and all Back routes remain combat-isolated
+PASS: validated hero confirmation completes seven actual local setup stages, then one 5v5 simulation/countdown; saved name, actual level/HP/mana and six objectives rendered
+PASS: wrapper-relative legal + badges remain top-right at 1280×720, 960×540 and 844×390; click spends exactly one point without casting; dark rank-zero local PNGs, no far-left row or UNLEARNED text
+PASS: actual shop buy/equip/unique/insufficient/sell transactions update six slots, gold and effective PA; pause freezes clock; safe quit disposes listeners/RAF and preserves account wallet
+PASS: Practice travels through the same guarded prematch flow but retains separate three-dummy, reward-free sandbox and working exit / resume
+PASS: top-level Brawl uses level 3 / 800 gold, non-cheating live attributes, same 5v5 pipeline; replacement credits 60% exactly once and recomputes real attack/movement speed
+Waiting for an actual unattended Brawl result (fixed simulation clock, no state injection)…
+Live Brawl 44.1s, wave 3, objectives 1873/4200/6500/3600/4200/6500
+Live Brawl 92.5s, wave 6, objectives 1873/4200/6500/3600/4200/6500
+Live Brawl 128.4s, wave 8, objectives 0/4200/6500/3600/4200/6500
+Live Brawl 166.9s, wave 10, objectives 0/4200/6500/3600/4200/6500
+Live Brawl 213.0s, wave 12, objectives 0/3409/6500/3600/4200/6500
+Live Brawl 251.2s, wave 14, objectives 0/0/6500/3600/4200/6500
+Live Brawl 297.9s, wave 17, objectives 0/0/6500/0/4200/6500
+Live Brawl 335.7s, wave 19, objectives 0/0/1557/0/4200/6500
+Live Brawl 383.0s, wave 22, objectives 0/0/1433/0/4200/6500
+PASS: actual unattended Brawl reaches sequential core destruction → real results with implemented duration / eliminations / deaths / assists / level / combat gold, no account rewards
+PASS: fresh replay re-enters explicit hero confirmation and resets all match state; Main Menu restores the same approved shared GLB without a second asset load
+PASS: coarse-pointer 844×390 exposes a real drag joystick that moves the authoritative hero, with existing WASD and skill gestures preserved
+PASS: actual standalone file:// with offline networking: no JavaScript errors or external runtime asset requests
+10 connected-match browser checks passed.

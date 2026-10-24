@@ -1,0 +1,40 @@
+{
+  "revision": "layla-workshop-r2",
+  "date": "2026-10-19",
+  "HTMLAlone": {
+    "directoryFileCount": 1,
+    "offline": "file://; browser context offline; no external requests",
+    "browserGroups": 51,
+    "suites": [
+      {
+        "evidence": "browser-r2-isolated-regression.json",
+        "groups": 34,
+        "errors": 0,
+        "warnings": 0,
+        "externalRequests": 0
+      },
+      {
+        "evidence": "browser-r2-isolated-effects.json",
+        "groups": 17,
+        "errors": 0,
+        "warnings": 0,
+        "externalRequests": 0
+      }
+    ],
+    "sha256": "2eb710ea10ed8193f05615acc6d8bc581b4831c5ccbc89a8d89ed8077f1863a0"
+  },
+  "extractedSource": {
+    "npmCi": "exit0; 35 installed packages; 0 vulnerabilities",
+    "focusedUnits": {
+      "total": 32,
+      "pass": 32,
+      "fail": 0,
+      "skipped": 0
+    },
+    "productionBuild": "exit0; Vite7.3.7",
+    "rebuiltHTMLSHA256": "2eb710ea10ed8193f05615acc6d8bc581b4831c5ccbc89a8d89ed8077f1863a0",
+    "deliveredHTMLSHA256": "2eb710ea10ed8193f05615acc6d8bc581b4831c5ccbc89a8d89ed8077f1863a0",
+    "byteIdentical": true
+  },
+  "finalArchivePolicy": "Final archive only adds human report and fresh-directory evidence; every previously tested code/asset/config/HTML payload is checked hash-identical after final packaging."
+}

@@ -1,0 +1,9 @@
+{
+  "halfSize": 15,
+  "obstacles": [
+    { "x": -6, "z": -3, "width": 4, "depth": 2.5, "height": 1.6 },
+    { "x": 5, "z": 5, "width": 3, "depth": 3, "height": 1.9 },
+    { "x": -10, "z": 7, "width": 2, "depth": 4, "height": 1.2 },
+    { "x": 8, "z": -8, "width": 3, "depth": 2, "height": 1.4 }
+  ]
+}

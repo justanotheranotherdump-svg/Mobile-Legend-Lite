@@ -1,0 +1,82 @@
+{
+  "status": "passed-with-documented-prototype-and-platform-limits",
+  "date": "2026-10-19",
+  "timezone": "Asia/Manila",
+  "branch": "arena/55ce0f80-mobile-legend-lite",
+  "baseCheckpoint": "0e5557663317f4ead1b5af587cd6b6d521597a57",
+  "newPushPerformed": false,
+  "html": {
+    "path": "deliverables/MOBA-Lab-Preparation-Expansion.html",
+    "bytes": 10463648,
+    "sha256": "fdb043347dfc131b6df8eb21118c6f7e2aeec5795876040ed849bf8fdf20a626"
+  },
+  "sourceZip": {
+    "path": "deliverables/MOBA-Lab-Preparation-Expansion-source.zip",
+    "bytes": 17852643,
+    "sha256": "8ac3b707cc76d026fe589f7492ca0cec0baaea57856f1e33b945f81b8c7939a0",
+    "entries": 595,
+    "files": 559,
+    "crc": "all entries passed",
+    "rootHtmlByteIdentical": true
+  },
+  "sourceFilesByteMatched": 382,
+  "approvedAssetsUnchanged": {
+    "src/heroes/layla/assets/layla.glb": "963a4902955cb8ad345c74eb63b76e602ade5247c2bd94544ce3000cba6edd51",
+    "src/assets/images/layla-creation.png": "bc2b258b61ddceb7aa9abe9a82c9ebe25d30b7ba91c6d3a58a57b4f15005fca1",
+    "src/ui/assets/layla-portrait.png": "67878f3996f6e24c213cdc7b86a91858d4ab5e3be675d648652f5e2650435d3e"
+  },
+  "unit": {
+    "tests": 741,
+    "passed": 741,
+    "failed": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "evidence": "docs/preparation-expansion-unit-results.txt"
+  },
+  "browser": {
+    "legacySuites": 14,
+    "legacyCheckGroups": 205,
+    "preparationFocusedCheckGroups": 13,
+    "distinctCheckGroups": 218,
+    "isolatedCheckGroups": 26,
+    "acceptedFinalExecutions": 244,
+    "bundleSha256": "fdb043347dfc131b6df8eb21118c6f7e2aeec5795876040ed849bf8fdf20a626",
+    "legacyEvidence": "docs/preparation-expansion-regression-results.json",
+    "focusedEvidence": "docs/preparation-expansion-focused-root-results.json",
+    "isolationEvidence": "docs/preparation-expansion-isolated-results.json",
+    "isolationOfFinalPackagedBytes": true,
+    "focusedAndIsolatedRuntimeErrors": 0,
+    "focusedAndIsolatedWarnings": 0,
+    "focusedAndIsolatedExternalRequests": 0,
+    "environment": "Linux Chromium/software WebGL, offline file:// with ordinary file-origin security; no sibling assets; Unicode and spaces paths; no combat Gold or progression injection"
+  },
+  "assets": {
+    "newIndividualPngs": 63,
+    "canonicalRecords": 108,
+    "paidEntries": 99,
+    "magic": 31,
+    "defenseUnique": 25,
+    "jungling": 3,
+    "roaming": 4,
+    "manifest": "docs/preparation-expansion-asset-manifest.json"
+  },
+  "build": "passed; expected large-bundle advisory retained",
+  "archive": {
+    "crc": "passed all entries",
+    "rootHtmlByteIdentical": true,
+    "sourceFilesByteMatched": 382,
+    "newPngHashesVerified": 63,
+    "aliasesByteIdentical": true,
+    "excludes": "dependencies/Git/virtualenv/cache/test captures/reference screenshots/duplicate builds"
+  },
+  "limits": [
+    "Classic versioned blessing rules, not certified live 2026 patch parity; source conflicts and prototype coefficients documented.",
+    "No spawned jungle camps, bush/vision economy, online play, Ranked, new heroes or functional Emblems.",
+    "Community templates have no measured win-rate claim. Fleeting Time is canonical Magic once: Defense has 25 unique supplied names.",
+    "Activated Winter/Conceal and expensive-item procs/consumable expiry have mechanical unit coverage, not native-browser visual certification; native acquisition/affordability/role gates/disposal are verified.",
+    "Linux software WebGL and emulated touch are not native Windows, physical-device, speaker, subjective art/AI quality or low-end performance certification."
+  ],
+  "report": "docs/PREPARATION_EXPANSION.md",
+  "changedFiles": "docs/PREPARATION_EXPANSION_CHANGES.md",
+  "note": "Hash certificate is external to the source ZIP it hashes. Historical failed/intermediate attempts retained and not counted as final passes."
+}

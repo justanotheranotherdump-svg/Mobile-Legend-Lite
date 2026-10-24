@@ -1,0 +1,65 @@
+{
+  "note": "Executed during integration. Polish/draft/Preparation and roster include the earlier successful integration-build runs explicitly identified in VERIFICATION.md; current HTML acceptance and clean source build were repeated after approved hook timing alignment.",
+  "suites": [
+    {
+      "suite": "browser-final-gameplay-polish",
+      "exitCode": 0,
+      "passes": 5,
+      "log": "artifacts/two-heroes/regressions/browser-final-gameplay-polish.txt"
+    },
+    {
+      "suite": "browser-recovery",
+      "exitCode": 0,
+      "passes": 5,
+      "log": "artifacts/two-heroes/regressions/browser-recovery.txt"
+    },
+    {
+      "suite": "browser-hero-browser",
+      "exitCode": 0,
+      "passes": 9,
+      "log": "artifacts/two-heroes/regressions/browser-hero-browser.txt"
+    },
+    {
+      "suite": "browser-layla",
+      "exitCode": 0,
+      "passes": 19,
+      "log": "artifacts/two-heroes/regressions/browser-layla.txt"
+    },
+    {
+      "suite": "browser-menu",
+      "exitCode": 0,
+      "passes": 11,
+      "log": "artifacts/two-heroes/regressions/browser-menu.txt"
+    },
+    {
+      "suite": "browser",
+      "exitCode": 0,
+      "passes": 50,
+      "log": "artifacts/two-heroes/regressions/browser.txt"
+    },
+    {
+      "suite": "browser-polish",
+      "exitCode": 0,
+      "passes": 13,
+      "log": "artifacts/two-heroes/regressions/browser-polish.txt"
+    },
+    {
+      "suite": "browser-draft",
+      "exitCode": 0,
+      "passes": 6,
+      "log": "artifacts/two-heroes/regressions/browser-draft.txt"
+    },
+    {
+      "suite": "browser-preparation-expansion",
+      "exitCode": 0,
+      "passes": 13,
+      "log": "artifacts/two-heroes/regressions/browser-preparation-expansion.txt"
+    },
+    {
+      "suite": "browser-roster",
+      "exitCode": 0,
+      "passes": 9,
+      "log": "artifacts/two-heroes/regressions/browser-roster.txt"
+    }
+  ]
+}

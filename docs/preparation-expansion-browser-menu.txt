@@ -1,0 +1,12 @@
+PASS: first launch shows creation only; supplied RGBA artwork decodes with its real alpha preserved and no 3D model loaded
+PASS: invalid names cannot continue, and a valid name still requires explicit gender selection
+PASS: country/gender selection saves the actual local profile and lobby displays it with the existing GLB, not the PNG
+PASS: all 7 remaining lobby placeholders are disabled/no-op; menu combat keys never initialize training
+PASS: actual offline file:// localStorage survives same-file reload and skips creation for a valid profile
+PASS: MODE/back/Escape preserve profile and reuse one GLB presentation; Classic/Ranked cannot launch matches; Brawl is covered by connected-match tests
+PASS: 1280x720, 960x540, 844x390: all three screens fit, cards stay in bounds, PNG stays contained and touch-emulated profile/MODE/back and compact AI entry work
+PASS: denied storage remains usable for the session and honestly displays the persistence limitation
+PASS: corrupt/invalid saved data safely returns to creation
+PASS: AI Training enters the established real Layla simulation exactly once, transfers the same GLB safely, disposes lobby rendering and restores movement/skill damage
+PASS: actual standalone offline menu-to-game flow has zero runtime errors, warnings or external/subresource requests
+11 menu browser checks passed.

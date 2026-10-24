@@ -1,0 +1,41 @@
+{
+  "platform": "linux",
+  "browser": "153.0.8010.0",
+  "gpu": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+  "offline": true,
+  "fileProtocol": true,
+  "developmentPreview": {
+    "passed": true,
+    "errors": [],
+    "invalidHeroDataBanner": "passed"
+  },
+  "checks": [
+    "downloaded HTML initializes actual WebGL2 using file:// with network disabled",
+    "inline CSS is applied: dark background, positioned HUD, full-viewport canvas (unstyled-page regression)",
+    "eager bundled hero registry drives exact existing stats/HUD and honest placeholder/empty clips",
+    "three distinct configured dummies expose current/max HP in world labels",
+    "out-of-range automatic and pinned direct attacks reject damage/cooldown and NEVER chase",
+    "real keyboard movement and diagonal normalization (measured against simulation time)",
+    "camera follows player and mouse ray maps to the correct ground position after movement",
+    "HUD mode nearest selects dummy-a and visibly highlights it without moving",
+    "HUD mode current-hp selects dummy-b and visibly highlights it without moving",
+    "HUD mode hp-percent selects dummy-c and visibly highlights it without moving",
+    "HUD mode manual selects dummy-a and visibly highlights it without moving",
+    "direct enemy click pins over auto mode; ground attacks use pin and preserve cooldown/no-chase rules",
+    "mode changes and Clear lock restore automatic policy without bypassing cooldown",
+    "a pinned target dying releases override immediately; dead clicks never select or damage an enemy",
+    "Manual Target mode pins chosen enemy and falls back to nearest living in-range enemy on death",
+    "ground-click auto attacks reselect by lowest current HP after death; HUD attack button uses same rules",
+    "Reset restores all HP/max HP, player/target state, mode, pins, cooldown and hit count",
+    "real keyboard movement hits a solid obstacle and slides without penetrating",
+    "held real keyboard movement remains inside arena boundaries",
+    "blur pauses simulation, clears held input, and resume has no movement jump (synthetic focus events)",
+    "resize at 1000×700, 800×600, 1440×900 preserves canvas, camera, ground picking, and reset control",
+    "repository root index.html: styled offline 3D, keyboard movement, attack and reset",
+    "source-ZIP index.html isolated without sibling files (spaces/Unicode path): styled offline 3D, keyboard movement, attack and reset",
+    "no runtime errors/warnings and ZERO subresource requests during full offline interaction"
+  ],
+  "errors": [],
+  "warnings": [],
+  "requests": []
+}
