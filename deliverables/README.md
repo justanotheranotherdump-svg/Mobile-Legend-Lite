@@ -113,3 +113,7 @@ Brawl has one real default Flicker slot; a second spell is not implemented. Nume
 ### Current — Layla skill 2 target gate
 
 `MOBA-Lab-Layla-Skill2-Target-Gate.html` supersedes the prior game download and retains the Franco builds/hook and Brawl work. Layla skill 2 requires a targetable living enemy hero in range; otherwise clicking does not cast or consume mana/cooldown. `MOBA-Lab-Layla-Skill2-Target-Gate-source.zip` includes editable source/tests/docs and playable root HTML. See `docs/layla-skill2-gate/README.md` and `Layla-Skill2-Target-Gate-Manifest.json` for checks, hashes and the unchanged historical test failure.
+
+### Current — no unit collisions / no automatic spawn Cloud
+
+`MOBA-Lab-No-Unit-Collision.html` is the current offline game. Heroes/minions can pass through each other without blocking or pushing; Brawl bots no longer automatically launch Cloud at spawn/respawn. Manual Cloud, walls/structures, attack/skill hits and prior Layla/Franco work remain. Editable source: `MOBA-Lab-No-Unit-Collision-source.zip`. See `docs/spawn-no-unit-collision/README.md` and `No-Unit-Collision-Manifest.json` for verification/hashes and the unchanged historical missing Plan A archive test.

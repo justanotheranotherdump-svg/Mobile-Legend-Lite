@@ -545,17 +545,17 @@ test("manual aimed Execute hits only a valid enemy on the chosen ray and does no
   assert.equal(q.releaseAim(), "no-valid-target");
   assert.equal(q.spells.readyAt, 0);
 });
-test('initial moving-body overlap separates safely, retains tower category and reaches a real attack',()=>{
+test('initial moving-body overlap remains permeable, retains tower category and reaches a real attack',()=>{
  const s=combat(),tower=enemy('tower','tower',8),body=enemy('moving-body','minion',.15);s.bots=[tower,body];s.syncEnemies();s.requestAttack(null,'tower');s.update(.05);
  assert.equal(s.attackCommand.filter,'tower');assert.equal(s.attackCommand.targetId,'tower');
- assert.ok(Math.hypot(s.player.x-body.x,s.player.z-body.z)>=s.player.radius+body.radius-.003);
- body.z=4;for(let n=0;n<100&&s.lastAttack?.targetId!=='tower';n++)s.update(.05);
+ assert.equal(body.x,.15);assert.equal(body.z,0);
+ body.z=4;for(let n=0;n<100&&(s.lastAttack?.targetId!=='tower'||s.lastAttack?.reason!=='fired');n++)s.update(.05);
  assert.equal(s.lastAttack.reason,'fired');assert.equal(s.lastAttack.targetId,'tower');assert.equal(s.attackCommand.filter,'tower');assert.equal(s.attackController.blockedSince,null);
 });
 test('permanent world blockage still cancels immediately, not a moving-body retry or teleport',()=>{const s=combat("vs-ai"),tower=enemy('tower','tower',8);s.bots=[tower];s.arena={halfSize:10,obstacles:[{x:1.5,z:0,width:1,depth:20}]};s.syncEnemies();s.requestAttack(null,'tower');s.update(.05);assert.equal(s.attackCommand,null);assert.equal(s.player.x,0);assert.equal(s.player.z,0)});
 test('an initial unit overlap is not an unbounded wait or a permanent unit wall',()=>{
  const s=combat(),tower=enemy('tower','tower',8),body=enemy('moving-body','minion',.15);s.bots=[tower,body];s.syncEnemies();s.requestAttack(null,'tower');
- for(let n=0;n<70&&s.lastAttack?.targetId!=='tower';n++)s.update(.05);
+ for(let n=0;n<70&&(s.lastAttack?.targetId!=='tower'||s.lastAttack?.reason!=='fired');n++)s.update(.05);
  assert.equal(s.lastAttack.reason,'fired');assert.equal(s.lastAttack.targetId,'tower');assert.ok(s.time<=3.5);
- assert.ok(Math.hypot(s.player.x-body.x,s.player.z-body.z)>=s.player.radius+body.radius-.003);
+ assert.equal(body.x,.15);assert.equal(body.z,0);
 });

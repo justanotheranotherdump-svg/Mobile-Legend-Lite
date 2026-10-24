@@ -1,3 +1,4 @@
+import {makeHeroBot} from '../src/match/hero-bots.js';
 import {loadHeroRegistry} from '../src/heroes/catalog.js';import {MatchSimulation} from '../src/match/simulation.js';import {createMatchConfig} from '../src/match/config.js';import {LaneView} from '../src/rendering/lane-view.js';import {createHeroVisual} from '../src/rendering/heroes/hero-visual.js';import {BrawlHud} from '../src/ui/brawl-hud.js';
 // Isolated test harness only; no mutation endpoints are imported into the game.
 const registry=loadHeroRegistry();let s,v,visual,hud;
@@ -13,5 +14,10 @@ window.brawlFixture={
  attack(){const t=s.structures.find(t=>t.id==='enemy-0');s.player.x=t.x-1.8;s.player.z=0;s.player.cooldown=0;s.lockUntil=s.time;s.pending=[];s.cancelAttackCommand();const result=s.attack(t.id);this.render();return {result,release:s.pending[0]?.at};},
  collect(kind){const o=s.brawl[kind][0];s.player.x=o.x;s.player.z=o.z;s.brawl.tick(0);this.render();return this.snapshot();},
  project(x,z){return v.project(x,.1,z);},
+ // Scoped collision regression setup using real match actors and the approved renderer.
+ crossing(kind){s.cancelAttackCommand();s.bots=[];s.minions=[];s.botEngines.clear();s.player.x=-3;s.player.z=0;
+  let target;if(kind==='minion'){s.spawnWave(1);target=s.minions.find(a=>a.team==='enemy');s.minions=[target];}else{target=makeHeroBot(s,'enemy',0);s.bots=[target];}
+  Object.assign(target,{x:0,z:0,stunned:true,stunnedUntil:1e6,protected:false,spawnProtectedUntil:0});s.syncEnemies();this.render();return this.snapshot();},
+ walk(seconds){for(let i=0;i<Math.ceil(seconds*120);i++)s.update(Math.min(1/120,seconds-i/120),Math.SQRT1_2,Math.SQRT1_2);this.render();return this.snapshot();},
  dispose(){hud.dispose();v.dispose();}
 };

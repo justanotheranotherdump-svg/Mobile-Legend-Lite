@@ -127,7 +127,7 @@ export class BrawlSystem {
    if(original.type==='retreat')return {type:'move',x:a.team==='player'?-4:4,z:a.laneOffset||0,reason:'brawl-no-altar-heal'};
   }
   if(a.barrel&&this.canMove(a)){const enemy=this.heroes.find(t=>validTarget(a,t)&&distance(a,t)<8);if(enemy)this.launchBarrel(enemy,a);}
-  if(this.s.time>=a.cloudReadyAt&&distance(a,this.s.scenario.spawn[a.team])<this.q.cloud.baseRadius)this.useCloud(a);
+  // Cloud is an explicit action, never an automatic spawn/respawn speed boost.
   return original;
  }
  snapshot(){return {version:this.q.version,shopOpen:this.canShop(),runes:structuredClone(this.runes),barrels:structuredClone(this.barrels),crabs:this.crabs.map(a=>({id:a.id,x:a.x,z:a.z,hp:a.hp,maxHp:a.maxHp,readySpawnAt:a.readySpawnAt})),carried:this.s.player.barrel&&{...this.s.player.barrel},barrelReadyAt:this.s.player.barrelReadyAt,cloudReadyAt:this.s.player.cloudReadyAt,travel:this.s.player.brawlTravel&&{...this.s.player.brawlTravel}};}

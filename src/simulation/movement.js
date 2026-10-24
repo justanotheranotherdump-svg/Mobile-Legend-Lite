@@ -16,6 +16,9 @@ export function overlapsBox(x, z, radius, box) {
 
 export function moveEntity(entity, direction, dt, arena, circles = []) {
   if (entity.stunned || entity.hp <= 0) return;
+  // Living units are permeable; only world geometry and structures block walking.
+  // Keep this independent from target/projectile collision tests.
+  const solids = circles.filter(c => ["tower", "core"].includes(c.kind));
   const distance = entity.speed * dt;
   // Small bounded steps prevent crossing thin obstacles at low render rates.
   const steps = Math.max(1, Math.ceil(distance / (entity.radius * 0.4)));
@@ -23,18 +26,18 @@ export function moveEntity(entity, direction, dt, arena, circles = []) {
   const dz = direction.z * distance / steps;
   const limit = arena.halfSize - entity.radius;
   const blocked = (x, z) => arena.obstacles.some(box => overlapsBox(x, z, entity.radius, box))
-    || circles.some(c => c !== entity && c.hp > 0 && Math.hypot(c.x - x, c.z - z) < c.radius + entity.radius - 1e-8);
+    || solids.some(c => c !== entity && c.hp > 0 && Math.hypot(c.x - x, c.z - z) < c.radius + entity.radius - 1e-8);
   for (let step = 0; step < steps; step++) {
     const before = { x: entity.x, z: entity.z };
     const x = Math.max(-limit, Math.min(limit, entity.x + dx));
     if (!blocked(x, entity.z)) entity.x = x;
     const z = Math.max(-limit, Math.min(limit, entity.z + dz));
     if (!blocked(entity.x, z)) entity.z = z;
-    // Dynamic bodies may be walked around, never phased through. Keep this
-    // local tangential fallback scoped to lane matches, not forced skill motion.
-    if (arena.unitCollision && circles.length && Math.hypot(dx, dz) > 0 &&
+    // Walk around solid structures, never around another hero or minion.
+    // This fallback is for ordinary lane movement, not forced skill motion.
+    if (arena.unitCollision && solids.length && Math.hypot(dx, dz) > 0 &&
         Math.hypot(entity.x-before.x, entity.z-before.z) < 1e-8) {
-      const blocker=circles.filter(c=>c!==entity&&c.hp>0&&
+      const blocker=solids.filter(c=>c!==entity&&c.hp>0&&
         Math.hypot(before.x+dx-c.x,before.z+dz-c.z)<entity.radius+c.radius+.03)
         .sort((a,b)=>Math.hypot(a.x-before.x,a.z-before.z)-Math.hypot(b.x-before.x,b.z-before.z))[0];
       if(!blocker)continue;
@@ -51,8 +54,8 @@ export function moveEntity(entity, direction, dt, arena, circles = []) {
   }
 }
 
-// Repair spawn/forced-displacement overlaps after movement, without changing hit
-// detection or stopping hooks/dashes at a unit wall. Structures remain fixed.
+// Repair structure overlaps only. Spawning/overlapping living units never
+// pushes either body or adds displacement beyond its requested movement.
 export function separateLivingUnits(actors, arena) {
   const living = actors.filter(a => a.hp > 0);
   const fixed = a => ["tower", "core"].includes(a.kind) || a.kind === "creep" && !a.speed || a.displacementBy || a.brawlTravel;
@@ -67,6 +70,7 @@ export function separateLivingUnits(actors, arena) {
    let overlaps = false;
    for (let i=0;i<living.length;i++) for(let j=i+1;j<living.length;j++) {
     const a=living[i], b=living[j];
+    if(!structures.includes(a)&&!structures.includes(b)) continue;
     if(fixed(a)&&fixed(b)) continue;
     let x=b.x-a.x,z=b.z-a.z;
     if(x*x+z*z >= (a.radius+b.radius)**2)continue;

@@ -26,7 +26,7 @@ const category = (a) =>
         : "other";
 const alive = (s, a) => isEligibleEnemy(a, s.player) && !a.protected;
 // Bounded A* on a local grid. Every traversed edge is swept against the same
-// world boxes and actor circles as movement; this never writes player position.
+// world boxes and structure circles as movement; living units are permeable.
 export function approachPath(player, target, arena, circles = []) {
   const step = 0.65,
     pad = 0.06,
@@ -41,6 +41,7 @@ export function approachPath(player, target, arena, circles = []) {
       (c) =>
         c !== player &&
         c.hp > 0 &&
+        ["tower", "core"].includes(c.kind) &&
         Math.hypot(x - c.x, z - c.z) < player.radius + c.radius + pad,
     );
   const edge = (a, b) => {

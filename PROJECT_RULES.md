@@ -557,3 +557,9 @@ User requests Franco recommended equipment builds, including tank/hybrid variant
 - User explicitly requires Layla skill 2 not to activate unless an enemy hero is inside its current skill range. Check living/targetable/hostile hero eligibility before aim/cast commitment and recheck at release/queued execution for player and AI. No mana, cooldown or animation on rejection; HUD may show NO TARGET.
 - Preserve existing range/buff, cost/cooldown, aimed projectile destination/collision/damage/mark and other skills. This is not a homing redesign. Practice hero stand-ins remain supported, while match minions/creeps/structures alone do not qualify.
 - Completed verification and known historical Plan A failure: `docs/layla-skill2-gate/README.md`. No push requested for this follow-up.
+
+## 2026-10-24 — Latest correction: remove unit collisions and automatic spawn acceleration
+
+- User explicitly requests no collision between heroes/minions. This supersedes the earlier living-unit collision/separation authorization. Living units must pass through each other without body blocking, push-apart displacement or smart-attack path blockage. Keep walls/bounds/towers/cores solid and preserve independent attack/projectile/hook hit detection.
+- Stop automatic Brawl Cloud launch at AI spawn/respawn; explicit Cloud remains available. Do not retune normal hero/equipment movement stats, Franco's passive or Layla's buff to hide automatic travel/push bugs.
+- Scope, exact causes, intentionally revised collision expectations and verification: `docs/spawn-no-unit-collision/README.md`. Preserve recent Layla skill-2 gate, Franco hook/recommendations and unrelated systems.
