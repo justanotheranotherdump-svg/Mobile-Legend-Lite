@@ -204,7 +204,7 @@ export function mountVisualBuilds(
       };
     }
     if (typeof presets === "function")
-      presets(body.querySelector("#build-presets"), { hero, open, paint });
+      presets(body.querySelector("#build-presets"), { hero, open, paint, builds });
   };
   paint();
   return () => {};

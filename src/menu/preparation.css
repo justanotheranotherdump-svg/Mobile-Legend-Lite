@@ -525,3 +525,8 @@
 .prep-hero-strip>div>strong{display:block;font-size:18px;margin-bottom:5px}.prep-hero-strip label{font-size:12px;display:flex;align-items:center;gap:8px}.active-build-summary{color:#c8d89a;font-size:12px}.visual-build-editor{margin-bottom:22px}
 .visual-build-editor .prep-catalog{overflow:auto;align-self:start;scrollbar-gutter:stable}.visual-build-editor .wiki-tree ul{flex-wrap:wrap}.visual-build-editor .wiki-layout{align-items:start}.visual-build-editor .prep-catalog>button{min-height:76px;flex-shrink:0}
 .prep-screen .visual-build-slot{padding:3px;margin:0}.visual-build-editor .wiki-tools{flex-wrap:wrap;gap:10px}.visual-build-editor .wiki-tools h3{font-size:15px;flex:0 0 auto;white-space:nowrap;margin:7px 0}.visual-build-editor .wiki-tools input{flex:1;width:180px;min-width:120px;max-width:250px}.visual-build-editor .wiki-tools select{flex:1;width:170px;min-width:120px}.editor-hero-mini{width:24px;height:24px;vertical-align:middle;border-radius:50%;margin-right:5px}
+
+/* Franco templates use existing equipment art; readable names stay on screen. */
+.franco-recommendations .preset-item-order{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px 24px;padding-left:22px;font-size:12px;color:#d6e6ef;line-height:1.5}
+.franco-recommendations .preset-build-cost{color:#e8d394;font-size:12px}
+@media(max-width:700px){.franco-recommendations .preset-item-order{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 22px}.franco-recommendations .saved-build>header{flex-wrap:wrap}}

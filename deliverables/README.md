@@ -105,3 +105,7 @@ Brawl has one real default Flicker slot; a second spell is not implemented. Nume
 ### Latest Franco hook adjustment
 
 `MOBA-Lab-Franco-Hook-Update.html` contains the current game with8-unit Franco hook range and0.5s caught-hero hold before pull. The current `MOBA-Lab-Targeted-Brawl-source.zip` also includes this update. See `docs/franco-hook-update/README.md` for scope/tests; older Brawl reports describe their earlier checkpoint.
+
+### Latest Franco recommended builds
+
+`MOBA-Lab-Franco-Builds.html` is the current standalone, with Tank / Roam, Hybrid / Pickoff and Damage / Burst recommendations under Preparation → Battle Setup → Franco. Use build saves/selects an editable item order; all equipment still costs match gold. `MOBA-Lab-Franco-Builds-source.zip` contains current source/tests/docs. See `docs/franco-builds/README.md` for verification and existing legacy test discrepancies.
