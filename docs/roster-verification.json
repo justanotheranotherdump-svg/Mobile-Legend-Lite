@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-18",
+  "branch": "arena/55ce0f80-mobile-legend-lite",
+  "baseCommit": "172cc8c4feb2c2376b32944d66c9e2f009ef9f4e",
+  "status": "New follow-up left uncommitted for review; no fresh push",
+  "units": {
+    "baseline": 333,
+    "current": 407,
+    "passed": 407,
+    "failed": 0,
+    "additional": 74
+  },
+  "browser": {
+    "passed": 157,
+    "suiteCount": 11,
+    "additionalRosterDraftChecks": 14,
+    "unexpectedErrors": 0,
+    "warnings": 0,
+    "runtimeAssetRequests": 0,
+    "expectedInjectedGraphicsErrorEntries": 4
+  },
+  "testedHtmlSha256": "185fd9fc4f0200b9ed396b7ba6fe1be0b69843faa26aa1af79d6406b9637e4fc",
+  "catalog": {
+    "attack": 29,
+    "movement": 8,
+    "pngIcons": 37,
+    "javelin": {
+      "cost": 320,
+      "criticalChance": 0.08
+    }
+  },
+  "approvedAssets": {
+    "src/heroes/layla/assets/layla.glb": "963a4902955cb8ad345c74eb63b76e602ade5247c2bd94544ce3000cba6edd51",
+    "src/assets/images/layla-creation.png": "bc2b258b61ddceb7aa9abe9a82c9ebe25d30b7ba91c6d3a58a57b4f15005fca1"
+  },
+  "observedFinalBrowserResult": "LOCAL MATCH COMPLETE \u00b7 NO ACCOUNT REWARDS\n\nDEFEAT\n\nCore destruction decided this result.\n\nDuration\n5:04\nEliminations\n0\nDeaths\n0\nAssists\n0\nHero level\n5\nMatch gold earned\n0\nEnemy structures destroyed\n0\nPLAY AGAINReturn to Training LobbyMain Menu",
+  "environment": "Linux Chromium software WebGL, standalone offline file://; trusted touch emulation, NOT native Windows/physical-touch/speaker certification"
+}

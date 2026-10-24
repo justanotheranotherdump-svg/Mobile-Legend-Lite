@@ -1,0 +1,108 @@
+{
+  "date": "2026-10-24",
+  "branch": "arena/55ce0f80-mobile-legend-lite",
+  "checkpoint": "df26ab08a7c6d6bfa13c5a97312dff9aab3a6e20",
+  "html": {
+    "bytes": 32945497,
+    "sha256": "c963f09f5fafd0dc95530a7bb4a09f7850e049d62b4ca5d5059233b2f79b63a4"
+  },
+  "baselineUnits": {
+    "total": 1011,
+    "passed": 1010,
+    "failed": 1,
+    "skipped": 0
+  },
+  "finalUnits": {
+    "total": 1044,
+    "passed": 1043,
+    "failed": 1,
+    "skipped": 0,
+    "knownFailure": "Saved Plan A HTML and source hashes are preserved exactly for fallback: historical downloads absent"
+  },
+  "newTargetedUnits": {
+    "total": 33,
+    "passed": 33
+  },
+  "brawlRenderer": {
+    "checks": [
+      "actual offline renderer loads approved Franco model and separate Brawl map/object geometry",
+      "actual camera/ray picker selects tower and shared command approaches and damages it",
+      "approved model displays heavy basic windup from authoritative action record, not an idle pose",
+      "neutral Frozen Crabs and glowing collector rune render from actual spawn/pickup state",
+      "real Barrel HUD arms aim, consumes next ground click and starts one-use collision travel",
+      "separate Flying Cloud button drives real movement while preserving single Flicker spell",
+      "Brawl actions fit desktop/compact landscape viewports",
+      "zero page errors and zero external subresource requests in offline file fixture"
+    ],
+    "errors": [],
+    "requests": [],
+    "environment": "Linux Chromium / SwiftShader offline file://; not native Windows/GPU/device certification"
+  },
+  "standaloneBrawl": {
+    "checks": [
+      "fresh standalone normal account/owned-only selection enters actual Brawl level4/gold2500 with six objectives and half-cooldown Flicker",
+      "base shop performs a real purchase; Recall is disabled and separate Brawl actions mount",
+      "Flying Cloud moves the real player out of base and the one-shot five-second shopping window closes",
+      "closed Brawl shopping is enforced in the existing shop, not just a new status label",
+      "actual game HUD remains reachable in compact landscape sizes",
+      "pause freezes authoritative timers; quit disposes Brawl listeners/UI and preserves wallet/ownership",
+      "standalone file:// completes with zero runtime errors or external requests"
+    ],
+    "errors": [],
+    "requests": [],
+    "environment": "Linux Chromium / SwiftShader, offline file://; no Windows/native GPU claim"
+  },
+  "illustratedCommerce": {
+    "passed": 10,
+    "checks": [
+      "Reference-inspired transparent Layla lobby illustration and illustrated avatar; left placement does not overlap invitation; zero model loads",
+      "Profile uses matching illustrated avatar; empty new-account statistics remain honest",
+      "Both Shop cards and clicked details use byte-identical per-hero 2D illustrations, full opacity and no 3D canvas",
+      "Illustrated details remain reachable at 960×540 and 844×390 landscape",
+      "Original 2D stage stays fixed for null/Layla/clear; illustrated teammates; unowned Franco absent from human picks even with AI Layla present",
+      "Real 32,000-Coin purchase unlocks Franco with AI Layla; only Coins debited; loading lineup uses illustrated PNGs",
+      "Actual match Shop permits paid duplicate daggers with stacked stats, sells only one copy, removes non-boot Owned lock and rejects a second boots purchase atomically",
+      "Duplicate active-item USE buttons are independently reachable with unique IDs; shared Wind cooldown cannot be reset, Frozen coexists, account wallet unchanged",
+      "Play Franco → quit → illustrated lobby → null selection → choose Layla recreates disposed preview correctly",
+      "Fresh HTML-only offline run: no remote requests or page errors"
+    ],
+    "external": [],
+    "errors": [],
+    "environment": "Linux Chromium software WebGL; not native GPU or physical device certification"
+  },
+  "ultimateFramebuffer": {
+    "directions": 8,
+    "passed": 8,
+    "log": "artifacts/targeted-brawl/final-ultimate-browser.txt"
+  },
+  "intermediateConnectedBrowser": {
+    "completedChecks": 6,
+    "fullSuitePassed": false,
+    "failure": "Unattended old-wave match results wait timed out after1000000ms; last logged simulation471.7s; not counted as a completed pass",
+    "finalFullConnectedRerun": false
+  },
+  "assetAudit": "ASSET-AUDIT.json",
+  "limitations": [
+    "One real Flicker slot only; no implemented second spell",
+    "Provisional project numerical settings in SETTINGS.md",
+    "Linux Chromium/SwiftShader, not Windows/native-GPU/device certification"
+  ],
+  "pushed": false,
+  "packaging": {
+    "archive": "deliverables/MOBA-Lab-Targeted-Brawl-source.zip",
+    "integrity": true,
+    "rootHtmlIdentical": true,
+    "entries": 833,
+    "excludedPathsPresent": [],
+    "compiledHtml": [
+      "index.html"
+    ],
+    "editableHtmlTemplates": [
+      "previews/franco/index.html",
+      "previews/layla/index.html",
+      "previews/layla/revisions/r1/index.html",
+      "dev.html"
+    ],
+    "note": "An initial audit incorrectly classified small editable preview templates as duplicate compiled builds; inspected and verified these are source templates."
+  }
+}

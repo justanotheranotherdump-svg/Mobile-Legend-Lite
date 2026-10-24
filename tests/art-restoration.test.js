@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync}from'node:fs';
+import {heroArt}from'../src/heroes/art.js';
+import {usesHeroPreview}from'../src/menu/hero-display-policy.js';
+import{getHeroPortrait}from'../src/ui/portraits.js';
+for(const screen of ['create','lobby','modes','shop','hero','profile','owned','preparation','room','loading','results','settings'])test(`${screen}: illustrated UI never starts the 3D hero preview`,()=>{for(const id of [null,'layla','franco'])assert.equal(usesHeroPreview(screen,id),false);});
+test('only explicitly selected hero enables central 3D preview; clear stays null',()=>{assert.equal(usesHeroPreview('selection',null),false);for(const id of ['layla','franco'])assert.equal(usesHeroPreview('selection',id),true);});
+test('original Layla creation PNG remains intact and distinct from requested new Shop art',()=>{const original=readFileSync('src/assets/images/layla-creation.png');assert.equal(original.readUInt32BE(16),1536);assert.equal(original.readUInt32BE(20),1024);assert.ok(!original.equals(readFileSync(new URL(heroArt('layla','banner')))));});
+test('both banners and all small hero portraits are separate actual PNGs',()=>{assert.notEqual(heroArt('layla','banner'),heroArt('franco','banner'));for(const id of ['layla','franco']){assert.ok(heroArt(id,'banner').endsWith('/illustration.png'));assert.ok(getHeroPortrait(id).endsWith('/portrait.png'));for(const kind of ['banner','portrait','character-portrait'])assert.deepEqual([...readFileSync(new URL(heroArt(id,kind))).subarray(0,8)],[137,80,78,71,13,10,26,10]);}});

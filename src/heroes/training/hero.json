@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "training",
+  "name": "Test hero",
+  "role": "training",
+  "baseStats": { "maxHp": 100, "movementSpeed": 5.5, "collisionRadius": 0.45 },
+  "basicAttack": { "effectId": "direct-damage", "damage": 25, "range": 6, "cooldown": 0.65 },
+  "abilityIds": [],
+  "visual": "visual.json"
+}

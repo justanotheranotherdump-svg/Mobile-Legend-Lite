@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "html": {
+    "path": "deliverables/MOBA-Lab-Final-Gameplay-Polish.html",
+    "bytes": 10468198,
+    "sha256": "ae74c0349662142c0272a781e4ee3bc6315943a84128b1715fe2ae8329d7a2c0"
+  },
+  "sourceZip": {
+    "path": "deliverables/MOBA-Lab-Final-Gameplay-Polish-source.zip",
+    "bytes": 17948935,
+    "sha256": "5a2c0d8a4521a421e6c8e01683b028ab8e3a4c1d53ee259c1d142ec333763427",
+    "entries": 634,
+    "files": 598,
+    "byteVerifiedFiles": 598,
+    "crc": "all entries passed",
+    "rootHtmlByteIdentical": true
+  },
+  "aliasesByteIdentical": true,
+  "approvedAssets": {
+    "src/heroes/layla/assets/layla.glb": "963a4902955cb8ad345c74eb63b76e602ade5247c2bd94544ce3000cba6edd51",
+    "src/assets/images/layla-creation.png": "bc2b258b61ddceb7aa9abe9a82c9ebe25d30b7ba91c6d3a58a57b4f15005fca1",
+    "src/ui/assets/layla-portrait.png": "67878f3996f6e24c213cdc7b86a91858d4ab5e3be675d648652f5e2650435d3e"
+  },
+  "preservedPngPayloadsVerified": 63,
+  "excluded": "dependencies/Git/virtualenv/cache/test captures/reference screenshots/duplicate builds",
+  "isolatedBrowserTargets": {
+    "standaloneFile": "/tmp/MOBA final polish — Unicode space uZDMil/Standalone only — 测试/Play final polish.html",
+    "archiveFile": "/tmp/MOBA final polish — Unicode space uZDMil/Source ZIP index only — 测试/index.html"
+  },
+  "note": "This static/archive audit alone is not a browser certificate. Use POLISH_ENTRY with test:browser:final-polish for isolated native offline verification. ZIP hash is recorded outside the archive to avoid a self-referential hash."
+}

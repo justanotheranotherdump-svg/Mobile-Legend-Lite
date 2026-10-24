@@ -1,0 +1,41 @@
+PASS: downloaded HTML initializes actual WebGL2 using file:// with network disabled
+PASS: inline CSS is applied: dark background, positioned HUD, full-viewport canvas (unstyled-page regression)
+PASS: eager bundled hero registry drives exact existing stats/HUD and honest placeholder/empty clips
+PASS: three distinct configured dummies expose current/max HP in world labels
+PASS: out-of-range automatic and pinned direct attacks reject damage/cooldown and NEVER chase
+PASS: real keyboard movement and diagonal normalization (measured against simulation time)
+PASS: camera follows player and mouse ray maps to the correct ground position after movement
+PASS: HUD mode nearest selects dummy-a and visibly highlights it without moving
+PASS: HUD mode current-hp selects dummy-b and visibly highlights it without moving
+PASS: HUD mode hp-percent selects dummy-c and visibly highlights it without moving
+PASS: HUD mode manual selects dummy-a and visibly highlights it without moving
+PASS: direct enemy click pins over auto mode; ground attacks use pin and preserve cooldown/no-chase rules
+PASS: mode changes and Clear lock restore automatic policy without bypassing cooldown
+PASS: a pinned target dying releases override immediately; dead clicks never select or damage an enemy
+PASS: Manual Target mode pins chosen enemy and falls back to nearest living in-range enemy on death
+PASS: ground-click auto attacks reselect by lowest current HP after death; HUD attack button uses same rules
+PASS: Reset restores all HP/max HP, player/target state, mode, pins, cooldown and hit count
+PASS: real keyboard movement hits a solid obstacle and slides without penetrating
+PASS: held real keyboard movement remains inside arena boundaries
+PASS: blur pauses simulation, clears held input, and resume has no movement jump (synthetic focus events)
+PASS: resize at 1000×700, 800×600, 1440×900 preserves canvas, camera, ground picking, and reset control
+
+node:internal/errors:983
+  const err = new Error(message);
+              ^
+
+Error: Command failed: unzip -p deliverables/MOBA-Lab-Game-Polish-source.zip index.html
+    at genericNodeError (node:internal/errors:983:15)
+    at wrappedFn (node:internal/errors:537:14)
+    at checkExecSyncError (node:child_process:916:11)
+    at execFileSync (node:child_process:952:15)
+    at file:///home/user/Mobile-Legend-Lite/tests/browser.mjs:344:25 {
+  status: 9,
+  signal: null,
+  output: [ null, Buffer(0) [Uint8Array] [], Buffer(0) [Uint8Array] [] ],
+  pid: 13869,
+  stdout: Buffer(0) [Uint8Array] [],
+  stderr: Buffer(0) [Uint8Array] []
+}
+
+Node.js v22.22.3

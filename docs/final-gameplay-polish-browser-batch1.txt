@@ -1,0 +1,18 @@
+PASS: Selection opens empty: no default model, description/debug panel or gameplay initialization
+PASS: Explicit Layla pick reveals the genuine shared GLB; hero name and confirm remain available
+PASS: Leave/re-enter selection resets pick/preview without losing Brawl room configuration
+PASS: Out-of-range attack gives visible feedback instead of silently doing nothing
+PASS: Brawl lineup is a true >=10-second loading state, animated viewing progress, actual picks, and no gameplay HUD leak
+PASS: Large mouse attack acquires a real nearby hero automatically without any manual click
+PASS: Selected enemy panel mirrors live name, level, exact HP and mana with no fabricated fields
+PASS: Enemy hero overhead name/level/HP/mana stays visible with a red team health bar
+PASS: Selected enemy panel remains in bounds without covering map, testing toggle or player HUD at all three landscape sizes
+PASS: Native Space single-attempt setting preserves targeting, position, cooldown and action locks
+PASS: Minion priority persists through cooldown/approach and fires only at its minion category
+Tower approach fixture {"time":13.850000000000268,"player":{"x":-3.231365743693427,"z":-2.2686342563068402,"hp":2554,"maxHp":2554},"command":{"filter":"tower","manualId":null,"targetId":"enemy-0","origin":{"x":-3.231365743693427,"z":-2.2686342563068402}},"stats":{"eliminations":0,"deaths":0,"assists":0,"goldEarned":0,"structures":0},"nearby":[{"id":"enemy-bot-0","kind":"bot","hp":1766.0614169243054,"x":-1.9249999999997447,"z":-1.6500000000000001},{"id":"wave-1-enemy-0","kind":"minion","hp":650,"x":-1.8354829402578097,"z":-0.9154176917389154},{"id":"wave-1-enemy-1","kind":"minion","hp":486.36363636363643,"x":-1.8514592508333885,"z":-0.7982399968776557},{"id":"wave-1-enemy-2","kind":"minion","hp":501.04265352481286,"x":-1.8692138340945004,"z":-0.681302231535729}]}
+PASS: Tower priority persists and approaches an eligible structure without falling back to heroes
+PASS: AI Training also enforces the same >=10-second readiness-plus-presentation gate
+PASS: Separate Practice waits >=10 seconds too and does not pretend minions/towers exist
+PASS: Preserved Layla learned skill/attack-follow-up path still casts with authoritative mana/cooldown
+PASS: Actual standalone offline game has no runtime errors/warnings or external asset requests
+

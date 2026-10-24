@@ -1,0 +1,73 @@
+{
+  "plan": "B",
+  "status": "Candidate awaiting explicit visual approval; not integrated",
+  "date": "2026-10-19",
+  "timing": {
+    "revision": "plan-b-r5",
+    "fps": 60,
+    "provenance": "User explicitly selected 0.40 s input-to-max: 0.15 s actual exported cast + 0.25 s outbound flight; custom comparison against saved Plan A / Timing R4. Not official MLBB timing.",
+    "hook": {
+      "cast": 0.15,
+      "maxTravel": 0.25,
+      "maxArrival": 0.4,
+      "hitArrival": 0.38,
+      "pullStart": 0.4,
+      "pullEnd": 0.58,
+      "hitReturnEnd": 0.66,
+      "emptyReturnEnd": 0.6,
+      "hitDuration": 0.66,
+      "emptyDuration": 0.6,
+      "clipDuration": 0.15
+    },
+    "slam": {
+      "impact": 0.3,
+      "effectEnd": 0.65,
+      "duration": 0.3
+    },
+    "hunt": {
+      "start": 0,
+      "secureEnd": 0.08,
+      "end": 1.8,
+      "strikes": [
+        0.15,
+        0.45,
+        0.75,
+        1.05,
+        1.35,
+        1.65
+      ],
+      "duration": 1.8
+    },
+    "attack": {
+      "impact": 0.4,
+      "duration": 0.6
+    },
+    "combo": {
+      "hitEnd": 0.66,
+      "slamEnd": 0.96,
+      "duration": 2.76
+    },
+    "notImplemented": [
+      "main-game mechanics/integration",
+      "final collision/damage/CC",
+      "hard-CC interruption rules",
+      "Actual-game Flicker targeting/cooldown/wall and other combo rules"
+    ],
+    "visual": {
+      "hookScale": 1.5,
+      "rangeUnchanged": true,
+      "collisionWidthUnchanged": true
+    },
+    "flicker": {
+      "scenario": "catch then backward teleport",
+      "distance": 2.2,
+      "autoAt": 0.39,
+      "units": "prototype world units",
+      "rangeExtension": false,
+      "rules": "Allowed after hit contact, before haul finishes; once per inspection; no actual spell cooldown or game collision."
+    }
+  },
+  "art": "Hook 1.5x GLB node transform, mesh buffers/materials unchanged; floor-safe root pose baking includes larger weapon",
+  "comparisonBaseline": "plan-a-r4.json",
+  "futureIntake": "docs/HERO_MODEL_ANIMATION_INTAKE.md"
+}

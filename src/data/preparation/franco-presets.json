@@ -1,0 +1,28 @@
+{
+  "hero": "franco",
+  "label": "Reference-inspired equipment starting points · local game items · not a live-patch ranking or win-rate claim.",
+  "emblemNote": "Equipment order only. Emblems are reference guidance, with no emblem bonuses applied. Choose Flicker and any available roaming blessing separately; Use does not unlock or equip them. Roaming effects remain unavailable in Brawl.",
+  "presets": [
+    {
+      "id": "franco-tank",
+      "name": "Tank / Roam",
+      "spell": "flicker",
+      "purpose": "Durable pickoff and team utility. Start with mobility, then anti-healing defense and cooldown utility; finish with recovery support, physical protection and a revive. Configure a supported roam blessing separately if desired.",
+      "items": ["rapid-boots", "dominance-ice", "fleeting-time", "oracle", "antique-cuirass", "immortality"]
+    },
+    {
+      "id": "franco-hybrid",
+      "name": "Hybrid / Pickoff",
+      "spell": "flicker",
+      "purpose": "Mix pickoff damage with frontline durability. Two physical attack items support hook follow-ups, while Dominance Ice, Athena's Shield and Immortality provide defensive coverage. Less durable than the tank setup.",
+      "items": ["rapid-boots", "dominance-ice", "blade-of-the-heptaseas", "hunter-strike", "athenas-shield", "immortality"]
+    },
+    {
+      "id": "franco-burst",
+      "name": "Damage / Burst",
+      "spell": "flicker",
+      "purpose": "Aggressive, fragile pickoff alternative inspired by the supplied item order. Physical attack and penetration favor isolated targets; Fleeting Time adds cooldown utility. Not a substitute for the tank build when your team needs a frontline.",
+      "items": ["rapid-boots", "blade-of-the-heptaseas", "hunter-strike", "sky-piercer", "fleeting-time", "malefic-roar"]
+    }
+  ]
+}

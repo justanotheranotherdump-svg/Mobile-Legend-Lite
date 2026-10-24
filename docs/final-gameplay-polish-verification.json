@@ -1,0 +1,64 @@
+{
+  "milestone": "Final Gameplay Polish Before Adding the Next Hero",
+  "date": "2026-10-19",
+  "status": "passed",
+  "branch": "arena/55ce0f80-mobile-legend-lite",
+  "bundleSha256": "ae74c0349662142c0272a781e4ee3bc6315943a84128b1715fe2ae8329d7a2c0",
+  "unit": {
+    "tests": 777,
+    "passed": 777,
+    "failed": 0,
+    "skipped": 0,
+    "log": "docs/final-gameplay-polish-unit-results.txt"
+  },
+  "browser": {
+    "regressionSuites": 15,
+    "regressionCheckGroups": 219,
+    "nativeGameplayCheckGroups": 5,
+    "isolatedRuns": 2,
+    "isolatedRepeatedCheckGroups": 10,
+    "totalExecutedCheckGroups": 234,
+    "errors": [],
+    "warnings": [],
+    "externalRequests": [],
+    "environment": "Linux Chromium / software WebGL2 / ordinary file:// security / offline networking; trusted desktop and emulated touch inputs. Not native Windows/physical-device/speaker certification."
+  },
+  "delivery": {
+    "html": {
+      "path": "deliverables/MOBA-Lab-Final-Gameplay-Polish.html",
+      "bytes": 10468198,
+      "sha256": "ae74c0349662142c0272a781e4ee3bc6315943a84128b1715fe2ae8329d7a2c0"
+    },
+    "sourceZip": {
+      "path": "deliverables/MOBA-Lab-Final-Gameplay-Polish-source.zip",
+      "bytes": 17948935,
+      "sha256": "5a2c0d8a4521a421e6c8e01683b028ab8e3a4c1d53ee259c1d142ec333763427",
+      "entries": 634,
+      "files": 598,
+      "byteVerifiedFiles": 598,
+      "crc": "all entries passed",
+      "rootHtmlByteIdentical": true
+    },
+    "aliasesByteIdentical": true,
+    "preservedPngPayloadsVerified": 63,
+    "approvedAssets": {
+      "src/heroes/layla/assets/layla.glb": "963a4902955cb8ad345c74eb63b76e602ade5247c2bd94544ce3000cba6edd51",
+      "src/assets/images/layla-creation.png": "bc2b258b61ddceb7aa9abe9a82c9ebe25d30b7ba91c6d3a58a57b4f15005fca1",
+      "src/ui/assets/layla-portrait.png": "67878f3996f6e24c213cdc7b86a91858d4ab5e3be675d648652f5e2650435d3e"
+    },
+    "note": "Final archive repackaged after reports; all included files byte-verified, CRC passed; root HTML exactly matches the hash actually browser-tested in both isolated locations. Hash certificate excluded from ZIP to avoid self-reference."
+  },
+  "intentionalDifferences": [
+    "Strategy/reaction/aim/positioning difficulty only, not base-stat multipliers",
+    "NPC automatic skill allocation versus human choices; actual earned levels and loadouts may differ",
+    "NPCs retain empty default inventories; automatic shopping/item-active/battle-spell decision AI not added"
+  ],
+  "limits": [
+    "Only implemented Layla is certified by these tests; not future heroes or every item combination",
+    "Existing classic/versioned equipment rules are not claimed as the current commercial live patch",
+    "No Windows, physical-phone, physical-speaker or online/multiplayer certification"
+  ],
+  "readyForNextHero": "Ready for a separately authorized next-hero milestone within the tested Layla/offline scope; STOP for user review.",
+  "newHeroAdded": false,
+  "newPushPerformed": false
+}

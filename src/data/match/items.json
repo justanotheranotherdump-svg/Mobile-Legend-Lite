@@ -1,0 +1,1024 @@
+{
+  "refundRatio": 0.6,
+  "slots": 6,
+  "items": [
+    {
+      "id": "edge",
+      "name": "Prism Edge",
+      "cost": 300,
+      "description": "Original prototype equipment. Bonuses apply once per equipped copy.",
+      "modifiers": {
+        "flat": {
+          "physicalAttack": 30
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "maxCopies": 6,
+      "icon": "skill-1",
+      "legacy": true,
+      "category": "Legacy",
+      "effects": []
+    },
+    {
+      "id": "spring",
+      "name": "Clockwork Spring",
+      "cost": 280,
+      "description": "Original prototype equipment. Bonuses apply once per equipped copy.",
+      "modifiers": {
+        "flat": {},
+        "percent": {
+          "attackSpeed": 0.2
+        }
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "maxCopies": 6,
+      "icon": "recall",
+      "legacy": true,
+      "category": "Legacy",
+      "effects": []
+    },
+    {
+      "id": "lens",
+      "name": "Fortune Lens",
+      "cost": 350,
+      "description": "Original prototype equipment. Bonuses apply once per equipped copy.",
+      "modifiers": {
+        "flat": {},
+        "percent": {}
+      },
+      "criticalChance": 0.2,
+      "lifesteal": 0,
+      "maxCopies": 6,
+      "icon": "skill-ultimate",
+      "legacy": true,
+      "category": "Legacy",
+      "effects": []
+    },
+    {
+      "id": "plate",
+      "name": "Bastion Plate",
+      "cost": 300,
+      "description": "Original prototype equipment. Bonuses apply once per equipped copy.",
+      "modifiers": {
+        "flat": {
+          "physicalDefense": 25
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "maxCopies": 6,
+      "icon": "bot",
+      "legacy": true,
+      "category": "Legacy",
+      "effects": []
+    },
+    {
+      "id": "ward",
+      "name": "Aether Ward",
+      "cost": 300,
+      "description": "Original prototype equipment. Bonuses apply once per equipped copy.",
+      "modifiers": {
+        "flat": {
+          "magicDefense": 25
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "maxCopies": 6,
+      "icon": "skill-2",
+      "legacy": true,
+      "category": "Legacy",
+      "effects": []
+    },
+    {
+      "id": "heart",
+      "name": "Crystal Heart",
+      "cost": 400,
+      "description": "Original prototype equipment. Bonuses apply once per equipped copy.",
+      "modifiers": {
+        "flat": {
+          "maxHp": 500
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "maxCopies": 6,
+      "icon": "regen",
+      "legacy": true,
+      "category": "Legacy",
+      "effects": []
+    },
+    {
+      "id": "boots",
+      "name": "Wayfarer Boots",
+      "cost": 250,
+      "description": "Original prototype equipment. Bonuses apply once per equipped copy.",
+      "modifiers": {
+        "flat": {},
+        "percent": {
+          "movementSpeed": 0.1
+        }
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "maxCopies": 1,
+      "icon": "recall",
+      "legacy": true,
+      "category": "Legacy",
+      "effects": []
+    },
+    {
+      "id": "fang",
+      "name": "Sanguine Fang",
+      "cost": 450,
+      "description": "Original prototype equipment. Bonuses apply once per equipped copy.",
+      "modifiers": {
+        "flat": {
+          "physicalAttack": 15
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0.12,
+      "maxCopies": 6,
+      "icon": "skill-1",
+      "legacy": true,
+      "category": "Legacy",
+      "effects": []
+    },
+    {
+      "id": "berserkers-fury",
+      "name": "Berserker\u2019s Fury",
+      "cost": 2390,
+      "category": "Attack",
+      "description": "Critical strikes grant 5% extra Physical Attack for 2 seconds.",
+      "maxCopies": 6,
+      "modifiers": {
+        "flat": {
+          "physicalAttack": 65,
+          "criticalDamage": 0.4
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [
+        "doom"
+      ],
+      "icon": "berserkers-fury"
+    },
+    {
+      "id": "blade-of-despair",
+      "name": "Blade of Despair",
+      "cost": 3010,
+      "category": "Attack",
+      "description": "Against non-minion enemies below 50% HP, gain 25% Physical Attack before damage for 2 seconds.",
+      "maxCopies": 6,
+      "modifiers": {
+        "flat": {
+          "physicalAttack": 160,
+          "movementSpeed": 5
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [
+        "despair"
+      ],
+      "icon": "blade-of-despair"
+    },
+    {
+      "id": "blade-of-the-heptaseas",
+      "name": "Blade of the Heptaseas",
+      "cost": 1950,
+      "category": "Attack",
+      "description": "After 5 seconds without non-minion combat, the next basic deals 160 + 40% PA extra physical damage and slows 40% for 1.5 seconds.",
+      "maxCopies": 6,
+      "modifiers": {
+        "flat": {
+          "physicalAttack": 70,
+          "maxHp": 250
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 15,
+      "effects": [
+        "ambush"
+      ],
+      "icon": "blade-of-the-heptaseas"
+    },
+    {
+      "id": "corrosion-scythe",
+      "name": "Corrosion Scythe",
+      "cost": 2050,
+      "category": "Attack",
+      "description": "Basics deal 80 extra physical damage and stack 8% slow (4% for ranged), five stacks, 1.5 seconds. Impulse: +6% attack speed per hit, five stacks, 3 seconds.",
+      "maxCopies": 6,
+      "modifiers": {
+        "flat": {
+          "physicalAttack": 30,
+          "movementSpeed": 5
+        },
+        "percent": {
+          "attackSpeed": 0.3
+        }
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [
+        "corrosive",
+        "impulse"
+      ],
+      "icon": "corrosion-scythe"
+    },
+    {
+      "id": "dagger",
+      "name": "Dagger",
+      "cost": 250,
+      "category": "Attack",
+      "description": "Direct stat component. No passive.",
+      "maxCopies": 6,
+      "modifiers": {
+        "flat": {
+          "physicalAttack": 15
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [],
+      "icon": "dagger"
+    },
+    {
+      "id": "demon-hunter-sword",
+      "name": "Demon Hunter Sword",
+      "cost": 2180,
+      "category": "Attack",
+      "description": "Basics deal 8% current HP extra physical damage, capped at 60 versus minions. Each hit grants 2% lifesteal for 3 seconds, five stacks.",
+      "maxCopies": 6,
+      "modifiers": {
+        "flat": {
+          "physicalAttack": 35
+        },
+        "percent": {
+          "attackSpeed": 0.2
+        }
+      },
+      "criticalChance": 0,
+      "lifesteal": 0.08,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [
+        "engulf",
+        "devour"
+      ],
+      "icon": "demon-hunter-sword"
+    },
+    {
+      "id": "endless-battle",
+      "name": "Endless Battle",
+      "cost": 2330,
+      "category": "Attack",
+      "description": "After a skill, next basic within 3 seconds deals 60% PA extra true damage and heals 80 + 40% PA. Cooldown 1.5 seconds.",
+      "maxCopies": 6,
+      "modifiers": {
+        "flat": {
+          "physicalAttack": 60,
+          "magicPower": 5,
+          "maxHp": 250,
+          "movementSpeed": 5
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0.1,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [
+        "divine-justice"
+      ],
+      "icon": "endless-battle"
+    },
+    {
+      "id": "fury-hammer",
+      "name": "Fury Hammer",
+      "cost": 830,
+      "category": "Attack",
+      "description": "Direct stat component. No passive.",
+      "maxCopies": 6,
+      "modifiers": {
+        "flat": {
+          "physicalAttack": 35
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [],
+      "icon": "fury-hammer"
+    },
+    {
+      "id": "golden-staff",
+      "name": "Golden Staff",
+      "cost": 2000,
+      "category": "Attack",
+      "description": "Crit chance converts one-for-one into attack speed. After two non-crit basics, third basic has +80% attack speed, 5.0 rate cap, and triggers on-hit effects two extra times.",
+      "maxCopies": 6,
+      "modifiers": {
+        "flat": {
+          "physicalAttack": 55
+        },
+        "percent": {
+          "attackSpeed": 0.15
+        }
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [
+        "swift",
+        "endless-strike"
+      ],
+      "icon": "golden-staff"
+    },
+    {
+      "id": "great-dragon-spear",
+      "name": "Great Dragon Spear",
+      "cost": 2140,
+      "category": "Attack",
+      "description": "After ultimate: +30% movement speed for 7.5 seconds, 15-second cooldown.",
+      "maxCopies": 6,
+      "modifiers": {
+        "flat": {
+          "physicalAttack": 70
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0.1,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [
+        "supreme-warrior"
+      ],
+      "icon": "great-dragon-spear"
+    },
+    {
+      "id": "haas-claws",
+      "name": "Haas\u2019 Claws",
+      "cost": 2020,
+      "category": "Attack",
+      "description": "Critical strikes grant +20% attack speed for 2 seconds.",
+      "maxCopies": 6,
+      "modifiers": {
+        "flat": {
+          "physicalAttack": 40
+        },
+        "percent": {
+          "attackSpeed": 0.15
+        }
+      },
+      "criticalChance": 0,
+      "lifesteal": 0.2,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [
+        "frenzy"
+      ],
+      "icon": "haas-claws"
+    },
+    {
+      "id": "hunter-strike",
+      "name": "Hunter Strike",
+      "cost": 2010,
+      "category": "Attack",
+      "description": "After five consecutive damage hits on the same enemy hero: +50% movement speed decaying over 3 seconds; 8-second cooldown.",
+      "maxCopies": 6,
+      "modifiers": {
+        "flat": {
+          "physicalAttack": 80
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0.1,
+      "spellVamp": 0,
+      "physicalPenetration": 15,
+      "effects": [
+        "retribution"
+      ],
+      "icon": "hunter-strike"
+    },
+    {
+      "id": "iron-hunting-bow",
+      "name": "Iron Hunting Bow",
+      "cost": 450,
+      "category": "Attack",
+      "description": "Direct stat component. No passive.",
+      "maxCopies": 6,
+      "modifiers": {
+        "flat": {
+          "physicalAttack": 10
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0.05,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [],
+      "icon": "iron-hunting-bow"
+    },
+    {
+      "id": "javelin",
+      "name": "Javelin",
+      "cost": 320,
+      "category": "Attack",
+      "description": "Direct stat component. No passive.",
+      "maxCopies": 6,
+      "modifiers": {
+        "flat": {},
+        "percent": {}
+      },
+      "criticalChance": 0.08,
+      "lifesteal": 0,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [],
+      "icon": "javelin"
+    },
+    {
+      "id": "knife",
+      "name": "Knife",
+      "cost": 280,
+      "category": "Attack",
+      "description": "Direct stat component. No passive.",
+      "maxCopies": 6,
+      "modifiers": {
+        "flat": {},
+        "percent": {
+          "attackSpeed": 0.1
+        }
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [],
+      "icon": "knife"
+    },
+    {
+      "id": "legion-sword",
+      "name": "Legion Sword",
+      "cost": 910,
+      "category": "Attack",
+      "description": "Direct stat component. No passive.",
+      "maxCopies": 6,
+      "modifiers": {
+        "flat": {
+          "physicalAttack": 60
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [],
+      "icon": "legion-sword"
+    },
+    {
+      "id": "magic-blade",
+      "name": "Magic Blade",
+      "cost": 1050,
+      "category": "Attack",
+      "description": "Below 30% HP: shield 60 \u00d7 hero level and +50% movement speed decaying over 3 seconds, 60-second cooldown.",
+      "maxCopies": 6,
+      "modifiers": {
+        "flat": {
+          "physicalAttack": 35
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0.1,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [
+        "lifeline"
+      ],
+      "icon": "magic-blade"
+    },
+    {
+      "id": "malefic-gun",
+      "name": "Malefic Gun",
+      "cost": 2120,
+      "category": "Attack",
+      "description": "30% physical penetration. +12% basic range; hits grant +10% movement speed for 0.5 seconds.",
+      "maxCopies": 6,
+      "modifiers": {
+        "flat": {
+          "physicalAttack": 40
+        },
+        "percent": {
+          "attackSpeed": 0.2
+        }
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [
+        "armor-buster",
+        "malefic-energy"
+      ],
+      "icon": "malefic-gun"
+    },
+    {
+      "id": "malefic-roar",
+      "name": "Malefic Roar",
+      "cost": 2060,
+      "category": "Attack",
+      "description": "30% physical penetration. Gain another 0.1% per point of target physical defense, up to 30% extra.",
+      "maxCopies": 6,
+      "modifiers": {
+        "flat": {
+          "physicalAttack": 60
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [
+        "armor-buster",
+        "breaker"
+      ],
+      "icon": "malefic-roar"
+    },
+    {
+      "id": "ogre-tomahawk",
+      "name": "Ogre Tomahawk",
+      "cost": 650,
+      "category": "Attack",
+      "description": "Direct stat component. No passive.",
+      "maxCopies": 6,
+      "modifiers": {
+        "flat": {
+          "physicalAttack": 25,
+          "maxHp": 230
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [],
+      "icon": "ogre-tomahawk"
+    },
+    {
+      "id": "regular-spear",
+      "name": "Regular Spear",
+      "cost": 600,
+      "category": "Attack",
+      "description": "Direct stat component. No passive.",
+      "maxCopies": 6,
+      "modifiers": {
+        "flat": {
+          "physicalAttack": 20
+        },
+        "percent": {
+          "attackSpeed": 0.1
+        }
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [],
+      "icon": "regular-spear"
+    },
+    {
+      "id": "rogue-meteor",
+      "name": "Rogue Meteor",
+      "cost": 900,
+      "category": "Attack",
+      "description": "Direct stat component. No passive.",
+      "maxCopies": 6,
+      "modifiers": {
+        "flat": {},
+        "percent": {
+          "attackSpeed": 0.15
+        }
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [],
+      "icon": "rogue-meteor"
+    },
+    {
+      "id": "rose-gold-meteor",
+      "name": "Rose Gold Meteor",
+      "cost": 2030,
+      "category": "Attack",
+      "description": "Each 1% lifesteal grants 1 hybrid defense, cap 50 (halved for non-Fighters). Below 30% HP: shield 120 \u00d7 level and decaying +50% movement for 3 seconds; 60-second cooldown.",
+      "maxCopies": 6,
+      "modifiers": {
+        "flat": {
+          "physicalAttack": 40
+        },
+        "percent": {
+          "attackSpeed": 0.2
+        }
+      },
+      "criticalChance": 0,
+      "lifesteal": 0.1,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [
+        "dragon-scale",
+        "lifeline-rose"
+      ],
+      "icon": "rose-gold-meteor"
+    },
+    {
+      "id": "sea-halberd",
+      "name": "Sea Halberd",
+      "cost": 2050,
+      "category": "Attack",
+      "description": "Damage reduces new shields and HP recovery to 60% for 3 seconds. +8% damage against heroes with higher bonus HP.",
+      "maxCopies": 6,
+      "modifiers": {
+        "flat": {
+          "physicalAttack": 80
+        },
+        "percent": {
+          "attackSpeed": 0.2
+        }
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [
+        "lifebane",
+        "punish"
+      ],
+      "icon": "sea-halberd"
+    },
+    {
+      "id": "swift-crossbow",
+      "name": "Swift Crossbow",
+      "cost": 1000,
+      "category": "Attack",
+      "description": "Basics deal 40 adaptive damage. +3% attack speed per hit, five stacks, 3 seconds. Shares Impulse with Corrosion Scythe; strongest wins.",
+      "maxCopies": 6,
+      "modifiers": {
+        "flat": {},
+        "percent": {
+          "attackSpeed": 0.2
+        }
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [
+        "crossbow",
+        "impulse-small"
+      ],
+      "icon": "swift-crossbow"
+    },
+    {
+      "id": "vampire-mallet",
+      "name": "Vampire Mallet",
+      "cost": 400,
+      "category": "Attack",
+      "description": "Direct stat component. No passive.",
+      "maxCopies": 6,
+      "modifiers": {
+        "flat": {
+          "physicalAttack": 8
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0.08,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [],
+      "icon": "vampire-mallet"
+    },
+    {
+      "id": "war-axe",
+      "name": "War Axe",
+      "cost": 2100,
+      "category": "Attack",
+      "description": "Combat grants 12 PA per second, six stacks, 4-second refresh. Full stacks deal 10% raw damage as extra true damage. Marksmen/Mages/Supports receive half stacked effects.",
+      "maxCopies": 6,
+      "modifiers": {
+        "flat": {
+          "physicalAttack": 35,
+          "maxHp": 400
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0.1,
+      "spellVamp": 0.12,
+      "physicalPenetration": 0,
+      "effects": [
+        "fighting-spirit"
+      ],
+      "icon": "war-axe"
+    },
+    {
+      "id": "wind-of-nature",
+      "name": "Wind of Nature",
+      "cost": 1910,
+      "category": "Attack",
+      "description": "Active: physical damage immunity for 2 seconds (1 second for non-Marksmen); 90-second cooldown.",
+      "maxCopies": 6,
+      "modifiers": {
+        "flat": {
+          "physicalAttack": 30
+        },
+        "percent": {
+          "attackSpeed": 0.2
+        }
+      },
+      "criticalChance": 0,
+      "lifesteal": 0.1,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [
+        "wind-chant"
+      ],
+      "icon": "wind-of-nature"
+    },
+    {
+      "id": "windtalker",
+      "name": "Windtalker",
+      "cost": 1880,
+      "category": "Attack",
+      "description": "Every 5\u20132 seconds (scales with level), next basic chains 150\u2013362 magic damage to up to 3 enemies. Basics reduce cooldown 0.2 seconds. Can crit; double damage to minions.",
+      "maxCopies": 6,
+      "modifiers": {
+        "flat": {
+          "movementSpeed": 20
+        },
+        "percent": {
+          "attackSpeed": 0.35
+        }
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [
+        "typhoon"
+      ],
+      "icon": "windtalker"
+    },
+    {
+      "id": "arcane-boots",
+      "name": "Arcane Boots",
+      "cost": 720,
+      "category": "Movement",
+      "description": "+10 magic penetration.",
+      "maxCopies": 1,
+      "modifiers": {
+        "flat": {
+          "magicPower": 15,
+          "movementSpeed": 40
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [
+        "arcane-penetration"
+      ],
+      "icon": "arcane-boots"
+    },
+    {
+      "id": "basic-boots",
+      "name": "Boots",
+      "cost": 250,
+      "category": "Movement",
+      "description": "Direct stat component. No passive.",
+      "maxCopies": 1,
+      "modifiers": {
+        "flat": {
+          "movementSpeed": 20
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [],
+      "icon": "basic-boots"
+    },
+    {
+      "id": "demon-shoes",
+      "name": "Demon Shoes",
+      "cost": 720,
+      "category": "Movement",
+      "description": "Enemy minion kill or damage contribution within 2 seconds restores 4% maximum mana.",
+      "maxCopies": 1,
+      "modifiers": {
+        "flat": {
+          "magicPower": 10,
+          "movementSpeed": 40
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [
+        "mysticism"
+      ],
+      "icon": "demon-shoes"
+    },
+    {
+      "id": "magic-shoes",
+      "name": "Magic Shoes",
+      "cost": 720,
+      "category": "Movement",
+      "description": "Direct stat component. No passive.",
+      "maxCopies": 1,
+      "modifiers": {
+        "flat": {
+          "maxHp": 150,
+          "movementSpeed": 40
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0.1,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [],
+      "icon": "magic-shoes"
+    },
+    {
+      "id": "rapid-boots",
+      "name": "Rapid Boots",
+      "cost": 720,
+      "category": "Movement",
+      "description": "Dealing or taking damage removes 20 movement speed for 5 seconds.",
+      "maxCopies": 1,
+      "modifiers": {
+        "flat": {
+          "maxHp": 12,
+          "movementSpeed": 65
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [
+        "side-effect"
+      ],
+      "icon": "rapid-boots"
+    },
+    {
+      "id": "swift-boots",
+      "name": "Swift Boots",
+      "cost": 720,
+      "category": "Movement",
+      "description": "Direct stat component. No passive.",
+      "maxCopies": 1,
+      "modifiers": {
+        "flat": {
+          "movementSpeed": 40
+        },
+        "percent": {
+          "attackSpeed": 0.15
+        }
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [],
+      "icon": "swift-boots"
+    },
+    {
+      "id": "tough-boots",
+      "name": "Tough Boots",
+      "cost": 720,
+      "category": "Movement",
+      "description": "Control and slow durations reduced by 25%.",
+      "maxCopies": 1,
+      "modifiers": {
+        "flat": {
+          "magicDefense": 18,
+          "movementSpeed": 40
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [
+        "fortitude"
+      ],
+      "icon": "tough-boots"
+    },
+    {
+      "id": "warrior-boots",
+      "name": "Warrior Boots",
+      "cost": 720,
+      "category": "Movement",
+      "description": "Taking physical damage grants 4 defense for 3 seconds, five stacks.",
+      "maxCopies": 1,
+      "modifiers": {
+        "flat": {
+          "physicalDefense": 18,
+          "movementSpeed": 40
+        },
+        "percent": {}
+      },
+      "criticalChance": 0,
+      "lifesteal": 0,
+      "cooldownReduction": 0,
+      "spellVamp": 0,
+      "physicalPenetration": 0,
+      "effects": [
+        "valor"
+      ],
+      "icon": "warrior-boots"
+    }
+  ]
+}

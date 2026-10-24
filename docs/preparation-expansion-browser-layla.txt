@@ -1,0 +1,20 @@
+PASS: offline default uses approved GLB, 3 skills, keyboard-only HUD; no joystick/duplicate priority card, hero status bottom-left
+PASS: idle mouse hover does not rotate model or create an aim sight
+PASS: normal model facing follows actual camera-relative movement rather than mouse
+PASS: moving basic locks movement for full Shoot, hits locked enemy, then held WASD resumes automatically
+PASS: quick key tap ignores mouse and auto-targets nearest eligible enemy at skill range; normal damage/buff/mana/CD retained
+PASS: auto orb/basic chaining retains marks, bonus damage, stun trigger and authoritative presentation
+PASS: pointer tap auto-targets using Settings priority, not cursor position; Settings is sole priority selector
+PASS: held bound key previews original directional sight without spending; Escape cancels and stale keyup does not cast
+PASS: relative hold-and-release overrides smart/manual pin direction without changing the pin
+PASS: pointer capture supports held button drag aim and release, with exactly one cast and no native-click duplicate
+PASS: dragging held pointer into visible CANCEL area and releasing cancels without mana/cooldown
+PASS: right-click cancels a held skill without basic attack or resource spend
+PASS: switching panels cancels stale aim; non-modal panels still allow WASD and fresh skill casts
+PASS: session custom numpad keys support both tap-auto and held preview/cancel; old key is replaced
+PASS: native accessible button activation shares auto-targeted ultimate and authoritative one-hit beam
+PASS: blur/reset lifecycle clears held preview/capture without spending or reviving old gestures
+PASS: keyboard-only status/skills/attack remain accessible in desktop and compact landscape layouts
+PASS: source ZIP HTML works copied alone at offline file:// Unicode/spaces path, with new controls and real embedded GLB
+PASS: ZERO runtime errors, warnings or subresource requests across offline interaction
+19 combat-control browser checks passed.

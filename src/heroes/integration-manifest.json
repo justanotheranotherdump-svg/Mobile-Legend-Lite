@@ -1,0 +1,228 @@
+{
+  "version": 1,
+  "stage": "Approved Layla + Franco integration only",
+  "assets": {
+    "src/heroes/layla/assets/illustration.png": {
+      "bytes": 2653219,
+      "sha256": "1e1352d3d2fba6cb6c3709f1f344c9799d2c9755054df6f5166ade95f917e1cc",
+      "width": 1264,
+      "height": 848
+    },
+    "src/heroes/layla/assets/character.png": {
+      "bytes": 1031135,
+      "sha256": "f666932315cec4011fc873dc885cc9ef7fc93afac58d9058d15b88608407abd9",
+      "width": 1158,
+      "height": 809
+    },
+    "src/heroes/layla/assets/portrait.png": {
+      "bytes": 397153,
+      "sha256": "9086225ae704391a04f11cb1589b4e7774b74261700699b3983d443eeee9026a",
+      "width": 512,
+      "height": 512
+    },
+    "src/heroes/layla/assets/character-portrait.png": {
+      "bytes": 199028,
+      "sha256": "6cf947f6fe1946630e87f3eb3b604d95419a4a94235b244c6a9852750f413029",
+      "width": 512,
+      "height": 768
+    },
+    "src/heroes/layla/assets/showcase-background.png": {
+      "bytes": 2376439,
+      "sha256": "12360e78c3e5796b8b80b665342ae93b32e1d662bd8147dc86babde9e7b480d8",
+      "width": 1264,
+      "height": 848
+    },
+    "src/heroes/layla/assets/passive.png": {
+      "bytes": 16636,
+      "sha256": "31dab3e53db1fe74a9299591c25a0bc1ff8cd4d11b21ae34a5804adfcbc58852",
+      "width": 256,
+      "height": 256
+    },
+    "src/heroes/layla/assets/skill-1.png": {
+      "bytes": 17896,
+      "sha256": "f39984ac9f3cd94d567b798b80bd1e1175231d74f49e8301a66612bedb98f143",
+      "width": 256,
+      "height": 256
+    },
+    "src/heroes/layla/assets/skill-2.png": {
+      "bytes": 24710,
+      "sha256": "33c6508f3d24f36496aa90313e6c3d28dbe6781957cf00b242f9aa98b6f61e90",
+      "width": 256,
+      "height": 256
+    },
+    "src/heroes/layla/assets/ultimate.png": {
+      "bytes": 19823,
+      "sha256": "850cbb4f6fa2a48f7b43730271ad5282191935ea715f5b71011b9358adecdedc",
+      "width": 256,
+      "height": 256
+    },
+    "src/heroes/layla/assets/energy-gunner.glb": {
+      "bytes": 1089220,
+      "sha256": "beed648c0fa411a0dd3fd4c09a9a10812a4af5ad012272af7d7fe930ac393bb4"
+    },
+    "src/heroes/franco/assets/illustration.png": {
+      "bytes": 2802487,
+      "sha256": "2b8416182488900419f5f383a2e3c3beca2c387cd8974a77c297612d5643422e",
+      "width": 1264,
+      "height": 848
+    },
+    "src/heroes/franco/assets/character.png": {
+      "bytes": 773485,
+      "sha256": "ddc730ceeb76d5ae122d65a2c7b7f5d88f2e66eb8534709a984aadff5055dd4a",
+      "width": 680,
+      "height": 795
+    },
+    "src/heroes/franco/assets/portrait.png": {
+      "bytes": 523757,
+      "sha256": "ef5dc85b7fef629be441de9e66bc21dfcb2861559c933713d9e4dda264f9819d",
+      "width": 512,
+      "height": 512
+    },
+    "src/heroes/franco/assets/character-portrait.png": {
+      "bytes": 402647,
+      "sha256": "012fd0a1fe97a1b61144da9b45c40c43f74d486824830a7eb671b25d9b1b64db",
+      "width": 512,
+      "height": 768
+    },
+    "src/heroes/franco/assets/showcase-background.png": {
+      "bytes": 2676907,
+      "sha256": "1ead5befeba1f469b2b34e2b0cadcc16e9627d1167bb97882cd6733f1305ac44",
+      "width": 1264,
+      "height": 848
+    },
+    "src/heroes/franco/assets/passive.png": {
+      "bytes": 17024,
+      "sha256": "96d627adbb6676ccd8d2c37d59e602544c52a042b72b46d58d4d9e44277babe0",
+      "width": 256,
+      "height": 256
+    },
+    "src/heroes/franco/assets/skill-1.png": {
+      "bytes": 20354,
+      "sha256": "78a8f73001346613bafc51c0285537c4e5b5ebc992f1707b4fad6037e4bc2478",
+      "width": 256,
+      "height": 256
+    },
+    "src/heroes/franco/assets/skill-2.png": {
+      "bytes": 22592,
+      "sha256": "243b2018d030164a7ac1b66d32fe2717cb3c2c733a29bcdc59d667bedcb19f2a",
+      "width": 256,
+      "height": 256
+    },
+    "src/heroes/franco/assets/ultimate.png": {
+      "bytes": 19122,
+      "sha256": "2bf0fa14272174ffac297b29f884cd86fdf64267aed3595a59eaaca6b27937da",
+      "width": 256,
+      "height": 256
+    },
+    "src/heroes/franco/assets/franco.glb": {
+      "bytes": 1872080,
+      "sha256": "9b0e454a10d9bc4f97ce68797bb5ad9bf7572ae741372c3df52d1e0906587da1"
+    },
+    "src/heroes/franco/assets/hook.glb": {
+      "bytes": 11380,
+      "sha256": "87fa7c06e61d9b066a4ea5506b257f13e7f56e923a24a599bdcceb9f42bf06fe"
+    },
+    "src/heroes/layla/effects.js": {
+      "bytes": 14692,
+      "sha256": "f521f0e181b7b5f95e475ae1ce2b6167b250953f70dd86ec856e319550cdc0c0"
+    },
+    "src/rendering/approved-combat-vfx.js": {
+      "bytes": 11634,
+      "sha256": "23773183535b42e32628a8e06d948bb916524a166f8dd51ee19253940e337084"
+    },
+    "src/rendering/combat-vfx.js": {
+      "bytes": 8204,
+      "sha256": "820d7b054ba5d347271775878046089672c722b24793bc806fb735d19793de99"
+    },
+    "src/rendering/heroes/pose-driver.js": {
+      "bytes": 4601,
+      "sha256": "c818252eb4c7c73d8666b07bdc78e0d0a3bb20fba3d9fe7dd59b522bd6cc4656"
+    },
+    "src/heroes/layla/hero.json": {
+      "bytes": 1599,
+      "sha256": "a0e013188f27097a5e3bfec53f42ad1bc45c1c40b833a2a207e0e26a796f5a11"
+    },
+    "src/heroes/layla/abilities.json": {
+      "bytes": 3424,
+      "sha256": "377ac665160138361ff85ccf07fbaddf72d5c66bbd96841d43e3b2f69dc0eb50"
+    },
+    "src/heroes/layla/animations.json": {
+      "bytes": 287,
+      "sha256": "8533526577d66f58341309bca70a22f9d3caa9c624820e3887002a68a06225dc"
+    },
+    "src/heroes/layla/visual.json": {
+      "bytes": 185,
+      "sha256": "cfc36823195264ffcafed0edc80bf6b56e50770f0d4f3e0acec4ad4cc66eb044"
+    },
+    "src/heroes/franco/hero.json": {
+      "bytes": 1574,
+      "sha256": "bb480b62f4e1a3edaf7a67e273f262f2c4a9b8cb82a9da88d868bed3f6ce2a64"
+    },
+    "src/heroes/franco/abilities.json": {
+      "bytes": 3456,
+      "sha256": "6b5f9b38b91dfae8c6ce437754ab287937e243215af9452151ad87d15958acf1"
+    },
+    "src/heroes/franco/animations.json": {
+      "bytes": 271,
+      "sha256": "51860589ff803983f9e2c13dd8634b62556903fb8400f68a830389d7c98e3d91"
+    },
+    "src/heroes/franco/visual.json": {
+      "bytes": 178,
+      "sha256": "32bde1ffb27b2422b79fe1a7213c6c02405b9f744bf8be2deddcb7d906dddbc2"
+    },
+    "src/heroes/franco/commerce.json": {
+      "bytes": 293,
+      "sha256": "3d819ced2e847f6026b64c1024d9d10280b7e4aa3b58263838014901fe56a780"
+    }
+  },
+  "heroes": {
+    "layla": {
+      "model": "assets/energy-gunner.glb",
+      "scale": 0.72,
+      "animations": {
+        "idle": "Idle",
+        "move": "Walk",
+        "run": "Run",
+        "basicAttack": "BasicAttack",
+        "dead": "Death",
+        "hit": "HitReact",
+        "cast": "MaleficBomb",
+        "skill-1": "MaleficBomb",
+        "skill-2": "VoidProjectile",
+        "skill-ultimate": "DestructionRush"
+      },
+      "abilityIds": [
+        "malefic-gun",
+        "malefic-bomb",
+        "void-projectile",
+        "destruction-rush"
+      ],
+      "sourceApproved": "previews/layla/assets/layla-rework.glb",
+      "vfx": "src/heroes/layla/effects.js"
+    },
+    "franco": {
+      "model": "assets/franco.glb",
+      "scale": 0.72,
+      "animations": {
+        "idle": "Idle",
+        "move": "Walk",
+        "run": "Run",
+        "basicAttack": "BasicAttack",
+        "dead": "Death",
+        "hit": "HitReact",
+        "cast": "IronHook",
+        "skill-1": "IronHook",
+        "skill-2": "FuryShock",
+        "skill-ultimate": "BloodyHunt"
+      },
+      "abilityIds": [
+        "wasteland-force",
+        "iron-hook",
+        "fury-shock",
+        "bloody-hunt"
+      ],
+      "sourceApproved": "previews/franco/assets/franco-proposed.glb",
+      "vfx": "src/rendering/approved-combat-vfx.js"
+    }
+  }
+}

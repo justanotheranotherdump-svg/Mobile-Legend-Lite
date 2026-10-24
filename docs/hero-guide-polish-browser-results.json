@@ -1,0 +1,32 @@
+{
+  "browser": "153.0.8010.0",
+  "offline": true,
+  "fileProtocol": true,
+  "proof": {
+    "samples": 132300,
+    "sampleRate": 44100,
+    "rms": 0.007281103187592114,
+    "peak": 0.04040154069662094,
+    "channels": 2
+  },
+  "checks": [
+    "old valid profile migrates once to 30,000 coins / 0 diamonds with owned Layla",
+    "fresh page creates no audio context or scheduler before a real gesture",
+    "trusted click unlocks actual Web Audio; original score renders nonzero stereo energy without clipping",
+    "Hero Shop uses supplied 2D PNG, already-owned Layla, no purchase controls and no combat initialization",
+    "real music/effects/master switches, volume and reduced motion persist on same-file reload without autoplay",
+    "reopening preserves an existing changed balance; starter grant is never reapplied",
+    "1280x720 / 960x540 / 844x390 touch navigation, currency bounds, Shop, Settings and MODE fit; PNG uses undistorted cover",
+    "Shop/Settings/back/resize retain exactly one model and restore on-demand lobby rendering",
+    "audio reset preserves motion preference; blur suspends audio/scheduler and focus resumes one scheduler",
+    "normal entry transfers approved model once, switches to energetic score and actual accepted combat events produce effects",
+    "training Settings exposes the same working persisted audio controls in its non-modal centered panel",
+    "blocked storage and missing Web Audio preserve session wallet and useful settings without crashing",
+    "final standalone offline flow has no runtime errors, warnings, or subresource/network requests"
+  ],
+  "errors": [],
+  "warnings": [],
+  "requests": [],
+  "limitations": "Linux Chromium software WebGL / touch emulation; not native Windows, physical touch, or speaker listening certification",
+  "date": "2026-10-18"
+}

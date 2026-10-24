@@ -1,0 +1,14 @@
+{
+  "clips": {
+    "idle": "Idle",
+    "move": "Walk",
+    "run": "Run",
+    "basicAttack": "BasicAttack",
+    "dead": "Death",
+    "hit": "HitReact",
+    "cast": "MaleficBomb",
+    "skill-1": "MaleficBomb",
+    "skill-2": "VoidProjectile",
+    "skill-ultimate": "DestructionRush"
+  }
+}

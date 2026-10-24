@@ -1,0 +1,96 @@
+{
+  "comparedTo": "df26ab08a7c6d6bfa13c5a97312dff9aab3a6e20",
+  "binaryAssets": 21,
+  "allBinariesUnchanged": true,
+  "intentionallyChangedSourceAdapters": [
+    "src/rendering/heroes/pose-driver.js"
+  ],
+  "binary": [
+    {
+      "path": "src/heroes/layla/assets/illustration.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/heroes/layla/assets/character.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/heroes/layla/assets/portrait.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/heroes/layla/assets/character-portrait.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/heroes/layla/assets/showcase-background.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/heroes/layla/assets/passive.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/heroes/layla/assets/skill-1.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/heroes/layla/assets/skill-2.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/heroes/layla/assets/ultimate.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/heroes/layla/assets/energy-gunner.glb",
+      "unchanged": true
+    },
+    {
+      "path": "src/heroes/franco/assets/illustration.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/heroes/franco/assets/character.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/heroes/franco/assets/portrait.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/heroes/franco/assets/character-portrait.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/heroes/franco/assets/showcase-background.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/heroes/franco/assets/passive.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/heroes/franco/assets/skill-1.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/heroes/franco/assets/skill-2.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/heroes/franco/assets/ultimate.png",
+      "unchanged": true
+    },
+    {
+      "path": "src/heroes/franco/assets/franco.glb",
+      "unchanged": true
+    },
+    {
+      "path": "src/heroes/franco/assets/hook.glb",
+      "unchanged": true
+    }
+  ],
+  "allTrackedPngGlbCount": 164,
+  "allTrackedPngGlbUnchanged": true
+}

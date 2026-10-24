@@ -1,0 +1,2 @@
+# The offline entry is bundled output; preserve whitespace in embedded GLSL.
+/index.html linguist-generated=true -whitespace

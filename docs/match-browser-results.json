@@ -1,0 +1,22 @@
+{
+  "environment": "Linux Chromium, software WebGL, actual standalone file://, offline:true; touch pointer emulation, not native Windows or physical device",
+  "bundleSha256": "ae74c0349662142c0272a781e4ee3bc6315943a84128b1715fe2ae8329d7a2c0",
+  "checks": [
+    "Classic/Ranked disabled; four AI scenarios, Normal default, real Hard/custom roster configuration, guarded selection and all Back routes remain combat-isolated",
+    "validated hero confirmation completes seven actual local setup stages, then one 5v5 simulation/countdown; saved name, actual level/HP/mana and six objectives rendered",
+    "wrapper-relative legal + badges remain top-right at 1280×720, 960×540 and 844×390; click spends exactly one point without casting; dark rank-zero local PNGs, no far-left row or UNLEARNED text",
+    "actual shop buy/equip/unique/insufficient/sell transactions update six slots, gold and effective PA; pause freezes clock; safe quit disposes listeners/RAF and preserves account wallet",
+    "Practice travels through the same guarded prematch flow but retains separate three-dummy, reward-free sandbox and working exit / resume",
+    "Brawl uses level 3 / 800 gold and actual editable 1v1 roster; unique items reject repeat purchases, explicit sale credits 60% once before automatic free-slot purchase and recomputes attack/movement speed",
+    "actual unattended Brawl reaches sequential core destruction → real results with implemented duration / eliminations / deaths / assists / level / combat gold, no account currency/rank rewards; explicit account XP only",
+    "fresh replay re-enters explicit hero confirmation and resets all match state; Main Menu restores the same approved shared GLB without a second asset load",
+    "Completed natural match records actual result/hero/mode/duration/KDA once; replay quit adds nothing and Profile History/Statistics read the saved record",
+    "coarse-pointer 844×390 exposes a real drag joystick that moves the authoritative hero, with existing WASD and skill gestures preserved",
+    "actual standalone file:// with offline networking: no JavaScript errors or external runtime asset requests"
+  ],
+  "errors": [],
+  "warnings": [],
+  "requests": [],
+  "resultText": "LOCAL MATCH COMPLETE · ACCOUNT XP +100 · LV 2\n\nDEFEAT\n\nCore destruction decided this result.\n\nDuration\n9:23\nEliminations\n0\nDeaths\n0\nAssists\n0\nHero level\n6\nMatch gold earned\n0\nEnemy structures destroyed\n0\nPLAY AGAINReturn to Training LobbyMain Menu",
+  "initializations": 4
+}

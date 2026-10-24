@@ -1,0 +1,52 @@
+{
+  "name": "moba-foundation",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "npm run validate:heroes && vite build && node scripts/package-html.mjs",
+    "preview": "vite preview --host 0.0.0.0",
+    "test": "node --test tests/*.test.js",
+    "test:browser": "node tests/browser.mjs",
+    "validate:offline": "node scripts/check-offline.mjs",
+    "package:source": "npm run build && node scripts/package-source.mjs",
+    "validate:heroes": "node scripts/validate-heroes.mjs",
+    "test:browser:layla": "node tests/browser-layla.mjs",
+    "test:browser:panels": "node tests/browser-panels.mjs",
+    "test:browser:menu": "node tests/browser-menu.mjs",
+    "test:browser:polish": "node tests/browser-polish.mjs",
+    "test:browser:heroes": "node tests/browser-hero-browser.mjs",
+    "test:browser:progression": "node tests/browser-progression.mjs",
+    "test:browser:match": "node tests/browser-match.mjs",
+    "test:browser:recovery": "node tests/browser-recovery.mjs",
+    "test:browser:roster": "node tests/browser-roster.mjs",
+    "test:browser:draft": "node tests/browser-draft.mjs",
+    "test:browser:batch1": "node tests/browser-batch1.mjs",
+    "test:browser:shop-spells": "node tests/browser-shop-spells.mjs",
+    "test:browser:game-polish": "node tests/browser-game-polish.mjs",
+    "test:browser:preparation": "node tests/browser-preparation-expansion.mjs",
+    "validate:preparation-assets": "node scripts/verify-preparation-assets.mjs",
+    "test:browser:preparation:regression": "node scripts/run-preparation-regressions.mjs",
+    "validate:preparation-delivery": "node scripts/audit-preparation-delivery.mjs",
+    "test:browser:preparation:isolated": "node scripts/verify-preparation-isolated.mjs",
+    "test:browser:final-polish": "node tests/browser-final-gameplay-polish.mjs",
+    "test:browser:final-regression": "node scripts/run-final-gameplay-regressions.mjs",
+    "validate:final-delivery": "node scripts/audit-final-gameplay-delivery.mjs",
+    "test:browser:final-isolated": "node scripts/verify-final-gameplay-isolated.mjs",
+    "test:browser:two-heroes": "node scripts/two-heroes/build-fixture.mjs && node tests/browser-two-heroes.mjs",
+    "test:current-fixes": "node --test tests/current-fixes.test.js",
+    "test:browser:ultimate-direction": "node scripts/two-heroes/build-fixture.mjs && node tests/browser-ultimate-direction.mjs",
+    "test:browser:art-restoration": "node tests/browser-art-restoration.mjs",
+    "validate:two-hero-assets": "node scripts/two-heroes/audit.mjs",
+    "package:two-heroes": "npm run build && node scripts/two-heroes/package.mjs"
+  },
+  "dependencies": {
+    "three": "0.186.1"
+  },
+  "devDependencies": {
+    "@sparticuz/chromium": "153.0.0",
+    "playwright-core": "1.64.1",
+    "vite": "7.3.7"
+  }
+}

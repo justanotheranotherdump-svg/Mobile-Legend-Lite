@@ -1,0 +1,5 @@
+
+> moba-foundation@0.1.0 validate:preparation-assets
+> node scripts/verify-preparation-assets.mjs
+
+PASS: 63 unique individual PNGs, canonical IDs, exact SHA256, every payload embedded; approved Layla GLB unchanged.

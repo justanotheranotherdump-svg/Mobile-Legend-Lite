@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-24",
+  "checkpoint": "16eb752",
+  "presets": [
+    "Tank / Roam",
+    "Hybrid / Pickoff",
+    "Damage / Burst"
+  ],
+  "baselineFocused": {
+    "total": 24,
+    "passed": 24
+  },
+  "focusedUnits": {
+    "total": 37,
+    "passed": 37
+  },
+  "newUnits": {
+    "total": 9,
+    "passed": 9
+  },
+  "fullUnits": {
+    "total": 1062,
+    "passed": 1061,
+    "failed": 1,
+    "skipped": 0,
+    "knownFailure": "Saved Plan A historical downloads/hash check, unchanged"
+  },
+  "browser": {
+    "checks": [
+      "paid ownership gate retained; Franco shows three six-item recommendations with visible order/names",
+      "Use tank saves/selects actual build without starting combat, granting items, changing wallet or equipping spells",
+      "all three presets can be used; switching back reuses an existing copy rather than duplicating it",
+      "Customize opens real six-slot editor; saving a fourth copy is rejected without overwriting setups",
+      "active Franco order survives offline reload and Layla presets/custom saves remain independent",
+      "six item icons and Use controls remain reachable at960x540 and844x390",
+      "selected Hybrid enters real match; Recommended shop shows exact order, charges for boots and advances to Dominance Ice",
+      "offline standalone has zero runtime errors/external requests and preserves account wallet"
+    ],
+    "errors": [],
+    "requests": [],
+    "environment": "Linux Chromium/SwiftShader offline file://, actual standalone UI; not native GPU/device certification"
+  },
+  "legacyPreparationBrowser": {
+    "completedChecks": 8,
+    "passedFullSuite": false,
+    "failure": "line202 expects Retribution in Brawl; existing checkpoint already requires Flicker and disables role effects",
+    "testsModifiedOrSkipped": false
+  },
+  "html": {
+    "bytes": 32950386,
+    "sha256": "0a3c40d81925293faa227a754bacb0923c5d67b56c0945f57a3f1f0f0d6af097"
+  },
+  "runtimeEquipmentStatsChanged": false,
+  "heroStatsOrSkillsChanged": false,
+  "uploadedReferencesShipped": false,
+  "pushed": false
+}

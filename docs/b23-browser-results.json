@@ -1,0 +1,20 @@
+{
+  "checks": [
+    "Level1 card screen contains twelve actual definitions, exact locked level metadata, only Execute/Retribution unlocked and persistent one-spell selection",
+    "Selected spell survives room, explicit hero pick, 10-second local loading and Brawl initialization",
+    "All Equipment lists all 99, Simple omits components, real nested tree appears and quick buy chooses the most useful affordable Regular Spear component with exact gold/stat accounting",
+    "Owned tree credit updates immediately, explicit sale reverses stats/recipe credit, quick priority clears and no manual slot replacement is required",
+    "Native F uses the same actual Retribution activation: eligible lane minion hit, exact35s cooldown, no fabricated jungle entities",
+    "Quit match grants no account XP; hero combat levels do not bypass persistent account locks",
+    "Level25 fixture unlocks all twelve, native hold/release reuses aim sight and Flicker teleports safely with120s cooldown while preserving exactly3 hero skill controls",
+    "Native Flameshot creates and renders its actual directional projectile/trail/impact without visual callbacks applying damage",
+    "Native Aegis grants the actual hero-level3 1020 shield, with active HUD status and real world shield VFX",
+    "Native Revitalize shows a live healing spring and its timed aura VFX/HUD alongside unchanged hero controls",
+    "Actual standalone file:// shop/spell/aiming flows have zero runtime errors, warnings and external requests"
+  ],
+  "errors": [],
+  "warnings": [],
+  "requests": [],
+  "bundleSha256": "ae74c0349662142c0272a781e4ee3bc6315943a84128b1715fe2ae8329d7a2c0",
+  "environment": "Linux Chromium software WebGL; offline file://; level25 unlock fixture isolated to this test"
+}
